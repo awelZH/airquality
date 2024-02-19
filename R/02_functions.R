@@ -695,7 +695,8 @@ get_geolion_wcs <- function(coverage, capabilities, name, na_value = c(0,-999), 
 read_statpop_csv <- function(file, year, crs = 2056) {
   
   var <- paste0("B", stringr::str_sub(year, 3, 4), "BTOT")
-  delim <- ifelse(as.numeric(year) > 2015, ";", ",")
+  # delim <- ifelse(as.numeric(year) > 2015, ";", ",")
+  delim <- ","
   data <- 
     file %>% 
     readr::read_delim(delim = delim, locale = readr::locale(encoding = "UTF-8")) %>% 

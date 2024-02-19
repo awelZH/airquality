@@ -2,6 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+data/output/ggplots.rds
 00_Archiv
 offline
 temp
+

@@ -1,6 +1,5 @@
 # To-Do:
 # ---
-# any solution to get get population data, NH3, Ndep, Ndep_exeedance as rasterdata directly from an api instead of local or remote files?
 # finales set an Belastungskarten inkl O3 von Geolion mit allen verfügbaren Jahren
 # Datensätze gezielt für Statistikamt-Visualisierungen in /data/output/ abspeichern
 # ... NO2_PS Airmo Abfrage: inkl. Bauma Oberstufen, Wald Feuerwehr, Zürich Bullingerhof sobald 2023 verfügbar
@@ -281,6 +280,6 @@ boundaries_hull <-
 
 
 ### clean up
-# rm(list = c("basesize", "col_lrv", "col_who", "lty_lrv", "lty_who", "lsz_lrv", "lsz_who", "lbsz", "url", "request"))
+rm(list = c("basesize", "col_lrv", "col_who", "lty_lrv", "lty_who", "lsz_lrv", "lsz_who", "lbsz", "url", "request"))
 
 

@@ -18,7 +18,7 @@
 # opendatasets[stringr::str_detect(opendatasets, "messdaten-langjahriger-abgasmessungen-im-realen-fahrbetrieb-mittels-remote-sensing-rsd")] # => exists
 
 
-### emission budgets of air pollutants in the Caton of Zürich, stratified for emission sector groups and subgroups 
+### emission budgets of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups 
 req <- httr2::request(files$emissions$budget$opendata)
 req <- httr2::req_perform(req)
 emikat <- httr2::resp_body_json(req)$result        
@@ -71,7 +71,7 @@ rsd_meta <-
 
 ### calculate vehicle specific power and apply data filters for a meaningful analysis
 ### calculate mean values and corresponding NOx emissions
-### ! for a profound, one should also check units, explore site roadgrade, vehicle specific power and air temperature distribution, and general data plausibility and consistency etc in detail
+### ! for a profound analysis, one should also check units, explore site roadgrade, vehicle specific power and air temperature distribution, and general data plausibility and consistency etc in detail
 data_temp <- 
   data_rsd %>% 
   dplyr::filter(parameter %in% c("acceleration", "velocity") & !is.na(value)) %>%
@@ -93,7 +93,7 @@ data_rsd <-
       vehicle_unloaded_weight <= rsd_filters$weightmax &
       !is.na(value)
   ) %>%
-  dplyr::mutate(vehicle_euronorm = dplyr::recode(vehicle_euronorm, !!!c("Euro5a" = "Euro5", "Euro5b" = "Euro5"))) %>% # merge both sub-Euro5 norms since they are quite simila
+  dplyr::mutate(vehicle_euronorm = dplyr::recode(vehicle_euronorm, !!!c("Euro5a" = "Euro5", "Euro5b" = "Euro5"))) %>% # merge both sub-Euro5 norms since they are quite similar
   tidyr::spread(parameter, value) %>%
   dplyr::filter(!is.na(NO + CO2 + CO + HC)) %>%  # all concentrations nessecary for NOx emission calculation
   dplyr::left_join(dplyr::filter(rsd_meta, is.na(as.numeric(vehicle_euronorm))), by = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) %>% 
@@ -233,7 +233,7 @@ plots$emissions <-
         ) +
         ggplot2::labs(caption = "Quelle: OSTLUFT, Grundlage: EMIS Schweiz")
       
-      # possibly later: maps with emission per inhabitant per municipality ...
+      # ... possibly later: maps with emission per inhabitant per municipality? 
     )
     
   })
@@ -325,4 +325,4 @@ plots$emissions$NOx$rsd_timeseries <-
 
 
 ### clean up
-# rm(list = c("req", "rsd", "rsd_filters", "data_temp", "data_temp2", "data_rsd", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "rsd_meta", "emikat", "data_emikat", "cols_emissions"))
+rm(list = c("req", "rsd", "rsd_filters", "data_temp", "data_temp2", "data_rsd", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "rsd_meta", "emikat", "data_emikat", "cols_emissions"))

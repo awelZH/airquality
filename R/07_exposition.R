@@ -350,7 +350,7 @@ plots$exposition$eBC$population_weighted_mean <-
 ### save complete plot-dataset and clean up
 ### -----------------------------------------------
 
-saveRDS(plots, "data/output/ggplots.rds")
+# saveRDS(plots, "data/output/ggplots.rds")
 
-# rm(list = c("data_expo", "data_raster", "boundaries", "boundaries_hull", "threshold_values", "crs", "years", "theme_map", "theme_ts", "immission_colorscale_no2", "immission_colorscale_pm10", 
-#            "immission_colorscale_pm2_5", "immission_colorscale_ebc", "immission_colorscale_nh3", "immission_colorscale_ndep", "immission_colorscale_ndep_exc"))
+rm(list = c("data_expo", "data_raster", "boundaries", "boundaries_hull", "threshold_values", "crs", "years", "theme_map", "theme_ts", "immission_colorscale_no2", "immission_colorscale_pm10",
+           "immission_colorscale_pm2_5", "immission_colorscale_ebc", "immission_colorscale_nh3", "immission_colorscale_ndep", "immission_colorscale_ndep_exc"))

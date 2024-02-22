@@ -342,5 +342,5 @@ plots$airquality$monitoring$threshold_comparison <-
 
 
 ### clean up
-# rm(list = c("parameters", "pointsize", "n_years", "temp", "cln", "data_temp", "data_ndep", "data_thrshlds", "scale_color_siteclass", "scale_fill_siteclass", "site_meta", "data", "files"))
+rm(list = c("parameters", "pointsize", "n_years", "temp", "cln", "data_temp", "data_ndep", "data_thrshlds", "scale_color_siteclass", "scale_fill_siteclass", "site_meta", "data", "files"))
 

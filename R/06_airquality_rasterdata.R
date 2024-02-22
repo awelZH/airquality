@@ -255,4 +255,4 @@ plots$airquality$maps$CLN_exceedance$`2020` <-
 
 
 ### clean up
-# rm(list = "client", "capabilities", "maps", "grid")
+rm(list = "client", "capabilities", "maps", "grid")

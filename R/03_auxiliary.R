@@ -102,18 +102,12 @@ files$rasterdata$bafu_ndep_exc <- "https://data.geo.admin.ch/ch.bafu.luftreinhal
 ### Raster data inhabitant-statistics
 ### - resolution: 100x100m
 ### - source: Bundesamt für Statistik STATPOP
-### - derived as open data from: https://www.bfs.admin.ch/bfs/de/home/dienstleistungen/geostat/geodaten-bundesstatistik/gebaeude-wohnungen-haushalte-personen/bevoelkerung-haushalte-ab-2010.html
-### - data pre-clipped to extent of Canton Zurich since original files are too big for github => this is a temporary solution!
-### - retrieved on 09.02.2024
-files$rasterdata$bfs_pop$"2015" <- "bfs_statpop/STATPOP2015_zh.csv"
-files$rasterdata$bfs_pop$"2020" <- "bfs_statpop/STATPOP2020_zh.csv"
-files$rasterdata$bfs_pop$"2021" <- "bfs_statpop/STATPOP2021_zh.csv"
-files$rasterdata$bfs_pop$"2022" <- "bfs_statpop/STATPOP2022_zh.csv"
-# ... at https://api3.geo.admin.ch/ only WMTS is available and download of individual *.zip files from links below using R directly gets blocked server-side.
-# files$rasterdata$bfs_pop$"2015" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1442443/master"
-# files$rasterdata$bfs_pop$"2020" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/19106709/master"
-# files$rasterdata$bfs_pop$"2021" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/23528269/master"
-# files$rasterdata$bfs_pop$"2022" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/27965868/master"
+### - derived on the fly as open data from: https://www.bfs.admin.ch/bfs/de/home/dienstleistungen/geostat/geodaten-bundesstatistik/gebaeude-wohnungen-haushalte-personen/bevoelkerung-haushalte-ab-2010.html
+files$rasterdata$bfs_pop$"2015" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1442443/master"
+files$rasterdata$bfs_pop$"2020" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/19106709/master"
+files$rasterdata$bfs_pop$"2021" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/23528269/master"
+files$rasterdata$bfs_pop$"2022" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/27965868/master"
+
 
 
 

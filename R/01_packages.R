@@ -1,6 +1,8 @@
 require(fs)
 require(readr)
+require(archive)
 require(httr2)
+require(httr)
 require(tibble)
 require(tidyr)
 require(dplyr)

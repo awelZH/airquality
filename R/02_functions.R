@@ -717,6 +717,47 @@ read_statpop_csv <- function(file, year, crs = 2056) {
 
 
 
+
+### courtesy of Statistikamt, modified
+read_bfs_zip_data <- function(url, path_destination) {
+  
+  # Download the ZIP file to a temporary location
+  temp <- tempfile(tmpdir = path_destination, fileext = ".zip")
+  httr::GET(url, httr::write_disk(temp, overwrite = TRUE))
+  
+  # List files within the ZIP archive
+  files_in_zip <- 
+    archive::archive(temp) %>% 
+    dplyr::mutate(path_lower = tolower(path)) %>% 
+    dplyr::filter(stringr::str_detect(path_lower, "^.*statpop\\d{4}\\.csv$")) %>% 
+    dplyr::select(path) %>% 
+    dplyr::pull(path)
+  
+  # Select the file that matches the pattern "STATPOP####.csv" (case-insensitive)
+  # Assuming there's only one such file per archive
+  target_file <- files_in_zip[stringr::str_detect(tolower(files_in_zip), "statpop\\d{4}\\.csv")]
+  
+  if (length(target_file) == 0) {
+    stop("No file matching 'STATPOP[year].csv' pattern found in the ZIP archive.")
+  }
+  
+  # Assuming the first match is the file we want (if there are multiple matches)
+  largest_file <- target_file[1]
+  
+  # Open a connection to the matched file inside the ZIP
+  con <- archive::archive_read(temp, file = largest_file)
+  
+  # Read the file into a stars raster
+  data <- read_statpop_csv(con, year = extract_year(largest_file))
+  
+  # Remove the temporary file
+  unlink(temp)
+  
+  return(data)
+}
+
+
+
 population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
 
 

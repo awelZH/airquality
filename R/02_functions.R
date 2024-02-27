@@ -1,4 +1,9 @@
 
+### -----------------------------------------------
+### read input files
+### -----------------------------------------------
+
+
 ### function to read *.csv with air pollutant year-statistics exported from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
 read_arias <- function(file, encoding = "latin1", tz = "Etc/GMT-1"){ 
   
@@ -108,39 +113,6 @@ read_ostluft_meta <- function(file, encoding = "UTF-8") {
 
 
 
-### ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
-### however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
-aggregate_ostluft_meta_zone <- function(zone) { 
-  
-  zone <- 
-    dplyr::case_when(
-      as.numeric(stringr::str_remove(zone, "H")) %in% c(21:23, 31:33) ~ "städtisch", # OSTLUFT: > 20'000 Gesamteinwohner; BAFU: > 1500 Einwohner/km2 und Gesamteinwohnerzahl > 50 000
-      as.numeric(stringr::str_remove(zone, "H")) %in% 11:13 ~ "klein-/vorstädtisch", # OSTLUFT: > 1'000 Gesamteinwohner; BAFU: > 300 Einwohner/km2 im überbauten Gebiet und Gesamteinwohnerzahl > 5000
-      as.numeric(stringr::str_remove(zone, "H")) == 0 ~ "ländlich", # OSTLUFT: < 1'000 Gesamteinwohner; BAFU: Gebiete mit geringer Siedlungsdichte (< 300 Einwohner/km2) oder kleinere Ortschaften (< 5000 Einwohner)
-      TRUE ~ zone 
-    )
-  
-  return(zone)
-}
-
-
-
-### ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
-### however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
-aggregate_ostluft_meta_type <- function(type) { 
-  
-  type <- 
-    dplyr::case_when(
-      as.numeric(stringr::str_remove(type, "S")) %in% c(10:13, 20:23, 30:33) ~ "verkehrsbelastet", # OSTLUFT: DTV_S > 10'000; BAFU: has a finer scale that begins at DTV > 3'000 and cerctain max distance to street 
-      as.numeric(stringr::str_remove(type, "S")) == 0 ~ "Hintergrund", # OSTLUFT: DTV_S < 10'000 & street more than 50m (in cities) or 300m (outside of cities) away; BAFU: see above
-      TRUE ~ type 
-    )
-  
-  return(type)
-}
-
-
-
 ### internal function for read_airmo_csv2() to restructure data; based on similar function in rOstluft-package
 airmo_wide_to_long2 <- function(header, data, tz = "Etc/GMT-1", na.rm = TRUE){
   
@@ -189,466 +161,6 @@ read_airmo_csv2 <- function(file, encoding = "UTF-8", tz = "Etc/GMT-1", na.rm = 
 }
 
 
-
-
-### function to make sure that there are no duplicate measurements per site / year / unit for data with interval = y1 in format rOstluft::format_rolf() 
-### in case there have been NO2 monitor and passive sampler measurements (prefer monitor data = reference method); 
-### same for PM10 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method);
-### same for PM2.5 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method)
-remove_duplicate_y1 <- function(data){
-  
-  replace_no2_ps <- function(parameter, value){
-    if (sum(c("NO2", "NO2_PS") %in% parameter) == 2) {
-      if (!is.na(value[which(parameter == "NO2")])){
-        value[which(parameter == "NO2_PS")] <- NA
-      }
-    }
-    return(value)
-  }
-  
-  replace_pm10 <- function(parameter, value){
-    if (sum(c("PM10", "PM10h") %in% parameter) == 2) {
-      if (!is.na(value[which(parameter == "PM10h")])){
-        value[which(parameter == "PM10")] <- NA
-      }
-    }
-    return(value)
-  }
-  
-  replace_pm25 <- function(parameter, value){
-    if (sum(c("PM2.5", "PM2.5h") %in% parameter) == 2) {
-      if (!is.na(value[which(parameter == "PM2.5h")])){
-        value[which(parameter == "PM2.5")] <- NA
-      }
-    }
-    return(value)
-  }
-  
-  data <- 
-    data %>% 
-    dplyr::group_by(starttime, site, unit) %>% 
-    dplyr::mutate(
-      value = replace_no2_ps(parameter, value),
-      value = replace_pm10(parameter, value),
-      value = replace_pm25(parameter, value)
-    ) %>% 
-    dplyr::ungroup()
-  
-  return(data)
-}
-
-
-
-
-
-### function to plot standard timeseries of yearly values
-ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = starttime, y = value, color = siteclass), lims = c(0,NA), titlelab = NULL, captionlab = NULL, pointshape = 19, pointsize = 2,
-                              threshold = list(value = NA, color = "gray30", label = NULL, labelsize = 4, linetype = 2, linesize = 1), 
-                              theme = ggplot2::theme_minimal()) {
-  
-  plot <- 
-    ggplot2::ggplot(data, mapping = mapping) + 
-    ggplot2::geom_point(size = pointsize, shape = pointshape) +
-    ggplot2::scale_x_datetime(expand = c(0.01,0.01)) +
-    ggplot2::scale_y_continuous(limits = lims, expand = c(0.01,0.01)) +
-    titlelab +
-    captionlab +
-    theme
-  
-  if (!is.na(sum(threshold$value))){
-    text <- tibble::tibble(x = rep(min(data$starttime), length(threshold$value)), y = threshold$value, label = threshold$labels)
-    plot <-
-      plot + 
-      ggplot2::geom_hline(yintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
-      ggplot2::geom_text(data = text, mapping = ggplot2::aes(x = x, y = y, label = label), size = threshold$labelsize, 
-                         hjust = 0, vjust = 0, nudge_y = pmax(0, 0.01 * max(lims), na.rm = TRUE), inherit.aes = FALSE)
-  }
-  
-  return(plot)
-}
-
-
-
-aggregate_population_weighted_mean <- function(data, y, group = "geodb_oid") {
-  
-  data <- 
-    data %>% 
-    sf::st_drop_geometry() %>%
-    dplyr::mutate(!!y := ifelse(art_code != 1, NA, !!rlang::sym(y))) %>%
-    na.omit() %>%
-    dplyr::group_by(!!rlang::sym(group)) %>% 
-    dplyr::summarise(!!y := population_weighted_mean(!!rlang::sym(y), population)) %>% 
-    dplyr::ungroup()
-  
-  return(data)
-}
-
-
-
-
-aggregate_exposition_distrib <- function(data, y, fun = function(x) {floor(x) + 0.5}) { # fun: abgerundet auf 1, Klassenmitte
-  
-  data <- 
-    data %>% 
-    dplyr::select(!!y, population) %>% 
-    tibble::as_tibble() %>% 
-    na.omit() %>% 
-    dplyr::group_by(!!rlang::sym(y) := fun(!!rlang::sym(y))) %>% 
-    dplyr::summarise(population = sum(population)) %>%
-    dplyr::ungroup()
-  
-  return(data)
-}
-
-
-
-exposition_distrib_cumulative <- function(data, y) {
-  
-  data <- 
-    data %>% 
-    dplyr::filter(population > 0) %>% 
-    dplyr::arrange(!!y) %>% 
-    dplyr::mutate(population_relative = cumsum(population) / sum(population))
-  
-  return(data)
-}
-
-
-
-### function to plot exposition distribution histogram
-ggplot_expo_hist <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks = waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
-                             threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
-                             fill_scale = NULL, theme = ggplot2::theme_minimal()) {
-  
-  if (is.null(fill_scale)) {
-    mapping <- ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y))
-  } else {
-    mapping <- ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y), fill = !!rlang::sym(x))
-  }
-  
-  plot <-
-    ggplot2::ggplot(data, mapping = mapping) +
-    ggplot2::geom_bar(stat = "identity", color = NA, width = barwidth) +
-    ggplot2::scale_x_continuous(limits = xlims, breaks = xbreaks, expand = c(0.01,0.01)) +
-    ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'", scientific = FALSE)) +
-    fill_scale +
-    xlabel +
-    titlelab +
-    captionlab +
-    theme +
-    ggplot2::theme(axis.title.x = ggplot2::element_text()) 
-  
-  if (!is.na(sum(threshold$value))){
-    text <- tibble::tibble(x = threshold$value, label = threshold$labels)
-    plot <-
-      plot +
-      ggplot2::geom_vline(xintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
-      ggplot2::geom_text(data = text, mapping = ggplot2::aes(x = x, y = 0, label = label), size = threshold$labelsize,
-                         hjust = 0, vjust = 0, angle = 90, nudge_x = pmin(0, -0.01 * max(xlims), na.rm = TRUE), inherit.aes = FALSE)
-  }
-  
-  return(plot)
-}
-
-
-
-
-### function to plot relative cumulative exposition distribution
-ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), xbreaks = waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
-                             threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
-                             theme = ggplot2::theme_minimal()) {
-  
-  plot <-
-    ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y))) +
-    ggplot2::geom_line(linewidth = linewidth, color = "gray40") +
-    ggplot2::scale_x_continuous(limits = xlims, breaks = xbreaks, expand = c(0.01,0.01)) +
-    ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
-    xlabel +
-    titlelab +
-    captionlab +
-    theme +
-    ggplot2::theme(axis.title.x = ggplot2::element_text()) 
-  
-  if (!is.na(sum(threshold$value))){
-    text <- tibble::tibble(x = threshold$value, label = threshold$labels)
-    plot <-
-      plot +
-      ggplot2::geom_vline(xintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
-      ggplot2::geom_text(data = text, mapping = ggplot2::aes(x = x, y = 0, label = label), size = threshold$labelsize,
-                         hjust = 0, vjust = 0, angle = 90, nudge_x = pmin(0, -0.01 * max(xlims), na.rm = TRUE), inherit.aes = FALSE)
-  }
-  
-  return(plot)
-}
-
-
-
-
-### function to extract target threshold values from overall threshold data for plotting with ggplot_timeseries()
-get_threshold <- function(threshold_values, pollutant = NULL, aggregation = "y1", metric = "mean", unit = "µg/m3", 
-                          source = c("LRV Grenzwert", "WHO Richtwert")) {
-  
-  thresholds <-
-    threshold_values %>%
-    dplyr::filter(
-      source %in% !!source &
-        pollutant == !!pollutant & aggregation == !!aggregation &
-        metric == !!metric & unit == !!unit
-    ) %>%
-    dplyr::arrange(source)
-  
-  thresholds <-
-    list(
-      value = thresholds$threshold,
-      color = thresholds$col,
-      labels = thresholds$source,
-      labelsize = thresholds$lbsz,
-      linetype = thresholds$lty,
-      linesize = thresholds$lsz
-    )
-  
-  return(thresholds)
-}
-
-
-
-
-combine_thresholds <- function(data, threshold_values) {
-  
-  data <- 
-    threshold_values %>% 
-    dplyr::select(source, pollutant, metric, aggregation, threshold) %>% 
-    dplyr::rename(
-      parameter = pollutant,
-      interval = aggregation
-    ) %>% 
-    dplyr::mutate(
-      parameter = dplyr::case_when(
-        metric == "number hourly mean values > 120 µg/m3" & parameter == "O3" ~ "O3_nb_h1>120",
-        metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" & parameter == "O3" ~ "O3_max_98%_m1",
-        metric == "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration" & parameter == "O3" ~ "O3_peakseason_mean_d1_max_mean_h8gl",
-        TRUE ~ parameter
-      ),
-      interval = dplyr::recode(interval, !!!c("m1" = "y1", "peak-season" = "y1"))
-    ) %>% 
-    dplyr::select(-metric) %>% 
-    tidyr::spread(source, threshold) %>% 
-    dplyr::right_join(data, by = c("parameter", "interval")) %>% 
-    dplyr::select(starttime, site, parameter, interval, unit, value, siteclass, `LRV Grenzwert`, `WHO Richtwert`, source)
-  
-  return(data)
-  
-}
-
-
-
-
-# lbi <- function(PM10_rel, NO2_rel, O3_rel) {
-#   
-#   cut_val_rel <- function(x) {
-#     dplyr::case_when(
-#       x <= 0.5 ~ 1,
-#       x > 0.5 & x <= 0.75 ~ 2,
-#       x > 0.75 & x <= 1 ~ 3,
-#       x > 1 & x <= 1.25 ~ 4,
-#       x > 1.25 & x <= 1.5 ~ 5,
-#       x > 1.5 ~ 6
-#     )
-#   }
-#   
-#   LBI <- (4.5 * cut_val_rel(PM10_rel) + 4.5 * cut_val_rel(NO2_rel) + cut_val_rel(O3_rel)) / 10
-#   LBI <- dplyr::case_when(
-#     LBI <= 1.5 ~ 1,
-#     LBI > 1.5 & LBI <= 2.5 ~ 2,
-#     LBI > 2.5 & LBI <= 3.5 ~ 3,
-#     LBI > 3.5 & LBI <= 4.5 ~ 4,
-#     LBI > 4.5 & LBI <= 5.5 ~ 5,
-#     LBI > 5.5 ~ 6
-#   )
-#   
-#   return(LBI)
-# }
-
-
-
-# calc_lbi <- function(data, threshold_values) {
-#   
-#   data <- combine_thresholds(data, threshold_values)
-#   data <- 
-#     data %>% 
-#     dplyr::mutate(value_relative = value / `LRV Grenzwert`) %>% 
-#     dplyr::filter(parameter %in% c("NO2", "PM10", "O3_max_98%_m1")) %>% 
-#     dplyr::group_by(starttime, site, interval, unit, source) %>% 
-#     dplyr::select(parameter, value_relative) %>% 
-#     tidyr::spread(parameter, value_relative) %>% 
-#     dplyr::mutate(LBI = lbi(PM10, NO2, `O3_max_98%_m1`)) %>% 
-#     dplyr::ungroup() %>% 
-#     dplyr::select(starttime, site, interval, LBI, source) %>% 
-#     tidyr::gather(parameter, value, -starttime, -site, -interval, -source) %>% 
-#     dplyr::mutate(
-#       parameter = factor(parameter),
-#       unit = factor(NA)
-#     )
-#   
-#   return(data)
-# }
-
-
-
-
-# recode_lbi <- function(lbi) {
-#   
-#   lbi <- dplyr::recode(as.character(lbi), !!!c("1" = "gering", "2" = "mässig", "3" = "deutlich", "4" = "erheblich", "5" = "hoch", "6" = "sehr hoch"))
-#   lbi <- factor(lbi, levels = c("gering", "mässig", "deutlich", "erheblich", "hoch", "sehr hoch"))
-#   
-#   return(lbi)
-# }
-
-
-
-
-### ... only a valid approximation for vehicles weighting less than 3.5 t
-calc_vsp <- function(speed, accel, slope, # speed in m/s, accel in m/s/s, slope as ratio, mass = 3.5 in t
-                     vsp.a = 1.1, vsp.b = 0.132, vsp.c = 0.000302, vsp.g = 9.81) {
-  
-  vsp <- speed * (vsp.a * accel + (vsp.g * slope) + vsp.b) + (vsp.c * speed^3)
-  
-  return(vsp)
-}
-
-
-
-
-calc_rsd_nox_emission <- function(NO, p, CO2, CO, HC) { # all concentrations in mixing ratios as percent
-  
-  Q <- CO / CO2
-  Q1 <- HC / CO2
-  Q2 <- NO / CO2
-  NO_emission <- 30 * Q2 * 860 / ((1 + Q + 6 * Q1) * 12)
-  NOx_emission <- NO_emission * 46 / (30 * (1 - p))
-  
-  return(NOx_emission)
-}
-
-
-
-
-### aggregate RSD data calculating: n, percentiles, median, mean, standard deviation, standard error
-aggregate_groups_rsd <- function(data, y, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm"),
-                                 nmin = 100, perc = list(ymin = 0.05, lower = 0.25, middle = 0.5, upper = 0.75, ymax = 0.95)) {
-  
-  data <-
-    data %>%
-    dplyr::group_by_at(dplyr::vars(groups)) %>%
-    dplyr::summarise(
-      n = length(na.omit(!!rlang::sym(y))),
-      min = quantile(!!rlang::sym(y), perc$ymin, na.rm = TRUE),
-      lower = quantile(!!rlang::sym(y), perc$lower, na.rm = TRUE),
-      middle = quantile(!!rlang::sym(y), perc$middle, na.rm = TRUE),
-      upper = quantile(!!rlang::sym(y), perc$upper, na.rm = TRUE),
-      max = quantile(!!rlang::sym(y), perc$ymax, na.rm = TRUE),
-      mean = mean(!!rlang::sym(y), na.rm = TRUE),
-      standarddeviation = sd(!!rlang::sym(y), na.rm = TRUE),
-      standarderror = standarddeviation / sqrt(n)
-    ) %>%
-    ungroup()
-  
-  data_all <-
-    data %>% 
-    dplyr::select(tidyr::all_of(groups)) %>% 
-    dplyr::distinct_all() %>% 
-    tidyr::expand(tidyr::crossing(!!!rlang::syms(groups)))
-  
-  data <- dplyr::left_join(data_all, data, by = groups) 
-  data <- dplyr::mutate_at(data, c("min", "lower", "middle", "upper", "max", "mean", "standarddeviation", "standarderror"), list(~ifelse(n < nmin, NA, .)))
-  data <- dplyr::mutate_at(data, c("min", "lower", "middle", "upper", "max", "mean", "standarddeviation", "standarderror"), list(~ifelse(is.nan(.), NA, .)))
-  data <- dplyr::mutate_at(data, c("min", "lower", "middle", "upper", "max", "mean", "standarddeviation", "standarderror"), list(~ifelse(is.infinite(.), NA, .)))
-  data$n <- ifelse(is.na(data$n), 0, data$n)
-  
-  return(data)
-}
-
-
-
-### function to ggplot emissions employing structured coloring... this is not ideal, but the best I can do
-ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme_emissions = ggplot2::theme_minimal()) {
-  
-  groups <-
-    data %>% 
-    dplyr::group_by(pollutant, unit, sector, subsector) %>% 
-    dplyr::summarise(emission = mean(emission)) %>% 
-    dplyr::group_by(pollutant, unit, sector) %>% 
-    dplyr::mutate(
-      subsector = dplyr::case_when(
-        emission < min(sort(emission, decreasing = TRUE)[1:3]) ~ "sonstige",
-        TRUE ~ subsector
-      )
-    ) %>%
-    dplyr::group_by(pollutant, unit, sector, subsector) %>% 
-    dplyr::summarise(emission = sum(emission)) %>% 
-    dplyr::group_by(pollutant, unit) %>% 
-    dplyr::mutate(
-      subsector = dplyr::case_when(
-        subsector != "weitere" & emission < 0.02 * sum(emission)  ~ "sonstige",
-        TRUE ~ subsector
-      )
-    ) %>%
-    dplyr::group_by(pollutant, unit, sector, subsector) %>% 
-    dplyr::summarise(emission = sum(emission)) %>% 
-    dplyr::ungroup() %>% 
-    dplyr::mutate(others = stringr::str_detect(subsector, "sonstige")) %>% 
-    dplyr::arrange(sector, desc(others), emission) %>% 
-    dplyr::mutate(subsector = paste0(sector, " / ", subsector)) %>% 
-    dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols)) %>% 
-    dplyr::group_by(sector) %>% 
-    dplyr::mutate(col = colorRampPalette(c(unique(rootcol), shades::brightness(unique(rootcol), 0.6)))(length(subsector))) %>% 
-    dplyr::ungroup()
-  
-  plot <- 
-    data %>% 
-    dplyr::mutate(
-      subsector = paste0(sector, " / ", subsector),
-      subsector = dplyr::case_when(
-        !(subsector %in% groups$subsector) ~ paste0(sector," / sonstige"),
-        TRUE ~ subsector
-      ),
-      subsector = factor(subsector, levels = groups$subsector)
-    ) %>% 
-    dplyr::group_by(year, pollutant, unit, sector, subsector) %>% 
-    dplyr::summarise(emission = sum(emission)) %>% 
-    dplyr::ungroup() %>% 
-    ggplot2::ggplot(aes(x = factor(year), y = emission, fill = subsector)) +
-    ggplot2::geom_bar(stat = "identity", position = pos, width = width) + 
-    ggplot2::scale_y_continuous(labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01)) +
-    scale_fill_manual(values = setNames(groups$col, groups$subsector)) +
-    theme_emissions +
-    ggplot2::theme(legend.title = ggplot2::element_blank())
-  
-  return(plot)
-}
-
-
-
-longtitle <- function(x) {
-  
-  long <- dplyr::case_when(
-    x == "PM10" ~ "Feinstaub PM10",
-    x == "PM2.5" ~ "Feinstaub PM2.5",
-    x == "NMVOC" ~ "nicht-Methan Kohlenwasserstoffe",
-    x == "NH3" ~ "Ammoniak",
-    x == "CO" ~ "Kohlenstoffmonoxid",
-    x == "SO2" ~ "Schwefeldioxîd",
-    x == "NOx" ~ "Stickoxide",
-    x == "eBC" ~ "Russ",
-    TRUE ~ x
-  )
-  
-  return(long)
-}
-
-
-
-extract_year <- function(string) {as.numeric(stringr::str_extract(string, "(1|2)[0-9]{3}"))}
 
 
 
@@ -758,15 +270,290 @@ read_bfs_zip_data <- function(url, path_destination) {
 
 
 
-population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
+
+### -----------------------------------------------
+### wrangle data
+### -----------------------------------------------
 
 
-
-immission_colorscale <- function(...) {
-  cols <- c("#004DA8", "#005ce6", "#0070ff", "#00c5ff", "#47d9fa", "#56f9fb", "#2e9c6b", "#38bd00", "#56d900", 
-            "#51f551", "#ffff00", "#ffd400", "#ffa300", "#ff5200", "#ff0000", "#ff0094", "#de00a1", "#c500ba")
-  return(rOstluft.plot:::scale_fill_gradientn_squished(..., colors = cols, na.value = NA))
+### ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
+### however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
+aggregate_ostluft_meta_zone <- function(zone) { 
+  
+  zone <- 
+    dplyr::case_when(
+      as.numeric(stringr::str_remove(zone, "H")) %in% c(21:23, 31:33) ~ "städtisch", # OSTLUFT: > 20'000 Gesamteinwohner; BAFU: > 1500 Einwohner/km2 und Gesamteinwohnerzahl > 50 000
+      as.numeric(stringr::str_remove(zone, "H")) %in% 11:13 ~ "klein-/vorstädtisch", # OSTLUFT: > 1'000 Gesamteinwohner; BAFU: > 300 Einwohner/km2 im überbauten Gebiet und Gesamteinwohnerzahl > 5000
+      as.numeric(stringr::str_remove(zone, "H")) == 0 ~ "ländlich", # OSTLUFT: < 1'000 Gesamteinwohner; BAFU: Gebiete mit geringer Siedlungsdichte (< 300 Einwohner/km2) oder kleinere Ortschaften (< 5000 Einwohner)
+      TRUE ~ zone 
+    )
+  
+  return(zone)
 }
+
+
+
+### ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
+### however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
+aggregate_ostluft_meta_type <- function(type) { 
+  
+  type <- 
+    dplyr::case_when(
+      as.numeric(stringr::str_remove(type, "S")) %in% c(10:13, 20:23, 30:33) ~ "verkehrsbelastet", # OSTLUFT: DTV_S > 10'000; BAFU: has a finer scale that begins at DTV > 3'000 and cerctain max distance to street 
+      as.numeric(stringr::str_remove(type, "S")) == 0 ~ "Hintergrund", # OSTLUFT: DTV_S < 10'000 & street more than 50m (in cities) or 300m (outside of cities) away; BAFU: see above
+      TRUE ~ type 
+    )
+  
+  return(type)
+}
+
+
+
+
+### function to make sure that there are no duplicate measurements per site / year / unit for data with interval = y1 in format rOstluft::format_rolf() 
+### in case there have been NO2 monitor and passive sampler measurements (prefer monitor data = reference method); 
+### same for PM10 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method);
+### same for PM2.5 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method)
+remove_duplicate_y1 <- function(data){
+  
+  replace_no2_ps <- function(parameter, value){
+    if (sum(c("NO2", "NO2_PS") %in% parameter) == 2) {
+      if (!is.na(value[which(parameter == "NO2")])){
+        value[which(parameter == "NO2_PS")] <- NA
+      }
+    }
+    return(value)
+  }
+  
+  replace_pm10 <- function(parameter, value){
+    if (sum(c("PM10", "PM10h") %in% parameter) == 2) {
+      if (!is.na(value[which(parameter == "PM10h")])){
+        value[which(parameter == "PM10")] <- NA
+      }
+    }
+    return(value)
+  }
+  
+  replace_pm25 <- function(parameter, value){
+    if (sum(c("PM2.5", "PM2.5h") %in% parameter) == 2) {
+      if (!is.na(value[which(parameter == "PM2.5h")])){
+        value[which(parameter == "PM2.5")] <- NA
+      }
+    }
+    return(value)
+  }
+  
+  data <- 
+    data %>% 
+    dplyr::group_by(starttime, site, unit) %>% 
+    dplyr::mutate(
+      value = replace_no2_ps(parameter, value),
+      value = replace_pm10(parameter, value),
+      value = replace_pm25(parameter, value)
+    ) %>% 
+    dplyr::ungroup()
+  
+  return(data)
+}
+
+
+
+
+aggregate_population_weighted_mean <- function(data, y, group = "geodb_oid") {
+  
+  data <- 
+    data %>% 
+    sf::st_drop_geometry() %>%
+    dplyr::mutate(!!y := ifelse(art_code != 1, NA, !!rlang::sym(y))) %>%
+    na.omit() %>%
+    dplyr::group_by(!!rlang::sym(group)) %>% 
+    dplyr::summarise(!!y := population_weighted_mean(!!rlang::sym(y), population)) %>% 
+    dplyr::ungroup()
+  
+  return(data)
+}
+
+
+
+
+aggregate_exposition_distrib <- function(data, y, fun = function(x) {floor(x) + 0.5}) { # fun: abgerundet auf 1, Klassenmitte
+  
+  data <- 
+    data %>% 
+    dplyr::select(!!y, population) %>% 
+    tibble::as_tibble() %>% 
+    na.omit() %>% 
+    dplyr::group_by(!!rlang::sym(y) := fun(!!rlang::sym(y))) %>% 
+    dplyr::summarise(population = sum(population)) %>%
+    dplyr::ungroup()
+  
+  return(data)
+}
+
+
+
+exposition_distrib_cumulative <- function(data, y) {
+  
+  data <- 
+    data %>% 
+    dplyr::filter(population > 0) %>% 
+    dplyr::arrange(!!y) %>% 
+    dplyr::mutate(population_relative = cumsum(population) / sum(population))
+  
+  return(data)
+}
+
+
+
+
+
+
+### function to extract target threshold values from overall threshold data for plotting with ggplot_timeseries()
+get_threshold <- function(threshold_values, pollutant = NULL, aggregation = "y1", metric = "mean", unit = "µg/m3", 
+                          source = c("LRV Grenzwert", "WHO Richtwert")) {
+  
+  thresholds <-
+    threshold_values %>%
+    dplyr::filter(
+      source %in% !!source &
+        pollutant == !!pollutant & aggregation == !!aggregation &
+        metric == !!metric & unit == !!unit
+    ) %>%
+    dplyr::arrange(source)
+  
+  thresholds <-
+    list(
+      value = thresholds$threshold,
+      color = thresholds$col,
+      labels = thresholds$source,
+      labelsize = thresholds$lbsz,
+      linetype = thresholds$lty,
+      linesize = thresholds$lsz
+    )
+  
+  return(thresholds)
+}
+
+
+
+
+combine_thresholds <- function(data, threshold_values) {
+  
+  data <- 
+    threshold_values %>% 
+    dplyr::select(source, pollutant, metric, aggregation, threshold) %>% 
+    dplyr::rename(
+      parameter = pollutant,
+      interval = aggregation
+    ) %>% 
+    dplyr::mutate(
+      parameter = dplyr::case_when(
+        metric == "number hourly mean values > 120 µg/m3" & parameter == "O3" ~ "O3_nb_h1>120",
+        metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" & parameter == "O3" ~ "O3_max_98%_m1",
+        metric == "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration" & parameter == "O3" ~ "O3_peakseason_mean_d1_max_mean_h8gl",
+        TRUE ~ parameter
+      ),
+      interval = dplyr::recode(interval, !!!c("m1" = "y1", "peak-season" = "y1"))
+    ) %>% 
+    dplyr::select(-metric) %>% 
+    tidyr::spread(source, threshold) %>% 
+    dplyr::right_join(data, by = c("parameter", "interval")) %>% 
+    dplyr::select(starttime, site, parameter, interval, unit, value, siteclass, `LRV Grenzwert`, `WHO Richtwert`, source)
+  
+  return(data)
+  
+}
+
+
+
+
+### ... only a valid approximation for vehicles weighting less than 3.5 t
+calc_vsp <- function(speed, accel, slope, # speed in m/s, accel in m/s/s, slope as ratio, mass = 3.5 in t
+                     vsp.a = 1.1, vsp.b = 0.132, vsp.c = 0.000302, vsp.g = 9.81) {
+  
+  vsp <- speed * (vsp.a * accel + (vsp.g * slope) + vsp.b) + (vsp.c * speed^3)
+  
+  return(vsp)
+}
+
+
+
+
+calc_rsd_nox_emission <- function(NO, p, CO2, CO, HC) { # all concentrations in mixing ratios as percent
+  
+  Q <- CO / CO2
+  Q1 <- HC / CO2
+  Q2 <- NO / CO2
+  NO_emission <- 30 * Q2 * 860 / ((1 + Q + 6 * Q1) * 12)
+  NOx_emission <- NO_emission * 46 / (30 * (1 - p))
+  
+  return(NOx_emission)
+}
+
+
+
+
+### aggregate RSD data calculating: n, percentiles, median, mean, standard deviation, standard error
+aggregate_groups_rsd <- function(data, y, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm"),
+                                 nmin = 100, perc = list(ymin = 0.05, lower = 0.25, middle = 0.5, upper = 0.75, ymax = 0.95)) {
+  
+  data <-
+    data %>%
+    dplyr::group_by_at(dplyr::vars(groups)) %>%
+    dplyr::summarise(
+      n = length(na.omit(!!rlang::sym(y))),
+      min = quantile(!!rlang::sym(y), perc$ymin, na.rm = TRUE),
+      lower = quantile(!!rlang::sym(y), perc$lower, na.rm = TRUE),
+      middle = quantile(!!rlang::sym(y), perc$middle, na.rm = TRUE),
+      upper = quantile(!!rlang::sym(y), perc$upper, na.rm = TRUE),
+      max = quantile(!!rlang::sym(y), perc$ymax, na.rm = TRUE),
+      mean = mean(!!rlang::sym(y), na.rm = TRUE),
+      standarddeviation = sd(!!rlang::sym(y), na.rm = TRUE),
+      standarderror = standarddeviation / sqrt(n)
+    ) %>%
+    ungroup()
+  
+  data_all <-
+    data %>% 
+    dplyr::select(tidyr::all_of(groups)) %>% 
+    dplyr::distinct_all() %>% 
+    tidyr::expand(tidyr::crossing(!!!rlang::syms(groups)))
+  
+  data <- dplyr::left_join(data_all, data, by = groups) 
+  data <- dplyr::mutate_at(data, c("min", "lower", "middle", "upper", "max", "mean", "standarddeviation", "standarderror"), list(~ifelse(n < nmin, NA, .)))
+  data <- dplyr::mutate_at(data, c("min", "lower", "middle", "upper", "max", "mean", "standarddeviation", "standarderror"), list(~ifelse(is.nan(.), NA, .)))
+  data <- dplyr::mutate_at(data, c("min", "lower", "middle", "upper", "max", "mean", "standarddeviation", "standarderror"), list(~ifelse(is.infinite(.), NA, .)))
+  data$n <- ifelse(is.na(data$n), 0, data$n)
+  
+  return(data)
+}
+
+
+
+longtitle <- function(x) {
+  
+  long <- dplyr::case_when(
+    x == "PM10" ~ "Feinstaub PM10",
+    x == "PM2.5" ~ "Feinstaub PM2.5",
+    x == "NMVOC" ~ "nicht-Methan Kohlenwasserstoffe",
+    x == "NH3" ~ "Ammoniak",
+    x == "CO" ~ "Kohlenstoffmonoxid",
+    x == "SO2" ~ "Schwefeldioxîd",
+    x == "NOx" ~ "Stickoxide",
+    x == "eBC" ~ "Russ",
+    TRUE ~ x
+  )
+  
+  return(long)
+}
+
+
+
+extract_year <- function(string) {as.numeric(stringr::str_extract(string, "(1|2)[0-9]{3}"))}
+
+
+
+population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
 
 
 
@@ -779,4 +566,246 @@ round.off <- function (x, digits = 0) {
   
   return(z)
 }
+
+
+
+
+### -----------------------------------------------
+### for plotting with ggplot
+### -----------------------------------------------
+
+
+### function to plot standard timeseries of yearly values
+ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = starttime, y = value, color = siteclass), lims = c(0,NA), titlelab = NULL, captionlab = NULL, pointshape = 19, pointsize = 2,
+                              threshold = list(value = NA, color = "gray30", label = NULL, labelsize = 4, linetype = 2, linesize = 1), 
+                              theme = ggplot2::theme_minimal()) {
+  
+  plot <- 
+    ggplot2::ggplot(data, mapping = mapping) + 
+    ggplot2::geom_point(size = pointsize, shape = pointshape) +
+    ggplot2::scale_x_datetime(expand = c(0.01,0.01)) +
+    ggplot2::scale_y_continuous(limits = lims, expand = c(0.01,0.01)) +
+    titlelab +
+    captionlab +
+    theme
+  
+  if (!is.na(sum(threshold$value))){
+    text <- tibble::tibble(x = rep(min(data$starttime), length(threshold$value)), y = threshold$value, label = threshold$labels)
+    plot <-
+      plot + 
+      ggplot2::geom_hline(yintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
+      ggplot2::geom_text(data = text, mapping = ggplot2::aes(x = x, y = y, label = label), size = threshold$labelsize, 
+                         hjust = 0, vjust = 0, nudge_y = pmax(0, 0.01 * max(lims), na.rm = TRUE), inherit.aes = FALSE)
+  }
+  
+  return(plot)
+}
+
+
+
+
+### function to plot exposition distribution histogram
+ggplot_expo_hist <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks = waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
+                             threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
+                             fill_scale = NULL, theme = ggplot2::theme_minimal()) {
+  
+  if (is.null(fill_scale)) {
+    mapping <- ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y))
+  } else {
+    mapping <- ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y), fill = !!rlang::sym(x))
+  }
+  
+  plot <-
+    ggplot2::ggplot(data, mapping = mapping) +
+    ggplot2::geom_bar(stat = "identity", color = NA, width = barwidth) +
+    ggplot2::scale_x_continuous(limits = xlims, breaks = xbreaks, expand = c(0.01,0.01)) +
+    ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'", scientific = FALSE)) +
+    fill_scale +
+    xlabel +
+    titlelab +
+    captionlab +
+    theme +
+    ggplot2::theme(axis.title.x = ggplot2::element_text()) 
+  
+  if (!is.na(sum(threshold$value))){
+    text <- tibble::tibble(x = threshold$value, label = threshold$labels)
+    plot <-
+      plot +
+      ggplot2::geom_vline(xintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
+      ggplot2::geom_text(data = text, mapping = ggplot2::aes(x = x, y = 0, label = label), size = threshold$labelsize,
+                         hjust = 0, vjust = 0, angle = 90, nudge_x = pmin(0, -0.01 * max(xlims), na.rm = TRUE), inherit.aes = FALSE)
+  }
+  
+  return(plot)
+}
+
+
+
+
+### function to plot relative cumulative exposition distribution
+ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), xbreaks = waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
+                             threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
+                             theme = ggplot2::theme_minimal()) {
+  
+  plot <-
+    ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y))) +
+    ggplot2::geom_line(linewidth = linewidth, color = "gray40") +
+    ggplot2::scale_x_continuous(limits = xlims, breaks = xbreaks, expand = c(0.01,0.01)) +
+    ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
+    xlabel +
+    titlelab +
+    captionlab +
+    theme +
+    ggplot2::theme(axis.title.x = ggplot2::element_text()) 
+  
+  if (!is.na(sum(threshold$value))){
+    text <- tibble::tibble(x = threshold$value, label = threshold$labels)
+    plot <-
+      plot +
+      ggplot2::geom_vline(xintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
+      ggplot2::geom_text(data = text, mapping = ggplot2::aes(x = x, y = 0, label = label), size = threshold$labelsize,
+                         hjust = 0, vjust = 0, angle = 90, nudge_x = pmin(0, -0.01 * max(xlims), na.rm = TRUE), inherit.aes = FALSE)
+  }
+  
+  return(plot)
+}
+
+
+
+
+### function to ggplot emissions employing structured coloring... this is not ideal, but the best I can do
+ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme_emissions = ggplot2::theme_minimal()) {
+  
+  groups <-
+    data %>% 
+    dplyr::group_by(pollutant, unit, sector, subsector) %>% 
+    dplyr::summarise(emission = mean(emission)) %>% 
+    dplyr::group_by(pollutant, unit, sector) %>% 
+    dplyr::mutate(
+      subsector = dplyr::case_when(
+        emission < min(sort(emission, decreasing = TRUE)[1:3]) ~ "sonstige",
+        TRUE ~ subsector
+      )
+    ) %>%
+    dplyr::group_by(pollutant, unit, sector, subsector) %>% 
+    dplyr::summarise(emission = sum(emission)) %>% 
+    dplyr::group_by(pollutant, unit) %>% 
+    dplyr::mutate(
+      subsector = dplyr::case_when(
+        subsector != "weitere" & emission < 0.02 * sum(emission)  ~ "sonstige",
+        TRUE ~ subsector
+      )
+    ) %>%
+    dplyr::group_by(pollutant, unit, sector, subsector) %>% 
+    dplyr::summarise(emission = sum(emission)) %>% 
+    dplyr::ungroup() %>% 
+    dplyr::mutate(others = stringr::str_detect(subsector, "sonstige")) %>% 
+    dplyr::arrange(sector, desc(others), emission) %>% 
+    dplyr::mutate(subsector = paste0(sector, " / ", subsector)) %>% 
+    dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols)) %>% 
+    dplyr::group_by(sector) %>% 
+    dplyr::mutate(col = colorRampPalette(c(unique(rootcol), shades::brightness(unique(rootcol), 0.6)))(length(subsector))) %>% 
+    dplyr::ungroup()
+  
+  plot <- 
+    data %>% 
+    dplyr::mutate(
+      subsector = paste0(sector, " / ", subsector),
+      subsector = dplyr::case_when(
+        !(subsector %in% groups$subsector) ~ paste0(sector," / sonstige"),
+        TRUE ~ subsector
+      ),
+      subsector = factor(subsector, levels = groups$subsector)
+    ) %>% 
+    dplyr::group_by(year, pollutant, unit, sector, subsector) %>% 
+    dplyr::summarise(emission = sum(emission)) %>% 
+    dplyr::ungroup() %>% 
+    ggplot2::ggplot(aes(x = factor(year), y = emission, fill = subsector)) +
+    ggplot2::geom_bar(stat = "identity", position = pos, width = width) + 
+    ggplot2::scale_y_continuous(labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01)) +
+    scale_fill_manual(values = setNames(groups$col, groups$subsector)) +
+    theme_emissions +
+    ggplot2::theme(legend.title = ggplot2::element_blank())
+  
+  return(plot)
+}
+
+
+
+
+immission_colorscale <- function(...) {
+  cols <- c("#004DA8", "#005ce6", "#0070ff", "#00c5ff", "#47d9fa", "#56f9fb", "#2e9c6b", "#38bd00", "#56d900", 
+            "#51f551", "#ffff00", "#ffd400", "#ffa300", "#ff5200", "#ff0000", "#ff0094", "#de00a1", "#c500ba")
+  return(rOstluft.plot:::scale_fill_gradientn_squished(..., colors = cols, na.value = NA))
+}
+
+
+
+
+
+### -----------------------------------------------
+### ... for later:
+### -----------------------------------------------
+
+
+# lbi <- function(PM10_rel, NO2_rel, O3_rel) {
+#   
+#   cut_val_rel <- function(x) {
+#     dplyr::case_when(
+#       x <= 0.5 ~ 1,
+#       x > 0.5 & x <= 0.75 ~ 2,
+#       x > 0.75 & x <= 1 ~ 3,
+#       x > 1 & x <= 1.25 ~ 4,
+#       x > 1.25 & x <= 1.5 ~ 5,
+#       x > 1.5 ~ 6
+#     )
+#   }
+#   
+#   LBI <- (4.5 * cut_val_rel(PM10_rel) + 4.5 * cut_val_rel(NO2_rel) + cut_val_rel(O3_rel)) / 10
+#   LBI <- dplyr::case_when(
+#     LBI <= 1.5 ~ 1,
+#     LBI > 1.5 & LBI <= 2.5 ~ 2,
+#     LBI > 2.5 & LBI <= 3.5 ~ 3,
+#     LBI > 3.5 & LBI <= 4.5 ~ 4,
+#     LBI > 4.5 & LBI <= 5.5 ~ 5,
+#     LBI > 5.5 ~ 6
+#   )
+#   
+#   return(LBI)
+# }
+# 
+# 
+# 
+# calc_lbi <- function(data, threshold_values) {
+#   
+#   data <- combine_thresholds(data, threshold_values)
+#   data <- 
+#     data %>% 
+#     dplyr::mutate(value_relative = value / `LRV Grenzwert`) %>% 
+#     dplyr::filter(parameter %in% c("NO2", "PM10", "O3_max_98%_m1")) %>% 
+#     dplyr::group_by(starttime, site, interval, unit, source) %>% 
+#     dplyr::select(parameter, value_relative) %>% 
+#     tidyr::spread(parameter, value_relative) %>% 
+#     dplyr::mutate(LBI = lbi(PM10, NO2, `O3_max_98%_m1`)) %>% 
+#     dplyr::ungroup() %>% 
+#     dplyr::select(starttime, site, interval, LBI, source) %>% 
+#     tidyr::gather(parameter, value, -starttime, -site, -interval, -source) %>% 
+#     dplyr::mutate(
+#       parameter = factor(parameter),
+#       unit = factor(NA)
+#     )
+#   
+#   return(data)
+# }
+# 
+# 
+# 
+# 
+# recode_lbi <- function(lbi) {
+#   
+#   lbi <- dplyr::recode(as.character(lbi), !!!c("1" = "gering", "2" = "mässig", "3" = "deutlich", "4" = "erheblich", "5" = "hoch", "6" = "sehr hoch"))
+#   lbi <- factor(lbi, levels = c("gering", "mässig", "deutlich", "erheblich", "hoch", "sehr hoch"))
+#   
+#   return(lbi)
+# }
 

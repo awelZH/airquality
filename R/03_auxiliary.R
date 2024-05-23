@@ -73,9 +73,13 @@ files$boundaries$wfs <- "https://maps.zh.ch/wfs/GemZHWFS"
 
 ### PolluMap raster data yearly concentrations of mean nitrogen dioxide (NO2), mean particulate matter PM10, mean particulate matter PM2.5, eBC, ozone 95%-percentile
 ### - resolution: variable
-### - source:, Bundesamt für Umwelt BAFU / Meteotest
-### - derived on the fly from https://geolion.zh.ch/geodatenservice/1058
-files$rasterdata$bafu_airquality$wcs <- "http://wms.zh.ch/ImmissionenZHWCS"
+### - source:, Bundesamt für Umwelt BAFU / Meteotest on https://geolion.zh.ch
+### - derived on the fly for the year 2025 from https://geolion.zh.ch/geodatenservice/1058 and for 2020 onward from: https://geolion.zh.ch/geodatensatz/4730 (NO2), https://geolion.zh.ch/geodatensatz/4729 (PM2.5), https://geolion.zh.ch/geodatensatz/4731 (PM10)
+files$rasterdata$bafu_airquality$pollumap <- "http://wms.zh.ch/ImmissionenZHWCS"
+files$rasterdata$bafu_airquality$jahreskarte$no2 <- "http://wms.zh.ch/AwelLHNO2JahreZHWCS"
+files$rasterdata$bafu_airquality$jahreskarte$o3p98 <- "http://wms.zh.ch/AwelLHMP98JahreZHWCS"
+files$rasterdata$bafu_airquality$jahreskarte$pm25 <- "http://wms.zh.ch/AwelLHPM25JahreZHWCS"
+files$rasterdata$bafu_airquality$jahreskarte$pm10 <- "http://wms.zh.ch/AwelLHPM10JahreZHWCS"
 
 ### Modelled raster data ammonia concentrations 2020
 ### - resolution: 500x500m

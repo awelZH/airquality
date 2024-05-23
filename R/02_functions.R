@@ -162,6 +162,33 @@ read_airmo_csv2 <- function(file, encoding = "UTF-8", tz = "Etc/GMT-1", na.rm = 
 
 
 
+add_to_maplist <- function(maplist, target_source, target_parameter) {
+  
+  if (target_source == "pollumap") {
+    
+    coverage_summary <- capabilities[[target_source]]$getCoverageSummaries()
+    coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
+    maplist <- purrr::list_modify(maplist, !!target_source := coverages)
+    maplist[[target_source]]<- setNames(maplist[[target_source]], extract_year(maplist[[target_source]]))
+
+  } else {
+    
+    coverage_summary <- capabilities[[target_source]][[target_parameter]]$getCoverageSummaries()
+    coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
+    temp <- list()
+    temp <- purrr::list_modify(temp, !!target_parameter := coverages)
+    maplist <- purrr::list_modify(maplist, !!target_source := temp)
+    maplist[[target_source]][[target_parameter]] <- setNames(maplist[[target_source]][[target_parameter]], extract_year(maplist[[target_source]][[target_parameter]]))
+    
+  }
+ 
+  return(maplist)
+}
+
+
+
+maps$pollumap <- purrr::map_chr(capabilities$pollumap$getCoverageSummaries(), function(x){x$CoverageId})
+maps$pollumap <- setNames(maps$pollumap, extract_year(maps$pollumap))
 
 
 read_bafu_zip_shp <- function(url, path_destination) {
@@ -181,9 +208,20 @@ read_bafu_zip_shp <- function(url, path_destination) {
 
 
 
-get_geolion_wcs <- function(coverage, capabilities, name, na_value = c(0,-999), divisor = 10, crs = 2056) {
+get_geolion_wcs_capabilities_from_list <- function(capablilitylist, maplist, coverage, parameter) {
   
-  chla <- capabilities$findCoverageSummaryById(coverage)
+  product <- unlist(strsplit(names(maplist[maplist == coverage]), split = ".", fixed = TRUE))[1]
+  capability <- capablilitylist[[product]]
+  if (extract_year(coverage) != 2015) {capability <- capability[[tolower(parameter)]]} 
+  
+  return(capability)
+}
+
+
+
+get_geolion_wcs <- function(coverage, capability, name, na_value = c(0,-999), divisor = 10, crs = 2056) {
+  
+  chla <- capability$findCoverageSummaryById(coverage)
   # des <- chla$getDescription()
   # des$rangeType$field$nilValues
   data <- 
@@ -204,11 +242,38 @@ get_geolion_wcs <- function(coverage, capabilities, name, na_value = c(0,-999), 
 
 
 
+
+### make sure we have the same grid as BFS population data
+aggregate_to_grid <- function(data, grid, parameter, boundary, method = "average", na_val = -999) { 
+
+  data <- 
+    data %>% 
+    sf::st_crop(boundary) %>% 
+    stars::st_warp(grid, method = method, use_gdal = TRUE, no_data_value = na_val)
+  data <- setNames(data, parameter)
+  
+  return(data)
+}
+
+
+
+### wrapper ...
+get_map <- function(coverage, capablilitylist, maplist, parameter, grid, boundary) {
+  
+  print(coverage)
+  capability <- get_geolion_wcs_capabilities_from_list(capabilities, maplist, coverage, parameter)
+  data <- get_geolion_wcs(coverage, capability, parameter) 
+  data <- aggregate_to_grid(data, grid, parameter, boundary)
+  
+  return(data)
+}
+
+
+
 read_statpop_csv <- function(file, year, crs = 2056) {
   
   var <- paste0("B", stringr::str_sub(year, 3, 4), "BTOT")
-  # delim <- ifelse(as.numeric(year) > 2015, ";", ",")
-  delim <- ","
+  delim <- ifelse(as.numeric(year) > 2015, ";", ",")
   data <- 
     file %>% 
     readr::read_delim(delim = delim, locale = readr::locale(encoding = "UTF-8")) %>% 
@@ -235,7 +300,12 @@ read_bfs_zip_data <- function(url, path_destination) {
   
   # Download the ZIP file to a temporary location
   temp <- tempfile(tmpdir = path_destination, fileext = ".zip")
-  httr::GET(url, httr::write_disk(temp, overwrite = TRUE))
+  download_bfs <- function(temp) httr::GET(url, httr::write_disk(temp, overwrite = TRUE))# .. why error when it httr::GET() actually works? => these two lines now as workaround
+  download_bfs <- purrr::possibly(download_bfs)
+  download_bfs(temp)
+  
+  # req <- httr2::request(url)
+  # httr2::req_perform(req, path = temp) # ... would be the alternative to httr::GET() => why crash?
   
   # List files within the ZIP archive
   files_in_zip <- 
@@ -644,8 +714,8 @@ ggplot_expo_hist <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks 
 
 ### function to plot relative cumulative exposition distribution
 ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), xbreaks = waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
-                             threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
-                             theme = ggplot2::theme_minimal()) {
+                                   threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
+                                   theme = ggplot2::theme_minimal()) {
   
   plot <-
     ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y))) +

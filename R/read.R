@@ -1,7 +1,6 @@
 
-### -----------------------------------------------
 ### read input files
-### -----------------------------------------------
+### ------------------------------------------------------------
 
 
 ### function to read *.csv with air pollutant year-statistics exported from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
@@ -22,7 +21,7 @@ read_arias <- function(file, encoding = "latin1", tz = "Etc/GMT-1"){
   data <- dplyr::mutate(data,
                         parameter = dplyr::recode(parameter, !!!c("Partikelanzahl" = "PN", "EC / Russ" = "eBC")),
                         unit = dplyr::recode(unit, !!!c("ppm·h" = "ppm*h")),
-                        metric = dplyr::recode(metric, !!!c("höchster 98%-Wert eines Monats" = "O3_max_98%_m1", 
+                        metric = dplyr::recode(metric, !!!c("h\u00f6chster 98%-Wert eines Monats" = "O3_max_98%_m1", 
                                                             "Anzahl Stundenmittel > 120 µg/m3" = "O3_nb_h1>120",
                                                             "Dosis AOT40f" = "O3_AOT40")),
                         parameter = dplyr::case_when(metric == "Jahresmittel" ~ parameter, TRUE ~ metric),
@@ -48,7 +47,7 @@ read_nabel_ts_h1 <- function(file, interval = "h1", encoding = "latin1", tz = "E
   data <- readr::read_delim(file, delim = "\t", col_names = FALSE, skip = 4, locale = locale)
   data <- dplyr::rename(data, endtime = X1, value = X2)
   data <- dplyr::mutate(data, 
-                        site = dplyr::case_when(site == "DUE" ~ "Dübendorf-EMPA", site == "ZUE" ~ "Zürich-Kaserne", TRUE ~ site),
+                        site = dplyr::case_when(site == "DUE" ~ "D\u00fcbendorf-EMPA", site == "ZUE" ~ "Z\u00fcrich-Kaserne", TRUE ~ site),
                         starttime = lubridate::fast_strptime(endtime, format = "%d.%m.%y %H:%M", tz = tz, lt = FALSE) - lubridate::hours(as.numeric(stringr::str_remove(interval, "h"))),
                         parameter = parameter, 
                         unit = stringr::str_replace(unit, "ug", "µg"),
@@ -66,8 +65,8 @@ read_nabel_ts_h1 <- function(file, interval = "h1", encoding = "latin1", tz = "E
 get_nabel_meta_arias <- function(file, encoding = "latin1") {
   
   locale <- readr::locale(encoding = encoding)
-  meta <- readr::read_delim(file, delim =";", col_select = c("Station", "Ost Y", "Nord X", "Höhe", "Zonentyp", "Stationstyp"), locale = locale)
-  meta <- dplyr::distinct(meta, Station, `Ost Y`, `Nord X`, `Höhe`, Zonentyp, Stationstyp)
+  meta <- readr::read_delim(file, delim =";", col_select = c("Station", "Ost Y", "Nord X", "H\u00f6he", "Zonentyp", "Stationstyp"), locale = locale)
+  meta <- dplyr::distinct(meta, Station, `Ost Y`, `Nord X`, Höhe, Zonentyp, Stationstyp)
   meta <- dplyr::mutate(meta, Zonentyp = tolower(Zonentyp))
   meta <- dplyr::rename(meta, 
                         site = Station,
@@ -350,9 +349,9 @@ aggregate_ostluft_meta_zone <- function(zone) {
   
   zone <- 
     dplyr::case_when(
-      as.numeric(stringr::str_remove(zone, "H")) %in% c(21:23, 31:33) ~ "städtisch", # OSTLUFT: > 20'000 Gesamteinwohner; BAFU: > 1500 Einwohner/km2 und Gesamteinwohnerzahl > 50 000
-      as.numeric(stringr::str_remove(zone, "H")) %in% 11:13 ~ "klein-/vorstädtisch", # OSTLUFT: > 1'000 Gesamteinwohner; BAFU: > 300 Einwohner/km2 im überbauten Gebiet und Gesamteinwohnerzahl > 5000
-      as.numeric(stringr::str_remove(zone, "H")) == 0 ~ "ländlich", # OSTLUFT: < 1'000 Gesamteinwohner; BAFU: Gebiete mit geringer Siedlungsdichte (< 300 Einwohner/km2) oder kleinere Ortschaften (< 5000 Einwohner)
+      as.numeric(stringr::str_remove(zone, "H")) %in% c(21:23, 31:33) ~ "st\u00e4dtisch", # OSTLUFT: > 20'000 Gesamteinwohner; BAFU: > 1500 Einwohner/km2 und Gesamteinwohnerzahl > 50 000
+      as.numeric(stringr::str_remove(zone, "H")) %in% 11:13 ~ "klein-/vorst\u00e4dtisch", # OSTLUFT: > 1'000 Gesamteinwohner; BAFU: > 300 Einwohner/km2 im \u00fcberbauten Gebiet und Gesamteinwohnerzahl > 5000
+      as.numeric(stringr::str_remove(zone, "H")) == 0 ~ "l\u00e4ndlich", # OSTLUFT: < 1'000 Gesamteinwohner; BAFU: Gebiete mit geringer Siedlungsdichte (< 300 Einwohner/km2) oder kleinere Ortschaften (< 5000 Einwohner)
       TRUE ~ zone 
     )
   
@@ -626,7 +625,7 @@ population_weighted_mean <- function(concentration, population) {sum(concentrati
 
 
 ### see here: https://gist.github.com/sotoattanito/8e6fad4b7322ceae9f14f342985f1681
-round.off <- function (x, digits = 0) {
+round_off <- function (x, digits = 0) {
   
   posneg = sign(x)
   z = trunc(abs(x) * 10 ^ (digits + 1)) / 10
@@ -804,7 +803,7 @@ ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme_emiss
 immission_colorscale <- function(...) {
   cols <- c("#004DA8", "#005ce6", "#0070ff", "#00c5ff", "#47d9fa", "#56f9fb", "#2e9c6b", "#38bd00", "#56d900", 
             "#51f551", "#ffff00", "#ffd400", "#ffa300", "#ff5200", "#ff0000", "#ff0094", "#de00a1", "#c500ba")
-  return(rOstluft.plot:::scale_fill_gradientn_squished(..., colors = cols, na.value = NA))
+  return(rOstluft.plot::scale_fill_gradientn_squished(..., colors = cols, na.value = NA))
 }
 
 
@@ -871,8 +870,8 @@ immission_colorscale <- function(...) {
 # 
 # recode_lbi <- function(lbi) {
 #   
-#   lbi <- dplyr::recode(as.character(lbi), !!!c("1" = "gering", "2" = "mässig", "3" = "deutlich", "4" = "erheblich", "5" = "hoch", "6" = "sehr hoch"))
-#   lbi <- factor(lbi, levels = c("gering", "mässig", "deutlich", "erheblich", "hoch", "sehr hoch"))
+#   lbi <- dplyr::recode(as.character(lbi), !!!c("1" = "gering", "2" = "m\u00e4ssig", "3" = "deutlich", "4" = "erheblich", "5" = "hoch", "6" = "sehr hoch"))
+#   lbi <- factor(lbi, levels = c("gering", "m\u00e4ssig", "deutlich", "erheblich", "hoch", "sehr hoch"))
 #   
 #   return(lbi)
 # }

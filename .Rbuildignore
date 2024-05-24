@@ -1,0 +1,12 @@
+^.*\.Rproj$         # Designates the directory as an RStudio Project
+^\.Rproj\.user$     # Used by RStudio for temporary files
+
+^Rscripts$          # R scripts
+^data_input$        # input data for R scripts
+^data_output$       # output data from R scripts
+^00_Archiv$
+^offline$
+^github_access_token_airquality.txt - Verknüpfung.lnk$
+^temp$
+^\.gitignore$
+^LICENSE\.md$

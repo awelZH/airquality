@@ -187,8 +187,6 @@ add_to_maplist <- function(maplist, target_source, target_parameter) {
 
 
 
-maps$pollumap <- purrr::map_chr(capabilities$pollumap$getCoverageSummaries(), function(x){x$CoverageId})
-maps$pollumap <- setNames(maps$pollumap, extract_year(maps$pollumap))
 
 
 read_bafu_zip_shp <- function(url, path_destination) {

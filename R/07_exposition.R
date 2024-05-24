@@ -51,6 +51,8 @@ data_expo$eBC$population_weighted_mean <-
     return(list(canton = canton, municipalities = municipalities))
   })
 
+### ... for O3p98
+# ...
 
 
 
@@ -86,6 +88,14 @@ data_expo$eBC$exposition_distrib <-
     data <- aggregate_exposition_distrib(data_raster$eBC[[year]], y = "eBC", fun = function(x) {floor(x * 20) / 20 + 0.025}) # abgerundet auf 0.05, Klassenmitte
     exposition_distrib_cumulative(data, y = "eBC")
   })
+
+
+
+
+
+
+
+
 
 
 

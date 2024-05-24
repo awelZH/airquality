@@ -115,81 +115,6 @@ files$rasterdata$bfs_pop$"2022" <- "https://dam-api.bfs.admin.ch/hub/api/dam/ass
 
 
 ### -----------------------------------------------
-### plotting parameter
-### -----------------------------------------------
-
-years <- 2000:(lubridate::year(Sys.Date()) - 2) # years to consider for plotting 
-n_years <- 3 # consider last 3 years for plotting relative threshold comparison    
-parameters <- c("NO2", "NO2_PS", "PM10", "PM2.5", "O3_max_98%_m1", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for timeseries plotting
-
-basesize <- 12 # ggplot theme base_size
-pointsize <- 2 # size of point markers
-linewidth <- 1 # width of lines
-
-col_lrv <- "red3" # color of LRV threshold value
-col_who <- "gray30" # color of WHO guideline threshold value
-lty_lrv <- 1 # line type of LRV threshold value
-lty_who <- 2 # line type WHO guideline threshold value
-lsz_lrv <- 1 # line width of LRV threshold value
-lsz_who <- 1 # line width of WHO guideline threshold value
-lbsz <- 4 # label size of threshold value line text
-
-scale_fill_siteclass <- 
-  ggplot2::scale_fill_manual(name = "Standortklasse", values = c(
-    "ländlich - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
-    "klein-/vorstädtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
-    "städtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
-    "städtisch - verkehrsbelastet" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1]
-  ))
-
-scale_color_siteclass <- 
-  ggplot2::scale_color_manual(name = "Standortklasse", values = c(
-    "ländlich - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
-    "klein-/vorstädtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
-    "städtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
-    "städtisch - verkehrsbelastet" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1]
-  ))
-
-cols_emissions <- c(wesanderson::wes_palette(name = "BottleRocket2", n = 5, type = "discrete"), "#003333")
-
-immission_colorscale_no2 <- immission_colorscale(limits = c(0,50), breaks = seq(0,50,10), name = "NO2\n(µg/m3)")
-immission_colorscale_pm10 <- immission_colorscale(limits = c(0,34), breaks = c(seq(0,30,10), 34), name = "PM10\n(µg/m3)")
-immission_colorscale_pm2_5 <- immission_colorscale(limits = c(0,17), breaks = c(seq(0,15,2.5), 17), name = "PM2.5\n(µg/m3)")
-immission_colorscale_ebc <- immission_colorscale(limits = c(0,1.5), breaks = seq(0,1.5,0.3), name = "eBC\n(µg/m3)")
-immission_colorscale_nh3 <- rOstluft.plot::scale_fill_viridis_squished(name = "NH3\n(µg/m3)", limits = c(1, 7), breaks = seq(1, 7, 2), direction = -1,  option = "A", na.value = NA)
-immission_colorscale_ndep <- rOstluft.plot::scale_fill_viridis_squished(name = "Ndep\n(kgN/ha/Jahr)", limits = c(15, 30), breaks = seq(15, 30, 5), direction = -1, option = "A", na.value = NA)
-immission_colorscale_ndep_exc <- rOstluft.plot::scale_fill_viridis_squished(name = "Ndep > CLN\n(kgN/ha/Jahr)", limits = c(0, 30), breaks = seq(0, 30, 5), direction = -1, option = "A", na.value = NA)
-
-theme_ts <-
-  theme_minimal(base_size = basesize) +
-  theme(
-    plot.title = element_text(size = ggplot2::rel(1)),
-    plot.subtitle = element_text(size = ggplot2::rel(0.8)),
-    plot.caption = element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.66)),
-    plot.background = element_blank(),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    panel.background = element_blank(),
-    axis.line.x = element_line(color = "gray30"),
-    axis.ticks = element_line(color = "gray30"),
-    axis.title = element_blank()
-  )
-
-theme_map <-
-  theme_void(base_size = basesize) +
-  theme(
-    plot.subtitle = element_text(size = ggplot2::rel(0.8)),
-    plot.caption = element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.75)),
-    panel.background = element_blank(),
-    plot.background = element_blank()
-  )
-
-plots <- list() # empty list to collect all plots
-
-
-
-
-### -----------------------------------------------
 ### RSD data analysis filter criteria
 ### -----------------------------------------------
 rsd_filters <- 
@@ -283,7 +208,117 @@ boundaries_hull <-
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+### -----------------------------------------------
+### plotting parameter
+### -----------------------------------------------
+
+years <- 2000:(lubridate::year(Sys.Date()) - 2) # years to consider for plotting 
+n_years <- 3 # consider last 3 years for plotting relative threshold comparison    
+parameters <- c("NO2", "NO2_PS", "PM10", "PM2.5", "O3_max_98%_m1", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for timeseries plotting
+
+basesize <- 12 # ggplot theme base_size
+pointsize <- 2 # size of point markers
+linewidth <- 1 # width of lines
+
+col_lrv <- "red3" # color of LRV threshold value
+col_who <- "gray30" # color of WHO guideline threshold value
+lty_lrv <- 1 # line type of LRV threshold value
+lty_who <- 2 # line type WHO guideline threshold value
+lsz_lrv <- 1 # line width of LRV threshold value
+lsz_who <- 1 # line width of WHO guideline threshold value
+lbsz <- 4 # label size of threshold value line text
+
+scale_fill_siteclass <- 
+  ggplot2::scale_fill_manual(name = "Standortklasse", values = c(
+    "ländlich - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
+    "klein-/vorstädtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
+    "städtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
+    "städtisch - verkehrsbelastet" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1]
+  ))
+
+scale_color_siteclass <- 
+  ggplot2::scale_color_manual(name = "Standortklasse", values = c(
+    "ländlich - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
+    "klein-/vorstädtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
+    "städtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
+    "städtisch - verkehrsbelastet" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1]
+  ))
+
+cols_emissions <- c(wesanderson::wes_palette(name = "BottleRocket2", n = 5, type = "discrete"), "#003333")
+
+immission_colorscale_no2 <- immission_colorscale(limits = c(0,50), breaks = seq(0,50,10), name = "NO2\n(µg/m3)")
+immission_colorscale_pm10 <- immission_colorscale(limits = c(0,34), breaks = c(seq(0,30,10), 34), name = "PM10\n(µg/m3)")
+immission_colorscale_pm2_5 <- immission_colorscale(limits = c(0,17), breaks = c(seq(0,15,2.5), 17), name = "PM2.5\n(µg/m3)")
+immission_colorscale_ebc <- immission_colorscale(limits = c(0,1.5), breaks = seq(0,1.5,0.3), name = "eBC\n(µg/m3)")
+immission_colorscale_nh3 <- rOstluft.plot::scale_fill_viridis_squished(name = "NH3\n(µg/m3)", limits = c(1, 7), breaks = seq(1, 7, 2), direction = -1,  option = "A", na.value = NA)
+immission_colorscale_ndep <- rOstluft.plot::scale_fill_viridis_squished(name = "Ndep\n(kgN/ha/Jahr)", limits = c(15, 30), breaks = seq(15, 30, 5), direction = -1, option = "A", na.value = NA)
+immission_colorscale_ndep_exc <- rOstluft.plot::scale_fill_viridis_squished(name = "Ndep > CLN\n(kgN/ha/Jahr)", limits = c(0, 30), breaks = seq(0, 30, 5), direction = -1, option = "A", na.value = NA)
+
+theme_ts <-
+  theme_minimal(base_size = basesize) +
+  theme(
+    plot.title = element_text(size = ggplot2::rel(1)),
+    plot.subtitle = element_text(size = ggplot2::rel(0.8)),
+    plot.caption = element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.66)),
+    plot.background = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.background = element_blank(),
+    axis.line.x = element_line(color = "gray30"),
+    axis.ticks = element_line(color = "gray30"),
+    axis.title = element_blank()
+  )
+
+theme_map <-
+  theme_void(base_size = basesize) +
+  theme(
+    plot.subtitle = element_text(size = ggplot2::rel(0.8)),
+    plot.caption = element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.75)),
+    panel.background = element_blank(),
+    plot.background = element_blank()
+  )
+
+plots <- list() # empty list to collect all plots
+
+
+
+
 ### clean up
 rm(list = c("basesize", "col_lrv", "col_who", "lty_lrv", "lty_who", "lsz_lrv", "lsz_who", "lbsz", "url", "request"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

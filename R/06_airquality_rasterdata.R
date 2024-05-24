@@ -48,14 +48,6 @@ maplist <- add_to_maplist(maplist, "jahreskarte", "pm10")
 maps <- unlist(maplist)
 
 ### population data: download, read and restructure BFS population raster data from BFS homepage for the years in which air quality maps are available
-# req <- httr2::request('https://api3.geo.admin.ch/rest/services/api/MapServer')
-# req <- httr2::req_perform(req)
-# layers <- httr2::resp_body_json(req)$layers
-# maps <- unlist(purrr::map(layers, function(x) x$layerBodId))
-# id <- which(stringr::str_detect(maps, "ch.bfs.volkszaehlung-bevoelkerungsstatistik_einwohner"))
-# layers[[id]]
-# layers[[id]]$attributes$downloadUrl # => only available as yearly zip files, or WMTS => data zip files need to be downloaded individually
-
 data_raster$population <-
   setNames(as.character(unique(extract_year(maps))), unique(extract_year(maps))) %>% 
   lapply(function(year) {
@@ -66,7 +58,7 @@ data_raster$population <-
 ### BFS 100 x 100m grid is similar across the years => pick one grid for all years
 grid <- dplyr::select(data_raster$population[[1]], RELI) 
 
-### air pollution maps: ...
+### retrieve air pollution maps: ...
 ### download, read and restructure BAFU NO2 raster data from geolion WCS (source = BAFU)
 data_raster$NO2 <- lapply(maps[stringr::str_detect(maps, "no2")], function(coverage) get_map(coverage, capabilities, maps, "NO2", grid, boundaries_hull))
 
@@ -81,6 +73,10 @@ data_raster$eBC <- lapply(maps[stringr::str_detect(maps, "bc")], function(covera
 
 ### download, read and restructure O3 max. monthly 98%-percentile raster data from geolion WCS (source = BAFU)
 data_raster$O3p98 <-lapply(maps[stringr::str_detect(maps, "98")], function(coverage) get_map(coverage, capabilities, maps, "NO2", grid, boundaries_hull))
+
+
+
+
 
 ### download, read and restructure NH3 raster data for the year 2020 from https://data.geo.admin.ch (source = BAFU)
 data_raster$NH3 <-
@@ -98,7 +94,9 @@ data_raster$Ndep <-
     return(dplyr::filter(data, st_intersects(data, boundaries_hull, sparse = FALSE)))
   })
 
-### exposition data: ...
+
+
+### get / calculate exposition data: ...
 ### join air quality and population raster data
 data_raster$NO2 <-
   setNames(names(data_raster$NO2), names(data_raster$NO2)) %>% 
@@ -120,6 +118,8 @@ data_raster$O3p98 <-
   setNames(names(data_raster$PM10), names(data_raster$PM10)) %>% 
   lapply(function(year) {sf::st_join(data_raster$PM10[[year]], data_raster$population[[year]])})
 
+
+
 ### exposition already available: download, read and restructure max Ndep > Critical Loads of Nitrogen (CLN) raster data for the year 2020 from https://data.geo.admin.ch (source = BAFU)
 data_raster$Ndep_exceedance <-
   setNames(files$rasterdata$bafu_ndep_exc, 2020) %>%
@@ -127,6 +127,13 @@ data_raster$Ndep_exceedance <-
     data <- read_bafu_zip_shp(x, path_destination = "data/input")
     return(dplyr::filter(data, st_intersects(data, boundaries_hull, sparse = FALSE)))
   })
+
+
+
+
+
+
+
 
 
 

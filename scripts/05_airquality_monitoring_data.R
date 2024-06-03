@@ -7,7 +7,7 @@
 
 # FIXME: fs package wirklich nötig? 
 site_meta <-
-  fs::path("data/input", files$airquality$monitoring$nabel_y1) %>%
+  fs::path("inst/extdata/data_input", files$airquality$monitoring$nabel_y1) %>%
   get_nabel_meta_arias() %>%
   dplyr::mutate(
     site_long = site,
@@ -18,7 +18,7 @@ site_meta <-
 ### read and restructure OSTLUFT site metadata
 
 site_meta <-
-  fs::path("data/input", files$airquality$monitoring$ostluft_meta)  %>%
+  fs::path("inst/extdata/data_input", files$airquality$monitoring$ostluft_meta)  %>%
   read_ostluft_meta() %>%
   dplyr::mutate(
     zone = aggregate_ostluft_meta_zone(zone),
@@ -40,7 +40,7 @@ data <- tibble::tibble()
 # FIXME: würde zuerst alle datasets vorbereiten und am schluss das bind rows machen
 
 data <-
-  fs::path("data/input", files$airquality$monitoring$nabel_y1) %>%
+  fs::path("inst/extdata/data_input", files$airquality$monitoring$nabel_y1) %>%
   read_arias() %>%
   dplyr::mutate(source = factor("NABEL (BAFU & Empa)")) %>%
   dplyr::bind_rows(data)
@@ -48,7 +48,7 @@ data <-
 ### read and restructure OSTLUFT y1 data
 
 data <-
-  fs::path("data/input", files$airquality$monitoring$ostluft_y1) %>%
+  fs::path("inst/extdata/data_input", files$airquality$monitoring$ostluft_y1) %>%
   read_airmo_csv2() %>%
   remove_duplicate_y1() %>%
   dplyr::filter(!is.na(value)) %>%

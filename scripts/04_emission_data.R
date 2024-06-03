@@ -10,6 +10,12 @@
 
 ### emission budgets of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups 
 
+
+# FIXME: würde schauen, dass du prep funktionen mit sehr sprechendem damen baust.
+# Dann liesst sich der code viel einfacher
+
+
+# FIXME: eigene funktion 
 req <- httr2::request(files$emissions$budget$opendata)
 req <- httr2::req_perform(req)
 emikat <- httr2::resp_body_json(req)$result        

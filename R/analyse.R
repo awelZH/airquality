@@ -16,6 +16,8 @@ aggregate_to_grid <- function(data, grid, parameter, boundary, method = "average
 
 ### ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
 ### however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
+
+# FIXME: hier machst du gar keine aggregation ;) nur ein recoding
 aggregate_ostluft_meta_zone <- function(zone) { 
   
   zone <- 

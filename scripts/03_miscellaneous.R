@@ -1,6 +1,8 @@
 
 ### RSD filter criteria for NOx emission data analysis
 
+
+## FIXME: als eigene funktion (oder als als data file?)
 rsd_filters <- 
   list(
     nmin = 50, # minimum number of valid records per aggregation
@@ -13,11 +15,13 @@ rsd_filters <-
 
 ### LRV threshold limit values & WHO air quality guideline values
 
+## FIXME: nur laden wo gebraucht (nicht auf vorrat)
 threshold_values <-
   fs::path("data/input", files$airquality$thresh) %>%
   readr::read_delim(delim = ";",locale = readr::locale(encoding = "UTF-8"))
 
 ### map projection CRS = CH1903+ / LV95
+
 
 crs <- 2056
 
@@ -37,6 +41,9 @@ crs <- 2056
 #   describeFeatureType(typeName = "ms:grenzen") %>%
 #   purrr::map_chr(function(x){x$getName()})
 
+
+# FIXME: in eigene funktion (get_gemeindegrenzen)
+# für was wird es gebraucht, nur für plotting? (dann würde ich die generalisierten karten nehmen)
 url <- httr2::url_parse(files$boundaries$wfs)
 url$query <- list(service = "wfs",
                   version = "2.0.0",

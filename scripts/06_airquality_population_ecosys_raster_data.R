@@ -50,6 +50,9 @@ maps <- unlist(maplist)
 
 ### population data: download, read and restructure BFS population raster data from BFS homepage for the years in which air quality maps are available
 
+
+# FIXME: lapply nicht zu verschachtelt machen! wird so weniger übersichtlich
+
 data_raster$population <-
   setNames(as.character(unique(extract_year(maps))), unique(extract_year(maps))) %>% 
   lapply(function(year) {
@@ -65,6 +68,7 @@ grid <- dplyr::select(data_raster$population[[1]], RELI)
 
 ### download, read and restructure BAFU NO2 raster data from geolion WCS (source = BAFU)
 
+# FIXME: hier nochmals eine überfunktion? dann musst du nur noch über einen vector von charactern loopen :)
 data_raster$NO2 <- lapply(maps[stringr::str_detect(maps, "no2")], function(coverage) get_map(coverage, capabilities, maps, "NO2", grid, boundaries_hull))
 
 ### download, read and restructure NH3 raster data for the year 2020 from https://data.geo.admin.ch (source = BAFU)
@@ -82,6 +86,8 @@ data_raster$O3p98 <- lapply(maps[stringr::str_detect(maps, "98")], function(cove
 
 ### download, read and restructure NH3 raster data from https://data.geo.admin.ch (source = BAFU)
 
+
+# FIXME: auch hier versuche nochmals eine wrapper funktion zu machen
 data_raster$NH3 <-
   files$rasterdata$bafu_nh3 %>% 
   lapply(function(x) {
@@ -101,6 +107,7 @@ data_raster$Ndep <-
 
 ### join air quality and population raster data
 
+# FXIME: wrapper funktion
 data_raster$NO2 <-
   setNames(names(data_raster$NO2), extract_year(names(data_raster$NO2))) %>% 
   lapply(function(year) {sf::st_join(data_raster$NO2[[year]], data_raster$population[[as.character(extract_year(year))]])})

@@ -162,6 +162,31 @@ read_airmo_csv2 <- function(file, encoding = "UTF-8", tz = "Etc/GMT-1", na.rm = 
 
 
 
+add_to_maplist <- function(maplist, target_source, target_parameter) {
+  
+  if (target_source == "pollumap") {
+    
+    coverage_summary <- capabilities[[target_source]]$getCoverageSummaries()
+    coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
+    maplist <- purrr::list_modify(maplist, !!target_source := coverages)
+    maplist[[target_source]]<- setNames(maplist[[target_source]], extract_year(maplist[[target_source]]))
+
+  } else {
+    
+    coverage_summary <- capabilities[[target_source]][[target_parameter]]$getCoverageSummaries()
+    coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
+    temp <- list()
+    temp <- purrr::list_modify(temp, !!target_parameter := coverages)
+    maplist <- purrr::list_modify(maplist, !!target_source := temp)
+    maplist[[target_source]][[target_parameter]] <- setNames(maplist[[target_source]][[target_parameter]], extract_year(maplist[[target_source]][[target_parameter]]))
+    
+  }
+ 
+  return(maplist)
+}
+
+
+
 
 
 read_bafu_zip_shp <- function(url, path_destination) {
@@ -181,9 +206,20 @@ read_bafu_zip_shp <- function(url, path_destination) {
 
 
 
-get_geolion_wcs <- function(coverage, capabilities, name, na_value = c(0,-999), divisor = 10, crs = 2056) {
+get_geolion_wcs_capabilities_from_list <- function(capablilitylist, maplist, coverage, parameter) {
   
-  chla <- capabilities$findCoverageSummaryById(coverage)
+  product <- unlist(strsplit(names(maplist[maplist == coverage]), split = ".", fixed = TRUE))[1]
+  capability <- capablilitylist[[product]]
+  if (extract_year(coverage) != 2015) {capability <- capability[[tolower(parameter)]]} 
+  
+  return(capability)
+}
+
+
+
+get_geolion_wcs <- function(coverage, capability, name, na_value = c(0,-999), divisor = 10, crs = 2056) {
+  
+  chla <- capability$findCoverageSummaryById(coverage)
   # des <- chla$getDescription()
   # des$rangeType$field$nilValues
   data <- 
@@ -204,11 +240,38 @@ get_geolion_wcs <- function(coverage, capabilities, name, na_value = c(0,-999), 
 
 
 
+
+### make sure we have the same grid as BFS population data
+aggregate_to_grid <- function(data, grid, parameter, boundary, method = "average", na_val = -999) { 
+
+  data <- 
+    data %>% 
+    sf::st_crop(boundary) %>% 
+    stars::st_warp(grid, method = method, use_gdal = TRUE, no_data_value = na_val)
+  data <- setNames(data, parameter)
+  
+  return(data)
+}
+
+
+
+### wrapper ...
+get_map <- function(coverage, capablilitylist, maplist, parameter, grid, boundary) {
+  
+  print(coverage)
+  capability <- get_geolion_wcs_capabilities_from_list(capabilities, maplist, coverage, parameter)
+  data <- get_geolion_wcs(coverage, capability, parameter) 
+  data <- aggregate_to_grid(data, grid, parameter, boundary)
+  
+  return(data)
+}
+
+
+
 read_statpop_csv <- function(file, year, crs = 2056) {
   
   var <- paste0("B", stringr::str_sub(year, 3, 4), "BTOT")
-  # delim <- ifelse(as.numeric(year) > 2015, ";", ",")
-  delim <- ","
+  delim <- ifelse(as.numeric(year) > 2015, ";", ",")
   data <- 
     file %>% 
     readr::read_delim(delim = delim, locale = readr::locale(encoding = "UTF-8")) %>% 
@@ -231,13 +294,31 @@ read_statpop_csv <- function(file, year, crs = 2056) {
 
 
 ### courtesy of Statistikamt, modified
-read_bfs_zip_data <- function(url, path_destination) {
+read_bfs_statpop_data <- function(year, path_destination) {
   
-  # Download the ZIP file to a temporary location
+  # derive dataset url
+  bfs_nr <- paste0("ag-b-00.03-vz", year, "statpop")
+  meta_url <- gsub("bfs_nr", bfs_nr, "https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken.assetdetail.bfs_nr.html")
+  
+  command <- paste0("curl ", meta_url)
+  asset_page <- system(command, intern = TRUE)
+  
+  asset_page_total <- paste0(asset_page, collapse = " ")
+  
+  #asset_page <- RCurl::getURLContent(meta_url, .encoding = "latin1")
+  asset_number <- gsub(".*(https://.*assets/[0-9]+/).*", "\\1", asset_page_total)
+  asset_number <- gsub(".*/([0-9]+)/", "\\1", asset_number)
+
+  
+  download_url <- paste0("https://www.bfs.admin.ch/bfsstatic/dam/assets/",asset_number,"/master")
+  
+  # download the ZIP file to a temporary location
   temp <- tempfile(tmpdir = path_destination, fileext = ".zip")
-  httr::GET(url, httr::write_disk(temp, overwrite = TRUE))
+  command <- paste0("curl ", download_url, " --output ", temp)
+  system(command, intern = TRUE)
+
   
-  # List files within the ZIP archive
+  # list files within the ZIP archive
   files_in_zip <- 
     archive::archive(temp) %>% 
     dplyr::mutate(path_lower = tolower(path)) %>% 
@@ -267,7 +348,6 @@ read_bfs_zip_data <- function(url, path_destination) {
   
   return(data)
 }
-
 
 
 
@@ -644,8 +724,8 @@ ggplot_expo_hist <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks 
 
 ### function to plot relative cumulative exposition distribution
 ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), xbreaks = waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
-                             threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
-                             theme = ggplot2::theme_minimal()) {
+                                   threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
+                                   theme = ggplot2::theme_minimal()) {
   
   plot <-
     ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y))) +

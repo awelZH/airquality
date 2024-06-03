@@ -73,30 +73,34 @@ files$boundaries$wfs <- "https://maps.zh.ch/wfs/GemZHWFS"
 
 ### PolluMap raster data yearly concentrations of mean nitrogen dioxide (NO2), mean particulate matter PM10, mean particulate matter PM2.5, eBC, ozone 95%-percentile
 ### - resolution: variable
-### - source:, Bundesamt für Umwelt BAFU / Meteotest
-### - derived on the fly from https://geolion.zh.ch/geodatenservice/1058
-files$rasterdata$bafu_airquality$wcs <- "http://wms.zh.ch/ImmissionenZHWCS"
+### - source:, Bundesamt für Umwelt BAFU / Meteotest on https://geolion.zh.ch
+### - derived on the fly for the year 2015 from https://geolion.zh.ch/geodatenservice/1058 and for 2020 onward from: https://geolion.zh.ch/geodatensatz/4730 (NO2), https://geolion.zh.ch/geodatensatz/4729 (PM2.5), https://geolion.zh.ch/geodatensatz/4731 (PM10)
+files$rasterdata$bafu_airquality$pollumap <- "http://wms.zh.ch/ImmissionenZHWCS"
+files$rasterdata$bafu_airquality$jahreskarte$no2 <- "http://wms.zh.ch/AwelLHNO2JahreZHWCS"
+files$rasterdata$bafu_airquality$jahreskarte$o3p98 <- "http://wms.zh.ch/AwelLHMP98JahreZHWCS"
+files$rasterdata$bafu_airquality$jahreskarte$pm25 <- "http://wms.zh.ch/AwelLHPM25JahreZHWCS"
+files$rasterdata$bafu_airquality$jahreskarte$pm10 <- "http://wms.zh.ch/AwelLHPM10JahreZHWCS"
 
-### Modelled raster data ammonia concentrations 2020
+### Modelled raster data ammonia concentrations
 ### - resolution: 500x500m
 ### - source: Bundesamt für Umwelt BAFU
 ### - derived on the fly as open data from: https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-ammoniakkonzentration?.language=en
 ### - needs to be aquired by temporary download of *.zip and local extraction of needed data
-files$rasterdata$bafu_nh3 <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-ammoniakkonzentration/luftreinhaltung-ammoniakkonzentration/luftreinhaltung-ammoniakkonzentration_2056.shp.zip"
+files$rasterdata$bafu_nh3$"2020" <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-ammoniakkonzentration/luftreinhaltung-ammoniakkonzentration/luftreinhaltung-ammoniakkonzentration_2056.shp.zip"
 
-### Modelled raster data nitrogen deposition 2020
+### Modelled raster data nitrogen deposition
 ### - resolution: 500x500m
 ### - source: Bundesamt für Umwelt BAFU
 ### - derived as on the fly open data from: https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoffdeposition?.language=en
 ### - needs to be aquired by temporary download of *.zip and local extraction of needed data
-files$rasterdata$bafu_ndep <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-stickstoffdeposition/luftreinhaltung-stickstoffdeposition/luftreinhaltung-stickstoffdeposition_2056.shp.zip"
+files$rasterdata$bafu_ndep$"2020" <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-stickstoffdeposition/luftreinhaltung-stickstoffdeposition/luftreinhaltung-stickstoffdeposition_2056.shp.zip"
 
-### Modelled raster data exceedance of critical loads for nitrogen (CLN) 2020
+### Modelled raster data exceedance of critical loads for nitrogen (CLN)
 ### - resolution: 1000x1000m
 ### - source: Bundesamt für Umwelt BAFU
 ### - derived on the fly as open data from: https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag?.language=en
 ### - needs to be aquired by temporary download of *.zip and local extraction of needed data
-files$rasterdata$bafu_ndep_exc <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag/luftreinhaltung-stickstoff_kritischer_eintrag/luftreinhaltung-stickstoff_kritischer_eintrag_2056.shp.zip"
+files$rasterdata$bafu_ndep_exc$"2020" <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag/luftreinhaltung-stickstoff_kritischer_eintrag/luftreinhaltung-stickstoff_kritischer_eintrag_2056.shp.zip"
 
 ### Raster data inhabitant-statistics
 ### - resolution: 100x100m

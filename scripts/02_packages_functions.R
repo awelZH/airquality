@@ -1,32 +1,34 @@
+### nessecary for function functionality:
 
-### load packages
-
-library(fs)
-library(readr)
-library(archive)
-library(httr2)
-library(httr)
 library(tibble)
 library(tidyr)
 library(dplyr)
-library(stringr)
 library(purrr)
+library(stringr)
 library(rlang)
 library(lubridate)
-library(zoo)
+library(RCurl) # will later be used in read_bfs_statpop_data()
+library(readr)
+library(archive)
 library(sf)
 library(stars)
 library(ows4R)
 library(ggplot2)
+
+### on top: required for script functionality
+
+library(devtools)
+library(httr2)
+library(fs)
 library(ggh4x)
 library(scales)
 library(lemon)
 library(openair)
 library(shades)
 library(wesanderson)
-library(rOstluft) # https://github.com/Ostluft/rOstluft
 library(rOstluft.plot) # https://github.com/Ostluft/rOstluft.plot
 
 ### load functions 
 
 devtools::load_all()
+

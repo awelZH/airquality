@@ -5,7 +5,7 @@
 ^data_input$        # input data for R scripts
 ^data_output$       # output data from R scripts
 ^00_Archiv$
-^offline$
+^offline_analysis$
 ^github_access_token_airquality.txt - Verknüpfung.lnk$
 ^temp$
 ^\.gitignore$

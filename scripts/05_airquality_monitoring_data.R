@@ -5,6 +5,7 @@
 
 ### read and restructure NABEL monitoring site metadata
 
+# FIXME: fs package wirklich nötig? 
 site_meta <-
   fs::path("data/input", files$airquality$monitoring$nabel_y1) %>%
   get_nabel_meta_arias() %>%
@@ -35,6 +36,8 @@ site_meta <-
 data <- tibble::tibble()
 
 ### read and restructure NABEL y1 data
+
+# FIXME: würde zuerst alle datasets vorbereiten und am schluss das bind rows machen
 
 data <-
   fs::path("data/input", files$airquality$monitoring$nabel_y1) %>%

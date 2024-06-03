@@ -6,6 +6,7 @@
 ### function to read *.csv with air pollutant year-statistics exported from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
 read_arias <- function(file, encoding = "latin1", tz = "Etc/GMT-1"){ 
   
+  # FIXME: Vereinfachen! (stat-feedback branch)
   locale <- readr::locale(encoding = encoding)
   site <- dplyr::pull(readr::read_delim(file, delim = ";", col_select = "Station", locale = locale))
   parameter <- dplyr::pull(readr::read_delim(file, delim = ";", col_select = "Schadstoff", locale = locale))
@@ -39,6 +40,7 @@ read_arias <- function(file, encoding = "latin1", tz = "Etc/GMT-1"){
 ### function to read *.txt ts (in this case hourly) data from NABEL database and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
 read_nabel_ts_h1 <- function(file, interval = "h1", encoding = "latin1", tz = "Etc/GMT-1"){ 
   
+  # FIXME: Vereinfachen! (stat-feedback branch)
   locale <- readr::locale(encoding = encoding)
   header <- readr::read_delim(file, delim = "\t", n_max = 4, col_names = FALSE, locale = locale)
   site <- dplyr::pull(dplyr::filter(header, X1 == "Station"), X2)

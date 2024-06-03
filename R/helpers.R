@@ -40,8 +40,13 @@ get_geolion_wcs_capabilities_from_list <- function(capablilitylist, maplist, cov
 ### in case there have been NO2 monitor and passive sampler measurements (prefer monitor data = reference method); 
 ### same for PM10 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method);
 ### same for PM2.5 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method)
+
+
+
 remove_duplicate_y1 <- function(data){
   
+  # FIXME: funktion welche den Parameter als input hat ;)
+  # FIXME: etwas stimmt hier noch nicht, was ist parameter?
   replace_no2_ps <- function(parameter, value){
     if (sum(c("NO2", "NO2_PS") %in% parameter) == 2) {
       if (!is.na(value[which(parameter == "NO2")])){

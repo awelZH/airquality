@@ -4,6 +4,8 @@ airmo_wide_to_long2 <- function(header, data, tz = "Etc/GMT-1", na.rm = TRUE){
   colnames(data)[1] <- "starttime"
   col_ids <- rlang::names2(data)[-1]
   
+  
+  # FIXME: kann das vereinfacht werden mit pivot_longer? sollte eigentlich möglich sein
   sites <- c(header[1, ], recursive = TRUE)
   sites <- rlang::set_names(sites, col_ids)
   parameters <- c(header[2, ], recursive = TRUE)

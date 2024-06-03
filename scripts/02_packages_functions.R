@@ -1,11 +1,20 @@
 ### nessecary for function functionality:
 
+# FIXME:
+# for (package in c('<package1>', '<package2>')) {
+#   if (!require(package, character.only=T, quietly=T)) {
+#     install.packages(package)
+#     library(package, character.only=T)
+#   }
+# } 
+
 library(tibble)
 library(tidyr)
 library(dplyr)
 library(purrr)
 library(stringr)
 library(rlang)
+library(rjson)
 library(lubridate)
 library(RCurl) # will later be used in read_bfs_statpop_data()
 library(readr)

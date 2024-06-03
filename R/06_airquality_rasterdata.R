@@ -48,14 +48,6 @@ maplist <- add_to_maplist(maplist, "jahreskarte", "pm10")
 maps <- unlist(maplist)
 
 ### population data: download, read and restructure BFS population raster data from BFS homepage for the years in which air quality maps are available
-# req <- httr2::request('https://api3.geo.admin.ch/rest/services/api/MapServer')
-# req <- httr2::req_perform(req)
-# layers <- httr2::resp_body_json(req)$layers
-# maps <- unlist(purrr::map(layers, function(x) x$layerBodId))
-# id <- which(stringr::str_detect(maps, "ch.bfs.volkszaehlung-bevoelkerungsstatistik_einwohner"))
-# layers[[id]]
-# layers[[id]]$attributes$downloadUrl # => only available as yearly zip files, or WMTS => data zip files need to be downloaded individually
-
 data_raster$population <-
   setNames(as.character(unique(extract_year(maps))), unique(extract_year(maps))) %>% 
   lapply(function(year) {
@@ -71,61 +63,61 @@ grid <- dplyr::select(data_raster$population[[1]], RELI)
 data_raster$NO2 <- lapply(maps[stringr::str_detect(maps, "no2")], function(coverage) get_map(coverage, capabilities, maps, "NO2", grid, boundaries_hull))
 
 ### download, read and restructure PM10 raster data from geolion WCS (source = BAFU)
-data_raster$PM10 <- lapply(maps[stringr::str_detect(maps, "10")], function(coverage) get_map(coverage, capabilities, maps, "NO2", grid, boundaries_hull))
+data_raster$PM10 <- lapply(maps[stringr::str_detect(maps, "10")], function(coverage) get_map(coverage, capabilities, maps, "PM10", grid, boundaries_hull))
 
 ### download, read and restructure PM2.5 raster data from geolion WCS (source = BAFU)
-data_raster$PM2.5 <-lapply(maps[stringr::str_detect(maps, "25")], function(coverage) get_map(coverage, capabilities, maps, "NO2", grid, boundaries_hull))
+data_raster$PM2.5 <-lapply(maps[stringr::str_detect(maps, "25")], function(coverage) get_map(coverage, capabilities, maps, "PM2.5", grid, boundaries_hull))
 
 ### download, read and restructure eBC raster data from geolion WCS (source = BAFU)
-data_raster$eBC <- lapply(maps[stringr::str_detect(maps, "bc")], function(coverage) get_map(coverage, capabilities, maps, "NO2", grid, boundaries_hull))
+data_raster$eBC <- lapply(maps[stringr::str_detect(maps, "bc")], function(coverage) get_map(coverage, capabilities, maps, "eBC", grid, boundaries_hull))
 
 ### download, read and restructure O3 max. monthly 98%-percentile raster data from geolion WCS (source = BAFU)
-data_raster$O3p98 <-lapply(maps[stringr::str_detect(maps, "98")], function(coverage) get_map(coverage, capabilities, maps, "NO2", grid, boundaries_hull))
+data_raster$O3p98 <- lapply(maps[stringr::str_detect(maps, "98")], function(coverage) get_map(coverage, capabilities, maps, "O3p98", grid, boundaries_hull))
 
-### download, read and restructure NH3 raster data for the year 2020 from https://data.geo.admin.ch (source = BAFU)
+### download, read and restructure NH3 raster data from https://data.geo.admin.ch (source = BAFU)
 data_raster$NH3 <-
-  setNames(files$rasterdata$bafu_nh3, 2020) %>%
+  files$rasterdata$bafu_nh3 %>% 
   lapply(function(x) {
     data <- read_bafu_zip_shp(x, path_destination = "data/input")
-    return(dplyr::filter(data, st_intersects(data, boundaries_hull, sparse = FALSE)))
+    return(dplyr::filter(data, sf::st_intersects(data, boundaries_hull, sparse = FALSE)))
   })
 
-### download, read and restructure reactive nitrogen deposition (Ndep) raster data for the year 2020 from https://data.geo.admin.ch (source = BAFU)
+### download, read and restructure reactive nitrogen deposition (Ndep) raster data from https://data.geo.admin.ch (source = BAFU)
 data_raster$Ndep <-
-  setNames(files$rasterdata$bafu_ndep, 2020) %>%
+  files$rasterdata$bafu_ndep %>%
   lapply(function(x) {
     data <- read_bafu_zip_shp(x, path_destination = "data/input")
-    return(dplyr::filter(data, st_intersects(data, boundaries_hull, sparse = FALSE)))
+    return(dplyr::filter(data, sf::st_intersects(data, boundaries_hull, sparse = FALSE)))
   })
 
 ### exposition data: ...
 ### join air quality and population raster data
 data_raster$NO2 <-
-  setNames(names(data_raster$NO2), names(data_raster$NO2)) %>% 
-  lapply(function(year) {sf::st_join(data_raster$NO2[[year]], data_raster$population[[year]])})
+  setNames(names(data_raster$NO2), extract_year(names(data_raster$NO2))) %>% 
+  lapply(function(year) {sf::st_join(data_raster$NO2[[year]], data_raster$population[[as.character(extract_year(year))]])})
 
 data_raster$PM10 <-
-  setNames(names(data_raster$PM10), names(data_raster$PM10)) %>% 
-  lapply(function(year) {sf::st_join(data_raster$PM10[[year]], data_raster$population[[year]])})
+  setNames(names(data_raster$PM10), extract_year(names(data_raster$PM10))) %>% 
+  lapply(function(year) {sf::st_join(data_raster$PM10[[year]], data_raster$population[[as.character(extract_year(year))]])})
 
 data_raster$PM2.5 <-
-  setNames(names(data_raster$PM2.5), names(data_raster$PM2.5)) %>% 
-  lapply(function(year) {sf::st_join(data_raster$PM2.5[[year]], data_raster$population[[year]])})
+  setNames(names(data_raster$PM2.5), extract_year(names(data_raster$PM2.5))) %>% 
+  lapply(function(year) {sf::st_join(data_raster$PM2.5[[year]], data_raster$population[[as.character(extract_year(year))]])})
 
 data_raster$eBC <-
-  setNames(names(data_raster$eBC), names(data_raster$eBC)) %>% 
-  lapply(function(year) {sf::st_join(data_raster$eBC[[year]], data_raster$population[[year]])})
+  setNames(names(data_raster$eBC), extract_year(names(data_raster$eBC))) %>% 
+  lapply(function(year) {sf::st_join(data_raster$eBC[[year]], data_raster$population[[as.character(extract_year(year))]])})
 
 data_raster$O3p98 <-
-  setNames(names(data_raster$PM10), names(data_raster$PM10)) %>% 
-  lapply(function(year) {sf::st_join(data_raster$PM10[[year]], data_raster$population[[year]])})
+  setNames(names(data_raster$O3p98), extract_year(names(data_raster$O3p98))) %>% 
+  lapply(function(year) {sf::st_join(data_raster$PM10[[year]], data_raster$population[[as.character(extract_year(year))]])})
 
 ### exposition already available: download, read and restructure max Ndep > Critical Loads of Nitrogen (CLN) raster data for the year 2020 from https://data.geo.admin.ch (source = BAFU)
 data_raster$Ndep_exceedance <-
-  setNames(files$rasterdata$bafu_ndep_exc, 2020) %>%
+  files$rasterdata$bafu_ndep_exc %>%
   lapply(function(x) {
     data <- read_bafu_zip_shp(x, path_destination = "data/input")
-    return(dplyr::filter(data, st_intersects(data, boundaries_hull, sparse = FALSE)))
+    return(dplyr::filter(data, sf::st_intersects(data, boundaries_hull, sparse = FALSE)))
   })
 
 

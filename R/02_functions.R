@@ -187,8 +187,6 @@ add_to_maplist <- function(maplist, target_source, target_parameter) {
 
 
 
-maps$pollumap <- purrr::map_chr(capabilities$pollumap$getCoverageSummaries(), function(x){x$CoverageId})
-maps$pollumap <- setNames(maps$pollumap, extract_year(maps$pollumap))
 
 
 read_bafu_zip_shp <- function(url, path_destination) {
@@ -296,18 +294,22 @@ read_statpop_csv <- function(file, year, crs = 2056) {
 
 
 ### courtesy of Statistikamt, modified
-read_bfs_zip_data <- function(url, path_destination) {
+read_bfs_zip_data <- function(bfs_nr, meta_url, year, path_destination) {
   
-  # Download the ZIP file to a temporary location
+  # derive dataset url
+  year_short <- year %% 100
+  bfs_nr <- paste0(bfs_nr, year_short)
+  meta_url <- gsub("bfs_nr", bfs_nr, meta_url)
+  asset_page <- RCurl::getURLContent(meta_url, .encoding = "latin1")
+  asset_number <- gsub(".*(https://.*assets/[0-9]+/).*", "\\1", asset_page)
+  asset_number <- gsub(".*/([0-9]+)/", "\\1", asset_number)
+  
+  # download the ZIP file to a temporary location
   temp <- tempfile(tmpdir = path_destination, fileext = ".zip")
-  download_bfs <- function(temp) httr::GET(url, httr::write_disk(temp, overwrite = TRUE))# .. why error when it httr::GET() actually works? => these two lines now as workaround
-  download_bfs <- purrr::possibly(download_bfs)
-  download_bfs(temp)
+  command <- paste0("curl ", asset_number, " --output ", stringr::str_replace_all(fs::path_abs(temp), pattern = "/", replacement = "\\\\"))
+  system(command, intern = TRUE)
   
-  # req <- httr2::request(url)
-  # httr2::req_perform(req, path = temp) # ... would be the alternative to httr::GET() => why crash?
-  
-  # List files within the ZIP archive
+  # list files within the ZIP archive
   files_in_zip <- 
     archive::archive(temp) %>% 
     dplyr::mutate(path_lower = tolower(path)) %>% 
@@ -337,6 +339,48 @@ read_bfs_zip_data <- function(url, path_destination) {
   
   return(data)
 }
+
+# read_bfs_zip_data <- function(url, path_destination) {
+#   
+#   # Download the ZIP file to a temporary location
+#   temp <- tempfile(tmpdir = path_destination, fileext = ".zip")
+#   download_bfs <- function(temp) httr::GET(url, httr::write_disk(temp, overwrite = TRUE))# .. why error when it httr::GET() actually works? => these two lines now as workaround
+#   download_bfs <- purrr::possibly(download_bfs)
+#   download_bfs(temp)
+#   
+#   # req <- httr2::request(url)
+#   # httr2::req_perform(req, path = temp) # ... would be the alternative to httr::GET() => why crash?
+#   
+#   # List files within the ZIP archive
+#   files_in_zip <- 
+#     archive::archive(temp) %>% 
+#     dplyr::mutate(path_lower = tolower(path)) %>% 
+#     dplyr::filter(stringr::str_detect(path_lower, "^.*statpop\\d{4}\\.csv$")) %>% 
+#     dplyr::select(path) %>% 
+#     dplyr::pull(path)
+#   
+#   # Select the file that matches the pattern "STATPOP####.csv" (case-insensitive)
+#   # Assuming there's only one such file per archive
+#   target_file <- files_in_zip[stringr::str_detect(tolower(files_in_zip), "statpop\\d{4}\\.csv")]
+#   
+#   if (length(target_file) == 0) {
+#     stop("No file matching 'STATPOP[year].csv' pattern found in the ZIP archive.")
+#   }
+#   
+#   # Assuming the first match is the file we want (if there are multiple matches)
+#   largest_file <- target_file[1]
+#   
+#   # Open a connection to the matched file inside the ZIP
+#   con <- archive::archive_read(temp, file = largest_file)
+#   
+#   # Read the file into a stars raster
+#   data <- read_statpop_csv(con, year = extract_year(largest_file))
+#   
+#   # Remove the temporary file
+#   unlink(temp)
+#   
+#   return(data)
+# }
 
 
 

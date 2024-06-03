@@ -293,18 +293,31 @@ read_statpop_csv <- function(file, year, crs = 2056) {
 
 
 ### courtesy of Statistikamt, modified
-read_bfs_zip_data <- function(url, path_destination) {
+read_bfs_statpop_data <- function(year, path_destination) {
   
-  # Download the ZIP file to a temporary location
+  # derive dataset url
+  bfs_nr <- paste0("ag-b-00.03-vz", year, "statpop")
+  meta_url <- gsub("bfs_nr", bfs_nr, "https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken.assetdetail.bfs_nr.html")
+  
+  command <- paste0("curl ", meta_url)
+  asset_page <- system(command, intern = TRUE)
+  
+  asset_page_total <- paste0(asset_page, collapse = " ")
+  
+  #asset_page <- RCurl::getURLContent(meta_url, .encoding = "latin1")
+  asset_number <- gsub(".*(https://.*assets/[0-9]+/).*", "\\1", asset_page_total)
+  asset_number <- gsub(".*/([0-9]+)/", "\\1", asset_number)
+
+  
+  download_url <- paste0("https://www.bfs.admin.ch/bfsstatic/dam/assets/",asset_number,"/master")
+  
+  # download the ZIP file to a temporary location
   temp <- tempfile(tmpdir = path_destination, fileext = ".zip")
-  download_bfs <- function(temp) httr::GET(url, httr::write_disk(temp, overwrite = TRUE))# .. why error when it httr::GET() actually works? => these two lines now as workaround
-  download_bfs <- purrr::possibly(download_bfs)
-  download_bfs(temp)
+  command <- paste0("curl ", download_url, " --output ", temp)
+  system(command, intern = TRUE)
+
   
-  # req <- httr2::request(url)
-  # httr2::req_perform(req, path = temp) # ... would be the alternative to httr::GET() => why crash?
-  
-  # List files within the ZIP archive
+  # list files within the ZIP archive
   files_in_zip <- 
     archive::archive(temp) %>% 
     dplyr::mutate(path_lower = tolower(path)) %>% 
@@ -334,7 +347,6 @@ read_bfs_zip_data <- function(url, path_destination) {
   
   return(data)
 }
-
 
 
 

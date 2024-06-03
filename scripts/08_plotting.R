@@ -52,7 +52,11 @@ scale_color_siteclass <-
   ))
 
 cols_emissions <- c(wesanderson::wes_palette(name = "BottleRocket2", n = 5, type = "discrete"), "#003333")
-
+immission_colorscale <- function(...) {
+  cols <- c("#004DA8", "#005ce6", "#0070ff", "#00c5ff", "#47d9fa", "#56f9fb", "#2e9c6b", "#38bd00", "#56d900", 
+            "#51f551", "#ffff00", "#ffd400", "#ffa300", "#ff5200", "#ff0000", "#ff0094", "#de00a1", "#c500ba")
+  return(rOstluft.plot::scale_fill_gradientn_squished(..., colors = cols, na.value = NA))
+}
 immission_colorscale_no2 <- immission_colorscale(limits = c(0,50), breaks = seq(0,50,10), name = "NO2\n(µg/m3)")
 immission_colorscale_pm10 <- immission_colorscale(limits = c(0,34), breaks = c(seq(0,30,10), 34), name = "PM10\n(µg/m3)")
 immission_colorscale_pm2_5 <- immission_colorscale(limits = c(0,17), breaks = c(seq(0,15,2.5), 17), name = "PM2.5\n(µg/m3)")

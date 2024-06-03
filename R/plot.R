@@ -106,7 +106,7 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
 
 
 ### function to ggplot emissions employing structured coloring... this is not ideal, but the best I can do
-ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme_emissions = ggplot2::theme_minimal()) {
+ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme = ggplot2::theme_minimal()) {
   
   groups <-
     data %>% 
@@ -132,7 +132,7 @@ ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme_emiss
     dplyr::summarise(emission = sum(emission)) %>% 
     dplyr::ungroup() %>% 
     dplyr::mutate(others = stringr::str_detect(subsector, "sonstige")) %>% 
-    dplyr::arrange(sector, desc(others), emission) %>% 
+    dplyr::arrange(sector, dplyr::desc(others), emission) %>% 
     dplyr::mutate(subsector = paste0(sector, " / ", subsector)) %>% 
     dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols)) %>% 
     dplyr::group_by(sector) %>% 
@@ -155,18 +155,10 @@ ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme_emiss
     ggplot2::ggplot(aes(x = factor(year), y = emission, fill = subsector)) +
     ggplot2::geom_bar(stat = "identity", position = pos, width = width) + 
     ggplot2::scale_y_continuous(labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01)) +
-    scale_fill_manual(values = setNames(groups$col, groups$subsector)) +
-    theme_emissions +
+    ggplot2::scale_fill_manual(values = setNames(groups$col, groups$subsector)) +
+    theme +
     ggplot2::theme(legend.title = ggplot2::element_blank())
   
   return(plot)
 }
 
-
-
-
-immission_colorscale <- function(...) {
-  cols <- c("#004DA8", "#005ce6", "#0070ff", "#00c5ff", "#47d9fa", "#56f9fb", "#2e9c6b", "#38bd00", "#56d900", 
-            "#51f551", "#ffff00", "#ffd400", "#ffa300", "#ff5200", "#ff0000", "#ff0094", "#de00a1", "#c500ba")
-  return(rOstluft.plot::scale_fill_gradientn_squished(..., colors = cols, na.value = NA))
-}

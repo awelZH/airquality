@@ -11,6 +11,7 @@ data_expo <- list()
 
 
 # FIXME: wrapper funktion!
+# wie bei airquality-population
 data_expo$NO2$population_weighted_mean <- 
   lapply(setNames(names(data_raster$NO2), names(data_raster$NO2)), function(year) {
     data <- sf::st_join(boundaries, sf::st_as_sf(data_raster$NO2[[year]]))

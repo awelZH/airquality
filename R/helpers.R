@@ -110,5 +110,12 @@ extract_year <- function(string) {as.numeric(stringr::str_extract(string, "(1|2)
 
 
 
-
+### 1:1 copy from rOstluft::pad() => because this is the only function we need from this package
+pad2 <- function(data, start_date = NULL, end_date = NULL, drop_last = FALSE) {
+  
+  data.grouped <- dplyr::group_by(data, .data$site, .data$parameter, .data$interval, .data$unit)
+  data.grouped <- dplyr::do(data.grouped, pad_serie(.data, start_date, end_date, drop_last))
+  
+  return(dplyr::ungroup(data.grouped))
+}
 

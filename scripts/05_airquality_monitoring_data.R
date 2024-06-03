@@ -74,7 +74,7 @@ data <-
   data %>%
   # dplyr::bind_rows(calc_lbi(data, threshold_values)) %>% # add Langzeitbelastungsindex LBI ... currently, LBI needs to be revised by Cercl'Air => prepared for later inclusion
   dplyr::filter(lubridate::year(starttime) %in% years & parameter %in% c(parameters, "LBI")) %>% # filter for target years and parameter
-  rOstluft::pad() %>%  # pad to complete timeseries for better plotting
+  pad2() %>%  # pad to complete timeseries for better plotting
   dplyr::select(-source) %>%
   dplyr::left_join(site_meta, by = "site") %>%
   dplyr::filter(!is.na(siteclass))

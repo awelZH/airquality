@@ -51,7 +51,7 @@ maps <- unlist(maplist)
 data_raster$population <-
   setNames(as.character(unique(extract_year(maps))), unique(extract_year(maps))) %>% 
   lapply(function(year) {
-    data <- read_bfs_zip_data(url = as.character(files$rasterdata$bfs_pop[year]), path_destination = "data/input")
+    data <- read_bfs_zip_data(year, path_destination = "data/input")
     return(sf::st_crop(data, boundaries_hull))
   })
 

@@ -27,7 +27,6 @@ Imports:
     tidyr
 Suggests: 
     devtools,
-    fs,
     ggh4x,
     httr2,
     lemon,

@@ -1,5 +1,5 @@
 
-### make sure we have the same grid as BFS population data
+# make sure we have the same grid as BFS population data
 aggregate_to_grid <- function(data, grid, parameter, boundary, method = "average", na_val = -999) { 
   
   data <- 
@@ -9,43 +9,6 @@ aggregate_to_grid <- function(data, grid, parameter, boundary, method = "average
   data <- setNames(data, parameter)
   
   return(data)
-}
-
-
-
-
-### ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
-### however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
-
-# FIXME: hier machst du gar keine aggregation ;) nur ein recoding
-aggregate_ostluft_meta_zone <- function(zone) { 
-  
-  zone <- 
-    dplyr::case_when(
-      as.numeric(stringr::str_remove(zone, "H")) %in% c(21:23, 31:33) ~ "st\u00e4dtisch", # OSTLUFT: > 20'000 Gesamteinwohner; BAFU: > 1500 Einwohner/km2 und Gesamteinwohnerzahl > 50 000
-      as.numeric(stringr::str_remove(zone, "H")) %in% 11:13 ~ "klein-/vorst\u00e4dtisch", # OSTLUFT: > 1'000 Gesamteinwohner; BAFU: > 300 Einwohner/km2 im \u00fcberbauten Gebiet und Gesamteinwohnerzahl > 5000
-      as.numeric(stringr::str_remove(zone, "H")) == 0 ~ "l\u00e4ndlich", # OSTLUFT: < 1'000 Gesamteinwohner; BAFU: Gebiete mit geringer Siedlungsdichte (< 300 Einwohner/km2) oder kleinere Ortschaften (< 5000 Einwohner)
-      TRUE ~ zone 
-    )
-  
-  return(zone)
-}
-
-
-
-
-### ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
-### however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
-aggregate_ostluft_meta_type <- function(type) { 
-  
-  type <- 
-    dplyr::case_when(
-      as.numeric(stringr::str_remove(type, "S")) %in% c(10:13, 20:23, 30:33) ~ "verkehrsbelastet", # OSTLUFT: DTV_S > 10'000; BAFU: has a finer scale that begins at DTV > 3'000 and cerctain max distance to street 
-      as.numeric(stringr::str_remove(type, "S")) == 0 ~ "Hintergrund", # OSTLUFT: DTV_S < 10'000 & street more than 50m (in cities) or 300m (outside of cities) away; BAFU: see above
-      TRUE ~ type 
-    )
-  
-  return(type)
 }
 
 
@@ -100,7 +63,7 @@ exposition_distrib_cumulative <- function(data, y) {
 
 
 
-### ... only a valid approximation for vehicles weighting less than 3.5 t
+# ... only a valid approximation for vehicles weighting less than 3.5 t
 calc_vsp <- function(speed, accel, slope, # speed in m/s, accel in m/s/s, slope as ratio, mass = 3.5 in t
                      vsp.a = 1.1, vsp.b = 0.132, vsp.c = 0.000302, vsp.g = 9.81) {
   
@@ -126,7 +89,7 @@ calc_rsd_nox_emission <- function(NO, p, CO2, CO, HC) { # all concentrations in 
 
 
 
-### aggregate RSD data calculating: n, percentiles, median, mean, standard deviation, standard error
+# aggregate RSD data calculating: n, percentiles, median, mean, standard deviation, standard error
 aggregate_groups_rsd <- function(data, y, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm"),
                                  nmin = 100, perc = list(ymin = 0.05, lower = 0.25, middle = 0.5, upper = 0.75, ymax = 0.95)) {
   
@@ -167,7 +130,7 @@ population_weighted_mean <- function(concentration, population) {sum(concentrati
 
 
 
-### see here: https://gist.github.com/sotoattanito/8e6fad4b7322ceae9f14f342985f1681
+# see here: https://gist.github.com/sotoattanito/8e6fad4b7322ceae9f14f342985f1681
 round_off <- function (x, digits = 0) {
   
   posneg = sign(x)

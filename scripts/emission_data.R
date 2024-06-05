@@ -45,7 +45,7 @@ data_emikat <-
 ### see: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftschadstoffquellen/emissionen-verkehr/abgasmessungen-rsd.html
 ### ------------------------------------------------------------
 
-### read and restructure RSD data
+### read and restructure RSD measurement data from OGD, RSD metadata and RSD filter criteria
 
 req <- httr2::request(files$emissions$rsd$opendata)
 req <- httr2::req_perform(req)
@@ -68,6 +68,21 @@ rsd_meta <-
     vehicle_fuel_type = factor(vehicle_fuel_type, levels = c("gasoline", "diesel"))
   ) %>% 
   dplyr::rename(NOx_emission_threshold_g_per_kg_fuel = `nox_emission_threshold_g_per_kg Treibstoff`)
+
+# rsd_filters <- 
+  fs::path("data/input", files$emissions$rsd$meta)
+  
+  
+  
+  list(
+    nmin = 50, # minimum number of valid records per aggregation
+    vehicleyears = 1992:lubridate::year(Sys.Date()), # vehicle model years
+    velocityrange = c(5, 60), # range of vehicle velocity in km/h
+    accelerationrange = c(-2, 4), # range of vehicle acceleration in km/h/s
+    vsprange = c(1, 35), # range of vehicle specific power in n kW/t
+    weightmax = 3500 # maximum vehicle unloaded weight in kg
+  )
+
 
 ### calculate vehicle specific power and apply data filters for a meaningful analysis
 ### calculate mean values and corresponding NOx emissions

@@ -1,10 +1,10 @@
 
-### read input files
-### ------------------------------------------------------------
+# read input files
+# ------------------------------------------------------------
 
 
-### function to read *.csv with air pollutant year-statistics exported from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
-read_arias <- function(file, encoding = "latin1", tz = "Etc/GMT-1"){ 
+# function to read *.csv with air pollutant year-statistics exported from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
+read_monitoring_data_nabel_arias_csv <- function(file, encoding = "latin1", tz = "Etc/GMT-1"){ 
   
   # FIXME: Vereinfachen! (stat-feedback branch)
   locale <- readr::locale(encoding = encoding)
@@ -27,36 +27,11 @@ read_arias <- function(file, encoding = "latin1", tz = "Etc/GMT-1"){
                                                             "Dosis AOT40f" = "O3_AOT40")),
                         parameter = dplyr::case_when(metric == "Jahresmittel" ~ parameter, TRUE ~ metric),
                         interval = "y1",
-                        value = as.numeric(stringr::str_remove(value, ";"))
+                        value = as.numeric(stringr::str_remove(value, ";")),
+                        source = factor("NABEL (BAFU & Empa)")
   )
   data <- dplyr::mutate_if(data, is.character, factor)
-  data <- dplyr::select(data, "starttime", "site", "parameter", "interval", "unit", "value")
-  
-  return(data)
-}
-
-
-
-### function to read *.txt ts (in this case hourly) data from NABEL database and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
-read_nabel_ts_h1 <- function(file, interval = "h1", encoding = "latin1", tz = "Etc/GMT-1"){ 
-  
-  # FIXME: Vereinfachen! (stat-feedback branch)
-  locale <- readr::locale(encoding = encoding)
-  header <- readr::read_delim(file, delim = "\t", n_max = 4, col_names = FALSE, locale = locale)
-  site <- dplyr::pull(dplyr::filter(header, X1 == "Station"), X2)
-  parameter <- dplyr::pull(dplyr::filter(header, X1 == "Messwert"), X2)
-  unit <- dplyr::pull(dplyr::filter(header, X1 == "Einheit"), X2)
-  data <- readr::read_delim(file, delim = "\t", col_names = FALSE, skip = 4, locale = locale)
-  data <- dplyr::rename(data, endtime = X1, value = X2)
-  data <- dplyr::mutate(data, 
-                        site = dplyr::case_when(site == "DUE" ~ "D\u00fcbendorf-EMPA", site == "ZUE" ~ "Z\u00fcrich-Kaserne", TRUE ~ site),
-                        starttime = lubridate::fast_strptime(endtime, format = "%d.%m.%y %H:%M", tz = tz, lt = FALSE) - lubridate::hours(as.numeric(stringr::str_remove(interval, "h"))),
-                        parameter = parameter, 
-                        unit = stringr::str_replace(unit, "ug", "µg"),
-                        interval = interval
-  )
-  data <- dplyr::mutate_if(data, is.character, factor)
-  data <- dplyr::select(data, starttime, site, parameter, interval, unit, value)
+  data <- dplyr::select(data, "starttime", "site", "parameter", "interval", "unit", "value", "source")
   
   return(data)
 }
@@ -64,10 +39,14 @@ read_nabel_ts_h1 <- function(file, interval = "h1", encoding = "latin1", tz = "E
 
 
 
-get_nabel_meta_arias <- function(file, encoding = "latin1") {
-  
+
+
+
+
+read_site_meta_nabel_arias_csv <- function(file, encoding = "latin1") {
+
   locale <- readr::locale(encoding = encoding)
-  meta <- readr::read_delim(file, delim =";", col_select = c("Station", "Ost Y", "Nord X", "H\u00f6he", "Zonentyp", "Stationstyp"), locale = locale)
+  meta <- readr::read_delim(file, delim =";", col_select = c("Station", "Ost Y", "Nord X", "Höhe", "Zonentyp", "Stationstyp"), locale = locale)
   meta <- dplyr::distinct(meta, Station, `Ost Y`, `Nord X`, Höhe, Zonentyp, Stationstyp)
   meta <- dplyr::mutate(meta, Zonentyp = tolower(Zonentyp))
   meta <- dplyr::rename(meta, 
@@ -78,7 +57,12 @@ get_nabel_meta_arias <- function(file, encoding = "latin1") {
                         zone = Zonentyp,
                         type = Stationstyp
   )
-  meta <- dplyr::select(meta, site, x, y, masl, zone, type)
+  meta <- dplyr::mutate(meta,
+                        ifelse(zone == "vorstädtisch", "klein-/vorstädtisch", zone),
+                        site_long = site,
+                        source = "NABEL (BAFU & Empa)"
+  )
+  meta <- dplyr::select(meta, site, site_long, x, y, masl, zone, type, source)
   
   return(meta)
 }
@@ -86,7 +70,7 @@ get_nabel_meta_arias <- function(file, encoding = "latin1") {
 
 
 
-read_ostluft_meta <- function(file, encoding = "UTF-8") {
+read_site_meta_ostluft_metadb_csv <- function(file, encoding = "UTF-8") {
   
   locale <- readr::locale(encoding = encoding)
   meta <- readr::read_delim(file, delim =",", locale = locale)
@@ -106,7 +90,12 @@ read_ostluft_meta <- function(file, encoding = "UTF-8") {
       masl = spHoehe,
       zone = scSiedlungsgroesse, 
       type = scVerkehrslage
-    )
+    ) %>% 
+  dplyr::mutate(
+    zone = recode_ostluft_meta_zone(zone),
+    type = recode_ostluft_meta_type(type),
+    source = "OSTLUFT"
+  ) 
   
   return(meta)
 }
@@ -114,13 +103,8 @@ read_ostluft_meta <- function(file, encoding = "UTF-8") {
 
 
 
-
-
-
-
-
-### function to read *.csv with air pollutant data from (internal) Airmo (OSTLUFT air quality database) export and restructure the data similar to a standard long-format (see rOstluft::format_rolf()); based on rOstluft::read_airmo_csv()
-read_airmo_csv2 <- function(file, encoding = "UTF-8", tz = "Etc/GMT-1", na.rm = TRUE){
+# function to read *.csv with air pollutant data from (internal) Airmo (OSTLUFT air quality database) export and restructure the data similar to a standard long-format (see rOstluft::format_rolf()); based on rOstluft::read_airmo_csv()
+read_monitoring_data_ostluft_airmo_csv <- function(file, encoding = "UTF-8", tz = "Etc/GMT-1", na.rm = TRUE){
   
   locale <- readr::locale(encoding = encoding)
   header_cols <- readr::cols(X1 = readr::col_skip(), .default = readr::col_character())
@@ -130,7 +114,8 @@ read_airmo_csv2 <- function(file, encoding = "UTF-8", tz = "Etc/GMT-1", na.rm = 
   data <- readr::read_delim(file, ";", skip = 10, col_types = data_cols, 
                             col_names = FALSE, locale = locale, trim_ws = TRUE, progress = FALSE)
   header <- header[c(1, 4, 8, 7), ]
-  data <- airmo_wide_to_long2(header, data, tz, na.rm)
+  data <- restructure_airmo_wide_to_long2(header, data, tz, na.rm)
+  data <- dplyr::mutate(data, source = factor("OSTLUFT"))
   
   return(data)
 }
@@ -183,7 +168,7 @@ get_geolion_wcs <- function(coverage, capability, name, na_value = c(0,-999), di
 }
 
 
-### wrapper ...
+# wrapper ...
 get_map <- function(coverage, capablilitylist, maplist, parameter, grid, boundary) {
   
   print(coverage)
@@ -200,7 +185,7 @@ get_map <- function(coverage, capablilitylist, maplist, parameter, grid, boundar
 
 
 
-### courtesy of Statistikamt, modified
+# courtesy of Statistikamt, modified
 read_bfs_statpop_data <- function(year, path_destination) {
   
   # derive dataset url
@@ -215,7 +200,7 @@ read_bfs_statpop_data <- function(year, path_destination) {
   #asset_page <- RCurl::getURLContent(meta_url, .encoding = "latin1")
   asset_number <- gsub(".*(https://.*assets/[0-9]+/).*", "\\1", asset_page_total)
   asset_number <- gsub(".*/([0-9]+)/", "\\1", asset_number)
-
+  
   
   download_url <- paste0("https://www.bfs.admin.ch/bfsstatic/dam/assets/",asset_number,"/master")
   
@@ -223,7 +208,7 @@ read_bfs_statpop_data <- function(year, path_destination) {
   temp <- tempfile(tmpdir = path_destination, fileext = ".zip")
   command <- paste0("curl ", download_url, " --output ", temp)
   system(command, intern = TRUE)
-
+  
   
   # list files within the ZIP archive
   files_in_zip <- 
@@ -233,7 +218,7 @@ read_bfs_statpop_data <- function(year, path_destination) {
     dplyr::select(path) %>% 
     dplyr::pull(path)
   
-  # Select the file that matches the pattern "STATPOP####.csv" (case-insensitive)
+  # Select the file that matches the pattern "STATPOP##.csv" (case-insensitive)
   # Assuming there's only one such file per archive
   target_file <- files_in_zip[stringr::str_detect(tolower(files_in_zip), "statpop\\d{4}\\.csv")]
   
@@ -255,30 +240,6 @@ read_bfs_statpop_data <- function(year, path_destination) {
   
   return(data)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -11,12 +11,12 @@ load_packages <- function(packages) {
 
 # packages necessary for function functionality
 
-load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "lubridate",
+load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
     "RCurl", "readr", "archive", "sf", "stars", "ows4R", "ggplot2"))                                                    # RCurl will later be used in read_bfs_statpop_data()
 
 # packages required for script functionality
 
-load_packages(c("devtools", "httr2", "ggh4x", "scales", "lemon", "openair", "shades", 
+load_packages(c("devtools", "ggh4x", "scales", "lemon", "openair", "shades", 
               "wesanderson", "rOstluft.plot"))                                                                          # rOstluft.plot see: https://github.com/Ostluft/rOstluft.plot
 
 # load functions 

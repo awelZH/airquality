@@ -126,6 +126,33 @@ aggregate_groups_rsd <- function(data, y, groups = c("vehicle_type", "vehicle_fu
 
 
 
+aggregate_nox_rsd <- function(data, meta, nmin = 50, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) {
+  
+  data <- 
+    data %>% 
+    aggregate_groups_rsd(y = "NOx_emission", groups = groups, nmin = nmin) %>% 
+    dplyr::rename(NOx_emission = mean) %>% 
+    dplyr::mutate(
+      unit = "g/kg fuel",
+      source = "Kanton Zürich/AWEL"
+    )
+  
+  if(is.null(meta)) {
+    data <- dplyr::select(data, !!c(groups, "NOx_emission", "unit", "n", "standarderror", "source"))
+  } else {
+    data <- 
+      data %>% 
+      dplyr::left_join(meta, by = groups) %>% 
+      dplyr::select(!!c(groups, "NOx_emission", "unit", "n", "standarderror", "NOx_emission_threshold_g_per_kg_fuel", "source"))
+  } 
+  
+  return(data)
+}
+
+
+
+
+
 population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
 
 
@@ -171,3 +198,8 @@ aggregate_nitrogen_deposition <- function(data) {
   return(data)
   
 }
+
+
+
+
+

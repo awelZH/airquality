@@ -27,7 +27,8 @@ files$emissions$budget$opendata <- 'https://ckan.opendata.swiss/api/3/action/pac
 ### - derived as open data from: https://www.zh.ch/de/politik-staat/statistik-daten/datenkatalog.html#/datasets/2382@awel-kanton-zuerich
 ### - accessed: on the fly via opendata.swiss api:
 files$emissions$rsd$opendata <- 'https://ckan.opendata.swiss/api/3/action/package_show?id=messdaten-langjahriger-abgasmessungen-im-realen-fahrbetrieb-mittels-remote-sensing-rsd'
-files$emissions$rsd$meta <- "misc_rsd_auxiliary_data.csv" # some offline additional data per Euronorm etc
+files$emissions$rsd$meta <- "misc_rsd_auxiliary.csv" # some offline additional data per Euronorm etc
+files$emissions$rsd$filters <- "misc_rsd_filters.csv" # filter criteria
 
 ### Selected air quality monitoring data Kanton Zürich from national monitoring network NABEL (yearly values)
 ### - source: Bundesamt für Umwelt BAFU/NABEL

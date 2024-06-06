@@ -201,7 +201,6 @@ read_bfs_statpop_data <- function(year, path_destination) {
   asset_number <- gsub(".*(https://.*assets/[0-9]+/).*", "\\1", asset_page_total)
   asset_number <- gsub(".*/([0-9]+)/", "\\1", asset_number)
   
-  
   download_url <- paste0("https://www.bfs.admin.ch/bfsstatic/dam/assets/",asset_number,"/master")
   
   # download the ZIP file to a temporary location
@@ -245,3 +244,45 @@ read_bfs_statpop_data <- function(year, path_destination) {
 
 
 
+read_emikat_opendataswiss <- function(apiurl) {
+
+  req <- httr2::request(apiurl)
+  req <- httr2::req_perform(req)
+  emikat <- httr2::resp_body_json(req)$result        
+  emikat <- unlist(purrr::map(emikat$resources, function(x) x$url))
+  emikat <- emikat[stringr::str_detect(emikat, ".csv")]
+  data <- 
+    readr::read_delim(emikat, delim = ",") %>% 
+    dplyr::select(-einheit_lang) %>% 
+    dplyr::rename( # ... just for the sake of script language consistency
+      year = jahr,
+      pollutant = substanz,
+      sector = hauptgruppe,
+      subsector = untergruppe,
+      canton = kanton,
+      municipality = gemeinde, 
+      unit = einheit
+    ) %>% 
+    dplyr::mutate(
+      pollutant = dplyr::case_when(pollutant == "BC" ~"eBC", TRUE ~ pollutant),
+      source = "OSTLUFT"
+    )
+  
+  return(data)
+}
+
+
+
+read_rsd_opendataswiss <- function(apiurl) {
+
+  req <- httr2::request(apiurl)
+  req <- httr2::req_perform(req)
+  rsd <- httr2::resp_body_json(req)$result        
+  rsd <- unlist(purrr::map(rsd$resources, function(x) x$url))
+  rsd <- rsd[stringr::str_detect(rsd, ".csv")]
+  data <- lapply(rsd, function(x) readr::read_delim(x, delim = ","))
+  data <- dplyr::bind_rows(data)
+  data <- dplyr::mutate(data, source = "Kanton Zürich/AWEL")
+  
+  return(data)
+}

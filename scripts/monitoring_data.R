@@ -24,7 +24,7 @@ data_monitoring_nabel <- read_monitoring_data_nabel_arias_csv(paste("inst/extdat
 
 data_monitoring_ostluft <- read_monitoring_data_ostluft_airmo_csv(paste("inst/extdata", files$airquality$monitoring$ostluft_y1, sep = "/"))
 
-# remove duplicate parameters in OSTLUFT data, use preferred method (NO2 passive samplers vs. monitor & PM10/PM2.5 HVS vs. monitor)
+# remove duplicate parameters in OSTLUFT data => use preferred method (NO2 passive samplers vs. monitor & PM10/PM2.5 HVS vs. monitor)
 
 data_monitoring_ostluft <- remove_duplicate_y1(data_monitoring_ostluft)
 
@@ -37,25 +37,28 @@ data_monitoring_o3_peakseason <- readr::read_delim(paste("inst/extdata", files$a
 data_monitoring_aq <-
   data_monitoring_nabel %>% 
   dplyr::bind_rows(data_monitoring_ostluft) %>% 
-  dplyr::bind_rows(data_monitoring_o3_peakseason)
-  data_monitoring_aq %>%
+  dplyr::bind_rows(data_monitoring_o3_peakseason) %>% 
   pad2() %>%
+  dplyr::mutate(year = lubridate::year(starttime)) %>% 
   dplyr::select(-source) %>%
   dplyr::left_join(site_meta, by = "site") %>%
   dplyr::filter(!is.na(siteclass)) %>% 
-  dplyr::arrange(site, parameter, starttime)
+  dplyr::arrange(site, parameter, starttime) %>% 
+  dplyr::select(year, site, site_long, source, parameter, interval, unit, value)
 
-# read pre-compiled OSTLUFT y1 monitoring data for nitrogen deposition to sensitive ecosystems
+# read pre-compiled OSTLUFT y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
 
-data_ndep <- readr::read_delim(paste(path_data_input, files$airquality$monitoring$ostluft_ndep_y1, sep = "/"), delim = ";")
-# FIXME: weitere aggregationen in Funktion & safe output dataset
+data_monitoring_ndep <- readr::read_delim(paste("inst/extdata", files$airquality$monitoring$ostluft_ndep_y1, sep = "/"), delim = ";")
 
-# write output data
+# aggregate individual components of nitrogen deposition
 
-data_monitoring_aq %>%
-  dplyr::mutate(starttime = format(starttime, "%Y-%m-%d %H:%M:%S")) %>%
-  readr::write_delim(file = "inst/extdata/output_data_airquality_monitoring_y1.csv", delim = ";", na = "NA")
+data_monitoring_ndep <- aggregate_nitrogen_deposition(data_monitoring_ndep)
+
+# write output datasets
+
+readr::write_delim(data_monitoring_aq , file = "inst/extdata/output_data_airquality_monitoring_y1.csv", delim = ";", na = "NA")
+readr::write_delim(data_monitoring_ndep , file = "inst/extdata/output_data_ndep_monitoring_y1.csv", delim = ";", na = "NA")
 
 # clean up
 
-rm(list = c("site_meta_nabel", "site_meta_ostluft", "data_monitoring_nabel", "data_monitoring_ostluft", "data_monitoring_o3_peakseason"))
+rm(list = c("data_monitoring_aq", "data_monitoring_ndep", "site_meta_nabel", "site_meta_ostluft", "data_monitoring_nabel", "data_monitoring_ostluft", "data_monitoring_o3_peakseason"))

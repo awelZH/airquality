@@ -143,3 +143,31 @@ round_off <- function (x, digits = 0) {
 
 
 
+
+aggregate_nitrogen_deposition <- function(data) {
+  
+  data <-
+    data %>%
+    dplyr::mutate(
+      parameter = dplyr::case_when(
+        stringr::str_detect(parameter, "NO3") | stringr::str_detect(parameter, "NO2") ~ "aus NOx-Quellen",
+        stringr::str_detect(parameter, "NH3") | stringr::str_detect(parameter, "NH4") ~ "aus NH3-Quellen",
+        TRUE ~ parameter
+      ),
+      parameter =  factor(parameter, levels = c("aus NOx-Quellen", "aus NH3-Quellen", "N-Deposition")),
+      # ecosystem_category = paste0("empfindliches Ökosystem: ", ecosystem_category),
+      site_short = stringr::str_remove(site_short, "_Wald"),
+      site = stringr::str_remove(site, "_Wald"),
+      site = stringr::str_replace(site, "_", "-")
+    ) %>% 
+    dplyr::rename(
+      site_long = site,
+      site = site_short
+    ) %>% 
+    dplyr::group_by(year, site, site_long, source, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) %>%
+    dplyr::summarise(value = sum(value)) %>%
+    dplyr::ungroup()
+  
+  return(data)
+  
+}

@@ -27,25 +27,25 @@ files$emissions$budget$opendata <- 'https://ckan.opendata.swiss/api/3/action/pac
 ### - derived as open data from: https://www.zh.ch/de/politik-staat/statistik-daten/datenkatalog.html#/datasets/2382@awel-kanton-zuerich
 ### - accessed: on the fly via opendata.swiss api:
 files$emissions$rsd$opendata <- 'https://ckan.opendata.swiss/api/3/action/package_show?id=messdaten-langjahriger-abgasmessungen-im-realen-fahrbetrieb-mittels-remote-sensing-rsd'
-files$emissions$rsd$meta <- "misc/rsd_auxiliary_data.csv" # some offline additional data per Euronorm etc
+files$emissions$rsd$meta <- "misc_rsd_auxiliary_data.csv" # some offline additional data per Euronorm etc
 
 ### Selected air quality monitoring data Kanton Zürich from national monitoring network NABEL (yearly values)
 ### - source: Bundesamt für Umwelt BAFU/NABEL
 ### - derived as open data from: https://www.arias.ch/ibonline/ib_online.php
 ### - retrieved on 14.12.2023
-files$airquality$monitoring$nabel_y1 <- "airquality_monitoring/nabel_ib_download_y1.csv"
+files$airquality$monitoring$nabel_y1 <- "input_nabel_ib_y1.csv"
 
 ### Selected air quality monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
 ### - source: OSTLUFT
 ### - derived as (open) data from: direct export by OSTLUFT (can be in principal downloaded as open data from https://www.ostluft.ch/index.php?id=datenabfragen, but only for smaller queriesy)
 ### - retrieved on 15.12.2023
-files$airquality$monitoring$ostluft_y1 <- "airquality_monitoring/ostluft_airmo_y1_kanton_zurich.csv"
+files$airquality$monitoring$ostluft_y1 <- "input_ostluft_airmo_y1.csv"
 
 ### Selected O3 peak-season monitoring data in Kanton Zürich from intercantonal monitoring network OSTLUFT and national monitoring network NABEL (yearly values)
 ### - source: OSTLUFT & NABEL (BAFU & Empa)
 ### - derived as (open) data in hourly aggregation intervals; O3 peak-season calculation is performed offline on these data
 ### - compiled on 19.02.2024
-files$airquality$monitoring$ostluft_nabel_peakseason_y1 <- "airquality_monitoring/ostluft_nabel_offline_o3_peakseason_y1_kanton_zurich.csv"
+files$airquality$monitoring$ostluft_nabel_peakseason_y1 <- "input_ostluft_nabel_compiled_o3_peakseason_y1.csv"
 
 ### Selected nitrogen deposition monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
 ### - source: OSTLUFT
@@ -53,19 +53,19 @@ files$airquality$monitoring$ostluft_nabel_peakseason_y1 <- "airquality_monitorin
 ###   further measured components of nitrogen deposition; if further component deposition was not measured, it has been derived by statistical relationships.
 ###   The fundamentals of the process to derive component nitrogen deposition is documented elsewhere: ... link Fachbericht.
 ### - compiled on 05.01.2024
-files$airquality$monitoring$ostluft_ndep_y1 <- "airquality_monitoring/ostluft_offline_ndep_y1_kanton_zurich.csv"
+files$airquality$monitoring$ostluft_ndep_y1 <- "input_ostluft_compiled_ndep_y1.csv"
 
 ### site metadata OSTLUFT
 ### - source: OSTLUFT
 ### - derived as excerpt from internal OSTLUFT metadatabase
 ### - compiled on 26.01.2024
-files$airquality$monitoring$ostluft_meta <- "airquality_monitoring/ostluft_site_metadata.csv"
+files$airquality$monitoring$ostluft_meta <- "input_ostluft_site_metadata.csv"
 
 ### Selected threshold values (LRV legal limits WHO air quality guideline 
 ### - source: Luftreinhalteverordnung des Bundes and World Health Organization WHO (2021), see also EKL (2023): https://www.ekl.admin.ch/inhalte/dateien/pdf/EKL-231120_de_orig.pdf
 ### - derived from: https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de and https://www.who.int/publications/i/item/9789240034228
 ### - compiled on 14.12.2023
-files$airquality$thresh <- "misc/airquality_threshold_values.csv"
+files$airquality$thresh <- "misc_airquality_threshold_values.csv"
 
 ### Vector data administrative Canton and municipality boundaries Canton Zürich
 ### - source: Kanton Zürich

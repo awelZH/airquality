@@ -1,7 +1,7 @@
 
 
 # prep Emissionskataster
-filter_emikat <- function(data, filters = "canton == 'ZH' & !(subsector %in% c('Weitere Punktquellen OL', 'Rheinschifffahrt', 'Flugverkehr Genf'))") { # exclude some groups that might be redundant due to area distribution methodology
+filter_emissions <- function(data, filters = "canton == 'ZH' & emission != 0 & !(subsector %in% c('Weitere Punktquellen OL', 'Rheinschifffahrt', 'Flugverkehr Genf'))") { # exclude some groups that might be redundant due to area distribution methodology
   dplyr::filter(data, eval(rlang::parse_expr(filters)))
 }
 

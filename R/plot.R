@@ -108,50 +108,50 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
 ### function to ggplot emissions employing structured coloring... this is not ideal, but the best I can do
 ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme = ggplot2::theme_minimal()) {
   
-  groups <-
-    data %>% 
-    dplyr::group_by(pollutant, unit, sector, subsector) %>% 
-    dplyr::summarise(emission = mean(emission)) %>% 
-    dplyr::group_by(pollutant, unit, sector) %>% 
-    dplyr::mutate(
-      subsector = dplyr::case_when(
-        emission < min(sort(emission, decreasing = TRUE)[1:3]) ~ "sonstige",
-        TRUE ~ subsector
-      )
-    ) %>%
-    dplyr::group_by(pollutant, unit, sector, subsector) %>% 
-    dplyr::summarise(emission = sum(emission)) %>% 
-    dplyr::group_by(pollutant, unit) %>% 
-    dplyr::mutate(
-      subsector = dplyr::case_when(
-        subsector != "weitere" & emission < 0.02 * sum(emission)  ~ "sonstige",
-        TRUE ~ subsector
-      )
-    ) %>%
-    dplyr::group_by(pollutant, unit, sector, subsector) %>% 
-    dplyr::summarise(emission = sum(emission)) %>% 
-    dplyr::ungroup() %>% 
-    dplyr::mutate(others = stringr::str_detect(subsector, "sonstige")) %>% 
-    dplyr::arrange(sector, dplyr::desc(others), emission) %>% 
-    dplyr::mutate(subsector = paste0(sector, " / ", subsector)) %>% 
+  # groups <-
+  #   data %>% 
+  #   dplyr::group_by(pollutant, unit, sector, subsector) %>% 
+  #   dplyr::summarise(emission = mean(emission)) %>% 
+  #   dplyr::group_by(pollutant, unit, sector) %>% 
+  #   dplyr::mutate(
+  #     subsector = dplyr::case_when(
+  #       emission < min(sort(emission, decreasing = TRUE)[1:3]) ~ "sonstige",
+  #       TRUE ~ subsector
+  #     )
+  #   ) %>%
+  #   dplyr::group_by(pollutant, unit, sector, subsector) %>% 
+  #   dplyr::summarise(emission = sum(emission)) %>% 
+  #   dplyr::group_by(pollutant, unit) %>% 
+  #   dplyr::mutate(
+  #     subsector = dplyr::case_when(
+  #       subsector != "weitere" & emission < 0.02 * sum(emission)  ~ "sonstige",
+  #       TRUE ~ subsector
+  #     )
+  #   ) %>%
+  #   dplyr::group_by(pollutant, unit, sector, subsector) %>% 
+  #   dplyr::summarise(emission = sum(emission)) %>% 
+  #   dplyr::ungroup() %>% 
+  #   dplyr::mutate(others = stringr::str_detect(subsector, "sonstige")) %>% 
+  #   dplyr::arrange(sector, dplyr::desc(others), emission) %>% 
+  #   dplyr::mutate(subsector = paste0(sector, " / ", subsector)) %>% 
     dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols)) %>% 
     dplyr::group_by(sector) %>% 
     dplyr::mutate(col = colorRampPalette(c(unique(rootcol), shades::brightness(unique(rootcol), 0.6)))(length(subsector))) %>% 
     dplyr::ungroup()
   
   plot <- 
-    data %>% 
-    dplyr::mutate(
-      subsector = paste0(sector, " / ", subsector),
-      subsector = dplyr::case_when(
-        !(subsector %in% groups$subsector) ~ paste0(sector," / sonstige"),
-        TRUE ~ subsector
-      ),
-      subsector = factor(subsector, levels = groups$subsector)
-    ) %>% 
-    dplyr::group_by(year, pollutant, unit, sector, subsector) %>% 
-    dplyr::summarise(emission = sum(emission)) %>% 
-    dplyr::ungroup() %>% 
+    # data %>% 
+    # dplyr::mutate(
+    #   subsector = paste0(sector, " / ", subsector),
+    #   subsector = dplyr::case_when(
+    #     !(subsector %in% groups$subsector) ~ paste0(sector," / sonstige"),
+    #     TRUE ~ subsector
+    #   ),
+    #   subsector = factor(subsector, levels = groups$subsector)
+    # ) %>% 
+    # dplyr::group_by(year, pollutant, unit, sector, subsector) %>% 
+    # dplyr::summarise(emission = sum(emission)) %>% 
+    # dplyr::ungroup() %>% 
     ggplot2::ggplot(aes(x = factor(year), y = emission, fill = subsector)) +
     ggplot2::geom_bar(stat = "identity", position = pos, width = width) + 
     ggplot2::scale_y_continuous(labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01)) +

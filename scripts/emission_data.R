@@ -1,10 +1,20 @@
 # read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss
 
-data_emikat <- read_emikat_opendataswiss(files$emissions$budget$opendata)
+data_emikat <- read_emissions_opendataswiss(files$emissions$budget$opendata)
 
-# filter emission data for Kanton Zürich and exclude some groups that are redundant due to area distribution methodology
+# filter emission data for municipalities within Canton Zürich and exclude some groups that are redundant due to area distribution methodology; also remove emissions of 0
 
-data_emikat <- filter_emikat(data_emikat)
+data_emikat <- filter_emissions(data_emikat) 
+
+# group minor subsectors per emission sector in order to be able to have a plot with max 3 subsectors per sector
+# this step is only for convenience in plotting!
+
+groups <- groups_emission_subsector(data_emikat)
+data_emikat <- left_join(data_emikat, groups, by = c("pollutant", "sector", "subsector"))
+
+# aggregate emissions per pollutant, subsector_new and year
+
+data_emikat <- aggregate_emissions(data_emikat, groups = c("year", "pollutant", "unit", "sector", "subsector_new")) #! test possibility here: sum of emissions needs to match that of original data_emikat
 
 # read Canton Zürich vehicle remote sensing (RS) emission measurement data (RSD) from opendata.swiss, see also: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftschadstoffquellen/emissionen-verkehr/abgasmessungen-rsd.html
 
@@ -82,4 +92,4 @@ readr::write_delim(data_rsd_per_yearmeas, file = "inst/extdata/output_data_nox_e
 
 # clean up
 
-rm(list = c("data_emikat", "data_rsd", "data_vsp", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "rsd_meta", "rsd_meta_temp", "rsd_filters"))
+rm(list = c("data_emikat", "groups", "data_rsd", "data_vsp", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "rsd_meta", "rsd_meta_temp", "rsd_filters"))

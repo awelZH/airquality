@@ -201,5 +201,76 @@ aggregate_nitrogen_deposition <- function(data) {
 
 
 
+aggregate_emissions <- function(data, fun = sum, groups = c("year", "pollutant", "unit", "sector", "subsector")) {
+  
+  data <-
+    data %>% 
+    dplyr::group_by_at(dplyr::vars(groups)) %>%
+    dplyr::summarise(emission = fun(emission)) %>% 
+    dplyr::ungroup() %>% 
+    dplyr::filter(emission > 0)
+
+  return(data)
+}
+
+
+
+groups_emission_subsector <- function(data, threshold_fraction = 0.02, index = 1:3) {
+
+  # mean emissions per category over all years
+  
+  groups <- aggregate_emissions(data, mean, c("pollutant", "sector", "subsector"))
+  
+  # recode subsectors with mean emissions less than the "big x" into subsector "sonstige"
+  
+  groups <- 
+    groups %>% 
+    dplyr::group_by(pollutant, sector) %>% 
+    dplyr::mutate(
+      subsector_new = dplyr::case_when(
+        emission < min(sort(emission, decreasing = TRUE)[index]) ~ "sonstige",
+        TRUE ~ subsector
+      ),
+      subsector_new = paste0(sector, " / ", subsector_new)
+    ) 
+  
+  # aggregate emissions accordingly
+  
+  groups2 <- aggregate_emissions(groups, sum, c("pollutant", "subsector_new"))
+  
+  # second iteration: if subsector emission < overall emission * threshold fraction, then also recode into "sonstige"
+  
+  groups2 <- 
+    groups2 %>% 
+    dplyr::group_by(pollutant) %>% 
+    dplyr::mutate(
+      subsector_new = dplyr::case_when(
+        subsector_new != "weitere" & emission < threshold_fraction * sum(emission)  ~ "sonstige",
+        TRUE ~ subsector_new
+      )
+    ) 
+  
+  # aggregate accordingly
+  
+  groups2 <- aggregate_emissions(groups, sum, c("pollutant", "subsector_new"))
+  
+  # restructure and prepare as lookup table for use outside this function
+  
+  groups2 <- dplyr::filter(groups2, !stringr::str_detect(subsector_new, "sonstige"))
+
+  groups <-
+    groups %>% 
+    dplyr::select(-emission) %>% 
+    dplyr::left_join(groups2, by = c("pollutant", "subsector_new")) %>% 
+    dplyr::arrange(pollutant, sector, dplyr::desc(emission)) %>% 
+    dplyr::mutate(subsector_new = factor(subsector_new, levels = unique(.data$subsector_new))) %>% 
+    dplyr::select(-emission)
+    
+  return(groups)
+}
+
+
+
+
 
 

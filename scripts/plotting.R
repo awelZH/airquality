@@ -106,13 +106,6 @@ plots <- list()
 # plot details of Canton Zürich air pollutant emissions per pollutant, subsector and year (absolute values)
 # and plot maps of air pollutant emissions per pollutant, municipality and year
 
-data_temp <- 
-  data_emikat %>% 
-  dplyr::group_by(year, pollutant, unit, sector, subsector) %>% 
-  dplyr::summarise(emission = sum(emission)) %>% 
-  dplyr::ungroup() %>% 
-  dplyr::filter(emission > 0)
-
 data_temp2 <- 
   data_emikat %>% 
   dplyr::group_by(municipality, year, pollutant, unit) %>% 

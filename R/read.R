@@ -244,7 +244,7 @@ read_bfs_statpop_data <- function(year, path_destination) {
 
 
 
-read_emikat_opendataswiss <- function(apiurl) {
+read_emissions_opendataswiss <- function(apiurl) {
 
   req <- httr2::request(apiurl)
   req <- httr2::req_perform(req)

@@ -1,9 +1,6 @@
 # To-Do:
 # ---
-# finales set an Belastungskarten inkl O3 von Geolion mit allen verfügbaren Jahren
-# Datensätze gezielt für Statistikamt-Visualisierungen in /data/output/ abspeichern
 # ... NO2_PS Airmo Abfrage: inkl. Bauma Oberstufen, Wald Feuerwehr, Zürich Bullingerhof sobald 2023 verfügbar
-# ... Messdaten & Rasterdaten 2023 ergänzen
 # ... Weiteres gemäss "review" feedbacks
 
 
@@ -88,28 +85,20 @@ files$rasterdata$bafu_airquality$jahreskarte$pm10 <- "http://wms.zh.ch/AwelLHPM1
 ### - source: Bundesamt für Umwelt BAFU
 ### - derived on the fly as open data from: https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-ammoniakkonzentration?.language=en
 ### - needs to be aquired by temporary download of *.zip and local extraction of needed data
-files$rasterdata$bafu_nh3$"2020" <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-ammoniakkonzentration/luftreinhaltung-ammoniakkonzentration/luftreinhaltung-ammoniakkonzentration_2056.shp.zip"
+files$rasterdata$bafu_nh3 <- "ch.bafu.luftreinhaltung-ammoniakkonzentration"
 
 ### Modelled raster data nitrogen deposition
 ### - resolution: 500x500m
 ### - source: Bundesamt für Umwelt BAFU
 ### - derived as on the fly open data from: https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoffdeposition?.language=en
 ### - needs to be aquired by temporary download of *.zip and local extraction of needed data
-files$rasterdata$bafu_ndep$"2020" <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-stickstoffdeposition/luftreinhaltung-stickstoffdeposition/luftreinhaltung-stickstoffdeposition_2056.shp.zip"
+files$rasterdata$bafu_ndep <- "ch.bafu.luftreinhaltung-stickstoffdeposition"
 
 ### Modelled raster data exceedance of critical loads for nitrogen (CLN)
 ### - resolution: 1000x1000m
 ### - source: Bundesamt für Umwelt BAFU
 ### - derived on the fly as open data from: https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag?.language=en
 ### - needs to be aquired by temporary download of *.zip and local extraction of needed data
-files$rasterdata$bafu_ndep_exc$"2020" <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag/luftreinhaltung-stickstoff_kritischer_eintrag/luftreinhaltung-stickstoff_kritischer_eintrag_2056.shp.zip"
+files$rasterdata$bafu_ndep_exc <- "ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag"
 
-### Raster data inhabitant-statistics
-### - resolution: 100x100m
-### - source: Bundesamt für Statistik STATPOP
-### - derived on the fly as open data from: https://www.bfs.admin.ch/bfs/de/home/dienstleistungen/geostat/geodaten-bundesstatistik/gebaeude-wohnungen-haushalte-personen/bevoelkerung-haushalte-ab-2010.html
-files$rasterdata$bfs_pop$"2015" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1442443/master"
-files$rasterdata$bfs_pop$"2020" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/19106709/master"
-files$rasterdata$bfs_pop$"2021" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/23528269/master"
-files$rasterdata$bfs_pop$"2022" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/27965868/master"
 

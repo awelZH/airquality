@@ -289,7 +289,7 @@ plots$airquality$monitoring$NO2$y1_timeseries <-
       subtitle = openair::quickText("NO2, Jahresmittel (µg/m3)")
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
-    pointsize = pointsize, theme = theme_ts, threshold = get_threshold(threshold_values, "NO2")
+    pointsize = pointsize, theme = theme_ts, threshold = extract_threshold(threshold_values, "NO2")
   ) +
   scale_color_siteclass
 
@@ -305,7 +305,7 @@ plots$airquality$monitoring$PM10$y1_timeseries <-
       subtitle = openair::quickText("PM10, Jahresmittel (µg/m3)")
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
-    pointsize = pointsize, theme = theme_ts, threshold = get_threshold(threshold_values, "PM10")
+    pointsize = pointsize, theme = theme_ts, threshold = extract_threshold(threshold_values, "PM10")
   ) +
   scale_color_siteclass
 
@@ -321,7 +321,7 @@ plots$airquality$monitoring$`PM2.5`$y1_timeseries <-
       subtitle = openair::quickText("PM2.5, Jahresmittel (µg/m3)")
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
-    pointsize = pointsize, theme = theme_ts, threshold = get_threshold(threshold_values, "PM2.5")
+    pointsize = pointsize, theme = theme_ts, threshold = extract_threshold(threshold_values, "PM2.5")
   ) +
   scale_color_siteclass
 
@@ -338,7 +338,7 @@ plots$airquality$monitoring$O3$`max_98%_m1_timeseries` <-
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
     pointsize = pointsize, theme = theme_ts,
-    threshold = get_threshold(threshold_values, pollutant = "O3", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3", source = "LRV Grenzwert", aggregation = "m1")
+    threshold = extract_threshold(threshold_values, pollutant = "O3", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3", source = "LRV Grenzwert", aggregation = "m1")
   ) +
   scale_color_siteclass
 
@@ -355,7 +355,7 @@ plots$airquality$monitoring$O3$`peak-season_timeseries` <-
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
     pointsize = pointsize, theme = theme_ts,
-    threshold = get_threshold(threshold_values, pollutant = "O3", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration", source = "WHO Richtwert", aggregation = "peak-season")
+    threshold = extract_threshold(threshold_values, pollutant = "O3", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration", source = "WHO Richtwert", aggregation = "peak-season")
   ) +
   scale_color_siteclass
 
@@ -670,7 +670,7 @@ plots$exposition$NO2$distribution <-
   lapply(setNames(names(data_expo$NO2$exposition_distrib), names(data_expo$NO2$exposition_distrib)), function(year) {
     ggplot_expo_hist(
       data = data_expo$NO2$exposition_distrib[[year]], x = "NO2", y = "population", barwidth = 1,
-      xlims = c(0,90), xbreaks = seq(0,90,10), threshold = get_threshold(threshold_values, "NO2"),
+      xlims = c(0,90), xbreaks = seq(0,90,10), threshold = extract_threshold(threshold_values, "NO2"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung NO2 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Stickstoffdioxid (NO2)"),
@@ -685,7 +685,7 @@ plots$exposition$NO2$cumulative <-
   lapply(setNames(names(data_expo$NO2$exposition_distrib), names(data_expo$NO2$exposition_distrib)), function(year) {
     ggplot_expo_cumulative(
       data = data_expo$NO2$exposition_distrib[[year]], x = "NO2", y = "population_relative", linewidth = 1,
-      xlims = c(0,91), xbreaks = seq(0,90,10), threshold = get_threshold(threshold_values, "NO2"),
+      xlims = c(0,91), xbreaks = seq(0,90,10), threshold = extract_threshold(threshold_values, "NO2"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung NO2 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Stickstoffdioxid (NO2)"),
@@ -701,7 +701,7 @@ plots$exposition$PM10$distribution <-
   lapply(setNames(names(data_expo$PM10$exposition_distrib), names(data_expo$PM10$exposition_distrib)), function(year) {
     ggplot_expo_hist(
       data = data_expo$PM10$exposition_distrib[[year]], x = "PM10", y = "population", barwidth = 0.2,
-      xlims = c(0,24), xbreaks = seq(0,24,2), threshold = get_threshold(threshold_values, "PM10"),
+      xlims = c(0,24), xbreaks = seq(0,24,2), threshold = extract_threshold(threshold_values, "PM10"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung PM10 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Feinstaub PM10"),
@@ -716,7 +716,7 @@ plots$exposition$PM10$cumulative <-
   lapply(setNames(names(data_expo$PM10$exposition_distrib), names(data_expo$PM10$exposition_distrib)), function(year) {
     ggplot_expo_cumulative(
       data = data_expo$PM10$exposition_distrib[[year]], x = "PM10", y = "population_relative", linewidth = 1,
-      xlims = c(0,24), xbreaks = seq(0,24,2), threshold = get_threshold(threshold_values, "PM10"),
+      xlims = c(0,24), xbreaks = seq(0,24,2), threshold = extract_threshold(threshold_values, "PM10"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung PM10 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Feinstaub (PM10)"),
@@ -732,7 +732,7 @@ plots$exposition$PM2.5$distribution <-
   lapply(setNames(names(data_expo$PM2.5$exposition_distrib), names(data_expo$PM2.5$exposition_distrib)), function(year) {
     ggplot_expo_hist(
       data = data_expo$PM2.5$exposition_distrib[[year]], x = "PM2.5", y = "population", barwidth = 0.2,
-      xlims = c(0,16), xbreaks = seq(0,16,1), threshold = get_threshold(threshold_values, "PM2.5"),
+      xlims = c(0,16), xbreaks = seq(0,16,1), threshold = extract_threshold(threshold_values, "PM2.5"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung PM2.5 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Feinstaub PM2.5"),
@@ -747,7 +747,7 @@ plots$exposition$PM2.5$cumulative <-
   lapply(setNames(names(data_expo$PM2.5$exposition_distrib), names(data_expo$PM2.5$exposition_distrib)), function(year) {
     ggplot_expo_cumulative(
       data = data_expo$PM2.5$exposition_distrib[[year]], x = "PM2.5", y = "population_relative", linewidth = 1,
-      xlims = c(0,16), xbreaks = seq(0,16,1), threshold = get_threshold(threshold_values, "PM2.5"),
+      xlims = c(0,16), xbreaks = seq(0,16,1), threshold = extract_threshold(threshold_values, "PM2.5"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung PM2.5 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Feinstaub (PM2.5)"),
@@ -800,9 +800,9 @@ plots$exposition$Ndep$distribution$`2020` <-
   dplyr::ungroup() %>% 
   ggplot2::ggplot(aes(x = EXNMAX, y = n, fill = EXNMAX)) + 
   ggplot2::geom_bar(stat = "identity", color = NA, width = 1) +
-  ggplot2::geom_vline(xintercept = 0, color = get_threshold(threshold_values, "NO2")$color[1], 
-                      linetype = get_threshold(threshold_values, "NO2")$linetype[1], linewidth = get_threshold(threshold_values, "NO2")$linesize[1]) +
-  ggplot2::geom_text(data = tibble::tibble(x = -0.25, label = "kritische Eintragsrate CLN"), mapping = aes(x = x, y = 0, label = label), size = get_threshold(threshold_values, "NO2")$labelsize[1], 
+  ggplot2::geom_vline(xintercept = 0, color = extract_threshold(threshold_values, "NO2")$color[1], 
+                      linetype = extract_threshold(threshold_values, "NO2")$linetype[1], linewidth = extract_threshold(threshold_values, "NO2")$linesize[1]) +
+  ggplot2::geom_text(data = tibble::tibble(x = -0.25, label = "kritische Eintragsrate CLN"), mapping = aes(x = x, y = 0, label = label), size = extract_threshold(threshold_values, "NO2")$labelsize[1], 
                      hjust = 0, vjust = 0, angle = 90, nudge_x = -42*0.01, inherit.aes = FALSE) +
   ggplot2::scale_x_continuous(limits = c(-5,45), breaks = seq(-5,45,5), expand = c(0.01,0.01)) +
   ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'")) +
@@ -828,9 +828,9 @@ plots$exposition$Ndep$cumulative$`2020` <-
   dplyr::mutate(n_relative = cumsum(n) / sum(n)) %>% 
   ggplot2::ggplot(aes(x = EXNMAX, y = n_relative)) + 
   ggplot2::geom_line(linewidth = linewidth, color = "gray40") +
-  ggplot2::geom_vline(xintercept = 0, color = get_threshold(threshold_values, "NO2")$color[1], 
-                      linetype = get_threshold(threshold_values, "NO2")$linetype[1], linewidth = get_threshold(threshold_values, "NO2")$linesize[1]) +
-  ggplot2::geom_text(data = tibble::tibble(x = -0.25, label = "kritische Eintragsrate CLN"), mapping = aes(x = x, y = 0, label = label), size = get_threshold(threshold_values, "NO2")$labelsize[1], 
+  ggplot2::geom_vline(xintercept = 0, color = extract_threshold(threshold_values, "NO2")$color[1], 
+                      linetype = extract_threshold(threshold_values, "NO2")$linetype[1], linewidth = extract_threshold(threshold_values, "NO2")$linesize[1]) +
+  ggplot2::geom_text(data = tibble::tibble(x = -0.25, label = "kritische Eintragsrate CLN"), mapping = aes(x = x, y = 0, label = label), size = extract_threshold(threshold_values, "NO2")$labelsize[1], 
                      hjust = 0, vjust = 0, angle = 90, nudge_x = -50*0.01, inherit.aes = FALSE) +
   ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
   ggplot2::scale_x_continuous(limits = c(-5,45), breaks = seq(-5,45,5), expand = c(0.01,0.01)) +

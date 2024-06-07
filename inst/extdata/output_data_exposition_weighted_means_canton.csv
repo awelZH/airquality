@@ -1,0 +1,5 @@
+year;admin_boundary;parameter;unit;pop_weighted_mean;source
+2015;Canton Zürich;NO2;μg/m3;22.2;OSTLUFT, BAFU, BFS
+2015;Canton Zürich;PM2.5;μg/m3;10.2;OSTLUFT, BAFU, BFS
+2015;Canton Zürich;PM10;μg/m3;14.1;OSTLUFT, BAFU, BFS
+2015;Canton Zürich;eBC;μg/m3;5.6;OSTLUFT, BAFU, BFS

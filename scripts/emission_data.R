@@ -1,6 +1,6 @@
 # read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss
 
-data_emikat <- read_emissions_opendataswiss(files$emissions$budget$opendata)
+data_emikat <- get_emissions_opendataswiss(files$emissions$budget$opendata)
 
 # filter emission data for municipalities within Canton Zürich and exclude some groups that are redundant due to area distribution methodology; also remove emissions of 0
 
@@ -18,7 +18,7 @@ data_emikat <- aggregate_emissions(data_emikat, groups = c("year", "pollutant", 
 
 # read Canton Zürich vehicle remote sensing (RS) emission measurement data (RSD) from opendata.swiss, see also: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftschadstoffquellen/emissionen-verkehr/abgasmessungen-rsd.html
 
-data_rsd <- read_rsd_opendataswiss(files$emissions$rsd$opendata)
+data_rsd <- get_rsd_opendataswiss(files$emissions$rsd$opendata)
 
 # read and restructure RSD metadata 
 

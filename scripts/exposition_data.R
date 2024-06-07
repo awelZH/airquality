@@ -1,94 +1,55 @@
 
-### air pollution inhabitant / sensitive ecosystem exposition
-### ------------------------------------------------------------
+# get all available raster data regarding inhabitant population (from BFS), air pollutants (from geolion) and reactive nitrogen (from data.geo.admin); join population and air pollutant data
+#FIXME: see issue 12
+data_raster <- get_prepare_raster_data(files, map_canton)
+pollutants <- names(data_raster)[!(names(data_raster) %in% c("population", "NH3", "Ndep", "Ndep_exceedance"))]
 
-data_expo <- list()
+# air pollution inhabitant exposition: population-weighted mean values per municipality (and for the whole canton)
 
-### calculate population-weighted mean values per municipality (and for canton)
-
-### ... for NO2
-
-
-
-# FIXME: wrapper funktion!
-# wie bei airquality-population
-data_expo$NO2$population_weighted_mean <- 
-  lapply(setNames(names(data_raster$NO2), names(data_raster$NO2)), function(year) {
-    data <- sf::st_join(boundaries, sf::st_as_sf(data_raster$NO2[[year]]))
-    canton <- round_off(population_weighted_mean(data$NO2, data$population), 1)
-    municipalities <- aggregate_population_weighted_mean(data, y = "NO2")
-    municipalities <- dplyr::left_join(boundaries, municipalities, by = "geodb_oid")
-    return(list(canton = canton, municipalities = municipalities))
+data_weighted_means <- 
+  lapply(setNames(pollutants, pollutants), function(pollutant) {
+    data <- join_raster_data_with_municipalities(pollutant, data_raster, map_municipalities)
+    calc_all_population_weighted_means(pollutant, data, map_municipalities)
   })
 
-### ... for PM10
+# air pollution inhabitant population exposition distribution (over concentration bins and cumulative) for the entire canton
 
-data_expo$PM10$population_weighted_mean <- 
-  lapply(setNames(names(data_raster$PM10), names(data_raster$PM10)), function(year) {
-    data <- sf::st_join(boundaries, sf::st_as_sf(data_raster$PM10[[year]]))
-    canton <- round(population_weighted_mean(data$PM10, data$population), 1)
-    municipalities <- aggregate_population_weighted_mean(data, y = "PM10")
-    municipalities <- dplyr::left_join(boundaries, municipalities, by = "geodb_oid")
-    return(list(canton = canton, municipalities = municipalities))
+data_expo_distr <- 
+  lapply(setNames(pollutants, pollutants), function(pollutant) {
+    calc_all_population_expo_distr(pollutant, data_raster[[pollutant]])
   })
 
-### ... for PM2.5
+# sensitive ecosystem reactive nitrogen deposition exposition: distribution across all sensitive ecosystems
 
-data_expo$PM2.5$population_weighted_mean <- 
-  lapply(setNames(names(data_raster$PM2.5), names(data_raster$PM2.5)), function(year) {
-    data <- sf::st_join(boundaries, sf::st_as_sf(data_raster$PM2.5[[year]]))
-    canton <- round_off(population_weighted_mean(data$PM2.5, data$population), 1)
-    municipalities <- aggregate_population_weighted_mean(data, y = "PM2.5")
-    municipalities <- dplyr::left_join(boundaries, municipalities, by = "geodb_oid")
-    return(list(canton = canton, municipalities = municipalities))
-  })
+data_expo_distr$Ndep <- calc_all_ndep_ecosystem_expo_distr(data_raster$Ndep_exceedance)
+  
+# write output datasets
+  
+lapply(pollutants, function(pollutant) extract_weighted_mean_canton(data_weighted_means[[pollutant]], pollutant)) %>% 
+  dplyr::bind_rows() %>%
+  readr::write_delim(file = "inst/extdata/output_data_exposition_weighted_means_canton.csv", delim = ";", na = "NA")
 
-### ... for eBC
+lapply(pollutants, function(pollutant) extract_weighted_mean_municipalities(data_weighted_means[[pollutant]], pollutant)) %>% 
+  dplyr::bind_rows() %>% 
+  readr::write_delim(file = "inst/extdata/output_data_exposition_weighted_means_municipalities.csv", delim = ";", na = "NA")
 
-data_expo$eBC$population_weighted_mean <- 
-  lapply(setNames(names(data_raster$eBC), names(data_raster$eBC)), function(year) {
-    data <- sf::st_join(boundaries, sf::st_as_sf(data_raster$eBC[[year]]))
-    canton <- round_off(population_weighted_mean(data$eBC, data$population), 1)
-    municipalities <- aggregate_population_weighted_mean(data, y = "eBC")
-    municipalities <- dplyr::left_join(boundaries, municipalities, by = "geodb_oid")
-    return(list(canton = canton, municipalities = municipalities))
-  })
+lapply(pollutants, function(pollutant) extract_exposition_distr_pollutants(data_expo_distr[[pollutant]], pollutant)) %>% 
+  dplyr::bind_rows() %>% 
+  readr::write_delim(file = "inst/extdata/output_data_exposition_distribution_pollutants.csv", delim = ";", na = "NA")
+  
+readr::write_delim(extract_exposition_distr_ndep(data_expo_distr$Ndep), file = "inst/extdata/output_data_exposition_distribution_ndep.csv", delim = ";", na = "NA")
 
-### ... for O3p98
+# clean up
 
-# ...
+rm(list = c("data_raster", "data_weighted_means", "data_expo_distr", "pollutants"))
 
-### calculate exposition distribution (absolute and relative/cumlulative)
 
-### ... for NO2
 
-data_expo$NO2$exposition_distrib <- 
-  lapply(setNames(names(data_raster$NO2), names(data_raster$NO2)), function(year) {
-    data <- aggregate_exposition_distrib(data_raster$NO2[[year]], y = "NO2") # abgerundet auf 1, Klassenmitte
-    exposition_distrib_cumulative(data, y = "NO2")
-  })
 
-### ... for PM10
 
-data_expo$PM10$exposition_distrib <- 
-  lapply(setNames(names(data_raster$PM10), names(data_raster$PM10)), function(year) {
-    data <- aggregate_exposition_distrib(data_raster$PM10[[year]], y = "PM10", fun = function(x) {floor(x * 5) / 5 + 0.1}) # abgerundet auf 0.2, Klassenmitte
-    exposition_distrib_cumulative(data, y = "PM10")
-  })
+  
 
-### ... for PM2.5
 
-data_expo$PM2.5$exposition_distrib <- 
-  lapply(setNames(names(data_raster$PM2.5), names(data_raster$PM2.5)), function(year) {
-    data <- aggregate_exposition_distrib(data_raster$PM2.5[[year]], y = "PM2.5", fun = function(x) {floor(x * 5) / 5 + 0.1}) # abgerundet auf 0.2, Klassenmitte
-    exposition_distrib_cumulative(data, y = "PM2.5")
-  })
 
-### ... for eBC
 
-data_expo$eBC$exposition_distrib <- 
-  lapply(setNames(names(data_raster$eBC), names(data_raster$eBC)), function(year) {
-    data <- aggregate_exposition_distrib(data_raster$eBC[[year]], y = "eBC", fun = function(x) {floor(x * 20) / 20 + 0.025}) # abgerundet auf 0.05, Klassenmitte
-    exposition_distrib_cumulative(data, y = "eBC")
-  })
 

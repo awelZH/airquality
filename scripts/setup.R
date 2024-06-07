@@ -23,11 +23,9 @@ load_packages(c("devtools", "ggh4x", "scales", "lemon", "openair", "shades",
 
 devtools::load_all()
                                                                                                           
-
 # read input dataset table
 # FIXME: integrate table / dataset structure
 # ...
-
 
 # map projection CRS = CH1903+ / LV95 throughout analysis
 
@@ -35,16 +33,8 @@ crs <- 2056
 
 # map boundaries Canton Zürich and municipalities
 
-map_municipalities <- 
-  download_boundaries_geolion(wfs = files$boundaries$wfs, version = "2.0.0", crs = crs) %>% 
-  sf::read_sf(type = 6) %>% 
-  sf::st_transform(crs = sf::st_crs(crs))
-
-map_canton <-
-  map_municipalities %>%
-  sf::st_union() %>%
-  sf::st_boundary() %>% 
-  sf::st_cast("POLYGON")
+map_municipalities <- get_geolion_wfs(wfs = files$boundaries$wfs, version = "2.0.0", crs = crs) 
+map_canton <- aggregate_map(map_municipalities)
 
 # ggplot() +
 #   ggplot2::geom_sf(data = map_municipalities) +
@@ -53,3 +43,7 @@ map_canton <-
 # ggplot() +
 #   ggplot2::geom_sf(data = map_canton) +
 #   ggplot2::theme_void()
+
+# clean up
+
+rm(list = c("load_packages"))

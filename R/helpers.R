@@ -1,6 +1,6 @@
 
-add_to_maplist <- function(maplist, target_source, target_parameter) {
-  
+add_to_maplist <- function(capabilities, maplist, target_source, target_parameter) {
+
   if (target_source == "pollumap") {
     
     coverage_summary <- capabilities[[target_source]]$getCoverageSummaries()
@@ -24,71 +24,42 @@ add_to_maplist <- function(maplist, target_source, target_parameter) {
 
 
 
-get_geolion_wcs_capabilities_from_list <- function(capablilitylist, maplist, coverage, parameter) {
+extract_from_capabilitylist <- function(capablilitylist, maplist, coverage, parameter) {
   
   product <- unlist(strsplit(names(maplist[maplist == coverage]), split = ".", fixed = TRUE))[1]
-  capability <- capablilitylist[[product]]
-  if (extract_year(coverage) != 2015) {capability <- capability[[tolower(parameter)]]} 
+  capabilities <- capablilitylist[[product]]
+  if (extract_year(coverage) != 2015) {capabilities <- capabilities[[tolower(parameter)]]} 
   
-  return(capability)
+  return(capabilities)
 }
 
 
 
-
-### function to make sure that there are no duplicate measurements per site / year / unit for data with interval = y1 in format rOstluft::format_rolf() 
-### in case there have been NO2 monitor and passive sampler measurements (prefer monitor data = reference method); 
-### same for PM10 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method);
-### same for PM2.5 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method)
-
-
-
-remove_duplicate_y1 <- function(data){
+# function to extract target threshold values from overall threshold data for plotting with ggplot_timeseries()
+extract_threshold <- function(threshold_values, pollutant = NULL, aggregation = "y1", metric = "mean", unit = "µg/m3", 
+                          source = c("LRV Grenzwert", "WHO Richtwert")) {
   
-  # FIXME: funktion welche den Parameter als input hat ;)
-  # FIXME: etwas stimmt hier noch nicht, was ist parameter?
-  replace_no2_ps <- function(parameter, value){
-    if (sum(c("NO2", "NO2_PS") %in% parameter) == 2) {
-      if (!is.na(value[which(parameter == "NO2")])){
-        value[which(parameter == "NO2_PS")] <- NA
-      }
-    }
-    return(value)
-  }
+  thresholds <-
+    threshold_values %>%
+    dplyr::filter(
+      source %in% !!source &
+        pollutant == !!pollutant & aggregation == !!aggregation &
+        metric == !!metric & unit == !!unit
+    ) %>%
+    dplyr::arrange(source)
   
-  replace_pm10 <- function(parameter, value){
-    if (sum(c("PM10", "PM10h") %in% parameter) == 2) {
-      if (!is.na(value[which(parameter == "PM10h")])){
-        value[which(parameter == "PM10")] <- NA
-      }
-    }
-    return(value)
-  }
+  thresholds <-
+    list(
+      value = thresholds$threshold,
+      color = thresholds$col,
+      labels = thresholds$source,
+      labelsize = thresholds$lbsz,
+      linetype = thresholds$lty,
+      linesize = thresholds$lsz
+    )
   
-  replace_pm25 <- function(parameter, value){
-    if (sum(c("PM2.5", "PM2.5h") %in% parameter) == 2) {
-      if (!is.na(value[which(parameter == "PM2.5h")])){
-        value[which(parameter == "PM2.5")] <- NA
-      }
-    }
-    return(value)
-  }
-  
-  data <- 
-    data %>% 
-    dplyr::group_by(starttime, site, unit) %>% 
-    dplyr::mutate(
-      value = replace_no2_ps(parameter, value),
-      value = replace_pm10(parameter, value),
-      value = replace_pm25(parameter, value)
-    ) %>% 
-    dplyr::ungroup()
-  
-  return(data)
+  return(thresholds)
 }
-
-
-
 
 
 
@@ -110,17 +81,23 @@ longtitle <- function(x) {
 }
 
 
-
 extract_year <- function(string) {as.numeric(stringr::str_extract(string, "(1|2)[0-9]{3}"))}
 
 
 
-### 1:1 copy from rOstluft::pad() => because this is the only function we need from this package
-pad2 <- function(data, start_date = NULL, end_date = NULL, drop_last = FALSE) {
+set_year <- function(maps) setNames(as.character(unique(extract_year(maps))), unique(extract_year(maps)))
+
+
+
+
+bin_fun <- function(pollutant) {
   
-  data.grouped <- dplyr::group_by(data, .data$site, .data$parameter, .data$interval, .data$unit)
-  data.grouped <- dplyr::do(data.grouped, pad_serie(.data, start_date, end_date, drop_last))
+  fun <- function(x) {floor(x) + 0.5} # default: abgerundet auf 1, Klassenmitte
+  if (pollutant == "PM10") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
+  if (pollutant == "PM2.5") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
+  if (pollutant == "eBC") {fun <- function(x) {floor(x * 20) / 20 + 0.025}} # abgerundet auf 0.05, Klassenmitte
   
-  return(dplyr::ungroup(data.grouped))
+  return(fun)
 }
+
 

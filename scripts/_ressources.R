@@ -1,9 +1,6 @@
 # To-Do:
 # ---
-# finales set an Belastungskarten inkl O3 von Geolion mit allen verfügbaren Jahren
-# Datensätze gezielt für Statistikamt-Visualisierungen in /data/output/ abspeichern
 # ... NO2_PS Airmo Abfrage: inkl. Bauma Oberstufen, Wald Feuerwehr, Zürich Bullingerhof sobald 2023 verfügbar
-# ... Messdaten & Rasterdaten 2023 ergänzen
 # ... Weiteres gemäss "review" feedbacks
 
 
@@ -27,25 +24,26 @@ files$emissions$budget$opendata <- 'https://ckan.opendata.swiss/api/3/action/pac
 ### - derived as open data from: https://www.zh.ch/de/politik-staat/statistik-daten/datenkatalog.html#/datasets/2382@awel-kanton-zuerich
 ### - accessed: on the fly via opendata.swiss api:
 files$emissions$rsd$opendata <- 'https://ckan.opendata.swiss/api/3/action/package_show?id=messdaten-langjahriger-abgasmessungen-im-realen-fahrbetrieb-mittels-remote-sensing-rsd'
-files$emissions$rsd$meta <- "misc/rsd_auxiliary_data.csv" # some offline additional data per Euronorm etc
+files$emissions$rsd$meta <- "misc_rsd_auxiliary.csv" # some offline additional data per Euronorm etc
+files$emissions$rsd$filters <- "misc_rsd_filters.csv" # filter criteria
 
 ### Selected air quality monitoring data Kanton Zürich from national monitoring network NABEL (yearly values)
 ### - source: Bundesamt für Umwelt BAFU/NABEL
 ### - derived as open data from: https://www.arias.ch/ibonline/ib_online.php
 ### - retrieved on 14.12.2023
-files$airquality$monitoring$nabel_y1 <- "airquality_monitoring/nabel_ib_download_y1.csv"
+files$airquality$monitoring$nabel_y1 <- "input_nabel_ib_y1.csv"
 
 ### Selected air quality monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
 ### - source: OSTLUFT
 ### - derived as (open) data from: direct export by OSTLUFT (can be in principal downloaded as open data from https://www.ostluft.ch/index.php?id=datenabfragen, but only for smaller queriesy)
 ### - retrieved on 15.12.2023
-files$airquality$monitoring$ostluft_y1 <- "airquality_monitoring/ostluft_airmo_y1_kanton_zurich.csv"
+files$airquality$monitoring$ostluft_y1 <- "input_ostluft_airmo_y1.csv"
 
 ### Selected O3 peak-season monitoring data in Kanton Zürich from intercantonal monitoring network OSTLUFT and national monitoring network NABEL (yearly values)
 ### - source: OSTLUFT & NABEL (BAFU & Empa)
 ### - derived as (open) data in hourly aggregation intervals; O3 peak-season calculation is performed offline on these data
 ### - compiled on 19.02.2024
-files$airquality$monitoring$ostluft_nabel_peakseason_y1 <- "airquality_monitoring/ostluft_nabel_offline_o3_peakseason_y1_kanton_zurich.csv"
+files$airquality$monitoring$ostluft_nabel_peakseason_y1 <- "input_ostluft_nabel_compiled_o3_peakseason_y1.csv"
 
 ### Selected nitrogen deposition monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
 ### - source: OSTLUFT
@@ -53,19 +51,19 @@ files$airquality$monitoring$ostluft_nabel_peakseason_y1 <- "airquality_monitorin
 ###   further measured components of nitrogen deposition; if further component deposition was not measured, it has been derived by statistical relationships.
 ###   The fundamentals of the process to derive component nitrogen deposition is documented elsewhere: ... link Fachbericht.
 ### - compiled on 05.01.2024
-files$airquality$monitoring$ostluft_ndep_y1 <- "airquality_monitoring/ostluft_offline_ndep_y1_kanton_zurich.csv"
+files$airquality$monitoring$ostluft_ndep_y1 <- "input_ostluft_compiled_ndep_y1.csv"
 
 ### site metadata OSTLUFT
 ### - source: OSTLUFT
 ### - derived as excerpt from internal OSTLUFT metadatabase
 ### - compiled on 26.01.2024
-files$airquality$monitoring$ostluft_meta <- "airquality_monitoring/ostluft_site_metadata.csv"
+files$airquality$monitoring$ostluft_meta <- "input_ostluft_site_metadata.csv"
 
 ### Selected threshold values (LRV legal limits WHO air quality guideline 
 ### - source: Luftreinhalteverordnung des Bundes and World Health Organization WHO (2021), see also EKL (2023): https://www.ekl.admin.ch/inhalte/dateien/pdf/EKL-231120_de_orig.pdf
 ### - derived from: https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de and https://www.who.int/publications/i/item/9789240034228
 ### - compiled on 14.12.2023
-files$airquality$thresh <- "misc/airquality_threshold_values.csv"
+files$airquality$thresh <- "misc_airquality_threshold_values.csv"
 
 ### Vector data administrative Canton and municipality boundaries Canton Zürich
 ### - source: Kanton Zürich
@@ -87,28 +85,20 @@ files$rasterdata$bafu_airquality$jahreskarte$pm10 <- "http://wms.zh.ch/AwelLHPM1
 ### - source: Bundesamt für Umwelt BAFU
 ### - derived on the fly as open data from: https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-ammoniakkonzentration?.language=en
 ### - needs to be aquired by temporary download of *.zip and local extraction of needed data
-files$rasterdata$bafu_nh3$"2020" <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-ammoniakkonzentration/luftreinhaltung-ammoniakkonzentration/luftreinhaltung-ammoniakkonzentration_2056.shp.zip"
+files$rasterdata$bafu_nh3 <- "ch.bafu.luftreinhaltung-ammoniakkonzentration"
 
 ### Modelled raster data nitrogen deposition
 ### - resolution: 500x500m
 ### - source: Bundesamt für Umwelt BAFU
 ### - derived as on the fly open data from: https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoffdeposition?.language=en
 ### - needs to be aquired by temporary download of *.zip and local extraction of needed data
-files$rasterdata$bafu_ndep$"2020" <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-stickstoffdeposition/luftreinhaltung-stickstoffdeposition/luftreinhaltung-stickstoffdeposition_2056.shp.zip"
+files$rasterdata$bafu_ndep <- "ch.bafu.luftreinhaltung-stickstoffdeposition"
 
 ### Modelled raster data exceedance of critical loads for nitrogen (CLN)
 ### - resolution: 1000x1000m
 ### - source: Bundesamt für Umwelt BAFU
 ### - derived on the fly as open data from: https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag?.language=en
 ### - needs to be aquired by temporary download of *.zip and local extraction of needed data
-files$rasterdata$bafu_ndep_exc$"2020" <- "https://data.geo.admin.ch/ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag/luftreinhaltung-stickstoff_kritischer_eintrag/luftreinhaltung-stickstoff_kritischer_eintrag_2056.shp.zip"
+files$rasterdata$bafu_ndep_exc <- "ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag"
 
-### Raster data inhabitant-statistics
-### - resolution: 100x100m
-### - source: Bundesamt für Statistik STATPOP
-### - derived on the fly as open data from: https://www.bfs.admin.ch/bfs/de/home/dienstleistungen/geostat/geodaten-bundesstatistik/gebaeude-wohnungen-haushalte-personen/bevoelkerung-haushalte-ab-2010.html
-files$rasterdata$bfs_pop$"2015" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1442443/master"
-files$rasterdata$bfs_pop$"2020" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/19106709/master"
-files$rasterdata$bfs_pop$"2021" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/23528269/master"
-files$rasterdata$bfs_pop$"2022" <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets/27965868/master"
 

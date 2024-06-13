@@ -1,0 +1,7 @@
+﻿parameter;min;max;unit;comment
+nmin;50;;;minimum number of valid records per aggregation
+vehicleyears;1992;;;vehicle model years
+velocityrange;5;60;km/h;range of vehicle velocity
+accelerationrange;-2;4;km/h/s;range of vehicle acceleration
+vsprange;1;35;kW/t;range of vehicle specific power
+weightmax;;3500;kg;maximum vehicle unloaded weight

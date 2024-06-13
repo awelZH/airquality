@@ -13,6 +13,7 @@ Imports:
     archive,
     dplyr,
     ggplot2,
+    httr2,
     lubridate,
     ows4R,
     purrr,
@@ -27,9 +28,7 @@ Imports:
     tidyr
 Suggests: 
     devtools,
-    fs,
     ggh4x,
-    httr2,
     lemon,
     openair,
     rOstluft.plot,

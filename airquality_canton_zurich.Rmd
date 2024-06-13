@@ -17,22 +17,12 @@ update_data <- TRUE
 
 if (update_data) {
 
-  source("R/01_packages.R", encoding = "UTF-8")
-  source("R/02_functions.R", encoding = "UTF-8")
-  source("R/03_auxiliary.R", encoding = "UTF-8")
-  source("R/04_emissions.R", encoding = "UTF-8")
-  source("R/05_airquality_monitoring.R", encoding = "UTF-8")
-  source("R/06_airquality_rasterdata.R", encoding = "UTF-8")
-  source("R/07_exposition.R", encoding = "UTF-8")
+  source("analyse_airquality.R", encoding = "UTF-8")
   
 } else {
 
-  require(ggplot2)
-  require(ggh4x)
-  require(scales)
-  require(lemon)
-  
-  plots <- readRDS("data/output/ggplots.rds")
+  source("scripts/setup.R", encoding = "UTF-8")
+  source("scripts/plotting.R", encoding = "UTF-8")
 
 }
 

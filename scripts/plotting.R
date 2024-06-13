@@ -1,7 +1,7 @@
-### preparing plotting
-### ------------------------------------------------------------
+# preparing plotting
+# ------------------------------------------------------------
 
-### add plotting parameter to LRV threshold limit values & WHO air quality guideline values
+# add plotting parameter to LRV threshold limit values & WHO air quality guideline values
 
 col_lrv <- "red3" # color of LRV threshold value
 col_who <- "gray30" # color of WHO guideline threshold value
@@ -21,19 +21,19 @@ threshold_values <-
   ) %>% 
   dplyr::right_join(threshold_values, by = "source")
 
-### subsetting parameters
+# subsetting parameters
 
 years <- 2000:(lubridate::year(Sys.Date()) - 2) # years to consider for plotting 
 n_years <- 3 # consider last 3 years for plotting relative threshold comparison    
 parameters <- c("NO2", "NO2_PS", "PM10", "PM2.5", "O3_max_98%_m1", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for timeseries plotting
 
-### plotting size parameters
+# plotting size parameters
 
 basesize <- 12 # ggplot theme base_size
 pointsize <- 2 # size of point markers
 linewidth <- 1 # width of lines
 
-### colors and color scales
+# colors and color scales
 
 scale_fill_siteclass <- 
   ggplot2::scale_fill_manual(name = "Standortklasse", values = c(
@@ -65,7 +65,7 @@ immission_colorscale_nh3 <- rOstluft.plot::scale_fill_viridis_squished(name = "N
 immission_colorscale_ndep <- rOstluft.plot::scale_fill_viridis_squished(name = "Ndep\n(kgN/ha/Jahr)", limits = c(15, 30), breaks = seq(15, 30, 5), direction = -1, option = "A", na.value = NA)
 immission_colorscale_ndep_exc <- rOstluft.plot::scale_fill_viridis_squished(name = "Ndep > CLN\n(kgN/ha/Jahr)", limits = c(0, 30), breaks = seq(0, 30, 5), direction = -1, option = "A", na.value = NA)
 
-### ggplot2 custom themes
+# ggplot2 custom themes
 
 theme_ts <-
   theme_minimal(base_size = basesize) +
@@ -91,25 +91,20 @@ theme_map <-
     plot.background = element_blank()
   )
 
-### empty list to collect all plots
+# empty list to collect all plots
 
 plots <- list() 
 
 
 
+# FIXME: in scripts: use output-datasets directly from github
 
-### plotting air pollutant emissions
-### ------------------------------------------------------------
 
-### plot details of Canton Zürich air pollutant emissions per pollutant, subsector and year (absolute values)
-### and plot maps of air pollutant emissions per pollutant, municipality and year
+# plotting air pollutant emissions
+# ------------------------------------------------------------
 
-data_temp <- 
-  data_emikat %>% 
-  dplyr::group_by(year, pollutant, unit, sector, subsector) %>% 
-  dplyr::summarise(emission = sum(emission)) %>% 
-  dplyr::ungroup() %>% 
-  dplyr::filter(emission > 0)
+# plot details of Canton Zürich air pollutant emissions per pollutant, subsector and year (absolute values)
+# and plot maps of air pollutant emissions per pollutant, municipality and year
 
 data_temp2 <- 
   data_emikat %>% 
@@ -173,7 +168,7 @@ plots$emissions <-
     
   })
 
-### plot RSD NOx emissions by vehicle type, fuel type and euronorm
+# plot RSD NOx emissions by vehicle type, fuel type and euronorm
 
 plots$emissions$NOx$rsd_norm <-
   data_rsd_per_norm %>% 
@@ -206,7 +201,7 @@ plots$emissions$NOx$rsd_norm <-
     legend.position = "bottom"
   )
 
-### plot RSD NOx emissions by vehicle model year, vehicle type and fuel type
+# plot RSD NOx emissions by vehicle model year, vehicle type and fuel type
 
 plots$emissions$NOx$rsd_yearmodel <-
   data_rsd_per_yearmodel %>% 
@@ -237,7 +232,7 @@ plots$emissions$NOx$rsd_yearmodel <-
     legend.position = "bottom"
   )
 
-### plot RSD NOx emission time series (year of measurement) by fuel type
+# plot RSD NOx emission time series (year of measurement) by fuel type
 
 plots$emissions$NOx$rsd_timeseries <-
   data_rsd_per_yearmeas %>% 
@@ -263,10 +258,26 @@ plots$emissions$NOx$rsd_timeseries <-
 
 
 
-### plotting air pollutant monitoring data
-### ------------------------------------------------------------
+# plotting air pollutant monitoring data
+# ------------------------------------------------------------
 
-### plot timeseries yearly mean values NO2
+# read airquality monitring data
+
+# read LRV legal threshold limit values & WHO air quality guideline values
+
+immission_threshold_values <- readr::read_delim(paste(path_data_input, files$airquality$thresh, sep = "/"), delim = ";",locale = readr::locale(encoding = "UTF-8"))
+
+# filter for target years and parameters
+
+data_monitoring_aq <- 
+  data_monitoring_aq %>% 
+  dplyr::filter(lubridate::year(starttime) %in% years & parameter %in% c(parameters, "LBI")) 
+
+# read pre-compiled OSTLUFT y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
+
+data_ndep <- readr::read_delim(paste(path_data_input, files$airquality$monitoring$ostluft_ndep_y1, sep = "/"), delim = ";")
+
+# plot timeseries yearly mean values NO2
 
 plots$airquality$monitoring$NO2$y1_timeseries <-
   data %>%
@@ -278,11 +289,11 @@ plots$airquality$monitoring$NO2$y1_timeseries <-
       subtitle = openair::quickText("NO2, Jahresmittel (µg/m3)")
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
-    pointsize = pointsize, theme = theme_ts, threshold = get_threshold(threshold_values, "NO2")
+    pointsize = pointsize, theme = theme_ts, threshold = extract_threshold(threshold_values, "NO2")
   ) +
   scale_color_siteclass
 
-### plot timeseries yearly mean values particulate matter PM10
+# plot timeseries yearly mean values particulate matter PM10
 
 plots$airquality$monitoring$PM10$y1_timeseries <-
   data %>%
@@ -294,11 +305,11 @@ plots$airquality$monitoring$PM10$y1_timeseries <-
       subtitle = openair::quickText("PM10, Jahresmittel (µg/m3)")
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
-    pointsize = pointsize, theme = theme_ts, threshold = get_threshold(threshold_values, "PM10")
+    pointsize = pointsize, theme = theme_ts, threshold = extract_threshold(threshold_values, "PM10")
   ) +
   scale_color_siteclass
 
-### plot timeseries yearly mean values particulate matter PM2.5
+# plot timeseries yearly mean values particulate matter PM2.5
 
 plots$airquality$monitoring$`PM2.5`$y1_timeseries <-
   data %>%
@@ -310,11 +321,11 @@ plots$airquality$monitoring$`PM2.5`$y1_timeseries <-
       subtitle = openair::quickText("PM2.5, Jahresmittel (µg/m3)")
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
-    pointsize = pointsize, theme = theme_ts, threshold = get_threshold(threshold_values, "PM2.5")
+    pointsize = pointsize, theme = theme_ts, threshold = extract_threshold(threshold_values, "PM2.5")
   ) +
   scale_color_siteclass
 
-### plot timeseries yearly values of maximum O3 monthly 98%-percentile of 1/2 hour mean values
+# plot timeseries yearly values of maximum O3 monthly 98%-percentile of 1/2 hour mean values
 
 plots$airquality$monitoring$O3$`max_98%_m1_timeseries` <-
   data %>%
@@ -327,11 +338,11 @@ plots$airquality$monitoring$O3$`max_98%_m1_timeseries` <-
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
     pointsize = pointsize, theme = theme_ts,
-    threshold = get_threshold(threshold_values, pollutant = "O3", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3", source = "LRV Grenzwert", aggregation = "m1")
+    threshold = extract_threshold(threshold_values, pollutant = "O3", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3", source = "LRV Grenzwert", aggregation = "m1")
   ) +
   scale_color_siteclass
 
-### plot timeseries yearly values O3 mean peak-season
+# plot timeseries yearly values O3 mean peak-season
 
 plots$airquality$monitoring$O3$`peak-season_timeseries` <-
   data %>%
@@ -344,11 +355,11 @@ plots$airquality$monitoring$O3$`peak-season_timeseries` <-
     ),
     captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
     pointsize = pointsize, theme = theme_ts,
-    threshold = get_threshold(threshold_values, pollutant = "O3", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration", source = "WHO Richtwert", aggregation = "peak-season")
+    threshold = extract_threshold(threshold_values, pollutant = "O3", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration", source = "WHO Richtwert", aggregation = "peak-season")
   ) +
   scale_color_siteclass
 
-# ### plot timeseries Langzeitbelastungsindex LBI, see https://cerclair.ch/assets/pdf/27b_2015_06_10_D_Langzeit_Luftbelastungs_Index.pdf
+# # plot timeseries Langzeitbelastungsindex LBI, see https://cerclair.ch/assets/pdf/27b_2015_06_10_D_Langzeit_Luftbelastungs_Index.pdf
 
 # sites <-
 #   data %>%
@@ -376,7 +387,7 @@ plots$airquality$monitoring$O3$`peak-season_timeseries` <-
 #   ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)") +
 #   theme_ts
 
-### plot timeseries of yearly nitrogen deposition at Bachtel site
+# plot timeseries of yearly nitrogen deposition at Bachtel site
 
 temp <- dplyr::filter(threshold_values, source == "LRV Grenzwert" & pollutant == "NO2")
 cln <-
@@ -428,7 +439,7 @@ plots$airquality$monitoring$Ndep$Bachtel_timeseries <-
     legend.position = "right"
   )
 
-### plot distribution of yearly nitrogen deposition across several monitoring sites since 2019 (structured per year and ecosystem type)
+# plot distribution of yearly nitrogen deposition across several monitoring sites since 2019 (structured per year and ecosystem type)
 
 plots$airquality$monitoring$Ndep$all <-
   data_temp %>%
@@ -460,7 +471,7 @@ plots$airquality$monitoring$Ndep$all <-
     legend.title = ggplot2::element_blank()
   )
 
-### plot relative comparison latest n_years of measurement data vs. LRV Immissionsgrenzwerte + Critical Loads of Nitrogen and WHO-Richtwerte
+# plot relative comparison latest n_years of measurement data vs. LRV Immissionsgrenzwerte + Critical Loads of Nitrogen and WHO-Richtwerte
 
 data_thrshlds <- dplyr::distinct(threshold_values, source, col, lty, lsz)
 data_temp <-
@@ -520,13 +531,13 @@ plots$airquality$monitoring$threshold_comparison <-
 
 
 
-### plotting air pollutant maps
-### ------------------------------------------------------------
+# plotting air pollutant maps
+# ------------------------------------------------------------
 
 
-### maps of mean air pollutant concentrations
+# maps of mean air pollutant concentrations
 
-### ... for NO2
+# ... for NO2
 
 plots$airquality$maps$NO2 <-
   setNames(names(data_raster$NO2), names(data_raster$NO2)) %>% 
@@ -544,7 +555,7 @@ plots$airquality$maps$NO2 <-
       theme_map
   })
 
-### ... for PM10
+# ... for PM10
 
 plots$airquality$maps$PM10 <-
   setNames(names(data_raster$PM10), names(data_raster$PM10)) %>% 
@@ -562,7 +573,7 @@ plots$airquality$maps$PM10 <-
       theme_map
   })
 
-### ... for PM2.5
+# ... for PM2.5
 
 plots$airquality$maps$PM2.5 <-
   setNames(names(data_raster$PM2.5), names(data_raster$PM2.5)) %>% 
@@ -580,7 +591,7 @@ plots$airquality$maps$PM2.5 <-
       theme_map
   })
 
-### ... for eBC
+# ... for eBC
 
 plots$airquality$maps$eBC <-
   setNames(names(data_raster$eBC), names(data_raster$eBC)) %>% 
@@ -598,10 +609,10 @@ plots$airquality$maps$eBC <-
       theme_map
   })
 
-### ... for O3
+# ... for O3
 # ...
 
-### map of mean NH3 concentration in 2020
+# map of mean NH3 concentration in 2020
 
 plots$airquality$maps$NH3$`2020` <-
   ggplot2::ggplot() +
@@ -616,7 +627,7 @@ plots$airquality$maps$NH3$`2020` <-
   ggplot2::labs(caption = "Quelle: BAFU") +
   theme_map
 
-### map of total nitrogen deposition in 2020
+# map of total nitrogen deposition in 2020
 
 plots$airquality$maps$nitrogen_deposition$`2020` <-
   ggplot2::ggplot() +
@@ -629,7 +640,7 @@ plots$airquality$maps$nitrogen_deposition$`2020` <-
   ggplot2::labs(caption = "Quelle: BAFU") +
   theme_map
 
-### map of total nitrogen deposition CLN exceedance in 2020
+# map of total nitrogen deposition CLN exceedance in 2020
 
 plots$airquality$maps$CLN_exceedance$`2020` <-
   ggplot2::ggplot() +
@@ -648,18 +659,18 @@ plots$airquality$maps$CLN_exceedance$`2020` <-
 
 
 
-### plotting air pollutant population and ecosystem exposition
-### ------------------------------------------------------------
+# plotting air pollutant population and ecosystem exposition
+# ------------------------------------------------------------
 
-### plot inhabitant exposure distribution
-### -----------------------------------------------
+# plot inhabitant exposure distribution
+# -----------------------------------------------
 
-### ... for NO2
+# ... for NO2
 plots$exposition$NO2$distribution <-
   lapply(setNames(names(data_expo$NO2$exposition_distrib), names(data_expo$NO2$exposition_distrib)), function(year) {
     ggplot_expo_hist(
       data = data_expo$NO2$exposition_distrib[[year]], x = "NO2", y = "population", barwidth = 1,
-      xlims = c(0,90), xbreaks = seq(0,90,10), threshold = get_threshold(threshold_values, "NO2"),
+      xlims = c(0,90), xbreaks = seq(0,90,10), threshold = extract_threshold(threshold_values, "NO2"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung NO2 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Stickstoffdioxid (NO2)"),
@@ -674,7 +685,7 @@ plots$exposition$NO2$cumulative <-
   lapply(setNames(names(data_expo$NO2$exposition_distrib), names(data_expo$NO2$exposition_distrib)), function(year) {
     ggplot_expo_cumulative(
       data = data_expo$NO2$exposition_distrib[[year]], x = "NO2", y = "population_relative", linewidth = 1,
-      xlims = c(0,91), xbreaks = seq(0,90,10), threshold = get_threshold(threshold_values, "NO2"),
+      xlims = c(0,91), xbreaks = seq(0,90,10), threshold = extract_threshold(threshold_values, "NO2"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung NO2 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Stickstoffdioxid (NO2)"),
@@ -685,12 +696,12 @@ plots$exposition$NO2$cumulative <-
     ) 
   })
 
-### ... for PM10
+# ... for PM10
 plots$exposition$PM10$distribution <-
   lapply(setNames(names(data_expo$PM10$exposition_distrib), names(data_expo$PM10$exposition_distrib)), function(year) {
     ggplot_expo_hist(
       data = data_expo$PM10$exposition_distrib[[year]], x = "PM10", y = "population", barwidth = 0.2,
-      xlims = c(0,24), xbreaks = seq(0,24,2), threshold = get_threshold(threshold_values, "PM10"),
+      xlims = c(0,24), xbreaks = seq(0,24,2), threshold = extract_threshold(threshold_values, "PM10"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung PM10 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Feinstaub PM10"),
@@ -705,7 +716,7 @@ plots$exposition$PM10$cumulative <-
   lapply(setNames(names(data_expo$PM10$exposition_distrib), names(data_expo$PM10$exposition_distrib)), function(year) {
     ggplot_expo_cumulative(
       data = data_expo$PM10$exposition_distrib[[year]], x = "PM10", y = "population_relative", linewidth = 1,
-      xlims = c(0,24), xbreaks = seq(0,24,2), threshold = get_threshold(threshold_values, "PM10"),
+      xlims = c(0,24), xbreaks = seq(0,24,2), threshold = extract_threshold(threshold_values, "PM10"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung PM10 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Feinstaub (PM10)"),
@@ -716,12 +727,12 @@ plots$exposition$PM10$cumulative <-
     ) 
   })
 
-### ... for PM2.5
+# ... for PM2.5
 plots$exposition$PM2.5$distribution <-
   lapply(setNames(names(data_expo$PM2.5$exposition_distrib), names(data_expo$PM2.5$exposition_distrib)), function(year) {
     ggplot_expo_hist(
       data = data_expo$PM2.5$exposition_distrib[[year]], x = "PM2.5", y = "population", barwidth = 0.2,
-      xlims = c(0,16), xbreaks = seq(0,16,1), threshold = get_threshold(threshold_values, "PM2.5"),
+      xlims = c(0,16), xbreaks = seq(0,16,1), threshold = extract_threshold(threshold_values, "PM2.5"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung PM2.5 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Feinstaub PM2.5"),
@@ -736,7 +747,7 @@ plots$exposition$PM2.5$cumulative <-
   lapply(setNames(names(data_expo$PM2.5$exposition_distrib), names(data_expo$PM2.5$exposition_distrib)), function(year) {
     ggplot_expo_cumulative(
       data = data_expo$PM2.5$exposition_distrib[[year]], x = "PM2.5", y = "population_relative", linewidth = 1,
-      xlims = c(0,16), xbreaks = seq(0,16,1), threshold = get_threshold(threshold_values, "PM2.5"),
+      xlims = c(0,16), xbreaks = seq(0,16,1), threshold = extract_threshold(threshold_values, "PM2.5"),
       xlabel = ggplot2::xlab(openair::quickText("Jahresmittel-Belastung PM2.5 (µg/m3)")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Bevölkerungsexposition - Feinstaub (PM2.5)"),
@@ -747,7 +758,7 @@ plots$exposition$PM2.5$cumulative <-
     )
   })
 
-### ... for eBC
+# ... for eBC
 plots$exposition$eBC$distribution <-
   lapply(setNames(names(data_expo$eBC$exposition_distrib), names(data_expo$eBC$exposition_distrib)), function(year) {
     ggplot_expo_hist(
@@ -778,7 +789,7 @@ plots$exposition$eBC$cumulative <-
     )
   })
 
-### plot distributions of exceedance of critical loads for nitrogen 2020
+# plot distributions of exceedance of critical loads for nitrogen 2020
 plots$exposition$Ndep$distribution$`2020` <-
   data_raster$Ndep_exceedance$`2020` %>% 
   dplyr::select(EXNMAX) %>% 
@@ -789,9 +800,9 @@ plots$exposition$Ndep$distribution$`2020` <-
   dplyr::ungroup() %>% 
   ggplot2::ggplot(aes(x = EXNMAX, y = n, fill = EXNMAX)) + 
   ggplot2::geom_bar(stat = "identity", color = NA, width = 1) +
-  ggplot2::geom_vline(xintercept = 0, color = get_threshold(threshold_values, "NO2")$color[1], 
-                      linetype = get_threshold(threshold_values, "NO2")$linetype[1], linewidth = get_threshold(threshold_values, "NO2")$linesize[1]) +
-  ggplot2::geom_text(data = tibble::tibble(x = -0.25, label = "kritische Eintragsrate CLN"), mapping = aes(x = x, y = 0, label = label), size = get_threshold(threshold_values, "NO2")$labelsize[1], 
+  ggplot2::geom_vline(xintercept = 0, color = extract_threshold(threshold_values, "NO2")$color[1], 
+                      linetype = extract_threshold(threshold_values, "NO2")$linetype[1], linewidth = extract_threshold(threshold_values, "NO2")$linesize[1]) +
+  ggplot2::geom_text(data = tibble::tibble(x = -0.25, label = "kritische Eintragsrate CLN"), mapping = aes(x = x, y = 0, label = label), size = extract_threshold(threshold_values, "NO2")$labelsize[1], 
                      hjust = 0, vjust = 0, angle = 90, nudge_x = -42*0.01, inherit.aes = FALSE) +
   ggplot2::scale_x_continuous(limits = c(-5,45), breaks = seq(-5,45,5), expand = c(0.01,0.01)) +
   ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'")) +
@@ -817,9 +828,9 @@ plots$exposition$Ndep$cumulative$`2020` <-
   dplyr::mutate(n_relative = cumsum(n) / sum(n)) %>% 
   ggplot2::ggplot(aes(x = EXNMAX, y = n_relative)) + 
   ggplot2::geom_line(linewidth = linewidth, color = "gray40") +
-  ggplot2::geom_vline(xintercept = 0, color = get_threshold(threshold_values, "NO2")$color[1], 
-                      linetype = get_threshold(threshold_values, "NO2")$linetype[1], linewidth = get_threshold(threshold_values, "NO2")$linesize[1]) +
-  ggplot2::geom_text(data = tibble::tibble(x = -0.25, label = "kritische Eintragsrate CLN"), mapping = aes(x = x, y = 0, label = label), size = get_threshold(threshold_values, "NO2")$labelsize[1], 
+  ggplot2::geom_vline(xintercept = 0, color = extract_threshold(threshold_values, "NO2")$color[1], 
+                      linetype = extract_threshold(threshold_values, "NO2")$linetype[1], linewidth = extract_threshold(threshold_values, "NO2")$linesize[1]) +
+  ggplot2::geom_text(data = tibble::tibble(x = -0.25, label = "kritische Eintragsrate CLN"), mapping = aes(x = x, y = 0, label = label), size = extract_threshold(threshold_values, "NO2")$labelsize[1], 
                      hjust = 0, vjust = 0, angle = 90, nudge_x = -50*0.01, inherit.aes = FALSE) +
   ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
   ggplot2::scale_x_continuous(limits = c(-5,45), breaks = seq(-5,45,5), expand = c(0.01,0.01)) +
@@ -835,11 +846,11 @@ plots$exposition$Ndep$cumulative$`2020` <-
 
 
 
-### -----------------------------------------------
-### plot population-weighted mean values (single value for Kanton Zürich & per municipality)
-### -----------------------------------------------
+# -----------------------------------------------
+# plot population-weighted mean values (single value for Kanton Zürich & per municipality)
+# -----------------------------------------------
 
-### ... for NO2
+# ... for NO2
 plots$exposition$NO2$population_weighted_mean <-
   lapply(setNames(names(data_expo$NO2$population_weighted_mean), names(data_expo$NO2$population_weighted_mean)), function(year) {
     data_expo$NO2$population_weighted_mean[[year]]$municipalities %>% 
@@ -855,7 +866,7 @@ plots$exposition$NO2$population_weighted_mean <-
       ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
   })
 
-### ... for PM10
+# ... for PM10
 plots$exposition$PM10$population_weighted_mean <-
   lapply(setNames(names(data_expo$PM10$population_weighted_mean), names(data_expo$PM10$population_weighted_mean)), function(year) {
     data_expo$PM10$population_weighted_mean[[year]]$municipalities %>% 
@@ -871,7 +882,7 @@ plots$exposition$PM10$population_weighted_mean <-
       ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
   })
 
-### ... for PM2.5
+# ... for PM2.5
 plots$exposition$PM2.5$population_weighted_mean <-
   lapply(setNames(names(data_expo$PM2.5$population_weighted_mean), names(data_expo$PM2.5$population_weighted_mean)), function(year) {
     data_expo$PM2.5$population_weighted_mean[[year]]$municipalities %>% 
@@ -887,7 +898,7 @@ plots$exposition$PM2.5$population_weighted_mean <-
       ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
   })
 
-### ... for eBC
+# ... for eBC
 plots$exposition$eBC$population_weighted_mean <-
   lapply(setNames(names(data_expo$eBC$population_weighted_mean), names(data_expo$eBC$population_weighted_mean)), function(year) {
     data_expo$eBC$population_weighted_mean[[year]]$municipalities %>% 
@@ -906,16 +917,16 @@ plots$exposition$eBC$population_weighted_mean <-
 
 
 
-### save complete plot-dataset
-### ------------------------------------------------------------
+# save complete plot-dataset
+# ------------------------------------------------------------
 
 # saveRDS(plots, "data/output/ggplots.rds")
 
 
 
 
-### clean up
-### ------------------------------------------------------------
+# clean up
+# ------------------------------------------------------------
 
 rm(list = c("basesize", "col_lrv", "col_who", "lty_lrv", "lty_who", "lsz_lrv", "lsz_who", "lbsz", "url", "request"))
 rm(list = c("req", "rsd", "rsd_filters", "data_temp", "data_temp2", "data_rsd", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "rsd_meta", "emikat", "data_emikat", "cols_emissions"))

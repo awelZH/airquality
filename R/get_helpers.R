@@ -207,7 +207,7 @@ get_geolion_wcs <- function(coverage, capabilities, name, na_value = c(0,-999), 
 get_aggregate_aq_rasterdata <- function(coverage, capablilitylist, maplist, parameter, grid, boundary) {
   
   capabilities <- extract_from_capabilitylist(capablilitylist, maplist, coverage, parameter)
-  data <- get_geolion_wcs(coverage, capabilities, parameter) 
+  data <- get_geolion_wcs(coverage, capabilities, parameter, divisor = ifelse(parameter == "eBC", 100, 10)) 
   data <- aggregate_to_grid(data, grid, parameter, boundary)
   
   return(data)

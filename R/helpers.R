@@ -68,17 +68,35 @@ longtitle <- function(x) {
   long <- dplyr::case_when(
     x == "PM10" ~ "Feinstaub PM10",
     x == "PM2.5" ~ "Feinstaub PM2.5",
+    x == "NO2" ~ "Stickstoffdioxid",
     x == "NMVOC" ~ "nicht-Methan Kohlenwasserstoffe",
     x == "NH3" ~ "Ammoniak",
     x == "CO" ~ "Kohlenstoffmonoxid",
     x == "SO2" ~ "Schwefeldioxîd",
     x == "NOx" ~ "Stickoxide",
     x == "eBC" ~ "Russ",
+    x == "O3" ~ "Ozon", 
+    x == "O3_max_98%_m1" ~ "Ozon",
+    x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "Ozon",
     TRUE ~ x
   )
   
   return(long)
 }
+
+
+
+shorttitle <- function(x) {
+  
+  long <- dplyr::case_when(
+    x == "O3_max_98%_m1" ~ "O3",
+    x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "O3",
+    TRUE ~ x
+  )
+  
+  return(long)
+}
+
 
 
 extract_year <- function(string) {as.numeric(stringr::str_extract(string, "(1|2)[0-9]{3}"))}

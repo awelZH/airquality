@@ -8,12 +8,10 @@ site_meta_ostluft <- read_site_meta_ostluft_metadb_csv(paste("inst/extdata", fil
 
 # merge & finalise
 
-siteclass_levels <- rev(c("ländlich - Hintergrund", "ländlich - verkehrsbelastet", "klein-/vorstädtisch - Hintergrund",
-                         "klein-/vorstädtisch - verkehrsbelastet", "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
 site_meta <- 
   site_meta_nabel %>% 
   dplyr::bind_rows(site_meta_ostluft) %>%
-  dplyr::mutate(siteclass = factor(paste(zone, type, sep = " - "), levels = siteclass_levels)) %>%
+  dplyr::mutate(siteclass = paste(zone, type, sep = " - ")) %>%
   dplyr::select(-zone, -type)
 
 # read NABEL y1 monitoring airquality data
@@ -44,7 +42,7 @@ data_monitoring_aq <-
   dplyr::left_join(site_meta, by = "site") %>%
   dplyr::filter(!is.na(siteclass)) %>% 
   dplyr::arrange(site, parameter, starttime) %>% 
-  dplyr::select(year, site, site_long, source, parameter, interval, unit, value)
+  dplyr::select(year, site, site_long, siteclass, x, y, masl, source, parameter, interval, unit, value)
 
 # read pre-compiled OSTLUFT y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
 

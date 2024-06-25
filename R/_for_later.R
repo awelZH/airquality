@@ -66,3 +66,36 @@
 #   return(lbi)
 # }
 
+
+
+
+
+# # plot timeseries Langzeitbelastungsindex LBI, see https://cerclair.ch/assets/pdf/27b_2015_06_10_D_Langzeit_Luftbelastungs_Index.pdf
+
+# sites <-
+#   data %>%
+#   dplyr::filter(parameter == "LBI") %>%
+#   dplyr::group_by(site) %>%
+#   dplyr::summarise(n = sum(!is.na(value))) %>%
+#   dplyr::ungroup() %>%
+#   dplyr::filter(n > 3) %>%
+#   dplyr::pull(site) %>%
+#   as.character()
+#
+# plots$airquality$monitoring$LBI$timeseries <-
+#   data %>%
+#   dplyr::filter(parameter == "LBI" & !is.na(value) & site %in% sites) %>%
+#   dplyr::arrange(site, starttime) %>%
+#   ggplot2::ggplot(aes(x = lubridate::year(starttime) + 0.5, y = site, fill = recode_lbi(value))) +
+#   ggplot2::geom_raster() +
+#   ggplot2::scale_x_continuous(expand = c(0,0)) +
+#   ggplot2::scale_fill_manual(name = "LBI", values = c("gering" = "#00FFFF", "mässig" = "#80FF00", "deutlich" = "#FFFF00",
+#                                                       "erheblich" = "#FFBF00", "hoch"= "#FF8000", "sehr hoch" = "#BF00FF")) +
+#   ggplot2::ggtitle(
+#     label = openair::quickText("Luftqualitätsmesswerte - Langzeitbelastungsindex (LBI)"),
+#     subtitle = openair::quickText("Definition siehe www.cerclair.ch/empfehlungen")
+#   ) +
+#   ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)") +
+#   theme_ts
+
+

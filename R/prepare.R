@@ -205,7 +205,7 @@ combine_thresholds <- function(data, threshold_values) {
     dplyr::select(-metric) %>% 
     tidyr::spread(source, threshold) %>% 
     dplyr::right_join(data, by = c("parameter", "interval")) %>% 
-    dplyr::select(starttime, site, parameter, interval, unit, value, siteclass, `LRV Grenzwert`, `WHO Richtwert`, source)
+    dplyr::select(year, site, parameter, interval, unit, value, siteclass, `LRV Grenzwert`, `WHO Richtwert`, source)
   
   return(data)
   

@@ -186,7 +186,7 @@ round_off <- function (x, digits = 0) {
 
 
 aggregate_nitrogen_deposition <- function(data) {
-  
+
   data <-
     data %>%
     dplyr::mutate(
@@ -204,10 +204,20 @@ aggregate_nitrogen_deposition <- function(data) {
     dplyr::rename(
       site_long = site,
       site = site_short
-    ) %>% 
+    )
+  
+  estimate <- 
+    data %>% 
+    dplyr::filter(parameter == "N-Deposition") %>% 
+    dplyr::select(year, site, ecosystem_category, estimate)
+  
+  data <- 
+    data %>% 
     dplyr::group_by(year, site, site_long, source, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) %>%
     dplyr::summarise(value = sum(value)) %>%
-    dplyr::ungroup()
+    dplyr::ungroup() %>%
+    left_join(estimate, by = c("year", "site", "ecosystem_category")) %>% 
+    dplyr::mutate(estimate = dplyr::case_when(parameter == "N-Deposition" ~ estimate, TRUE ~ NA))
   
   return(data)
   
@@ -229,7 +239,7 @@ aggregate_emissions <- function(data, fun = sum, groups = c("year", "pollutant",
 
 
 
-groups_emission_subsector <- function(data, threshold_fraction = 0.02, index = 1:3) {
+groups_emission_subsector <- function(data, threshold_fraction = 0.03, index = 1:3) {
   
   # mean emissions per category over all years
   
@@ -242,15 +252,14 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.02, index = 1
     dplyr::group_by(pollutant, sector) %>% 
     dplyr::mutate(
       subsector_new = dplyr::case_when(
-        emission < min(sort(emission, decreasing = TRUE)[index]) ~ "sonstige",
+        emission < min(sort(emission, decreasing = TRUE)[index]) ~ "diverse",
         TRUE ~ subsector
-      ),
-      subsector_new = paste0(sector, " / ", subsector_new)
+      )
     ) 
   
   # aggregate emissions accordingly
-  
-  groups2 <- aggregate_emissions(groups, sum, c("pollutant", "subsector_new"))
+
+  groups2 <- aggregate_emissions(groups, sum, c("pollutant", "sector", "subsector_new"))
   
   # second iteration: if subsector emission < overall emission * threshold fraction, then also recode into "sonstige"
   
@@ -259,25 +268,31 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.02, index = 1
     dplyr::group_by(pollutant) %>% 
     dplyr::mutate(
       subsector_new = dplyr::case_when(
-        subsector_new != "weitere" & emission < threshold_fraction * sum(emission)  ~ "sonstige",
+        subsector_new != "diverse" & emission < threshold_fraction * sum(emission)  ~ "diverse",
         TRUE ~ subsector_new
-      )
-    ) 
+      ),
+      subsector_new = paste0(sector, " / ", subsector_new)
+    ) %>% 
+    dplyr::ungroup()
   
   # aggregate accordingly
   
-  groups2 <- aggregate_emissions(groups, sum, c("pollutant", "subsector_new"))
+  groups2 <- aggregate_emissions(groups2, sum, c("pollutant", "subsector_new"))
   
   # restructure and prepare as lookup table for use outside this function
   
-  groups2 <- dplyr::filter(groups2, !stringr::str_detect(subsector_new, "sonstige"))
+  groups2 <- dplyr::filter(groups2, !stringr::str_detect(subsector_new, "diverse"))
   
   groups <-
     groups %>% 
     dplyr::select(-emission) %>% 
+    dplyr::mutate(subsector_new = paste0(sector, " / ", subsector_new)) %>% 
     dplyr::left_join(groups2, by = c("pollutant", "subsector_new")) %>% 
-    dplyr::arrange(pollutant, sector, dplyr::desc(emission)) %>% 
-    dplyr::mutate(subsector_new = factor(subsector_new, levels = unique(.data$subsector_new))) %>% 
+    dplyr::arrange(pollutant, sector, dplyr::desc(emission)) %>%
+    dplyr::mutate(
+      subsector_new = dplyr::case_when(is.na(emission) ~ paste0(sector, " / diverse"), TRUE ~ subsector_new),
+      subsector_new = factor(subsector_new, levels = unique(.data$subsector_new))
+      ) %>% 
     dplyr::select(-emission)
   
   return(groups)

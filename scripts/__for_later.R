@@ -153,3 +153,30 @@ plots$airquality$maps$CLN_exceedance$`2020` <-
 
 
 
+
+# plot distribution of yearly nitrogen deposition across several monitoring sites since 2019 (structured per year and ecosystem type)
+plots$airquality$monitoring$Ndep$all <-
+  data_monitoring_ndep %>%
+  dplyr::filter(year >= 2019 & parameter != "N-Deposition") %>%
+  dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) %>%
+  dplyr::summarise(value = sum(value)) %>%
+  dplyr::ungroup() %>%
+  plot_timeseries_ndep_bars(xbreaks = seq(2000,max(years), 2)) +
+  ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, year >= 2019 & parameter == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
+  ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT") +
+  ggh4x::facet_nested_wrap(.~ecosystem_category*site, nrow = 2, strip.position = "top", axes = "x", solo_line = TRUE) +
+  ggplot2::ggtitle(
+    label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme"),
+    subtitle = expression("Stickstoffeintrag (kgN " * ha^-1 * Jahr^-1 * ")")
+  ) +
+  ggplot2::theme(
+    strip.text = ggplot2::element_text(size = ggplot2::rel(0.66), hjust = 0.5),
+    ggh4x.facet.nestline = ggplot2::element_line(colour = "gray40"),
+    panel.spacing = unit(2, "lines"),
+    legend.position = "bottom"
+  )
+
+
+
+
+

@@ -1,5 +1,5 @@
 
-# get links to data sources
+# get links to data sources (for municipalites map)
 source("scripts/__ressources.R", encoding = "UTF-8") #FIXME: see issue 11
 
 # setup analysis: load libraries & functions & read map boundaries data
@@ -119,45 +119,27 @@ plots <- list()
 
 
 # plotting air pollutant emissions
-# ------------------------------------------------------------
 
-# plot details of Canton Zürich air pollutant emissions per pollutant, subsector and year (absolute values)
+# read & plot details of Canton Zürich air pollutant emissions per pollutant, subsector and year (absolute and relative values)
 data_emikat <- readr::read_delim(ressources_plotting$emissions$emikat, delim = ";")
 cols_emissions <- setNames(as.character(cols_emissions), unique(data_emikat$sector))
-plots$emissions <- 
-  setNames(unique(data_emikat$pollutant), unique(data_emikat$pollutant)) %>% 
-  lapply(function(x) {
-    
-    list(
-      
-      absolute =
-        data_emikat %>% 
-        dplyr::filter(pollutant == x) %>% 
-        ggplot_emissions(cols = cols_emissions, theme = theme_ts) + 
-        ggplot2::ggtitle(
-          label = openair::quickText(paste0("Luftschadstoff-Emissionen ", longtitle(x)," (",x,")")),
-          subtitle = as.expression(substitute(a * ", Jahresmenge nach Quellgruppen (t " * Jahr^-1 * ")", env = list(a = x)))
-        ) +
-        ggplot2::labs(caption = "Quelle: OSTLUFT, Grundlage: EMIS Schweiz"), 
-      
-      relative = 
-        data_emikat %>% 
-        dplyr::filter(pollutant == x) %>% 
-        ggplot_emissions(cols_emissions, pos = "fill", width = 0.75, theme = theme_ts) + 
-        ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.01,0.01)) +
-        ggplot2::ggtitle(
-          label = openair::quickText(paste0("Luftschadstoff-Emissionen ", longtitle(x)," (",x,")")),
-          subtitle = as.expression(substitute(a * ", Jahresmengen-Anteile nach Quellgruppen (relativ)", env = list(a = x)))
-        ) +
-        ggplot2::labs(caption = "Quelle: OSTLUFT, Grundlage: EMIS Schweiz")
-    )
-    
+pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$pollutant))
+
+# absolute values
+plots$emissions$absolute <- 
+  lapply(pollutants, function(pollutant) {
+    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), cols = cols_emissions, theme = theme_ts) #FIXME: fill shading doesn't work right
+  })
+  
+# relative values
+plots$emissions$relative <- 
+  lapply(pollutants, function(pollutant) {
+    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", cols = cols_emissions, theme = theme_ts)
   })
 
-
-
-# plot RSD NOx emissions by vehicle type, fuel type and euronorm
+# read & plot RSD NOx emissions by vehicle type, fuel type and euronorm
 data_rsd_per_norm <- readr::read_delim(ressources_plotting$emissions$rsd_norm, delim = ";")
+
 plots$emissions$NOx$rsd_norm <-
   data_rsd_per_norm %>% 
   tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_euronorm) %>%
@@ -189,8 +171,9 @@ plots$emissions$NOx$rsd_norm <-
     legend.position = "bottom"
   )
 
-# plot RSD NOx emissions by vehicle model year, vehicle type and fuel type
+# read & plot RSD NOx emissions by vehicle model year, vehicle type and fuel type
 data_rsd_per_yearmodel <- readr::read_delim(ressources_plotting$emissions$rsd_yearmodel, delim = ";")
+
 plots$emissions$NOx$rsd_yearmodel <-
   data_rsd_per_yearmodel %>% 
   tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_model_year) %>% 
@@ -220,8 +203,9 @@ plots$emissions$NOx$rsd_yearmodel <-
     legend.position = "bottom"
   )
 
-# plot RSD NOx emission time series (year of measurement) by fuel type
+# read & plot RSD NOx emission time series (year of measurement) by fuel type
 data_rsd_per_yearmeas <- readr::read_delim(ressources_plotting$emissions$rsd_yearmeas, delim = ";")
+
 plots$emissions$NOx$rsd_yearmeas <-
   data_rsd_per_yearmeas %>% 
   dplyr::mutate(vehicle_fuel_type = dplyr::recode_factor(vehicle_fuel_type, !!!c("all" = "Benzin & Diesel", "gasoline" = "Benzin", "diesel" = "Diesel"))) %>% 
@@ -247,16 +231,15 @@ plots$emissions$NOx$rsd_yearmeas <-
 
 
 # plotting air pollutant monitoring data
-# ------------------------------------------------------------
 
-# read airquality monitring data
+# read airquality monitoring data
 data_monitoring_aq <- 
   readr::read_delim(ressources_plotting$monitoring$airquality, delim = ";") %>% 
   dplyr::mutate(siteclass = factor(siteclass, levels = siteclass_levels)) %>% 
   dplyr::filter(year %in% years & parameter %in% parameters_timeseries & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) 
 
 # plot timeseries of yearly values for selected pollutants
-plots$airquality$monitoring$timeseries <- plot_pars_timeseries(data_monitoring_aq, parameters_timeseries)
+plots$airquality$monitoring$timeseries <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries)
 
 # read pre-compiled OSTLUFT y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
 data_monitoring_ndep <- readr::read_delim(ressources_plotting$monitoring$ndep, delim = ";")
@@ -267,141 +250,7 @@ data_monitoring_ndep <-
     ecosystem_category = factor(ecosystem_category, levels = rev(c("Hochmoor", "Flachmoor", "Trockenrasen", "Wald")))
   )
 
-# plot timeseries of yearly nitrogen deposition at Bachtel site
-temp <- dplyr::filter(immission_threshold_values, source == "LRV Grenzwert" & pollutant == "NO2")
-cln <-
-  data_monitoring_ndep %>%
-  dplyr::filter(site == c("BA")) %>%
-  dplyr::distinct(site_long, ecosystem_category, critical_load_min, critical_load_single, critical_load_max) %>%
-  tidyr::gather(cln, value, -site_long, -ecosystem_category) %>%
-  dplyr::filter(cln == "critical_load_single") # decided to show only single value, but still keep option for range display
-
-plots$airquality$monitoring$Ndep$Bachtel_timeseries <-
-  data_monitoring_ndep %>%
-  dplyr::filter(site == "BA" & parameter != "N-Deposition") %>%
-  dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) %>%
-  dplyr::summarise(value = sum(value)) %>%
-  dplyr::ungroup() %>%
-  ggplot2::ggplot(aes(x = year, y = value, fill = parameter)) +
-  ggplot2::geom_bar(stat = "identity") +
-  ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, site == "BA" & parameter == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
-  ggplot2::geom_hline(data = cln, mapping = aes(yintercept = value, linetype = cln), color = temp$col, linewidth = temp$lsz, show.legend = FALSE) +
-  ggplot2::scale_linetype_manual(values = c("critical_load_single" = 1, "critical_load_min" = 2, "critical_load_max" = 2)) +
-  ggplot2::scale_x_continuous(limits = c(2000, max(years)), expand = c(0.01,0.01)) +
-  ggplot2::scale_y_continuous(expand = c(0.01,0.01)) +
-  ggplot2::scale_fill_manual(values = c("aus NH3-Quellen" = "gold2", "aus NOx-Quellen" = "steelblue4")) +
-  lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE) +
-  ggplot2::ggtitle(
-    label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme am Standort Bachtel"),
-    subtitle = expression("Stickstoffeintrag (kgN " * ha^-1 * Jahr^-1 * ")")
-  ) +
-  ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT & FUB") +
-  theme_ts +
-  ggplot2::theme(
-    strip.text = ggplot2::element_text(hjust = 0),
-    legend.title = ggplot2::element_blank(),
-    legend.position = "right"
-  )
-
-# plot distribution of yearly nitrogen deposition across several monitoring sites since 2019 (structured per year and ecosystem type)
-
-plots$airquality$monitoring$Ndep$all <-
-  data_monitoring_ndep %>%
-  dplyr::filter(year >= 2019 & parameter != "N-Deposition") %>%
-  dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) %>%
-  dplyr::summarise(value = sum(value)) %>%
-  dplyr::ungroup() %>%
-  ggplot2::ggplot(aes(x = year, y = value, fill = parameter)) +
-  ggplot2::geom_bar(stat = "identity") + 
-  # ggplot2::geom_hline(mapping = aes(yintercept = critical_load_min), linetype = 2, color = temp$col, linewidth = temp$lsz, show.legend = FALSE) +
-  ggplot2::geom_hline(mapping = aes(yintercept = critical_load_single), color = temp$col, linewidth = temp$lsz, show.legend = FALSE) +
-  # ggplot2::geom_hline(mapping = aes(yintercept = critical_load_max), linetype = 2, color = temp$col, linewidth = temp$lsz, show.legend = FALSE) +
-  ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, year >= 2019 & parameter == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
-  # ggplot2::scale_x_date(expand = c(0.01,0.01), date_labels = "%Y", date_breaks = "2 years") +
-  ggplot2::scale_y_continuous(expand = c(0.01,0.01)) +
-  ggplot2::scale_fill_manual(values = c("aus NOx-Quellen" = "steelblue4", "aus NH3-Quellen" = "gold2")) +
-  ggh4x::facet_nested_wrap(.~ecosystem_category*site, nrow = 2, strip.position = "top", axes = "x", solo_line = TRUE) +
-  ggplot2::ggtitle(
-    label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme"),
-    subtitle = expression("Stickstoffeintrag (kgN " * ha^-1 * Jahr^-1 * ")")
-  ) +
-  ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT") +
-  theme_ts +
-  ggplot2::theme(
-    strip.text = ggplot2::element_text(size = ggplot2::rel(0.66)),
-    ggh4x.facet.nestline = ggplot2::element_line(colour = "gray40"),
-    panel.spacing = unit(2, "lines"),
-    legend.position = "bottom",
-    legend.title = ggplot2::element_blank()
-  )
-
-# plot timeseries of yearly nitrogen deposition across several monitoring sites since 2019 (structured per ecosystem type)
-
-plots$airquality$monitoring$Ndep$all_timeseries <-
-  data_monitoring_ndep %>%
-  dplyr::filter(year >= 2019 & parameter == "N-Deposition") %>%
-  ggplot2::ggplot(ggplot2::aes(x = year, y = value, color = ecosystem_category, shape = estimate)) +
-  ggplot2::geom_jitter(size = pointsize * 2, width = 0.1) +
-  ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
-  ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01)) +
-  ggplot2::scale_color_viridis_d(direction = -1) +
-  # ggplot2::scale_color_manual(values = c("Hochmoor" , "Flachmoor", "Trockenrasen", "Wald")) +
-  ggplot2::ggtitle(
-    label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit dem Jahr 2019"),
-    subtitle = expression("Stickstoffeintrag (kgN " * ha^-1 * Jahr^-1 * ")")
-  ) +
-  ggplot2::labs(caption = "geschätzt: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT") +
-  theme_ts +
-  ggplot2::theme(
-    legend.title = ggplot2::element_blank()
-  )
-
-# plot timeseries of yearly nitrogen deposition vs. critical loads of nitrogen across several monitoring sites since 2019 (structured per ecosystem type)
-
-plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
-  data_monitoring_ndep %>%
-  dplyr::filter(year >= 2019 & parameter == "N-Deposition") %>%
-  ggplot2::ggplot(ggplot2::aes(x = year, y = value / critical_load_single, color = ecosystem_category, shape = estimate)) +
-  ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1), color = temp$col, linewidth = temp$lsz, show.legend = FALSE) +
-  ggplot2::geom_jitter(size = pointsize * 2, width = 0.1) +
-  ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
-  ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = scales::percent_format()) +
-  ggplot2::scale_color_viridis_d(direction = -1) +
-  # ggplot2::scale_color_manual(values = c("Hochmoor" , "Flachmoor", "Trockenrasen", "Wald")) +
-  ggplot2::ggtitle(
-    label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit dem Jahr 2019"),
-    subtitle = expression("Stickstoffeintrag vs. kritische Eintragsrate (relativ)")
-  ) +
-  ggplot2::labs(caption = "geschätzt: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT") +
-  theme_ts +
-  ggplot2::theme(
-    legend.title = ggplot2::element_blank()
-  )
-
-# plot mean contribution of source categories to nitrogen deposition
-
-plots$airquality$monitoring$Ndep$all_pie_sources <-
-  data_monitoring_ndep %>%
-  dplyr::filter(year >= 2019 & parameter != "N-Deposition") %>% 
-  dplyr::group_by(parameter) %>% 
-  dplyr::summarise(value = mean(value)) %>% 
-  dplyr::ungroup() %>% 
-  ggplot2::ggplot(ggplot2::aes(x = 1, y = value, fill = parameter)) +
-  geom_bar(stat = "identity", position = "fill") +
-  coord_polar(theta = "y") +
-  ggplot2::scale_fill_manual(values = c("aus NOx-Quellen" = "steelblue4", "aus NH3-Quellen" = "gold2")) +
-  ggplot2::ggtitle(
-    label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit dem Jahr 2019"),
-    subtitle = expression("mittlerer Beitrag Quellgruppen zum Stickstoffeintrag")
-  ) +
-  ggplot2::labs(caption = "Quelle: OSTLUFT") +
-  theme_map +
-  ggplot2::theme(
-    legend.title = ggplot2::element_blank()
-  )
-
 # plot relative comparison latest n_years of measurement data vs. LRV Immissionsgrenzwerte + Critical Loads of Nitrogen and WHO-Richtwerte
-
 data_thrshlds <- dplyr::distinct(immission_threshold_values, source, col, lty, lsz)
 data_temp <-
   data_monitoring_ndep %>%
@@ -457,140 +306,128 @@ plots$airquality$monitoring$threshold_comparison <-
   ) +
   scale_color_siteclass
 
+# plot long-standing timeseries of yearly nitrogen deposition at Bachtel site (since 2001)
+temp <- dplyr::filter(immission_threshold_values, source == "LRV Grenzwert" & pollutant == "NO2")
+plots$airquality$monitoring$Ndep$timeseries_Bachtel <-
+  data_monitoring_ndep %>%
+  dplyr::filter(site == "BA" & parameter != "N-Deposition") %>%
+  dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) %>%
+  dplyr::summarise(value = sum(value)) %>%
+  dplyr::ungroup() %>%
+  plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = temp$lsz, color = temp$col, title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme am Bachtel") +
+  ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, site == "BA" & parameter == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
+  ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT & FUB") +
+  lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE)
+
+# plot timeseries of yearly nitrogen deposition across several monitoring sites since 2019 (structured per ecosystem type)
+plots$airquality$monitoring$Ndep$all_timeseries <-
+  data_monitoring_ndep %>%
+  dplyr::filter(year >= 2019 & parameter == "N-Deposition") %>%
+  ggplot2::ggplot(ggplot2::aes(x = year, y = value, color = ecosystem_category, shape = estimate)) +
+  ggplot2::geom_jitter(size = pointsize * 2, width = 0.1) +
+  ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
+  ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01)) +
+  ggplot2::scale_color_viridis_d(direction = -1) +
+  ggplot2::ggtitle(
+    label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit dem Jahr 2019"),
+    subtitle = expression("Stickstoffeintrag (kgN " * ha^-1 * Jahr^-1 * ")")
+  ) +
+  ggplot2::labs(caption = "geschätzt: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT") +
+  theme_ts +
+  ggplot2::theme(
+    legend.title = ggplot2::element_blank()
+  )
+
+# plot timeseries of yearly nitrogen deposition vs. critical loads of nitrogen across several monitoring sites since 2019 (structured per ecosystem type)
+plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
+  data_monitoring_ndep %>%
+  dplyr::filter(year >= 2019 & parameter == "N-Deposition") %>%
+  ggplot2::ggplot(ggplot2::aes(x = year, y = value / critical_load_single, color = ecosystem_category, shape = estimate)) +
+  ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1), color = temp$col, linewidth = temp$lsz, show.legend = FALSE) +
+  ggplot2::geom_jitter(size = pointsize * 2, width = 0.1) +
+  ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
+  ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = scales::percent_format()) +
+  ggplot2::scale_color_viridis_d(direction = -1) +
+  ggplot2::ggtitle(
+    label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit dem Jahr 2019"),
+    subtitle = expression("Stickstoffeintrag vs. kritische Eintragsrate (relativ)")
+  ) +
+  ggplot2::labs(caption = "geschätzt: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT") +
+  theme_ts +
+  ggplot2::theme(
+    legend.title = ggplot2::element_blank()
+  )
+
+# plot mean contribution of source categories to nitrogen deposition
+plots$airquality$monitoring$Ndep$mean_sources_fractions <-
+  data_monitoring_ndep %>%
+  dplyr::filter(year >= 2019 & parameter != "N-Deposition") %>% 
+  dplyr::group_by(year, parameter) %>% 
+  dplyr::summarise(value = mean(value)) %>% 
+  dplyr::ungroup() %>% 
+  ggplot2::ggplot(ggplot2::aes(x = year, y = value, fill = parameter)) +
+  geom_bar(stat = "identity", position = "fill") +
+  ggplot2::scale_x_continuous(breaks = seq(2018,max(years),1), expand = c(0.01,0.01)) +
+  ggplot2::scale_y_continuous(expand = c(0.01,0.01), labels = scales::percent_format()) +
+  ggplot2::scale_fill_manual(values = c("aus NOx-Quellen" = "steelblue4", "aus NH3-Quellen" = "gold2")) +
+  ggplot2::ggtitle(
+    label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit dem Jahr 2019"),
+    subtitle = expression("mittlerer Beitrag der Quellgruppen zum Stickstoffeintrag")
+  ) +
+  ggplot2::labs(caption = "Quelle: OSTLUFT") +
+  theme_ts +
+  ggplot2::theme(
+    legend.title = ggplot2::element_blank()
+  )
+
 
 
 
 
 # plotting air pollutant population and ecosystem exposition
-# ------------------------------------------------------------
 
-# read exposition data
+# read exposition data and setup
 data_expo_distr_pollutants <- readr::read_delim(ressources_plotting$exposition$expo_distr_pollutants, delim = ";") 
 data_expo_distr_ndep <- readr::read_delim(ressources_plotting$exposition$expo_distr_ndep, delim = ";") 
 data_expo_weighmean_canton <- readr::read_delim(ressources_plotting$exposition$weightedmean_canton, delim = ";") 
 data_expo_weighmean_municip <- readr::read_delim(ressources_plotting$exposition$weightedmean_municip, delim = ";") 
-data_expo_weighmean_municip <- 
-  map_municipalities %>% 
-  dplyr::full_join(dplyr::select(data_expo_weighmean_municip, geodb_oid, year, parameter, pop_weighted_mean, source), by = "geodb_oid")
-
-
-
-# plot inhabitant exposure distribution
-# -----------------------------------------------
-years_exposition <- setNames(unique(data_expo_distr_pollutants$year), as.character(unique(data_expo_distr_pollutants$year)))
+data_expo_weighmean_municip <- dplyr::full_join(map_municipalities, dplyr::select(data_expo_weighmean_municip, geodb_oid, year, parameter, pop_weighted_mean, source), by = "geodb_oid")
 parameters_exposition <- setNames(parameters_exposition, parameters_exposition)
-years_exposition_ndep <- setNames(unique(data_expo_distr_ndep$year), as.character(unique(data_expo_distr_ndep$year)))
 
-
-
-# ... histograms for air pollutants
+# plotting histograms for air pollutants
 plots$exposition$hist <-
   lapply(parameters_exposition, function(parameter) {
-    lapply(years_exposition, function(year) {
-      ggplot_expo_hist(
-        data = dplyr::filter(data_expo_distr_pollutants, year == year & parameter == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
-        xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
-        xlabel = ggplot2::xlab(openair::quickText(paste0("Jahresmittel-Belastung ",parameter," (µg/m3)"))),
-        titlelab = ggplot2::ggtitle(
-          label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter)," (",parameter,")")),
-          subtitle = openair::quickText(paste0("Anzahl Personen, Wohnbevölkerung im Kanton Zürich im Jahr ",year))
-        ), 
-        captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
-        fill_scale = immissionscale(parameter), theme = theme_ts
-      ) 
-    })
+    plot_all_expo_hist(parameter, data_expo_distr_pollutants)
   })
 
-# ... histograms for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$hist$Ndep <- 
-  lapply(years_exposition_ndep, function(year) {
-    ggplot_expo_hist(
-      data = dplyr::filter(data_expo_distr_ndep, year == year & parameter == "max Ndep > CLO"), x = "EXNMAX", y = "n_ecosys", barwidth = expositionpars("Ndep")$barwidth,
-      xlims = range(expositionpars("Ndep")$xbreaks), xbreaks = expositionpars("Ndep")$xbreaks, threshold = threshold_ndep,
-      xlabel = ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")),
-      titlelab =   ggplot2::ggtitle(
-        label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
-        subtitle = paste0("Anzahl empfindlicher Ökosysteme (kumuliert) im Kanton Zürich im Jahr ", year) 
-      ), 
-      captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
-      fill_scale = immissionscale("Ndep"), theme = theme_ts
-    )
-  })
+# plotting histograms for sensitive ecosystems nitrogen deposition exceedance
+plots$exposition$hist$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep)
 
-# ... cumulative distributions for air pollutants
+# plotting cumulative distributions for air pollutants
 plots$exposition$cumul <-
   lapply(parameters_exposition, function(parameter) {
-    lapply(years_exposition, function(year) {
-      ggplot_expo_cumulative(
-        data = dplyr::filter(data_expo_distr_pollutants, year == year & parameter == !!parameter), x = "concentration", y = "population_cum_relative", linewidth = 1,
-        xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
-        xlabel = ggplot2::xlab(openair::quickText(paste0("Jahresmittel-Belastung ",parameter," (µg/m3)"))),
-        titlelab = ggplot2::ggtitle(
-          label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter)," (",parameter,")")),
-          subtitle = openair::quickText(paste0("relativer Anteil (kumuliert), Wohnbevölkerung im Kanton Zürich im Jahr ",year))
-        ), 
-        captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
-        theme = theme_ts
-      ) 
-    })
+    plot_all_expo_cumul(parameter, data_expo_distr_pollutants)
   })
 
-# ... cumulative distributions for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$cum$Ndep <- 
-  lapply(years_exposition_ndep, function(year) {
-    ggplot_expo_cumulative(
-      data = dplyr::filter(data_expo_distr_ndep, year == year & parameter == "max Ndep > CLO"), x = "EXNMAX", y = "n_ecosys_cum_relative", linewidth = 1,
-      xlims = range(expositionpars("Ndep")$xbreaks), xbreaks = expositionpars("Ndep")$xbreaks, threshold = threshold_ndep,
-      xlabel = ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")),
-      titlelab =   ggplot2::ggtitle(
-        label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
-        subtitle = paste0("Anzahl empfindlicher Ökosysteme (kumuliert) im Kanton Zürich im Jahr ", year) 
-      ), 
-      captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
-      theme = theme_ts
-    )
-  })
+# plotting cumulative distributions for sensitive ecosystems nitrogen deposition exceedance
+plots$exposition$cumul$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep)
 
-
-
-
-
-# -----------------------------------------------
-# plot population-weighted mean values (single value for Kanton Zürich & per municipality)
-# -----------------------------------------------
-
+# plotting maps of population-weighted mean pollutant concentration (single value for Kanton Zürich & per municipality)
 plots$exposition$population_weighted_mean <-
   lapply(parameters_exposition, function(parameter) {
-    
-    lapply(years_exposition, function(year) {
-      
-      dplyr::filter(data_expo_weighmean_municip, year == year & parameter == !!parameter) %>% 
-        ggplot2::ggplot(ggplot2::aes(fill = pop_weighted_mean)) +
-        ggplot2::geom_sf() + 
-        ggplot2::coord_sf(datum = sf::st_crs(crs)) +
-        immissionscale(parameter) +
-        theme_map +
-        ggplot2::ggtitle(
-          label = openair::quickText(paste0("Bevölkerungsgewichtete Schadstoffbelastung - ",longtitle(parameter)," (",parameter,")")),
-          subtitle = openair::quickText(paste0("Mittlere ",parameter,"-Belastung pro Einwohner/in nach Gemeinde im Jahr ",year,"; Kanton = ",dplyr::pull(dplyr::filter(data_expo_weighmean_canton, year == year & parameter == !!parameter), "pop_weighted_mean")," µg/m3"))
-        ) +
-        ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
-      
-    })
+    plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
   })
-
 
 
 
 
 # clean up
-# ------------------------------------------------------------
-
-rm(list = c("basesize", "col_lrv", "col_who", "lty_lrv", "lty_who", "lsz_lrv", "lsz_who", "lbsz", "url", "request"))
-rm(list = c("req", "rsd", "rsd_filters", "data_temp", "data_temp2", "data_rsd", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "rsd_meta", "emikat", "data_emikat", "cols_emissions"))
-rm(list = c("parameters", "pointsize", "n_years", "temp", "cln", "data_temp", "data_monitoring_ndep", "data_thrshlds", "scale_color_siteclass", "scale_fill_siteclass", "site_meta", "data", "files"))
-rm(list = c("data_expo", "data_raster", "threshold", "boundaries", "boundaries_hull", "threshold_values", "crs", "years", "theme_map", "theme_ts", "immission_colorscale_no2", "immission_colorscale_pm10",
-            "immission_colorscale_pm2_5", "immission_colorscale_ebc", "immission_colorscale_nh3", "immission_colorscale_ndep", "immission_colorscale_ndep_exc"))
+rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass", "scale_fill_siteclass", "temp", "theme_map", "theme_ts", "threshold_ndep",
+            "data_emikat", "data_expo_distr_ndep", "data_expo_distr_pollutants", "data_expo_weighmean_canton", "data_expo_weighmean_municipalities",
+            "data_monitoring_aq", "data_monitoring_ndep", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "data_temp", "data_thrshlds",
+            "data_expo_weighmean_municip", "files", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 
+            "crs", "lbsz", "linewidth", "lsz_lrv", "lsz_who", "lty_lrv", "lty_who", "n_years", "parameters_exposition", "parameters_timeseries",
+            "pointsize", "pollutants", "siteclass_levels", "years"))
 
 
 

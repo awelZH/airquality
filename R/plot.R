@@ -106,7 +106,16 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
 
 
 ### function to ggplot emissions employing structured coloring... this is not ideal, but the best I can do
-ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme = ggplot2::theme_minimal()) {
+ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width = 0.8, theme = ggplot2::theme_minimal()) {
+
+  pollutant <- unique(as.character(data$pollutant))
+  if (relative) {
+    yscale <- ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.01,0.01))
+    sub <- as.expression(substitute(a * ", Jahresmengen-Anteile nach Quellgruppen (relativ)", env = list(a = pollutant)))
+  } else {
+    yscale <- ggplot2::scale_y_continuous(labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01))
+    sub <- as.expression(substitute(a * ", Jahresmenge nach Quellgruppen (t " * Jahr^-1 * ")", env = list(a = pollutant)))
+  }
   
   order <-
     data %>%
@@ -123,15 +132,20 @@ ggplot_emissions <- function(data, cols, pos = "stack", width = 0.8, theme = ggp
     dplyr::group_by(sector) %>% 
     dplyr::mutate(col = colorRampPalette(c(unique(rootcol), shades::brightness(unique(rootcol), 0.6)))(length(subsector_new))) %>% #FIXME: better color grading function
     dplyr::ungroup()
-  
+
   plot <-
     data %>%
     ggplot2::ggplot(aes(x = factor(year), y = emission, fill = subsector_new)) +
     ggplot2::geom_bar(stat = "identity", position = pos, width = width) + 
-    ggplot2::scale_y_continuous(labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01)) +
+    yscale +
     ggplot2::scale_fill_manual(values = setNames(data$col, data$subsector_new)) +
     theme +
-    ggplot2::theme(legend.title = ggplot2::element_blank())
+    ggplot2::theme(legend.title = ggplot2::element_blank()) +
+    ggplot2::ggtitle(
+      label = openair::quickText(paste0("Luftschadstoff-Emissionen ", longtitle(pollutant)," (",pollutant,")")),
+      subtitle = sub
+    ) +
+    ggplot2::labs(caption = "Quelle: OSTLUFT, Grundlage: EMIS Schweiz")
   
   return(plot)
 }
@@ -178,23 +192,80 @@ expositionpars <- function(parameter) {
 }
 
 
-plot_pars_timeseries <- function(data, parameters_timeseries) {
+plot_pars_monitoring_timeseries <- function(data, parameters) {
   
-  lapply(setNames(parameters_timeseries, parameters_timeseries), function(parameter) {
-    
-    plots <- 
+  plots <- 
+    lapply(setNames(parameters, parameters), function(parameter) {
+      
       data %>%
-      dplyr::filter(parameter == !!parameter) %>%
-      ggplot_timeseries(
-        ylims = timeseriespars(parameter)$ylim, ybreaks = timeseriespars(parameter)$ybreaks,
-        titlelab = ggplot2::ggtitle(
-          label = openair::quickText(paste0("Luftqualitätsmesswerte - ",longtitle(parameter)," (",shorttitle(parameter),")")),
-          subtitle = openair::quickText(paste0(shorttitle(parameter),", ",timeseriespars(parameter)$metric," (µg/m3)"))
-        ),
-        captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
-        pointsize = pointsize, theme = theme_ts, threshold = timeseriespars(parameter)$thresh
-      ) +
-      scale_color_siteclass
+        dplyr::filter(parameter == !!parameter) %>%
+        ggplot_timeseries(
+          ylims = timeseriespars(parameter)$ylim, ybreaks = timeseriespars(parameter)$ybreaks,
+          titlelab = ggplot2::ggtitle(
+            label = openair::quickText(paste0("Luftqualitätsmesswerte - ",longtitle(parameter)," (",shorttitle(parameter),")")),
+            subtitle = openair::quickText(paste0(shorttitle(parameter),", ",timeseriespars(parameter)$metric," (µg/m3)"))
+          ),
+          captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
+          pointsize = pointsize, theme = theme_ts, threshold = timeseriespars(parameter)$thresh
+        ) +
+        scale_color_siteclass
+      
+    })
+  
+  return(plots)
+}
+
+
+
+plot_timeseries_ndep_bars <- function(data, xlim = NULL, xbreaks = waiver(), linewidth = 1, color = "red3", title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme") {
+  
+  cln <- 
+    data %>%
+    dplyr::distinct(site, ecosystem_category, critical_load_min, critical_load_single, critical_load_max) %>%
+    tidyr::gather(cln, value, -site, -ecosystem_category) %>%
+    dplyr::filter(cln == "critical_load_single") # decided to show only single value, but still keep option for range display
+  
+  plot <-
+    data %>% 
+    ggplot2::ggplot(ggplot2::aes(x = year, y = value, fill = parameter)) +
+    ggplot2::geom_bar(stat = "identity") +
+    ggplot2::geom_hline(data = cln, mapping = ggplot2::aes(yintercept = value, linetype = cln, group = site), color = color, linewidth = linewidth, show.legend = FALSE) +
+    ggplot2::scale_linetype_manual(values = c("critical_load_single" = 1, "critical_load_min" = 2, "critical_load_max" = 2)) +
+    ggplot2::scale_x_continuous(limits = xlim, breaks = xbreaks, expand = c(0.01,0.01)) +
+    ggplot2::scale_y_continuous(expand = c(0.01,0.01)) +
+    ggplot2::scale_fill_manual(values = c("aus NH3-Quellen" = "gold2", "aus NOx-Quellen" = "steelblue4")) +
+    theme_ts +
+    ggplot2::theme(
+      strip.text = ggplot2::element_text(hjust = 0),
+      legend.title = ggplot2::element_blank(),
+      legend.position = "right"
+    ) +
+    ggplot2::ggtitle(
+      label = openair::quickText(title),
+      subtitle = expression("Stickstoffeintrag (kgN " * ha^-1 * Jahr^-1 * ")")
+    )
+  
+  return(plot)
+}
+
+
+
+plot_all_expo_hist <- function(parameter, data) {
+  
+  years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
+  plots <- lapply(years_exposition, function(year) {
+    
+    ggplot_expo_hist(
+      data = dplyr::filter(data, year == year & parameter == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
+      xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
+      xlabel = ggplot2::xlab(openair::quickText(paste0("Jahresmittel-Belastung ",parameter," (µg/m3)"))),
+      titlelab = ggplot2::ggtitle(
+        label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter)," (",parameter,")")),
+        subtitle = openair::quickText(paste0("Anzahl Personen, Wohnbevölkerung im Kanton Zürich im Jahr ",year))
+      ), 
+      captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
+      fill_scale = immissionscale(parameter), theme = theme_ts
+    )
     
   })
   
@@ -203,4 +274,100 @@ plot_pars_timeseries <- function(data, parameters_timeseries) {
 
 
 
+plot_all_expo_cumul <- function(parameter, data) {
+  
+  years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
+  plots <- lapply(years_exposition, function(year) {
+    
+    ggplot_expo_cumulative(
+      data = dplyr::filter(data, year == year & parameter == !!parameter), x = "concentration", y = "population_cum_relative", linewidth = 1,
+      xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
+      xlabel = ggplot2::xlab(openair::quickText(paste0("Jahresmittel-Belastung ",parameter," (µg/m3)"))),
+      titlelab = ggplot2::ggtitle(
+        label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter)," (",parameter,")")),
+        subtitle = openair::quickText(paste0("relativer Anteil (kumuliert), Wohnbevölkerung im Kanton Zürich im Jahr ",year))
+      ), 
+      captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
+      theme = theme_ts
+    ) 
+    
+  })
+  
+  return(plots)
+}
+
+
+
+plot_all_popweighmean_maps <- function(parameter, data, data_canton) {
+  
+  years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
+  plots <- lapply(years_exposition, function(year) {
+    
+    data %>% 
+      dplyr::filter(year == year & parameter == !!parameter) %>% 
+      ggplot2::ggplot(ggplot2::aes(fill = pop_weighted_mean)) +
+      ggplot2::geom_sf() + 
+      ggplot2::coord_sf(datum = sf::st_crs(crs)) +
+      immissionscale(parameter) +
+      theme_map +
+      ggplot2::ggtitle(
+        label = openair::quickText(paste0("Bevölkerungsgewichtete Schadstoffbelastung - ",longtitle(parameter)," (",parameter,")")),
+        subtitle = openair::quickText(paste0("Mittlere ",parameter,"-Belastung pro Einwohner/in nach Gemeinde im Jahr ",year,"; Kanton = ",dplyr::pull(dplyr::filter(data_canton, year == year & parameter == !!parameter), "pop_weighted_mean")," µg/m3"))
+      ) +
+      ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+    
+  })
+  
+  return(plots)
+}
+
+
+
+plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
+  
+  years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
+  
+  plots <- lapply(years_exposition, function(year) {
+    
+    ggplot_expo_hist(
+      data = dplyr::filter(data, year == year & parameter == "max Ndep > CLO"), x = "EXNMAX", y = "n_ecosys", barwidth = expositionpars("Ndep")$barwidth,
+      xlims = range(expositionpars("Ndep")$xbreaks), xbreaks = expositionpars("Ndep")$xbreaks, threshold = threshold_ndep,
+      xlabel = ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")),
+      titlelab = ggplot2::ggtitle(
+        label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
+        subtitle = paste0("Anzahl empfindlicher Ökosysteme (kumuliert) im Kanton Zürich im Jahr ", year) 
+      ), 
+      captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
+      fill_scale = immissionscale("Ndep"), theme = theme_ts
+    )
+    
+  })
+  
+  return(plots)
+}
+
+
+
+plot_all_expo_cumul_ndep <- function(data, threshold_ndep) {
+  
+  years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
+  
+  plots <- lapply(years_exposition, function(year) {
+    
+    ggplot_expo_cumulative(
+      data = dplyr::filter(data, year == year & parameter == "max Ndep > CLO"), x = "EXNMAX", y = "n_ecosys_cum_relative", linewidth = 1,
+      xlims = range(expositionpars("Ndep")$xbreaks), xbreaks = expositionpars("Ndep")$xbreaks, threshold = threshold_ndep,
+      xlabel = ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")),
+      titlelab = ggplot2::ggtitle(
+        label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
+        subtitle = paste0("Anzahl empfindlicher Ökosysteme (kumuliert) im Kanton Zürich im Jahr ", year) 
+      ), 
+      captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
+      theme = theme_ts
+    )
+    
+  })
+  
+  return(plots)
+}
 

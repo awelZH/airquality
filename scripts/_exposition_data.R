@@ -5,7 +5,6 @@ data_raster <- get_prepare_raster_data(files, map_canton)
 pollutants <- names(data_raster)[!(names(data_raster) %in% c("population", "NH3", "Ndep", "Ndep_exceedance"))]
 
 # air pollution inhabitant exposition: population-weighted mean values per municipality (and for the whole canton)
-
 data_weighted_means <- 
   lapply(setNames(pollutants, pollutants), function(pollutant) {
     data <- join_raster_data_with_municipalities(pollutant, data_raster, map_municipalities)
@@ -13,18 +12,15 @@ data_weighted_means <-
   })
 
 # air pollution inhabitant population exposition distribution (over concentration bins and cumulative) for the entire canton
-
 data_expo_distr <- 
   lapply(setNames(pollutants, pollutants), function(pollutant) {
     calc_all_population_expo_distr(pollutant, data_raster[[pollutant]])
   })
 
 # sensitive ecosystem reactive nitrogen deposition exposition: distribution across all sensitive ecosystems
-
 data_expo_distr$Ndep <- calc_all_ndep_ecosystem_expo_distr(data_raster$Ndep_exceedance)
   
 # write output datasets
-  
 lapply(pollutants, function(pollutant) extract_weighted_mean_canton(data_weighted_means[[pollutant]], pollutant)) %>% 
   dplyr::bind_rows() %>%
   readr::write_delim(file = "inst/extdata/output_data_exposition_weighted_means_canton.csv", delim = ";", na = "NA")
@@ -40,7 +36,6 @@ lapply(pollutants, function(pollutant) extract_exposition_distr_pollutants(data_
 readr::write_delim(extract_exposition_distr_ndep(data_expo_distr$Ndep), file = "inst/extdata/output_data_exposition_distribution_ndep.csv", delim = ";", na = "NA")
 
 # clean up
-
 rm(list = c("data_raster", "data_weighted_means", "data_expo_distr", "pollutants"))
 
 

@@ -1,6 +1,7 @@
+#FIXME: harmonise O3p98 & O3_max_...
+
 
 # get all available raster data regarding inhabitant population (from BFS), air pollutants (from geolion) and reactive nitrogen (from data.geo.admin); join population and air pollutant data
-#FIXME: see issue 12
 data_raster <- get_prepare_raster_data(files, map_canton)
 pollutants <- names(data_raster)[!(names(data_raster) %in% c("population", "NH3", "Ndep", "Ndep_exceedance"))]
 

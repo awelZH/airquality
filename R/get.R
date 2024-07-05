@@ -53,7 +53,7 @@ get_rsd_opendataswiss <- function(apiurl) {
 
 # get BFS inhabitant raster data and get, average and join air quality modelling raster data (semi-empirical, calibrated by monitoring data, source: BAFU/Meteotest)
 #FIXME: see issue 11
-get_prepare_raster_data <- function(files, boundary, path = "inst/extdata") {
+get_prepare_raster_data <- function(files, boundary, path = "inst/extdata", wcs_version = "2.0.1") {
 
   # empty lists to be filled
   data <- list()
@@ -63,31 +63,30 @@ get_prepare_raster_data <- function(files, boundary, path = "inst/extdata") {
   # wcs connection to pollumap air quality raster data for the year 2015 (adopted from here: https://cran.r-project.org/web/packages/ows4R/vignettes/wcs.html) 
   print("get capabilities")
   
-  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$pollumap, serviceVersion = "2.0.1")
+  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$pollumap, serviceVersion = wcs_version)
   capabilitylist$pollumap <- client$getCapabilities()
   maplist <- add_to_maplist(capabilitylist, maplist, "pollumap", NULL)
   maplist$pollumap <- maplist$pollumap[extract_year(maplist$pollumap) == 2015] # make sure, only pollumap 2015 is included
   
-  #FIXME: see issue 12
-  # # wcs connection to NO2-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
-  # client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$no2, serviceVersion = "1.0.0") # "2.0.1")
-  # capabilitylist$jahreskarte$no2 <- client$getCapabilities()
-  # maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "no2")
-  # 
-  # # wcs connection to O3p98-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
-  # client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$o3p98, serviceVersion = "1.0.0") # "2.0.1")
-  # capabilitylist$jahreskarte$o3p98 <- client$getCapabilities()
-  # maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "o3p98")
-  # 
-  # # wcs connection to PM2.5-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
-  # client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$pm25, serviceVersion = "1.0.0") # "2.0.1")
-  # capabilitylist$jahreskarte$pm25 <- client$getCapabilities()
-  # maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "pm25")
-  # 
-  # # wcs connection to PM10-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
-  # client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$pm10, serviceVersion = "1.0.0") # "2.0.1")
-  # capabilitylist$jahreskarte$pm10 <- client$getCapabilities()
-  # maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "pm10")
+  # wcs connection to NO2-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
+  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$no2, serviceVersion = wcs_version)
+  capabilitylist$jahreskarte$no2 <- client$getCapabilities()
+  maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "no2")
+  
+  # wcs connection to O3p98-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
+  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$o3p98, serviceVersion = wcs_version)
+  capabilitylist$jahreskarte$o3p98 <- client$getCapabilities()
+  maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "o3p98")
+
+  # wcs connection to PM2.5-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
+  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$pm25, serviceVersion = wcs_version)
+  capabilitylist$jahreskarte$pm25 <- client$getCapabilities()
+  maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "pm25")
+
+  # wcs connection to PM10-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
+  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$pm10, serviceVersion = wcs_version)
+  capabilitylist$jahreskarte$pm10 <- client$getCapabilities()
+  maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "pm10")
 
   # all maps/layers in one vector
   maps <- unlist(maplist)
@@ -106,12 +105,16 @@ get_prepare_raster_data <- function(files, boundary, path = "inst/extdata") {
   # download, read and restructure air pollution NO2, PM2.5, PM10, eBC, O3p98 raster data from geolion WCS
   print("get geolion air pollution raster data")
   
+  print("... NO2")
   data$NO2 <- get_all_aq_rasterdata("NO2", maps, capabilitylist, grid, boundary)
+  print("... PM2.5")
   data$PM2.5 <- get_all_aq_rasterdata("PM2.5", maps, capabilitylist, grid, boundary)
+  print("... PM10")
   data$PM10 <- get_all_aq_rasterdata("PM10", maps, capabilitylist, grid, boundary)
+  print("... eBC")
   data$eBC <- get_all_aq_rasterdata("eBC", maps, capabilitylist, grid, boundary)
-  #FIXME: see issue 12
-  # data$O3p98 <- get_all_aq_rasterdata("O3p98", maps, capabilitylist, grid, boundary)
+  print("... O3p98")
+  data$O3p98 <- get_all_aq_rasterdata("O3p98", maps, capabilitylist, grid, boundary)
   
   # join air quality and population raster data
   print("join statpop and geolion raster data")
@@ -122,8 +125,11 @@ get_prepare_raster_data <- function(files, boundary, path = "inst/extdata") {
   # download, read and restructure air pollution NH3, Ndep, Ndep_exceedance  raster data from https://data.geo.admin.ch
   print("get data.geo.admin reactive nitrogen raster data")
   
+  print("... NH3")
   data$NH3 <- get_crop_all_bafu_rasterdata(files$rasterdata$bafu_nh3, boundary, path)
+  print("... Ndep")
   data$Ndep <- get_crop_all_bafu_rasterdata(files$rasterdata$bafu_ndep, boundary, path)
+  print("... Ndep-exmax")
   data$Ndep_exceedance <- get_crop_all_bafu_rasterdata(files$rasterdata$bafu_ndep_exc, boundary, path)
   
   return(data)

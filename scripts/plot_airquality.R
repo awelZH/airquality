@@ -30,7 +30,7 @@ ressources_plotting <-
 years <- 1995:(lubridate::year(Sys.Date()) - 1) # years to consider for plotting 
 n_years <- 3 # consider last 3 years for plotting relative threshold comparison    
 parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98%_m1", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for timeseries plotting
-parameters_exposition <- c("NO2", "PM10", "PM2.5", "eBC") # parameters to include for exposition plotting
+parameters_exposition <- c("NO2", "O3p98", "PM10", "PM2.5", "eBC") # parameters to include for exposition plotting
 siteclass_levels <- rev(c("ländlich - Hintergrund", "ländlich - verkehrsbelastet", "klein-/vorstädtisch - Hintergrund",
                           "klein-/vorstädtisch - verkehrsbelastet", "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
 
@@ -417,8 +417,6 @@ plots$exposition$population_weighted_mean <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
   })
-
-
 
 
 # clean up

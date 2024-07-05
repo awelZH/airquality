@@ -205,9 +205,11 @@ get_geolion_wcs <- function(coverage, capabilities, name, na_value = c(0,-999), 
 
 
 get_aggregate_aq_rasterdata <- function(coverage, capablilitylist, maplist, parameter, grid, boundary) {
-  
+
   capabilities <- extract_from_capabilitylist(capablilitylist, maplist, coverage, parameter)
-  data <- get_geolion_wcs(coverage, capabilities, parameter, divisor = ifelse(parameter == "eBC", 100, 10)) 
+  divisor <- ifelse(stringr::str_detect(coverage, "jahre"), 1, 10)
+  divisor <- ifelse(parameter == "eBC" & !stringr::str_detect(coverage, "jahre"), 100, divisor)
+  data <- get_geolion_wcs(coverage, capabilities, parameter, divisor = divisor) 
   data <- aggregate_to_grid(data, grid, parameter, boundary)
   
   return(data)
@@ -217,10 +219,10 @@ get_aggregate_aq_rasterdata <- function(coverage, capablilitylist, maplist, para
 
 
 get_all_aq_rasterdata <- function(parameter, maps, capabilitylist, grid, boundary) {
-  
-  #FIXME: matching anpassen, wenn wcs Jahreskarten funktionieren (O3p98)
+
   parameter2 <- dplyr::case_when(
     parameter == "NO2" ~ "no2",
+    parameter == "O3p98" ~ "mp98",
     parameter == "PM10" ~ "10",
     parameter == "PM2.5" ~ "25",
     parameter == "eBC" ~ "bc",

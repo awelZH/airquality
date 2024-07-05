@@ -1,5 +1,3 @@
-# eBC faktor 10?
-
 
 # get links to data sources
 source("scripts/__ressources.R", encoding = "UTF-8") #FIXME: see issue 11

@@ -163,6 +163,7 @@ immission_colorscale <- function(...) {
 immissionscale <- function(parameter) {
   switch(parameter,
          NO2 = immission_colorscale(limits = c(0,50), breaks = seq(0,50,10), name = "NO2\n(µg/m3)"),
+         O3p98 = immission_colorscale(limits = c(0,180), breaks = seq(0,180,30), name = "O3p98\n(µg/m3)"),
          PM10 = immission_colorscale(limits = c(0,34), breaks = c(seq(0,30,10), 34), name = "PM10\n(µg/m3)"),
          PM2.5 = immission_colorscale(limits = c(0,17), breaks = c(seq(0,15,2.5), 17), name = "PM2.5\n(µg/m3)"),
          eBC = immission_colorscale(limits = c(0,1.5), breaks = seq(0,1.5,0.3), name = "eBC\n(µg/m3)"),
@@ -184,6 +185,7 @@ timeseriespars <- function(parameter) {
 expositionpars <- function(parameter) {
   switch(parameter,
          NO2 = list(barwidth = 1, xbreaks = seq(0,90,10)),
+         O3p98 = list(barwidth = 5, xbreaks = seq(0,180,5)),
          PM10 = list(barwidth = 0.2, xbreaks = seq(0,24,2)),
          PM2.5 = list(barwidth = 0.2, xbreaks = seq(0,16,1)),
          eBC = list(barwidth = 0.05, xbreaks = seq(0,2.2,0.2)),
@@ -251,12 +253,12 @@ plot_timeseries_ndep_bars <- function(data, xlim = NULL, xbreaks = waiver(), lin
 
 
 plot_all_expo_hist <- function(parameter, data) {
-  
+
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {
     
     ggplot_expo_hist(
-      data = dplyr::filter(data, year == year & parameter == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
+      data = dplyr::filter(data, year == !!year & parameter == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
       xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
       xlabel = ggplot2::xlab(openair::quickText(paste0("Jahresmittel-Belastung ",parameter," (µg/m3)"))),
       titlelab = ggplot2::ggtitle(
@@ -360,7 +362,7 @@ plot_all_expo_cumul_ndep <- function(data, threshold_ndep) {
       xlabel = ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
-        subtitle = paste0("Anzahl empfindlicher Ökosysteme (kumuliert) im Kanton Zürich im Jahr ", year) 
+        subtitle = paste0("relativer Anteil empfindlicher Ökosysteme (kumuliert) im Kanton Zürich im Jahr ", year) 
       ), 
       captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
       theme = theme_ts

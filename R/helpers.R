@@ -25,10 +25,11 @@ add_to_maplist <- function(capabilities, maplist, target_source, target_paramete
 
 
 extract_from_capabilitylist <- function(capablilitylist, maplist, coverage, parameter) {
-  
+
   product <- unlist(strsplit(names(maplist[maplist == coverage]), split = ".", fixed = TRUE))[1]
   capabilities <- capablilitylist[[product]]
-  if (extract_year(coverage) != 2015) {capabilities <- capabilities[[tolower(parameter)]]} 
+  parameter <- ifelse(product == "jahreskarte", stringr::str_remove(tolower(parameter), pattern = "\\."), parameter)
+  if (product == "jahreskarte") {capabilities <- capabilities[[parameter]]} 
   
   return(capabilities)
 }
@@ -110,7 +111,8 @@ set_year <- function(maps) setNames(as.character(unique(extract_year(maps))), un
 
 bin_fun <- function(pollutant) {
   
-  fun <- function(x) {floor(x) + 0.5} # default: abgerundet auf 1, Klassenmitte
+  fun <- function(x) {floor(x) + 0.5} # default, e.g. NO2: abgerundet auf 1, Klassenmitte
+  if (pollutant == "O3p98") {fun <- function(x) {floor(x / 5) * 5 + 2.5}} # abgerundet auf 5, Klassenmitte
   if (pollutant == "PM10") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
   if (pollutant == "PM2.5") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
   if (pollutant == "eBC") {fun <- function(x) {floor(x * 20) / 20 + 0.025}} # abgerundet auf 0.05, Klassenmitte

@@ -28,7 +28,6 @@ opendatasets[stringr::str_detect(opendatasets, "messdaten-langjahriger-abgasmess
 # ------------------------------------------------------------
 
 # get all available raster data regarding inhabitant population (from BFS), air pollutants (from geolion) and reactive nitrogen (from data.geo.admin); join population and air pollutant data
-#FIXME: see issue 12
 data_raster <- get_prepare_raster_data(files, map_canton)
 
 # maps of mean air pollutant concentrations
@@ -40,9 +39,9 @@ plots$airquality$maps$NO2 <-
   lapply(function(year) {
     ggplot2::ggplot() +
       stars::geom_stars(data = dplyr::select(data_raster$NO2[[year]], NO2)) +
-      ggplot2::geom_sf(data = boundaries_hull, fill = NA) +
+      ggplot2::geom_sf(data = map_canton, fill = NA) +
       ggplot2::coord_sf(datum = sf::st_crs(crs)) +
-      immission_colorscale_no2 +
+      immissionscale("NO2") +
       ggplot2::ggtitle(
         label = openair::quickText("Belastungskarte Stickstoffdioxid (NO2)"),
         subtitle = openair::quickText(paste0("NO2, Jahresmittel-Konzentration ", year))
@@ -58,9 +57,9 @@ plots$airquality$maps$PM10 <-
   lapply(function(year) {
     ggplot2::ggplot() +
       stars::geom_stars(data = dplyr::select(data_raster$PM10[[year]], PM10)) +
-      ggplot2::geom_sf(data = boundaries_hull, fill = NA) +
+      ggplot2::geom_sf(data = map_canton, fill = NA) +
       ggplot2::coord_sf(datum = sf::st_crs(crs)) +
-      immission_colorscale_pm10 +
+      immissionscale("PM10") +
       ggplot2::ggtitle(
         label = openair::quickText("Belastungskarte Feinstaub (PM10)"),
         subtitle = openair::quickText(paste0("PM10, Jahresmittel-Konzentration ", year))
@@ -76,9 +75,9 @@ plots$airquality$maps$PM2.5 <-
   lapply(function(year) {
     ggplot2::ggplot() +
       stars::geom_stars(data = dplyr::select(data_raster$PM2.5[[year]], PM2.5)) +
-      ggplot2::geom_sf(data = boundaries_hull, fill = NA) +
+      ggplot2::geom_sf(data = map_canton, fill = NA) +
       ggplot2::coord_sf(datum = sf::st_crs(crs)) +
-      immission_colorscale_pm2_5 +
+      immissionscale("PM2.5") +
       ggplot2::ggtitle(
         label = openair::quickText("Belastungskarte Feinstaub (PM2.5)"),
         subtitle = openair::quickText(paste0("PM2.5, Jahresmittel-Konzentration ", year))
@@ -94,9 +93,9 @@ plots$airquality$maps$eBC <-
   lapply(function(year) {
     ggplot2::ggplot() +
       stars::geom_stars(data = dplyr::select(data_raster$eBC[[year]], eBC)) +
-      ggplot2::geom_sf(data = boundaries_hull, fill = NA) +
+      ggplot2::geom_sf(data = map_canton, fill = NA) +
       ggplot2::coord_sf(datum = sf::st_crs(crs)) +
-      immission_colorscale_ebc +
+      immissionscale("eBC") +
       ggplot2::ggtitle(
         label = openair::quickText("Belastungskarte Russ im Feinstaub (eBC)"),
         subtitle = openair::quickText(paste0("eBC, Jahresmittel-Konzentration ", year))
@@ -106,14 +105,29 @@ plots$airquality$maps$eBC <-
   })
 
 # ... for O3
-# ...
+
+plots$airquality$maps$O3p98 <-
+  setNames(names(data_raster$O3p98), names(data_raster$O3p98)) %>% 
+  lapply(function(year) {
+    ggplot2::ggplot() +
+      stars::geom_stars(data = dplyr::select(data_raster$O3p98[[year]], O3p98)) +
+      ggplot2::geom_sf(data = map_canton, fill = NA) +
+      ggplot2::coord_sf(datum = sf::st_crs(crs)) +
+      immissionscale("O3p98") +
+      ggplot2::ggtitle(
+        label = openair::quickText("Belastungskarte Ozon (O3)"),
+        subtitle = openair::quickText(paste0("O3, höchstes monats-98%-Perzentil ", year))
+      ) +
+      ggplot2::labs(caption = "Quelle: BAFU") +
+      theme_map
+  })
 
 # map of mean NH3 concentration in 2020
 
 plots$airquality$maps$NH3$`2020` <-
   ggplot2::ggplot() +
   geom_sf(data = data_raster$NH3$`2020`, mapping = aes(fill = CNH3), color = NA) +
-  ggplot2::geom_sf(data = boundaries_hull, fill = NA) +
+  ggplot2::geom_sf(data = map_canton, fill = NA) +
   ggplot2::coord_sf(datum = sf::st_crs(crs)) +
   immission_colorscale_nh3 +
   ggplot2::ggtitle(
@@ -128,7 +142,7 @@ plots$airquality$maps$NH3$`2020` <-
 plots$airquality$maps$nitrogen_deposition$`2020` <-
   ggplot2::ggplot() +
   geom_sf(data = data_raster$Ndep$`2020`, mapping = aes(fill = DNTOT), color = NA) +
-  ggplot2::geom_sf(data = boundaries_hull, fill = NA) +
+  ggplot2::geom_sf(data = map_canton, fill = NA) +
   ggplot2::coord_sf(datum = sf::st_crs(crs)) +
   immission_colorscale_ndep +
   ggplot2::ggtitle(label = "Belastungskarte Stickstoffdeposition (Ndep)",
@@ -141,7 +155,7 @@ plots$airquality$maps$nitrogen_deposition$`2020` <-
 plots$airquality$maps$CLN_exceedance$`2020` <-
   ggplot2::ggplot() +
   geom_sf(data = data_raster$Ndep_exceedance$`2020`, mapping = aes(fill = EXNMAX), color = NA) +
-  ggplot2::geom_sf(data = boundaries_hull, fill = NA) +
+  ggplot2::geom_sf(data = map_canton, fill = NA) +
   ggplot2::coord_sf(datum = sf::st_crs(crs)) +
   immission_colorscale_ndep_exc +
   ggplot2::ggtitle(label = "Belastungskarte Überschreitung Stickstoffdeposition",

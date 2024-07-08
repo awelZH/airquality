@@ -124,15 +124,21 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
     dplyr::ungroup() |> 
     dplyr::arrange(sector, dplyr::desc(emission)) |> 
     dplyr::ungroup() 
-  
+
   data <-
     data |> 
     dplyr::mutate(subsector_new = factor(subsector_new, levels = order$subsector_new)) |> 
-    dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols)) |> 
-    dplyr::group_by(sector) |> 
-    dplyr::mutate(col = colorRampPalette(c(unique(rootcol), shades::brightness(unique(rootcol), 0.6)))(length(subsector_new))) |> #FIXME: better color grading function
-    dplyr::ungroup()
+    dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols))
 
+  cols <- 
+    data |> 
+    dplyr::distinct(sector, subsector_new, rootcol) |> 
+    dplyr::group_by(sector) |>
+    dplyr::mutate(col = colorRampPalette(c(unique(rootcol), shades::brightness(unique(rootcol), 0.5)))(length(unique(subsector_new)))) |> #FIXME: better color grading function
+    dplyr::ungroup()
+  
+  data <- dplyr::left_join(data, cols, by = c("sector", "subsector_new", "rootcol"))
+  
   plot <-
     data |>
     ggplot2::ggplot(aes(x = factor(year), y = emission, fill = subsector_new)) +
@@ -142,7 +148,7 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
     theme +
     ggplot2::theme(legend.title = ggplot2::element_blank()) +
     ggplot2::ggtitle(
-      label = openair::quickText(paste0("Luftschadstoff-Emissionen ", longtitle(pollutant)," (",pollutant,")")),
+      label = openair::quickText(paste0("Luftschadstoff-Emissionen ", longtitle(pollutant))),
       subtitle = sub
     ) +
     ggplot2::labs(caption = "Quelle: OSTLUFT, Grundlage: EMIS Schweiz")

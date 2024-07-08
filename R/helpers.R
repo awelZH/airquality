@@ -41,12 +41,12 @@ extract_threshold <- function(threshold_values, pollutant = NULL, aggregation = 
                           source = c("LRV Grenzwert", "WHO Richtwert")) {
   
   thresholds <-
-    threshold_values %>%
+    threshold_values |>
     dplyr::filter(
       source %in% !!source &
         pollutant == !!pollutant & aggregation == !!aggregation &
         metric == !!metric & unit == !!unit
-    ) %>%
+    ) |>
     dplyr::arrange(source)
   
   thresholds <-
@@ -77,7 +77,7 @@ longtitle <- function(x) {
     x == "NOx" ~ "Stickoxide",
     x == "eBC" ~ "Russ",
     x == "O3" ~ "Ozon", 
-    x == "O3_max_98%_m1" ~ "Ozon",
+    x == "O3_max_98p_m1" ~ "Ozon",
     x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "Ozon",
     TRUE ~ x
   )
@@ -90,7 +90,7 @@ longtitle <- function(x) {
 shorttitle <- function(x) {
   
   long <- dplyr::case_when(
-    x == "O3_max_98%_m1" ~ "O3",
+    x == "O3_max_98p_m1" ~ "O3",
     x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "O3",
     TRUE ~ x
   )
@@ -98,6 +98,17 @@ shorttitle <- function(x) {
   return(long)
 }
 
+
+longparameter <- function(x) {
+  
+  long <- dplyr::case_when(
+    x == "O3_max_98p_m1" ~ "max. monatl. 98%-Perz.",
+    x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "Sommersaison",
+    TRUE ~ "Jahresmittel"
+  )
+  
+  return(long)
+}
 
 
 extract_year <- function(string) {as.numeric(stringr::str_extract(string, "(1|2)[0-9]{3}"))}
@@ -112,7 +123,7 @@ set_year <- function(maps) setNames(as.character(unique(extract_year(maps))), un
 bin_fun <- function(pollutant) {
   
   fun <- function(x) {floor(x) + 0.5} # default, e.g. NO2: abgerundet auf 1, Klassenmitte
-  if (pollutant == "O3p98") {fun <- function(x) {floor(x / 5) * 5 + 2.5}} # abgerundet auf 5, Klassenmitte
+  if (pollutant == "O3_max_98p_m1") {fun <- function(x) {floor(x / 5) * 5 + 2.5}} # abgerundet auf 5, Klassenmitte
   if (pollutant == "PM10") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
   if (pollutant == "PM2.5") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
   if (pollutant == "eBC") {fun <- function(x) {floor(x * 20) / 20 + 0.025}} # abgerundet auf 0.05, Klassenmitte

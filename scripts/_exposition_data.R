@@ -1,6 +1,3 @@
-#FIXME: harmonise O3p98 & O3_max_...
-
-
 # get all available raster data regarding inhabitant population (from BFS), air pollutants (from geolion) and reactive nitrogen (from data.geo.admin); join population and air pollutant data
 data_raster <- get_prepare_raster_data(files, map_canton)
 pollutants <- names(data_raster)[!(names(data_raster) %in% c("population", "NH3", "Ndep", "Ndep_exceedance"))]
@@ -22,16 +19,16 @@ data_expo_distr <-
 data_expo_distr$Ndep <- calc_all_ndep_ecosystem_expo_distr(data_raster$Ndep_exceedance)
   
 # write output datasets
-lapply(pollutants, function(pollutant) extract_weighted_mean_canton(data_weighted_means[[pollutant]], pollutant)) %>% 
-  dplyr::bind_rows() %>%
+lapply(pollutants, function(pollutant) extract_weighted_mean_canton(data_weighted_means[[pollutant]], pollutant)) |> 
+  dplyr::bind_rows() |>
   readr::write_delim(file = "inst/extdata/output_data_exposition_weighted_means_canton.csv", delim = ";", na = "NA")
 
-lapply(pollutants, function(pollutant) extract_weighted_mean_municipalities(data_weighted_means[[pollutant]], pollutant)) %>% 
-  dplyr::bind_rows() %>% 
+lapply(pollutants, function(pollutant) extract_weighted_mean_municipalities(data_weighted_means[[pollutant]], pollutant)) |> 
+  dplyr::bind_rows() |> 
   readr::write_delim(file = "inst/extdata/output_data_exposition_weighted_means_municipalities.csv", delim = ";", na = "NA")
 
-lapply(pollutants, function(pollutant) extract_exposition_distr_pollutants(data_expo_distr[[pollutant]], pollutant)) %>% 
-  dplyr::bind_rows() %>% 
+lapply(pollutants, function(pollutant) extract_exposition_distr_pollutants(data_expo_distr[[pollutant]], pollutant)) |> 
+  dplyr::bind_rows() |> 
   readr::write_delim(file = "inst/extdata/output_data_exposition_distribution_pollutants.csv", delim = ";", na = "NA")
   
 readr::write_delim(extract_exposition_distr_ndep(data_expo_distr$Ndep), file = "inst/extdata/output_data_exposition_distribution_ndep.csv", delim = ";", na = "NA")

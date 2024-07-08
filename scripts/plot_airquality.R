@@ -29,10 +29,10 @@ ressources_plotting <-
 # data subsetting parameters
 years <- 1995:(lubridate::year(Sys.Date()) - 1) # years to consider for plotting 
 n_years <- 3 # consider last 3 years for plotting relative threshold comparison    
-parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98%_m1", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for timeseries plotting
-parameters_exposition <- c("NO2", "O3p98", "PM10", "PM2.5", "eBC") # parameters to include for exposition plotting
-siteclass_levels <- rev(c("ländlich - Hintergrund", "ländlich - verkehrsbelastet", "klein-/vorstädtisch - Hintergrund",
-                          "klein-/vorstädtisch - verkehrsbelastet", "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
+parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98p_m1", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for timeseries plotting
+parameters_exposition <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "eBC") # parameters to include for exposition plotting
+siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
+                          "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
 
 # plotting size parameters
 basesize <- 12 # ggplot theme base_size
@@ -57,7 +57,7 @@ immission_threshold_values <-
     lty = c(lty_lrv, lty_who),
     lsz = c(lsz_lrv, lsz_who),
     lbsz = lbsz
-  ) %>% 
+  ) |> 
   dplyr::right_join(immission_threshold_values, by = "source")
 
 threshold_ndep <- extract_threshold(dplyr::filter(immission_threshold_values, source == "LRV Grenzwert"), "NO2")
@@ -141,14 +141,14 @@ plots$emissions$relative <-
 data_rsd_per_norm <- readr::read_delim(ressources_plotting$emissions$rsd_norm, delim = ";")
 
 plots$emissions$NOx$rsd_norm <-
-  data_rsd_per_norm %>% 
-  tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_euronorm) %>%
-  dplyr::left_join(data_rsd_per_norm, by = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) %>%
+  data_rsd_per_norm |> 
+  tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_euronorm) |>
+  dplyr::left_join(data_rsd_per_norm, by = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) |>
   dplyr::mutate(
     vehicle_type = dplyr::recode_factor(vehicle_type, !!!c("passenger car" = "Personenwagen", "light duty vehicle" = "leichte Nutzfahrzeuge")),
     vehicle_fuel_type = dplyr::recode_factor(vehicle_fuel_type, !!!c("gasoline" = "Benzin", "diesel" = "Diesel")),
     vehicle_euronorm = factor(vehicle_euronorm)
-  ) %>% 
+  ) |> 
   ggplot2::ggplot(aes(x = vehicle_euronorm, y = NOx_emission, group = vehicle_type, fill = vehicle_type)) +
   ggplot2::geom_bar(stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
   ggplot2::geom_linerange(mapping = aes(ymin = NOx_emission - standarderror, ymax = NOx_emission + standarderror), color = "gray60", position = ggplot2::position_dodge(width = 0.75)) +
@@ -175,13 +175,13 @@ plots$emissions$NOx$rsd_norm <-
 data_rsd_per_yearmodel <- readr::read_delim(ressources_plotting$emissions$rsd_yearmodel, delim = ";")
 
 plots$emissions$NOx$rsd_yearmodel <-
-  data_rsd_per_yearmodel %>% 
-  tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_model_year) %>% 
-  dplyr::left_join(data_rsd_per_yearmodel, by = c("vehicle_type", "vehicle_fuel_type", "vehicle_model_year")) %>% 
+  data_rsd_per_yearmodel |> 
+  tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_model_year) |> 
+  dplyr::left_join(data_rsd_per_yearmodel, by = c("vehicle_type", "vehicle_fuel_type", "vehicle_model_year")) |> 
   dplyr::mutate(
     vehicle_type = dplyr::recode_factor(vehicle_type, !!!c("passenger car" = "Personenwagen", "light duty vehicle" = "leichte Nutzfahrzeuge")),
     vehicle_fuel_type = dplyr::recode_factor(vehicle_fuel_type, !!!c("gasoline" = "Benzin", "diesel" = "Diesel"))
-  ) %>% 
+  ) |> 
   ggplot2::ggplot(aes(x = vehicle_model_year, y = NOx_emission, group = vehicle_type, fill = vehicle_type)) +
   ggplot2::geom_bar(stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
   ggplot2::geom_linerange(mapping = aes(ymin = NOx_emission - standarderror, ymax = NOx_emission + standarderror), color = "gray60", position = ggplot2::position_dodge(width = 0.75)) +
@@ -207,8 +207,8 @@ plots$emissions$NOx$rsd_yearmodel <-
 data_rsd_per_yearmeas <- readr::read_delim(ressources_plotting$emissions$rsd_yearmeas, delim = ";")
 
 plots$emissions$NOx$rsd_yearmeas <-
-  data_rsd_per_yearmeas %>% 
-  dplyr::mutate(vehicle_fuel_type = dplyr::recode_factor(vehicle_fuel_type, !!!c("all" = "Benzin & Diesel", "gasoline" = "Benzin", "diesel" = "Diesel"))) %>% 
+  data_rsd_per_yearmeas |> 
+  dplyr::mutate(vehicle_fuel_type = dplyr::recode_factor(vehicle_fuel_type, !!!c("all" = "Benzin & Diesel", "gasoline" = "Benzin", "diesel" = "Diesel"))) |> 
   ggplot2::ggplot(aes(x = year, y = NOx_emission)) +
   ggplot2::geom_smooth(mapping = aes(color = vehicle_fuel_type), se = TRUE, span = 0.6, level = 0.95) +
   # ggplot2::geom_point(color = "gray60") +
@@ -234,9 +234,10 @@ plots$emissions$NOx$rsd_yearmeas <-
 
 # read airquality monitoring data
 data_monitoring_aq <- 
-  readr::read_delim(ressources_plotting$monitoring$airquality, delim = ";") %>% 
-  dplyr::mutate(siteclass = factor(siteclass, levels = siteclass_levels)) %>% 
-  dplyr::filter(year %in% years & parameter %in% parameters_timeseries & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) 
+  readr::read_delim(ressources_plotting$monitoring$airquality, delim = ";") |> 
+  dplyr::mutate(siteclass = factor(siteclass, levels = siteclass_levels)) |> 
+  dplyr::filter(year %in% years & parameter %in% parameters_timeseries & 
+                  !is.na(siteclass) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) 
 
 # plot timeseries of yearly values for selected pollutants
 plots$airquality$monitoring$timeseries <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries)
@@ -244,7 +245,7 @@ plots$airquality$monitoring$timeseries <- plot_pars_monitoring_timeseries(data_m
 # read pre-compiled OSTLUFT y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
 data_monitoring_ndep <- readr::read_delim(ressources_plotting$monitoring$ndep, delim = ";")
 data_monitoring_ndep <- 
-  data_monitoring_ndep %>% 
+  data_monitoring_ndep |> 
   dplyr::mutate(
     parameter = factor(parameter, levels = rev(c("N-Deposition", "aus NH3-Quellen", "aus NOx-Quellen"))),
     ecosystem_category = factor(ecosystem_category, levels = rev(c("Hochmoor", "Flachmoor", "Trockenrasen", "Wald")))
@@ -253,38 +254,38 @@ data_monitoring_ndep <-
 # plot relative comparison latest n_years of measurement data vs. LRV Immissionsgrenzwerte + Critical Loads of Nitrogen and WHO-Richtwerte
 data_thrshlds <- dplyr::distinct(immission_threshold_values, source, col, lty, lsz)
 data_temp <-
-  data_monitoring_ndep %>%
-  dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) %>%
-  dplyr::filter(parameter == "N-Deposition") %>%
+  data_monitoring_ndep |>
+  dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |>
+  dplyr::filter(parameter == "N-Deposition") |>
   dplyr::mutate(
     value = value / critical_load_single,
     parameter = factor(parameter),
     reference = factor("value_relative_lrv"),
     siteclass = "empf. Ökosystem"
-  ) %>%
+  ) |>
   dplyr::select(year, parameter, reference, value, siteclass)
 
 plots$airquality$monitoring$threshold_comparison <-
-  data_monitoring_aq %>%
-  combine_thresholds(immission_threshold_values) %>%
+  data_monitoring_aq |>
+  combine_thresholds(immission_threshold_values) |>
   dplyr::mutate(
     value_relative_lrv = value / `LRV Grenzwert`,
     value_relative_who = value / `WHO Richtwert`
-  ) %>%
-  dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) %>%
-  dplyr::select(year, parameter, value_relative_lrv, value_relative_who, siteclass) %>%
-  tidyr::gather(reference, value, -year, -parameter, -siteclass) %>%
-  dplyr::filter(!is.na(value) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) %>%
-  dplyr::bind_rows(data_temp) %>%
+  ) |>
+  dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |>
+  dplyr::select(year, parameter, value_relative_lrv, value_relative_who, siteclass) |>
+  tidyr::gather(reference, value, -year, -parameter, -siteclass) |>
+  dplyr::filter(!is.na(value) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) |>
+  dplyr::bind_rows(data_temp) |>
   dplyr::mutate(
     parameter = dplyr::recode_factor(parameter, !!!c("NO2" = "NO2 Jahresmittel", "PM2.5" = "Feinstaub PM2.5 Jahresmittel", "PM10" = "Feinstaub PM10 Jahresmittel", 
-                                                     "O3_max_98%_m1" = "O3 max. 98% der monatl. ½-Stundenwerte", "O3_peakseason_mean_d1_max_mean_h8gl" = "O3 mittlere Sommersaison-Tagesbelastung", 
+                                                     "O3_max_98p_m1" = "O3 max. 98% der monatl. ½-Stundenwerte", "O3_peakseason_mean_d1_max_mean_h8gl" = "O3 mittlere Sommersaison-Tagesbelastung", 
                                                      "N-Deposition" = "Stickstoffeintrag in empfindliche Ökosysteme")),
     parameter = factor(parameter, levels = rev(c("Feinstaub PM2.5 Jahresmittel", "Feinstaub PM10 Jahresmittel", "NO2 Jahresmittel", 
                                                  "O3 max. 98% der monatl. ½-Stundenwerte", "O3 mittlere Sommersaison-Tagesbelastung", "Stickstoffeintrag in empfindliche Ökosysteme"))),
     reference = dplyr::recode(reference, !!!c("value_relative_lrv" = "relativ zu Immissionsgrenzwerten bzw. kritischen Eintragsraten:", 
                                               "value_relative_who" = "relativ zu Richtwerten der Weltgesundheitsorganisation:"))
-  ) %>%
+  ) |>
   ggplot2::ggplot(aes(x = parameter, y = value, color = siteclass)) +
   ggplot2::geom_hline(yintercept = 1, linetype = data_thrshlds$lty, color = data_thrshlds$col, linewidth = data_thrshlds$lsz, show.legend = FALSE) +
   ggplot2::geom_jitter(shape = 21, size = pointsize, width = 0.2) +
@@ -309,11 +310,11 @@ plots$airquality$monitoring$threshold_comparison <-
 # plot long-standing timeseries of yearly nitrogen deposition at Bachtel site (since 2001)
 temp <- dplyr::filter(immission_threshold_values, source == "LRV Grenzwert" & pollutant == "NO2")
 plots$airquality$monitoring$Ndep$timeseries_Bachtel <-
-  data_monitoring_ndep %>%
-  dplyr::filter(site == "BA" & parameter != "N-Deposition") %>%
-  dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) %>%
-  dplyr::summarise(value = sum(value)) %>%
-  dplyr::ungroup() %>%
+  data_monitoring_ndep |>
+  dplyr::filter(site == "BA" & parameter != "N-Deposition") |>
+  dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) |>
+  dplyr::summarise(value = sum(value)) |>
+  dplyr::ungroup() |>
   plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = temp$lsz, color = temp$col, title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme am Bachtel") +
   ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, site == "BA" & parameter == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
   ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT & FUB") +
@@ -321,8 +322,8 @@ plots$airquality$monitoring$Ndep$timeseries_Bachtel <-
 
 # plot timeseries of yearly nitrogen deposition across several monitoring sites since 2019 (structured per ecosystem type)
 plots$airquality$monitoring$Ndep$all_timeseries <-
-  data_monitoring_ndep %>%
-  dplyr::filter(year >= 2019 & parameter == "N-Deposition") %>%
+  data_monitoring_ndep |>
+  dplyr::filter(year >= 2019 & parameter == "N-Deposition") |>
   ggplot2::ggplot(ggplot2::aes(x = year, y = value, color = ecosystem_category, shape = estimate)) +
   ggplot2::geom_jitter(size = pointsize * 2, width = 0.1) +
   ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
@@ -340,8 +341,8 @@ plots$airquality$monitoring$Ndep$all_timeseries <-
 
 # plot timeseries of yearly nitrogen deposition vs. critical loads of nitrogen across several monitoring sites since 2019 (structured per ecosystem type)
 plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
-  data_monitoring_ndep %>%
-  dplyr::filter(year >= 2019 & parameter == "N-Deposition") %>%
+  data_monitoring_ndep |>
+  dplyr::filter(year >= 2019 & parameter == "N-Deposition") |>
   ggplot2::ggplot(ggplot2::aes(x = year, y = value / critical_load_single, color = ecosystem_category, shape = estimate)) +
   ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1), color = temp$col, linewidth = temp$lsz, show.legend = FALSE) +
   ggplot2::geom_jitter(size = pointsize * 2, width = 0.1) +
@@ -360,11 +361,11 @@ plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
 
 # plot mean contribution of source categories to nitrogen deposition
 plots$airquality$monitoring$Ndep$mean_sources_fractions <-
-  data_monitoring_ndep %>%
-  dplyr::filter(year >= 2019 & parameter != "N-Deposition") %>% 
-  dplyr::group_by(year, parameter) %>% 
-  dplyr::summarise(value = mean(value)) %>% 
-  dplyr::ungroup() %>% 
+  data_monitoring_ndep |>
+  dplyr::filter(year >= 2019 & parameter != "N-Deposition") |> 
+  dplyr::group_by(year, parameter) |> 
+  dplyr::summarise(value = mean(value)) |> 
+  dplyr::ungroup() |> 
   ggplot2::ggplot(ggplot2::aes(x = year, y = value, fill = parameter)) +
   geom_bar(stat = "identity", position = "fill") +
   ggplot2::scale_x_continuous(breaks = seq(2018,max(years),1), expand = c(0.01,0.01)) +

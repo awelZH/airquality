@@ -28,15 +28,15 @@ rsd_filters$max[which(rsd_filters$parameter == "vehicleyears")] <- lubridate::ye
 
 # calculate vehicle specific power from measurement data subset and merge with RSD dataset
 data_vsp <-
-  data_rsd %>%
-  restructure_rsd_for_vsp() %>% 
-  dplyr::mutate(vehicle_specific_power = calc_vsp(velocity * 1000 / 60^2, acceleration * 1000 / 60^2, site_roadgrade)) %>%  # also convert velocity from km/h into m/s and acceleration from km/h/s into m/s2
+  data_rsd |>
+  restructure_rsd_for_vsp() |> 
+  dplyr::mutate(vehicle_specific_power = calc_vsp(velocity * 1000 / 60^2, acceleration * 1000 / 60^2, site_roadgrade)) |>  # also convert velocity from km/h into m/s and acceleration from km/h/s into m/s2
   dplyr::select(id, acceleration, velocity, vehicle_specific_power) # vehicle_specific_power in kW/t
 
 data_rsd <-
-  data_rsd %>%
-  dplyr::select(-unit) %>% 
-  dplyr::filter(!(parameter %in% c("acceleration", "velocity"))) %>%
+  data_rsd |>
+  dplyr::select(-unit) |> 
+  dplyr::filter(!(parameter %in% c("acceleration", "velocity"))) |>
   dplyr::left_join(data_vsp, by = "id") 
 
 # apply data filters for a meaningful analysis
@@ -54,19 +54,19 @@ data_rsd_per_norm <- aggregate_nox_rsd(data_rsd, rsd_meta_temp, nmin = rsd_filte
   
 ### aggregate RSD NOx emissions per year of vehicle model, vehicle type and fuel type
 rsd_meta_temp <-
-  rsd_meta %>% 
-  dplyr::filter(!is.na(as.numeric(vehicle_euronorm))) %>% 
-  dplyr::mutate(vehicle_euronorm = as.numeric(vehicle_euronorm)) %>% 
+  rsd_meta |> 
+  dplyr::filter(!is.na(as.numeric(vehicle_euronorm))) |> 
+  dplyr::mutate(vehicle_euronorm = as.numeric(vehicle_euronorm)) |> 
   dplyr::rename(vehicle_model_year = vehicle_euronorm)
 
 data_rsd_per_yearmodel <- aggregate_nox_rsd(data_rsd, rsd_meta_temp, nmin = rsd_filters$min[rsd_filters$parameter == "nmin"], groups = c("vehicle_model_year", "vehicle_type", "vehicle_fuel_type"))
 
 ### aggregate RSD NOx emissions per year of measurement and fuel type (including all = gasoline and diesel)
 data_rsd_per_yearmeas <-
-  data_rsd %>% 
-    dplyr::mutate(vehicle_fuel_type = "all") %>% 
-    dplyr::bind_rows(data_rsd) %>% 
-    dplyr::mutate(year = lubridate::year(date_measured)) %>% 
+  data_rsd |> 
+    dplyr::mutate(vehicle_fuel_type = "all") |> 
+    dplyr::bind_rows(data_rsd) |> 
+    dplyr::mutate(year = lubridate::year(date_measured)) |> 
     aggregate_nox_rsd(NULL, nmin = rsd_filters$min[rsd_filters$parameter == "nmin"], groups = c("year", "vehicle_fuel_type"))
   
 # write output datasets

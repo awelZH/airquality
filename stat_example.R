@@ -18,7 +18,7 @@ data_long_clean <- data_long |>
   dplyr::mutate(value = as.numeric(gsub("\\*|\\;", "", value)),
                 interval = "y1") |> 
   dplyr::mutate(Schadstoff = dplyr::case_when(
-    Messparameter == "höchster 98%-Wert eines Monats" ~ "O3_max_98%_m1",
+    Messparameter == "höchster 98%-Wert eines Monats" ~ "O3_max_98p_m1",
     Messparameter == "Anzahl Stundenmittel > 120 µg/m3" ~ "O3_nb_h1>120",
     Messparameter == "Dosis AOT40f" ~ "O3_AOT40",
     Schadstoff == "Partikelanzahl" ~ "PN",

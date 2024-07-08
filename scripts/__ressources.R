@@ -76,7 +76,7 @@ files$boundaries$wfs <- "https://maps.zh.ch/wfs/GemZHWFS"
 ### - derived on the fly for the year 2015 from https://geolion.zh.ch/geodatenservice/1058 and for 2020 onward from: https://geolion.zh.ch/geodatensatz/4730 (NO2), https://geolion.zh.ch/geodatensatz/4729 (PM2.5), https://geolion.zh.ch/geodatensatz/4731 (PM10)
 files$rasterdata$bafu_airquality$pollumap <- "http://wms.zh.ch/ImmissionenZHWCS"
 files$rasterdata$bafu_airquality$jahreskarte$no2 <- "http://wms.zh.ch/AwelLHNO2JahreZHWCS"
-files$rasterdata$bafu_airquality$jahreskarte$o3p98 <- "http://wms.zh.ch/AwelLHMP98JahreZHWCS"
+files$rasterdata$bafu_airquality$jahreskarte$`o3_max_98p_m1` <- "http://wms.zh.ch/AwelLHMP98JahreZHWCS"
 files$rasterdata$bafu_airquality$jahreskarte$pm25 <- "http://wms.zh.ch/AwelLHPM25JahreZHWCS"
 files$rasterdata$bafu_airquality$jahreskarte$pm10 <- "http://wms.zh.ch/AwelLHPM10JahreZHWCS"
 

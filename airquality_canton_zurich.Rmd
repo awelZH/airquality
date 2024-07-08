@@ -448,7 +448,7 @@ plots$exposition$eBC$population_weighted_mean$`2015`
 ### Luftqualitätsmesswerte 
 
 ```{r monitoring_O3_98p}
-plots$airquality$monitoring$O3$`max_98%_m1_timeseries`
+plots$airquality$monitoring$O3$`max_98p_m1_timeseries`
 ```
 
 ```{r monitoring_O3_peakseason}

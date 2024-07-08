@@ -8,10 +8,10 @@ find_map_geolion <- function(wfs, version = "2.0.0", crs = 2056) {
   # client$
   #   getCapabilities()$
   #   getOperationsMetadata()$
-  #   getOperations() %>%
+  #   getOperations() |>
   #   purrr::map_chr(function(x){x$getName()})
   # client$
-  #   describeFeatureType(typeName = "ms:grenzen") %>%
+  #   describeFeatureType(typeName = "ms:grenzen") |>
   #   purrr::map_chr(function(x){x$getName()})
   
   url <- httr2::url_parse(wfs)
@@ -106,10 +106,10 @@ get_bfs_statpop_rasterdata <- function(year, path_destination, boundary) {
   
   # list files within the ZIP archive
   files_in_zip <- 
-    archive::archive(temp) %>% 
-    dplyr::mutate(path_lower = tolower(path)) %>% 
-    dplyr::filter(stringr::str_detect(path_lower, "^.*statpop\\d{4}\\.csv$")) %>% 
-    dplyr::select(path) %>% 
+    archive::archive(temp) |> 
+    dplyr::mutate(path_lower = tolower(path)) |> 
+    dplyr::filter(stringr::str_detect(path_lower, "^.*statpop\\d{4}\\.csv$")) |> 
+    dplyr::select(path) |> 
     dplyr::pull(path)
   
   # Select the file that matches the pattern "STATPOP##.csv" (case-insensitive)
@@ -187,12 +187,12 @@ get_geolion_wcs <- function(coverage, capabilities, name, na_value = c(0,-999), 
   # des <- chla$getDescription()
   # des$rangeType$field$nilValues
   data <- 
-    chla$getCoverage() %>% 
-    stars::st_as_stars() %>% 
+    chla$getCoverage() |> 
+    stars::st_as_stars() |> 
     sf::st_set_crs(value = crs)
   data <- setNames(data, "value")
   data <-
-    data %>% 
+    data |> 
     dplyr::mutate(
       value = ifelse(value %in% na_value, NA, value),
       value = value / divisor
@@ -222,7 +222,7 @@ get_all_aq_rasterdata <- function(parameter, maps, capabilitylist, grid, boundar
 
   parameter2 <- dplyr::case_when(
     parameter == "NO2" ~ "no2",
-    parameter == "O3p98" ~ "mp98",
+    parameter == "O3_max_98p_m1" ~ "mp98",
     parameter == "PM10" ~ "10",
     parameter == "PM2.5" ~ "25",
     parameter == "eBC" ~ "bc",

@@ -1,9 +1,9 @@
 aggregate_map <- function(map) {
   
   map <- 
-    map %>%
-    sf::st_union() %>%
-    sf::st_boundary() %>% 
+    map |>
+    sf::st_union() |>
+    sf::st_boundary() |> 
     sf::st_cast("POLYGON")
   
   return(map)
@@ -17,8 +17,8 @@ aggregate_map <- function(map) {
 aggregate_to_grid <- function(data, grid, parameter, boundary, method = "average", na_val = -999) { 
   
   data <- 
-    data %>% 
-    sf::st_crop(boundary) %>% 
+    data |> 
+    sf::st_crop(boundary) |> 
     stars::st_warp(grid, method = method, use_gdal = TRUE, no_data_value = na_val)
   data <- setNames(data, parameter)
   
@@ -30,12 +30,12 @@ aggregate_to_grid <- function(data, grid, parameter, boundary, method = "average
 aggregate_population_weighted_mean <- function(data, y, group = "geodb_oid") {
   
   data <- 
-    data %>% 
-    sf::st_drop_geometry() %>%
-    dplyr::mutate(!!y := ifelse(art_code != 1, NA, !!rlang::sym(y))) %>%
-    na.omit() %>%
-    dplyr::group_by(!!rlang::sym(group)) %>% 
-    dplyr::summarise(!!y := population_weighted_mean(!!rlang::sym(y), population)) %>% 
+    data |> 
+    sf::st_drop_geometry() |>
+    dplyr::mutate(!!y := ifelse(art_code != 1, NA, !!rlang::sym(y))) |>
+    na.omit() |>
+    dplyr::group_by(!!rlang::sym(group)) |> 
+    dplyr::summarise(!!y := population_weighted_mean(!!rlang::sym(y), population)) |> 
     dplyr::ungroup()
   
   return(data)
@@ -45,14 +45,14 @@ aggregate_population_weighted_mean <- function(data, y, group = "geodb_oid") {
 
 
 aggregate_exposition_distrib <- function(data, y, fun = function(x) {floor(x) + 0.5}) { # fun: abgerundet auf 1, Klassenmitte
-  
-  data <- 
-    data %>% 
-    dplyr::select(!!y, population) %>% 
-    tibble::as_tibble() %>% 
-    na.omit() %>% 
-    dplyr::group_by(!!rlang::sym(y) := fun(!!rlang::sym(y))) %>% 
-    dplyr::summarise(population = sum(population)) %>%
+
+  data <-
+    data |> 
+    dplyr::select(!!rlang::sym(y), population) |> 
+    tibble::as_tibble() |> 
+    na.omit() |> 
+    dplyr::group_by(!!rlang::sym(y) := fun(!!rlang::sym(y))) |> 
+    dplyr::summarise(population = sum(population)) |>
     dplyr::ungroup()
   
   return(data)
@@ -66,9 +66,9 @@ aggregate_exposition_distrib <- function(data, y, fun = function(x) {floor(x) + 
 exposition_distrib_cumulative <- function(data, y) {
   
   data <- 
-    data %>% 
-    dplyr::filter(population > 0) %>% 
-    dplyr::arrange(!!y) %>% 
+    data |> 
+    dplyr::filter(population > 0) |> 
+    dplyr::arrange(!!y) |> 
     dplyr::mutate(population_cum_relative = cumsum(population) / sum(population))
   
   return(data)
@@ -108,8 +108,8 @@ aggregate_groups_rsd <- function(data, y, groups = c("vehicle_type", "vehicle_fu
                                  nmin = 100, perc = list(ymin = 0.05, lower = 0.25, middle = 0.5, upper = 0.75, ymax = 0.95)) {
   
   data <-
-    data %>%
-    dplyr::group_by_at(dplyr::vars(groups)) %>%
+    data |>
+    dplyr::group_by_at(dplyr::vars(groups)) |>
     dplyr::summarise(
       n = length(na.omit(!!rlang::sym(y))),
       min = quantile(!!rlang::sym(y), perc$ymin, na.rm = TRUE),
@@ -120,13 +120,13 @@ aggregate_groups_rsd <- function(data, y, groups = c("vehicle_type", "vehicle_fu
       mean = mean(!!rlang::sym(y), na.rm = TRUE),
       standarddeviation = sd(!!rlang::sym(y), na.rm = TRUE),
       standarderror = standarddeviation / sqrt(n)
-    ) %>%
+    ) |>
     ungroup()
   
   data_all <-
-    data %>% 
-    dplyr::select(tidyr::all_of(groups)) %>% 
-    dplyr::distinct_all() %>% 
+    data |> 
+    dplyr::select(tidyr::all_of(groups)) |> 
+    dplyr::distinct_all() |> 
     tidyr::expand(tidyr::crossing(!!!rlang::syms(groups)))
   
   data <- dplyr::left_join(data_all, data, by = groups) 
@@ -143,9 +143,9 @@ aggregate_groups_rsd <- function(data, y, groups = c("vehicle_type", "vehicle_fu
 aggregate_nox_rsd <- function(data, meta, nmin = 50, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) {
   
   data <- 
-    data %>% 
-    aggregate_groups_rsd(y = "NOx_emission", groups = groups, nmin = nmin) %>% 
-    dplyr::rename(NOx_emission = mean) %>% 
+    data |> 
+    aggregate_groups_rsd(y = "NOx_emission", groups = groups, nmin = nmin) |> 
+    dplyr::rename(NOx_emission = mean) |> 
     dplyr::mutate(
       unit = "g/kg fuel",
       source = "Kanton Zürich/AWEL"
@@ -155,8 +155,8 @@ aggregate_nox_rsd <- function(data, meta, nmin = 50, groups = c("vehicle_type", 
     data <- dplyr::select(data, !!c(groups, "NOx_emission", "unit", "n", "standarderror", "source"))
   } else {
     data <- 
-      data %>% 
-      dplyr::left_join(meta, by = groups) %>% 
+      data |> 
+      dplyr::left_join(meta, by = groups) |> 
       dplyr::select(!!c(groups, "NOx_emission", "unit", "n", "standarderror", "NOx_emission_threshold_g_per_kg_fuel", "source"))
   } 
   
@@ -188,7 +188,7 @@ round_off <- function (x, digits = 0) {
 aggregate_nitrogen_deposition <- function(data) {
 
   data <-
-    data %>%
+    data |>
     dplyr::mutate(
       parameter = dplyr::case_when(
         stringr::str_detect(parameter, "NO3") | stringr::str_detect(parameter, "NO2") ~ "aus NOx-Quellen",
@@ -200,23 +200,23 @@ aggregate_nitrogen_deposition <- function(data) {
       site_short = stringr::str_remove(site_short, "_Wald"),
       site = stringr::str_remove(site, "_Wald"),
       site = stringr::str_replace(site, "_", "-")
-    ) %>% 
+    ) |> 
     dplyr::rename(
       site_long = site,
       site = site_short
     )
   
   estimate <- 
-    data %>% 
-    dplyr::filter(parameter == "N-Deposition") %>% 
+    data |> 
+    dplyr::filter(parameter == "N-Deposition") |> 
     dplyr::select(year, site, ecosystem_category, estimate)
   
   data <- 
-    data %>% 
-    dplyr::group_by(year, site, site_long, source, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) %>%
-    dplyr::summarise(value = sum(value)) %>%
-    dplyr::ungroup() %>%
-    left_join(estimate, by = c("year", "site", "ecosystem_category")) %>% 
+    data |> 
+    dplyr::group_by(year, site, site_long, source, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) |>
+    dplyr::summarise(value = sum(value)) |>
+    dplyr::ungroup() |>
+    left_join(estimate, by = c("year", "site", "ecosystem_category")) |> 
     dplyr::mutate(estimate = dplyr::case_when(parameter == "N-Deposition" ~ estimate, TRUE ~ NA))
   
   return(data)
@@ -228,10 +228,10 @@ aggregate_nitrogen_deposition <- function(data) {
 aggregate_emissions <- function(data, fun = sum, groups = c("year", "pollutant", "unit", "sector", "subsector")) {
   
   data <-
-    data %>% 
-    dplyr::group_by_at(dplyr::vars(groups)) %>%
-    dplyr::summarise(emission = fun(emission)) %>% 
-    dplyr::ungroup() %>% 
+    data |> 
+    dplyr::group_by_at(dplyr::vars(groups)) |>
+    dplyr::summarise(emission = fun(emission)) |> 
+    dplyr::ungroup() |> 
     dplyr::filter(emission > 0)
   
   return(data)
@@ -248,8 +248,8 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.03, index = 1
   # recode subsectors with mean emissions less than the "big x" into subsector "sonstige"
   
   groups <- 
-    groups %>% 
-    dplyr::group_by(pollutant, sector) %>% 
+    groups |> 
+    dplyr::group_by(pollutant, sector) |> 
     dplyr::mutate(
       subsector_new = dplyr::case_when(
         emission < min(sort(emission, decreasing = TRUE)[index]) ~ "diverse",
@@ -264,15 +264,15 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.03, index = 1
   # second iteration: if subsector emission < overall emission * threshold fraction, then also recode into "sonstige"
   
   groups2 <- 
-    groups2 %>% 
-    dplyr::group_by(pollutant) %>% 
+    groups2 |> 
+    dplyr::group_by(pollutant) |> 
     dplyr::mutate(
       subsector_new = dplyr::case_when(
         subsector_new != "diverse" & emission < threshold_fraction * sum(emission)  ~ "diverse",
         TRUE ~ subsector_new
       ),
       subsector_new = paste0(sector, " / ", subsector_new)
-    ) %>% 
+    ) |> 
     dplyr::ungroup()
   
   # aggregate accordingly
@@ -284,15 +284,15 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.03, index = 1
   groups2 <- dplyr::filter(groups2, !stringr::str_detect(subsector_new, "diverse"))
   
   groups <-
-    groups %>% 
-    dplyr::select(-emission) %>% 
-    dplyr::mutate(subsector_new = paste0(sector, " / ", subsector_new)) %>% 
-    dplyr::left_join(groups2, by = c("pollutant", "subsector_new")) %>% 
-    dplyr::arrange(pollutant, sector, dplyr::desc(emission)) %>%
+    groups |> 
+    dplyr::select(-emission) |> 
+    dplyr::mutate(subsector_new = paste0(sector, " / ", subsector_new)) |> 
+    dplyr::left_join(groups2, by = c("pollutant", "subsector_new")) |> 
+    dplyr::arrange(pollutant, sector, dplyr::desc(emission)) |>
     dplyr::mutate(
       subsector_new = dplyr::case_when(is.na(emission) ~ paste0(sector, " / diverse"), TRUE ~ subsector_new),
       subsector_new = factor(subsector_new, levels = unique(.data$subsector_new))
-      ) %>% 
+      ) |> 
     dplyr::select(-emission)
   
   return(groups)
@@ -305,7 +305,7 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.03, index = 1
 join_raster_data_aq_bfs <- function(pollutant, data_raster){
   
   data <- 
-    setNames(names(data_raster[[pollutant]]), extract_year(names(data_raster[[pollutant]]))) %>%
+    setNames(names(data_raster[[pollutant]]), extract_year(names(data_raster[[pollutant]]))) |>
     lapply(function(year) {sf::st_join(data_raster[[pollutant]][[year]], data_raster$population[[as.character(extract_year(year))]])})
   
   return(data)
@@ -318,7 +318,7 @@ join_raster_data_aq_bfs <- function(pollutant, data_raster){
 join_raster_data_with_municipalities <- function(pollutant, data_raster, boundaries){
   
   data <- 
-    setNames(names(data_raster[[pollutant]]), extract_year(names(data_raster[[pollutant]]))) %>%
+    setNames(names(data_raster[[pollutant]]), extract_year(names(data_raster[[pollutant]]))) |>
     lapply(function(year) {sf::st_join(boundaries, sf::st_as_sf(data_raster[[pollutant]][[year]]))})
   
   return(data)
@@ -345,7 +345,7 @@ aggregate_population_weighted_mean_boundaries <- function(pollutant, data_expo, 
 calc_all_population_weighted_means <- function(pollutant, data_expo, boundaries){
   
   weighted_means <- 
-    setNames(names(data_expo), extract_year(names(data_expo))) %>% 
+    setNames(names(data_expo), extract_year(names(data_expo))) |> 
     lapply(function(year) aggregate_population_weighted_mean_boundaries(pollutant, data_expo[[year]], boundaries))
     
   return(weighted_means)
@@ -356,9 +356,9 @@ calc_all_population_weighted_means <- function(pollutant, data_expo, boundaries)
 
 
 calc_all_population_expo_distr <- function(pollutant, data_raster){
-  
+
   expo_distr <- 
-    setNames(names(data_raster), extract_year(names(data_raster))) %>% 
+    setNames(names(data_raster), extract_year(names(data_raster))) |> 
     lapply(function(year) {
       data <- aggregate_exposition_distrib(data_raster[[year]], y = pollutant, fun = bin_fun(pollutant)) 
       exposition_distrib_cumulative(data, y = pollutant)
@@ -372,12 +372,12 @@ calc_all_population_expo_distr <- function(pollutant, data_raster){
 calc_ndep_ecosystem_expo_distr <- function(data_raster, year) {
   
   data_expo <-
-    data_raster[[year]] %>% 
-    dplyr::select(EXNMAX) %>% 
-    tibble::as_tibble() %>% 
-    na.omit() %>% 
-    dplyr::group_by(EXNMAX = floor(EXNMAX) + 0.5) %>% # abgerundet auf 1, Klassenmitte
-    dplyr::summarise(n_ecosys = dplyr::n()) %>%
+    data_raster[[year]] |> 
+    dplyr::select(EXNMAX) |> 
+    tibble::as_tibble() |> 
+    na.omit() |> 
+    dplyr::group_by(EXNMAX = floor(EXNMAX) + 0.5) |> # abgerundet auf 1, Klassenmitte
+    dplyr::summarise(n_ecosys = dplyr::n()) |>
     dplyr::ungroup()
   
   return(data_expo)
@@ -388,8 +388,8 @@ calc_ndep_ecosystem_expo_distr <- function(data_raster, year) {
 calc_ndep_ecosystem_expo_distr_cumulative <- function(data_expo) {
   
   data_expo <-
-    data_expo %>% 
-    dplyr::arrange(EXNMAX) %>% 
+    data_expo |> 
+    dplyr::arrange(EXNMAX) |> 
     dplyr::mutate(n_ecosys_cum_relative = cumsum(n_ecosys) / sum(n_ecosys))
   
   return(data_expo)
@@ -400,7 +400,7 @@ calc_ndep_ecosystem_expo_distr_cumulative <- function(data_expo) {
 calc_all_ndep_ecosystem_expo_distr <- function(data_raster){
 
   expo_distr <-
-    setNames(names(data_raster), extract_year(names(data_raster))) %>% 
+    setNames(names(data_raster), extract_year(names(data_raster))) |> 
     lapply(function(year) {
       data <- calc_ndep_ecosystem_expo_distr(data_raster, year)
       calc_ndep_ecosystem_expo_distr_cumulative(data)

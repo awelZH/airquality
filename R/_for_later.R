@@ -37,16 +37,16 @@
 #   
 #   data <- combine_thresholds(data, threshold_values)
 #   data <- 
-#     data %>% 
-#     dplyr::mutate(value_relative = value / `LRV Grenzwert`) %>% 
-#     dplyr::filter(parameter %in% c("NO2", "PM10", "O3_max_98%_m1")) %>% 
-#     dplyr::group_by(starttime, site, interval, unit, source) %>% 
-#     dplyr::select(parameter, value_relative) %>% 
-#     tidyr::spread(parameter, value_relative) %>% 
-#     dplyr::mutate(LBI = lbi(PM10, NO2, `O3_max_98%_m1`)) %>% 
-#     dplyr::ungroup() %>% 
-#     dplyr::select(starttime, site, interval, LBI, source) %>% 
-#     tidyr::gather(parameter, value, -starttime, -site, -interval, -source) %>% 
+#     data |> 
+#     dplyr::mutate(value_relative = value / `LRV Grenzwert`) |> 
+#     dplyr::filter(parameter %in% c("NO2", "PM10", "O3_max_98p_m1")) |> 
+#     dplyr::group_by(starttime, site, interval, unit, source) |> 
+#     dplyr::select(parameter, value_relative) |> 
+#     tidyr::spread(parameter, value_relative) |> 
+#     dplyr::mutate(LBI = lbi(PM10, NO2, `O3_max_98p_m1`)) |> 
+#     dplyr::ungroup() |> 
+#     dplyr::select(starttime, site, interval, LBI, source) |> 
+#     tidyr::gather(parameter, value, -starttime, -site, -interval, -source) |> 
 #     dplyr::mutate(
 #       parameter = factor(parameter),
 #       unit = factor(NA)
@@ -73,19 +73,19 @@
 # # plot timeseries Langzeitbelastungsindex LBI, see https://cerclair.ch/assets/pdf/27b_2015_06_10_D_Langzeit_Luftbelastungs_Index.pdf
 
 # sites <-
-#   data %>%
-#   dplyr::filter(parameter == "LBI") %>%
-#   dplyr::group_by(site) %>%
-#   dplyr::summarise(n = sum(!is.na(value))) %>%
-#   dplyr::ungroup() %>%
-#   dplyr::filter(n > 3) %>%
-#   dplyr::pull(site) %>%
+#   data |>
+#   dplyr::filter(parameter == "LBI") |>
+#   dplyr::group_by(site) |>
+#   dplyr::summarise(n = sum(!is.na(value))) |>
+#   dplyr::ungroup() |>
+#   dplyr::filter(n > 3) |>
+#   dplyr::pull(site) |>
 #   as.character()
 #
 # plots$airquality$monitoring$LBI$timeseries <-
-#   data %>%
-#   dplyr::filter(parameter == "LBI" & !is.na(value) & site %in% sites) %>%
-#   dplyr::arrange(site, starttime) %>%
+#   data |>
+#   dplyr::filter(parameter == "LBI" & !is.na(value) & site %in% sites) |>
+#   dplyr::arrange(site, starttime) |>
 #   ggplot2::ggplot(aes(x = lubridate::year(starttime) + 0.5, y = site, fill = recode_lbi(value))) +
 #   ggplot2::geom_raster() +
 #   ggplot2::scale_x_continuous(expand = c(0,0)) +

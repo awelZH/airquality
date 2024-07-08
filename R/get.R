@@ -2,8 +2,8 @@
 get_geolion_wfs <- function(wfs, version = "2.0.0", crs = 2056) {
   
   map <- 
-    find_map_geolion(wfs = wfs, version = "2.0.0", crs = crs) %>% 
-    sf::read_sf(type = 6) %>% 
+    find_map_geolion(wfs = wfs, version = "2.0.0", crs = crs) |> 
+    sf::read_sf(type = 6) |> 
     sf::st_transform(crs = sf::st_crs(crs))
   
   return(map)
@@ -14,11 +14,12 @@ get_geolion_wfs <- function(wfs, version = "2.0.0", crs = 2056) {
 
 
 get_emissions_opendataswiss <- function(apiurl) {
-  
+
   csv <- find_emikat_opendataswiss(apiurl)
+  csv <- csv[which.max(extract_year(csv))]
   data <- 
-    readr::read_delim(csv, delim = ",") %>% 
-    dplyr::select(-einheit_lang) %>% 
+    readr::read_delim(csv, delim = ",") |> 
+    dplyr::select(-einheit_lang) |> 
     dplyr::rename( # ... just for the sake of script language consistency
       year = jahr,
       pollutant = substanz,
@@ -27,7 +28,7 @@ get_emissions_opendataswiss <- function(apiurl) {
       canton = kanton,
       municipality = gemeinde, 
       unit = einheit
-    ) %>% 
+    ) |> 
     dplyr::mutate(
       pollutant = dplyr::case_when(pollutant == "BC" ~"eBC", TRUE ~ pollutant),
       source = "OSTLUFT"
@@ -74,9 +75,9 @@ get_prepare_raster_data <- function(files, boundary, path = "inst/extdata", wcs_
   maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "no2")
   
   # wcs connection to O3p98-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
-  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$o3p98, serviceVersion = wcs_version)
-  capabilitylist$jahreskarte$o3p98 <- client$getCapabilities()
-  maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "o3p98")
+  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$`o3_max_98p_m1`, serviceVersion = wcs_version)
+  capabilitylist$jahreskarte$`o3_max_98p_m1` <- client$getCapabilities()
+  maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "o3_max_98p_m1")
 
   # wcs connection to PM2.5-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
   client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$pm25, serviceVersion = wcs_version)
@@ -102,7 +103,7 @@ get_prepare_raster_data <- function(files, boundary, path = "inst/extdata", wcs_
   # BFS 100 x 100m grid is similar across the years => pick one grid for all years
   grid <- dplyr::select(data$population[[as.character(max(as.numeric(names(data$population))))]], RELI) 
   
-  # download, read and restructure air pollution NO2, PM2.5, PM10, eBC, O3p98 raster data from geolion WCS
+  # download, read and restructure air pollution NO2, PM2.5, PM10, eBC, O3_max_98p_m1 raster data from geolion WCS
   print("get geolion air pollution raster data")
   
   print("... NO2")
@@ -113,8 +114,8 @@ get_prepare_raster_data <- function(files, boundary, path = "inst/extdata", wcs_
   data$PM10 <- get_all_aq_rasterdata("PM10", maps, capabilitylist, grid, boundary)
   print("... eBC")
   data$eBC <- get_all_aq_rasterdata("eBC", maps, capabilitylist, grid, boundary)
-  print("... O3p98")
-  data$O3p98 <- get_all_aq_rasterdata("O3p98", maps, capabilitylist, grid, boundary)
+  print("... O3_max_98p_m1")
+  data$`O3_max_98p_m1` <- get_all_aq_rasterdata("O3_max_98p_m1", maps, capabilitylist, grid, boundary)
   
   # join air quality and population raster data
   print("join statpop and geolion raster data")

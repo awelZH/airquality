@@ -118,23 +118,23 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
   }
   
   order <-
-    data %>%
-    dplyr::group_by(sector, subsector_new) %>% 
-    dplyr::summarise(emission = mean(emission)) %>% 
-    dplyr::ungroup() %>% 
-    dplyr::arrange(sector, dplyr::desc(emission)) %>% 
+    data |>
+    dplyr::group_by(sector, subsector_new) |> 
+    dplyr::summarise(emission = mean(emission)) |> 
+    dplyr::ungroup() |> 
+    dplyr::arrange(sector, dplyr::desc(emission)) |> 
     dplyr::ungroup() 
   
   data <-
-    data %>% 
-    dplyr::mutate(subsector_new = factor(subsector_new, levels = order$subsector_new)) %>% 
-    dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols)) %>% 
-    dplyr::group_by(sector) %>% 
-    dplyr::mutate(col = colorRampPalette(c(unique(rootcol), shades::brightness(unique(rootcol), 0.6)))(length(subsector_new))) %>% #FIXME: better color grading function
+    data |> 
+    dplyr::mutate(subsector_new = factor(subsector_new, levels = order$subsector_new)) |> 
+    dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols)) |> 
+    dplyr::group_by(sector) |> 
+    dplyr::mutate(col = colorRampPalette(c(unique(rootcol), shades::brightness(unique(rootcol), 0.6)))(length(subsector_new))) |> #FIXME: better color grading function
     dplyr::ungroup()
 
   plot <-
-    data %>%
+    data |>
     ggplot2::ggplot(aes(x = factor(year), y = emission, fill = subsector_new)) +
     ggplot2::geom_bar(stat = "identity", position = pos, width = width) + 
     yscale +
@@ -163,7 +163,7 @@ immission_colorscale <- function(...) {
 immissionscale <- function(parameter) {
   switch(parameter,
          NO2 = immission_colorscale(limits = c(0,50), breaks = seq(0,50,10), name = "NO2\n(µg/m3)"),
-         O3p98 = immission_colorscale(limits = c(0,180), breaks = seq(0,180,30), name = "O3p98\n(µg/m3)"),
+         `O3_max_98p_m1` = immission_colorscale(limits = c(0,180), breaks = seq(0,180,30), name = paste0("O3\n",longparameter("O3_max_98p_m1"),"\n(µg/m3)")),
          PM10 = immission_colorscale(limits = c(0,34), breaks = c(seq(0,30,10), 34), name = "PM10\n(µg/m3)"),
          PM2.5 = immission_colorscale(limits = c(0,17), breaks = c(seq(0,15,2.5), 17), name = "PM2.5\n(µg/m3)"),
          eBC = immission_colorscale(limits = c(0,1.5), breaks = seq(0,1.5,0.3), name = "eBC\n(µg/m3)"),
@@ -177,7 +177,7 @@ timeseriespars <- function(parameter) {
          NO2 = list(ylim = c(0,70), ybreaks = seq(0,70,10), metric = "Jahresmittel", thresh = extract_threshold(immission_threshold_values, pollutant = "NO2")),
          PM10 = list(ylim = c(0,35), ybreaks = seq(0,35,5), metric = "Jahresmittel", thresh = extract_threshold(immission_threshold_values, pollutant = "PM10")),
          PM2.5 = list(ylim = c(0,20), ybreaks = seq(0,20,4), metric = "Jahresmittel", thresh = extract_threshold(immission_threshold_values, pollutant = "PM2.5")),
-         `O3_max_98%_m1` = list(ylim = c(0,210), ybreaks = seq(0,210,30), metric = "höchstes 98%-Perzentil der Halbstundenmittel eines Monats", thresh = extract_threshold(immission_threshold_values, pollutant = "O3", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3", source = "LRV Grenzwert", aggregation = "m1")),
+         `O3_max_98p_m1` = list(ylim = c(0,210), ybreaks = seq(0,210,30), metric = "höchstes 98%-Perzentil der Halbstundenmittel eines Monats", thresh = extract_threshold(immission_threshold_values, pollutant = "O3", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3", source = "LRV Grenzwert", aggregation = "m1")),
          O3_peakseason_mean_d1_max_mean_h8gl = list(ylim = c(0,130), ybreaks = seq(0,120,20), metric = "mittlere tägliche max. 8-Stundenmittel während der Sommersaison", thresh = extract_threshold(immission_threshold_values, pollutant = "O3", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration", source = "WHO Richtwert", aggregation = "peak-season"))
   )
 }
@@ -185,7 +185,7 @@ timeseriespars <- function(parameter) {
 expositionpars <- function(parameter) {
   switch(parameter,
          NO2 = list(barwidth = 1, xbreaks = seq(0,90,10)),
-         O3p98 = list(barwidth = 5, xbreaks = seq(0,180,5)),
+         `O3_max_98p_m1` = list(barwidth = 5, xbreaks = seq(0,180,5)),
          PM10 = list(barwidth = 0.2, xbreaks = seq(0,24,2)),
          PM2.5 = list(barwidth = 0.2, xbreaks = seq(0,16,1)),
          eBC = list(barwidth = 0.05, xbreaks = seq(0,2.2,0.2)),
@@ -199,8 +199,8 @@ plot_pars_monitoring_timeseries <- function(data, parameters) {
   plots <- 
     lapply(setNames(parameters, parameters), function(parameter) {
       
-      data %>%
-        dplyr::filter(parameter == !!parameter) %>%
+      data |>
+        dplyr::filter(parameter == !!parameter) |>
         ggplot_timeseries(
           ylims = timeseriespars(parameter)$ylim, ybreaks = timeseriespars(parameter)$ybreaks,
           titlelab = ggplot2::ggtitle(
@@ -222,13 +222,13 @@ plot_pars_monitoring_timeseries <- function(data, parameters) {
 plot_timeseries_ndep_bars <- function(data, xlim = NULL, xbreaks = waiver(), linewidth = 1, color = "red3", title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme") {
   
   cln <- 
-    data %>%
-    dplyr::distinct(site, ecosystem_category, critical_load_min, critical_load_single, critical_load_max) %>%
-    tidyr::gather(cln, value, -site, -ecosystem_category) %>%
+    data |>
+    dplyr::distinct(site, ecosystem_category, critical_load_min, critical_load_single, critical_load_max) |>
+    tidyr::gather(cln, value, -site, -ecosystem_category) |>
     dplyr::filter(cln == "critical_load_single") # decided to show only single value, but still keep option for range display
   
   plot <-
-    data %>% 
+    data |> 
     ggplot2::ggplot(ggplot2::aes(x = year, y = value, fill = parameter)) +
     ggplot2::geom_bar(stat = "identity") +
     ggplot2::geom_hline(data = cln, mapping = ggplot2::aes(yintercept = value, linetype = cln, group = site), color = color, linewidth = linewidth, show.legend = FALSE) +
@@ -260,9 +260,8 @@ plot_all_expo_hist <- function(parameter, data) {
     ggplot_expo_hist(
       data = dplyr::filter(data, year == !!year & parameter == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
       xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
-      xlabel = ggplot2::xlab(openair::quickText(paste0("Jahresmittel-Belastung ",parameter," (µg/m3)"))),
-      titlelab = ggplot2::ggtitle(
-        label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter)," (",parameter,")")),
+      xlabel = ggplot2::xlab(openair::quickText(paste0(shorttitle(parameter)," ",longparameter(parameter)," (µg/m3)"))),      titlelab = ggplot2::ggtitle(
+        label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter))),
         subtitle = openair::quickText(paste0("Anzahl Personen, Wohnbevölkerung im Kanton Zürich im Jahr ",year))
       ), 
       captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
@@ -284,9 +283,9 @@ plot_all_expo_cumul <- function(parameter, data) {
     ggplot_expo_cumulative(
       data = dplyr::filter(data, year == year & parameter == !!parameter), x = "concentration", y = "population_cum_relative", linewidth = 1,
       xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
-      xlabel = ggplot2::xlab(openair::quickText(paste0("Jahresmittel-Belastung ",parameter," (µg/m3)"))),
+      xlabel = ggplot2::xlab(openair::quickText(paste0(shorttitle(parameter)," ",longparameter(parameter)," (µg/m3)"))),
       titlelab = ggplot2::ggtitle(
-        label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter)," (",parameter,")")),
+        label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter))),
         subtitle = openair::quickText(paste0("relativer Anteil (kumuliert), Wohnbevölkerung im Kanton Zürich im Jahr ",year))
       ), 
       captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
@@ -301,20 +300,21 @@ plot_all_expo_cumul <- function(parameter, data) {
 
 
 plot_all_popweighmean_maps <- function(parameter, data, data_canton) {
-  
+
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {
     
-    data %>% 
-      dplyr::filter(year == year & parameter == !!parameter) %>% 
+    canton <- dplyr::pull(dplyr::filter(data_canton, year == !!year & parameter == !!parameter), "pop_weighted_mean")
+    data |> 
+      dplyr::filter(year == year & parameter == !!parameter) |> 
       ggplot2::ggplot(ggplot2::aes(fill = pop_weighted_mean)) +
       ggplot2::geom_sf() + 
       ggplot2::coord_sf(datum = sf::st_crs(crs)) +
       immissionscale(parameter) +
       theme_map +
       ggplot2::ggtitle(
-        label = openair::quickText(paste0("Bevölkerungsgewichtete Schadstoffbelastung - ",longtitle(parameter)," (",parameter,")")),
-        subtitle = openair::quickText(paste0("Mittlere ",parameter,"-Belastung pro Einwohner/in nach Gemeinde im Jahr ",year,"; Kanton = ",dplyr::pull(dplyr::filter(data_canton, year == year & parameter == !!parameter), "pop_weighted_mean")," µg/m3"))
+        label = openair::quickText(paste0("Bevölkerungsgewichtete Schadstoffbelastung - ",longtitle(parameter))),
+        subtitle = openair::quickText(paste0("Mittlere ",shorttitle(parameter),"-Belastung pro Einwohner/in nach Gemeinde im Jahr ",year,"; Kanton = ",canton," µg/m3"))
       ) +
       ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
     

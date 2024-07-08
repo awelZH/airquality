@@ -2,8 +2,8 @@
 # ... currently, LBI needs to be revised by Cercl'Air => prepared for later inclusion
 immission_threshold_values <- readr::read_delim(paste("inst/extdata", files$airquality$thresh, sep = "/"), delim = ";",locale = readr::locale(encoding = "UTF-8"))
 data_monitoring_aq <-
-  data_monitoring_aq %>%
-  calc_lbi(immission_threshold_values) %>%
+  data_monitoring_aq |>
+  calc_lbi(immission_threshold_values) |>
   dplyr::bind_rows(data_monitoring_aq)
 
 
@@ -35,7 +35,7 @@ data_raster <- get_prepare_raster_data(files, map_canton)
 # ... for NO2
 
 plots$airquality$maps$NO2 <-
-  setNames(names(data_raster$NO2), names(data_raster$NO2)) %>% 
+  setNames(names(data_raster$NO2), names(data_raster$NO2)) |> 
   lapply(function(year) {
     ggplot2::ggplot() +
       stars::geom_stars(data = dplyr::select(data_raster$NO2[[year]], NO2)) +
@@ -53,7 +53,7 @@ plots$airquality$maps$NO2 <-
 # ... for PM10
 
 plots$airquality$maps$PM10 <-
-  setNames(names(data_raster$PM10), names(data_raster$PM10)) %>% 
+  setNames(names(data_raster$PM10), names(data_raster$PM10)) |> 
   lapply(function(year) {
     ggplot2::ggplot() +
       stars::geom_stars(data = dplyr::select(data_raster$PM10[[year]], PM10)) +
@@ -71,7 +71,7 @@ plots$airquality$maps$PM10 <-
 # ... for PM2.5
 
 plots$airquality$maps$PM2.5 <-
-  setNames(names(data_raster$PM2.5), names(data_raster$PM2.5)) %>% 
+  setNames(names(data_raster$PM2.5), names(data_raster$PM2.5)) |> 
   lapply(function(year) {
     ggplot2::ggplot() +
       stars::geom_stars(data = dplyr::select(data_raster$PM2.5[[year]], PM2.5)) +
@@ -89,7 +89,7 @@ plots$airquality$maps$PM2.5 <-
 # ... for eBC
 
 plots$airquality$maps$eBC <-
-  setNames(names(data_raster$eBC), names(data_raster$eBC)) %>% 
+  setNames(names(data_raster$eBC), names(data_raster$eBC)) |> 
   lapply(function(year) {
     ggplot2::ggplot() +
       stars::geom_stars(data = dplyr::select(data_raster$eBC[[year]], eBC)) +
@@ -106,14 +106,14 @@ plots$airquality$maps$eBC <-
 
 # ... for O3
 
-plots$airquality$maps$O3p98 <-
-  setNames(names(data_raster$O3p98), names(data_raster$O3p98)) %>% 
+plots$airquality$maps$`O3_max_98p_m1` <-
+  setNames(names(data_raster$`O3_max_98p_m1`), names(data_raster$`O3_max_98p_m1`)) |> 
   lapply(function(year) {
     ggplot2::ggplot() +
-      stars::geom_stars(data = dplyr::select(data_raster$O3p98[[year]], O3p98)) +
+      stars::geom_stars(data = dplyr::select(data_raster$`O3_max_98p_m1`[[year]], `O3_max_98p_m1`)) +
       ggplot2::geom_sf(data = map_canton, fill = NA) +
       ggplot2::coord_sf(datum = sf::st_crs(crs)) +
-      immissionscale("O3p98") +
+      immissionscale("O3_max_98p_m1") +
       ggplot2::ggtitle(
         label = openair::quickText("Belastungskarte Ozon (O3)"),
         subtitle = openair::quickText(paste0("O3, höchstes monats-98%-Perzentil ", year))
@@ -170,11 +170,11 @@ plots$airquality$maps$CLN_exceedance$`2020` <-
 
 # plot distribution of yearly nitrogen deposition across several monitoring sites since 2019 (structured per year and ecosystem type)
 plots$airquality$monitoring$Ndep$all <-
-  data_monitoring_ndep %>%
-  dplyr::filter(year >= 2019 & parameter != "N-Deposition") %>%
-  dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) %>%
-  dplyr::summarise(value = sum(value)) %>%
-  dplyr::ungroup() %>%
+  data_monitoring_ndep |>
+  dplyr::filter(year >= 2019 & parameter != "N-Deposition") |>
+  dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) |>
+  dplyr::summarise(value = sum(value)) |>
+  dplyr::ungroup() |>
   plot_timeseries_ndep_bars(xbreaks = seq(2000,max(years), 2)) +
   ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, year >= 2019 & parameter == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
   ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT") +

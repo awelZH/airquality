@@ -12,13 +12,13 @@ filter_emissions <- function(data, filters = "canton == 'ZH' & emission != 0 & !
 restructure_rsd_meta <- function(meta) {
   
   meta <- 
-    meta %>% 
-    dplyr::select(-source, -remark) %>% 
-    tidyr::spread(parameter, value) %>% 
+    meta |> 
+    dplyr::select(-source, -remark) |> 
+    tidyr::spread(parameter, value) |> 
     dplyr::mutate(
       vehicle_type = factor(vehicle_type, levels = c("passenger car", "light duty vehicle")),
       vehicle_fuel_type = factor(vehicle_fuel_type, levels = c("gasoline", "diesel"))
-    ) %>% 
+    ) |> 
     dplyr::rename(NOx_emission_threshold_g_per_kg_fuel = `nox_emission_threshold_g_per_kg Treibstoff`)
   
   return(meta)
@@ -28,9 +28,9 @@ restructure_rsd_meta <- function(meta) {
 restructure_rsd_for_vsp <- function(data) {
   
   data <-
-    data %>% 
-    dplyr::filter(parameter %in% c("acceleration", "velocity") & !is.na(value)) %>%
-    dplyr::select(id, site_roadgrade, parameter, value) %>%
+    data |> 
+    dplyr::filter(parameter %in% c("acceleration", "velocity") & !is.na(value)) |>
+    dplyr::select(id, site_roadgrade, parameter, value) |>
     tidyr::spread(parameter, value)
  
   return(data) 
@@ -40,7 +40,7 @@ restructure_rsd_for_vsp <- function(data) {
 filter_rsd <- function(data, filters) {
 
   data <- 
-    data %>% 
+    data |> 
     dplyr::filter(
       vehicle_model_year %in% filters$min[filters$parameter == "vehicleyears"]:filters$max[filters$parameter == "vehicleyears"] &
         (acceleration >= filters$min[filters$parameter == "accelerationrange"] & acceleration <= filters$max[filters$parameter == "accelerationrange"]) &
@@ -48,8 +48,8 @@ filter_rsd <- function(data, filters) {
         (vehicle_specific_power >= filters$min[filters$parameter == "vsprange"] & vehicle_specific_power <= filters$max[filters$parameter == "vsprange"]) &
         vehicle_unloaded_weight <= filters$max[rsd_filters$parameter == "weightmax"] &
         !is.na(value)
-    ) %>%
-    tidyr::spread(parameter, value) %>%
+    ) |>
+    tidyr::spread(parameter, value) |>
     dplyr::filter(!is.na(NO + CO2 + CO + HC)) # all concentrations are nessecary for NOx emission calculation
   
   return(data)
@@ -59,9 +59,9 @@ filter_rsd <- function(data, filters) {
 merge_restructure_rsd <- function(data, meta) {
   
   data <- 
-    data %>% 
-    dplyr::mutate(vehicle_euronorm = dplyr::recode(vehicle_euronorm, !!!c("Euro5a" = "Euro5", "Euro5b" = "Euro5"))) %>% # merge both sub-Euro5 norms since they are quite similar
-    dplyr::left_join(dplyr::filter(meta, is.na(as.numeric(vehicle_euronorm))), by = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) %>% 
+    data |> 
+    dplyr::mutate(vehicle_euronorm = dplyr::recode(vehicle_euronorm, !!!c("Euro5a" = "Euro5", "Euro5b" = "Euro5"))) |> # merge both sub-Euro5 norms since they are quite similar
+    dplyr::left_join(dplyr::filter(meta, is.na(as.numeric(vehicle_euronorm))), by = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) |> 
     dplyr::mutate(
       vehicle_type = factor(vehicle_type, levels = c("passenger car", "light duty vehicle")),
       vehicle_fuel_type = factor(vehicle_fuel_type, levels = c("gasoline", "diesel"))
@@ -108,15 +108,15 @@ remove_duplicate_y1 <- function(data){
   }
   
   data <- 
-    data %>% 
-    dplyr::group_by(starttime, site, unit) %>% 
+    data |> 
+    dplyr::group_by(starttime, site, unit) |> 
     dplyr::mutate(
       value = replace_no2_ps(parameter, value),
       value = replace_pm10(parameter, value),
       value = replace_pm25(parameter, value)
-    ) %>% 
-    dplyr::ungroup() %>%
-    dplyr::filter(!is.na(value)) %>%
+    ) |> 
+    dplyr::ungroup() |>
+    dplyr::filter(!is.na(value)) |>
     dplyr::mutate(parameter = dplyr::recode_factor(parameter, !!!c("NO2_PS" = "NO2", "PM10h" = "PM10", "PM2.5h" = "PM2.5")))
   
   return(data)
@@ -187,24 +187,24 @@ pad2 <- function(data, start_date = NULL, end_date = NULL, drop_last = FALSE) {
 combine_thresholds <- function(data, threshold_values) {
   
   data <- 
-    threshold_values %>% 
-    dplyr::select(source, pollutant, metric, aggregation, threshold) %>% 
+    threshold_values |> 
+    dplyr::select(source, pollutant, metric, aggregation, threshold) |> 
     dplyr::rename(
       parameter = pollutant,
       interval = aggregation
-    ) %>% 
+    ) |> 
     dplyr::mutate(
       parameter = dplyr::case_when(
         metric == "number hourly mean values > 120 µg/m3" & parameter == "O3" ~ "O3_nb_h1>120",
-        metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" & parameter == "O3" ~ "O3_max_98%_m1",
+        metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" & parameter == "O3" ~ "O3_max_98p_m1",
         metric == "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration" & parameter == "O3" ~ "O3_peakseason_mean_d1_max_mean_h8gl",
         TRUE ~ parameter
       ),
       interval = dplyr::recode(interval, !!!c("m1" = "y1", "peak-season" = "y1"))
-    ) %>% 
-    dplyr::select(-metric) %>% 
-    tidyr::spread(source, threshold) %>% 
-    dplyr::right_join(data, by = c("parameter", "interval")) %>% 
+    ) |> 
+    dplyr::select(-metric) |> 
+    tidyr::spread(source, threshold) |> 
+    dplyr::right_join(data, by = c("parameter", "interval")) |> 
     dplyr::select(year, site, parameter, interval, unit, value, siteclass, `LRV Grenzwert`, `WHO Richtwert`, source)
   
   return(data)
@@ -225,7 +225,7 @@ extract_weighted_mean_canton <- function(data_expo, pollutant) {
       pop_weighted_mean = data_expo[[as.character(year)]][["canton"]],
       source = "OSTLUFT, BAFU, BFS"
     )
-  }) %>% 
+  }) |> 
     dplyr::bind_rows()
 }
 
@@ -247,7 +247,7 @@ extract_weighted_mean_municipalities <- function(data_expo, pollutant) {
       pop_weighted_mean = dplyr::pull(data, pollutant),
       source = "OSTLUFT, BAFU, BFS"
     )
-  }) %>% 
+  }) |> 
     dplyr::bind_rows()
 }
 
@@ -257,14 +257,14 @@ extract_weighted_mean_municipalities <- function(data_expo, pollutant) {
 extract_exposition_distr_pollutants <- function(data_expo, pollutant) {
   
   lapply(names(data_expo), function(year) {
-    data_expo[[as.character(year)]] %>% 
-      dplyr::rename(concentration = !!pollutant) %>% 
+    data_expo[[as.character(year)]] |> 
+      dplyr::rename(concentration = !!pollutant) |> 
       dplyr::mutate(
         year = as.numeric(year),
         parameter = pollutant,
         source = "OSTLUFT, BAFU, BFS"
         )
-  }) %>% 
+  }) |> 
     dplyr::bind_rows()
 }
 
@@ -274,13 +274,13 @@ extract_exposition_distr_pollutants <- function(data_expo, pollutant) {
 extract_exposition_distr_ndep <- function(data_expo) {
   
   lapply(names(data_expo), function(year) {
-    data_expo[[as.character(year)]] %>% 
+    data_expo[[as.character(year)]] |> 
       dplyr::mutate(
         year = as.numeric(year),
         parameter = "max Ndep > CLO",
         source = "BAFU"
       )
-  }) %>% 
+  }) |> 
     dplyr::bind_rows()
 }
 

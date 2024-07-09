@@ -39,7 +39,7 @@ vehicle_model_year;vehicle_type;vehicle_fuel_type;NOx_emission;unit;n;standarder
 2001;passenger car;diesel;22.884021092938813;g/kg fuel;2564;0.2535292626522952;10.3;Kanton Zürich/AWEL
 2001;light duty vehicle;gasoline;3.060778274593907;g/kg fuel;820;0.30304553268638906;2.6;Kanton Zürich/AWEL
 2001;light duty vehicle;diesel;24.088447493068504;g/kg fuel;1768;0.32796689696217607;10.3;Kanton Zürich/AWEL
-2002;passenger car;gasoline;1.6313555753544218;g/kg fuel;15481;0.04363901902514407;2.6;Kanton Zürich/AWEL
+2002;passenger car;gasoline;1.6313555753544218;g/kg fuel;15481;0.043639019025144075;2.6;Kanton Zürich/AWEL
 2002;passenger car;diesel;22.512723902744746;g/kg fuel;2469;0.2517201036696417;10.3;Kanton Zürich/AWEL
 2002;light duty vehicle;gasoline;3.7299532789602767;g/kg fuel;389;0.4838806678481402;2.6;Kanton Zürich/AWEL
 2002;light duty vehicle;diesel;23.830856819779854;g/kg fuel;765;0.4774584891128308;10.3;Kanton Zürich/AWEL
@@ -75,7 +75,7 @@ vehicle_model_year;vehicle_type;vehicle_fuel_type;NOx_emission;unit;n;standarder
 2010;passenger car;diesel;16.48769730211606;g/kg fuel;8137;0.13711099104403987;3.5;Kanton Zürich/AWEL
 2010;light duty vehicle;gasoline;1.2010695656481443;g/kg fuel;501;0.1876646106943728;1;Kanton Zürich/AWEL
 2010;light duty vehicle;diesel;21.801843342964;g/kg fuel;1837;0.31897661644157044;3.5;Kanton Zürich/AWEL
-2011;passenger car;gasoline;0.9121487552758333;g/kg fuel;11141;0.03578337072815874;1;Kanton Zürich/AWEL
+2011;passenger car;gasoline;0.9121487552758334;g/kg fuel;11141;0.03578337072815874;1;Kanton Zürich/AWEL
 2011;passenger car;diesel;15.424905190528825;g/kg fuel;8894;0.1319338324735155;3.5;Kanton Zürich/AWEL
 2011;light duty vehicle;gasoline;0.667221844148382;g/kg fuel;399;0.0922258953128534;1;Kanton Zürich/AWEL
 2011;light duty vehicle;diesel;21.165454579161043;g/kg fuel;2377;0.272042936354852;3.5;Kanton Zürich/AWEL

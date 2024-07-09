@@ -190,12 +190,12 @@ timeseriespars <- function(parameter) {
 
 expositionpars <- function(parameter) {
   switch(parameter,
-         NO2 = list(barwidth = 1, xbreaks = seq(0,90,10)),
-         `O3_max_98p_m1` = list(barwidth = 5, xbreaks = seq(0,180,5)),
-         PM10 = list(barwidth = 0.2, xbreaks = seq(0,24,2)),
-         PM2.5 = list(barwidth = 0.2, xbreaks = seq(0,16,1)),
-         eBC = list(barwidth = 0.05, xbreaks = seq(0,2.2,0.2)),
-         Ndep = list(barwidth = 1, xlim = c(-5,90), xbreaks = seq(-5,45,5))
+         NO2 = list(barwidth = 1, xbreaks = seq(0,90,10), aggregation = "y1", metric = "mean"),
+         `O3_max_98p_m1` = list(barwidth = 2, xbreaks = seq(0,180,20), aggregation = "m1", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3"),
+         PM10 = list(barwidth = 0.2, xbreaks = seq(0,24,2), aggregation = "y1", metric = "mean"),
+         PM2.5 = list(barwidth = 0.2, xbreaks = seq(0,16,1), aggregation = "y1", metric = "mean"),
+         eBC = list(barwidth = 0.05, xbreaks = seq(0,2.2,0.2), aggregation = "y1", metric = "mean"),
+         Ndep = list(barwidth = 1, xlim = c(-5,90), xbreaks = seq(-5,45,5), aggregation = "y1", metric = "sum")
   )
 }
 
@@ -210,7 +210,7 @@ plot_pars_monitoring_timeseries <- function(data, parameters) {
         ggplot_timeseries(
           ylims = timeseriespars(parameter)$ylim, ybreaks = timeseriespars(parameter)$ybreaks,
           titlelab = ggplot2::ggtitle(
-            label = openair::quickText(paste0("Luftqualitätsmesswerte - ",longtitle(parameter)," (",shorttitle(parameter),")")),
+            label = openair::quickText(paste0("Luftqualitätsmesswerte - ",longtitle(parameter))),
             subtitle = openair::quickText(paste0(shorttitle(parameter),", ",timeseriespars(parameter)$metric," (µg/m3)"))
           ),
           captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
@@ -262,10 +262,11 @@ plot_all_expo_hist <- function(parameter, data) {
 
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {
-    
+
+    thresh <- extract_threshold(immission_threshold_values, shorttitle(parameter), aggregation = expositionpars(parameter)$aggregation, metric = expositionpars(parameter)$metric)
     ggplot_expo_hist(
       data = dplyr::filter(data, year == !!year & parameter == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
-      xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
+      xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = thresh,
       xlabel = ggplot2::xlab(openair::quickText(paste0(shorttitle(parameter)," ",longparameter(parameter)," (µg/m3)"))),      titlelab = ggplot2::ggtitle(
         label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter))),
         subtitle = openair::quickText(paste0("Anzahl Personen, Wohnbevölkerung im Kanton Zürich im Jahr ",year))
@@ -287,7 +288,7 @@ plot_all_expo_cumul <- function(parameter, data) {
   plots <- lapply(years_exposition, function(year) {
     
     ggplot_expo_cumulative(
-      data = dplyr::filter(data, year == year & parameter == !!parameter), x = "concentration", y = "population_cum_relative", linewidth = 1,
+      data = dplyr::filter(data, year == !!year & parameter == !!parameter), x = "concentration", y = "population_cum_relative", linewidth = 1,
       xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
       xlabel = ggplot2::xlab(openair::quickText(paste0(shorttitle(parameter)," ",longparameter(parameter)," (µg/m3)"))),
       titlelab = ggplot2::ggtitle(

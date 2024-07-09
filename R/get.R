@@ -53,8 +53,7 @@ get_rsd_opendataswiss <- function(apiurl) {
 
 
 # get BFS inhabitant raster data and get, average and join air quality modelling raster data (semi-empirical, calibrated by monitoring data, source: BAFU/Meteotest)
-#FIXME: see issue 11
-get_prepare_raster_data <- function(files, boundary, path = "inst/extdata", wcs_version = "2.0.1") {
+get_prepare_raster_data <- function(getlist, ressources, boundary, path = "inst/extdata", wcs_version = "2.0.1") {
 
   # empty lists to be filled
   data <- list()
@@ -64,28 +63,33 @@ get_prepare_raster_data <- function(files, boundary, path = "inst/extdata", wcs_
   # wcs connection to pollumap air quality raster data for the year 2015 (adopted from here: https://cran.r-project.org/web/packages/ows4R/vignettes/wcs.html) 
   print("get capabilities")
   
-  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$pollumap, serviceVersion = wcs_version)
+  client <- ows4R::WCSClient$new(filter_ressources(ressources, getlist$pollumap), serviceVersion = wcs_version)
+  update_log(getlist$pollumap)
   capabilitylist$pollumap <- client$getCapabilities()
   maplist <- add_to_maplist(capabilitylist, maplist, "pollumap", NULL)
   maplist$pollumap <- maplist$pollumap[extract_year(maplist$pollumap) == 2015] # make sure, only pollumap 2015 is included
   
   # wcs connection to NO2-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
-  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$no2, serviceVersion = wcs_version)
+  client <- ows4R::WCSClient$new(filter_ressources(ressources, getlist$jahreskarte_no2), serviceVersion = wcs_version)
+  update_log(getlist$jahreskarte_no2)
   capabilitylist$jahreskarte$no2 <- client$getCapabilities()
   maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "no2")
   
   # wcs connection to O3p98-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
-  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$`o3_max_98p_m1`, serviceVersion = wcs_version)
+  client <- ows4R::WCSClient$new(filter_ressources(ressources, getlist$jahreskarte_o3), serviceVersion = wcs_version)
+  update_log(getlist$jahreskarte_o3)
   capabilitylist$jahreskarte$`o3_max_98p_m1` <- client$getCapabilities()
   maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "o3_max_98p_m1")
 
   # wcs connection to PM2.5-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
-  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$pm25, serviceVersion = wcs_version)
+  client <- ows4R::WCSClient$new(filter_ressources(ressources, getlist$jahreskarte_pm25), serviceVersion = wcs_version)
+  update_log(getlist$jahreskarte_pm25)
   capabilitylist$jahreskarte$pm25 <- client$getCapabilities()
   maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "pm25")
 
   # wcs connection to PM10-Jahreskarte air quality raster data on https://geolion.zh.ch for the years 2020ff
-  client <- ows4R::WCSClient$new(files$rasterdata$bafu_airquality$jahreskarte$pm10, serviceVersion = wcs_version)
+  client <- ows4R::WCSClient$new(filter_ressources(ressources, getlist$jahreskarte_pm10), serviceVersion = wcs_version)
+  update_log(getlist$jahreskarte_pm10)
   capabilitylist$jahreskarte$pm10 <- client$getCapabilities()
   maplist <- add_to_maplist(capabilitylist, maplist, "jahreskarte", "pm10")
 
@@ -96,6 +100,7 @@ get_prepare_raster_data <- function(files, boundary, path = "inst/extdata", wcs_
   print("get BFS statpop raster data")
   
   data$population <- lapply(set_year(maps), function(year) get_bfs_statpop_rasterdata(year, path_destination = path, boundary = boundary))
+  update_log(getlist$statpop)
   
   # air quality raster data can have different grids, even for same pollutant (various years)
   # since raster data are primarily used to derive inhabitant exposition (and not for air quality plotting - these plots can be found here: https://web.maps.zh.ch/), 
@@ -106,32 +111,35 @@ get_prepare_raster_data <- function(files, boundary, path = "inst/extdata", wcs_
   # download, read and restructure air pollution NO2, PM2.5, PM10, eBC, O3_max_98p_m1 raster data from geolion WCS
   print("get geolion air pollution raster data")
   
-  print("... NO2")
+  cat("\n... NO2\n")
   data$NO2 <- get_all_aq_rasterdata("NO2", maps, capabilitylist, grid, boundary)
-  print("... PM2.5")
+  cat("\n... PM2.5\n")
   data$PM2.5 <- get_all_aq_rasterdata("PM2.5", maps, capabilitylist, grid, boundary)
-  print("... PM10")
+  cat("\n... PM10\n")
   data$PM10 <- get_all_aq_rasterdata("PM10", maps, capabilitylist, grid, boundary)
-  print("... eBC")
+  cat("\n... eBC\n")
   data$eBC <- get_all_aq_rasterdata("eBC", maps, capabilitylist, grid, boundary)
-  print("... O3_max_98p_m1")
+  cat("\n... O3_max_98p_m1\n")
   data$`O3_max_98p_m1` <- get_all_aq_rasterdata("O3_max_98p_m1", maps, capabilitylist, grid, boundary)
   
   # join air quality and population raster data
-  print("join statpop and geolion raster data")
+  cat("\njoin statpop and geolion raster data")
   
   pollutants <- names(data)[!(names(data) %in% c("population", "NH3", "Ndep", "Ndep_exceedance"))]
   data <- lapply(setNames(pollutants, pollutants), function(pollutant) join_raster_data_aq_bfs(pollutant, data))
   
   # download, read and restructure air pollution NH3, Ndep, Ndep_exceedance  raster data from https://data.geo.admin.ch
-  print("get data.geo.admin reactive nitrogen raster data")
+  cat("\nget data.geo.admin reactive nitrogen raster data")
   
-  print("... NH3")
-  data$NH3 <- get_crop_all_bafu_rasterdata(files$rasterdata$bafu_nh3, boundary, path)
-  print("... Ndep")
-  data$Ndep <- get_crop_all_bafu_rasterdata(files$rasterdata$bafu_ndep, boundary, path)
-  print("... Ndep-exmax")
-  data$Ndep_exceedance <- get_crop_all_bafu_rasterdata(files$rasterdata$bafu_ndep_exc, boundary, path)
+  cat("\n... NH3\n")
+  data$NH3 <- get_crop_all_bafu_rasterdata(filter_ressources(ressources, getlist$nh3), boundary, path)
+  update_log(getlist$nh3)
+  cat("\n... Ndep\n")
+  data$Ndep <- get_crop_all_bafu_rasterdata(filter_ressources(ressources, getlist$ndep), boundary, path)
+  update_log(getlist$ndep)
+  cat("\n... Ndep-exmax\n")
+  data$Ndep_exceedance <- get_crop_all_bafu_rasterdata(filter_ressources(ressources, getlist$exmax), boundary, path)
+  update_log(getlist$exmax)
   
   return(data)
 } 

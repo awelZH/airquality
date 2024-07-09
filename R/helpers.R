@@ -39,7 +39,7 @@ extract_from_capabilitylist <- function(capablilitylist, maplist, coverage, para
 # function to extract target threshold values from overall threshold data for plotting with ggplot_timeseries()
 extract_threshold <- function(threshold_values, pollutant = NULL, aggregation = "y1", metric = "mean", unit = "µg/m3", 
                           source = c("LRV Grenzwert", "WHO Richtwert")) {
-  
+
   thresholds <-
     threshold_values |>
     dplyr::filter(
@@ -123,12 +123,22 @@ set_year <- function(maps) setNames(as.character(unique(extract_year(maps))), un
 bin_fun <- function(pollutant) {
   
   fun <- function(x) {floor(x) + 0.5} # default, e.g. NO2: abgerundet auf 1, Klassenmitte
-  if (pollutant == "O3_max_98p_m1") {fun <- function(x) {floor(x / 5) * 5 + 2.5}} # abgerundet auf 5, Klassenmitte
+  if (pollutant == "O3_max_98p_m1") {fun <- function(x) {floor(x * 2) / 2 + 1}} # abgerundet auf 2, Klassenmitte
   if (pollutant == "PM10") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
   if (pollutant == "PM2.5") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
   if (pollutant == "eBC") {fun <- function(x) {floor(x * 20) / 20 + 0.025}} # abgerundet auf 0.05, Klassenmitte
   
   return(fun)
+}
+
+
+update_log <- function(internal_id, logfile = "inst/extdata/log.csv") {
+  
+  now <- lubridate::with_tz(Sys.time(), tzone = "Etc/GMT-1")
+  log <- readr::read_delim(logfile, delim = ";", show_col_types = FALSE)
+  log$DATETIME_EXCECUTED[log$INTERNAL_ID == internal_id] <- paste0(format(now), " CET")
+  readr::write_delim(log, logfile, delim = ";", na = "")
+  
 }
 
 

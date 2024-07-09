@@ -1,5 +1,6 @@
 # read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss
-data_emikat <- get_emissions_opendataswiss(files$emissions$budget$opendata)
+data_emikat <- get_emissions_opendataswiss(filter_ressources(ressources, 1))
+update_log(1)
 
 # filter emission data for municipalities within Canton Zürich and exclude some groups that are redundant due to area distribution methodology; also remove emissions of 0
 data_emikat <- filter_emissions(data_emikat) 
@@ -13,14 +14,17 @@ data_emikat <- left_join(data_emikat, groups, by = c("pollutant", "sector", "sub
 data_emikat <- aggregate_emissions(data_emikat, groups = c("year", "pollutant", "unit", "sector", "subsector_new")) #! test possibility here: sum of emissions needs to match that of original data_emikat
 
 # read Canton Zürich vehicle remote sensing (RS) emission measurement data (RSD) from opendata.swiss, see also: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftschadstoffquellen/emissionen-verkehr/abgasmessungen-rsd.html
-data_rsd <- get_rsd_opendataswiss(files$emissions$rsd$opendata)
+data_rsd <- get_rsd_opendataswiss(filter_ressources(ressources, 2))
+update_log(2)
 
 # read and restructure RSD metadata 
-rsd_meta <- readr::read_delim(paste("inst/extdata", files$emissions$rsd$meta, sep = "/"), delim = ";")
+rsd_meta <- readr::read_delim(filter_ressources(ressources, 3), delim = ";")
+update_log(3)
 rsd_meta <- restructure_rsd_meta(rsd_meta )
 
 # read and restructure RSD filter criteria for NOx emission analysis
-rsd_filters <- readr::read_delim(paste("inst/extdata", files$emissions$rsd$filters, sep = "/"), delim = ";")
+rsd_filters <- readr::read_delim(filter_ressources(ressources, 4), delim = ";")
+update_log(4)
 rsd_filters$max[which(rsd_filters$parameter == "vehicleyears")] <- lubridate::year(Sys.Date()) # include most recent vehicle model years
   
 # evaluating NOx emissions by vehicle remote sensing (RSD) in the Canton of Zürich:
@@ -71,9 +75,11 @@ data_rsd_per_yearmeas <-
   
 # write output datasets
 readr::write_delim(data_emikat, file = "inst/extdata/output_data_emissions.csv", delim = ";", na = "NA")
+update_log(21)
 readr::write_delim(data_rsd_per_norm, file = "inst/extdata/output_data_nox_vehicle_emissions_rsd_per_norm.csv", delim = ";", na = "NA")
 readr::write_delim(data_rsd_per_yearmodel, file = "inst/extdata/output_data_nox_emissions_rsd_per_yearmodel.csv", delim = ";", na = "NA")
 readr::write_delim(data_rsd_per_yearmeas, file = "inst/extdata/output_data_nox_emissions_rsd_per_yearmeas.csv", delim = ";", na = "NA")
+update_log(22)
 
 # clean up
 

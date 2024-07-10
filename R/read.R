@@ -4,36 +4,49 @@
 
 
 # function to read *.csv with air pollutant year-statistics exported from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
-read_monitoring_data_nabel_arias_csv <- function(file, encoding = "latin1", tz = "Etc/GMT-1"){ 
+read_monitoring_data_nabel_arias_csv <- function(file, keep_incomplete = FALSE, encoding = "latin1", tz = "Etc/GMT-1"){ 
   
-  # FIXME: Vereinfachen! (stat-feedback branch)
   locale <- readr::locale(encoding = encoding)
-  site <- dplyr::pull(readr::read_delim(file, delim = ";", col_select = "Station", locale = locale))
-  parameter <- dplyr::pull(readr::read_delim(file, delim = ";", col_select = "Schadstoff", locale = locale))
-  metric <- dplyr::pull(readr::read_delim(file, delim = ";", col_select = "Messparameter", locale = locale))
-  unit <- dplyr::pull(readr::read_delim(file, delim = ";", col_select = "Einheit", locale = locale))
-  data <- readr::read_delim(file, col_select = c(-(1:10)), delim =";", locale = locale)
-  starttime <- lubridate::fast_strptime(colnames(data), format = "%Y", tz = tz, lt = FALSE)
-  data <- tibble::as_tibble(t(data))
-  colnames(data) <- paste(site, parameter, unit, metric, sep = "_")
-  data <- dplyr::bind_cols(tibble::tibble(starttime = starttime), data)
-  data <- tidyr::gather(data, temp, value, -starttime)
-  data <- tidyr::separate(data, temp, into = c("site", "parameter", "unit", "metric"), sep = "_")
-  data <- dplyr::mutate(data,
-                        parameter = dplyr::recode(parameter, !!!c("Partikelanzahl" = "PN", "EC / Russ" = "eBC")),
-                        unit = dplyr::recode(unit, !!!c("ppm·h" = "ppm*h")),
-                        metric = dplyr::recode(metric, !!!c("höchster 98%-Wert eines Monats" = "O3_max_98p_m1", 
-                                                            "Anzahl Stundenmittel > 120 µg/m3" = "O3_nb_h1>120",
-                                                            "Dosis AOT40f" = "O3_AOT40")),
-                        parameter = dplyr::case_when(metric == "Jahresmittel" ~ parameter, TRUE ~ metric),
-                        interval = "y1",
-                        value = as.numeric(stringr::str_remove(value, ";")),
-                        source = factor("NABEL (BAFU & Empa)")
+  data <- readr::read_delim(file, delim =";", locale = locale)
+  col_names <- range(as.numeric(names(data)), na.rm = TRUE)
+  data <- dplyr::mutate_if(data, is.numeric, as.character)
+  data_long <- tidyr::pivot_longer(
+    data, 
+    cols = as.character(min(col_names):max(col_names)),
+    names_to = "starttime"
   )
-  data <- dplyr::mutate_if(data, is.character, factor)
-  data <- dplyr::select(data, "starttime", "site", "parameter", "interval", "unit", "value", "source")
+  data_long_clean <- 
+    data_long |> 
+    dplyr::mutate(
+      value = dplyr::case_when(
+        keep_incomplete ~ as.numeric(gsub("\\*|\\;", "", value)),
+        TRUE ~ as.numeric(value)
+      ),
+      interval = "y1",
+      Schadstoff = dplyr::case_when(
+        Messparameter == "höchster 98%-Wert eines Monats" ~ "O3_max_98p_m1",
+        Messparameter == "Anzahl Stundenmittel > 120 µg/m3" ~ "O3_nb_h1>120",
+        Messparameter == "Dosis AOT40f" ~ "O3_AOT40",
+        Schadstoff == "Partikelanzahl" ~ "PN",
+        Schadstoff == "EC / Russ" ~ "eBC",
+        TRUE ~ Schadstoff
+      ),
+      Einheit = ifelse(Einheit == "ppm·h", "ppm*h", Einheit),
+      starttime = as.POSIXct(paste0(starttime, "-01-01"), tz = "Etc/GMT-1"),
+      source = factor("NABEL (BAFU & Empa)")
+    ) |> 
+    dplyr::select(
+      starttime,
+      site = Station,
+      parameter = Schadstoff,
+      interval,
+      unit = Einheit,
+      value,
+      source
+    ) |> 
+    dplyr::mutate_if(is.character, as.factor)
   
-  return(data)
+  return(data_long_clean)
 }
 
 
@@ -41,7 +54,7 @@ read_monitoring_data_nabel_arias_csv <- function(file, encoding = "latin1", tz =
 
 
 read_site_meta_nabel_arias_csv <- function(file, encoding = "latin1") {
-
+  
   locale <- readr::locale(encoding = encoding)
   meta <- readr::read_delim(file, delim =";", col_select = c("Station", "Ost Y", "Nord X", "Höhe", "Zonentyp", "Stationstyp"), locale = locale)
   meta <- dplyr::distinct(meta, Station, `Ost Y`, `Nord X`, Höhe, Zonentyp, Stationstyp)
@@ -88,11 +101,11 @@ read_site_meta_ostluft_metadb_csv <- function(file, encoding = "UTF-8") {
       zone = scSiedlungsgroesse, 
       type = scVerkehrslage
     ) |> 
-  dplyr::mutate(
-    zone = recode_ostluft_meta_zone(zone),
-    type = recode_ostluft_meta_type(type),
-    source = "OSTLUFT"
-  ) 
+    dplyr::mutate(
+      zone = recode_ostluft_meta_zone(zone),
+      type = recode_ostluft_meta_type(type),
+      source = "OSTLUFT"
+    ) 
   
   return(meta)
 }

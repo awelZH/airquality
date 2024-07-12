@@ -273,7 +273,7 @@ plot_all_expo_hist <- function(parameter, data) {
       ), 
       captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
       fill_scale = immissionscale(parameter), theme = theme_ts
-    )
+    ) + ggplot2::theme(legend.position = "none")
     
   })
   

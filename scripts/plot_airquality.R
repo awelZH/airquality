@@ -433,6 +433,32 @@ plots$exposition$population_weighted_mean <-
   })
 update_log(33)
 
+# plotting timeseries of population-weighted mean pollutant concentration for Kanton Zürich
+thresh <-  
+  immission_threshold_values |> 
+  dplyr::mutate(parameter = dplyr::case_when(metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" ~ "O3_max_98p_m1", TRUE ~ pollutant)) |> 
+  dplyr::filter(parameter %in% c("NO2", "O3_max_98p_m1", "PM10", "PM2.5")) |> 
+  dplyr::mutate(parameter = paste0(longtitle(parameter), " ", longparameter(parameter)," (",shorttitle(parameter),")"))
+
+plots$exposition$population_weighted_mean$overview <-
+  data_expo_weighmean_canton |> 
+  dplyr::filter(parameter != "eBC") |> 
+  dplyr::mutate(parameter = paste0(longtitle(parameter), " ", longparameter(parameter)," (",shorttitle(parameter),")")) |> 
+  ggplot2::ggplot(ggplot2::aes(x = year, y = pop_weighted_mean)) + 
+  ggplot2::geom_bar(stat = "identity", fill = "gray40") +
+  ggplot2::geom_hline(data = thresh, mapping = ggplot2::aes(yintercept = threshold), linewidth = thresh$lsz, color = thresh$col, linetype = thresh$lty) +
+  lemon::facet_rep_wrap(parameter~., scales = "free_y", ncol = 1, repeat.tick.labels = TRUE) +
+  ggplot2::scale_x_continuous(breaks = 2015:max(years), expand = c(0.01,0.01)) + 
+  ggplot2::scale_y_continuous(expand = c(0.01,0.01)) + 
+  theme_ts +
+  ggplot2::theme(strip.text = ggplot2::element_text(hjust = 0)) +
+  ggplot2::ylab("bevölkerungsgewichtete mittlere Belastung (μg/m3)") +
+  ggplot2::ggtitle(
+    label = "Bevölkerungsgewichtete Schadstoffbelastung",
+    subtitle = "Mittlere Schadstoffbelastung pro Einwohner/in"
+  ) +
+  ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+
 
 # clean up
 rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass", "scale_fill_siteclass", "temp", "theme_map", "theme_ts", "threshold_ndep",

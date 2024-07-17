@@ -1,7 +1,7 @@
 get_swisstopo_metadata <- function(id){
   
   metadata_url <- paste0("https://data.geo.admin.ch/api/stac/v0.9/collections/",id,"/items")
-  
+
   metadata <- rjson::fromJSON(file = metadata_url)
   
   features <- metadata$features[[1]]
@@ -11,7 +11,7 @@ get_swisstopo_metadata <- function(id){
   # FIXME: wrong BAFU metadata => anpassen wenn mehrere Jahre vorhanden sind!
   reference_year <- 2020 # as.Date(feature$properties$datetime)
   swisstopo_metadata <- list(
-    url = url,
+    download_url = url,
     reference_year = reference_year 
   )
   
@@ -46,6 +46,7 @@ get_opendataswiss_metadata <- function(apiurl){
   metadata <- httr2::resp_body_json(req_data)$result        
   links <- unlist(purrr::map(metadata$resources, function(x) x$url))
   download_link <- links[stringr::str_detect(links, ".csv")]
+  
   
   return(download_link)
 }

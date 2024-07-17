@@ -15,6 +15,7 @@ Imports:
     ggplot2,
     httr2,
     lubridate,
+    magrittr,
     ows4R,
     purrr,
     RCurl,

@@ -92,7 +92,7 @@ find_swisstopo_metadata <- function(id){
 
 # courtesy of Statistikamt, modified
 get_bfs_statpop_rasterdata <- function(year, path_destination, boundary) {
-  
+
   # derive dataset url
   bfs_nr <- paste0("ag-b-00.03-vz", year, "statpop")
   meta_url <- gsub("bfs_nr", bfs_nr, "https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken.assetdetail.bfs_nr.html")

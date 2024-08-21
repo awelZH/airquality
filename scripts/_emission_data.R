@@ -74,11 +74,11 @@ data_rsd_per_yearmeas <-
     aggregate_nox_rsd(NULL, nmin = rsd_filters$min[rsd_filters$parameter == "nmin"], groups = c("year", "vehicle_fuel_type"))
   
 # write output datasets
-readr::write_delim(data_emikat, file = "inst/extdata/output_data_emissions.csv", delim = ";", na = "NA")
+readr::write_delim(data_emikat, file = "inst/extdata/output/data_emissions.csv", delim = ";", na = "NA")
 update_log(21)
-readr::write_delim(data_rsd_per_norm, file = "inst/extdata/output_data_nox_vehicle_emissions_rsd_per_norm.csv", delim = ";", na = "NA")
-readr::write_delim(data_rsd_per_yearmodel, file = "inst/extdata/output_data_nox_emissions_rsd_per_yearmodel.csv", delim = ";", na = "NA")
-readr::write_delim(data_rsd_per_yearmeas, file = "inst/extdata/output_data_nox_emissions_rsd_per_yearmeas.csv", delim = ";", na = "NA")
+readr::write_delim(data_rsd_per_norm, file = "inst/extdata/output/data_nox_vehicle_emissions_rsd_per_norm.csv", delim = ";", na = "NA")
+readr::write_delim(data_rsd_per_yearmodel, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmodel.csv", delim = ";", na = "NA")
+readr::write_delim(data_rsd_per_yearmeas, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmeas.csv", delim = ";", na = "NA")
 update_log(22)
 
 # clean up

@@ -53,6 +53,7 @@ get_rsd_opendataswiss <- function(apiurl) {
 
 
 # get BFS inhabitant raster data and get, average and join air quality modelling raster data (semi-empirical, calibrated by monitoring data, source: BAFU/Meteotest)
+#FIXME! optimise with modular functions from issue 13; get specific layer by year & pollutant
 get_prepare_raster_data <- function(getlist, ressources, boundary, path = "inst/extdata", wcs_version = "2.0.1") {
 
   # empty lists to be filled

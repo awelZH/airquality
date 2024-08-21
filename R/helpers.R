@@ -132,7 +132,7 @@ bin_fun <- function(pollutant) {
 }
 
 
-update_log <- function(internal_id, logfile = "inst/extdata/log.csv") {
+update_log <- function(internal_id, logfile = "inst/extdata/meta/log.csv") {
   
   now <- lubridate::with_tz(Sys.time(), tzone = "Etc/GMT-1")
   log <- readr::read_delim(logfile, delim = ";", show_col_types = FALSE)

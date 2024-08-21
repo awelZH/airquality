@@ -32,20 +32,20 @@ data_expo_distr$Ndep <- calc_all_ndep_ecosystem_expo_distr(data_raster$Ndep_exce
 # write output datasets
 lapply(pollutants, function(pollutant) extract_weighted_mean_canton(data_weighted_means[[pollutant]], pollutant)) |> 
   dplyr::bind_rows() |>
-  readr::write_delim(file = "inst/extdata/output_data_exposition_weighted_means_canton.csv", delim = ";", na = "NA")
+  readr::write_delim(file = "inst/extdata/output/data_exposition_weighted_means_canton.csv", delim = ";", na = "NA")
 update_log(25)
 
 lapply(pollutants, function(pollutant) extract_weighted_mean_municipalities(data_weighted_means[[pollutant]], pollutant)) |> 
   dplyr::bind_rows() |> 
-  readr::write_delim(file = "inst/extdata/output_data_exposition_weighted_means_municipalities.csv", delim = ";", na = "NA")
+  readr::write_delim(file = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv", delim = ";", na = "NA")
 update_log(26)
 
 lapply(pollutants, function(pollutant) extract_exposition_distr_pollutants(data_expo_distr[[pollutant]], pollutant)) |> 
   dplyr::bind_rows() |> 
-  readr::write_delim(file = "inst/extdata/output_data_exposition_distribution_pollutants.csv", delim = ";", na = "NA")
+  readr::write_delim(file = "inst/extdata/output/data_exposition_distribution_pollutants.csv", delim = ";", na = "NA")
 update_log(27)
 
-readr::write_delim(extract_exposition_distr_ndep(data_expo_distr$Ndep), file = "inst/extdata/output_data_exposition_distribution_ndep.csv", delim = ";", na = "NA")
+readr::write_delim(extract_exposition_distr_ndep(data_expo_distr$Ndep), file = "inst/extdata/output/data_exposition_distribution_ndep.csv", delim = ";", na = "NA")
 update_log(28)
 
 # clean up

@@ -21,7 +21,7 @@ devtools::load_all()
 
 # read ressources for input datasets
 ressources <- 
-  readr::read_delim("inst/extdata/misc_ressources.csv", delim = ";") |> 
+  readr::read_delim("inst/extdata/meta/ressources.csv", delim = ";") |> 
   dplyr::mutate(
     get = dplyr::case_when(
       stringr::str_detect(DOWNLOAD_URL, "inst/extdata") ~ paste(DOWNLOAD_URL, DATASET_NAME, sep = "/"),

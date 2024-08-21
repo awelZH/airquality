@@ -52,9 +52,9 @@ update_log(8)
 data_monitoring_ndep <- aggregate_nitrogen_deposition(data_monitoring_ndep)
 
 # write output datasets
-readr::write_delim(data_monitoring_aq , file = "inst/extdata/output_data_airquality_monitoring_y1.csv", delim = ";", na = "NA")
+readr::write_delim(data_monitoring_aq , file = "inst/extdata/output/data_airquality_monitoring_y1.csv", delim = ";", na = "NA")
 update_log(23)
-readr::write_delim(data_monitoring_ndep , file = "inst/extdata/output_data_ndep_monitoring_y1.csv", delim = ";", na = "NA")
+readr::write_delim(data_monitoring_ndep , file = "inst/extdata/output/data_ndep_monitoring_y1.csv", delim = ";", na = "NA")
 update_log(24)
 
 # clean up

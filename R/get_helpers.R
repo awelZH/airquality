@@ -1,3 +1,12 @@
+filter_ressources <- function(ressources, internal_id) {
+  
+  filters <- paste0("INTERNAL_ID == ", internal_id)
+  ressource <- dplyr::filter(ressources, eval(rlang::parse_expr(filters)))
+  ressource <- dplyr::pull(ressource, get)
+  
+  return(ressource)
+}
+
 
 find_map_geolion <- function(wfs, version = "2.0.0", crs = 2056) {
   

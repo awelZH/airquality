@@ -1,7 +1,4 @@
 
-# get links to data sources (for municipalites map)
-source("scripts/__ressources.R", encoding = "UTF-8") #FIXME: see issue 11
-
 # setup analysis: load libraries & functions & read map boundaries data
 source("scripts/_setup.R", encoding = "UTF-8")
 
@@ -40,7 +37,8 @@ pointsize <- 2 # size of point markers
 linewidth <- 1 # width of lines
 
 # read LRV legal threshold limit values & WHO air quality guideline values
-immission_threshold_values <- readr::read_delim(paste("inst/extdata", files$airquality$thresh, sep = "/"), delim = ";",locale = readr::locale(encoding = "UTF-8"))
+immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8"))
+update_log(10)
 
 # add plotting parameter to LRV threshold limit values & WHO air quality guideline values
 col_lrv <- "red3" # color of LRV threshold value
@@ -130,12 +128,14 @@ plots$emissions$absolute <-
   lapply(pollutants, function(pollutant) {
     ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), cols = cols_emissions, theme = theme_ts) #FIXME: fill shading doesn't work right
   })
-  
+update_log(29)  
+
 # relative values
 plots$emissions$relative <- 
   lapply(pollutants, function(pollutant) {
     ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", cols = cols_emissions, theme = theme_ts)
   })
+update_log(29)
 
 # read & plot RSD NOx emissions by vehicle type, fuel type and euronorm
 data_rsd_per_norm <- readr::read_delim(ressources_plotting$emissions$rsd_norm, delim = ";")
@@ -170,6 +170,7 @@ plots$emissions$NOx$rsd_norm <-
     legend.title = ggplot2::element_blank(),
     legend.position = "bottom"
   )
+update_log(30)
 
 # read & plot RSD NOx emissions by vehicle model year, vehicle type and fuel type
 data_rsd_per_yearmodel <- readr::read_delim(ressources_plotting$emissions$rsd_yearmodel, delim = ";")
@@ -202,6 +203,7 @@ plots$emissions$NOx$rsd_yearmodel <-
     legend.title = ggplot2::element_blank(),
     legend.position = "bottom"
   )
+update_log(30)
 
 # read & plot RSD NOx emission time series (year of measurement) by fuel type
 data_rsd_per_yearmeas <- readr::read_delim(ressources_plotting$emissions$rsd_yearmeas, delim = ";")
@@ -225,7 +227,7 @@ plots$emissions$NOx$rsd_yearmeas <-
     legend.title = ggplot2::element_blank(),
     legend.position = "bottom"
   )
-
+update_log(30)
 
 
 
@@ -241,6 +243,7 @@ data_monitoring_aq <-
 
 # plot timeseries of yearly values for selected pollutants
 plots$airquality$monitoring$timeseries <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries)
+update_log(31)
 
 # read pre-compiled OSTLUFT y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
 data_monitoring_ndep <- readr::read_delim(ressources_plotting$monitoring$ndep, delim = ";")
@@ -306,6 +309,8 @@ plots$airquality$monitoring$threshold_comparison <-
     strip.text = ggplot2::element_text(hjust = 0)
   ) +
   scale_color_siteclass
+update_log(31)
+update_log(32)
 
 # plot long-standing timeseries of yearly nitrogen deposition at Bachtel site (since 2001)
 temp <- dplyr::filter(immission_threshold_values, source == "LRV Grenzwert" & pollutant == "NO2")
@@ -319,6 +324,7 @@ plots$airquality$monitoring$Ndep$timeseries_Bachtel <-
   ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, site == "BA" & parameter == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
   ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: OSTLUFT & FUB") +
   lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE)
+update_log(32)
 
 # plot timeseries of yearly nitrogen deposition across several monitoring sites since 2019 (structured per ecosystem type)
 plots$airquality$monitoring$Ndep$all_timeseries <-
@@ -338,6 +344,7 @@ plots$airquality$monitoring$Ndep$all_timeseries <-
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
   )
+update_log(32)
 
 # plot timeseries of yearly nitrogen deposition vs. critical loads of nitrogen across several monitoring sites since 2019 (structured per ecosystem type)
 plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
@@ -358,6 +365,7 @@ plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
   )
+update_log(32)
 
 # plot mean contribution of source categories to nitrogen deposition
 plots$airquality$monitoring$Ndep$mean_sources_fractions <-
@@ -380,6 +388,7 @@ plots$airquality$monitoring$Ndep$mean_sources_fractions <-
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
   )
+update_log(32)
 
 
 
@@ -400,31 +409,62 @@ plots$exposition$hist <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_expo_hist(parameter, data_expo_distr_pollutants)
   })
+update_log(34)
 
 # plotting histograms for sensitive ecosystems nitrogen deposition exceedance
 plots$exposition$hist$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep)
+update_log(35)
 
 # plotting cumulative distributions for air pollutants
 plots$exposition$cumul <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_expo_cumul(parameter, data_expo_distr_pollutants)
   })
+update_log(34)
 
 # plotting cumulative distributions for sensitive ecosystems nitrogen deposition exceedance
 plots$exposition$cumul$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep)
+update_log(35)
 
 # plotting maps of population-weighted mean pollutant concentration (single value for Kanton Zürich & per municipality)
 plots$exposition$population_weighted_mean <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
   })
+update_log(33)
+
+# plotting timeseries of population-weighted mean pollutant concentration for Kanton Zürich
+thresh <-  
+  immission_threshold_values |> 
+  dplyr::mutate(parameter = dplyr::case_when(metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" ~ "O3_max_98p_m1", TRUE ~ pollutant)) |> 
+  dplyr::filter(parameter %in% c("NO2", "O3_max_98p_m1", "PM10", "PM2.5")) |> 
+  dplyr::mutate(parameter = paste0(longtitle(parameter), " ", longparameter(parameter)," (",shorttitle(parameter),")"))
+
+plots$exposition$population_weighted_mean$overview <-
+  data_expo_weighmean_canton |> 
+  dplyr::filter(parameter != "eBC") |> 
+  dplyr::mutate(parameter = paste0(longtitle(parameter), " ", longparameter(parameter)," (",shorttitle(parameter),")")) |> 
+  ggplot2::ggplot(ggplot2::aes(x = year, y = pop_weighted_mean)) + 
+  ggplot2::geom_bar(stat = "identity", fill = "gray40") +
+  ggplot2::geom_hline(data = thresh, mapping = ggplot2::aes(yintercept = threshold), linewidth = thresh$lsz, color = thresh$col, linetype = thresh$lty) +
+  lemon::facet_rep_wrap(parameter~., scales = "free_y", ncol = 1, repeat.tick.labels = TRUE) +
+  ggplot2::scale_x_continuous(breaks = 2015:max(years), expand = c(0.01,0.01)) + 
+  ggplot2::scale_y_continuous(expand = c(0.01,0.01)) + 
+  theme_ts +
+  ggplot2::theme(strip.text = ggplot2::element_text(hjust = 0)) +
+  ggplot2::ylab("bevölkerungsgewichtete mittlere Belastung (μg/m3)") +
+  ggplot2::ggtitle(
+    label = "Bevölkerungsgewichtete Schadstoffbelastung",
+    subtitle = "Mittlere Schadstoffbelastung pro Einwohner/in"
+  ) +
+  ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
 
 
 # clean up
 rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass", "scale_fill_siteclass", "temp", "theme_map", "theme_ts", "threshold_ndep",
             "data_emikat", "data_expo_distr_ndep", "data_expo_distr_pollutants", "data_expo_weighmean_canton", "data_expo_weighmean_municipalities",
             "data_monitoring_aq", "data_monitoring_ndep", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "data_temp", "data_thrshlds",
-            "data_expo_weighmean_municip", "files", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 
+            "data_expo_weighmean_municip", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 
             "crs", "lbsz", "linewidth", "lsz_lrv", "lsz_who", "lty_lrv", "lty_who", "n_years", "parameters_exposition", "parameters_timeseries",
             "pointsize", "pollutants", "siteclass_levels", "years"))
 

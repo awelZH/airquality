@@ -6,20 +6,20 @@ source("scripts/_setup.R", encoding = "UTF-8")
 ressources_plotting <-
   list(
     emissions = list(
-      emikat = "inst/extdata/output_data_emissions.csv",
-      rsd_norm = "inst/extdata/output_data_nox_vehicle_emissions_rsd_per_norm.csv",
-      rsd_yearmodel = "inst/extdata/output_data_nox_emissions_rsd_per_yearmodel.csv",
-      rsd_yearmeas = "inst/extdata/output_data_nox_emissions_rsd_per_yearmeas.csv"
+      emikat = "inst/extdata/output/data_emissions.csv",
+      rsd_norm = "inst/extdata/output/data_nox_vehicle_emissions_rsd_per_norm.csv",
+      rsd_yearmodel = "inst/extdata/output/data_nox_emissions_rsd_per_yearmodel.csv",
+      rsd_yearmeas = "inst/extdata/output/data_nox_emissions_rsd_per_yearmeas.csv"
     ),
     monitoring = list(
-      airquality = "inst/extdata/output_data_airquality_monitoring_y1.csv",
-      ndep = "inst/extdata/output_data_ndep_monitoring_y1.csv"
+      airquality = "inst/extdata/output/data_airquality_monitoring_y1.csv",
+      ndep = "inst/extdata/output/data_ndep_monitoring_y1.csv"
     ),
     exposition = list(
-      weightedmean_canton = "inst/extdata/output_data_exposition_weighted_means_canton.csv",
-      weightedmean_municip = "inst/extdata/output_data_exposition_weighted_means_municipalities.csv",
-      expo_distr_pollutants = "inst/extdata/output_data_exposition_distribution_pollutants.csv",
-      expo_distr_ndep ="inst/extdata/output_data_exposition_distribution_ndep.csv"
+      weightedmean_canton = "inst/extdata/output/data_exposition_weighted_means_canton.csv",
+      weightedmean_municip = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv",
+      expo_distr_pollutants = "inst/extdata/output/data_exposition_distribution_pollutants.csv",
+      expo_distr_ndep ="inst/extdata/output/data_exposition_distribution_ndep.csv"
     )
   )
 

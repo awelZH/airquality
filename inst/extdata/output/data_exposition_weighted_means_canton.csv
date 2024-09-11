@@ -1,0 +1,17 @@
+year;admin_boundary;parameter;unit;pop_weighted_mean;source
+2015;Canton Zürich;NO2;μg/m3;22.2;OSTLUFT, BAFU, BFS
+2020;Canton Zürich;NO2;μg/m3;15.1;OSTLUFT, BAFU, BFS
+2021;Canton Zürich;NO2;μg/m3;15;OSTLUFT, BAFU, BFS
+2022;Canton Zürich;NO2;μg/m3;14.5;OSTLUFT, BAFU, BFS
+2015;Canton Zürich;PM2.5;μg/m3;10.2;OSTLUFT, BAFU, BFS
+2020;Canton Zürich;PM2.5;μg/m3;8.4;OSTLUFT, BAFU, BFS
+2021;Canton Zürich;PM2.5;μg/m3;8.5;OSTLUFT, BAFU, BFS
+2022;Canton Zürich;PM2.5;μg/m3;9.1;OSTLUFT, BAFU, BFS
+2015;Canton Zürich;PM10;μg/m3;14.1;OSTLUFT, BAFU, BFS
+2020;Canton Zürich;PM10;μg/m3;11.6;OSTLUFT, BAFU, BFS
+2021;Canton Zürich;PM10;μg/m3;11.8;OSTLUFT, BAFU, BFS
+2022;Canton Zürich;PM10;μg/m3;13.1;OSTLUFT, BAFU, BFS
+2015;Canton Zürich;eBC;μg/m3;0.6;OSTLUFT, BAFU, BFS
+2020;Canton Zürich;O3_max_98p_m1;μg/m3;139.8;OSTLUFT, BAFU, BFS
+2021;Canton Zürich;O3_max_98p_m1;μg/m3;140.9;OSTLUFT, BAFU, BFS
+2022;Canton Zürich;O3_max_98p_m1;μg/m3;148.8;OSTLUFT, BAFU, BFS

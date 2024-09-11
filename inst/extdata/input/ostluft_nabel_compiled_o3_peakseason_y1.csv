@@ -1,0 +1,305 @@
+starttime;site;parameter;interval;unit;value;source
+1990-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+1991-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.10446613678572;OSTLUFT
+1992-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+1993-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;120.77967697872238;OSTLUFT
+1994-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;116.31946337767076;OSTLUFT
+1995-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;111.17814538220789;OSTLUFT
+1996-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;109.41198778445653;OSTLUFT
+1997-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;111.87273604619566;OSTLUFT
+1998-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;111.66797151342361;OSTLUFT
+1999-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;107.4943824514276;OSTLUFT
+2000-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+2001-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;107.11835400239072;OSTLUFT
+2002-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;108.76800166120165;OSTLUFT
+2003-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;126.22590828013661;OSTLUFT
+2004-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;109.00879783946722;OSTLUFT
+2005-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;107.59051302228261;OSTLUFT
+2006-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;109.71095139007596;OSTLUFT
+2007-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;104.65681521600544;OSTLUFT
+2008-01-01 00:00:00;Bac_Turm;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;102.84132910435461;OSTLUFT
+2019-01-01 00:00:00;Bul_Stadthalle;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.19308599015625;OSTLUFT
+2017-01-01 00:00:00;Hor_Sekundarschule;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.80064329474727;OSTLUFT
+2018-01-01 00:00:00;Hor_Sekundarschule;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.76062427124317;OSTLUFT
+2020-01-01 00:00:00;Klo_Feld;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.10987798794399;OSTLUFT
+2021-01-01 00:00:00;Klo_Feld;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.16193285403689;OSTLUFT
+2022-01-01 00:00:00;Klo_Feld;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.15941740226495;OSTLUFT
+2023-01-01 00:00:00;Klo_Feld;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.74430467546875;OSTLUFT
+2019-01-01 00:00:00;Klo_Gerlisbergstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.73512411813859;OSTLUFT
+2012-01-01 00:00:00;Kno_Oberdorfstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.13886150406421;OSTLUFT
+2018-01-01 00:00:00;Mei_Bezirksgericht;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.15169899021174;OSTLUFT
+2001-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;71.13633128091712;OSTLUFT
+2002-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;67.78049971146399;OSTLUFT
+2004-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;71.87949935365522;OSTLUFT
+2006-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;75.62044724673976;OSTLUFT
+2008-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;72.43114480577445;OSTLUFT
+2009-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;72.6999976521148;OSTLUFT
+2010-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;73.38030034382514;OSTLUFT
+2011-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;75.02237839331454;OSTLUFT
+2012-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;69.9175117521481;OSTLUFT
+2013-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;68.87189739884171;OSTLUFT
+2014-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;69.22949352276699;OSTLUFT
+2015-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;77.93210085304577;OSTLUFT
+2016-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;68.25871370123156;OSTLUFT
+2017-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.22407471275136;OSTLUFT
+2018-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.03236285736338;OSTLUFT
+2019-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.54295502491848;OSTLUFT
+2020-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;77.71192554683424;OSTLUFT
+2021-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;70.52426679628397;OSTLUFT
+2022-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.3491808295659;OSTLUFT
+2023-01-01 00:00:00;Opf_Balsberg;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.42412360294158;OSTLUFT
+2019-01-01 00:00:00;Opf_Glattpark;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.72709815565217;OSTLUFT
+2022-01-01 00:00:00;Opf_Glattpark;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.91157612666667;OSTLUFT
+2015-01-01 00:00:00;Sch_Güterstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.62398416670082;OSTLUFT
+2018-01-01 00:00:00;Sch_Güterstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;104.19774212413934;OSTLUFT
+2021-01-01 00:00:00;Sch_Güterstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.06933377037568;OSTLUFT
+2020-01-01 00:00:00;Ust_Bildungszentrum;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.5169996639606;OSTLUFT
+1990-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;101.38141714117046;OSTLUFT
+1991-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;103.6852817889037;OSTLUFT
+1992-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.21142561799728;OSTLUFT
+1993-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.58285003692663;OSTLUFT
+1994-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.13791995316645;OSTLUFT
+1995-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.77900041266983;OSTLUFT
+1996-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.94440009573165;OSTLUFT
+1997-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.42725434151494;OSTLUFT
+1998-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;60.069528454755464;OSTLUFT
+1999-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.80728790264028;OSTLUFT
+2000-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.13380326132133;OSTLUFT
+2001-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.1068233088882;OSTLUFT
+2002-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.8363293505076;OSTLUFT
+2003-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.6769086752179;OSTLUFT
+2004-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.11433436374321;OSTLUFT
+2005-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.52784840900136;OSTLUFT
+2006-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;100.32016565175272;OSTLUFT
+2007-01-01 00:00:00;Wal_Dietlikonerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.76223500017255;OSTLUFT
+2007-01-01 00:00:00;Wet_Weieraecher;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.04887607848505;OSTLUFT
+2008-01-01 00:00:00;Wet_Weieraecher;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.97285725096312;OSTLUFT
+2009-01-01 00:00:00;Wet_Weieraecher;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.54402612943615;OSTLUFT
+2010-01-01 00:00:00;Wet_Weieraecher;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.15338630362704;OSTLUFT
+2011-01-01 00:00:00;Wet_Weieraecher;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.00680701350272;OSTLUFT
+2015-01-01 00:00:00;Wez_Turnhallenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.5245438898429;OSTLUFT
+2020-01-01 00:00:00;Win_Neuhegi;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.79695684728941;OSTLUFT
+2023-01-01 00:00:00;Win_Neuhegi;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.8401925256182;OSTLUFT
+1990-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+1991-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;102.71032364960567;OSTLUFT
+1992-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;76.2889584871121;OSTLUFT
+1993-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.8368853688441;OSTLUFT
+1994-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.36275087748088;OSTLUFT
+1995-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.71471128866462;OSTLUFT
+1996-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.24695868964741;OSTLUFT
+1997-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;76.134251115468075;OSTLUFT
+1998-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.19203030907269;OSTLUFT
+1999-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.02196675756662;OSTLUFT
+2000-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.20283752254167;OSTLUFT
+2001-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;73.55610682971263;OSTLUFT
+2002-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.33012905678856;OSTLUFT
+2003-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;102.63668129449177;OSTLUFT
+2004-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.24148577455396;OSTLUFT
+2005-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;79.66350090834239;OSTLUFT
+2006-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.33201811142595;OSTLUFT
+2007-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.91064597801913;OSTLUFT
+2008-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.30811606979636;OSTLUFT
+2009-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.21957321384443;OSTLUFT
+2010-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.50769371924592;OSTLUFT
+2011-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.94426269021467;OSTLUFT
+2012-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.65946960495219;OSTLUFT
+2013-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.97611347276099;OSTLUFT
+2014-01-01 00:00:00;Win_Obertor;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.11755434716032;OSTLUFT
+2017-01-01 00:00:00;Win_St.Gallerstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.8551561265428;OSTLUFT
+2016-01-01 00:00:00;Win_Veltheim;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.77572588502049;OSTLUFT
+2017-01-01 00:00:00;Win_Veltheim;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.51743199684103;OSTLUFT
+2018-01-01 00:00:00;Win_Veltheim;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;107.48379431691257;OSTLUFT
+2019-01-01 00:00:00;Win_Veltheim;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.23756229625;OSTLUFT
+2020-01-01 00:00:00;Win_Veltheim;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.58509839615489;OSTLUFT
+2021-01-01 00:00:00;Win_Veltheim;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.20629842174117;OSTLUFT
+2022-01-01 00:00:00;Win_Veltheim;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.64654065700203;OSTLUFT
+2023-01-01 00:00:00;Win_Veltheim;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.55830711539402;OSTLUFT
+2009-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.59282553592391;OSTLUFT
+2010-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.68507685594429;OSTLUFT
+2011-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.72854207046196;OSTLUFT
+2012-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.4881054418614;OSTLUFT
+2013-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.42225660982336;OSTLUFT
+2015-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;103.8473319827106;OSTLUFT
+2017-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.49664540098506;OSTLUFT
+2019-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.89359797637228;OSTLUFT
+2021-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.79396289180028;OSTLUFT
+2023-01-01 00:00:00;Wld_Höhenklinik;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.38368397474727;OSTLUFT
+1997-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.45572785461066;OSTLUFT
+1998-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;103.88341548315897;OSTLUFT
+1999-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+2000-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.6251703382405;OSTLUFT
+2001-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.4351302503089;OSTLUFT
+2002-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.48677577144231;OSTLUFT
+2003-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;115.04012402965277;OSTLUFT
+2004-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.7729348495287;OSTLUFT
+2005-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.03488585016305;OSTLUFT
+2006-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.46199996510869;OSTLUFT
+2007-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.27243234241848;OSTLUFT
+2008-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.7050233376087;OSTLUFT
+2009-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.48045031540285;OSTLUFT
+2010-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.86348461058424;OSTLUFT
+2011-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.10423532865437;OSTLUFT
+2012-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.04811237070652;OSTLUFT
+2013-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.0287795118511;OSTLUFT
+2014-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.0599646644905;OSTLUFT
+2015-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.45555239650552;OSTLUFT
+2016-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.45421868866804;OSTLUFT
+2017-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.58053648985054;OSTLUFT
+2018-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;109.8368843640642;OSTLUFT
+2019-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.53736783852581;OSTLUFT
+2020-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.30363928815332;OSTLUFT
+2021-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.91136507875683;OSTLUFT
+2022-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;102.83046591584254;OSTLUFT
+2023-01-01 00:00:00;Zch_Heubeeribüel;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.54162082313525;OSTLUFT
+2017-01-01 00:00:00;Wei_Nägelseestrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.40309563891984;OSTLUFT
+2014-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;64.95796182989754;OSTLUFT
+2015-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.99122966577693;OSTLUFT
+2016-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;64.94463080737917;OSTLUFT
+2017-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;69.84074497802989;OSTLUFT
+2018-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+2019-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.78030257914011;OSTLUFT
+2020-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;73.57609999455602;OSTLUFT
+2021-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+2022-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.61569798518478;OSTLUFT
+2023-01-01 00:00:00;Zch_Rosengartenstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;72.21190081148097;OSTLUFT
+1990-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+1992-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+1993-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;60.13775414777214;OSTLUFT
+1994-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;66.6259691079572;OSTLUFT
+1995-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;58.285100969576085;OSTLUFT
+1996-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;65.79332881151237;OSTLUFT
+1997-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;66.73481088970082;OSTLUFT
+1998-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;66.71282402770973;OSTLUFT
+1999-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;64.84718528669126;OSTLUFT
+2000-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;59.06817055637857;OSTLUFT
+2001-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;68.7686694860822;OSTLUFT
+2002-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;66.7095030081678;OSTLUFT
+2004-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;68.92065931139618;OSTLUFT
+2006-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;73.61311629424048;OSTLUFT
+2008-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;69.55994596476766;OSTLUFT
+2010-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.65896359930028;OSTLUFT
+2011-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.07488954273224;OSTLUFT
+2012-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;77.57605488196107;OSTLUFT
+2013-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.0287385494317;OSTLUFT
+2014-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;75.53591341642486;OSTLUFT
+2015-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+2016-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;72.86954509588797;OSTLUFT
+2017-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;76.62686624904919;OSTLUFT
+2018-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.45844791349724;OSTLUFT
+2019-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.45958719723573;OSTLUFT
+2020-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;OSTLUFT
+2021-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.44849322369475;OSTLUFT
+2022-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.39991020321038;OSTLUFT
+2023-01-01 00:00:00;Zch_Schimmelstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.73098382789583;OSTLUFT
+2003-01-01 00:00:00;Zch_Schwamendingen;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.82919310238927;OSTLUFT
+2005-01-01 00:00:00;Zch_Schwamendingen;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;64.49457483919022;OSTLUFT
+2007-01-01 00:00:00;Zch_Schwamendingen;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;65.325183548214;OSTLUFT
+2009-01-01 00:00:00;Zch_Schwamendingen;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;67.2450682110462;OSTLUFT
+2015-01-01 00:00:00;Zch_Schwamendingen;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;77.56073630732445;OSTLUFT
+1990-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;63.5175805361735;OSTLUFT
+1991-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.49567743732719;OSTLUFT
+1992-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.70652796729823;OSTLUFT
+1993-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.3497121032996;OSTLUFT
+1994-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.90613920808832;OSTLUFT
+1995-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.2938554133159;OSTLUFT
+1996-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.24927046423166;OSTLUFT
+1997-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.97100918303126;OSTLUFT
+1998-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.76880721085938;OSTLUFT
+1999-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.71737592234358;OSTLUFT
+2000-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.10861891768954;OSTLUFT
+2001-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.3394732697405;OSTLUFT
+2002-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.66666318296332;OSTLUFT
+2003-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;100.87797356604577;OSTLUFT
+2004-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.30588623329508;OSTLUFT
+2005-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.89606876991847;OSTLUFT
+2006-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.584342109286;OSTLUFT
+2007-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.75130334802039;OSTLUFT
+2008-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.96293914906558;OSTLUFT
+2009-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.00448009494497;OSTLUFT
+2010-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.24957643938329;OSTLUFT
+2011-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.20560890549864;OSTLUFT
+2012-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.08249064123976;OSTLUFT
+2013-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.40613065364685;OSTLUFT
+2014-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;79.2739625480297;OSTLUFT
+2015-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.06121961872267;OSTLUFT
+2016-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.92863959423497;OSTLUFT
+2017-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.37720956001367;OSTLUFT
+2018-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.25818772259564;OSTLUFT
+2019-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.15589727255028;OSTLUFT
+2020-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.62749869654212;OSTLUFT
+2021-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.29073192478708;OSTLUFT
+2022-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.76403290637295;OSTLUFT
+2023-01-01 00:00:00;Zch_Stampfenbachstrasse;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.13276577900956;OSTLUFT
+1986-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.96371703296704;NABEL (BAFU & Empa)
+1987-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.18387907608695;NABEL (BAFU & Empa)
+1988-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;47.59187843406593;NABEL (BAFU & Empa)
+1989-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.8743094262295;NABEL (BAFU & Empa)
+1990-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.5785315934066;NABEL (BAFU & Empa)
+1991-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.9750625;NABEL (BAFU & Empa)
+1992-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.53043821022727;NABEL (BAFU & Empa)
+1993-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.23515846994536;NABEL (BAFU & Empa)
+1994-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.93385645604396;NABEL (BAFU & Empa)
+1995-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.03517239010989;NABEL (BAFU & Empa)
+1996-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.54703522099447;NABEL (BAFU & Empa)
+1997-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.60113994565218;NABEL (BAFU & Empa)
+1998-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.92535326086957;NABEL (BAFU & Empa)
+1999-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.56816483516484;NABEL (BAFU & Empa)
+2000-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.06040055248619;NABEL (BAFU & Empa)
+2001-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.00935733695653;NABEL (BAFU & Empa)
+2002-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.42839640883977;NABEL (BAFU & Empa)
+2003-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;111.01352868852459;NABEL (BAFU & Empa)
+2004-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.95729576502733;NABEL (BAFU & Empa)
+2005-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.81307880434782;NABEL (BAFU & Empa)
+2006-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.55152513586957;NABEL (BAFU & Empa)
+2007-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.05829144021739;NABEL (BAFU & Empa)
+2008-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.11308288043479;NABEL (BAFU & Empa)
+2009-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.31034426229508;NABEL (BAFU & Empa)
+2010-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.91898029891304;NABEL (BAFU & Empa)
+2011-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.22800204918033;NABEL (BAFU & Empa)
+2012-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.36186543715847;NABEL (BAFU & Empa)
+2013-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.34313535911602;NABEL (BAFU & Empa)
+2014-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.38431793478262;NABEL (BAFU & Empa)
+2015-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.80863046448087;NABEL (BAFU & Empa)
+2016-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.37588729508197;NABEL (BAFU & Empa)
+2017-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.2014429347826;NABEL (BAFU & Empa)
+2018-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.10257665745857;NABEL (BAFU & Empa)
+2019-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.95624932065218;NABEL (BAFU & Empa)
+2020-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.98133695652174;NABEL (BAFU & Empa)
+2021-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.20781589673913;NABEL (BAFU & Empa)
+2022-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.8251174863388;NABEL (BAFU & Empa)
+2023-01-01 00:00:00;Dübendorf-EMPA;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;NABEL (BAFU & Empa)
+1985-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;NABEL (BAFU & Empa)
+1988-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;71.48188046448088;NABEL (BAFU & Empa)
+1990-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;79.64728792134831;NABEL (BAFU & Empa)
+1992-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.2750956284153;NABEL (BAFU & Empa)
+1993-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;79.43086401098901;NABEL (BAFU & Empa)
+1994-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;55.11848702185792;NABEL (BAFU & Empa)
+1995-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.54799184782608;NABEL (BAFU & Empa)
+1996-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;NABEL (BAFU & Empa)
+1997-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.82892403314918;NABEL (BAFU & Empa)
+1998-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.46543614130435;NABEL (BAFU & Empa)
+1999-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.82946703296703;NABEL (BAFU & Empa)
+2000-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.44137839673913;NABEL (BAFU & Empa)
+2001-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.618390625;NABEL (BAFU & Empa)
+2002-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.25329076086956;NABEL (BAFU & Empa)
+2003-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.09623907103826;NABEL (BAFU & Empa)
+2004-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.05040232240437;NABEL (BAFU & Empa)
+2005-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.55070991847826;NABEL (BAFU & Empa)
+2006-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.31328464673913;NABEL (BAFU & Empa)
+2007-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.24250407608696;NABEL (BAFU & Empa)
+2008-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.22380638586957;NABEL (BAFU & Empa)
+2009-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.21220286885246;NABEL (BAFU & Empa)
+2010-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.56133196721312;NABEL (BAFU & Empa)
+2011-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.41300273224044;NABEL (BAFU & Empa)
+2012-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.41947404371585;NABEL (BAFU & Empa)
+2013-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.28392008196721;NABEL (BAFU & Empa)
+2014-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.14630706521739;NABEL (BAFU & Empa)
+2015-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.41772472677596;NABEL (BAFU & Empa)
+2016-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.1633094262295;NABEL (BAFU & Empa)
+2017-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.38084806629834;NABEL (BAFU & Empa)
+2018-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;105.71321994535519;NABEL (BAFU & Empa)
+2019-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.57286888586957;NABEL (BAFU & Empa)
+2020-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.2041769125683;NABEL (BAFU & Empa)
+2021-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.89751844262295;NABEL (BAFU & Empa)
+2022-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.63492486338798;NABEL (BAFU & Empa)
+2023-01-01 00:00:00;Zürich-Kaserne;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA;NABEL (BAFU & Empa)

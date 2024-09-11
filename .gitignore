@@ -2,9 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
-data/output/ggplots.rds
+data_output/ggplots.rds
 00_Archiv
-offline
+offline_analysis
 github_access_token_airquality.txt - Verknüpfung.lnk
 temp
-
+airquality_canton_zurich.html

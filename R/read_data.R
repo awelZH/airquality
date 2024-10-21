@@ -74,3 +74,50 @@ read_local_csv <- function(file_name, encoding = "latin1"){
   
   return(data)
 }
+
+
+read_pollutant_wcs_stack <- function(wcs_layer, years = NA, na_value = c(0, -999)){
+  
+  client <- ows4R::WCSClient$new(wcs_layer, serviceVersion = "2.0.1")
+  
+  cap <- client$getCapabilities()
+  cov <- cap$getCoverageSummaries()
+  
+  cov_ids <- sapply(cov, function(x) x$CoverageId)
+  
+  if(!is.na(years)){
+    cov_ids <- cov_ids[grepl(as.character(years), cov_ids)]
+  }
+
+  cov_list <- lapply(cov_ids, function(x) cap$findCoverageSummaryById(x))
+  
+  data_list <- lapply(cov_list, function(x) read_single_pollutant_wcs(x, na_value))
+  
+  list_names <- gsub("pm-", "pm", cov_ids)
+  list_names <- gsub("jahre-", "", list_names)
+  
+  names(data_list) <- list_names
+  
+  return(data_list)
+  
+}
+
+read_single_pollutant_wcs <- function(coverage, na_value){
+  
+  data <- coverage$getCoverage() %>% 
+    stars::st_as_stars() %>% 
+    sf::st_set_crs(value = 2056)
+  
+  data <- setNames(data, "value")
+  data <-
+    data %>% 
+    dplyr::mutate(
+      value = ifelse(value %in% na_value, NA, value),
+    )
+  
+  name <- gsub("\\d{4}|jahre|-", "",coverage$CoverageId)
+  
+  data <- setNames(data, name)
+  
+  return(data)
+}

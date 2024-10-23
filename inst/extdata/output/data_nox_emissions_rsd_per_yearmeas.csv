@@ -1,4 +1,4 @@
-year;vehicle_fuel_type;NOx_emission;unit;n;standarderror;source
+year;vehicle_fuel_type;nox_emission;unit;n;standarderror;source
 2002;all;5.273044702678115;g/kg fuel;15284;0.08072907994956388;Kanton Zürich/AWEL
 2002;diesel;16.1896797138949;g/kg fuel;1102;0.2946220885615134;Kanton Zürich/AWEL
 2002;gasoline;4.424777054789179;g/kg fuel;14182;0.07963659337846953;Kanton Zürich/AWEL

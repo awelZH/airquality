@@ -1,3 +1,5 @@
+# compiling air quality monitoring data from several sites in the Canton of Zürich by OSTLUFT and NABEL monitoring networks
+# ---
 # read NABEL monitoring site metadata
 site_meta_nabel <- read_site_meta_nabel_arias_csv(filter_ressources(ressources, 5))
 update_log(5)
@@ -51,11 +53,13 @@ update_log(8)
 # aggregate individual components of nitrogen deposition
 data_monitoring_ndep <- aggregate_nitrogen_deposition(data_monitoring_ndep)
 
-# write output datasets
+
+
+
+# write output datasets and clean up
+# ---
 readr::write_delim(data_monitoring_aq , file = "inst/extdata/output/data_airquality_monitoring_y1.csv", delim = ";", na = "NA")
 update_log(23)
 readr::write_delim(data_monitoring_ndep , file = "inst/extdata/output/data_ndep_monitoring_y1.csv", delim = ";", na = "NA")
 update_log(24)
-
-# clean up
 rm(list = c("data_monitoring_aq", "data_monitoring_ndep", "site_meta_nabel", "site_meta_ostluft", "data_monitoring_nabel", "data_monitoring_ostluft", "data_monitoring_o3_peakseason"))

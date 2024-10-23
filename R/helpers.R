@@ -1,38 +1,60 @@
-
-add_to_maplist <- function(capabilities, maplist, target_source, target_parameter) {
-
-  if (target_source == "pollumap") {
-    
-    coverage_summary <- capabilities[[target_source]]$getCoverageSummaries()
-    coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
-    maplist <- purrr::list_modify(maplist, !!target_source := coverages)
-    maplist[[target_source]]<- setNames(maplist[[target_source]], extract_year(maplist[[target_source]]))
-    
-  } else {
-    
-    coverage_summary <- capabilities[[target_source]][[target_parameter]]$getCoverageSummaries()
-    coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
-    temp <- list()
-    temp <- purrr::list_modify(temp, !!target_parameter := coverages)
-    maplist <- purrr::list_modify(maplist, !!target_source := temp)
-    maplist[[target_source]][[target_parameter]] <- setNames(maplist[[target_source]][[target_parameter]], extract_year(maplist[[target_source]][[target_parameter]]))
-    
-  }
+filter_ressources <- function(ressources, internal_id) {
   
-  return(maplist)
+  filters <- paste0("INTERNAL_ID == ", internal_id)
+  ressource <- dplyr::filter(ressources, eval(rlang::parse_expr(filters)))
+  ressource <- dplyr::pull(ressource, get)
+  
+  return(ressource)
 }
 
 
 
-extract_from_capabilitylist <- function(capablilitylist, maplist, coverage, parameter) {
 
-  product <- unlist(strsplit(names(maplist[maplist == coverage]), split = ".", fixed = TRUE))[1]
-  capabilities <- capablilitylist[[product]]
-  parameter <- ifelse(product == "jahreskarte", stringr::str_remove(tolower(parameter), pattern = "\\."), parameter)
-  if (product == "jahreskarte") {capabilities <- capabilities[[parameter]]} 
+update_log <- function(internal_id, logfile = "inst/extdata/meta/log.csv") {
   
-  return(capabilities)
+  now <- lubridate::with_tz(Sys.time(), tzone = "Etc/GMT-1")
+  log <- readr::read_delim(logfile, delim = ";", show_col_types = FALSE)
+  log$DATETIME_EXCECUTED[log$INTERNAL_ID == internal_id] <- paste0(format(now), " CET")
+  readr::write_delim(log, logfile, delim = ";", na = "")
+  
 }
+
+
+
+# add_to_maplist <- function(capabilities, maplist, target_source, target_parameter) {
+# 
+#   if (target_source == "pollumap") {
+#     
+#     coverage_summary <- capabilities[[target_source]]$getCoverageSummaries()
+#     coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
+#     maplist <- purrr::list_modify(maplist, !!target_source := coverages)
+#     maplist[[target_source]]<- setNames(maplist[[target_source]], extract_year(maplist[[target_source]]))
+#     
+#   } else {
+#     
+#     coverage_summary <- capabilities[[target_source]][[target_parameter]]$getCoverageSummaries()
+#     coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
+#     temp <- list()
+#     temp <- purrr::list_modify(temp, !!target_parameter := coverages)
+#     maplist <- purrr::list_modify(maplist, !!target_source := temp)
+#     maplist[[target_source]][[target_parameter]] <- setNames(maplist[[target_source]][[target_parameter]], extract_year(maplist[[target_source]][[target_parameter]]))
+#     
+#   }
+#   
+#   return(maplist)
+# }
+# 
+# 
+# 
+# extract_from_capabilitylist <- function(capablilitylist, maplist, coverage, parameter) {
+# 
+#   product <- unlist(strsplit(names(maplist[maplist == coverage]), split = ".", fixed = TRUE))[1]
+#   capabilities <- capablilitylist[[product]]
+#   parameter <- ifelse(product == "jahreskarte", stringr::str_remove(tolower(parameter), pattern = "\\."), parameter)
+#   if (product == "jahreskarte") {capabilities <- capabilities[[parameter]]} 
+#   
+#   return(capabilities)
+# }
 
 
 
@@ -119,7 +141,6 @@ set_year <- function(maps) setNames(as.character(unique(extract_year(maps))), un
 
 
 
-
 bin_fun <- function(pollutant) {
   
   fun <- function(x) {floor(x) + 0.5} # default, e.g. NO2: abgerundet auf 1, Klassenmitte
@@ -129,16 +150,6 @@ bin_fun <- function(pollutant) {
   if (pollutant == "eBC") {fun <- function(x) {floor(x * 20) / 20 + 0.025}} # abgerundet auf 0.05, Klassenmitte
   
   return(fun)
-}
-
-
-update_log <- function(internal_id, logfile = "inst/extdata/meta/log.csv") {
-  
-  now <- lubridate::with_tz(Sys.time(), tzone = "Etc/GMT-1")
-  log <- readr::read_delim(logfile, delim = ";", show_col_types = FALSE)
-  log$DATETIME_EXCECUTED[log$INTERNAL_ID == internal_id] <- paste0(format(now), " CET")
-  readr::write_delim(log, logfile, delim = ";", na = "")
-  
 }
 
 

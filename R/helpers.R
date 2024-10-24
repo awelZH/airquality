@@ -153,3 +153,12 @@ bin_fun <- function(pollutant) {
 }
 
 
+
+
+write_local_csv <- function(data, file, delim = ";", na = "NA"){
+  
+  readr::write_delim(data, file, delim = delim, na = na)
+
+}
+
+

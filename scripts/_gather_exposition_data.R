@@ -45,7 +45,7 @@ lapply(pollutants, function(pollutant) extract_exposition_distr_pollutants(data_
   readr::write_delim(file = "inst/extdata/output/data_exposition_distribution_pollutants.csv", delim = ";", na = "NA")
 update_log(27)
 
-readr::write_delim(extract_exposition_distr_ndep(data_expo_distr$Ndep), file = "inst/extdata/output/data_exposition_distribution_ndep.csv", delim = ";", na = "NA")
+write_local_csv(extract_exposition_distr_ndep(data_expo_distr$Ndep), file = "inst/extdata/output/data_exposition_distribution_ndep.csv")
 update_log(28)
 
 # clean up

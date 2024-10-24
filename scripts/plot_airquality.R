@@ -119,7 +119,7 @@ plots <- list()
 # plotting air pollutant emissions
 
 # read & plot details of Canton Zürich air pollutant emissions per pollutant, subsector and year (absolute and relative values)
-data_emikat <- readr::read_delim(ressources_plotting$emissions$emikat, delim = ";")
+data_emikat <- read_local_csv(ressources_plotting$emissions$emikat, delim = ";")
 cols_emissions <- setNames(as.character(cols_emissions), unique(data_emikat$sector))
 pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$pollutant))
 
@@ -138,7 +138,7 @@ plots$emissions$relative <-
 update_log(29)
 
 # read & plot RSD NOx emissions by vehicle type, fuel type and euronorm
-data_rsd_per_norm <- readr::read_delim(ressources_plotting$emissions$rsd_norm, delim = ";")
+data_rsd_per_norm <- read_local_csv(ressources_plotting$emissions$rsd_norm)
 
 plots$emissions$NOx$rsd_norm <-
   data_rsd_per_norm |> 
@@ -173,7 +173,7 @@ plots$emissions$NOx$rsd_norm <-
 update_log(30)
 
 # read & plot RSD NOx emissions by vehicle model year, vehicle type and fuel type
-data_rsd_per_yearmodel <- readr::read_delim(ressources_plotting$emissions$rsd_yearmodel, delim = ";")
+data_rsd_per_yearmodel <- read_local_csv(ressources_plotting$emissions$rsd_yearmodel)
 
 plots$emissions$NOx$rsd_yearmodel <-
   data_rsd_per_yearmodel |> 
@@ -206,7 +206,7 @@ plots$emissions$NOx$rsd_yearmodel <-
 update_log(30)
 
 # read & plot RSD NOx emission time series (year of measurement) by fuel type
-data_rsd_per_yearmeas <- readr::read_delim(ressources_plotting$emissions$rsd_yearmeas, delim = ";")
+data_rsd_per_yearmeas <- read_local_csv(ressources_plotting$emissions$rsd_yearmeas)
 
 plots$emissions$NOx$rsd_yearmeas <-
   data_rsd_per_yearmeas |> 
@@ -236,7 +236,7 @@ update_log(30)
 
 # read airquality monitoring data
 data_monitoring_aq <- 
-  readr::read_delim(ressources_plotting$monitoring$airquality, delim = ";") |> 
+  read_local_csv(ressources_plotting$monitoring$airquality) |> 
   dplyr::mutate(siteclass = factor(siteclass, levels = siteclass_levels)) |> 
   dplyr::filter(year %in% years & parameter %in% parameters_timeseries & 
                   !is.na(siteclass) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) 
@@ -246,7 +246,7 @@ plots$airquality$monitoring$timeseries <- plot_pars_monitoring_timeseries(data_m
 update_log(31)
 
 # read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
-data_monitoring_ndep <- readr::read_delim(ressources_plotting$monitoring$ndep, delim = ";")
+data_monitoring_ndep <- read_local_csv(ressources_plotting$monitoring$ndep)
 data_monitoring_ndep <- 
   data_monitoring_ndep |> 
   dplyr::mutate(
@@ -397,10 +397,10 @@ update_log(32)
 # plotting air pollutant population and ecosystem exposition
 
 # read exposition data and setup
-data_expo_distr_pollutants <- readr::read_delim(ressources_plotting$exposition$expo_distr_pollutants, delim = ";") 
-data_expo_distr_ndep <- readr::read_delim(ressources_plotting$exposition$expo_distr_ndep, delim = ";") 
-data_expo_weighmean_canton <- readr::read_delim(ressources_plotting$exposition$weightedmean_canton, delim = ";") 
-data_expo_weighmean_municip <- readr::read_delim(ressources_plotting$exposition$weightedmean_municip, delim = ";") 
+data_expo_distr_pollutants <- read_local_csv(ressources_plotting$exposition$expo_distr_pollutants) 
+data_expo_distr_ndep <- read_local_csv(ressources_plotting$exposition$expo_distr_ndep) 
+data_expo_weighmean_canton <- read_local_csv(ressources_plotting$exposition$weightedmean_canton) 
+data_expo_weighmean_municip <- read_local_csv(ressources_plotting$exposition$weightedmean_municip) 
 data_expo_weighmean_municip <- dplyr::full_join(map_municipalities, dplyr::select(data_expo_weighmean_municip, geodb_oid, year, parameter, pop_weighted_mean, source), by = "geodb_oid")
 parameters_exposition <- setNames(parameters_exposition, parameters_exposition)
 

@@ -64,9 +64,8 @@ read_opendataswiss <- function(url, source){
 }
 
 
-read_local_csv <- function(file, delim = ";", encoding = "latin1"){
+read_local_csv <- function(file, delim = ";", locale = readr::locale(encoding = "latin1", tz = "Etc/GMT-1")){
   
-  locale <- readr::locale(encoding = encoding)
   data <- readr::read_delim(file, delim = delim, locale = locale)
   
   return(data)

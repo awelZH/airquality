@@ -43,8 +43,8 @@ data_rsd_per_yearmeas <- aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("
 
 # write output datasets & clean up:
 # ---
-readr::write_delim(data_emikat, file = "inst/extdata/output/data_emissions.csv", delim = ";", na = "NA"); update_log(21)
-readr::write_delim(data_rsd_per_norm, file = "inst/extdata/output/data_nox_vehicle_emissions_rsd_per_norm.csv", delim = ";", na = "NA")
-readr::write_delim(data_rsd_per_yearmodel, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmodel.csv", delim = ";", na = "NA")
-readr::write_delim(data_rsd_per_yearmeas, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmeas.csv", delim = ";", na = "NA"); update_log(22)
+write_local_csv(data_emikat, file = "inst/extdata/output/data_emissions.csv"); update_log(21)
+write_local_csv(data_rsd_per_norm, file = "inst/extdata/output/data_nox_vehicle_emissions_rsd_per_norm.csv")
+write_local_csv(data_rsd_per_yearmodel, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmodel.csv")
+write_local_csv(data_rsd_per_yearmeas, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmeas.csv"); update_log(22)
 rm(list = c("data_emikat", "data_rsd", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "rsd_auxiliary"))

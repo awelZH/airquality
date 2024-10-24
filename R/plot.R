@@ -110,10 +110,10 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
 
   pollutant <- unique(as.character(data$pollutant))
   if (relative) {
-    yscale <- ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.01,0.01))
+    yscale <- ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0,0))
     sub <- as.expression(substitute(a * ", Jahresmengen-Anteile nach Quellgruppen (relativ)", env = list(a = pollutant)))
   } else {
-    yscale <- ggplot2::scale_y_continuous(labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01))
+    yscale <- ggplot2::scale_y_continuous(labels = function(x) format(x, big.mark = "'"), expand = c(0,0))
     sub <- as.expression(substitute(a * ", Jahresmenge nach Quellgruppen (t " * Jahr^-1 * ")", env = list(a = pollutant)))
   }
   
@@ -141,7 +141,7 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
   
   plot <-
     data |>
-    ggplot2::ggplot(aes(x = factor(year), y = emission, fill = subsector_new)) +
+    ggplot2::ggplot(aes(x = year, y = emission, fill = subsector_new)) +
     ggplot2::geom_bar(stat = "identity", position = pos, width = width) + 
     yscale +
     ggplot2::scale_fill_manual(values = setNames(data$col, data$subsector_new)) +
@@ -151,7 +151,7 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
       label = openair::quickText(paste0("Luftschadstoff-Emissionen ", longtitle(pollutant))),
       subtitle = sub
     ) +
-    ggplot2::labs(caption = "Quelle: OSTLUFT, Grundlage: EMIS Schweiz")
+    ggplot2::labs(caption = "Quelle: Ostluft, Grundlage: EMIS Schweiz")
   
   return(plot)
 }
@@ -213,7 +213,7 @@ plot_pars_monitoring_timeseries <- function(data, parameters) {
             label = openair::quickText(paste0("Luftqualitätsmesswerte - ",longtitle(parameter))),
             subtitle = openair::quickText(paste0(shorttitle(parameter),", ",timeseriespars(parameter)$metric," (µg/m3)"))
           ),
-          captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: OSTLUFT & NABEL (BAFU & Empa)"),
+          captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: Ostluft & NABEL (BAFU & Empa)"),
           pointsize = pointsize, theme = theme_ts, threshold = timeseriespars(parameter)$thresh
         ) +
         scale_color_siteclass

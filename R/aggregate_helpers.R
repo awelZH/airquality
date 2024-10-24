@@ -54,14 +54,15 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.05, first = 1
     dplyr::group_by(pollutant, sector) |> 
     dplyr::mutate(
       subsector_new = dplyr::case_when(
-        emission < min(sort(emission, decreasing = TRUE)[first]) ~ "sonstige",
+        emission < min(sort(emission, decreasing = TRUE)[first]) ~ "verschiedene",
         TRUE ~ subsector
       ),
       subsector_new = paste0(sector, " / ", subsector_new)
-    )
+    ) |> 
+    dplyr::arrange(pollutant, sector, dplyr::desc(emission))
   
   # aggregate emissions accordingly
-  group_vars <- c("pollutant", "subsector_new")
+  group_vars <- c("pollutant", "sector", "subsector_new")
   groups2 <- 
     groups |> 
     aggregate_groups(y = "emission", groups = group_vars, nmin = 1) |> 
@@ -74,13 +75,16 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.05, first = 1
     groups2 |> 
     dplyr::group_by(pollutant) |> 
     dplyr::mutate(
+      emission_fraction = emission / sum(emission),
       subsector_new = dplyr::case_when(
-        subsector_new != "weitere" & emission < threshold_fraction * sum(emission)  ~ "sonstige",
+        !stringr::str_detect(subsector_new, "/ verschiedene") & emission_fraction < threshold_fraction ~ paste0(sector, " / ", "verschiedene"),
         TRUE ~ subsector_new
       )
-    ) 
+    ) |> 
+    dplyr::ungroup()
   
   # aggregate accordingly
+  group_vars <- c("pollutant", "subsector_new")
   groups2 <- 
     groups2 |> 
     aggregate_groups(y = "emission", groups = group_vars, nmin = 1) |> 
@@ -89,13 +93,16 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.05, first = 1
     dplyr::filter(!is.na(emission))
   
   # restructure and prepare as lookup table for use outside this function
-  groups2 <- dplyr::filter(groups2, !stringr::str_detect(subsector_new, "sonstige"))
+  groups2 <- dplyr::filter(groups2, !stringr::str_detect(subsector_new, "verschiedene"))
   groups <-
     groups |> 
     dplyr::select(-emission) |> 
     dplyr::left_join(groups2, by = c("pollutant", "subsector_new")) |> 
     dplyr::arrange(pollutant, sector, dplyr::desc(emission)) |> 
-    dplyr::mutate(subsector_new = factor(subsector_new, levels = unique(.data$subsector_new))) |> 
+    dplyr::mutate(
+      subsector_new = dplyr::case_when(is.na(emission) ~ paste0(sector, " / ", "verschiedene"), TRUE ~ subsector_new),
+      subsector_new = factor(subsector_new, levels = unique(.data$subsector_new))
+    ) |> 
     dplyr::select(-emission)
   
   return(groups)
@@ -103,17 +110,17 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.05, first = 1
 
 
 aggregate_rsd <- function(data, meta, y = "nox_emission", groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm"), nmin = 50) {
-
+  
   if ("year" %in% groups) {
-
+    
     data <-
       data |>
       dplyr::mutate(vehicle_fuel_type = "all") |>
       dplyr::bind_rows(data) |>
       dplyr::mutate(year = lubridate::year(date_measured))
-
+    
   }
-
+  
   data <-
     data |>
     aggregate_groups(y = y, groups = groups, nmin = nmin) |>
@@ -122,28 +129,28 @@ aggregate_rsd <- function(data, meta, y = "nox_emission", groups = c("vehicle_ty
       unit = "g/kg fuel",
       source = "Kanton Zürich/AWEL"
     )
-
+  
   if (is.null(meta)) {
-
+    
     data <- dplyr::select(data, !!c(groups, y, "unit", "n", "standarderror", "source"))
-
+    
   } else {
-
+    
     if ("vehicle_model_year" %in% groups) {
-
+      
       meta <-
         meta |>
         dplyr::filter(!is.na(as.numeric(vehicle_euronorm))) |>
         dplyr::mutate(vehicle_euronorm = as.numeric(vehicle_euronorm)) |>
         dplyr::rename(vehicle_model_year = vehicle_euronorm)
-
+      
     }
-
+    
     data <-
       data |>
       dplyr::left_join(meta, by = groups) |>
       dplyr::select(!!c(groups, y, "unit", "n", "standarderror", "nox_emission_threshold_g_per_kg_fuel", "source"))
   }
-
+  
   return(data)
 }

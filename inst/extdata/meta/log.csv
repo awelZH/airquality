@@ -1,15 +1,15 @@
 INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
-1;2024-10-23 20:05:51 CET;get estimated emissions of air pollutants in the Canton of Zurich
-2;2024-10-23 20:13:38 CET;get monitoring data vehicle remote emission sensing (RSD)
-3;2024-10-23 20:13:38 CET;read metadata for vehicle type, fuel  and euronorm required for RSD NOx-Emission analysis, compiled from various sources
-4;2024-10-23 20:13:38 CET;read filter criteria applied to RSD dataset 
+1;2024-10-24 12:13:44 CET;get estimated emissions of air pollutants in the Canton of Zurich
+2;2024-10-24 12:14:24 CET;get monitoring data vehicle remote emission sensing (RSD)
+3;2024-10-24 12:14:24 CET;read metadata for vehicle type, fuel  and euronorm required for RSD NOx-Emission analysis, compiled from various sources
+4;2024-10-24 12:14:24 CET;read filter criteria applied to RSD dataset 
 5;2024-10-18 10:14:40 CET;read selected air quality monitoring data Kanton Zürich from national monitoring network NABEL (yearly values) 
 6;2024-10-18 10:14:41 CET;read selected air quality monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values) from github
 7;2024-10-18 10:14:41 CET;read selected O3 peak-season monitoring data in Kanton Zürich from intercantonal monitoring network OSTLUFT and national monitoring network NABEL (yearly values)
 8;2024-10-18 10:14:44 CET;read selected nitrogen deposition monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
 9;2024-10-18 10:14:39 CET;read site metadata OSTLUFT
-10;2024-10-23 20:16:29 CET;read selected air quality threshold values (LRV legal limits WHO air quality guideline)
-11;2024-10-23 20:16:27 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
+10;2024-10-24 08:00:07 CET;read selected air quality threshold values (LRV legal limits WHO air quality guideline)
+11;2024-10-24 12:12:20 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
 12;2024-10-18 12:57:05 CET;get polluMap raster data yearly concentrations of mean NO2, PM10, PM2.5 and eBC
 13;2024-10-18 12:57:05 CET;get jahreskarten raster data yearly concentrations of mean nitrogen dioxide (NO2)
 14;2024-10-18 12:57:05 CET;get jahreskarten raster data yearly concentrations of mean particulate matter PM10
@@ -19,15 +19,15 @@ INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
 18;2024-08-23 13:17:14 CET;get modelled raster data nitrogen deposition
 19;2024-08-23 13:17:17 CET;get modelled raster data exceedance of critical loads for nitrogen (CLN)
 20;2024-08-23 13:03:04 CET;get inhabitant population
-21;2024-10-23 20:06:51 CET;write emissions of air pollutants in the Canton of Zurich
-22;2024-10-23 20:16:07 CET;write monitoring data vehicle remote emission sensing (RSD)
+21;2024-10-24 12:15:00 CET;write emissions of air pollutants in the Canton of Zurich
+22;2024-10-24 12:15:00 CET;write monitoring data vehicle remote emission sensing (RSD)
 23;2024-10-18 10:14:44 CET;write air quality monitoring data Canton Zürich
 24;2024-10-18 10:14:44 CET;write nitrogen deposition monitoring data Canton Zürich
 25;2024-08-23 13:24:43 CET;write air quality population exposition weighted mean Canton Zürich
 26;2024-08-23 13:24:44 CET;write air quality population exposition weighted mean municipalities
 27;2024-08-23 13:24:45 CET;write air quality population exposition distribution
 28;2024-08-23 13:24:46 CET;write nitrogen population exposition distribution
-29;2024-10-23 20:17:46 CET;plot emissions of air pollutants in the Canton of Zurich
+29;2024-10-24 11:10:53 CET;plot emissions of air pollutants in the Canton of Zurich
 30;2024-10-23 20:19:22 CET;plot monitoring data vehicle remote emission sensing (RSD)
 31;2024-08-23 13:29:00 CET;plot air quality monitoring data Canton Zürich
 32;2024-10-18 13:06:24 CET;plot nitrogen deposition monitoring data Canton Zürich

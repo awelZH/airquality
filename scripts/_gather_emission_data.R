@@ -20,7 +20,7 @@ data_emikat <- aggregate_emmissions(data_emikat)
 # read Canton Zürich data (RSD) from opendata.swiss, see also: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftschadstoffquellen/emissionen-verkehr/abgasmessungen-rsd.html
 data_rsd <- read_opendataswiss(filter_ressources(ressources, 2), source = "Kanton Zürich/AWEL"); update_log(2)
 
-# read local metadata (e.g. fractions NO:NO2 etc) and filter criteria for analysis
+# read local metadata (e.g. fractions NO:NO2, emission thresholds, etc) and filter criteria 
 rsd_auxiliary <- list(meta = read_local_csv(filter_ressources(ressources, 3))); update_log(3)
 rsd_auxiliary$filters <- read_local_csv(filter_ressources(ressources, 4)); update_log(4)
 
@@ -32,10 +32,10 @@ data_rsd <- prepare_rsd(data_rsd, rsd_auxiliary)
 # => aggregate NOx emissions per euronorm, vehicle type and fuel type as mean values
 data_rsd_per_norm <- aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm"))
 
-# => aggregate NOx emissions per year of vehicle model, vehicle type and fuel type
+# => aggregate NOx emissions per year of vehicle model, vehicle type and fuel type as mean values
 data_rsd_per_yearmodel <- aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("vehicle_model_year", "vehicle_type", "vehicle_fuel_type"))
 
-# => aggregate NOx emissions per year of measurement and fuel type (including all = gasoline and diesel)
+# => aggregate NOx emissions per year of measurement and fuel type (including all = gasoline and diesel) as mean values
 data_rsd_per_yearmeas <- aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("year", "vehicle_fuel_type"))
 
 

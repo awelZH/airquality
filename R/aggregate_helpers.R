@@ -38,7 +38,7 @@ aggregate_groups <- function(data, y, groups, nmin = 3, perc = list(ymin = 0.05,
 
 
 groups_emission_subsector <- function(data, threshold_fraction = 0.05, first = 1:3) {
-
+  
   # mean emissions per category over all years
   group_vars <- c("pollutant", "sector", "subsector")
   groups <- 
@@ -154,3 +154,30 @@ aggregate_rsd <- function(data, meta, y = "nox_emission", groups = c("vehicle_ty
   
   return(data)
 }
+
+
+simplify_nitrogen_parameters <- function(data) {
+  
+  data <-
+    data |>
+    dplyr::mutate(
+      parameter = dplyr::case_when(
+        stringr::str_detect(parameter, "NO3") | stringr::str_detect(parameter, "NO2") ~ "aus NOx-Quellen",
+        stringr::str_detect(parameter, "NH3") | stringr::str_detect(parameter, "NH4") ~ "aus NH3-Quellen",
+        TRUE ~ parameter
+      ),
+      parameter =  factor(parameter, levels = c("aus NOx-Quellen", "aus NH3-Quellen", "N-Deposition")),
+      # ecosystem_category = paste0("empfindliches Ökosystem: ", ecosystem_category),
+      site_short = stringr::str_remove(site_short, "_Wald"),
+      site = stringr::str_remove(site, "_Wald"),
+      site = stringr::str_replace(site, "_", "-")
+    ) |> 
+    dplyr::rename(
+      site_long = site,
+      site = site_short
+    )
+  
+  return(data)
+}
+
+

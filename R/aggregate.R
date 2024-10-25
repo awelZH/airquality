@@ -11,7 +11,7 @@ aggregate_map <- function(map) {
 
 
 aggregate_emmissions <- function(data){
-
+  
   groups <- groups_emission_subsector(data)
   data <- dplyr::left_join(
     data, 
@@ -32,7 +32,7 @@ aggregate_emmissions <- function(data){
 
 
 aggregate_rsd_nox <- function(data, rsd_auxiliary, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")){
-
+  
   if (!("year" %in% groups)) {
     
     rsd_meta <- 
@@ -55,9 +55,29 @@ aggregate_rsd_nox <- function(data, rsd_auxiliary, groups = c("vehicle_type", "v
       y = "nox_emission",
       groups = groups,
       nmin = rsd_filters$min[rsd_filters$parameter == "nmin"]
-  ) 
+    ) 
   
   return(data_aggregated)
 }
 
+
+aggregate_nitrogen_deposition <- function(data) {
+  
+  data <- simplify_nitrogen_parameters(data)
+  
+  estimate <- 
+    data |> 
+    dplyr::filter(parameter == "N-Deposition") |> 
+    dplyr::select(year, site, ecosystem_category, estimate)
+  
+  data <- 
+    data |> 
+    dplyr::group_by(year, site, site_long, source, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) |>
+    dplyr::summarise(value = sum(value)) |>
+    dplyr::ungroup() |>
+    left_join(estimate, by = c("year", "site", "ecosystem_category")) |> 
+    dplyr::mutate(estimate = dplyr::case_when(parameter == "N-Deposition" ~ estimate, TRUE ~ NA))
+  
+  return(data)
+}
 

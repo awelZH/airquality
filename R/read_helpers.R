@@ -1,36 +1,3 @@
-# internal function for read_airmo_csv2() to restructure data; based on function airmo_wide_to_long() in rOstluft-package
-restructure_airmo_wide_to_long2 <- function(header, data, tz = "Etc/GMT-1", na.rm = TRUE){
-  
-  colnames(data)[1] <- "starttime"
-  col_ids <- rlang::names2(data)[-1]
-  
-  
-  # FIXME: kann das vereinfacht werden mit pivot_longer? sollte eigentlich möglich sein
-  sites <- c(header[1, ], recursive = TRUE)
-  sites <- rlang::set_names(sites, col_ids)
-  parameters <- c(header[2, ], recursive = TRUE)
-  parameters <- rlang::set_names(parameters, col_ids)
-  intervals <- c(header[3, ], recursive = TRUE)
-  intervals <- rlang::set_names(intervals, col_ids)
-  units <- c(header[4, ], recursive = TRUE)
-  units <- rlang::set_names(units, col_ids)
-  
-  data <- dplyr::mutate(data, starttime = lubridate::parse_date_time(.data$starttime, c("dmYHMS", "dmYHM", "dmY"), tz = tz))
-  data <- tidyr::gather(data, "id", "value", -"starttime", na.rm = na.rm, factor_key = TRUE)
-  data <- dplyr::mutate(data,
-                        site = dplyr::recode(.data$id, !!!sites),
-                        parameter = dplyr::recode(.data$id, !!!parameters),
-                        interval = dplyr::recode(.data$id, !!!intervals),
-                        unit = dplyr::recode(.data$id, !!!units)
-  )
-  data <- dplyr::select(data, "starttime", "site", "parameter", "interval", "unit", "value")
-  
-  return(data)
-}
-
-
-
-
 
 # ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
 # however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation

@@ -1,6 +1,6 @@
 # loading packages and functions:
 # ---
-# load / install packages
+# load packages
 load_packages <- function(packages) {
   for (package in packages) {
     if (!require(package, character.only = TRUE, quietly = TRUE)) {

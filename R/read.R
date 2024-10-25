@@ -64,9 +64,9 @@ read_opendataswiss <- function(url, source){
 }
 
 
-read_local_csv <- function(file, delim = ";", locale = readr::locale(encoding = "latin1", tz = "Etc/GMT-1")){
+read_local_csv <- function(file, delim = ";", locale = readr::locale(encoding = "latin1", tz = "Etc/GMT-1"), ...){
   
-  data <- readr::read_delim(file, delim = delim, locale = locale)
+  data <- readr::read_delim(file, delim = delim, locale = locale, ...)
   
   return(data)
 }
@@ -130,3 +130,7 @@ read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
   
   return(data)
 }
+
+
+
+

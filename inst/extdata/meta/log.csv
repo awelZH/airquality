@@ -3,13 +3,13 @@ INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
 2;2024-10-25 10:35:27 CET;get monitoring data vehicle remote emission sensing (RSD)
 3;2024-10-25 10:35:27 CET;read metadata for vehicle type, fuel  and euronorm required for RSD NOx-Emission analysis, compiled from various sources
 4;2024-10-25 10:35:27 CET;read filter criteria applied to RSD dataset 
-5;2024-10-25 10:36:08 CET;read selected air quality monitoring data Kanton Zürich from national monitoring network NABEL (yearly values) 
-6;2024-10-25 10:36:07 CET;read selected air quality monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values) from github
-7;2024-10-25 10:36:08 CET;read selected O3 peak-season monitoring data in Kanton Zürich from intercantonal monitoring network OSTLUFT and national monitoring network NABEL (yearly values)
-8;2024-10-25 10:36:08 CET;read selected nitrogen deposition monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
-9;2024-10-25 10:36:09 CET;read site metadata OSTLUFT
-10;2024-10-24 12:34:52 CET;read selected air quality threshold values (LRV legal limits WHO air quality guideline)
-11;2024-10-25 10:34:35 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
+5;2024-10-25 11:02:21 CET;read selected air quality monitoring data Kanton Zürich from national monitoring network NABEL (yearly values) 
+6;2024-10-25 11:02:20 CET;read selected air quality monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values) from github
+7;2024-10-25 11:02:20 CET;read selected O3 peak-season monitoring data in Kanton Zürich from intercantonal monitoring network OSTLUFT and national monitoring network NABEL (yearly values)
+8;2024-10-25 11:02:20 CET;read selected nitrogen deposition monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
+9;2024-10-25 11:02:21 CET;read site metadata OSTLUFT
+10;2024-10-25 11:00:57 CET;read selected air quality threshold values (LRV legal limits WHO air quality guideline)
+11;2024-10-25 10:55:40 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
 12;2024-10-18 12:57:05 CET;get polluMap raster data yearly concentrations of mean NO2, PM10, PM2.5 and eBC
 13;2024-10-18 12:57:05 CET;get jahreskarten raster data yearly concentrations of mean nitrogen dioxide (NO2)
 14;2024-10-18 12:57:05 CET;get jahreskarten raster data yearly concentrations of mean particulate matter PM10
@@ -21,7 +21,7 @@ INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
 20;2024-08-23 13:03:04 CET;get inhabitant population
 21;2024-10-25 10:35:48 CET;write emissions of air pollutants in the Canton of Zurich
 22;2024-10-25 10:35:48 CET;write monitoring data vehicle remote emission sensing (RSD)
-23;2024-10-25 10:36:12 CET;write air quality monitoring data Canton Zürich
+23;2024-10-25 11:02:52 CET;write air quality monitoring data Canton Zürich
 24;2024-10-25 10:36:12 CET;write nitrogen deposition monitoring data Canton Zürich
 25;2024-08-23 13:24:43 CET;write air quality population exposition weighted mean Canton Zürich
 26;2024-08-23 13:24:44 CET;write air quality population exposition weighted mean municipalities
@@ -29,8 +29,8 @@ INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
 28;2024-08-23 13:24:46 CET;write nitrogen population exposition distribution
 29;2024-10-24 11:10:53 CET;plot emissions of air pollutants in the Canton of Zurich
 30;2024-10-23 20:19:22 CET;plot monitoring data vehicle remote emission sensing (RSD)
-31;2024-08-23 13:29:00 CET;plot air quality monitoring data Canton Zürich
-32;2024-10-18 13:06:24 CET;plot nitrogen deposition monitoring data Canton Zürich
+31;2024-10-25 11:05:14 CET;plot air quality monitoring data Canton Zürich
+32;2024-10-25 10:53:33 CET;plot nitrogen deposition monitoring data Canton Zürich
 33;2024-07-12 10:41:19 CET;plot air quality population exposition weighted means
 34;2024-08-23 13:43:28 CET;plot air quality population exposition distribution
 35;2024-07-12 10:41:19 CET;plot nitrogen sensitive ecosystem exposition distribution

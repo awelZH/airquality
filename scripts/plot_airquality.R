@@ -119,7 +119,7 @@ plots <- list()
 # plotting air pollutant emissions
 
 # read & plot details of Canton Zürich air pollutant emissions per pollutant, subsector and year (absolute and relative values)
-data_emikat <- read_local_csv(ressources_plotting$emissions$emikat, delim = ";")
+data_emikat <- read_local_csv(ressources_plotting$emissions$emikat, delim = ";", locale = readr::locale(encoding = "UTF-8"))
 cols_emissions <- setNames(as.character(cols_emissions), unique(data_emikat$sector))
 pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$pollutant))
 
@@ -236,17 +236,16 @@ update_log(30)
 
 # read airquality monitoring data
 data_monitoring_aq <- 
-  read_local_csv(ressources_plotting$monitoring$airquality) |> 
+  read_local_csv(ressources_plotting$monitoring$airquality, locale = readr::locale(encoding = "UTF-8")) |> 
   dplyr::mutate(siteclass = factor(siteclass, levels = siteclass_levels)) |> 
   dplyr::filter(year %in% years & parameter %in% parameters_timeseries & 
                   !is.na(siteclass) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) 
 
 # plot timeseries of yearly values for selected pollutants
-plots$airquality$monitoring$timeseries <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries)
-update_log(31)
+plots$airquality$monitoring$timeseries <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries); update_log(31)
 
 # read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
-data_monitoring_ndep <- read_local_csv(ressources_plotting$monitoring$ndep)
+data_monitoring_ndep <- read_local_csv(ressources_plotting$monitoring$ndep, locale = readr::locale(encoding = "UTF-8"))
 data_monitoring_ndep <- 
   data_monitoring_ndep |> 
   dplyr::mutate(

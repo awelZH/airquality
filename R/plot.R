@@ -380,3 +380,31 @@ plot_all_expo_cumul_ndep <- function(data, threshold_ndep) {
   return(plots)
 }
 
+
+combine_thresholds <- function(data, threshold_values) {
+  
+  data <- 
+    threshold_values |> 
+    dplyr::select(source, pollutant, metric, aggregation, threshold) |> 
+    dplyr::rename(
+      parameter = pollutant,
+      interval = aggregation
+    ) |> 
+    dplyr::mutate(
+      parameter = dplyr::case_when(
+        metric == "number hourly mean values > 120 µg/m3" & parameter == "O3" ~ "O3_nb_h1>120",
+        metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" & parameter == "O3" ~ "O3_max_98p_m1",
+        metric == "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration" & parameter == "O3" ~ "O3_peakseason_mean_d1_max_mean_h8gl",
+        TRUE ~ parameter
+      ),
+      interval = dplyr::recode(interval, !!!c("m1" = "y1", "peak-season" = "y1"))
+    ) |> 
+    dplyr::select(-metric) |> 
+    tidyr::spread(source, threshold) |> 
+    dplyr::right_join(data, by = c("parameter", "interval")) |> 
+    dplyr::select(year, site, parameter, interval, unit, value, siteclass, `LRV Grenzwert`, `WHO Richtwert`, source)
+  
+  return(data)
+  
+}
+

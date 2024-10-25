@@ -75,7 +75,7 @@ aggregate_nitrogen_deposition <- function(data) {
     dplyr::group_by(year, site, site_long, source, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) |>
     dplyr::summarise(value = sum(value)) |>
     dplyr::ungroup() |>
-    left_join(estimate, by = c("year", "site", "ecosystem_category")) |> 
+    dplyr::left_join(estimate, by = c("year", "site", "ecosystem_category")) |> 
     dplyr::mutate(estimate = dplyr::case_when(parameter == "N-Deposition" ~ estimate, TRUE ~ NA))
   
   return(data)

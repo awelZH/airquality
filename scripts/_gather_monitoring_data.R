@@ -8,7 +8,7 @@ data_monitoring_nabel <- read_local_csv(filter_ressources(ressources, 5)); updat
 data_monitoring_ostluft <- read_local_csv(filter_ressources(ressources, 6), locale = readr::locale(encoding = "UTF-8"), col_names = FALSE); update_log(6)
 
 # => read pre-compiled Ostluft & NABEL O3 peak-season y1 data
-data_monitoring_o3_peakseason <- read_local_csv(filter_ressources(ressources, 7)); update_log(7)
+data_monitoring_o3_peakseason <- read_local_csv(filter_ressources(ressources, 7), locale = readr::locale(encoding = "UTF-8")); update_log(7)
 
 # => read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
 data_monitoring_ndep <- read_local_csv(filter_ressources(ressources, 8), locale = readr::locale(encoding = "UTF-8")); update_log(8)

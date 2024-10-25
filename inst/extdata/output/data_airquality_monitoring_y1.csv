@@ -1829,30 +1829,30 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2006;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_nb_h1>120;y1;1;760
 2007;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_nb_h1>120;y1;1;593
 2008;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_nb_h1>120;y1;1;409
-1990;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-1991;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;106.10446613678572
-1992;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-1993;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;120.77967697872238
-1994;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;116.31946337767076
-1995;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;111.17814538220787
-1996;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;109.41198778445651
-1997;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;111.87273604619566
-1998;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;111.6679715134236
-1999;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;107.4943824514276
-2000;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2001;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;107.11835400239072
-2002;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;108.76800166120164
-2003;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;126.2259082801366
-2004;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;109.00879783946722
-2005;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;107.5905130222826
-2006;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;109.71095139007596
-2007;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;104.65681521600544
-2008;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;102.8413291043546
+1990;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1991;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.10446613678572
+1992;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1993;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;120.77967697872238
+1994;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;116.31946337767076
+1995;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;111.17814538220787
+1996;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;109.41198778445651
+1997;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;111.87273604619566
+1998;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;111.6679715134236
+1999;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;107.4943824514276
+2000;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2001;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;107.11835400239072
+2002;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;108.76800166120164
+2003;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;126.2259082801366
+2004;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;109.00879783946722
+2005;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;107.5905130222826
+2006;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;109.71095139007596
+2007;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;104.65681521600544
+2008;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;102.8413291043546
 2007;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;Ostluft;PM10;y1;µg/m3;13.20334328
 2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;Ostluft;NO2;y1;µg/m3;17.46695096
 2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;Ostluft;O3_max_98p_m1;y1;µg/m3;153.105559
 2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;Ostluft;O3_nb_h1>120;y1;1;287
-2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;96.19308599015623
+2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.19308599015623
 2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;Ostluft;PM10;y1;µg/m3;13.50233828
 1984;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);Benzol;y1;µg/m3;NA
 1985;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);Benzol;y1;µg/m3;NA
@@ -2127,6 +2127,44 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2020;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_nb_h1>120;y1;Anzahl;252
 2021;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_nb_h1>120;y1;Anzahl;128
 2022;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_nb_h1>120;y1;Anzahl;NA
+1986;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.96371703296704
+1987;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.18387907608695
+1988;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;47.59187843406593
+1989;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.8743094262295
+1990;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.5785315934066
+1991;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.9750625
+1992;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.53043821022727
+1993;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.23515846994536
+1994;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.93385645604396
+1995;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.03517239010988
+1996;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.54703522099447
+1997;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.60113994565218
+1998;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.92535326086956
+1999;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.56816483516484
+2000;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.06040055248619
+2001;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.00935733695653
+2002;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.42839640883977
+2003;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;111.0135286885246
+2004;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.95729576502733
+2005;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.81307880434782
+2006;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.55152513586955
+2007;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.0582914402174
+2008;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.1130828804348
+2009;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.31034426229508
+2010;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.91898029891304
+2011;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.22800204918032
+2012;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.36186543715847
+2013;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.34313535911602
+2014;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.38431793478262
+2015;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.80863046448088
+2016;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.37588729508197
+2017;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.2014429347826
+2018;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.10257665745856
+2019;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.95624932065218
+2020;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.98133695652174
+2021;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.20781589673913
+2022;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.8251174863388
+2023;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
 1984;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);PM10;y1;µg/m3;NA
 1985;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);PM10;y1;µg/m3;NA
 1986;Dübendorf-EMPA;Dübendorf-EMPA;vorstädtisch - Hintergrund;1250900;2688675;432;NABEL (BAFU & Empa);PM10;y1;µg/m3;NA
@@ -2300,8 +2338,8 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2018;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;Ostluft;O3_max_98p_m1;y1;µg/m3;167.9622046
 2017;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;Ostluft;O3_nb_h1>120;y1;1;225
 2018;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;Ostluft;O3_nb_h1>120;y1;1;520
-2017;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;91.80064329474727
-2018;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;106.76062427124316
+2017;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.80064329474727
+2018;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.76062427124316
 2017;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;Ostluft;PM10;y1;µg/m3;12.56585547
 2018;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;Ostluft;PM10;y1;µg/m3;13.43904751
 2020;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;NO2;y1;µg/m3;15.16657748
@@ -2314,10 +2352,10 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2021;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_nb_h1>120;y1;1;114
 2022;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_nb_h1>120;y1;1;294
 2023;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_nb_h1>120;y1;1;280
-2020;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;95.109877987944
-2021;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;87.16193285403689
-2022;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;98.15941740226496
-2023;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;89.74430467546875
+2020;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.109877987944
+2021;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.16193285403689
+2022;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.15941740226496
+2023;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.74430467546875
 2021;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;PM2.5;y1;µg/m3;9.191364681
 2022;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;PM2.5;y1;µg/m3;8.731352228
 2023;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;Ostluft;PM2.5;y1;µg/m3;7.897561621
@@ -2325,14 +2363,14 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2020;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;Ostluft;NO2;y1;µg/m3;31.591159
 2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;Ostluft;O3_max_98p_m1;y1;µg/m3;157.1943659
 2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;Ostluft;O3_nb_h1>120;y1;1;271
-2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;93.7351241181386
+2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.7351241181386
 2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;Ostluft;PM2.5;y1;µg/m3;10.35554544
 2012;Kno_Oberdorfstrasse;Knonau - Oberdorfstrasse;klein-/vorstädtisch - Hintergrund;2677585;1230948;432;Ostluft;NO2;y1;µg/m3;20.22083666
-2012;Kno_Oberdorfstrasse;Knonau - Oberdorfstrasse;klein-/vorstädtisch - Hintergrund;2677585;1230948;432;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;87.13886150406421
+2012;Kno_Oberdorfstrasse;Knonau - Oberdorfstrasse;klein-/vorstädtisch - Hintergrund;2677585;1230948;432;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.13886150406421
 2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;Ostluft;NO2;y1;µg/m3;15.43550094
 2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;Ostluft;O3_max_98p_m1;y1;µg/m3;163.4975875
 2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;Ostluft;O3_nb_h1>120;y1;1;500
-2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;106.15169899021174
+2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.15169899021174
 2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;Ostluft;PM10;y1;µg/m3;13.65008485
 2013;Obf_Gugelrebenstrasse;Obfelden - Gugelrebenstrasse;klein-/vorstädtisch - Hintergrund;2674772;1235944;474;Ostluft;NO2;y1;µg/m3;23.27517039
 2014;Obf_Gugelrebenstrasse;Obfelden - Gugelrebenstrasse;klein-/vorstädtisch - Hintergrund;2674772;1235944;474;Ostluft;NO2;y1;µg/m3;17.60361566
@@ -2403,29 +2441,29 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2021;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_nb_h1>120;y1;1;18
 2022;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_nb_h1>120;y1;1;50
 2023;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_nb_h1>120;y1;1;166
-2001;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;71.13633128091712
-2002;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;67.78049971146399
-2003;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2004;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;71.87949935365522
-2005;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2006;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;75.62044724673976
-2007;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2008;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;72.43114480577445
-2009;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;72.6999976521148
-2010;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;73.38030034382514
-2011;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;75.02237839331454
-2012;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;69.9175117521481
-2013;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;68.87189739884171
-2014;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;69.22949352276699
-2015;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;77.93210085304577
-2016;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;68.25871370123156
-2017;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;74.22407471275136
-2018;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;86.03236285736338
-2019;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;78.54295502491848
-2020;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;77.71192554683424
-2021;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;70.52426679628397
-2022;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;82.3491808295659
-2023;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;81.42412360294158
+2001;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;71.13633128091712
+2002;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;67.78049971146399
+2003;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2004;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;71.87949935365522
+2005;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2006;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;75.62044724673976
+2007;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2008;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;72.43114480577445
+2009;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;72.6999976521148
+2010;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;73.38030034382514
+2011;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;75.02237839331454
+2012;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;69.9175117521481
+2013;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;68.87189739884171
+2014;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;69.22949352276699
+2015;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;77.93210085304577
+2016;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;68.25871370123156
+2017;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.22407471275136
+2018;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.03236285736338
+2019;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.54295502491848
+2020;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;77.71192554683424
+2021;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;70.52426679628397
+2022;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.3491808295659
+2023;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.42412360294158
 2004;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;PM10;y1;µg/m3;25.94793747
 2005;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;PM10;y1;µg/m3;NA
 2006;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;Ostluft;PM10;y1;µg/m3;27.81942687
@@ -2467,10 +2505,10 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2020;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_nb_h1>120;y1;1;NA
 2021;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_nb_h1>120;y1;1;NA
 2022;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_nb_h1>120;y1;1;267
-2019;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;95.72709815565216
-2020;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2021;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2022;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;96.91157612666667
+2019;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.72709815565216
+2020;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2021;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2022;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.91157612666667
 2019;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;PM10;y1;µg/m3;14.26115409
 2020;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;PM10;y1;µg/m3;NA
 2021;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;Ostluft;PM10;y1;µg/m3;NA
@@ -2501,6 +2539,13 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2019;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_nb_h1>120;y1;1;NA
 2020;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_nb_h1>120;y1;1;NA
 2021;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_nb_h1>120;y1;1;111
+2015;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.62398416670082
+2016;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2017;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2018;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;104.19774212413934
+2019;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2020;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2021;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.06933377037568
 2015;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;PM10;y1;µg/m3;15.75401957
 2016;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;PM10;y1;µg/m3;NA
 2017;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;Ostluft;PM10;y1;µg/m3;NA
@@ -2515,7 +2560,7 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2020;Ust_Bildungszentrum;Uster - Bildungszentrum;städtisch - Hintergrund;2695829;1244930;454;Ostluft;NO2;y1;µg/m3;12.55922016
 2020;Ust_Bildungszentrum;Uster - Bildungszentrum;städtisch - Hintergrund;2695829;1244930;454;Ostluft;O3_max_98p_m1;y1;µg/m3;137.1410938
 2020;Ust_Bildungszentrum;Uster - Bildungszentrum;städtisch - Hintergrund;2695829;1244930;454;Ostluft;O3_nb_h1>120;y1;1;244
-2020;Ust_Bildungszentrum;Uster - Bildungszentrum;städtisch - Hintergrund;2695829;1244930;454;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;92.5169996639606
+2020;Ust_Bildungszentrum;Uster - Bildungszentrum;städtisch - Hintergrund;2695829;1244930;454;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.5169996639606
 2020;Ust_Bildungszentrum;Uster - Bildungszentrum;städtisch - Hintergrund;2695829;1244930;454;Ostluft;PM2.5;y1;µg/m3;8.572169214
 1990;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;NO2;y1;µg/m3;36.88858316
 1991;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;NO2;y1;µg/m3;36.29776125
@@ -2587,24 +2632,24 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2005;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_nb_h1>120;y1;1;282
 2006;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_nb_h1>120;y1;1;430
 2007;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_nb_h1>120;y1;1;315
-1990;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;101.38141714117046
-1991;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;103.6852817889037
-1992;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;84.21142561799728
-1993;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;94.58285003692664
-1994;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;96.13791995316645
-1995;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;90.77900041266984
-1996;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;88.94440009573165
-1997;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;93.42725434151494
-1998;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;60.069528454755464
-1999;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;87.80728790264028
-2000;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;89.13380326132133
-2001;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;82.1068233088882
-2002;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;92.8363293505076
-2003;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;74.6769086752179
-2004;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;95.1143343637432
-2005;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;93.52784840900136
-2006;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;100.32016565175272
-2007;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;94.76223500017257
+1990;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;101.38141714117046
+1991;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;103.6852817889037
+1992;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.21142561799728
+1993;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.58285003692664
+1994;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.13791995316645
+1995;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.77900041266984
+1996;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.94440009573165
+1997;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.42725434151494
+1998;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;60.069528454755464
+1999;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.80728790264028
+2000;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.13380326132133
+2001;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.1068233088882
+2002;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.8363293505076
+2003;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.6769086752179
+2004;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.1143343637432
+2005;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.52784840900136
+2006;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;100.32016565175272
+2007;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.76223500017257
 1998;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;PM10;y1;µg/m3;27.53161592
 1999;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;PM10;y1;µg/m3;26.07449804
 2000;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;Ostluft;PM10;y1;µg/m3;22.68767201
@@ -2619,6 +2664,7 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;Ostluft;NO2;y1;µg/m3;27.20379723
 2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;Ostluft;O3_max_98p_m1;y1;µg/m3;137.9425268
 2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;Ostluft;O3_nb_h1>120;y1;1;117
+2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.40309563891984
 2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;Ostluft;PM10;y1;µg/m3;15.04095952
 2007;Wet_Filderen;Wettswil - Filderen;ländlich - verkehrsbelastet;2677330;1243853;528;Ostluft;NO2;y1;µg/m3;16.40261956
 2008;Wet_Filderen;Wettswil - Filderen;ländlich - verkehrsbelastet;2677330;1243853;528;Ostluft;NO2;y1;µg/m3;17.5887745
@@ -2653,11 +2699,11 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2009;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_nb_h1>120;y1;1;228
 2010;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_nb_h1>120;y1;1;333
 2011;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_nb_h1>120;y1;1;304
-2007;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;94.04887607848504
-2008;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;97.97285725096312
-2009;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;93.54402612943616
-2010;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;94.15338630362704
-2011;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;97.00680701350272
+2007;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.04887607848504
+2008;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.97285725096312
+2009;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.54402612943616
+2010;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.15338630362704
+2011;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.00680701350272
 2007;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;PM10;y1;µg/m3;18.25046461
 2008;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;PM10;y1;µg/m3;NA
 2009;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;Ostluft;PM10;y1;µg/m3;20.29973909
@@ -2666,7 +2712,7 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;Ostluft;NO2;y1;µg/m3;19.141873789999998
 2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;Ostluft;O3_max_98p_m1;y1;µg/m3;166.3264219
 2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;Ostluft;O3_nb_h1>120;y1;1;401
-2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;99.5245438898429
+2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.5245438898429
 2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;Ostluft;PM10;y1;µg/m3;13.54892216
 2020;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;NO2;y1;µg/m3;14.80089115
 2021;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;NO2;y1;µg/m3;NA
@@ -2680,10 +2726,10 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2021;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_nb_h1>120;y1;1;NA
 2022;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_nb_h1>120;y1;1;NA
 2023;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_nb_h1>120;y1;1;289
-2020;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;91.7969568472894
-2021;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2022;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2023;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;90.8401925256182
+2020;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.7969568472894
+2021;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2022;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2023;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.8401925256182
 2020;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;PM2.5;y1;µg/m3;8.810496166
 2021;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;PM2.5;y1;µg/m3;NA
 2022;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;Ostluft;PM2.5;y1;µg/m3;NA
@@ -2760,31 +2806,31 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2012;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_nb_h1>120;y1;1;126
 2013;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_nb_h1>120;y1;1;204
 2014;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_nb_h1>120;y1;1;141
-1990;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-1991;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;102.71032364960568
-1992;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;76.2889584871121
-1993;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;74.8368853688441
-1994;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;78.36275087748088
-1995;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;80.71471128866462
-1996;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;78.24695868964741
-1997;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;76.134251115468075
-1998;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;82.19203030907269
-1999;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;80.02196675756662
-2000;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;78.20283752254167
-2001;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;73.55610682971263
-2002;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;86.33012905678856
-2003;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;102.63668129449177
-2004;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;83.24148577455396
-2005;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;79.66350090834239
-2006;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;84.33201811142595
-2007;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;89.91064597801913
-2008;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;87.30811606979636
-2009;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;89.21957321384443
-2010;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;87.50769371924592
-2011;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;91.94426269021469
-2012;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;85.65946960495219
-2013;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;84.97611347276099
-2014;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;86.11755434716032
+1990;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1991;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;102.71032364960568
+1992;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;76.2889584871121
+1993;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.8368853688441
+1994;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.36275087748088
+1995;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.71471128866462
+1996;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.24695868964741
+1997;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;76.134251115468075
+1998;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.19203030907269
+1999;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.02196675756662
+2000;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.20283752254167
+2001;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;73.55610682971263
+2002;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.33012905678856
+2003;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;102.63668129449177
+2004;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.24148577455396
+2005;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;79.66350090834239
+2006;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.33201811142595
+2007;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.91064597801913
+2008;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.30811606979636
+2009;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.21957321384443
+2010;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.50769371924592
+2011;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.94426269021469
+2012;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.65946960495219
+2013;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.97611347276099
+2014;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.11755434716032
 2004;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;PM10;y1;µg/m3;21.31725955
 2005;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;PM10;y1;µg/m3;24.13906593
 2006;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;Ostluft;PM10;y1;µg/m3;26.31314917
@@ -2799,7 +2845,7 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;Ostluft;NO2;y1;µg/m3;27.46514079
 2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;Ostluft;O3_max_98p_m1;y1;µg/m3;127.8202199
 2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;Ostluft;O3_nb_h1>120;y1;1;61
-2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;81.8551561265428
+2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.8551561265428
 2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;Ostluft;PM10;y1;µg/m3;14.51868548
 2016;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;NO2;y1;µg/m3;18.83897756
 2017;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;NO2;y1;µg/m3;17.92737001
@@ -2825,14 +2871,14 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2021;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_nb_h1>120;y1;1;96
 2022;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_nb_h1>120;y1;1;299
 2023;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_nb_h1>120;y1;1;257
-2016;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;88.77572588502049
-2017;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;91.51743199684104
-2018;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;107.48379431691257
-2019;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;95.23756229625
-2020;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;90.58509839615488
-2021;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;84.20629842174117
-2022;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;98.64654065700203
-2023;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;89.55830711539402
+2016;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.77572588502049
+2017;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.51743199684104
+2018;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;107.48379431691257
+2019;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.23756229625
+2020;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.58509839615488
+2021;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.20629842174117
+2022;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.64654065700203
+2023;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.55830711539402
 2016;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;PM10;y1;µg/m3;13.51960075
 2017;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;PM10;y1;µg/m3;13.71855022
 2018;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;Ostluft;PM10;y1;µg/m3;15.07382169
@@ -2891,6 +2937,21 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2021;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_nb_h1>120;y1;1;128
 2022;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_nb_h1>120;y1;1;NA
 2023;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_nb_h1>120;y1;1;352
+2009;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.59282553592392
+2010;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.68507685594427
+2011;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.72854207046196
+2012;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.4881054418614
+2013;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.42225660982336
+2014;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2015;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;103.8473319827106
+2016;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2017;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.49664540098506
+2018;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2019;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.89359797637228
+2020;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2021;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.79396289180028
+2022;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2023;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.38368397474729
 2009;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;PM10;y1;µg/m3;12.93460483
 2010;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;PM10;y1;µg/m3;13.12327658
 2011;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;Ostluft;PM10;y1;µg/m3;12.76465882
@@ -2985,6 +3046,33 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2021;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_nb_h1>120;y1;1;150
 2022;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_nb_h1>120;y1;1;398
 2023;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_nb_h1>120;y1;1;428
+1997;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.45572785461066
+1998;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;103.88341548315896
+1999;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2000;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.6251703382405
+2001;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.4351302503089
+2002;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.48677577144232
+2003;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;115.04012402965276
+2004;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.7729348495287
+2005;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.03488585016304
+2006;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.46199996510867
+2007;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.27243234241848
+2008;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.7050233376087
+2009;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.48045031540283
+2010;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.86348461058424
+2011;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;95.10423532865435
+2012;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.04811237070652
+2013;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.0287795118511
+2014;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.0599646644905
+2015;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.45555239650552
+2016;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.45421868866804
+2017;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.58053648985054
+2018;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;109.8368843640642
+2019;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;99.5373678385258
+2020;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.30363928815332
+2021;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.91136507875683
+2022;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;102.83046591584254
+2023;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;98.54162082313525
 2012;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;PM10;y1;µg/m3;15.041
 2013;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;PM10;y1;µg/m3;NA
 2014;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;Ostluft;PM10;y1;µg/m3;NA
@@ -3014,16 +3102,16 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2021;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_nb_h1>120;y1;1;15
 2022;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_nb_h1>120;y1;1;66
 2023;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_nb_h1>120;y1;1;67
-2014;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;64.95796182989754
-2015;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;74.99122966577693
-2016;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;64.94463080737917
-2017;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;69.84074497802989
-2018;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2019;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;74.78030257914011
-2020;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;73.57609999455602
-2021;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2022;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;81.61569798518478
-2023;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;72.21190081148097
+2014;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;64.95796182989754
+2015;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.99122966577693
+2016;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;64.94463080737917
+2017;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;69.84074497802989
+2018;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2019;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;74.78030257914011
+2020;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;73.57609999455602
+2021;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2022;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.61569798518478
+2023;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;72.21190081148097
 2014;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;PM10;y1;µg/m3;19.59864055
 2015;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;PM10;y1;µg/m3;20.2673062
 2016;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;Ostluft;PM10;y1;µg/m3;17.85526535
@@ -3139,40 +3227,40 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2021;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_nb_h1>120;y1;1;36
 2022;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_nb_h1>120;y1;1;107
 2023;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_nb_h1>120;y1;1;189
-1990;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-1991;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-1992;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-1993;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;60.13775414777214
-1994;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;66.6259691079572
-1995;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;58.285100969576085
-1996;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;65.79332881151237
-1997;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;66.73481088970082
-1998;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;66.71282402770973
-1999;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;64.84718528669126
-2000;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;59.06817055637857
-2001;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;68.7686694860822
-2002;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;66.7095030081678
-2003;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2004;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;68.92065931139618
-2005;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2006;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;73.61311629424048
-2007;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2008;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;69.55994596476766
-2009;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2010;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;80.65896359930028
-2011;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;80.07488954273224
-2012;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;77.57605488196107
-2013;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;78.0287385494317
-2014;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;75.53591341642486
-2015;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2016;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;72.86954509588797
-2017;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;76.62686624904919
-2018;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;88.45844791349724
-2019;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;84.45958719723573
-2020;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2021;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;78.44849322369475
-2022;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;87.39991020321038
-2023;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;86.73098382789583
+1990;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1991;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1992;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1993;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;60.13775414777214
+1994;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;66.6259691079572
+1995;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;58.285100969576085
+1996;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;65.79332881151237
+1997;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;66.73481088970082
+1998;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;66.71282402770973
+1999;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;64.84718528669126
+2000;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;59.06817055637857
+2001;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;68.7686694860822
+2002;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;66.7095030081678
+2003;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2004;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;68.92065931139618
+2005;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2006;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;73.61311629424048
+2007;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2008;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;69.55994596476766
+2009;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2010;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.65896359930028
+2011;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.07488954273224
+2012;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;77.57605488196107
+2013;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.0287385494317
+2014;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;75.53591341642486
+2015;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2016;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;72.86954509588797
+2017;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;76.62686624904919
+2018;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.45844791349724
+2019;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.45958719723573
+2020;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2021;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.44849322369475
+2022;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.39991020321038
+2023;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.73098382789583
 1998;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;PM10;y1;µg/m3;42.8155977
 1999;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;PM10;y1;µg/m3;41.48386117
 2000;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;Ostluft;PM10;y1;µg/m3;NA
@@ -3276,19 +3364,19 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2013;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_nb_h1>120;y1;1;NA
 2014;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_nb_h1>120;y1;1;NA
 2015;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_nb_h1>120;y1;1;114
-2003;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;78.82919310238927
-2004;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2005;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;64.49457483919022
-2006;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2007;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;65.325183548214
-2008;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2009;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;67.2450682110462
-2010;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2011;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2012;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2013;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2014;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;NA
-2015;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;77.56073630732445
+2003;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;78.82919310238927
+2004;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2005;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;64.49457483919022
+2006;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2007;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;65.325183548214
+2008;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2009;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;67.2450682110462
+2010;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2011;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2012;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2013;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2014;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+2015;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;77.56073630732445
 2003;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;PM10;y1;µg/m3;34.30402144
 2004;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;PM10;y1;µg/m3;NA
 2005;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;Ostluft;PM10;y1;µg/m3;28.73150256
@@ -3402,40 +3490,40 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2021;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_nb_h1>120;y1;1;64
 2022;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_nb_h1>120;y1;1;138
 2023;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_nb_h1>120;y1;1;219
-1990;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;63.5175805361735
-1991;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;81.49567743732719
-1992;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;80.70652796729823
-1993;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;81.3497121032996
-1994;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;86.90613920808832
-1995;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;85.2938554133159
-1996;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;80.24927046423166
-1997;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;83.97100918303126
-1998;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;87.76880721085938
-1999;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;81.71737592234358
-2000;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;83.10861891768954
-2001;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;82.3394732697405
-2002;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;83.66666318296332
-2003;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;100.87797356604575
-2004;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;85.30588623329508
-2005;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;84.89606876991847
-2006;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;91.584342109286
-2007;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;86.75130334802039
-2008;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;83.96293914906558
-2009;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;82.00448009494497
-2010;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;82.24957643938329
-2011;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;84.20560890549864
-2012;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;80.08249064123976
-2013;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;82.40613065364685
-2014;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;79.2739625480297
-2015;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;90.06121961872267
-2016;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;80.92863959423497
-2017;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;82.37720956001367
-2018;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;97.25818772259564
-2019;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;88.15589727255028
-2020;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;86.62749869654212
-2021;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;81.29073192478708
-2022;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;89.76403290637295
-2023;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;Âµg/m3;90.13276577900956
+1990;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;63.5175805361735
+1991;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.49567743732719
+1992;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.70652796729823
+1993;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.3497121032996
+1994;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.90613920808832
+1995;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.2938554133159
+1996;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.24927046423166
+1997;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.97100918303126
+1998;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.76880721085938
+1999;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.71737592234358
+2000;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.10861891768954
+2001;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.3394732697405
+2002;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.66666318296332
+2003;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;100.87797356604575
+2004;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;85.30588623329508
+2005;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.89606876991847
+2006;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;91.584342109286
+2007;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.75130334802039
+2008;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.96293914906558
+2009;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.00448009494497
+2010;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.24957643938329
+2011;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.20560890549864
+2012;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.08249064123976
+2013;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.40613065364685
+2014;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;79.2739625480297
+2015;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.06121961872267
+2016;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;80.92863959423497
+2017;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;82.37720956001367
+2018;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.25818772259564
+2019;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.15589727255028
+2020;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.62749869654212
+2021;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.29073192478708
+2022;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.76403290637295
+2023;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;90.13276577900956
 1998;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;PM10;y1;µg/m3;30.77835866
 1999;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;PM10;y1;µg/m3;NA
 2000;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;Ostluft;PM10;y1;µg/m3;NA
@@ -3742,6 +3830,45 @@ year;site;site_long;siteclass;x;y;masl;source;parameter;interval;unit;value
 2020;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_nb_h1>120;y1;Anzahl;242
 2021;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_nb_h1>120;y1;Anzahl;140
 2022;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_nb_h1>120;y1;Anzahl;NA
+1985;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1986;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1987;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1988;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;71.48188046448088
+1989;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1990;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;79.64728792134831
+1991;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1992;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.2750956284153
+1993;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;79.43086401098901
+1994;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;55.11848702185792
+1995;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.54799184782608
+1996;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
+1997;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.82892403314918
+1998;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.46543614130437
+1999;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;83.82946703296703
+2000;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.44137839673913
+2001;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;81.618390625
+2002;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;84.25329076086956
+2003;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;106.09623907103826
+2004;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;86.05040232240437
+2005;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.55070991847826
+2006;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.31328464673912
+2007;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.24250407608696
+2008;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.22380638586957
+2009;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.21220286885246
+2010;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.56133196721312
+2011;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;93.41300273224044
+2012;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.41947404371585
+2013;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.28392008196721
+2014;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;88.14630706521739
+2015;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;97.41772472677596
+2016;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;89.1633094262295
+2017;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;92.38084806629834
+2018;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;105.7132199453552
+2019;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.57286888586955
+2020;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;94.2041769125683
+2021;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;87.89751844262295
+2022;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;96.63492486338798
+2023;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);O3_peakseason_mean_d1_max_mean_h8gl;y1;µg/m3;NA
 1984;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);PM10;y1;µg/m3;NA
 1985;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);PM10;y1;µg/m3;NA
 1986;Zürich-Kaserne;Zürich-Kaserne;städtisch - Hintergrund;1247990;2682450;409;NABEL (BAFU & Empa);PM10;y1;µg/m3;NA

@@ -27,9 +27,7 @@ devtools::load_all()
 # reading input data for several scripts:
 # ---
 # read ressource table for input datasets
-ressources <- 
-  read_local_csv("inst/extdata/meta/ressources.csv") |> 
-  prepare_ressources()
+ressources <- prepare_ressources(read_local_csv("inst/extdata/meta/ressources.csv"))
 
 # map projection CRS = CH1903+ / LV95 throughout analysis
 crs <- 2056

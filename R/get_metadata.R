@@ -22,6 +22,7 @@ get_swisstopo_metadata <- function(id){
 
 
 get_bfs_metadata <- function(year){
+
   # derive dataset url
   bfs_nr <- paste0("ag-b-00.03-vz", year, "statpop")
   meta_url <- gsub("bfs_nr", bfs_nr, "https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken.assetdetail.bfs_nr.html")

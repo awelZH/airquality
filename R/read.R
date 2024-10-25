@@ -1,4 +1,4 @@
-read_statpop_raster_data <- function(year, destination_path, crs = 2056, boundary){
+read_statpop_raster_data <- function(year, destination_path, boundary, crs = 2056){
   
   file_to_read <- list.files(
     destination_path, 
@@ -14,16 +14,17 @@ read_statpop_raster_data <- function(year, destination_path, crs = 2056, boundar
     delim = delim, 
     col_select = c(RELI, E_KOORD, N_KOORD, !!var),
     locale = readr::locale(encoding = "UTF-8")
-  ) %>% 
+  ) |> 
     dplyr::rename(population = !!var)
   
   
-  data_stars <- data %>% 
+  data_stars <- 
+    data |> 
     sf::st_as_sf(
       coords = c("E_KOORD", "N_KOORD"), 
       dim = "XY",
       crs = sf::st_crs(crs)
-    ) %>%
+    ) |>
     stars::st_rasterize() 
   
   data_stars_zh <- sf::st_crop(data_stars, boundary)
@@ -55,7 +56,7 @@ read_bafu_raster_data <- function(destination_path, boundary){
 
 
 read_opendataswiss <- function(url, source){
-
+  
   read_url <- get_opendataswiss_metadata(url)
   data <- purrr::map_df(read_url, function(x) readr::read_delim(x, delim = ","))
   data <- dplyr::mutate(data, source = source)
@@ -101,13 +102,13 @@ read_pollutant_wcs_stack <- function(wcs_layer, years = NA, na_value = c(0, -999
 
 read_single_pollutant_wcs <- function(coverage, na_value){
   
-  data <- coverage$getCoverage() %>% 
-    stars::st_as_stars() %>% 
+  data <- coverage$getCoverage() |> 
+    stars::st_as_stars() |> 
     sf::st_set_crs(value = 2056)
   
   data <- setNames(data, "value")
   data <-
-    data %>% 
+    data |> 
     dplyr::mutate(
       value = ifelse(value %in% na_value, NA, value),
     )

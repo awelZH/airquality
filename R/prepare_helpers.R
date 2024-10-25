@@ -73,7 +73,7 @@ calc_rsd_nox_emission <- function(NO, p, CO2, CO, HC) { # all concentrations in 
 }
 
 
-restructure_monitoring_nabel <- function(data, keep_incomplete = FALSE) {
+restructure_monitoring_nabel_y1 <- function(data, keep_incomplete = FALSE) {
   
   col_names <- range(as.numeric(names(data)), na.rm = TRUE)
   data <- dplyr::mutate_if(data, is.numeric, as.character)
@@ -92,6 +92,33 @@ restructure_monitoring_nabel <- function(data, keep_incomplete = FALSE) {
     )
   
   return(data_long_clean) 
+}
+
+
+restructure_monitoring_nabel_h1 <- function(data, tz = "Etc/GMT-1") {
+  
+  header <- dplyr::slice(data, 1:which(dplyr::pull(data, 1) == "Einheit"))
+  data <- dplyr::slice(data, (which(dplyr::pull(data, 1) == "Einheit") + 1):nrow(data))
+  colnames(data)[1] <- "endtime"
+  data <- dplyr::mutate(data, endtime = lubridate::parse_date_time(.data$endtime, c("dmyHMS", "dmyHM", "dmy"), tz = tz))
+  # FIXME! generalise for more complicated files
+  data <- 
+    data |> 
+    dplyr::mutate(
+      starttime = endtime - lubridate::hours(1),
+      site = colnames(data)[2],
+      parameter = dplyr::pull(header,2)[dplyr::pull(header,1) == "Messwert"],
+      interval = "h1", 
+      unit = dplyr::pull(header,2)[dplyr::pull(header,1) == "Einheit"],
+      site = dplyr::recode(site, DUE = "Dübendorf-Empa", ZUE = "Zürich-Kaserne"),
+      unit = stringr::str_replace(unit, "ug", "µg")
+    ) 
+  colnames(data)[2] <- "value"
+  data <- dplyr::mutate(data, value = as.numeric(value))
+  data <- dplyr::mutate_if(data, is.character, factor)
+  data <- dplyr::select(data, starttime, site, parameter, interval, unit, value)
+  
+  return(data) 
 }
 
 
@@ -293,4 +320,105 @@ pad2 <- function(data, start_date = NULL, end_date = NULL, drop_last = FALSE) {
   
   return(dplyr::ungroup(data.grouped))
 }
+
+
+# for O3 peak-season calculation: function identifying relevant months per year for metric calculation based on O3 monthly mean data
+consecutive_months <- function(starttime, o3_m1) { 
+  
+  data <- tibble::tibble(starttime, O3 = o3_m1)
+  data <- dplyr::arrange(data, starttime)
+  data <- dplyr::mutate(data,
+                        O3_runmean = zoo::rollapply(.data$O3, 6, mean, fill = NA, align = "left"),
+                        month_start = lubridate::month(data$starttime),
+                        month_end = pmin(month(data$starttime) + 5, 12),
+                        n_months = month_end - month_start + 1
+  )
+  complete_months <- dplyr::filter(data, n_months == 6)
+  peak_start <- dplyr::pull(dplyr::slice(complete_months, which.max(.data$O3_runmean)), starttime)
+  if (length(peak_start) == 0) {
+    peak_season <- rep(NA, nrow(data))
+  } else {
+    peak_season <- data$starttime %in% (peak_start + months(0:5))
+    peak_season <- ifelse(data$n_months == 6 & is.na(data$O3_runmean), NA, peak_season)
+  }
+  
+  return(peak_season)
+}
+
+
+# for O3 peak-season calculation: function to calculate daily maximum 8h running-mean O3 concentration based on O3 1h data in rOstluft::format_rolf()
+max_mean_h8gl <- function(data) { # how to solve data coverage?
+  
+  data <-
+    data |> 
+    dplyr::group_by(date = lubridate::as_date(starttime), site, parameter, unit) |> 
+    dplyr::mutate(value = zoo::rollapply(.data$value, 8, mean, fill = NA, align = "right")) |>
+    dplyr::slice(which.max(.data$value)) |> 
+    dplyr::ungroup() |> 
+    dplyr::mutate(
+      starttime = starttime - lubridate::hours(7),
+      parameter = factor(paste0(parameter, "_max_mean_h8gl")),
+      interval = factor("d1")
+    ) |> 
+    dplyr::arrange(site, parameter, starttime) |> 
+    dplyr::select(starttime, site, parameter, interval, unit, value)
+  
+  return(data)
+}
+
+
+# function to calculate O3 peak-season concentration per year and site, based on data as hourly means in rOstluft::format_rolf() 
+calc_O3_peakseason <- function(data, min_coverage = 9/12) { # min_coverage: data coverage in months per year (9/12 because in early times, they used to not measure O3 during winter months)
+
+  # calculate O3 monthly means to derive peak season
+  data_m1 <- rOstluft::resample(data, statistic = "mean", new_interval = "m1", data_thresh = 0.8)
+  
+  # calculate O3 daily maximum 8 hour mean 
+  # data_h8gl <- rOstluft::resample(data, statistic = "mean", new_interval = "h8gl")
+  # data_max_mean_h8gl <- rOstluft::resample(data_h8gl, statistic = "max", new_interval = "d1")
+  data_max_mean_h8gl <- max_mean_h8gl(data)
+  
+  # make sure years are sufficiently data-covered
+  coverage <-
+    data_m1 |>
+    dplyr::group_by(year = year(lubridate::floor_date(starttime, unit = "1 year")), site) |>
+    dplyr::summarise(n = sum(!is.na(value))) |>
+    dplyr::ungroup()
+  
+  # identify peak-season 6 consecutive months per year and site
+  peak_season <-
+    data_m1 |>
+    dplyr::mutate(year = lubridate::year(lubridate::floor_date(starttime, unit = "1 year"))) |>
+    dplyr::left_join(coverage, by = c("year", "site")) |>
+    dplyr::filter(n/12 >= min_coverage) |>
+    dplyr::group_by(year = lubridate::floor_date(starttime, unit = "1 year"), site) |>
+    dplyr::mutate(
+      peak_season = consecutive_months(starttime, value),
+      n = sum(peak_season, na.rm = TRUE)
+    ) |>
+    dplyr::ungroup() |>
+    dplyr::select(starttime, site, peak_season, n)
+  
+  # join with "max_mean_h8gl" data and filter only days within relevant consecutive months
+  # calc mean per year (or more precisely peak-season) and site (= WHO metric peak-season)
+  data_peakseason <-
+    data_max_mean_h8gl |>
+    dplyr::mutate(starttime = lubridate::floor_date(starttime, unit = "1 month")) |> 
+    dplyr::left_join(peak_season, by = c("starttime", "site")) |>
+    dplyr::filter(peak_season) |>
+    dplyr::group_by(starttime = lubridate::floor_date(starttime, unit = "1 year"), site, unit) |>
+    dplyr::mutate(value = ifelse(n < 6, NA, value)) |> 
+    dplyr::summarise(value = mean(value)) |>
+    dplyr::ungroup() |>
+    dplyr::mutate(
+      parameter = "O3_peakseason_mean_d1_max_mean_h8gl",
+      interval = "y1",
+    ) |>
+    dplyr::mutate_if(is.character, factor) |>
+    dplyr::select(starttime, site, parameter, interval, unit, value) |> 
+    dplyr::arrange(site, parameter, starttime)
+  
+  return(data_peakseason)
+}
+
 

@@ -84,7 +84,7 @@ prepare_monitoring_nabel_y1 <- function(data, keep_incomplete = FALSE, tz = "Etc
   
   data <- 
     data |> 
-    restructure_monitoring_nabel() |> 
+    restructure_monitoring_nabel_y1() |> 
     dplyr::mutate(
       interval = "y1",
       Schadstoff = dplyr::case_when(
@@ -112,7 +112,6 @@ prepare_monitoring_nabel_y1 <- function(data, keep_incomplete = FALSE, tz = "Etc
   
   return(data)
 }
-
 
 
 prepare_monitoring_ostluft_y1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {

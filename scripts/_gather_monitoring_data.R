@@ -46,6 +46,6 @@ data_monitoring_ndep <- aggregate_nitrogen_deposition(data_monitoring_ndep)
 
 # write output datasets & clean up:
 # ---
-write_local_csv(data_monitoring_aq , file = "inst/extdata/output/data_airquality_monitoring_y1.csv"); update_log(23)
-write_local_csv(data_monitoring_ndep , file = "inst/extdata/output/data_ndep_monitoring_y1.csv"); update_log(24)
+write_local_csv(data_monitoring_aq, file = "inst/extdata/output/data_airquality_monitoring_y1.csv"); update_log(23)
+write_local_csv(data_monitoring_ndep, file = "inst/extdata/output/data_ndep_monitoring_y1.csv"); update_log(24)
 rm(list = c("data_monitoring_aq", "data_monitoring_ndep", "site_meta_nabel", "site_meta_ostluft", "data_monitoring_nabel", "site_meta", "data_monitoring_ostluft", "data_monitoring_o3_peakseason"))

@@ -1,3 +1,54 @@
+# compiling available raster data air quality modelling as well as inhabitant population data to derive population exposition
+# also compile ecosystem exposition towards nitrogen deposition
+# ---
+# read datasets ...
+# => check which datasets for which years are available
+
+# => download air pollutant raster data accordingly
+
+download_statpop_data(2020, "inst/extdata")
+
+# => download BFS statpop data for required years
+
+# => download BAFU nitrogen deposition raster data including precompiled ecosystem exposition data
+
+
+
+
+
+# prepare datasets ...
+# => spatially average pollutant raster data to the grid of statpop data (100x100m)
+# => join pollutant and statpop data
+
+
+
+
+
+# aggregate datasets ...
+
+
+
+
+
+# write output datasets & clean up:
+# ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # get all available raster data regarding inhabitant population (from BFS), air pollutants (from geolion) and reactive nitrogen (from data.geo.admin); join population and air pollutant data
 get_list <- list(
   pollumap = 12,

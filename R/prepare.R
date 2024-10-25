@@ -1,3 +1,19 @@
+prepare_ressources <- function(ressources) {
+  
+  ressources <- 
+    ressources |> 
+    dplyr::mutate(
+      get = dplyr::case_when(
+        stringr::str_detect(DOWNLOAD_URL, "inst/extdata") ~ paste(DOWNLOAD_URL, DATASET_NAME, sep = "/"),
+        DOWNLOAD_SOURCE == "swisstopo" ~ DATASET_NAME,
+        TRUE ~ DOWNLOAD_URL
+      )
+    )
+  
+  return(ressources)
+}
+
+
 prepare_emmissions <- function(data, filter_args = canton == 'ZH' & emission != 0 & !(subsector %in% c('Weitere Punktquellen OL', 'Rheinschifffahrt', 'Flugverkehr Genf'))){
   
   filter_args <- rlang::enquo(filter_args)
@@ -45,22 +61,6 @@ prepare_rsd <- function(data, rsd_auxiliary){
   data_rsd <- dplyr::mutate(data_rsd, nox_emission = calc_rsd_nox_emission(NO = NO / 10^4, p = fraction_no2_hbefa, CO2 = CO2, CO = CO, HC = HC / 10^4)) # input: concentrations all in percent; originally: NO in ppm, CO2 in %, CO in %, HC in ppm; output: NOx emissions in g/kg fuel;  add HBEFA-derived NO2 and use that for NOx emission calculation rather than measured NO2 since that has only been available since RSD-model 4500
   
   return(data_rsd)
-}
-
-
-prepare_ressources <- function(ressources) {
-  
-  ressources <- 
-    ressources |> 
-    dplyr::mutate(
-      get = dplyr::case_when(
-        stringr::str_detect(DOWNLOAD_URL, "inst/extdata") ~ paste(DOWNLOAD_URL, DATASET_NAME, sep = "/"),
-        DOWNLOAD_SOURCE == "swisstopo" ~ DATASET_NAME,
-        TRUE ~ DOWNLOAD_URL
-      )
-    )
-  
-  return(ressources)
 }
 
 

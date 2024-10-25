@@ -17,7 +17,6 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
   ) |> 
     dplyr::rename(population = !!var)
   
-  
   data_stars <- 
     data |> 
     sf::st_as_sf(

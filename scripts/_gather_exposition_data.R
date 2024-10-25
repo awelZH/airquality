@@ -2,7 +2,7 @@
 # also compile ecosystem exposition towards nitrogen deposition
 # ---
 # read datasets ...
-# => check which datasets for which years are available
+# => check which pollutant datasets for which years are available
 
 # => download air pollutant raster data accordingly
 

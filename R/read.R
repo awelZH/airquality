@@ -85,6 +85,20 @@ read_geolion_wcs_stack <- function(cov_stack, layer_names, boundary, na_value = 
 }
 
 
+filter_availability <- function(cov_stack, years_pollumap = 2015) {
+  
+  data_availability <- 
+    cov_stack |> 
+  to_stack_df() |> 
+    dplyr::filter(
+      (!stringr::str_detect(layer_name, "jahre") & as.numeric(year) %in% years_pollumap) | # only select pollumap for the year in which it calibrated with monitoring data
+        as.numeric(year) < lubridate::year(Sys.Date()) & # no future pollumap projections
+        stringr::str_detect(layer_name, "jahre") # apart from that: always use jahreskarte
+    ) |> 
+    dplyr::filter(pollutant != "bc") # no bc since this only available for pollumap
+  
+  return(data_availability)
+}
 
 
 

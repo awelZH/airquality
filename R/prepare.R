@@ -65,7 +65,7 @@ prepare_rsd <- function(data, rsd_auxiliary){
 
 
 prepare_monitoring_meta <- function(meta_ostluft, meta_nabel) {
-
+  
   meta_ostluft <- prep_site_meta_ostluft(meta_ostluft)
   meta_nabel <- prep_site_meta_nabel(meta_nabel)
   
@@ -141,6 +141,118 @@ prepare_monitoring_aq <- function(data, meta) {
     dplyr::filter(!is.na(siteclass)) |> 
     dplyr::arrange(site, parameter, starttime) |> 
     dplyr::select(year, site, site_long, siteclass, x, y, masl, source, parameter, interval, unit, value)
+  
+  return(data)
+}
+
+
+prepare_expo_data <- function(data_raster_bfs, data_raster_aq, years) {
+  
+  # => convert pollutant and statpop data into a common tibble
+  data_statpop <-
+    years |> 
+    as.character() |> 
+    purrr::map(function(year) dplyr::mutate(tibble::as_tibble(data_raster_bfs[[year]]), year = as.numeric(year))) |> 
+    dplyr::bind_rows() |> 
+    dplyr::filter(!is.na(population) & population > 0)
+  
+  data_aq <-
+    years |> 
+    as.character() |> 
+    purrr::map(function(yr) { 
+      simplify_aq_rasterdata(data_raster_aq[[yr]]) |> 
+        dplyr::mutate(year = as.numeric(yr))
+    }) |> 
+    dplyr::bind_rows()
+  
+  data <- dplyr::full_join(data_statpop, data_aq, by = c("x","y","year"))
+  data <-
+    data |> 
+    dplyr::filter(!is.na(population)) |> 
+    dplyr::mutate(
+      pollutant = dplyr::recode(pollutant,
+                                "no2" = "NO2",
+                                "pm25" = "PM2.5",
+                                "pm10" = "PM10",
+                                "bc" = "eBC",
+                                "mp98" = "O3_max_98p_m1"
+      )
+    )
+  
+  return(data)
+}
+
+
+prepare_weighted_mean_data <- function(data_raster_bfs, data_raster_aq, years, boundaries) {
+browser()
+  # => join statpop raster data with municipality data & convert into a common tibble
+  # FIXME: join by st_intersects results in multiple counting? see: data_statpop |> distinct(year, RELI, population)
+  data_statpop <-
+    years |> 
+    as.character() |> 
+    purrr::map(function(yr) {
+      sf::st_join(boundaries, sf::st_as_sf(data_raster_bfs[[yr]], as_points = FALSE, merge = FALSE)) |> 
+        dplyr::select(geodb_oid, gemeindename, RELI, population) |> 
+        sf::st_drop_geometry() |> 
+        dplyr::filter(!is.na(population) & population > 0) |> 
+        dplyr::mutate(year = as.numeric(yr))
+    }) |> 
+    dplyr::bind_rows()
+  
+  
+  # yr <- "2015"
+  # d <- sf::st_join(sf::st_as_sf(data_raster_bfs[[yr]], as_points = T, merge = FALSE), boundaries) |> filter(RELI != 0)
+  # e <- d |> 
+  #   dplyr::select(geodb_oid, gemeindename, RELI, population) |> 
+  #   sf::st_drop_geometry() |> 
+  #   dplyr::filter(!is.na(population) & population > 0) |> 
+  #   arrange(RELI, geodb_oid)
+  # dim(e)
+  # e |> distinct(RELI) |> dim()
+  # f <- sf::st_as_sf(data_raster_bfs[[yr]], as_points = T, merge = FALSE) |> 
+  #   sf::st_drop_geometry() |> 
+  #   dplyr::filter(!is.na(population) & population > 0)
+  # dim(f)
+  
+  
+  
+  # => add x & y for later join
+  data_statpop <-
+    years |> 
+    as.character() |> 
+    purrr::map(function(yr) dplyr::mutate(tibble::as_tibble(data_raster_bfs[[yr]]), year = as.numeric(yr))) |> 
+    dplyr::bind_rows() |> 
+    dplyr::filter(!is.na(population) & population > 0) |> 
+    dplyr::select(x, y, RELI, year) |> 
+    dplyr::right_join(data_statpop, by = c("year", "RELI"))
+  
+  # data_statpop |> 
+  #   filter(year == 2015 & geodb_oid == 3213 & RELI == 69042832)
+    # distinct(RELI, .keep_all = T)
+  
+  
+  data_aq <-
+    years |> 
+    as.character() |> 
+    purrr::map(function(yr) { 
+      simplify_aq_rasterdata(data_raster_aq[[yr]]) |> 
+        dplyr::mutate(year = as.numeric(yr))
+    }) |> 
+    dplyr::bind_rows()
+  
+  data <- dplyr::full_join(data_statpop, data_aq, by = c("x", "y", "year"))
+  data <-
+    data |> 
+    dplyr::filter(!is.na(population)) |> 
+    dplyr::mutate(
+      pollutant = dplyr::recode(pollutant,
+                                "no2" = "NO2",
+                                "pm25" = "PM2.5",
+                                "pm10" = "PM10",
+                                "bc" = "eBC",
+                                "mp98" = "O3_max_98p_m1"
+      )
+    )
   
   return(data)
 }

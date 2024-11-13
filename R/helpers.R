@@ -154,11 +154,22 @@ bin_fun <- function(pollutant) {
 
 
 
-
 write_local_csv <- function(data, file, delim = ";", na = "NA"){
   
   readr::write_delim(data, file, delim = delim, na = na)
 
+}
+
+
+
+# see here: https://gist.github.com/sotoattanito/8e6fad4b7322ceae9f14f342985f1681
+round_off <- function (x, digits = 0) {
+  
+  posneg = sign(x)
+  z = trunc(abs(x) * 10 ^ (digits + 1)) / 10
+  z = floor(z * posneg + 0.5) / 10 ^ digits
+  
+  return(z)
 }
 
 

@@ -472,3 +472,16 @@ average_to_statpop <- function(x, y) {
 }
 
 
+simplify_aq_rasterdata <- function(data) {
+  
+  data <- purrr::map(names(data), function(pollutant) tibble::as_tibble(data[[pollutant]]))
+  data <-
+    data |> 
+    dplyr::bind_rows() |> 
+    tidyr::gather(pollutant, concentration, -x, -y) |> 
+    dplyr::filter(!is.na(concentration))
+  
+  return(data)
+}
+
+

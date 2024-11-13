@@ -81,3 +81,25 @@ aggregate_nitrogen_deposition <- function(data) {
   return(data)
 }
 
+
+aggregate_exposition_distrib <- function(data) { 
+  
+  data <-
+    data |> 
+    dplyr::group_split(pollutant) |> 
+    purrr::map(bin_concentration) |> 
+    dplyr::bind_rows() |> 
+    dplyr::group_by(year, pollutant, concentration) |> 
+    dplyr::summarise(population = sum(population)) |>
+    dplyr::ungroup() |> 
+    dplyr::arrange(year, pollutant, concentration) |> 
+    dplyr::group_by(year, pollutant) |> 
+    dplyr::mutate(
+      population_cum = cumsum(population),
+      population_cum_rel = population_cum / sum(population)
+    ) |> 
+    dplyr::ungroup()
+  
+  return(data)
+}
+

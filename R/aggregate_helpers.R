@@ -181,3 +181,99 @@ simplify_nitrogen_parameters <- function(data) {
 }
 
 
+bin_concentration <- function(data) {
+  
+  fun <- bin_fun(unique(data$pollutant))
+  data <- dplyr::mutate(data, concentration = fun(concentration))
+  
+  return(data)
+}
+
+
+population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
+
+
+# 
+# aggregate_population_weighted_mean_boundaries <- function(pollutant, data_expo, boundaries){
+#   
+#   municipalities <- aggregate_population_weighted_mean(data_expo, y = pollutant)
+#   municipalities <- dplyr::left_join(boundaries, municipalities, by = "geodb_oid")
+#   canton <- round_off(population_weighted_mean(data_expo[[pollutant]], data_expo$population), 1)
+#   weighted_means <- list(
+#     canton = canton, 
+#     municipalities = municipalities
+#   )
+#   
+#   return(weighted_means)
+# }
+# 
+# 
+# 
+# calc_all_population_weighted_means <- function(pollutant, data_expo, boundaries){
+#   
+#   weighted_means <- 
+#     setNames(names(data_expo), extract_year(names(data_expo))) |> 
+#     lapply(function(year) aggregate_population_weighted_mean_boundaries(pollutant, data_expo[[year]], boundaries))
+#   
+#   return(weighted_means)
+# }
+# 
+# 
+# 
+# 
+# 
+# calc_all_population_expo_distr <- function(pollutant, data_raster){
+#   
+#   expo_distr <- 
+#     setNames(names(data_raster), extract_year(names(data_raster))) |> 
+#     lapply(function(year) {
+#       data <- aggregate_exposition_distrib(data_raster[[year]], y = pollutant, fun = bin_fun(pollutant)) 
+#       exposition_distrib_cumulative(data, y = pollutant)
+#     })
+#   
+#   return(expo_distr)
+# }
+# 
+# 
+# 
+# calc_ndep_ecosystem_expo_distr <- function(data_raster, year) {
+#   
+#   data_expo <-
+#     data_raster[[year]] |> 
+#     dplyr::select(EXNMAX) |> 
+#     tibble::as_tibble() |> 
+#     na.omit() |> 
+#     dplyr::group_by(EXNMAX = floor(EXNMAX) + 0.5) |> # abgerundet auf 1, Klassenmitte
+#     dplyr::summarise(n_ecosys = dplyr::n()) |>
+#     dplyr::ungroup()
+#   
+#   return(data_expo)
+# }
+# 
+# 
+# 
+# calc_ndep_ecosystem_expo_distr_cumulative <- function(data_expo) {
+#   
+#   data_expo <-
+#     data_expo |> 
+#     dplyr::arrange(EXNMAX) |> 
+#     dplyr::mutate(n_ecosys_cum_relative = cumsum(n_ecosys) / sum(n_ecosys))
+#   
+#   return(data_expo)
+# }
+# 
+# 
+# 
+# calc_all_ndep_ecosystem_expo_distr <- function(data_raster){
+#   
+#   expo_distr <-
+#     setNames(names(data_raster), extract_year(names(data_raster))) |> 
+#     lapply(function(year) {
+#       data <- calc_ndep_ecosystem_expo_distr(data_raster, year)
+#       calc_ndep_ecosystem_expo_distr_cumulative(data)
+#     })
+#   
+#   return(expo_distr)
+# }
+
+

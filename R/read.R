@@ -1,36 +1,24 @@
 read_statpop_raster_data <- function(year, destination_path, boundary, crs = 2056){
+
+  # download zip
+  download_statpop_data(year, destination_path, file_filter = paste0("STATPOP", year, "\\.csv"))
   
+  # read and georeference file
   file_to_read <- list.files(
     destination_path, 
     pattern = paste0("STATPOP", year, "\\.csv"), 
     full.names = TRUE,
     recursive = TRUE
   )
+  data_stars <- read_statpop_csv(file_to_read, year, crs = crs)
   
-  var <- paste0("B", year %% 100, "BTOT")
-  delim <- ifelse(as.numeric(year) > 2015, ";", ",")
-  data <- readr::read_delim(
-    file_to_read,
-    delim = delim, 
-    col_select = c(RELI, E_KOORD, N_KOORD, !!var),
-    locale = readr::locale(encoding = "UTF-8")
-  ) |> 
-    dplyr::rename(population = !!var)
-  
-  data_stars <- 
-    data |> 
-    sf::st_as_sf(
-      coords = c("E_KOORD", "N_KOORD"), 
-      dim = "XY",
-      crs = sf::st_crs(crs)
-    ) |>
-    stars::st_rasterize() 
-  
-  data_stars_zh <- sf::st_crop(data_stars, boundary)
-  
-  unlink(destination_path, recursive = TRUE)
-  
-  return(data_stars_zh)
+  # delete csv file
+  unlink(file_to_read)
+    
+  # crop to boundary
+  data_stars <- sf::st_crop(data_stars, boundary)
+
+  return(data_stars)
 }
 
 
@@ -72,54 +60,6 @@ read_local_csv <- function(file, delim = ";", locale = readr::locale(encoding = 
 }
 
 
-read_pollutant_wcs_stack <- function(wcs_layer, years = NA, na_value = c(0, -999)){
-  
-  client <- ows4R::WCSClient$new(wcs_layer, serviceVersion = "2.0.1")
-  
-  cap <- client$getCapabilities()
-  cov <- cap$getCoverageSummaries()
-  
-  cov_ids <- sapply(cov, function(x) x$CoverageId)
-  
-  if(!is.na(years)){
-    cov_ids <- cov_ids[grepl(as.character(years), cov_ids)]
-  }
-  
-  cov_list <- lapply(cov_ids, function(x) cap$findCoverageSummaryById(x))
-  
-  data_list <- lapply(cov_list, function(x) read_single_pollutant_wcs(x, na_value))
-  
-  list_names <- gsub("pm-", "pm", cov_ids)
-  list_names <- gsub("jahre-", "", list_names)
-  
-  names(data_list) <- list_names
-  
-  return(data_list)
-  
-}
-
-
-read_single_pollutant_wcs <- function(coverage, na_value){
-  
-  data <- coverage$getCoverage() |> 
-    stars::st_as_stars() |> 
-    sf::st_set_crs(value = 2056)
-  
-  data <- setNames(data, "value")
-  data <-
-    data |> 
-    dplyr::mutate(
-      value = ifelse(value %in% na_value, NA, value),
-    )
-  
-  name <- gsub("\\d{4}|jahre|-", "",coverage$CoverageId)
-  
-  data <- setNames(data, name)
-  
-  return(data)
-}
-
-
 read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
   
   request <- get_geolion_wfs_metadata(apiurl, version = version, crs = crs)
@@ -130,6 +70,25 @@ read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
   
   return(data)
 }
+
+
+read_geolion_wcs_stack <- function(cov_stack, layer_names, boundary, na_value = c(0, -999)){
+
+  cov_stack_filtered <- cov_stack[sapply(cov_stack, function(x) x$CoverageId %in% layer_names)]
+  data_list <- lapply(cov_stack_filtered, function(x) read_single_pollutant_wcs(x, na_value))
+  
+  list_names <- gsub("pm-", "pm", layer_names)
+  list_names <- gsub("jahre-", "", list_names)
+  names(data_list) <- list_names
+  
+  return(data_list)
+}
+
+
+
+
+
+
 
 
 

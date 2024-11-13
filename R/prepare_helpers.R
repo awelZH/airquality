@@ -453,3 +453,22 @@ calc_O3_peakseason <- function(data, min_coverage = 9/12) { # min_coverage: data
 }
 
 
+average_to_grid <- function(data, grid, method = "average", na_val = -999) { 
+
+  parameter <- names(data)
+  data <- stars::st_warp(data, grid, method = method, use_gdal = TRUE, no_data_value = na_val)
+  names(data) <- parameter
+  
+  return(data)
+}
+
+
+average_to_statpop <- function(x, y) {
+
+  grid <- dplyr::select(x, RELI) 
+  data_avg <- purrr::map(y, function(data) average_to_grid(data, grid))
+  
+  return(data_avg)
+}
+
+

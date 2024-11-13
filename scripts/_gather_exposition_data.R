@@ -2,30 +2,64 @@
 # also compile ecosystem exposition towards nitrogen deposition
 # ---
 # read datasets ...
-# => check which pollutant datasets for which years are available
+# => check for available raster data in geolion "pollumap" & "jahreskarte" wcs datasets
+cov_stack <- unlist(lapply(12:16, function(x) get_geolion_wcs_metadata(filter_ressources(ressources, x))), recursive = FALSE)
 
-# => download air pollutant raster data accordingly
+# => availability matrix, filter for desired source & pollutants & years
+availability <- 
+  cov_stack |> 
+  to_stack_df() |> 
+  dplyr::filter(
+    (!stringr::str_detect(layer_name, "jahre") & as.numeric(year) == 2015) | # only select pollumap for the year 2015 only this year is calibrated with monitoring data
+      as.numeric(year) < lubridate::year(Sys.Date()) & # no future pollumap projections
+      stringr::str_detect(layer_name, "jahre") # apart from that: always use jahreskarte
+  ) |> 
+  dplyr::filter(pollutant != "bc") # no bc since this only available for pollumap
 
-download_statpop_data(2020, "inst/extdata")
+years <- as.numeric(unique(availability$year))
 
-# => download BFS statpop data for required years
+# => get air pollutant raster data accordingly
+data_raster_aq <- read_geolion_wcs_stack(cov_stack, availability$layer_name, map_canton)
+data_raster_aq <- lapply(setNames(years, years), function(year) data_raster_aq[which(extract_year(names(data_raster_aq)) == year)])
+
+# => download / read BFS statpop data for same years as pollutant raster data
+data_raster_bfs <- lapply(setNames(years, years), function(year) read_statpop_raster_data(year, "inst/extdata", map_canton))
 
 # => download BAFU nitrogen deposition raster data including precompiled ecosystem exposition data
-
+# ...
 
 
 
 
 # prepare datasets ...
 # => spatially average pollutant raster data to the grid of statpop data (100x100m)
-# => join pollutant and statpop data
+data_raster_aq <- purrr::map2(data_raster_bfs, data_raster_aq, average_to_statpop)
+
+# => convert pollutant and statpop data into a tibble
+data_statpop <- 
+  years |> 
+  as.character() |> 
+  purrr::map(function(year) dplyr::mutate(tibble::as_tibble(data_raster_bfs[[year]]), year = as.numeric(year))) |> 
+  dplyr::bind_rows()
+
+data_aq <- 
+  years |> 
+  as.character() |> 
+  purrr::map(function(y) {
+    purrr::map(data_raster_aq[[y]], function(x) tibble::as_tibble(x[[1]]))
+  }) |> 
+  dplyr::bind_rows()
+
+data <- dplyr::bind_rows()
+
+# => calculate inhabitant exposition per raster cell
 
 
 
 
 
 # aggregate datasets ...
-
+# => ...
 
 
 

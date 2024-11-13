@@ -12,10 +12,10 @@ load_packages <- function(packages) {
 
 # packages necessary for function functionality
 load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-                "RCurl", "readr", "archive", "sf", "stars", "ows4R", "ggplot2"))
+                "RCurl", "readr", "archive", "sf", "stars", "ows4R", "withr"))
 
 # packages required for script functionality
-load_packages(c("devtools", "ggh4x", "scales", "lemon", "openair", "shades", 
+load_packages(c("devtools", "ggh4x", "scales", "lemon", "openair", "ggplot2", "shades", 
                 "wesanderson", "rOstluft.plot"))
 
 # load functions 

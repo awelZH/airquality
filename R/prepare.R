@@ -146,7 +146,7 @@ prepare_monitoring_aq <- function(data, meta) {
 }
 
 
-prepare_expo_data <- function(data_raster_bfs, data_raster_aq, years) {
+prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
   
   # => convert pollutant and statpop data into a common tibble
   data_statpop <-
@@ -176,60 +176,24 @@ prepare_expo_data <- function(data_raster_bfs, data_raster_aq, years) {
                                 "pm10" = "PM10",
                                 "bc" = "eBC",
                                 "mp98" = "O3_max_98p_m1"
-      )
+      ),
+      source = "BAFU & BFS"
     )
   
   return(data)
 }
 
 
-prepare_weighted_mean_data <- function(data_raster_bfs, data_raster_aq, years, boundaries) {
-browser()
-  # => join statpop raster data with municipality data & convert into a common tibble
-  # FIXME: join by st_intersects results in multiple counting? see: data_statpop |> distinct(year, RELI, population)
-  data_statpop <-
+prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, boundaries) {
+
+  data_statpop_municip <- 
     years |> 
     as.character() |> 
     purrr::map(function(yr) {
-      sf::st_join(boundaries, sf::st_as_sf(data_raster_bfs[[yr]], as_points = FALSE, merge = FALSE)) |> 
-        dplyr::select(geodb_oid, gemeindename, RELI, population) |> 
-        sf::st_drop_geometry() |> 
-        dplyr::filter(!is.na(population) & population > 0) |> 
+      merge_statpop_with_municipalities(data_raster_bfs[[yr]], boundaries) |> 
         dplyr::mutate(year = as.numeric(yr))
     }) |> 
     dplyr::bind_rows()
-  
-  
-  # yr <- "2015"
-  # d <- sf::st_join(sf::st_as_sf(data_raster_bfs[[yr]], as_points = T, merge = FALSE), boundaries) |> filter(RELI != 0)
-  # e <- d |> 
-  #   dplyr::select(geodb_oid, gemeindename, RELI, population) |> 
-  #   sf::st_drop_geometry() |> 
-  #   dplyr::filter(!is.na(population) & population > 0) |> 
-  #   arrange(RELI, geodb_oid)
-  # dim(e)
-  # e |> distinct(RELI) |> dim()
-  # f <- sf::st_as_sf(data_raster_bfs[[yr]], as_points = T, merge = FALSE) |> 
-  #   sf::st_drop_geometry() |> 
-  #   dplyr::filter(!is.na(population) & population > 0)
-  # dim(f)
-  
-  
-  
-  # => add x & y for later join
-  data_statpop <-
-    years |> 
-    as.character() |> 
-    purrr::map(function(yr) dplyr::mutate(tibble::as_tibble(data_raster_bfs[[yr]]), year = as.numeric(yr))) |> 
-    dplyr::bind_rows() |> 
-    dplyr::filter(!is.na(population) & population > 0) |> 
-    dplyr::select(x, y, RELI, year) |> 
-    dplyr::right_join(data_statpop, by = c("year", "RELI"))
-  
-  # data_statpop |> 
-  #   filter(year == 2015 & geodb_oid == 3213 & RELI == 69042832)
-    # distinct(RELI, .keep_all = T)
-  
   
   data_aq <-
     years |> 
@@ -240,7 +204,7 @@ browser()
     }) |> 
     dplyr::bind_rows()
   
-  data <- dplyr::full_join(data_statpop, data_aq, by = c("x", "y", "year"))
+  data <- dplyr::right_join(data_statpop_municip, data_aq, by = c("x", "y", "year"))
   data <-
     data |> 
     dplyr::filter(!is.na(population)) |> 
@@ -251,7 +215,8 @@ browser()
                                 "pm10" = "PM10",
                                 "bc" = "eBC",
                                 "mp98" = "O3_max_98p_m1"
-      )
+      ),
+      source = "BAFU & BFS"
     )
   
   return(data)

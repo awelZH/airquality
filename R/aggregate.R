@@ -98,8 +98,21 @@ aggregate_exposition_distrib <- function(data) {
       population_cum = cumsum(population),
       population_cum_rel = population_cum / sum(population)
     ) |> 
-    dplyr::ungroup()
+    dplyr::ungroup() |> 
+    dplyr::mutate(source = "BAFU & BFS")
   
   return(data)
 }
 
+
+aggregate_population_weighted_mean <- function(data, groups = c("year", "pollutant")) {
+
+  data_pop_weighted <-
+    data |> 
+    dplyr::group_by_at(dplyr::vars(groups)) |> 
+    dplyr::summarise(population_weighted_mean = calc_population_weighted_mean(concentration, population)) |> 
+    dplyr::ungroup() |> 
+    dplyr::mutate(source = "BAFU & BFS")
+
+  return(data_pop_weighted)
+}

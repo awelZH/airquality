@@ -22,24 +22,43 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
 }
 
 
-read_bafu_raster_data <- function(destination_path, boundary){
+read_bafu_raster_data <- function(year, destination_path, boundary, crs = 2056){
   
+  browser()
+  # download_bafu_data 
+  # read_bafu_shp
+  # data_sf_zh <- dplyr::filter(
+  #   data_sf, 
+  #   sf::st_intersects(data, boundary, sparse = FALSE)
+  # )
+  
+
+  # download zip
+  # FIXME: file_filter ...
+  download_bafu_data(year, destination_path, file_filter = "\\.shp$")
+  
+  # read and georeference file
   file_to_read <- list.files(
     destination_path, 
-    pattern = "\\.shp$", 
+    pattern = "\\.shp$",
     full.names = TRUE,
     recursive = TRUE
   )
+  data_sf <- read_bafu_shp(file_to_read)
   
-  data_sf <- sf::read_sf(file_to_read)
+  # delete shp file
+  unlink(file_to_read)
   
-  data_sf_zh <- dplyr::filter(
-    data_sf, 
-    sf::st_intersects(data, boundary, sparse = FALSE)
-  )
+  # crop to boundary
+  data_stars <- sf::st_crop(data_stars, boundary)
   
-  return(data_sf_zh)
+  return(data_stars)
 }
+
+
+
+
+
 
 
 read_opendataswiss <- function(url, source){

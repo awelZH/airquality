@@ -24,6 +24,20 @@ read_statpop_csv <- function(file, year, crs = 2056) {
 }
 
 
+read_bafu_shp <- function(file){
+  
+  file_to_read <- list.files(
+    destination_path, 
+    pattern = "\\.shp$", 
+    full.names = TRUE,
+    recursive = TRUE
+  )
+  data_sf <- sf::read_sf(file)
+  
+  return(data_sf)
+}
+
+
 read_single_pollutant_wcs <- function(coverage, na_value){
 
   data <- coverage$getCoverage() %>% 
@@ -191,6 +205,7 @@ download_statpop_data <- function(year, destination_path, file_filter = NULL){
 
 download_bafu_data <- function(id, destination_path, file_filter = NULL){
   
+  #FIXME: missing function get_swisstopo_metadata() => download_url
   download_url <- get_swisstopo_metadata(id)$download_url
   download_zip(download_url, destination_path, file_filter)
   

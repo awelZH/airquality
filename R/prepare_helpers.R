@@ -154,13 +154,13 @@ restructure_monitoring_nabel_h1 <- function(data, tz = "Etc/GMT-1") {
 
 
 restructure_monitoring_ostluft <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1", na.rm = TRUE) {
-
+  
   header <- dplyr::slice(data, 1:which(dplyr::pull(data, 1) == "Startzeit"))
   header <- dplyr::select(header, -1)
   data <- dplyr::slice(data, (which(dplyr::pull(data, 1) == "Startzeit") + 1):nrow(data))
   colnames(data)[1] <- "starttime"
   data <- dplyr::mutate(data, starttime = lubridate::parse_date_time(.data$starttime, c("dmYHMS", "dmYHM", "dmY"), tz = tz))
-
+  
   col_ids <- rlang::names2(data)[-1]
   # FIXME: kann das vereinfacht werden mit pivot_longer? sollte eigentlich möglich sein
   sites <- c(header[1, ], recursive = TRUE)
@@ -171,24 +171,24 @@ restructure_monitoring_ostluft <- function(data, keep_incomplete = FALSE, tz = "
   intervals <- rlang::set_names(intervals, col_ids)
   units <- c(header[which(dplyr::pull(header,1) %in% c("µg/m3","ppb","ppm","ppt","°C","hPa","%","W/m2")),], recursive = TRUE) #! ... Liste vervollständigen
   units <- rlang::set_names(units, col_ids)
-
+  
   
   data_long <- tidyr::gather(data, "id", "value", -"starttime", na.rm = na.rm, factor_key = TRUE)
   data_long <- dplyr::mutate(data_long,
-                        site = dplyr::recode(.data$id, !!!sites),
-                        parameter = dplyr::recode(.data$id, !!!parameters),
-                        interval = dplyr::recode(.data$id, !!!intervals),
-                        unit = dplyr::recode(.data$id, !!!units)
+                             site = dplyr::recode(.data$id, !!!sites),
+                             parameter = dplyr::recode(.data$id, !!!parameters),
+                             interval = dplyr::recode(.data$id, !!!intervals),
+                             unit = dplyr::recode(.data$id, !!!units)
   )
   data_long <- dplyr::select(data_long, "starttime", "site", "parameter", "interval", "unit", "value")
   
   data_long_clean <- 
     data_long |> 
     dplyr::mutate(
-        value = dplyr::case_when(
-          keep_incomplete ~ as.numeric(gsub("\\*|\\;", "", value)),
-          TRUE ~ as.numeric(value)
-        )
+      value = dplyr::case_when(
+        keep_incomplete ~ as.numeric(gsub("\\*|\\;", "", value)),
+        TRUE ~ as.numeric(value)
+      )
     ) |> 
     dplyr::mutate_if(is.character, factor) 
   
@@ -275,23 +275,23 @@ prep_site_meta_ostluft <- function(meta) {
 
 
 prep_site_meta_nabel <- function(meta) {
-
-    meta <- dplyr::distinct(meta, Station, `Ost Y`, `Nord X`, Höhe, Zonentyp, Stationstyp)
-    meta <- dplyr::mutate(meta, Zonentyp = tolower(Zonentyp))
-    meta <- dplyr::rename(meta, 
-                          site = Station,
-                          y = `Ost Y`,
-                          x = `Nord X`,
-                          masl = Höhe,
-                          zone = Zonentyp,
-                          type = Stationstyp
-    )
-    meta <- dplyr::mutate(meta,
-                          ifelse(zone == "vorstädtisch", "klein-/vorstädtisch", zone),
-                          site_long = site,
-                          source = "NABEL (BAFU & Empa)"
-    )
-    meta <- dplyr::select(meta, site, site_long, x, y, masl, zone, type, source)
+  
+  meta <- dplyr::distinct(meta, Station, `Ost Y`, `Nord X`, Höhe, Zonentyp, Stationstyp)
+  meta <- dplyr::mutate(meta, Zonentyp = tolower(Zonentyp))
+  meta <- dplyr::rename(meta, 
+                        site = Station,
+                        y = `Ost Y`,
+                        x = `Nord X`,
+                        masl = Höhe,
+                        zone = Zonentyp,
+                        type = Stationstyp
+  )
+  meta <- dplyr::mutate(meta,
+                        ifelse(zone == "vorstädtisch", "klein-/vorstädtisch", zone),
+                        site_long = site,
+                        source = "NABEL (BAFU & Empa)"
+  )
+  meta <- dplyr::select(meta, site, site_long, x, y, masl, zone, type, source)
   
   return(meta)
 }
@@ -400,7 +400,7 @@ max_mean_h8gl <- function(data) { # how to solve data coverage?
 
 # function to calculate O3 peak-season concentration per year and site, based on data as hourly means in rOstluft::format_rolf() 
 calc_O3_peakseason <- function(data, min_coverage = 9/12) { # min_coverage: data coverage in months per year (9/12 because in early times, they used to not measure O3 during winter months)
-
+  
   # calculate O3 monthly means to derive peak season
   data_m1 <- rOstluft::resample(data, statistic = "mean", new_interval = "m1", data_thresh = 0.8)
   
@@ -454,7 +454,7 @@ calc_O3_peakseason <- function(data, min_coverage = 9/12) { # min_coverage: data
 
 
 average_to_grid <- function(data, grid, method = "average", na_val = -999) { 
-
+  
   parameter <- names(data)
   data <- stars::st_warp(data, grid, method = method, use_gdal = TRUE, no_data_value = na_val)
   names(data) <- parameter
@@ -464,7 +464,7 @@ average_to_grid <- function(data, grid, method = "average", na_val = -999) {
 
 
 average_to_statpop <- function(x, y) {
-
+  
   grid <- dplyr::select(x, RELI) 
   data_avg <- purrr::map(y, function(data) average_to_grid(data, grid))
   
@@ -484,4 +484,27 @@ simplify_aq_rasterdata <- function(data) {
   return(data)
 }
 
+
+merge_statpop_with_municipalities <- function(data_raster, data_municip) {
+  
+  municip_raster <- 
+    data_municip |> 
+    dplyr::select(geodb_oid) |> 
+    stars::st_rasterize(data_raster)
+  
+  data <-
+    dplyr::left_join(
+      tibble::as_tibble(municip_raster),
+      tibble::as_tibble(data_raster), 
+      by = c("x","y")) |> 
+    dplyr::filter(!is.na(RELI) & RELI != 0 & !is.na(population))
+  
+  data <- 
+    data_municip |> 
+    st_drop_geometry() |> 
+    dplyr::select(geodb_oid, gemeindename) |> 
+    dplyr::right_join(data, by = "geodb_oid")
+  
+  return(data)
+}
 

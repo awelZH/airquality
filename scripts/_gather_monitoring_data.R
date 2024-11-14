@@ -1,6 +1,8 @@
 # compiling air quality monitoring data from several sites in the Canton of Zürich by Ostluft and NABEL monitoring networks
-# ---
+
+
 # read datasets ...
+# ---
 # => read NABEL y1 monitoring airquality data
 data_monitoring_nabel <- read_local_csv(filter_ressources(ressources, 5)); update_log(5)
 
@@ -20,6 +22,7 @@ site_meta_nabel <- read_local_csv(filter_ressources(ressources, 5), col_select =
 site_meta_ostluft <- read_local_csv(filter_ressources(ressources, 9), delim = ",", locale = readr::locale(encoding = "UTF-8")); update_log(9)
 
 # prepare datasets ...
+# ---
 # => merge, simplify & finalise site metadata
 site_meta <- prepare_monitoring_meta(site_meta_ostluft, site_meta_nabel)
 
@@ -37,12 +40,9 @@ data_monitoring_aq <-
   prepare_monitoring_aq(site_meta)
    
 # aggregate dataset ...
+# ---
 # => aggregate individual components of nitrogen deposition
 data_monitoring_ndep <- aggregate_nitrogen_deposition(data_monitoring_ndep)
-
-
-
-
 
 # write output datasets & clean up:
 # ---

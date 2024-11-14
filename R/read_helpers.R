@@ -77,20 +77,12 @@ to_stack_df <- function(cov_stack){
 
 
 get_swisstopo_metadata <- function(id){
-  
+
   metadata_url <- paste0("https://data.geo.admin.ch/api/stac/v0.9/collections/",id,"/items")
   metadata <- rjson::fromJSON(file = metadata_url)
-  features <- metadata$features[[1]]
-  url <- features$assets[which(grepl("shp", features$assets))][[1]]$href
-  
-  # FIXME: wrong BAFU metadata => anpassen wenn mehrere Jahre vorhanden sind!
-  reference_year <- 2020 # as.Date(feature$properties$datetime)
-  swisstopo_metadata <- list(
-    download_url = url,
-    reference_year = reference_year 
-  )
-  
-  return(swisstopo_metadata)
+  url <- unlist(purrr::map(metadata$features, function(x) x$assets[which(grepl("tiff", x$assets))][[1]]$href))
+
+  return(url)
 }
 
 
@@ -202,11 +194,3 @@ download_statpop_data <- function(year, destination_path, file_filter = NULL){
   
 }
 
-
-download_bafu_data <- function(id, destination_path, file_filter = NULL){
-  
-  #FIXME: missing function get_swisstopo_metadata() => download_url
-  download_url <- get_swisstopo_metadata(id)$download_url
-  download_zip(download_url, destination_path, file_filter)
-  
-}

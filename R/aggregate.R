@@ -82,7 +82,7 @@ aggregate_nitrogen_deposition <- function(data) {
 }
 
 
-aggregate_exposition_distrib <- function(data) { 
+aggregate_population_exposition_distrib <- function(data) { 
   
   data <-
     data |> 
@@ -100,6 +100,28 @@ aggregate_exposition_distrib <- function(data) {
     ) |> 
     dplyr::ungroup() |> 
     dplyr::mutate(source = "BAFU & BFS")
+  
+  return(data)
+}
+
+
+aggregate_ndep_exposition_distrib <- function(data) { 
+
+  data <-
+    data |> 
+    na.omit() |> 
+    dplyr::mutate(ndep_exmax = floor(ndep_exmax) + 0.5) |> # abgerundet auf 1, Klassenmitte
+    dplyr::group_by(year, ndep_exmax) |>
+    dplyr::summarise(n_ecosys = dplyr::n()) |>
+    dplyr::group_by(year) |>
+    dplyr::arrange(ndep_exmax) |>
+    dplyr::mutate(
+      n_ecosys_cum = cumsum(n_ecosys),
+      n_ecosys_cum_rel = cumsum(n_ecosys) / sum(n_ecosys),
+      source = "BAFU"
+      ) |> 
+    dplyr::ungroup() |> 
+    dplyr::arrange(year, ndep_exmax)
   
   return(data)
 }

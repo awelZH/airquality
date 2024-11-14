@@ -22,37 +22,49 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
 }
 
 
-read_bafu_raster_data <- function(year, destination_path, boundary, crs = 2056){
+read_bafu_raster_data <- function(id, boundary, crs = 2056){
   
-  browser()
-  # download_bafu_data 
-  # read_bafu_shp
-  # data_sf_zh <- dplyr::filter(
-  #   data_sf, 
-  #   sf::st_intersects(data, boundary, sparse = FALSE)
-  # )
+  download_url <- get_swisstopo_metadata(id)
+  years <- extract_year(download_url)
+  download_url <- setNames(download_url, years)
+ 
+  # FIXME: read_stars returns a curvilinear LV95 grid in this case which creates problems later on (?)
+  data <-
+    years |> 
+    as.character() |> 
+    purrr::map(function(yr) {
+      
+      data <- 
+        download_url[[yr]] |>
+        stars::read_stars() |>
+        sf::st_transform(crs = sf::st_crs(crs))
+      
+      names(data) <- "ndep_exmax" # FIXME: derive from data
+      
+      # crop to boundary
+      # FIXME regular grid workaround: 
+      data <- 
+        data |> 
+        tibble::as_tibble() |> 
+        stars::st_as_stars() |> 
+        sf::st_set_crs(value = crs) |> 
+        sf::st_crop(boundary)
+      
+      # convert to tibble
+      data <- 
+        data |> 
+        tibble::as_tibble() |> 
+        na.omit() |> 
+        dplyr::mutate(
+          year = as.numeric(yr),
+          source = "BAFU"
+        )
+      
+      return(data)
+    }) |> 
+    dplyr::bind_rows()
   
-
-  # download zip
-  # FIXME: file_filter ...
-  download_bafu_data(year, destination_path, file_filter = "\\.shp$")
-  
-  # read and georeference file
-  file_to_read <- list.files(
-    destination_path, 
-    pattern = "\\.shp$",
-    full.names = TRUE,
-    recursive = TRUE
-  )
-  data_sf <- read_bafu_shp(file_to_read)
-  
-  # delete shp file
-  unlink(file_to_read)
-  
-  # crop to boundary
-  data_stars <- sf::st_crop(data_stars, boundary)
-  
-  return(data_stars)
+  return(data)
 }
 
 

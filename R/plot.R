@@ -265,9 +265,10 @@ plot_all_expo_hist <- function(parameter, data) {
 
     thresh <- extract_threshold(immission_threshold_values, shorttitle(parameter), aggregation = expositionpars(parameter)$aggregation, metric = expositionpars(parameter)$metric)
     ggplot_expo_hist(
-      data = dplyr::filter(data, year == !!year & parameter == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
+      data = dplyr::filter(data, year == !!year & pollutant == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
       xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = thresh,
-      xlabel = ggplot2::xlab(openair::quickText(paste0(shorttitle(parameter)," ",longparameter(parameter)," (µg/m3)"))),      titlelab = ggplot2::ggtitle(
+      xlabel = ggplot2::xlab(openair::quickText(paste0(shorttitle(parameter)," ",longparameter(parameter)," (µg/m3)"))),
+      titlelab = ggplot2::ggtitle(
         label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter))),
         subtitle = openair::quickText(paste0("Anzahl Personen, Wohnbevölkerung im Kanton Zürich im Jahr ",year))
       ), 
@@ -283,12 +284,12 @@ plot_all_expo_hist <- function(parameter, data) {
 
 
 plot_all_expo_cumul <- function(parameter, data) {
-  
+
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {
     
     ggplot_expo_cumulative(
-      data = dplyr::filter(data, year == !!year & parameter == !!parameter), x = "concentration", y = "population_cum_relative", linewidth = 1,
+      data = dplyr::filter(data, year == !!year & pollutant == !!parameter), x = "concentration", y = "population_cum_rel", linewidth = 1,
       xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
       xlabel = ggplot2::xlab(openair::quickText(paste0(shorttitle(parameter)," ",longparameter(parameter)," (µg/m3)"))),
       titlelab = ggplot2::ggtitle(
@@ -309,12 +310,13 @@ plot_all_expo_cumul <- function(parameter, data) {
 plot_all_popweighmean_maps <- function(parameter, data, data_canton) {
 
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
+  years_exposition <- years_exposition[!is.na(years_exposition)]
   plots <- lapply(years_exposition, function(year) {
     
-    canton <- dplyr::pull(dplyr::filter(data_canton, year == !!year & parameter == !!parameter), "pop_weighted_mean")
+    canton <- round_off(dplyr::pull(dplyr::filter(data_canton, year == !!year & pollutant == !!parameter), "population_weighted_mean"), 1)
     data |> 
-      dplyr::filter(year == year & parameter == !!parameter) |> 
-      ggplot2::ggplot(ggplot2::aes(fill = pop_weighted_mean)) +
+      dplyr::filter(year == !!year & pollutant == !!parameter) |> 
+      ggplot2::ggplot(ggplot2::aes(fill = population_weighted_mean)) +
       ggplot2::geom_sf() + 
       ggplot2::coord_sf(datum = sf::st_crs(crs)) +
       immissionscale(parameter) +
@@ -333,13 +335,13 @@ plot_all_popweighmean_maps <- function(parameter, data, data_canton) {
 
 
 plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
-  
+
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   
   plots <- lapply(years_exposition, function(year) {
     
     ggplot_expo_hist(
-      data = dplyr::filter(data, year == year & parameter == "max Ndep > CLO"), x = "EXNMAX", y = "n_ecosys", barwidth = expositionpars("Ndep")$barwidth,
+      data = dplyr::filter(data, year == !!year), x = "ndep_exmax", y = "n_ecosys", barwidth = expositionpars("Ndep")$barwidth,
       xlims = range(expositionpars("Ndep")$xbreaks), xbreaks = expositionpars("Ndep")$xbreaks, threshold = threshold_ndep,
       xlabel = ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")),
       titlelab = ggplot2::ggtitle(
@@ -358,13 +360,13 @@ plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
 
 
 plot_all_expo_cumul_ndep <- function(data, threshold_ndep) {
-  
+
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   
   plots <- lapply(years_exposition, function(year) {
     
     ggplot_expo_cumulative(
-      data = dplyr::filter(data, year == year & parameter == "max Ndep > CLO"), x = "EXNMAX", y = "n_ecosys_cum_relative", linewidth = 1,
+      data = dplyr::filter(data, year == !!year), x = "ndep_exmax", y = "n_ecosys_cum_rel", linewidth = 1,
       xlims = range(expositionpars("Ndep")$xbreaks), xbreaks = expositionpars("Ndep")$xbreaks, threshold = threshold_ndep,
       xlabel = ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")),
       titlelab = ggplot2::ggtitle(

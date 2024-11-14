@@ -37,7 +37,7 @@ aggregate_groups <- function(data, y, groups, nmin = 3, perc = list(ymin = 0.05,
 }
 
 
-groups_emission_subsector <- function(data, threshold_fraction = 0.05, first = 1:3) {
+groups_emission_subsector <- function(data, threshold_fraction = 0.02, first = 1:3) {
   
   # mean emissions per category over all years
   group_vars <- c("pollutant", "sector", "subsector")
@@ -191,46 +191,5 @@ bin_concentration <- function(data) {
 
 
 calc_population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
-
-# 
-# calc_ndep_ecosystem_expo_distr <- function(data_raster, year) {
-#   
-#   data_expo <-
-#     data_raster[[year]] |> 
-#     dplyr::select(EXNMAX) |> 
-#     tibble::as_tibble() |> 
-#     na.omit() |> 
-#     dplyr::group_by(EXNMAX = floor(EXNMAX) + 0.5) |> # abgerundet auf 1, Klassenmitte
-#     dplyr::summarise(n_ecosys = dplyr::n()) |>
-#     dplyr::ungroup()
-#   
-#   return(data_expo)
-# }
-# 
-# 
-# 
-# calc_ndep_ecosystem_expo_distr_cumulative <- function(data_expo) {
-#   
-#   data_expo <-
-#     data_expo |> 
-#     dplyr::arrange(EXNMAX) |> 
-#     dplyr::mutate(n_ecosys_cum_relative = cumsum(n_ecosys) / sum(n_ecosys))
-#   
-#   return(data_expo)
-# }
-# 
-# 
-# 
-# calc_all_ndep_ecosystem_expo_distr <- function(data_raster){
-#   
-#   expo_distr <-
-#     setNames(names(data_raster), extract_year(names(data_raster))) |> 
-#     lapply(function(year) {
-#       data <- calc_ndep_ecosystem_expo_distr(data_raster, year)
-#       calc_ndep_ecosystem_expo_distr_cumulative(data)
-#     })
-#   
-#   return(expo_distr)
-# }
 
 

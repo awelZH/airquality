@@ -426,6 +426,12 @@ plots$exposition$cumul$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, th
 update_log(35)
 
 # plotting maps of population-weighted mean pollutant concentration (single value for Kanton Zürich & per municipality)
+data_expo_weighmean_municip <- 
+  data_expo_weighmean_municip |> 
+  dplyr::select(-gemeindename) |> 
+  dplyr::full_join(map_municipalities, by = "geodb_oid") |> 
+  sf::st_as_sf()
+
 plots$exposition$population_weighted_mean <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
@@ -442,8 +448,8 @@ thresh <-
 plots$exposition$population_weighted_mean$overview <-
   data_expo_weighmean_canton |> 
   dplyr::filter(parameter != "eBC") |> 
-  dplyr::mutate(parameter = paste0(longtitle(parameter), " ", longparameter(parameter)," (",shorttitle(parameter),")")) |> 
-  ggplot2::ggplot(ggplot2::aes(x = year, y = pop_weighted_mean)) + 
+  dplyr::mutate(parameter = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")")) |> 
+  ggplot2::ggplot(ggplot2::aes(x = year, y = population_weighted_mean)) + 
   ggplot2::geom_bar(stat = "identity", fill = "gray40") +
   ggplot2::geom_hline(data = thresh, mapping = ggplot2::aes(yintercept = threshold), linewidth = thresh$lsz, color = thresh$col, linetype = thresh$lty) +
   lemon::facet_rep_wrap(parameter~., scales = "free_y", ncol = 1, repeat.tick.labels = TRUE) +
@@ -465,7 +471,7 @@ rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass"
             "data_monitoring_aq", "data_monitoring_ndep", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "data_temp", "data_thrshlds",
             "data_expo_weighmean_municip", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 
             "crs", "lbsz", "linewidth", "lsz_lrv", "lsz_who", "lty_lrv", "lty_who", "n_years", "parameters_exposition", "parameters_timeseries",
-            "pointsize", "pollutants", "siteclass_levels", "years"))
+            "pointsize", "pollutants", "siteclass_levels", "years", "ressources"))
 
 
 

@@ -123,6 +123,7 @@ data_emikat <- read_local_csv(ressources_plotting$emissions$emikat, delim = ";",
 cols_emissions <- setNames(as.character(cols_emissions), unique(data_emikat$sector))
 pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$pollutant))
 
+
 # absolute values
 plots$emissions$absolute <- 
   lapply(pollutants, function(pollutant) {
@@ -130,12 +131,14 @@ plots$emissions$absolute <-
   })
 update_log(29)  
 
+
 # relative values
 plots$emissions$relative <- 
   lapply(pollutants, function(pollutant) {
     ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", cols = cols_emissions, theme = theme_ts)
   })
 update_log(29)
+
 
 # read & plot RSD NOx emissions by vehicle type, fuel type and euronorm
 data_rsd_per_norm <- read_local_csv(ressources_plotting$emissions$rsd_norm)
@@ -172,6 +175,7 @@ plots$emissions$NOx$rsd_norm <-
   )
 update_log(30)
 
+
 # read & plot RSD NOx emissions by vehicle model year, vehicle type and fuel type
 data_rsd_per_yearmodel <- read_local_csv(ressources_plotting$emissions$rsd_yearmodel)
 
@@ -205,6 +209,7 @@ plots$emissions$NOx$rsd_yearmodel <-
   )
 update_log(30)
 
+
 # read & plot RSD NOx emission time series (year of measurement) by fuel type
 data_rsd_per_yearmeas <- read_local_csv(ressources_plotting$emissions$rsd_yearmeas)
 
@@ -232,6 +237,7 @@ update_log(30)
 
 
 
+
 # plotting air pollutant monitoring data
 
 # read airquality monitoring data
@@ -241,8 +247,10 @@ data_monitoring_aq <-
   dplyr::filter(year %in% years & parameter %in% parameters_timeseries & 
                   !is.na(siteclass) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) 
 
+
 # plot timeseries of yearly values for selected pollutants
 plots$airquality$monitoring$timeseries <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries); update_log(31)
+
 
 # read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
 data_monitoring_ndep <- read_local_csv(ressources_plotting$monitoring$ndep, locale = readr::locale(encoding = "UTF-8"))
@@ -252,6 +260,7 @@ data_monitoring_ndep <-
     parameter = factor(parameter, levels = rev(c("N-Deposition", "aus NH3-Quellen", "aus NOx-Quellen"))),
     ecosystem_category = factor(ecosystem_category, levels = rev(c("Hochmoor", "Flachmoor", "Trockenrasen", "Wald")))
   )
+
 
 # plot relative comparison latest n_years of measurement data vs. LRV Immissionsgrenzwerte + Critical Loads of Nitrogen and WHO-Richtwerte
 data_thrshlds <- dplyr::distinct(immission_threshold_values, source, col, lty, lsz)
@@ -311,6 +320,7 @@ plots$airquality$monitoring$threshold_comparison <-
 update_log(31)
 update_log(32)
 
+
 # plot long-standing timeseries of yearly nitrogen deposition at Bachtel site (since 2001)
 temp <- dplyr::filter(immission_threshold_values, source == "LRV Grenzwert" & pollutant == "NO2")
 plots$airquality$monitoring$Ndep$timeseries_Bachtel <-
@@ -324,6 +334,7 @@ plots$airquality$monitoring$Ndep$timeseries_Bachtel <-
   ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: Ostluft & FUB") +
   lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE)
 update_log(32)
+
 
 # plot timeseries of yearly nitrogen deposition across several monitoring sites (structured per ecosystem type)
 plots$airquality$monitoring$Ndep$all_timeseries <-
@@ -345,6 +356,7 @@ plots$airquality$monitoring$Ndep$all_timeseries <-
   )
 update_log(32)
 
+
 # plot timeseries of yearly nitrogen deposition vs. critical loads of nitrogen across several monitoring sites (structured per ecosystem type)
 plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
   data_monitoring_ndep |>
@@ -365,6 +377,7 @@ plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
     legend.title = ggplot2::element_blank()
   )
 update_log(32)
+
 
 # plot mean contribution of source categories to nitrogen deposition
 plots$airquality$monitoring$Ndep$mean_sources_fractions <-
@@ -393,6 +406,7 @@ update_log(32)
 
 
 
+
 # plotting air pollutant population and ecosystem exposition
 
 # read exposition data and setup
@@ -400,7 +414,6 @@ data_expo_distr_pollutants <- read_local_csv(ressources_plotting$exposition$expo
 data_expo_distr_ndep <- read_local_csv(ressources_plotting$exposition$expo_distr_ndep) 
 data_expo_weighmean_canton <- read_local_csv(ressources_plotting$exposition$weightedmean_canton) 
 data_expo_weighmean_municip <- read_local_csv(ressources_plotting$exposition$weightedmean_municip) 
-data_expo_weighmean_municip <- dplyr::full_join(map_municipalities, dplyr::select(data_expo_weighmean_municip, geodb_oid, year, parameter, pop_weighted_mean, source), by = "geodb_oid")
 parameters_exposition <- setNames(parameters_exposition, parameters_exposition)
 
 # plotting histograms for air pollutants
@@ -441,18 +454,18 @@ update_log(33)
 # plotting timeseries of population-weighted mean pollutant concentration for Kanton Zürich
 thresh <-  
   immission_threshold_values |> 
-  dplyr::mutate(parameter = dplyr::case_when(metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" ~ "O3_max_98p_m1", TRUE ~ pollutant)) |> 
-  dplyr::filter(parameter %in% c("NO2", "O3_max_98p_m1", "PM10", "PM2.5")) |> 
-  dplyr::mutate(parameter = paste0(longtitle(parameter), " ", longparameter(parameter)," (",shorttitle(parameter),")"))
+  dplyr::mutate(pollutant = dplyr::case_when(metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" ~ "O3_max_98p_m1", TRUE ~ pollutant)) |> 
+  dplyr::filter(pollutant %in% c("NO2", "O3_max_98p_m1", "PM10", "PM2.5")) |> 
+  dplyr::mutate(pollutant = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")"))
 
 plots$exposition$population_weighted_mean$overview <-
   data_expo_weighmean_canton |> 
-  dplyr::filter(parameter != "eBC") |> 
-  dplyr::mutate(parameter = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")")) |> 
+  dplyr::filter(pollutant != "eBC") |> 
+  dplyr::mutate(pollutant = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")")) |> 
   ggplot2::ggplot(ggplot2::aes(x = year, y = population_weighted_mean)) + 
   ggplot2::geom_bar(stat = "identity", fill = "gray40") +
   ggplot2::geom_hline(data = thresh, mapping = ggplot2::aes(yintercept = threshold), linewidth = thresh$lsz, color = thresh$col, linetype = thresh$lty) +
-  lemon::facet_rep_wrap(parameter~., scales = "free_y", ncol = 1, repeat.tick.labels = TRUE) +
+  lemon::facet_rep_wrap(pollutant~., scales = "free_y", ncol = 1, repeat.tick.labels = TRUE) +
   ggplot2::scale_x_continuous(breaks = 2015:max(years), expand = c(0.01,0.01)) + 
   ggplot2::scale_y_continuous(expand = c(0.01,0.01)) + 
   theme_ts +

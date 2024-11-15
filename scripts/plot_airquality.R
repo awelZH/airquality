@@ -424,19 +424,60 @@ plots$exposition$hist <-
 update_log(34)
 
 # plotting histograms for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$hist$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep)
-update_log(35)
+plots$exposition$hist$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep); update_log(35)
 
 # plotting cumulative distributions for air pollutants
 plots$exposition$cumul <-
   lapply(parameters_exposition, function(parameter) {
-    plot_all_expo_cumul(parameter, data_expo_distr_pollutants)
+    
+    plots_years <- plot_all_expo_cumul(parameter, data_expo_distr_pollutants)
+    
+    thresh <- extract_threshold(immission_threshold_values, parameter)
+    data <- dplyr::filter(data_expo_distr_pollutants, pollutant == !!parameter)
+    plot_all <- 
+      ggplot2::ggplot(data, mapping = ggplot2::aes(x = concentration, y = population_cum_rel, color = factor(year), group = year)) +
+      ggplot2::geom_vline(xintercept = thresh$value, color = thresh$color, linetype = thresh$linetype, linewidth = thresh$linesize) +
+      ggplot2::geom_line(linewidth = 1) +
+      ggplot2::scale_x_continuous(limits = range(expositionpars(parameter)$xbreaks), breaks = expositionpars(parameter)$xbreaks, expand = c(0.01,0.01)) +
+      ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
+      ggplot2::scale_color_brewer(name = "Jahr") +
+      ggplot2::xlab(openair::quickText(paste0(shorttitle(parameter)," ",longparameter(parameter)," (µg/m3)"))) +
+      ggplot2::ggtitle(
+        label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter))),
+        subtitle = "relativer Anteil (kumuliert), Wohnbevölkerung im Kanton Zürich"
+      ) +
+      ggplot2::labs(caption = "Datengrundlage: BAFU & BFS") +
+      theme_ts +
+      ggplot2::theme(axis.title.x = ggplot2::element_text()) +
+      ggplot2::geom_text(data = tibble::tibble(x = thresh$value, label = thresh$labels), mapping = ggplot2::aes(x = x, y = 0, label = label), size = thresh$labelsize,
+                         hjust = 0, vjust = 0, angle = 90, nudge_x = pmin(0, -0.01 * max(expositionpars(parameter)$xbreaks), na.rm = TRUE), inherit.aes = FALSE)
+    
+    c(list(all = plot_all), plots_years)
+    
   })
 update_log(34)
 
+
 # plotting cumulative distributions for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$cumul$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep)
-update_log(35)
+plots$exposition$cumul$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep); update_log(35)
+plots$exposition$cumul$Ndep$alle <-
+  ggplot2::ggplot(data_expo_distr_ndep, mapping = ggplot2::aes(x = ndep_exmax, y = n_ecosys_cum_rel, color = factor(year), group = year)) +
+  ggplot2::geom_vline(xintercept = threshold_ndep$value, color = threshold_ndep$color, linetype = threshold_ndep$linetype, linewidth = threshold_ndep$linesize) +
+  ggplot2::geom_line(linewidth = 1) +
+  ggplot2::scale_x_continuous(limits = range(expositionpars("Ndep")$xbreaks), breaks = expositionpars("Ndep")$xbreaks, expand = c(0.01,0.01)) +
+  ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
+  ggplot2::scale_color_brewer(name = "Jahr") +
+  ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")) +
+  ggplot2::ggtitle(
+    label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
+    subtitle = "relativer Anteil empfindlicher Ökosysteme (kumuliert) im Kanton Zürich"
+  ) +
+  ggplot2::labs(caption = "Quelle: BAFU") +
+  theme_ts +
+  ggplot2::theme(axis.title.x = ggplot2::element_text()) +
+  ggplot2::geom_text(data = tibble::tibble(x = threshold_ndep$value, label = threshold_ndep$labels), mapping = ggplot2::aes(x = x, y = 0, label = label), size = threshold_ndep$labelsize,
+                     hjust = 0, vjust = 0, angle = 90, nudge_x = pmin(0, -0.01 * max(expositionpars("Ndep")$xbreaks), na.rm = TRUE), inherit.aes = FALSE)
+
 
 # plotting maps of population-weighted mean pollutant concentration (single value for Kanton Zürich & per municipality)
 data_expo_weighmean_municip <- 

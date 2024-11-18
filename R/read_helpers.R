@@ -1,92 +1,196 @@
-# internal function for read_airmo_csv2() to restructure data; based on function airmo_wide_to_long() in rOstluft-package
-restructure_airmo_wide_to_long2 <- function(header, data, tz = "Etc/GMT-1", na.rm = TRUE){
-  
-  colnames(data)[1] <- "starttime"
-  col_ids <- rlang::names2(data)[-1]
-  
-  
-  # FIXME: kann das vereinfacht werden mit pivot_longer? sollte eigentlich möglich sein
-  sites <- c(header[1, ], recursive = TRUE)
-  sites <- rlang::set_names(sites, col_ids)
-  parameters <- c(header[2, ], recursive = TRUE)
-  parameters <- rlang::set_names(parameters, col_ids)
-  intervals <- c(header[3, ], recursive = TRUE)
-  intervals <- rlang::set_names(intervals, col_ids)
-  units <- c(header[4, ], recursive = TRUE)
-  units <- rlang::set_names(units, col_ids)
-  
-  data <- dplyr::mutate(data, starttime = lubridate::parse_date_time(.data$starttime, c("dmYHMS", "dmYHM", "dmY"), tz = tz))
-  data <- tidyr::gather(data, "id", "value", -"starttime", na.rm = na.rm, factor_key = TRUE)
-  data <- dplyr::mutate(data,
-                        site = dplyr::recode(.data$id, !!!sites),
-                        parameter = dplyr::recode(.data$id, !!!parameters),
-                        interval = dplyr::recode(.data$id, !!!intervals),
-                        unit = dplyr::recode(.data$id, !!!units)
-  )
-  data <- dplyr::select(data, "starttime", "site", "parameter", "interval", "unit", "value")
-  
-  return(data)
-}
-
-
-
-
-
-# ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
-# however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
-recode_ostluft_meta_zone <- function(zone) { 
-  
-  zone <- 
-    dplyr::case_when(
-      as.numeric(stringr::str_remove(zone, "H")) %in% c(21:23, 31:33) ~ "städtisch", # OSTLUFT: > 20'000 Gesamteinwohner; BAFU: > 1500 Einwohner/km2 und Gesamteinwohnerzahl > 50 000
-      as.numeric(stringr::str_remove(zone, "H")) %in% 11:13 ~ "klein-/vorstädtisch", # OSTLUFT: > 1'000 Gesamteinwohner; BAFU: > 300 Einwohner/km2 im \u00fcberbauten Gebiet und Gesamteinwohnerzahl > 5000
-      as.numeric(stringr::str_remove(zone, "H")) == 0 ~ "ländlich", # OSTLUFT: < 1'000 Gesamteinwohner; BAFU: Gebiete mit geringer Siedlungsdichte (< 300 Einwohner/km2) oder kleinere Ortschaften (< 5000 Einwohner)
-      TRUE ~ zone 
-    )
-  
-  return(zone)
-}
-
-
-
-# ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
-# however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
-recode_ostluft_meta_type <- function(type) { 
-  
-  type <- 
-    dplyr::case_when(
-      as.numeric(stringr::str_remove(type, "S")) %in% c(10:13, 20:23, 30:33) ~ "verkehrsbelastet", # OSTLUFT: DTV_S > 10'000; BAFU: has a finer scale that begins at DTV > 3'000 and cerctain max distance to street 
-      as.numeric(stringr::str_remove(type, "S")) == 0 ~ "Hintergrund", # OSTLUFT: DTV_S < 10'000 & street more than 50m (in cities) or 300m (outside of cities) away; BAFU: see above
-      TRUE ~ type 
-    )
-  
-  return(type)
-}
-
-
-
-
 read_statpop_csv <- function(file, year, crs = 2056) {
+
+  var <- ifelse(as.numeric(year) > 2022, "BBTOT", paste0("B", year %% 100, "BTOT")) #FIXME: derive from data itself 
+  delim <- ifelse(as.numeric(year) > 2015, ";", ",") #FIXME: derive from data itself 
   
-  var <- paste0("B", stringr::str_sub(year, 3, 4), "BTOT")
-  delim <- ifelse(as.numeric(year) > 2015, ";", ",")
-  data <- 
-    file |> 
-    readr::read_delim(delim = delim, locale = readr::locale(encoding = "UTF-8")) |> 
-    dplyr::select(RELI, E_KOORD, N_KOORD, !!var) |> 
-    dplyr::rename(
-      x = E_KOORD,
-      y = N_KOORD,
-      population = !!var
-    ) |> 
-    # dplyr::mutate(year = as.numeric(year)) |> 
-    # sf::st_as_sf(coords = c("x", "y", "year"), dim = "XYZ") |> 
-    sf::st_as_sf(coords = c("x", "y"), dim = "XY") |>
-    sf::st_set_crs(value = crs) |> 
+  data <- readr::read_delim(
+    file,
+    delim = delim, 
+    col_select = c(RELI, E_KOORD, N_KOORD, !!var),
+    locale = readr::locale(encoding = "UTF-8")
+  ) |> 
+    dplyr::rename(population = !!var)
+  
+  data_stars <- 
+    data |> 
+    sf::st_as_sf(
+      coords = c("E_KOORD", "N_KOORD"), 
+      dim = "XY",
+      crs = sf::st_crs(crs)
+    ) |>
     stars::st_rasterize() 
+
+  return(data_stars)
+}
+
+
+read_bafu_shp <- function(file){
+  
+  file_to_read <- list.files(
+    destination_path, 
+    pattern = "\\.shp$", 
+    full.names = TRUE,
+    recursive = TRUE
+  )
+  data_sf <- sf::read_sf(file)
+  
+  return(data_sf)
+}
+
+
+read_single_pollutant_wcs <- function(coverage, na_value){
+
+  data <- coverage$getCoverage() %>% 
+    stars::st_as_stars() %>% 
+    sf::st_set_crs(value = 2056)
+  
+  divisor <- ifelse(stringr::str_detect(names(data), "jahre"), 1, 10)
+  divisor <- ifelse(stringr::str_detect(names(data), "eBC") & !stringr::str_detect(names(data), "jahre"), 100, divisor)
+  
+  data <- setNames(data, "value")
+  data <-
+    data %>% 
+    dplyr::mutate(
+      value = ifelse(value %in% na_value, NA, value),
+      value = value / divisor
+    )
+  
+  name <- gsub("\\d{4}|jahre|-", "",coverage$CoverageId)
+  
+  data <- setNames(data, name)
   
   return(data)
 }
 
 
+to_stack_df <- function(cov_stack){
+  
+  df <- purrr::map_df(cov_stack, ~data.frame(
+    pollutant = gsub("-jahre", "", gsub("^(.*)-.*", "\\1", .x$CoverageId)),
+    year = gsub(".*-(\\d{4})$", "\\1", .x$CoverageId),
+    layer_name = .x$CoverageId
+  )) |> 
+    dplyr::mutate(pollutant = gsub("pm-", "pm", pollutant))
+  
+  return(df)
+}
+
+
+get_swisstopo_metadata <- function(id){
+
+  metadata_url <- paste0("https://data.geo.admin.ch/api/stac/v0.9/collections/",id,"/items")
+  metadata <- rjson::fromJSON(file = metadata_url)
+  url <- unlist(purrr::map(metadata$features, function(x) x$assets[which(grepl("tiff", x$assets))][[1]]$href))
+
+  return(url)
+}
+
+
+get_bfs_metadata <- function(year){
+  
+  # derive dataset url
+  bfs_nr <- paste0("ag-b-00.03-vz", year, "statpop")
+  base_url <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets"
+  
+  # Use withr::with_envvar to set no_proxy environment variable
+  withr::with_envvar(
+    new = c("no_proxy" = "dam-api.bfs.admin.ch"),
+    code = {
+      # Build the request URL with the order number as a query parameter
+      response <- httr2::request(base_url) %>%
+        httr2::req_url_query(orderNr = bfs_nr) %>%
+        httr2::req_headers(
+          "accept" = "application/json",      # Ensure we accept JSON
+          "Content-Type" = "application/json" # Request content type is JSON
+        ) %>%
+        httr2::req_perform()
+      
+      # Parse the JSON response body into a list
+      data <- httr2::resp_body_json(response)
+    }
+  )
+  
+  links <- data[["data"]][[1]][["links"]]
+  download_url <- links[sapply(links, function(x) grepl("master", x$href))][[1]]$href
+  
+  return(download_url)
+}
+
+
+get_opendataswiss_metadata <- function(apiurl){
+  
+  req <- httr2::request(apiurl)
+  req_data <- httr2::req_perform(req)
+  metadata <- httr2::resp_body_json(req_data)$result        
+  links <- unlist(purrr::map(metadata$resources, function(x) x$url))
+  download_link <- links[stringr::str_detect(links, ".csv")]
+  
+  if (any(stringr::str_detect(download_link, "ostluft_emissionsbilanzen"))) { # since this dataset may contain different files from various submissions => use only the latest one
+    download_link <- download_link[which.max(extract_year(download_link))]
+  }
+  
+  return(download_link)
+}
+
+
+get_geolion_wfs_metadata <- function(apiurl, type = "ms:gem_grenzen", version = "2.0.0", crs = 2056){
+  
+  url <- httr2::url_parse(apiurl)
+  url$query <- list(service = "wfs",
+                    version = version,
+                    request = "GetFeature",
+                    typename = type, # "ms:gem_seen_grenzen",
+                    srsName = paste0("EPSG:", crs)
+  )
+  request <- httr2::url_build(url)
+  
+  return(request)
+}
+
+
+get_geolion_wcs_metadata <- function(wcs_stack, version = "2.0.1"){
+  
+  client <- ows4R::WCSClient$new(wcs_stack, serviceVersion = version)
+  cap <- client$getCapabilities()
+  cov <- cap$getCoverageSummaries()
+  cov_ids <- sapply(cov, function(x) x$CoverageId)
+  cov_list <- lapply(cov_ids, function(x) cap$findCoverageSummaryById(x))
+  
+  return(cov_list)
+}
+
+
+download_zip <- function(download_url, destination_path, file_filter = NULL){
+
+  temp <- tempfile(tmpdir = destination_path, fileext = ".zip")
+  
+  # if (!dir.exists(destination_path)) {dir.create(destination_path, recursive = TRUE)}
+
+  # op <- options(timeout = 1000,
+  #               download.file.method="curl",
+  #               download.file.extra = paste0('--noproxy "*"'))
+  # 
+  # on.exit(options(op))
+  
+  command <- paste0("curl ", download_url, " --output ", temp)
+  system(command, intern = TRUE)
+  
+  # which files are in there?
+  files <- unzip(temp, list = TRUE)
+  file <- files$Name[stringr::str_detect(files$Name, file_filter)]
+
+  # unzip specific file
+  unzip(temp, files = file, exdir = destination_path, junkpaths = TRUE)
+  
+  # delete temp zip
+  unlink(temp)
+}
+
+
+download_statpop_data <- function(year, destination_path, file_filter = NULL){
+  
+  download_url <- get_bfs_metadata(year)
+  download_zip(download_url, destination_path, file_filter)
+  
+}
 

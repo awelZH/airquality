@@ -1,131 +1,68 @@
+read_statpop_raster_data <- function(year, destination_path, boundary, crs = 2056){
 
-# read input files
-# ------------------------------------------------------------
-
-
-# function to read *.csv with air pollutant year-statistics exported from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
-read_monitoring_data_nabel_arias_csv <- function(file, keep_incomplete = FALSE, encoding = "latin1", tz = "Etc/GMT-1"){ 
+  # download zip
+  download_statpop_data(year, destination_path, file_filter = paste0("STATPOP", year, "\\.csv"))
   
-  locale <- readr::locale(encoding = encoding)
-  data <- readr::read_delim(file, delim =";", locale = locale)
-  col_names <- range(as.numeric(names(data)), na.rm = TRUE)
-  data <- dplyr::mutate_if(data, is.numeric, as.character)
-  data_long <- tidyr::pivot_longer(
-    data, 
-    cols = as.character(min(col_names):max(col_names)),
-    names_to = "starttime"
+  # read and georeference file
+  file_to_read <- list.files(
+    destination_path, 
+    pattern = paste0("STATPOP", year, "\\.csv"), 
+    full.names = TRUE,
+    recursive = TRUE
   )
-  data_long_clean <- 
-    data_long |> 
-    dplyr::mutate(
-      value = dplyr::case_when(
-        keep_incomplete ~ as.numeric(gsub("\\*|\\;", "", value)),
-        TRUE ~ as.numeric(value)
-      ),
-      interval = "y1",
-      Schadstoff = dplyr::case_when(
-        Messparameter == "höchster 98%-Wert eines Monats" ~ "O3_max_98p_m1",
-        Messparameter == "Anzahl Stundenmittel > 120 µg/m3" ~ "O3_nb_h1>120",
-        Messparameter == "Dosis AOT40f" ~ "O3_AOT40",
-        Schadstoff == "Partikelanzahl" ~ "PN",
-        Schadstoff == "EC / Russ" ~ "eBC",
-        TRUE ~ Schadstoff
-      ),
-      Einheit = ifelse(Einheit == "ppm·h", "ppm*h", Einheit),
-      starttime = as.POSIXct(paste0(starttime, "-01-01"), tz = "Etc/GMT-1"),
-      source = factor("NABEL (BAFU & Empa)")
-    ) |> 
-    dplyr::select(
-      starttime,
-      site = Station,
-      parameter = Schadstoff,
-      interval,
-      unit = Einheit,
-      value,
-      source
-    ) |> 
-    dplyr::mutate_if(is.character, as.factor)
+  data_stars <- read_statpop_csv(file_to_read, year, crs = crs)
   
-  return(data_long_clean)
+  # delete csv file
+  unlink(file_to_read)
+    
+  # crop to boundary
+  data_stars <- sf::st_crop(data_stars, boundary)
+
+  return(data_stars)
 }
 
 
-
-
-
-read_site_meta_nabel_arias_csv <- function(file, encoding = "latin1") {
+read_bafu_raster_data <- function(id, boundary, crs = 2056){
   
-  locale <- readr::locale(encoding = encoding)
-  meta <- readr::read_delim(file, delim =";", col_select = c("Station", "Ost Y", "Nord X", "Höhe", "Zonentyp", "Stationstyp"), locale = locale)
-  meta <- dplyr::distinct(meta, Station, `Ost Y`, `Nord X`, Höhe, Zonentyp, Stationstyp)
-  meta <- dplyr::mutate(meta, Zonentyp = tolower(Zonentyp))
-  meta <- dplyr::rename(meta, 
-                        site = Station,
-                        y = `Ost Y`,
-                        x = `Nord X`,
-                        masl = Höhe,
-                        zone = Zonentyp,
-                        type = Stationstyp
-  )
-  meta <- dplyr::mutate(meta,
-                        ifelse(zone == "vorstädtisch", "klein-/vorstädtisch", zone),
-                        site_long = site,
-                        source = "NABEL (BAFU & Empa)"
-  )
-  meta <- dplyr::select(meta, site, site_long, x, y, masl, zone, type, source)
-  
-  return(meta)
-}
-
-
-
-
-read_site_meta_ostluft_metadb_csv <- function(file, encoding = "UTF-8") {
-  
-  locale <- readr::locale(encoding = encoding)
-  meta <- readr::read_delim(file, delim =",", locale = locale)
-  meta <- 
-    meta |> 
-    dplyr::filter(msKT == "ZH" & !is.na(msNameAirMo) & !is.na(scSiedlungsgroesse) & !is.na(scVerkehrslage)) |>
-    dplyr::mutate(
-      site_long = paste(msOrt, msOrtsteil, sep = " - "),
-      scSiedlungsgroesse = stringr::str_trim(scSiedlungsgroesse),
-      scVerkehrslage = stringr::str_trim(scVerkehrslage)
-    ) |>
-    dplyr::select(msNameAirMo, site_long, spXCoord, spYCoord, spHoehe, scSiedlungsgroesse, scVerkehrslage) |> 
-    dplyr::rename(
-      site = msNameAirMo,
-      x = spXCoord,
-      y = spYCoord,
-      masl = spHoehe,
-      zone = scSiedlungsgroesse, 
-      type = scVerkehrslage
-    ) |> 
-    dplyr::mutate(
-      zone = recode_ostluft_meta_zone(zone),
-      type = recode_ostluft_meta_type(type),
-      source = "OSTLUFT"
-    ) 
-  
-  return(meta)
-}
-
-
-
-
-# function to read *.csv with air pollutant data from (internal) Airmo (OSTLUFT air quality database) export and restructure the data similar to a standard long-format (see rOstluft::format_rolf()); based on rOstluft::read_airmo_csv()
-read_monitoring_data_ostluft_airmo_csv <- function(file, encoding = "UTF-8", tz = "Etc/GMT-1", na.rm = TRUE){
-  
-  locale <- readr::locale(encoding = encoding)
-  header_cols <- readr::cols(X1 = readr::col_skip(), .default = readr::col_character())
-  data_cols <- readr::cols(X1 = readr::col_character(), .default = readr::col_double())
-  header <- readr::read_delim(file, ";", n_max = 10, col_types = header_cols, 
-                              col_names = FALSE, locale = locale, trim_ws = TRUE, progress = FALSE)
-  data <- readr::read_delim(file, ";", skip = 10, col_types = data_cols, 
-                            col_names = FALSE, locale = locale, trim_ws = TRUE, progress = FALSE)
-  header <- header[c(1, 4, 8, 7), ]
-  data <- restructure_airmo_wide_to_long2(header, data, tz, na.rm)
-  data <- dplyr::mutate(data, source = factor("OSTLUFT"))
+  download_url <- get_swisstopo_metadata(id)
+  years <- extract_year(download_url)
+  download_url <- setNames(download_url, years)
+ 
+  # FIXME: read_stars returns a curvilinear LV95 grid in this case which creates problems later on (?)
+  data <-
+    years |> 
+    as.character() |> 
+    purrr::map(function(yr) {
+      
+      data <- 
+        download_url[[yr]] |>
+        stars::read_stars() |>
+        sf::st_transform(crs = sf::st_crs(crs))
+      
+      names(data) <- "ndep_exmax" # FIXME: derive from data
+      
+      # crop to boundary
+      # FIXME regular grid workaround: 
+      data <- 
+        data |> 
+        tibble::as_tibble() |> 
+        stars::st_as_stars() |> 
+        sf::st_set_crs(value = crs) |> 
+        sf::st_crop(boundary)
+      
+      # convert to tibble
+      data <- 
+        data |> 
+        tibble::as_tibble() |> 
+        na.omit() |> 
+        dplyr::mutate(
+          year = as.numeric(yr),
+          source = "BAFU"
+        )
+      
+      return(data)
+    }) |> 
+    dplyr::bind_rows()
   
   return(data)
 }
@@ -134,6 +71,65 @@ read_monitoring_data_ostluft_airmo_csv <- function(file, encoding = "UTF-8", tz 
 
 
 
+
+
+read_opendataswiss <- function(url, source){
+  
+  read_url <- get_opendataswiss_metadata(url)
+  data <- purrr::map_df(read_url, function(x) readr::read_delim(x, delim = ","))
+  data <- dplyr::mutate(data, source = source)
+  
+  return(data)
+}
+
+
+read_local_csv <- function(file, delim = ";", locale = readr::locale(encoding = "latin1", tz = "Etc/GMT-1"), ...){
+  
+  data <- readr::read_delim(file, delim = delim, locale = locale, ...)
+  
+  return(data)
+}
+
+
+read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
+  
+  request <- get_geolion_wfs_metadata(apiurl, version = version, crs = crs)
+  data <- 
+    request |> 
+    sf::read_sf(type = 6) |> 
+    sf::st_transform(crs = sf::st_crs(crs))
+  
+  return(data)
+}
+
+
+read_geolion_wcs_stack <- function(cov_stack, layer_names, boundary, na_value = c(0, -999)){
+
+  cov_stack_filtered <- cov_stack[sapply(cov_stack, function(x) x$CoverageId %in% layer_names)]
+  data_list <- lapply(cov_stack_filtered, function(x) read_single_pollutant_wcs(x, na_value))
+  
+  list_names <- gsub("pm-", "pm", layer_names)
+  list_names <- gsub("jahre-", "", list_names)
+  names(data_list) <- list_names
+  
+  return(data_list)
+}
+
+
+filter_availability <- function(cov_stack, years_pollumap = 2015) {
+  
+  data_availability <- 
+    cov_stack |> 
+  to_stack_df() |> 
+    dplyr::filter(
+      (!stringr::str_detect(layer_name, "jahre") & as.numeric(year) %in% years_pollumap) | # only select pollumap for the year in which it calibrated with monitoring data
+        as.numeric(year) < lubridate::year(Sys.Date()) & # no future pollumap projections
+        stringr::str_detect(layer_name, "jahre") # apart from that: always use jahreskarte
+    ) |> 
+    dplyr::filter(pollutant != "bc") # no bc since this only available for pollumap
+  
+  return(data_availability)
+}
 
 
 

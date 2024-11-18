@@ -1,4 +1,4 @@
-vehicle_model_year;vehicle_type;vehicle_fuel_type;NOx_emission;unit;n;standarderror;NOx_emission_threshold_g_per_kg_fuel;source
+vehicle_model_year;vehicle_type;vehicle_fuel_type;nox_emission;unit;n;standarderror;nox_emission_threshold_g_per_kg_fuel;source
 1992;passenger car;gasoline;9.738206732028587;g/kg fuel;3079;0.26641741408610636;8.3;Kanton Zürich/AWEL
 1992;passenger car;diesel;NA;g/kg fuel;37;NA;20;Kanton Zürich/AWEL
 1992;light duty vehicle;gasoline;13.007170344866694;g/kg fuel;117;1.3453783696549024;8.3;Kanton Zürich/AWEL

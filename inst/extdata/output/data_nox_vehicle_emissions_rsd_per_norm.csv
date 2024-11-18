@@ -1,4 +1,4 @@
-vehicle_type;vehicle_fuel_type;vehicle_euronorm;NOx_emission;unit;n;standarderror;NOx_emission_threshold_g_per_kg_fuel;source
+vehicle_type;vehicle_fuel_type;vehicle_euronorm;nox_emission;unit;n;standarderror;nox_emission_threshold_g_per_kg_fuel;source
 passenger car;gasoline;Euro1;7.346390593498163;g/kg fuel;27696;0.07542509970928307;8.3;Kanton Zürich/AWEL
 passenger car;gasoline;Euro2;4.735010332249811;g/kg fuel;40481;0.05244395189830677;3.6;Kanton Zürich/AWEL
 passenger car;gasoline;Euro3;1.8446683597200668;g/kg fuel;39851;0.028063286885689508;2.6;Kanton Zürich/AWEL

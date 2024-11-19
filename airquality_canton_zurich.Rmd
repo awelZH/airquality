@@ -13,18 +13,7 @@ author: |
 ---
 
 ```{r setup, include = FALSE}
-update_data <- TRUE
-
-if (update_data) {
-
-  source("analyse_airquality.R", encoding = "UTF-8")
-  
-} else {
-
-  source("scripts/setup.R", encoding = "UTF-8")
-  source("scripts/plotting.R", encoding = "UTF-8")
-
-}
+ source("scripts/_plot_airquality.R", encoding = "UTF-8")
 
 knitr::opts_chunk$set(
   echo = FALSE,
@@ -37,35 +26,23 @@ knitr::opts_chunk$set(
 
 <!-- <img src="https://www.flickr.com/photos/labskaus/28962357157/sizes/k/" style='width: 1000px; position:absolute; top:0; left:0; padding:10px;'/> -->
 
-
 ## Erläuterungen
 
-Die hier präsentierten Auswertungen und Darstellungen stellen eine systematische Grundlage zur Beurteilung der [Luftqualität im Kanton Zürich](https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html) dar. 
-Diese auf [GitHub](https://github.com/) abgelegten Skripte der Programmiersprache [R](https://cran.r-project.org/) sollen die Auswerteschritte und verwendeten Grundlagendaten für Fachpersonen und die interessierte Öffentlichkeit transparent und nachvollziehbar dokumentieren. Die Ergebnisse sind die Grundlage für Darstellungen zur Luftqualität auf dem [Internetauftritt des Kanton Zürch](https://www.zh.ch/de/umwelt-tiere/luft-strahlung/daten-karten.html). Dabei steht die möglichst umfassende und direkte Nutzung [offener Behördendaten](https://www.zh.ch/de/politik-staat/opendata.html) im Zentrum des Prozesses. Quellen für die verwendeten Daten aus Messungen, Erhebungen und Modellierungen sind der [Kanton Zürich](https://www.zh.ch/de/politik-staat/statistik-daten/datenkatalog.html#/), [OSTLUFT - die Luftqualitätsüberwachung der Ostschweizer Kantone und des Fürstentums Liechtenstein](https://www.ostluft.ch), das [Nationale Beobachtungsnetz für Luftfremdstoffe NABEL](https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/nationales-beobachtungsnetz-fuer-luftfremdstoffe--nabel-.html), das [Bundesamt für Umwelt BAFU](https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/luftbelastung--modelle-und-szenarien.html) und das  [Bundesamt für Statistik BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/bevoelkerung/erhebungen/statpop.assetdetail.22406441.html). 
+Die hier präsentierten Auswertungen und Darstellungen stellen eine systematische Grundlage zur Beurteilung der [Luftqualität im Kanton Zürich](https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html) dar. Die Ergebnisse der Auswertungen sind als Datensätze abgelegt und bilden die Grundlage für Darstellungen zur Luftqualität auf dem [Internetauftritt des Kantons Zürch](#0). Quellen für die verwendeten Daten aus Messungen, Erhebungen und Berechnungen sind der [Kanton Zürich](#0), [Ostluft - die Luftqualitätsüberwachung der Ostschweizer Kantone und des Fürstentums Liechtenstein](#0), das [Nationale Beobachtungsnetz für Luftfremdstoffe NABEL](#0), das [Bundesamt für Umwelt BAFU](#0) und das [Bundesamt für Statistik BFS](#0).
 
+Ergebnis ist ein Portfolio an Daten und Darstellungen zu den Emissionen ausgewählter Luftschadstoffe, den entsprechenden Immissionen, das heisst Langzeitverläufe von Luftqualitätsmesswerten und die Expositionsverteilung der Wohnbevölkerung durch Luftschadstoffe sowie von empfindlichen Ökosystemen durch atmosphärische Einträge von reaktiven Stickstoffverbindungen.
 
-Wann immer möglich, wurden offene, maschinenlesbare Schnittstellen verwendet, um die aktuellsten Daten ohne eine zusätzliche, redundante Datenablage zu verwenden. Die Luftqualitätsmesswerte sowie Geodaten zur Wohnbevölkerung liegen zwar als öffentliche, frei verfügbare Daten vor, jedoch ohne maschinenlesbare Schnittstellen. Daher müssen die entsprechenden Datensätze noch im Rahmen dieser Auswertungen lokal abgelegt werden. Sobald auch hier offene, maschinenlesbare Schnittstellen vorliegen, werden diese anstatt lokaler Daten genutzt. Die Urheber der Daten werden immer angegeben.
+Teilweise wird die Luftqualität mit den [Immissionsgrenzwerten der Luftreinhalteverordnung](https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de) verglichen sowie zusätzlich mit den entsprechenden [Richtwerten der Weltgesundheitsorganisation WHO](https://www.who.int/publications/i/item/9789240034228). Die WHO-Richtwerte wurden im Jahr 2021 aufdatiert und drücken den gegenwärtigen Stand des Wissens zu gesundheitsschädlichen Auswirkungen durch Luftschadstoffe aus. Gemäss [Umweltschutzgesetzt](https://www.fedlex.admin.ch/eli/cc/1984/1122_1122_1122/de) sollten die Immissionsgrenzwerte vor jeglichen schädlichen Auswirkungen schützen, weshalb die [Eidgenössische Kommission für Lufthygiene EKL](https://www.ekl.admin.ch/de/eidgenoessische-kommission-fuer-lufthygiene-ekl) in einem [Bericht im Jahr 2023](https://www.ekl.admin.ch/inhalte/dateien/pdf/EKL-231120_de_orig.pdf) dem Bundesrat eine entsprechende Anpassung der Immissionsgrenzwerte empfohlen hat. Solange es also eine Diskrepanz zwischen Richt- und Grenzwerten gibt, wird sich die rechtliche Beurteilung der "Übermässigkeit der Immissionen" gemäss Luftreinhalteverordnung von der wissenschaftlichen Beurteilung zur Gesundheitsschädlichkeit der Immissionen gemäss WHO voneineander unterscheiden.
 
+Die Auswertungen werden jährlich nachgeführt, sobald alle benötigten Grundlagendaten veröffentlicht sind. Auf weitere fachliche Erläuterungen wird an dieser Stelle verzichtet.
 
-Ergebnis der Auswertungen ist ein Portfolio an Darstellungen zu den Emissionen von Luftschadstoffen, modellierten und an Messwerten kalibrierten Belastungskarten (hier dargestellt im 100 x 100m Raster), Langzeitverläufe von Luftqualitätsmesswerten (dargestellt nach lufthygienischen Standortklassen), die Expositionsverteilung der Wohnbevölkerung durch Luftschadstoffe sowie von empfindlichen Ökosystemen durch atmosphärische Stickstoffeinträge. 
-
-
-Teilweise wird die Luftqualität mit den [Immissionsgrenzwerten der Luftreinhalteverordnung](https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de) verglichen sowie zusätzlich mit den entsprechenden [Richtwerten der Weltgesundheitsorganisation WHO](https://www.who.int/publications/i/item/9789240034228). Die WHO-Richtwerte wurden im Jahr 2021 aufdatiert und drücken den gegenwärtigen Stand des Wissens zu gesundheitsschädlichen Auswirkungen durch Luftschadstoffe aus. Gemäss [Umweltschutzgesetzt](https://www.fedlex.admin.ch/eli/cc/1984/1122_1122_1122/de) sollten die Immissionsgrenzwerte vor jeglichen schädlichen Auswirkungen schützen, weshalb die [Eidgenössische Kommission für Lufthygiene EKL](https://www.ekl.admin.ch/de/eidgenoessische-kommission-fuer-lufthygiene-ekl) in einem [Bericht im Jahr 2023](https://www.ekl.admin.ch/inhalte/dateien/pdf/EKL-231120_de_orig.pdf) dem Bundesrat eine entsprechende Anpassung der Immissionsgrenzwerte empfohlen hat. Solange es also eine Diskrepanz zwischen Richt- und Grenzwerten gibt, wird sich die rechtliche Beurteilung der "Übermässigkeit der Immissionen" gemäss Luftreinhalteverordnung von der wissenschaftlichen Beurteilung zur Gesundheitsschädlichkeit der Immissionen gemäss WHO voneineander unterscheiden. 
-
-
-Die Auswertungen werden jährlich nachgeführt. Sie dienen als Blaupause für die entsprechenden  Darstellungen auf dem [Internetauftritt des Kanton Zürch](https://www.zh.ch/de/umwelt-tiere/luft-strahlung/daten-karten.html). Auf weitere fachliche Erläuterungen wird an dieser Stelle verzichtet. 
-
-
-
+Dieses auf [GitHub](https://github.com/awelZH/airquality) veröffentlichte Auswerteprojekt enthält Funktionen und Skripte in der Programmiersprache [R](https://cran.r-project.org/). Die Auswertungen ergänzen die Veröffentlichung [offener Behördendaten](https://www.zh.ch/de/politik-staat/opendata.html), indem die entsprechenden Grundlagendaten skriptbasiert verarbeitet und die Ergebnisse visualisiert werden. Somit wird die fachlich fundierte Auswertung zur Luftqualität im Kanton Zürich für Fachpersonen und die interessierte Öffentlichkeit transparent und reproduzierbar dokumentiert und zur Verfügung gestellt. Wann immer möglich, werden offene, maschinenlesbare Schnittstellen verwendet, um die aktuellsten Daten ohne eine zusätzliche, redundante Datenablage zu verwenden. Die Daten der Luftqualitätsmessnetze öffentlich und frei verfügbar, liegen jedoch noch ohne maschinenlesbare Schnittstelle vor. Daher müssen die entsprechenden Datensätze noch im Rahmen dieser Auswertungen lokal abgelegt werden. Die Urheber der Daten werden immer angegeben.
 
 ## Übersicht Luftqualitätsmesswerte
 
 ```{r threshold_comparison, fig.asp = 0.6}
 plots$airquality$monitoring$threshold_comparison
 ```
-
-
-
 
 ## Stickoxide
 
@@ -74,19 +51,13 @@ plots$airquality$monitoring$threshold_comparison
 #### Absolutwerte
 
 ```{r emission_NOx_absolute}
-plots$emissions$NOx$absolute
+plots$emissions$absolute$NOx
 ```
 
 #### Relativwerte
 
 ```{r emission_NOx_relative}
-plots$emissions$NOx$relative
-```
-
-#### Karte
-
-```{r emission_NOx_map, fig.width = 12}
-plots$emissions$NOx$map
+plots$emissions$relative$NOx
 ```
 
 ### Abgasmessungen NOx {.tabset}
@@ -106,517 +77,121 @@ plots$emissions$NOx$rsd_yearmodel
 #### durchschnittlicher Flottenausstoss
 
 ```{r emission_NOx_RSD_timeseries, fig.width = 7, fig.asp = 0.7}
-plots$emissions$NOx$rsd_timeseries
+plots$emissions$NOx$rsd_yearmeas
 ```
 
 ### Luftqualitätsmesswerte NO2
 
 ```{r monitoring_NO2}
-plots$airquality$monitoring$NO2$y1_timeseries
+plots$airquality$monitoring$timeseries$NO2
 ```
 
-### Belastungskarten NO2 {.tabset}
+<!-- ### Belastungskarten NO2 {.tabset} -->
 
-#### 2020
+<!-- #### 2020 -->
 
-```{r map_NO2_2020, fig.asp = 0.7}
-plots$airquality$maps$NO2$`2020`
-```
+<!-- ```{r map_NO2_2020, fig.asp = 0.7} -->
+<!-- plots$airquality$maps$NO2$`2020` -->
+<!-- ``` -->
 
-#### 2015
+<!-- #### 2015 -->
 
-```{r map_NO2_2015, fig.asp = 0.7}
-plots$airquality$maps$NO2$`2015`
-```
+<!-- ```{r map_NO2_2015, fig.asp = 0.7} -->
+<!-- plots$airquality$maps$NO2$`2015` -->
+<!-- ``` -->
 
 ### Verteilung Bevölkerungsexposition NO2 {.tabset}
 
-#### Absolutwerte {.tabset}
+#### Absolutwerte pro Jahr {.tabset}
+
+##### 2023
+
+```{r expo_NO2_dist_2023}
+plots$exposition$hist$NO2$"2023"
+```
+
+##### 2022
+
+```{r expo_NO2_dist_2022}
+plots$exposition$hist$NO2$"2022"
+```
+
+##### 2021
+
+```{r expo_NO2_dist_2021}
+plots$exposition$hist$NO2$"2021"
+```
 
 ##### 2020
 
 ```{r expo_NO2_dist_2020}
-plots$exposition$NO2$distribution$`2020`
+plots$exposition$hist$NO2$"2015"
 ```
 
 ##### 2015
 
 ```{r expo_NO2_dist_2015}
-plots$exposition$NO2$distribution$`2015`
+plots$exposition$hist$NO2$"2015"
 ```
 
-#### Relativtwerte {.tabset}
 
-##### 2020
+#### Relativtwerte alle Jahre
 
-```{r expo_NO2_cum_2020}
-plots$exposition$NO2$cumulative$`2020`
+
+```{r expo_NO2_dist_cum}
+plots$exposition$cumul$NO2$alle
 ```
 
-##### 2015
 
-```{r expo_NO2_cum_2015}
-plots$exposition$NO2$cumulative$`2015`
-```
 
 ### Bevölkerungsgewichtetes Mittel NO2 {.tabset}
+
+#### 2023
+
+```{r expo_NO2_popmean_2023, fig.asp = 0.7}
+plots$exposition$population_weighted_mean$NO2$"2023"
+```
+
+#### 2022
+
+```{r expo_NO2_popmean_2022, fig.asp = 0.7}
+plots$exposition$population_weighted_mean$NO2$"2022"
+```
+
+#### 2021
+
+```{r expo_NO2_popmean_2021, fig.asp = 0.7}
+plots$exposition$population_weighted_mean$NO2$"2021"
+```
 
 #### 2020
 
 ```{r expo_NO2_popmean_2020, fig.asp = 0.7}
-plots$exposition$NO2$population_weighted_mean$`2020`
+plots$exposition$population_weighted_mean$NO2$"2020"
 ```
 
 #### 2015
 
 ```{r expo_NO2_popmean_2015, fig.asp = 0.7}
-plots$exposition$NO2$population_weighted_mean$`2015`
+plots$exposition$population_weighted_mean$NO2$"2015"
 ```
-
-
 
 
 
 ## Feinstaub PM2.5
 
-### Emissionsbilanzierung {.tabset}
-
-#### Absolutwerte
-
-```{r emission_PM25_absolute}
-plots$emissions$PM2.5$absolute
-```
-
-#### Relativwerte
-
-```{r emission_PM25_relative}
-plots$emissions$PM2.5$relative
-```
-
-#### Karte
-
-```{r emission_PM25_map, fig.width = 12}
-plots$emissions$PM2.5$map
-```
-
-### Luftqualitätsmesswerte
-
-```{r monitoring_PM25}
-plots$airquality$monitoring$PM2.5$y1_timeseries
-```
-
-### Belastungskarten {.tabset}
-
-#### 2020
-
-```{r map_PM25_2020, fig.asp = 0.7}
-plots$airquality$maps$PM2.5$`2020`
-```
-
-#### 2015
-
-```{r map_PM25_2015, fig.asp = 0.7}
-plots$airquality$maps$PM2.5$`2015`
-```
-
-### Verteilung Bevölkerungsexposition {.tabset}
-
-#### Absolutwerte {.tabset}
-
-##### 2020
-
-```{r expo_PM25_dist_2020}
-plots$exposition$PM2.5$distribution$`2020`
-```
-
-##### 2015
-
-```{r expo_PM25_dist_2015}
-plots$exposition$PM2.5$distribution$`2015`
-```
-
-#### Relativtwerte {.tabset}
-
-##### 2020
-
-```{r expo_PM25_cum_2020}
-plots$exposition$PM2.5$cumulative$`2020`
-```
-
-##### 2015
-
-```{r expo_PM25_cum_2015}
-plots$exposition$PM2.5$cumulative$`2015`
-```
-
-### Bevölkerungsgewichtetes Mittel {.tabset}
-
-#### 2020
-
-```{r expo_PM25_popmean_2020, fig.asp = 0.7}
-plots$exposition$PM2.5$population_weighted_mean$`2020`
-```
-
-#### 2015
-
-```{r expo_PM25_popmean_2015, fig.asp = 0.7}
-plots$exposition$PM2.5$population_weighted_mean$`2015`
-```
-
-
-
-
-
-
 ## Feinstaub PM10
-
-### Emissionsbilanzierung {.tabset}
-
-#### Absolutwerte
-
-```{r emission_PM10_absolute}
-plots$emissions$PM10$absolute
-```
-
-#### Relativwerte
-
-```{r emission_PM10_relative}
-plots$emissions$PM10$relative
-```
-
-#### Karte
-
-```{r emission_PM10_map, fig.width = 12}
-plots$emissions$PM10$map
-```
-
-### Luftqualitätsmesswerte
-
-```{r monitoring_PM10}
-plots$airquality$monitoring$PM10$y1_timeseries
-```
-
-### Belastungskarten {.tabset}
-
-#### 2020
-
-```{r map_PM10_2020, fig.asp = 0.7}
-plots$airquality$maps$PM10$`2020`
-```
-
-#### 2015
-
-```{r map_PM10_2015, fig.asp = 0.7}
-plots$airquality$maps$PM10$`2015`
-```
-
-### Verteilung Bevölkerungsexposition {.tabset}
-
-#### Absolutwerte {.tabset}
-
-##### 2020
-
-```{r expo_PM10_dist_2020}
-plots$exposition$PM10$distribution$`2020`
-```
-
-##### 2015
-
-```{r expo_PM10_dist_2015}
-plots$exposition$PM10$distribution$`2015`
-```
-
-#### Relativtwerte {.tabset}
-
-##### 2020
-
-```{r expo_PM10_cum_2020}
-plots$exposition$PM10$cumulative$`2020`
-```
-
-##### 2015
-
-```{r expo_PM10_cum_2015}
-plots$exposition$PM10$cumulative$`2015`
-```
-
-### Bevölkerungsgewichtetes Mittel {.tabset}
-
-#### 2020
-
-```{r expo_PM10_popmean_2020, fig.asp = 0.7}
-plots$exposition$PM10$population_weighted_mean$`2020`
-```
-
-#### 2015
-
-```{r expo_PM10_popmean_2015, fig.asp = 0.7}
-plots$exposition$PM10$population_weighted_mean$`2015`
-```
-
-
-
-
 
 ## Russ im Feinstaub
 
-### Emissionsbilanzierung {.tabset}
-
-#### Absolutwerte
-
-```{r emission_eBC_absolute}
-plots$emissions$eBC$absolute
-```
-
-#### Relativwerte
-
-```{r emission_eBC_relative}
-plots$emissions$eBC$relative
-```
-
-#### Karte
-
-```{r emission_eBC_map, fig.width = 12}
-plots$emissions$eBC$map
-```
-
-### Belastungskarten {.tabset}
-
-#### 2020
-
-```{r map_eBC_2020, fig.asp = 0.7}
-plots$airquality$maps$eBC$`2020`
-```
-
-#### 2015
-
-```{r map_eBC_2015, fig.asp = 0.7}
-plots$airquality$maps$eBC$`2015`
-```
-
-### Verteilung Bevölkerungsexposition {.tabset}
-
-#### Absolutwerte {.tabset}
-
-##### 2020
-
-```{r expo_eBC_dist_2020}
-plots$exposition$eBC$distribution$`2020`
-```
-
-##### 2015
-
-```{r expo_eBC_dist_2015}
-plots$exposition$eBC$distribution$`2015`
-```
-
-#### Relativtwerte {.tabset}
-
-##### 2020
-
-```{r expo_eBC_cum_2020}
-plots$exposition$eBC$cumulative$`2020`
-```
-
-##### 2015
-
-```{r expo_eBC_cum_2015}
-plots$exposition$eBC$cumulative$`2015`
-```
-
-### Bevölkerungsgewichtetes Mittel {.tabset}
-
-#### 2020
-
-```{r expo_eBC_popmean_2020, fig.asp = 0.7}
-plots$exposition$eBC$population_weighted_mean$`2020`
-```
-
-#### 2015
-
-```{r expo_eBC_popmean_2015, fig.asp = 0.7}
-plots$exposition$eBC$population_weighted_mean$`2015`
-```
-
-
-
-
-
-
 ## Ozon
-
-### Luftqualitätsmesswerte 
-
-```{r monitoring_O3_98p}
-plots$airquality$monitoring$O3$`max_98p_m1_timeseries`
-```
-
-```{r monitoring_O3_peakseason}
-plots$airquality$monitoring$O3$`peak-season_timeseries`
-```
-
-### Belastungskarten {.tabset}
-
-#### 2020
-
-#### 2015
-
-### Verteilung Bevölkerungsexposition {.tabset}
-
-#### Absolutwerte {.tabset}
-
-##### 2020
-
-##### 2015
-
-#### Relativtwerte {.tabset}
-
-##### 2020
-
-##### 2015
-
-### Bevölkerungsgewichtetes Mittel {.tabset}
-
-#### 2020
-
-#### 2015
-
-
-
-
-
 
 ## Ammoniak
 
 ### Emissionsbilanzierung {.tabset}
 
-#### Absolutwerte
-
-```{r emission_NH3_absolute}
-plots$emissions$NH3$absolute
-```
-
-#### Relativwerte
-
-```{r emission_NH3_relative}
-plots$emissions$NH3$relative
-```
-
-#### Karte
-
-```{r emission_NH3_map, fig.width = 12}
-plots$emissions$NH3$map
-```
-
-### Belastungskarten {.tabset}
-
-#### 2020
-
-```{r map_NH3_2020, fig.asp = 0.7}
-plots$airquality$maps$NH3$`2020`
-```
-
-
-
-
-
-## Stickstoffeinträge
-
-### Messwerte {.tabset}
-
-#### Langzeitmessreihe am Bachtel
-
-```{r monitoring_Ndep_Bachtel, fig.asp = 0.7}
-plots$airquality$monitoring$Ndep$Bachtel_timeseries
-```
-
-#### Messreihen seit dem Jahr 2019
-
-```{r monitoring_Ndep_all, fig.asp = 0.7}
-plots$airquality$monitoring$Ndep$all
-```
-
-### Belastungskarten {.tabset}
-
-#### 2020
-
-```{r map_Ndep_2020, fig.asp = 0.7}
-plots$airquality$maps$nitrogen_deposition$`2020`
-```
-
-### Exposition empfindlicher Ökosysteme durch Stickstoffeinträge {.tabset}
-
-#### Absolutwerte {.tabset}
-
-##### 2020
-
-```{r expo_Ndep_dist_2020}
-plots$exposition$Ndep$distribution$`2020`
-```
-
-#### Relativtwerte {.tabset}
-
-##### 2020
-
-```{r expo_Ndep_cum_2020}
-plots$exposition$Ndep$cumulative$`2020`
-```
-
-
-
-
-
+## Stickstoffeinträge in empfindliche Ökosysteme
 
 ## Schwefeldioxid
 
-### Emissionsbilanzierung {.tabset}
-
-#### Absolutwerte
-
-```{r emission_SO2_absolute}
-plots$emissions$SO2$absolute
-```
-
-#### Relativwerte
-
-```{r emission_SO2_relative}
-plots$emissions$SO2$relative
-```
-
-#### Karte
-
-```{r emission_SO2_map, fig.width = 12}
-plots$emissions$SO2$map
-```
-
-
-
-
-
-
-
-## Flüchtige org. Verbindungen
-
-### Emissionsbilanzierung {.tabset}
-
-#### Absolutwerte
-
-```{r emission_NMVOC_absolute}
-plots$emissions$NMVOC$absolute
-```
-
-#### Relativwerte
-
-```{r emission_NMVOC_relative}
-plots$emissions$NMVOC$relative
-```
-
-#### Karte
-
-```{r emission_NMVOC_map, fig.width = 12}
-plots$emissions$NMVOC$map
-```
-
-
-
-
+## Flüchtige organische Verbindungen

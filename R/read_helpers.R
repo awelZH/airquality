@@ -1,3 +1,10 @@
+#' Read *.csv from BFS statpop
+#'
+#' @param file 
+#' @param year 
+#' @param crs 
+#'
+#' @keywords internal
 read_statpop_csv <- function(file, year, crs = 2056) {
 
   var <- ifelse(as.numeric(year) > 2022, "BBTOT", paste0("B", year %% 100, "BTOT")) #FIXME: derive from data itself 
@@ -24,6 +31,11 @@ read_statpop_csv <- function(file, year, crs = 2056) {
 }
 
 
+#' Read *.shp from swisstopo / BAFU
+#'
+#' @param file 
+#'
+#' @keywords internal
 read_bafu_shp <- function(file){
   
   file_to_read <- list.files(
@@ -38,6 +50,12 @@ read_bafu_shp <- function(file){
 }
 
 
+#' read wcs layer from geolion
+#'
+#' @param coverage 
+#' @param na_value 
+#'
+#' @keywords internal
 read_single_pollutant_wcs <- function(coverage, na_value){
 
   data <- coverage$getCoverage() %>% 
@@ -63,6 +81,11 @@ read_single_pollutant_wcs <- function(coverage, na_value){
 }
 
 
+#' Convert wcs geolion coverage list to a data.frame
+#'
+#' @param cov_stack 
+#'
+#' @keywords internal
 to_stack_df <- function(cov_stack){
   
   df <- purrr::map_df(cov_stack, ~data.frame(
@@ -76,6 +99,11 @@ to_stack_df <- function(cov_stack){
 }
 
 
+#' Get dataset metadata from swisstopo api
+#'
+#' @param id 
+#'
+#' @keywords internal
 get_swisstopo_metadata <- function(id){
 
   metadata_url <- paste0("https://data.geo.admin.ch/api/stac/v0.9/collections/",id,"/items")
@@ -86,6 +114,11 @@ get_swisstopo_metadata <- function(id){
 }
 
 
+#' Get dataset metadata from BFS api
+#'
+#' @param year 
+#'
+#' @keywords internal
 get_bfs_metadata <- function(year){
   
   # derive dataset url
@@ -117,6 +150,11 @@ get_bfs_metadata <- function(year){
 }
 
 
+#' Get dataset metadata from opendata.swiss api
+#'
+#' @param apiurl 
+#'
+#' @keywords internal
 get_opendataswiss_metadata <- function(apiurl){
   
   req <- httr2::request(apiurl)
@@ -133,6 +171,14 @@ get_opendataswiss_metadata <- function(apiurl){
 }
 
 
+#' Get wfs dataset metadata from Canton Zurich geolion api
+#'
+#' @param apiurl 
+#' @param type 
+#' @param version 
+#' @param crs 
+#'
+#' @keywords internal
 get_geolion_wfs_metadata <- function(apiurl, type = "ms:gem_grenzen", version = "2.0.0", crs = 2056){
   
   url <- httr2::url_parse(apiurl)
@@ -148,6 +194,12 @@ get_geolion_wfs_metadata <- function(apiurl, type = "ms:gem_grenzen", version = 
 }
 
 
+#' Get wcs dataset metadata from Canton Zurich geolion api
+#'
+#' @param wcs_stack 
+#' @param version 
+#'
+#' @keywords internal
 get_geolion_wcs_metadata <- function(wcs_stack, version = "2.0.1"){
   
   client <- ows4R::WCSClient$new(wcs_stack, serviceVersion = version)
@@ -160,6 +212,13 @@ get_geolion_wcs_metadata <- function(wcs_stack, version = "2.0.1"){
 }
 
 
+#' Download *.zip into tempfile & unzip & delete
+#'
+#' @param download_url 
+#' @param destination_path 
+#' @param file_filter 
+#'
+#' @keywords internal
 download_zip <- function(download_url, destination_path, file_filter = NULL){
 
   temp <- tempfile(tmpdir = destination_path, fileext = ".zip")
@@ -187,6 +246,13 @@ download_zip <- function(download_url, destination_path, file_filter = NULL){
 }
 
 
+#' Download statpop *.zip from BFS api
+#'
+#' @param year 
+#' @param destination_path 
+#' @param file_filter 
+#'
+#' @keywords internal
 download_statpop_data <- function(year, destination_path, file_filter = NULL){
   
   download_url <- get_bfs_metadata(year)

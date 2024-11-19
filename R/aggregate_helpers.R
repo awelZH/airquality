@@ -1,4 +1,13 @@
 
+#' General function do aggregate some statistics from long data 
+#'
+#' @param data 
+#' @param y 
+#' @param groups 
+#' @param nmin 
+#' @param perc 
+#'
+#' @keywords internal
 aggregate_groups <- function(data, y, groups, nmin = 3, perc = list(ymin = 0.05, lower = 0.25, middle = 0.5, upper = 0.75, ymax = 0.95)) {
   
   data <-
@@ -37,6 +46,13 @@ aggregate_groups <- function(data, y, groups, nmin = 3, perc = list(ymin = 0.05,
 }
 
 
+#' Merge groups with small emissions in emission budget datasets
+#'
+#' @param data 
+#' @param threshold_fraction 
+#' @param first 
+#'
+#' @keywords internal
 groups_emission_subsector <- function(data, threshold_fraction = 0.02, first = 1:3) {
   
   # mean emissions per category over all years
@@ -109,6 +125,15 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.02, first = 1
 }
 
 
+#' Aggregate emissions from RSD dataset using some statistical functions
+#'
+#' @param data 
+#' @param meta 
+#' @param y 
+#' @param groups 
+#' @param nmin 
+#'
+#' @keywords internal
 aggregate_rsd <- function(data, meta, y = "nox_emission", groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm"), nmin = 50) {
   
   if ("year" %in% groups) {
@@ -156,6 +181,11 @@ aggregate_rsd <- function(data, meta, y = "nox_emission", groups = c("vehicle_ty
 }
 
 
+#' Merge components of nitrogen deposition to broader source categories in nitrogen deposition dataset
+#'
+#' @param data 
+#'
+#' @keywords internal
 simplify_nitrogen_parameters <- function(data) {
   
   data <-
@@ -181,6 +211,11 @@ simplify_nitrogen_parameters <- function(data) {
 }
 
 
+#' Calculate concentration bins for exposition assessment
+#'
+#' @param data 
+#'
+#' @keywords internal
 bin_concentration <- function(data) {
   
   fun <- bin_fun(unique(data$pollutant))
@@ -190,6 +225,12 @@ bin_concentration <- function(data) {
 }
 
 
+#' Calculate population weighted mean concentration for exposition assessment
+#'
+#' @param concentration 
+#' @param population 
+#'
+#' @keywords internal
 calc_population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
 
 

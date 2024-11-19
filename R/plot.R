@@ -1,20 +1,26 @@
 
-
-
-
-### -----------------------------------------------
-### for plotting with ggplot
-### -----------------------------------------------
-
-
-### function to plot standard timeseries of yearly values
+#' Plot timeseries yearly data using ggplot2
+#'
+#' @param data 
+#' @param mapping 
+#' @param ylims 
+#' @param ybreaks 
+#' @param titlelab 
+#' @param captionlab 
+#' @param pointshape 
+#' @param pointsize 
+#' @param threshold 
+#' @param theme 
+#'
+#' @keywords internal
 ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = value, color = siteclass), ylims = c(0,NA), ybreaks = waiver(), titlelab = NULL, captionlab = NULL, pointshape = 19, pointsize = 2,
                               threshold = list(value = NA, color = "gray30", label = NULL, labelsize = 4, linetype = 2, linesize = 1), 
                               theme = ggplot2::theme_minimal()) {
-  
+
   plot <- 
     ggplot2::ggplot(data, mapping = mapping) + 
     ggplot2::geom_point(size = pointsize, shape = pointshape) +
+    # ggiraph::geom_point_interactive(mapping = ggplot2::aes(data_id = site, tooltip = round_off(value, 1)), size = pointsize, shape = pointshape) +
     ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = ylims, breaks = ybreaks, expand = c(0.01,0.01)) +
     titlelab +
@@ -30,13 +36,30 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = value, 
                          hjust = 0, vjust = 0, nudge_y = pmax(0, 0.01 * max(ylims), na.rm = TRUE), inherit.aes = FALSE)
   }
   
+  # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 4) 
+  
   return(plot)
 }
 
 
 
 
-### function to plot exposition distribution histogram
+#' Plot exposition distribution histogram using ggplot2
+#'
+#' @param data 
+#' @param x 
+#' @param y 
+#' @param barwidth 
+#' @param xlims 
+#' @param xbreaks 
+#' @param titlelab 
+#' @param captionlab 
+#' @param xlabel 
+#' @param threshold 
+#' @param fill_scale 
+#' @param theme 
+#'
+#' @keywords internal
 ggplot_expo_hist <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks = waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
                              threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
                              fill_scale = NULL, theme = ggplot2::theme_minimal()) {
@@ -74,7 +97,22 @@ ggplot_expo_hist <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks 
 
 
 
-### function to plot relative cumulative exposition distribution
+### function to 
+#' Plot relative cumulative exposition distribution using ggplot2
+#'
+#' @param data 
+#' @param x 
+#' @param y 
+#' @param linewidth 
+#' @param xlims 
+#' @param xbreaks 
+#' @param titlelab 
+#' @param captionlab 
+#' @param xlabel 
+#' @param threshold 
+#' @param theme 
+#'
+#' @keywords internal
 ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), xbreaks = waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
                                    threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
                                    theme = ggplot2::theme_minimal()) {
@@ -105,7 +143,16 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
 
 
 
-### function to ggplot emissions employing structured coloring... this is not ideal, but the best I can do
+#' Plot emission budget data employing structured coloring using ggplot2 ... this is not ideal, but the best I can do
+#'
+#' @param data 
+#' @param cols 
+#' @param relative 
+#' @param pos 
+#' @param width 
+#' @param theme 
+#'
+#' @keywords internal
 ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width = 0.8, theme = ggplot2::theme_minimal()) {
 
   pollutant <- unique(as.character(data$pollutant))
@@ -142,7 +189,8 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
   plot <-
     data |>
     ggplot2::ggplot(aes(x = year, y = emission, fill = subsector_new)) +
-    ggplot2::geom_bar(stat = "identity", position = pos, width = width) + 
+    ggplot2::geom_bar(stat = "identity", position = pos, width = width) +
+    # ggiraph::geom_bar_interactive(mapping = ggplot2::aes(data_id = subsector_new, tooltip = round_off(emission, 1)), stat = "identity", position = pos, width = width) +
     yscale +
     ggplot2::scale_fill_manual(values = setNames(data$col, data$subsector_new)) +
     theme +
@@ -153,12 +201,19 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
     ) +
     ggplot2::labs(caption = "Quelle: Ostluft, Grundlage: EMIS Schweiz")
   
+  # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 3)
+  
   return(plot)
 }
 
 
 
 
+#' Provide official colors for plotting air quality raster data
+#'
+#' @param ... 
+#'
+#' @keywords internal
 immission_colorscale <- function(...) {
   cols <- c("#004DA8", "#005ce6", "#0070ff", "#00c5ff", "#47d9fa", "#56f9fb", "#2e9c6b", "#38bd00", "#56d900", 
             "#51f551", "#ffff00", "#ffd400", "#ffa300", "#ff5200", "#ff0000", "#ff0094", "#de00a1", "#c500ba")
@@ -166,6 +221,12 @@ immission_colorscale <- function(...) {
 }
 
 
+
+#' Wrapper to supply pollutant-specific raster data color scales for ggplot2
+#'
+#' @param parameter 
+#'
+#' @keywords internal
 immissionscale <- function(parameter) {
   switch(parameter,
          NO2 = immission_colorscale(limits = c(0,50), breaks = seq(0,50,10), name = "NO2\n(µg/m3)"),
@@ -178,6 +239,13 @@ immissionscale <- function(parameter) {
   )
 }
 
+
+
+#' Wrapper to supply pollutant-specific list of parameters for timeseries plotting
+#'
+#' @param parameter 
+#'
+#' @keywords internal
 timeseriespars <- function(parameter) {
   switch(parameter,
          NO2 = list(ylim = c(0,70), ybreaks = seq(0,70,10), metric = "Jahresmittel", thresh = extract_threshold(immission_threshold_values, pollutant = "NO2")),
@@ -188,6 +256,13 @@ timeseriespars <- function(parameter) {
   )
 }
 
+
+
+#' Wrapper to supply pollutant-specific list of parameters for exposition plotting
+#'
+#' @param parameter 
+#'
+#' @keywords internal
 expositionpars <- function(parameter) {
   switch(parameter,
          NO2 = list(barwidth = 1, xbreaks = seq(0,90,10), aggregation = "y1", metric = "mean"),
@@ -200,6 +275,12 @@ expositionpars <- function(parameter) {
 }
 
 
+#' Wrapper to plot timeseries yearly data using ggplot2 providing pollutant-specific list
+#'
+#' @param data 
+#' @param parameters 
+#'
+#' @keywords internal
 plot_pars_monitoring_timeseries <- function(data, parameters) {
   
   plots <- 
@@ -225,6 +306,16 @@ plot_pars_monitoring_timeseries <- function(data, parameters) {
 
 
 
+#' Plot yearly nitrogen deposition timeseries using ggplot2
+#'
+#' @param data 
+#' @param xlim 
+#' @param xbreaks 
+#' @param linewidth 
+#' @param color 
+#' @param title 
+#'
+#' @keywords internal
 plot_timeseries_ndep_bars <- function(data, xlim = NULL, xbreaks = waiver(), linewidth = 1, color = "red3", title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme") {
   
   cln <- 
@@ -258,6 +349,12 @@ plot_timeseries_ndep_bars <- function(data, xlim = NULL, xbreaks = waiver(), lin
 
 
 
+#' Wrapper to plot pollutant-specific population exposition histograms in a nested list by pollutant & year
+#'
+#' @param parameter 
+#' @param data 
+#'
+#' @keywords internal
 plot_all_expo_hist <- function(parameter, data) {
 
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
@@ -283,6 +380,12 @@ plot_all_expo_hist <- function(parameter, data) {
 
 
 
+#' Wrapper to plot pollutant-specific cumulated population exposition distribution in a nested list by pollutant & year
+#'
+#' @param parameter 
+#' @param data 
+#'
+#' @keywords internal
 plot_all_expo_cumul <- function(parameter, data) {
 
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
@@ -307,17 +410,26 @@ plot_all_expo_cumul <- function(parameter, data) {
 
 
 
+#' Wrapper to plot pollutant-specific population weighted mean maps by municipality in a nested list by pollutant & year
+#'
+#' @param parameter 
+#' @param data 
+#' @param data_canton 
+#'
+#' @keywords internal
 plot_all_popweighmean_maps <- function(parameter, data, data_canton) {
 
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   years_exposition <- years_exposition[!is.na(years_exposition)]
   plots <- lapply(years_exposition, function(year) {
-    
+
     canton <- round_off(dplyr::pull(dplyr::filter(data_canton, year == !!year & pollutant == !!parameter), "population_weighted_mean"), 1)
-    data |> 
+    plot <- 
+      data |> 
       dplyr::filter(year == !!year & pollutant == !!parameter) |> 
       ggplot2::ggplot(ggplot2::aes(fill = population_weighted_mean)) +
-      ggplot2::geom_sf() + 
+      ggplot2::geom_sf() +
+      # ggiraph::geom_sf_interactive(mapping = ggplot2::aes(data_id = gemeindename, tooltip = paste0(gemeindename, ", ", round_off(population_weighted_mean, 1)))) +
       ggplot2::coord_sf(datum = sf::st_crs(crs)) +
       immissionscale(parameter) +
       theme_map +
@@ -327,6 +439,9 @@ plot_all_popweighmean_maps <- function(parameter, data, data_canton) {
       ) +
       ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
     
+    # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 5, options = list(ggiraph::opts_hover_inv(css = "opacity:0.5;")))
+    
+    return(plot)
   })
   
   return(plots)
@@ -334,6 +449,12 @@ plot_all_popweighmean_maps <- function(parameter, data, data_canton) {
 
 
 
+#' Wrapper to plot sensitive ecosystem nitrogen deposition exposition histograms in a list by year
+#'
+#' @param data 
+#' @param threshold_ndep 
+#'
+#' @keywords internal
 plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
 
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
@@ -359,6 +480,12 @@ plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
 
 
 
+#' Wrapper to plot sensitive ecosystem nitrogen deposition cumulative exposition distribution in a list by year
+#'
+#' @param data 
+#' @param threshold_ndep 
+#'
+#' @keywords internal
 plot_all_expo_cumul_ndep <- function(data, threshold_ndep) {
 
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
@@ -383,6 +510,13 @@ plot_all_expo_cumul_ndep <- function(data, threshold_ndep) {
 }
 
 
+
+#' Merge air pollution dataset with corresponding threshold limit values dataset
+#'
+#' @param data 
+#' @param threshold_values 
+#'
+#' @keywords internal
 combine_thresholds <- function(data, threshold_values) {
   
   data <- 

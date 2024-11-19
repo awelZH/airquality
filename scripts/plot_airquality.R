@@ -1,6 +1,8 @@
-
+# setup plotting
+# ---
 # setup analysis: load libraries & functions & read map boundaries data
 source("scripts/_setup.R", encoding = "UTF-8")
+
 
 # list of output data sources for plotting
 ressources_plotting <-
@@ -23,6 +25,7 @@ ressources_plotting <-
     )
   )
 
+
 # data subsetting parameters
 years <- 1995:(lubridate::year(Sys.Date()) - 1) # years to consider for plotting 
 n_years <- 3 # consider last 3 years for plotting relative threshold comparison    
@@ -31,14 +34,16 @@ parameters_exposition <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "eBC") # par
 siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
                           "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
 
+
 # plotting size parameters
-basesize <- 12 # ggplot theme base_size
+basesize <- 11 # ggplot theme base_size
 pointsize <- 2 # size of point markers
 linewidth <- 1 # width of lines
 
+
 # read LRV legal threshold limit values & WHO air quality guideline values
-immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8"))
-update_log(10)
+immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8")); update_log(10)
+
 
 # add plotting parameter to LRV threshold limit values & WHO air quality guideline values
 col_lrv <- "red3" # color of LRV threshold value
@@ -62,6 +67,7 @@ threshold_ndep <- extract_threshold(dplyr::filter(immission_threshold_values, so
 threshold_ndep$value <- 0
 threshold_ndep$labels <- "kritische Eintragsrate CLN"
 
+
 # colors and color scales
 scale_fill_siteclass <- 
   ggplot2::scale_fill_manual(name = "Standortklasse", values = c(
@@ -83,9 +89,10 @@ scale_color_siteclass <-
 
 cols_emissions <- c(wesanderson::wes_palette(name = "BottleRocket2", n = 5, type = "discrete"), "#003333")
 
+
 # ggplot2 custom themes
 theme_ts <-
-  theme_minimal(base_size = basesize) +
+  theme_minimal(base_size = basesize, base_family = "Arial") +
   theme(
     plot.title = element_text(size = ggplot2::rel(1)),
     plot.subtitle = element_text(size = ggplot2::rel(0.8)),
@@ -100,13 +107,23 @@ theme_ts <-
   )
 
 theme_map <-
-  theme_void(base_size = basesize) +
+  theme_void(base_size = basesize, base_family = "Arial") +
   theme(
     plot.subtitle = element_text(size = ggplot2::rel(0.8)),
     plot.caption = element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.75)),
     panel.background = element_blank(),
     plot.background = element_blank()
   )
+
+# ggiraph::set_girafe_defaults(
+#   opts_hover = ggiraph::opts_hover(css = ggiraph::girafe_css_bicolor(primary = NA, secondary = "grey30")),
+#   opts_hover_inv(css = "opacity:0.4"), 
+#   opts_zoom = ggiraph::opts_zoom(min = 1, max = 4),
+#   opts_tooltip = ggiraph::opts_tooltip(css = "padding:3px;color:white;", opacity = 0.8, use_fill = TRUE),
+#   opts_sizing = ggiraph::opts_sizing(rescale = TRUE),
+#   opts_toolbar = ggiraph::opts_toolbar(saveaspng = TRUE, position = "bottom", delay_mouseout = 5000)
+# )
+
 
 # empty list to collect all plots
 plots <- list() 
@@ -117,7 +134,7 @@ plots <- list()
 
 
 # plotting air pollutant emissions
-
+# ---
 # read & plot details of Canton Zürich air pollutant emissions per pollutant, subsector and year (absolute and relative values)
 data_emikat <- read_local_csv(ressources_plotting$emissions$emikat, delim = ";", locale = readr::locale(encoding = "UTF-8"))
 cols_emissions <- setNames(as.character(cols_emissions), unique(data_emikat$sector))
@@ -128,16 +145,14 @@ pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$polluta
 plots$emissions$absolute <- 
   lapply(pollutants, function(pollutant) {
     ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), cols = cols_emissions, theme = theme_ts) #FIXME: fill shading doesn't work right
-  })
-update_log(29)  
+  }); update_log(29)  
 
 
 # relative values
 plots$emissions$relative <- 
   lapply(pollutants, function(pollutant) {
     ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", cols = cols_emissions, theme = theme_ts)
-  })
-update_log(29)
+  }); update_log(29)
 
 
 # read & plot RSD NOx emissions by vehicle type, fuel type and euronorm
@@ -154,6 +169,7 @@ plots$emissions$NOx$rsd_norm <-
   ) |> 
   ggplot2::ggplot(aes(x = vehicle_euronorm, y = nox_emission, group = vehicle_type, fill = vehicle_type)) +
   ggplot2::geom_bar(stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
+  # ggiraph::geom_bar_interactive(mapping = ggplot2::aes(data_id = vehicle_type, tooltip = round_off(nox_emission, 1)), stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
   ggplot2::geom_linerange(mapping = aes(ymin = nox_emission - standarderror, ymax = nox_emission + standarderror), color = "gray60", position = ggplot2::position_dodge(width = 0.75)) +
   ggplot2::geom_segment(mapping = aes(x = as.numeric(vehicle_euronorm) - 0.45, xend = as.numeric(vehicle_euronorm) + 0.45, y = nox_emission_threshold_g_per_kg_fuel, yend = nox_emission_threshold_g_per_kg_fuel), color = "red3", linewidth = 1) +
   ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "bottom") +
@@ -172,8 +188,9 @@ plots$emissions$NOx$rsd_norm <-
     strip.placement = "outside",
     legend.title = ggplot2::element_blank(),
     legend.position = "bottom"
-  )
-update_log(30)
+  ); update_log(30)
+
+# plots$emissions$NOx$rsd_norm <- ggiraph::girafe(ggobj = plots$emissions$NOx$rsd_norm, width_svg = 6, height_svg = 4)
 
 
 # read & plot RSD NOx emissions by vehicle model year, vehicle type and fuel type
@@ -189,6 +206,7 @@ plots$emissions$NOx$rsd_yearmodel <-
   ) |> 
   ggplot2::ggplot(aes(x = vehicle_model_year, y = nox_emission, group = vehicle_type, fill = vehicle_type)) +
   ggplot2::geom_bar(stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
+  # ggiraph::geom_bar_interactive(mapping = ggplot2::aes(data_id = vehicle_type, tooltip = round_off(nox_emission, 1)), stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
   ggplot2::geom_linerange(mapping = aes(ymin = nox_emission - standarderror, ymax = nox_emission + standarderror), color = "gray60", position = ggplot2::position_dodge(width = 0.75)) +
   ggplot2::geom_step(mapping = aes(x = vehicle_model_year + 0.475, y = nox_emission_threshold_g_per_kg_fuel), color = "red3", linewidth = 1) +
   ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "bottom") +
@@ -206,8 +224,9 @@ plots$emissions$NOx$rsd_yearmodel <-
     strip.placement = "outside",
     legend.title = ggplot2::element_blank(),
     legend.position = "bottom"
-  )
-update_log(30)
+  ); update_log(30)
+
+# plots$emissions$NOx$rsd_yearmodel <- ggiraph::girafe(ggobj = plots$emissions$NOx$rsd_yearmodel, width_svg = 6, height_svg = 4)
 
 
 # read & plot RSD NOx emission time series (year of measurement) by fuel type
@@ -218,6 +237,7 @@ plots$emissions$NOx$rsd_yearmeas <-
   dplyr::mutate(vehicle_fuel_type = dplyr::recode_factor(vehicle_fuel_type, !!!c("all" = "Benzin & Diesel", "gasoline" = "Benzin", "diesel" = "Diesel"))) |> 
   ggplot2::ggplot(aes(x = year, y = nox_emission)) +
   ggplot2::geom_smooth(mapping = aes(color = vehicle_fuel_type), se = TRUE, span = 0.6, level = 0.95) +
+  # ggiraph::geom_smooth_interactive(mapping = aes(color = vehicle_fuel_type, data_id = vehicle_fuel_type, tooltip = round_off(nox_emission, 1)), se = TRUE, span = 0.6, level = 0.95) +
   # ggplot2::geom_point(color = "gray60") +
   ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
   ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'")) +
@@ -231,15 +251,16 @@ plots$emissions$NOx$rsd_yearmeas <-
   ggplot2::theme(
     legend.title = ggplot2::element_blank(),
     legend.position = "bottom"
-  )
-update_log(30)
+  ); update_log(30)
+
+# plots$emissions$NOx$rsd_yearmeas <- ggiraph::girafe(ggobj = plots$emissions$NOx$rsd_yearmeas, width_svg = 6, height_svg = 4) 
 
 
 
 
 
 # plotting air pollutant monitoring data
-
+# ---
 # read airquality monitoring data
 data_monitoring_aq <- 
   read_local_csv(ressources_plotting$monitoring$airquality, locale = readr::locale(encoding = "UTF-8")) |> 
@@ -317,6 +338,7 @@ plots$airquality$monitoring$threshold_comparison <-
     strip.text = ggplot2::element_text(hjust = 0)
   ) +
   scale_color_siteclass
+
 update_log(31)
 update_log(32)
 
@@ -332,8 +354,7 @@ plots$airquality$monitoring$Ndep$timeseries_Bachtel <-
   plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = temp$lsz, color = temp$col, title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme am Bachtel") +
   ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, site == "BA" & parameter == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
   ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: Ostluft & FUB") +
-  lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE)
-update_log(32)
+  lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE); update_log(32)
 
 
 # plot timeseries of yearly nitrogen deposition across several monitoring sites (structured per ecosystem type)
@@ -353,8 +374,7 @@ plots$airquality$monitoring$Ndep$all_timeseries <-
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
-  )
-update_log(32)
+  ); update_log(32)
 
 
 # plot timeseries of yearly nitrogen deposition vs. critical loads of nitrogen across several monitoring sites (structured per ecosystem type)
@@ -375,8 +395,7 @@ plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
-  )
-update_log(32)
+  ); update_log(32)
 
 
 # plot mean contribution of source categories to nitrogen deposition
@@ -399,8 +418,7 @@ plots$airquality$monitoring$Ndep$mean_sources_fractions <-
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
-  )
-update_log(32)
+  ); update_log(32)
 
 
 
@@ -408,7 +426,7 @@ update_log(32)
 
 
 # plotting air pollutant population and ecosystem exposition
-
+# ---
 # read exposition data and setup
 data_expo_distr_pollutants <- read_local_csv(ressources_plotting$exposition$expo_distr_pollutants) 
 data_expo_distr_ndep <- read_local_csv(ressources_plotting$exposition$expo_distr_ndep) 
@@ -420,8 +438,7 @@ parameters_exposition <- setNames(parameters_exposition, parameters_exposition)
 plots$exposition$hist <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_expo_hist(parameter, data_expo_distr_pollutants)
-  })
-update_log(34)
+  }); update_log(34)
 
 # plotting histograms for sensitive ecosystems nitrogen deposition exceedance
 plots$exposition$hist$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep); update_log(35)
@@ -438,6 +455,7 @@ plots$exposition$cumul <-
       ggplot2::ggplot(data, mapping = ggplot2::aes(x = concentration, y = population_cum_rel, color = factor(year), group = year)) +
       ggplot2::geom_vline(xintercept = thresh$value, color = thresh$color, linetype = thresh$linetype, linewidth = thresh$linesize) +
       ggplot2::geom_line(linewidth = 1) +
+      # ggiraph::geom_line_interactive(mapping = ggplot2::aes(data_id = year, tooltip = population_cum), linewidth = 1) +
       ggplot2::scale_x_continuous(limits = range(expositionpars(parameter)$xbreaks), breaks = expositionpars(parameter)$xbreaks, expand = c(0.01,0.01)) +
       ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
       ggplot2::scale_color_brewer(name = "Jahr") +
@@ -452,10 +470,11 @@ plots$exposition$cumul <-
       ggplot2::geom_text(data = tibble::tibble(x = thresh$value, label = thresh$labels), mapping = ggplot2::aes(x = x, y = 0, label = label), size = thresh$labelsize,
                          hjust = 0, vjust = 0, angle = 90, nudge_x = pmin(0, -0.01 * max(expositionpars(parameter)$xbreaks), na.rm = TRUE), inherit.aes = FALSE)
     
-    c(list(all = plot_all), plots_years)
+    # plot_all <- ggiraph::girafe(ggobj = plot_all, width_svg = 6, height_svg = 3, options = list(ggiraph::opts_hover_inv(css = "opacity:0.1;")))
     
-  })
-update_log(34)
+    c(list(alle = plot_all), plots_years)
+    
+  }); update_log(34)
 
 
 # plotting cumulative distributions for sensitive ecosystems nitrogen deposition exceedance
@@ -489,8 +508,7 @@ data_expo_weighmean_municip <-
 plots$exposition$population_weighted_mean <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
-  })
-update_log(33)
+  }); update_log(33)
 
 # plotting timeseries of population-weighted mean pollutant concentration for Kanton Zürich
 thresh <-  
@@ -519,9 +537,13 @@ plots$exposition$population_weighted_mean$overview <-
   ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
 
 
+
+
+
 # clean up
+# ---
 rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass", "scale_fill_siteclass", "temp", "theme_map", "theme_ts", "threshold_ndep",
-            "data_emikat", "data_expo_distr_ndep", "data_expo_distr_pollutants", "data_expo_weighmean_canton", "data_expo_weighmean_municipalities",
+            "data_emikat", "data_expo_distr_ndep", "data_expo_distr_pollutants", "data_expo_weighmean_canton", "thresh",
             "data_monitoring_aq", "data_monitoring_ndep", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "data_temp", "data_thrshlds",
             "data_expo_weighmean_municip", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 
             "crs", "lbsz", "linewidth", "lsz_lrv", "lsz_who", "lty_lrv", "lty_who", "n_years", "parameters_exposition", "parameters_timeseries",

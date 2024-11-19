@@ -1,3 +1,11 @@
+#' Title
+#'
+#' @param ressources 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prepare_ressources <- function(ressources) {
   
   ressources <- 
@@ -14,6 +22,15 @@ prepare_ressources <- function(ressources) {
 }
 
 
+#' Title
+#'
+#' @param data 
+#' @param filter_args 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prepare_emmissions <- function(data, filter_args = canton == 'ZH' & emission != 0 & !(subsector %in% c('Weitere Punktquellen OL', 'Rheinschifffahrt', 'Flugverkehr Genf'))){
   
   filter_args <- rlang::enquo(filter_args)
@@ -37,6 +54,15 @@ prepare_emmissions <- function(data, filter_args = canton == 'ZH' & emission != 
 }
 
 
+#' Title
+#'
+#' @param data 
+#' @param rsd_auxiliary 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prepare_rsd <- function(data, rsd_auxiliary){
   
   rsd_meta <- rsd_auxiliary$meta
@@ -64,6 +90,15 @@ prepare_rsd <- function(data, rsd_auxiliary){
 }
 
 
+#' Title
+#'
+#' @param meta_ostluft 
+#' @param meta_nabel 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prepare_monitoring_meta <- function(meta_ostluft, meta_nabel) {
   
   meta_ostluft <- prep_site_meta_ostluft(meta_ostluft)
@@ -80,6 +115,16 @@ prepare_monitoring_meta <- function(meta_ostluft, meta_nabel) {
 
 
 # function to prepare tibble with air pollutant year-statistics exported and read from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
+#' Title
+#'
+#' @param data 
+#' @param keep_incomplete 
+#' @param tz 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prepare_monitoring_nabel_y1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
   
   data <- 
@@ -114,6 +159,16 @@ prepare_monitoring_nabel_y1 <- function(data, keep_incomplete = FALSE, tz = "Etc
 }
 
 
+#' Title
+#'
+#' @param data 
+#' @param keep_incomplete 
+#' @param tz 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prepare_monitoring_ostluft_y1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
   
   data <- restructure_monitoring_ostluft(data, keep_incomplete = keep_incomplete, tz = tz, na.rm = TRUE) 
@@ -127,6 +182,15 @@ prepare_monitoring_ostluft_y1 <- function(data, keep_incomplete = FALSE, tz = "E
 }
 
 
+#' Title
+#'
+#' @param data 
+#' @param meta 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prepare_monitoring_aq <- function(data, meta) { 
   
   data <- 
@@ -146,6 +210,16 @@ prepare_monitoring_aq <- function(data, meta) {
 }
 
 
+#' Title
+#'
+#' @param data_raster_bfs 
+#' @param data_raster_aq 
+#' @param years 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
   
   # => convert pollutant and statpop data into a common tibble
@@ -184,6 +258,17 @@ prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
 }
 
 
+#' Title
+#'
+#' @param data_raster_bfs 
+#' @param data_raster_aq 
+#' @param years 
+#' @param boundaries 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, boundaries) {
 
   data_statpop_municip <- 

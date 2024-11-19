@@ -1,3 +1,9 @@
+#' Merge RSD data with corresponding metadata
+#'
+#' @param data 
+#' @param meta 
+#'
+#' @keywords internal
 merge_restructure_rsd <- function(data, meta) {
   
   meta <- 
@@ -19,6 +25,12 @@ merge_restructure_rsd <- function(data, meta) {
 }
 
 
+#' Filter RSD dataset using filter criteria
+#'
+#' @param data 
+#' @param filters 
+#'
+#' @keywords internal
 filter_rsd <- function(data, filters) {
   
   data <- 
@@ -38,6 +50,11 @@ filter_rsd <- function(data, filters) {
 }
 
 
+#' Add calculated vehicle specific power to RSD dataset
+#'
+#' @param data 
+#'
+#' @keywords internal
 prep_vehicle_specific_power <- function(data){
   
   data_vsp <-
@@ -52,6 +69,17 @@ prep_vehicle_specific_power <- function(data){
 }
 
 
+#' Calculate vehicle specific power following Jiménez
+#'
+#' @param speed 
+#' @param accel 
+#' @param slope 
+#' @param vsp.a 
+#' @param vsp.b 
+#' @param vsp.c 
+#' @param vsp.g 
+#'
+#' @keywords internal
 calc_vsp <- function(speed, accel, slope, # speed in m/s, accel in m/s/s, slope as ratio, mass = 3.5 in t
                      vsp.a = 1.1, vsp.b = 0.132, vsp.c = 0.000302, vsp.g = 9.81) {
   
@@ -61,6 +89,15 @@ calc_vsp <- function(speed, accel, slope, # speed in m/s, accel in m/s/s, slope 
 }
 
 
+#' Calculate RSD NOx emissions in g/kg fuel
+#'
+#' @param NO 
+#' @param p 
+#' @param CO2 
+#' @param CO 
+#' @param HC 
+#'
+#' @keywords internal
 calc_rsd_nox_emission <- function(NO, p, CO2, CO, HC) { # all concentrations in mixing ratios as percent
   
   Q <- CO / CO2
@@ -73,8 +110,15 @@ calc_rsd_nox_emission <- function(NO, p, CO2, CO, HC) { # all concentrations in 
 }
 
 
-# ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
-# however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
+#' Recode Ostluft air quality monitoring urban site classification 
+#'
+#' @description
+#' ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
+#' however, the Ostluft site classes are - as categories - not entirely consistent with the current Immissionsmessempfehlung. We will need to put future effort in a reclassification.
+#' 
+#' @param zone 
+#'
+#' @keywords internal
 recode_ostluft_meta_zone <- function(zone) { 
   
   zone <- 
@@ -89,8 +133,15 @@ recode_ostluft_meta_zone <- function(zone) {
 }
 
 
-# ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
-# however, the OSTLUFT site classes are - as categories - not entirely consistent with the new Immissionsmessempfehlung. We will need to put future effort in a reclassifiacation
+#' Recode Ostluft air quality monitoring traffic site classification 
+#'
+#' @description
+#' ... to be roughly in line with https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/immissionsmessung-von-luftfremdstoffen.html
+#' however, the Ostluft site classes are - as categories - not entirely consistent with the current Immissionsmessempfehlung. We will need to put future effort in a reclassification.
+#'
+#' @param type 
+#'
+#' @keywords internal
 recode_ostluft_meta_type <- function(type) { 
   
   type <- 
@@ -104,6 +155,12 @@ recode_ostluft_meta_type <- function(type) {
 }
 
 
+#' Convert NABEL y1 dataset into standard long format
+#'
+#' @param data 
+#' @param keep_incomplete 
+#'
+#' @keywords internal
 restructure_monitoring_nabel_y1 <- function(data, keep_incomplete = FALSE) {
   
   col_names <- range(as.numeric(names(data)), na.rm = TRUE)
@@ -126,6 +183,12 @@ restructure_monitoring_nabel_y1 <- function(data, keep_incomplete = FALSE) {
 }
 
 
+#' Convert NABEL h1 dataset into standard format
+#'
+#' @param data 
+#' @param tz 
+#'
+#' @keywords internal
 restructure_monitoring_nabel_h1 <- function(data, tz = "Etc/GMT-1") {
   
   header <- dplyr::slice(data, 1:which(dplyr::pull(data, 1) == "Einheit"))
@@ -153,6 +216,14 @@ restructure_monitoring_nabel_h1 <- function(data, tz = "Etc/GMT-1") {
 }
 
 
+#' Convert Ostluft dataset into standard long format
+#'
+#' @param data 
+#' @param keep_incomplete 
+#' @param tz 
+#' @param na.rm 
+#'
+#' @keywords internal
 restructure_monitoring_ostluft <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1", na.rm = TRUE) {
   
   header <- dplyr::slice(data, 1:which(dplyr::pull(data, 1) == "Startzeit"))
@@ -196,10 +267,17 @@ restructure_monitoring_ostluft <- function(data, keep_incomplete = FALSE, tz = "
 }
 
 
-# function to make sure that there are no duplicate measurements per site / year / unit for data with interval = y1 in format rOstluft::format_rolf() 
-# in case there have been NO2 monitor and passive sampler measurements (prefer monitor data = reference method); 
-# same for PM10 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method);
-# same for PM2.5 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method)
+#' Make sure that there are no duplicate measurements per site / year / unit in Ostluft dataset
+#'
+#' @description
+#' Function to make sure that there are no duplicate measurements per site / year / unit for data with interval = y1 in format rOstluft::format_rolf() 
+#' in case there have been NO2 monitor and passive sampler measurements (prefer monitor data = reference method); 
+#' same for PM10 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method);
+#' same for PM2.5 monitor and high volume sampler measurements (prefer high-volume-sampler data = reference method)
+#'
+#' @param data 
+#'
+#' @keywords internal
 remove_duplicate_y1 <- function(data){
   
   replace_no2_ps <- function(parameter, value){
@@ -245,6 +323,11 @@ remove_duplicate_y1 <- function(data){
 }
 
 
+#' Restructure Ostluft site metadata
+#'
+#' @param meta 
+#'
+#' @keywords internal
 prep_site_meta_ostluft <- function(meta) {
   
   meta <- 
@@ -274,6 +357,11 @@ prep_site_meta_ostluft <- function(meta) {
 }
 
 
+#' Restructure NABEL site metadata
+#'
+#' @param meta 
+#'
+#' @keywords internal
 prep_site_meta_nabel <- function(meta) {
   
   meta <- dplyr::distinct(meta, Station, `Ost Y`, `Nord X`, Höhe, Zonentyp, Stationstyp)
@@ -297,7 +385,11 @@ prep_site_meta_nabel <- function(meta) {
 }
 
 
-# copy from rOstluft::convert_interval()
+#' Copy from rOstluft::convert_interval()
+#'
+#' @param interval 
+#'
+#' @keywords internal
 convert_interval2 <- function(interval) {
   
   num <- stringr::str_extract(interval, "[:digit:]+")
@@ -311,7 +403,14 @@ convert_interval2 <- function(interval) {
 }
 
 
-# copy from rOstluft::pad_serie()
+#' Copy from rOstluft::pad_serie()
+#'
+#' @param serie 
+#' @param start_date 
+#' @param end_date 
+#' @param drop_last 
+#'
+#' @keywords internal
 pad_serie2 <- function(serie, start_date = NULL, end_date = NULL, drop_last = FALSE) {
   
   if (is.null(start_date)) {
@@ -343,7 +442,14 @@ pad_serie2 <- function(serie, start_date = NULL, end_date = NULL, drop_last = FA
 }
 
 
-# copy from rOstluft::pad() => because this is the only function we need from this package
+#' Copy from rOstluft::pad() => because this is the only function we need from this package
+#'
+#' @param data 
+#' @param start_date 
+#' @param end_date 
+#' @param drop_last 
+#'
+#' @keywords internal
 pad2 <- function(data, start_date = NULL, end_date = NULL, drop_last = FALSE) {
   
   data.grouped <- dplyr::group_by(data, .data$site, .data$parameter, .data$interval, .data$unit)
@@ -353,7 +459,12 @@ pad2 <- function(data, start_date = NULL, end_date = NULL, drop_last = FALSE) {
 }
 
 
-# for O3 peak-season calculation: function identifying relevant months per year for metric calculation based on O3 monthly mean data
+#' Identify relevant months per year for metric calculation based on O3 monthly mean data (used in O3 peak-season calculation)
+#'
+#' @param starttime 
+#' @param o3_m1 
+#'
+#' @keywords internal
 consecutive_months <- function(starttime, o3_m1) { 
   
   data <- tibble::tibble(starttime, O3 = o3_m1)
@@ -377,7 +488,11 @@ consecutive_months <- function(starttime, o3_m1) {
 }
 
 
-# for O3 peak-season calculation: function to calculate daily maximum 8h running-mean O3 concentration based on O3 1h data in rOstluft::format_rolf()
+#' Calculate daily maximum 8h running-mean O3 concentration based on O3 1h data in rOstluft::format_rolf() (used in O3 peak-season calculation)
+#'
+#' @param data 
+#'
+#' @keywords internal
 max_mean_h8gl <- function(data) { # how to solve data coverage?
   
   data <-
@@ -398,7 +513,11 @@ max_mean_h8gl <- function(data) { # how to solve data coverage?
 }
 
 
-# function to calculate O3 peak-season concentration per year and site, based on data as hourly means in rOstluft::format_rolf() 
+#' Calculate O3 peak-season concentration per year and site, based on data as hourly means in rOstluft::format_rolf() 
+#' @param data 
+#' @param min_coverage 
+#'
+#' @keywords internal
 calc_O3_peakseason <- function(data, min_coverage = 9/12) { # min_coverage: data coverage in months per year (9/12 because in early times, they used to not measure O3 during winter months)
   
   # calculate O3 monthly means to derive peak season
@@ -453,6 +572,14 @@ calc_O3_peakseason <- function(data, min_coverage = 9/12) { # min_coverage: data
 }
 
 
+#' Average stars raster data to another stars grid as mean values
+#'
+#' @param data 
+#' @param grid 
+#' @param method 
+#' @param na_val 
+#'
+#' @keywords internal
 average_to_grid <- function(data, grid, method = "average", na_val = -999) { 
   
   parameter <- names(data)
@@ -463,6 +590,12 @@ average_to_grid <- function(data, grid, method = "average", na_val = -999) {
 }
 
 
+#' Average stars raster data to the grid of BFS statpop dataset
+#'
+#' @param x 
+#' @param y 
+#'
+#' @keywords internal
 average_to_statpop <- function(x, y) {
   
   grid <- dplyr::select(x, RELI) 
@@ -472,6 +605,11 @@ average_to_statpop <- function(x, y) {
 }
 
 
+#' Convert rasterdata into long format tibble
+#'
+#' @param data 
+#'
+#' @keywords internal
 simplify_aq_rasterdata <- function(data) {
   
   data <- purrr::map(names(data), function(pollutant) tibble::as_tibble(data[[pollutant]]))
@@ -485,6 +623,12 @@ simplify_aq_rasterdata <- function(data) {
 }
 
 
+#' Merge air quality and statpop rasterdata with municipilty boundaries and convert to a common tibble
+#'
+#' @param data_raster 
+#' @param data_municip 
+#'
+#' @keywords internal
 merge_statpop_with_municipalities <- function(data_raster, data_municip) {
   
   municip_raster <- 

@@ -1,3 +1,14 @@
+#' Title
+#'
+#' @param year 
+#' @param destination_path 
+#' @param boundary 
+#' @param crs 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 read_statpop_raster_data <- function(year, destination_path, boundary, crs = 2056){
 
   # download zip
@@ -22,6 +33,17 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
 }
 
 
+
+#' Title
+#'
+#' @param id 
+#' @param boundary 
+#' @param crs 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 read_bafu_raster_data <- function(id, boundary, crs = 2056){
   
   download_url <- get_swisstopo_metadata(id)
@@ -68,11 +90,15 @@ read_bafu_raster_data <- function(id, boundary, crs = 2056){
 }
 
 
-
-
-
-
-
+#' Title
+#'
+#' @param url 
+#' @param source 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 read_opendataswiss <- function(url, source){
   
   read_url <- get_opendataswiss_metadata(url)
@@ -83,6 +109,17 @@ read_opendataswiss <- function(url, source){
 }
 
 
+#' Title
+#'
+#' @param file 
+#' @param delim 
+#' @param locale 
+#' @param ... 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 read_local_csv <- function(file, delim = ";", locale = readr::locale(encoding = "latin1", tz = "Etc/GMT-1"), ...){
   
   data <- readr::read_delim(file, delim = delim, locale = locale, ...)
@@ -103,6 +140,17 @@ read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
 }
 
 
+#' Title
+#'
+#' @param cov_stack 
+#' @param layer_names 
+#' @param boundary 
+#' @param na_value 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 read_geolion_wcs_stack <- function(cov_stack, layer_names, boundary, na_value = c(0, -999)){
 
   cov_stack_filtered <- cov_stack[sapply(cov_stack, function(x) x$CoverageId %in% layer_names)]
@@ -116,6 +164,15 @@ read_geolion_wcs_stack <- function(cov_stack, layer_names, boundary, na_value = 
 }
 
 
+#' Title
+#'
+#' @param cov_stack 
+#' @param years_pollumap 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 filter_availability <- function(cov_stack, years_pollumap = 2015) {
   
   data_availability <- 

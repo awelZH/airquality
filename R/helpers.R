@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param ressources 
+#' @param internal_id 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 filter_ressources <- function(ressources, internal_id) {
   
   filters <- paste0("INTERNAL_ID == ", internal_id)
@@ -10,6 +19,15 @@ filter_ressources <- function(ressources, internal_id) {
 
 
 
+#' Title
+#'
+#' @param internal_id 
+#' @param logfile 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 update_log <- function(internal_id, logfile = "inst/extdata/meta/log.csv") {
   
   now <- lubridate::with_tz(Sys.time(), tzone = "Etc/GMT-1")
@@ -20,45 +38,20 @@ update_log <- function(internal_id, logfile = "inst/extdata/meta/log.csv") {
 }
 
 
-
-# add_to_maplist <- function(capabilities, maplist, target_source, target_parameter) {
-# 
-#   if (target_source == "pollumap") {
-#     
-#     coverage_summary <- capabilities[[target_source]]$getCoverageSummaries()
-#     coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
-#     maplist <- purrr::list_modify(maplist, !!target_source := coverages)
-#     maplist[[target_source]]<- setNames(maplist[[target_source]], extract_year(maplist[[target_source]]))
-#     
-#   } else {
-#     
-#     coverage_summary <- capabilities[[target_source]][[target_parameter]]$getCoverageSummaries()
-#     coverages <- purrr::map_chr(coverage_summary, function(x){x$CoverageId})
-#     temp <- list()
-#     temp <- purrr::list_modify(temp, !!target_parameter := coverages)
-#     maplist <- purrr::list_modify(maplist, !!target_source := temp)
-#     maplist[[target_source]][[target_parameter]] <- setNames(maplist[[target_source]][[target_parameter]], extract_year(maplist[[target_source]][[target_parameter]]))
-#     
-#   }
-#   
-#   return(maplist)
-# }
-# 
-# 
-# 
-# extract_from_capabilitylist <- function(capablilitylist, maplist, coverage, parameter) {
-# 
-#   product <- unlist(strsplit(names(maplist[maplist == coverage]), split = ".", fixed = TRUE))[1]
-#   capabilities <- capablilitylist[[product]]
-#   parameter <- ifelse(product == "jahreskarte", stringr::str_remove(tolower(parameter), pattern = "\\."), parameter)
-#   if (product == "jahreskarte") {capabilities <- capabilities[[parameter]]} 
-#   
-#   return(capabilities)
-# }
-
-
-
 # function to extract target threshold values from overall threshold data for plotting with ggplot_timeseries()
+#' Title
+#'
+#' @param threshold_values 
+#' @param pollutant 
+#' @param aggregation 
+#' @param metric 
+#' @param unit 
+#' @param source 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 extract_threshold <- function(threshold_values, pollutant = NULL, aggregation = "y1", metric = "mean", unit = "µg/m3", 
                           source = c("LRV Grenzwert", "WHO Richtwert")) {
 
@@ -86,6 +79,14 @@ extract_threshold <- function(threshold_values, pollutant = NULL, aggregation = 
 
 
 
+#' Title
+#'
+#' @param x 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 longtitle <- function(x) {
   
   long <- dplyr::case_when(
@@ -109,6 +110,14 @@ longtitle <- function(x) {
 
 
 
+#' Title
+#'
+#' @param x 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 shorttitle <- function(x) {
   
   long <- dplyr::case_when(
@@ -121,6 +130,14 @@ shorttitle <- function(x) {
 }
 
 
+#' Title
+#'
+#' @param x 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 longparameter <- function(x) {
   
   long <- dplyr::case_when(
@@ -133,14 +150,38 @@ longparameter <- function(x) {
 }
 
 
+#' Title
+#'
+#' @param string 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 extract_year <- function(string) {as.numeric(stringr::str_extract(string, "(1|2)[0-9]{3}"))}
 
 
 
-set_year <- function(maps) setNames(as.character(unique(extract_year(maps))), unique(extract_year(maps)))
+#' Title
+#'
+#' @param maps 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+set_year <- function(maps) {setNames(as.character(unique(extract_year(maps))), unique(extract_year(maps)))}
 
 
 
+#' Title
+#'
+#' @param pollutant 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 bin_fun <- function(pollutant) {
   
   fun <- function(x) {floor(x) + 0.5} # default, e.g. NO2: abgerundet auf 1, Klassenmitte
@@ -154,6 +195,17 @@ bin_fun <- function(pollutant) {
 
 
 
+#' Title
+#'
+#' @param data 
+#' @param file 
+#' @param delim 
+#' @param na 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 write_local_csv <- function(data, file, delim = ";", na = "NA"){
   
   readr::write_delim(data, file, delim = delim, na = na)
@@ -163,6 +215,15 @@ write_local_csv <- function(data, file, delim = ";", na = "NA"){
 
 
 # see here: https://gist.github.com/sotoattanito/8e6fad4b7322ceae9f14f342985f1681
+#' Title
+#'
+#' @param x 
+#' @param digits 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 round_off <- function (x, digits = 0) {
   
   posneg = sign(x)

@@ -1,3 +1,11 @@
+#' Title
+#'
+#' @param map 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 aggregate_map <- function(map) {
   
   map <- 
@@ -10,6 +18,14 @@ aggregate_map <- function(map) {
 }
 
 
+#' Title
+#'
+#' @param data 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 aggregate_emmissions <- function(data){
   
   groups <- groups_emission_subsector(data)
@@ -31,6 +47,16 @@ aggregate_emmissions <- function(data){
 }
 
 
+#' Title
+#'
+#' @param data 
+#' @param rsd_auxiliary 
+#' @param groups 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 aggregate_rsd_nox <- function(data, rsd_auxiliary, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")){
   
   if (!("year" %in% groups)) {
@@ -61,6 +87,14 @@ aggregate_rsd_nox <- function(data, rsd_auxiliary, groups = c("vehicle_type", "v
 }
 
 
+#' Title
+#'
+#' @param data 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 aggregate_nitrogen_deposition <- function(data) {
   
   data <- simplify_nitrogen_parameters(data)
@@ -82,6 +116,14 @@ aggregate_nitrogen_deposition <- function(data) {
 }
 
 
+#' Title
+#'
+#' @param data 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 aggregate_population_exposition_distrib <- function(data) { 
   
   data <-
@@ -105,6 +147,14 @@ aggregate_population_exposition_distrib <- function(data) {
 }
 
 
+#' Title
+#'
+#' @param data 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 aggregate_ndep_exposition_distrib <- function(data) { 
 
   data <-
@@ -127,6 +177,15 @@ aggregate_ndep_exposition_distrib <- function(data) {
 }
 
 
+#' Title
+#'
+#' @param data 
+#' @param groups 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 aggregate_population_weighted_mean <- function(data, groups = c("year", "pollutant")) {
 
   data_pop_weighted <-

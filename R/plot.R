@@ -16,7 +16,7 @@
 ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = value, color = siteclass), ylims = c(0,NA), ybreaks = waiver(), titlelab = NULL, captionlab = NULL, pointshape = 19, pointsize = 2,
                               threshold = list(value = NA, color = "gray30", label = NULL, labelsize = 4, linetype = 2, linesize = 1), 
                               theme = ggplot2::theme_minimal()) {
-
+  
   plot <- 
     ggplot2::ggplot(data, mapping = mapping) + 
     ggplot2::geom_point(size = pointsize, shape = pointshape) +
@@ -154,7 +154,7 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
 #'
 #' @keywords internal
 ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width = 0.8, theme = ggplot2::theme_minimal()) {
-
+  
   pollutant <- unique(as.character(data$pollutant))
   if (relative) {
     yscale <- ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0,0))
@@ -171,12 +171,12 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
     dplyr::ungroup() |> 
     dplyr::arrange(sector, dplyr::desc(emission)) |> 
     dplyr::ungroup() 
-
+  
   data <-
     data |> 
     dplyr::mutate(subsector_new = factor(subsector_new, levels = order$subsector_new)) |> 
     dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols))
-
+  
   cols <- 
     data |> 
     dplyr::distinct(sector, subsector_new, rootcol) |> 
@@ -356,10 +356,10 @@ plot_timeseries_ndep_bars <- function(data, xlim = NULL, xbreaks = waiver(), lin
 #'
 #' @keywords internal
 plot_all_expo_hist <- function(parameter, data) {
-
+  
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {
-
+    
     thresh <- extract_threshold(immission_threshold_values, shorttitle(parameter), aggregation = expositionpars(parameter)$aggregation, metric = expositionpars(parameter)$metric)
     ggplot_expo_hist(
       data = dplyr::filter(data, year == !!year & pollutant == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
@@ -387,7 +387,7 @@ plot_all_expo_hist <- function(parameter, data) {
 #'
 #' @keywords internal
 plot_all_expo_cumul <- function(parameter, data) {
-
+  
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {
     
@@ -418,11 +418,11 @@ plot_all_expo_cumul <- function(parameter, data) {
 #'
 #' @keywords internal
 plot_all_popweighmean_maps <- function(parameter, data, data_canton) {
-
+  
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   years_exposition <- years_exposition[!is.na(years_exposition)]
   plots <- lapply(years_exposition, function(year) {
-
+    
     canton <- round_off(dplyr::pull(dplyr::filter(data_canton, year == !!year & pollutant == !!parameter), "population_weighted_mean"), 1)
     plot <- 
       data |> 
@@ -456,7 +456,7 @@ plot_all_popweighmean_maps <- function(parameter, data, data_canton) {
 #'
 #' @keywords internal
 plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
-
+  
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   
   plots <- lapply(years_exposition, function(year) {
@@ -487,7 +487,7 @@ plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
 #'
 #' @keywords internal
 plot_all_expo_cumul_ndep <- function(data, threshold_ndep) {
-
+  
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   
   plots <- lapply(years_exposition, function(year) {
@@ -541,6 +541,65 @@ combine_thresholds <- function(data, threshold_values) {
     dplyr::select(year, site, parameter, interval, unit, value, siteclass, `LRV Grenzwert`, `WHO Richtwert`, source)
   
   return(data)
-  
 }
 
+
+
+#' Restructures list of plots to a tibble including plots
+#'
+#' @param plotlist 
+#' @param type 
+#' @param source 
+#'
+#' @keywords internal
+plotlist_to_tibble <- function(plotlist, type, source) {
+
+  if (!is.na(extract_year(names(plotlist[[1]][1]))) | names(plotlist[[1]][1]) == "alle") {
+  
+    plottibble <- 
+      plotlist |> 
+      names() |> 
+      purrr::map(function(x) {
+        plotlist[[x]] |> 
+          tibble::enframe(name = "pollutant", value = "plot") |> 
+          dplyr::mutate(
+            pollutant = x,
+            type = !!type,
+            source = !!source,
+            year = names(plotlist[[x]])
+          )
+      }) |> 
+      dplyr::bind_rows()
+    
+  } else {
+    
+    plottibble <- 
+      plotlist |> 
+      tibble::enframe(name = "pollutant", value = "plot") |> 
+      dplyr::mutate(
+        type = !!type,
+        source = !!source,
+        year = "various"
+      )
+    
+  }
+  
+  return(plottibble)
+}
+
+
+#' Extracts plot from tibble created by plotlist_to_tibble()
+#'
+#' @param plots_df 
+#' @param filter 
+#'
+#' @keywords internal
+get_plot <- function(plots_df, filter_expr = "pollutant == 'NOx' & source == 'inventory_absolute'") {
+  
+  plot <- 
+    plots_df |> 
+    dplyr::filter(!!rlang::parse_expr(filter_expr)) |> 
+    dplyr::pull(plot)
+  
+  return(plot)
+}

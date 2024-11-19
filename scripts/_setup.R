@@ -12,7 +12,7 @@ load_packages <- function(packages) {
 
 # packages necessary for function functionality
 load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-                "RCurl", "readr", "archive", "sf", "stars", "ows4R", "withr"))
+                "readr", "archive", "sf", "stars", "ows4R", "withr"))
 
 # packages required for script functionality
 load_packages(c("devtools", "pkgdown", "scales", "lemon", "openair", "ggplot2", "shades", 
@@ -49,4 +49,4 @@ map_canton <- aggregate_map(map_municipalities)
 
 # clean up:
 # ---
-rm(list = c("load_packages"))
+rm(list = "load_packages")

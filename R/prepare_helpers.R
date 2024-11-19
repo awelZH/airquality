@@ -635,6 +635,7 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
     data_municip |> 
     dplyr::select(geodb_oid) |> 
     stars::st_rasterize(data_raster)
+  #TODO: terra::rasterize(..., cover = TRUE, touches = TRUE)
   
   data <-
     dplyr::left_join(
@@ -651,4 +652,3 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
   
   return(data)
 }
-

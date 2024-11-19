@@ -125,8 +125,9 @@ theme_map <-
 # )
 
 
-# empty list to collect all plots
-plots <- list() 
+# empty tibble to collect all plots
+plots <- list()
+
 
 
 
@@ -140,16 +141,14 @@ data_emikat <- read_local_csv(ressources_plotting$emissions$emikat, delim = ";",
 cols_emissions <- setNames(as.character(cols_emissions), unique(data_emikat$sector))
 pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$pollutant))
 
-
 # absolute values
-plots$emissions$absolute <- 
+plots$emissions$inventory_absolute <- 
   lapply(pollutants, function(pollutant) {
     ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), cols = cols_emissions, theme = theme_ts) #FIXME: fill shading doesn't work right
   }); update_log(29)  
 
-
 # relative values
-plots$emissions$relative <- 
+plots$emissions$inventory_relative <- 
   lapply(pollutants, function(pollutant) {
     ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", cols = cols_emissions, theme = theme_ts)
   }); update_log(29)
@@ -158,7 +157,7 @@ plots$emissions$relative <-
 # read & plot RSD NOx emissions by vehicle type, fuel type and euronorm
 data_rsd_per_norm <- read_local_csv(ressources_plotting$emissions$rsd_norm)
 
-plots$emissions$NOx$rsd_norm <-
+plots$emissions$rsd_norm$NOx <-
   data_rsd_per_norm |> 
   tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_euronorm) |>
   dplyr::left_join(data_rsd_per_norm, by = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) |>
@@ -190,13 +189,13 @@ plots$emissions$NOx$rsd_norm <-
     legend.position = "bottom"
   ); update_log(30)
 
-# plots$emissions$NOx$rsd_norm <- ggiraph::girafe(ggobj = plots$emissions$NOx$rsd_norm, width_svg = 6, height_svg = 4)
+# plots$emissions$rsd_norm$NOx <- ggiraph::girafe(ggobj = plots$emissions$rsd_norm$NOx, width_svg = 6, height_svg = 4)
 
 
 # read & plot RSD NOx emissions by vehicle model year, vehicle type and fuel type
 data_rsd_per_yearmodel <- read_local_csv(ressources_plotting$emissions$rsd_yearmodel)
 
-plots$emissions$NOx$rsd_yearmodel <-
+plots$emissions$rsd_yearmodel$NOx <-
   data_rsd_per_yearmodel |> 
   tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_model_year) |> 
   dplyr::left_join(data_rsd_per_yearmodel, by = c("vehicle_type", "vehicle_fuel_type", "vehicle_model_year")) |> 
@@ -226,13 +225,13 @@ plots$emissions$NOx$rsd_yearmodel <-
     legend.position = "bottom"
   ); update_log(30)
 
-# plots$emissions$NOx$rsd_yearmodel <- ggiraph::girafe(ggobj = plots$emissions$NOx$rsd_yearmodel, width_svg = 6, height_svg = 4)
+# plots$emissions$rsd_yearmodel$NOx <- ggiraph::girafe(ggobj = plots$emissions$rsd_yearmodel$NOx, width_svg = 6, height_svg = 4)
 
 
 # read & plot RSD NOx emission time series (year of measurement) by fuel type
 data_rsd_per_yearmeas <- read_local_csv(ressources_plotting$emissions$rsd_yearmeas)
 
-plots$emissions$NOx$rsd_yearmeas <-
+plots$emissions$rsd_yearmeas$NOx <-
   data_rsd_per_yearmeas |> 
   dplyr::mutate(vehicle_fuel_type = dplyr::recode_factor(vehicle_fuel_type, !!!c("all" = "Benzin & Diesel", "gasoline" = "Benzin", "diesel" = "Diesel"))) |> 
   ggplot2::ggplot(aes(x = year, y = nox_emission)) +
@@ -253,7 +252,7 @@ plots$emissions$NOx$rsd_yearmeas <-
     legend.position = "bottom"
   ); update_log(30)
 
-# plots$emissions$NOx$rsd_yearmeas <- ggiraph::girafe(ggobj = plots$emissions$NOx$rsd_yearmeas, width_svg = 6, height_svg = 4) 
+# plots$emissions$rsd_yearmeas$NO <- ggiraph::girafe(ggobj = plots$emissions$rsd_yearmeas$NO, width_svg = 6, height_svg = 4) 
 
 
 
@@ -270,7 +269,7 @@ data_monitoring_aq <-
 
 
 # plot timeseries of yearly values for selected pollutants
-plots$airquality$monitoring$timeseries <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries); update_log(31)
+plots$monitoring$timeseries_siteclass <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries); update_log(31)
 
 
 # read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
@@ -297,7 +296,7 @@ data_temp <-
   ) |>
   dplyr::select(year, parameter, reference, value, siteclass)
 
-plots$airquality$monitoring$threshold_comparison <-
+plots$monitoring$threshold_comparison$various <-
   data_monitoring_aq |>
   combine_thresholds(immission_threshold_values) |>
   dplyr::mutate(
@@ -345,7 +344,7 @@ update_log(32)
 
 # plot long-standing timeseries of yearly nitrogen deposition at Bachtel site (since 2001)
 temp <- dplyr::filter(immission_threshold_values, source == "LRV Grenzwert" & pollutant == "NO2")
-plots$airquality$monitoring$Ndep$timeseries_Bachtel <-
+plots$monitoring$timeseries_ndep_bachtel$Ndep <-
   data_monitoring_ndep |>
   dplyr::filter(site == "BA" & parameter != "N-Deposition") |>
   dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) |>
@@ -358,7 +357,7 @@ plots$airquality$monitoring$Ndep$timeseries_Bachtel <-
 
 
 # plot timeseries of yearly nitrogen deposition across several monitoring sites (structured per ecosystem type)
-plots$airquality$monitoring$Ndep$all_timeseries <-
+plots$monitoring$timeseries_ndep_all$Ndep <-
   data_monitoring_ndep |>
   dplyr::filter(year >= 2000 & parameter == "N-Deposition") |>
   ggplot2::ggplot(ggplot2::aes(x = year, y = value, color = ecosystem_category, shape = estimate)) +
@@ -378,7 +377,7 @@ plots$airquality$monitoring$Ndep$all_timeseries <-
 
 
 # plot timeseries of yearly nitrogen deposition vs. critical loads of nitrogen across several monitoring sites (structured per ecosystem type)
-plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
+plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
   data_monitoring_ndep |>
   dplyr::filter(year >= 2000 & parameter == "N-Deposition") |>
   ggplot2::ggplot(ggplot2::aes(x = year, y = value / critical_load_single, color = ecosystem_category, shape = estimate)) +
@@ -399,7 +398,7 @@ plots$airquality$monitoring$Ndep$all_timeseries_vs_CLN <-
 
 
 # plot mean contribution of source categories to nitrogen deposition
-plots$airquality$monitoring$Ndep$mean_sources_fractions <-
+plots$monitoring$ndep_mean_sources_fractions$Ndep <-
   data_monitoring_ndep |>
   dplyr::filter(year >= 2019 & parameter != "N-Deposition") |> 
   dplyr::group_by(year, parameter) |> 
@@ -435,16 +434,16 @@ data_expo_weighmean_municip <- read_local_csv(ressources_plotting$exposition$wei
 parameters_exposition <- setNames(parameters_exposition, parameters_exposition)
 
 # plotting histograms for air pollutants
-plots$exposition$hist <-
+plots$exposition$distribution_histogram <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_expo_hist(parameter, data_expo_distr_pollutants)
   }); update_log(34)
 
 # plotting histograms for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$hist$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep); update_log(35)
+plots$exposition$distribution_histogram$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep); update_log(35)
 
 # plotting cumulative distributions for air pollutants
-plots$exposition$cumul <-
+plots$exposition$distribution_cumulative <-
   lapply(parameters_exposition, function(parameter) {
     
     plots_years <- plot_all_expo_cumul(parameter, data_expo_distr_pollutants)
@@ -478,8 +477,8 @@ plots$exposition$cumul <-
 
 
 # plotting cumulative distributions for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$cumul$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep); update_log(35)
-plots$exposition$cumul$Ndep$alle <-
+plots$exposition$distribution_cumulative$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep); update_log(35)
+plots$exposition$distribution_cumulative$Ndep$alle <-
   ggplot2::ggplot(data_expo_distr_ndep, mapping = ggplot2::aes(x = ndep_exmax, y = n_ecosys_cum_rel, color = factor(year), group = year)) +
   ggplot2::geom_vline(xintercept = threshold_ndep$value, color = threshold_ndep$color, linetype = threshold_ndep$linetype, linewidth = threshold_ndep$linesize) +
   ggplot2::geom_line(linewidth = 1) +
@@ -505,7 +504,7 @@ data_expo_weighmean_municip <-
   dplyr::full_join(map_municipalities, by = "geodb_oid") |> 
   sf::st_as_sf()
 
-plots$exposition$population_weighted_mean <-
+plots$exposition$population_weighted_mean_map <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
   }); update_log(33)
@@ -517,7 +516,7 @@ thresh <-
   dplyr::filter(pollutant %in% c("NO2", "O3_max_98p_m1", "PM10", "PM2.5")) |> 
   dplyr::mutate(pollutant = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")"))
 
-plots$exposition$population_weighted_mean$overview <-
+plots$exposition$population_weighted_mean_overview$various <-
   data_expo_weighmean_canton |> 
   dplyr::filter(pollutant != "eBC") |> 
   dplyr::mutate(pollutant = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")")) |> 
@@ -539,6 +538,28 @@ plots$exposition$population_weighted_mean$overview <-
 
 
 
+# construct final plot tibble instead of plot list for better use in *.qmd
+# ---
+plots_df <-
+  plots$emissions$inventory_absolute |> 
+  plotlist_to_tibble("emission", "inventory_absolute") |> 
+  bind_rows(plotlist_to_tibble(plots$emissions$inventory_absolute, "emission", "inventory_relative")) |> 
+  bind_rows(plotlist_to_tibble(plots$emissions$rsd_norm, "emission", "rsd_norm")) |> 
+  bind_rows(plotlist_to_tibble(plots$emissions$rsd_yearmodel, "emission", "rsd_yearmodel")) |> 
+  bind_rows(plotlist_to_tibble(plots$emissions$rsd_yearmeas, "emission", "rsd_yearmeas")) |> 
+  bind_rows(plotlist_to_tibble(plots$monitoring$threshold_comparison, "monitoring", "threshold_comparison")) |> 
+  bind_rows(plotlist_to_tibble(plots$monitoring$timeseries_siteclass, "monitoring", "timeseries_siteclass")) |> 
+  bind_rows(plotlist_to_tibble(plots$monitoring$timeseries_ndep_bachtel, "monitoring", "timeseries_ndep_bachtel")) |> 
+  bind_rows(plotlist_to_tibble(plots$monitoring$timeseries_ndep_all, "monitoring", "timeseries_ndep_all")) |>
+  bind_rows(plotlist_to_tibble(plots$monitoring$timeseries_ndep_all_vs_CLN, "monitoring", "timeseries_ndep_all_vs_CLN")) |>
+  bind_rows(plotlist_to_tibble(plots$exposition$distribution_histogram, "exposition", "distribution_histogram")) |>
+  bind_rows(plotlist_to_tibble(plots$exposition$distribution_cumulative, "exposition", "distribution_cumulative")) |>
+  bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_overview, "exposition", "population_weighted_mean_overview")) |>
+  bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map"))
+
+# get_plot(plots_df, "pollutant == 'PM2.5' & type == 'monitoring'")
+  
+
 
 # clean up
 # ---
@@ -547,4 +568,7 @@ rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass"
             "data_monitoring_aq", "data_monitoring_ndep", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "data_temp", "data_thrshlds",
             "data_expo_weighmean_municip", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 
             "crs", "lbsz", "linewidth", "lsz_lrv", "lsz_who", "lty_lrv", "lty_who", "n_years", "parameters_exposition", "parameters_timeseries",
-            "pointsize", "pollutants", "siteclass_levels", "years", "ressources"))
+            "pointsize", "pollutants", "siteclass_levels", "years", "ressources", "plots"))
+
+
+

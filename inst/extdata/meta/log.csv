@@ -1,5 +1,5 @@
 INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
-1;2024-11-19 13:23:20 CET;get estimated emissions of air pollutants in the Canton of Zurich
+1;2024-11-19 17:00:49 CET;get estimated emissions of air pollutants in the Canton of Zurich
 2;2024-11-19 13:25:39 CET;get monitoring data vehicle remote emission sensing (RSD)
 3;2024-11-19 13:25:40 CET;read metadata for vehicle type, fuel  and euronorm required for RSD NOx-Emission analysis, compiled from various sources
 4;2024-11-19 13:25:40 CET;read filter criteria applied to RSD dataset 
@@ -8,8 +8,8 @@ INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
 7;2024-11-19 13:26:03 CET;read selected O3 peak-season monitoring data in Kanton Zürich from intercantonal monitoring network OSTLUFT and national monitoring network NABEL (yearly values)
 8;2024-11-19 13:26:03 CET;read selected nitrogen deposition monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
 9;2024-11-19 13:26:03 CET;read site metadata OSTLUFT
-10;2024-11-19 14:57:27 CET;read selected air quality threshold values (LRV legal limits WHO air quality guideline)
-11;2024-11-19 14:57:25 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
+10;2024-11-19 21:54:29 CET;read selected air quality threshold values (LRV legal limits WHO air quality guideline)
+11;2024-11-19 21:54:27 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
 12;2024-11-19 13:28:55 CET;get polluMap raster data yearly concentrations of mean NO2, PM10, PM2.5 and eBC
 13;2024-11-19 13:28:55 CET;get jahreskarten raster data yearly concentrations of mean nitrogen dioxide (NO2)
 14;2024-11-19 13:28:55 CET;get jahreskarten raster data yearly concentrations of mean particulate matter PM10
@@ -27,10 +27,10 @@ INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
 26;2024-11-19 13:30:22 CET;write air quality population exposition weighted mean municipalities
 27;2024-11-19 13:30:22 CET;write air quality population exposition distribution
 28;2024-11-19 13:30:22 CET;write nitrogen population exposition distribution
-29;2024-11-19 14:57:29 CET;plot emissions of air pollutants in the Canton of Zurich
-30;2024-11-19 14:57:29 CET;plot monitoring data vehicle remote emission sensing (RSD)
-31;2024-11-19 14:57:30 CET;plot air quality monitoring data Canton Zürich
-32;2024-11-19 14:57:30 CET;plot nitrogen deposition monitoring data Canton Zürich
-33;2024-11-19 14:57:34 CET;plot air quality population exposition weighted means
-34;2024-11-19 14:57:34 CET;plot air quality population exposition distribution
-35;2024-11-19 14:57:34 CET;plot nitrogen sensitive ecosystem exposition distribution
+29;2024-11-19 21:54:31 CET;plot emissions of air pollutants in the Canton of Zurich
+30;2024-11-19 21:54:32 CET;plot monitoring data vehicle remote emission sensing (RSD)
+31;2024-11-19 21:54:33 CET;plot air quality monitoring data Canton Zürich
+32;2024-11-19 21:54:34 CET;plot nitrogen deposition monitoring data Canton Zürich
+33;2024-11-19 21:54:38 CET;plot air quality population exposition weighted means
+34;2024-11-19 21:54:37 CET;plot air quality population exposition distribution
+35;2024-11-19 21:54:37 CET;plot nitrogen sensitive ecosystem exposition distribution

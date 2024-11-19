@@ -35,5 +35,4 @@ Suggests:
     scales,
     shades,
     wesanderson
-URL: https://awelzh.github.io/airquality/
 Config/Needs/website: rmarkdown

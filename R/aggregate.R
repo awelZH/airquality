@@ -1,4 +1,4 @@
-#' Title
+#' Aggregates sf multipolygon into one bounding polygon
 #'
 #' @param map 
 #'
@@ -18,10 +18,13 @@ aggregate_map <- function(map) {
 }
 
 
-#' Title
+#' Aggregates emission budget data
 #'
 #' @param data 
-#'
+#' 
+#' @description
+#' Merges subsectors with small emissions into one common category and sums up emissions accordingly.
+#' 
 #' @return
 #' @export
 #'
@@ -41,17 +44,22 @@ aggregate_emmissions <- function(data){
     aggregate_groups(y = "emission", groups = group_vars, nmin = 1) |> 
     dplyr::rename(emission = sum) |> 
     dplyr::select(tidyr::all_of(c(group_vars,"emission"))) |> 
+    dplyr::mutate(source = "Ostluft & BAFU") |> 
     dplyr::filter(!is.na(emission) & emission > 0) #! test possibility here: sum of emissions needs to match that of original data_emikat
   
   return(data)
 }
 
 
-#' Title
+#' Aggregates RSD NOx emissions to specified groups
 #'
 #' @param data 
 #' @param rsd_auxiliary 
 #' @param groups 
+#' 
+#' @description
+#' Combines measurement data with auxiliary metadata, filters dataset using provided filter criteria 
+#' and calculates mean values of specified vehicle groups.
 #'
 #' @return
 #' @export
@@ -87,10 +95,14 @@ aggregate_rsd_nox <- function(data, rsd_auxiliary, groups = c("vehicle_type", "v
 }
 
 
-#' Title
+#' Aggregates monitoring nitrogen deposition data
 #'
 #' @param data 
-#'
+#' 
+#' @description
+#' Simplifies nitrogen deposition components to broader source categories and aggregates nitrogen deposition input dataset 
+#' per year, site, ecosystem category and source category.
+#' 
 #' @return
 #' @export
 #'
@@ -116,10 +128,14 @@ aggregate_nitrogen_deposition <- function(data) {
 }
 
 
-#' Title
+#' Aggregates air pollutant population exposition dataset
 #'
 #' @param data 
 #'
+#' @description
+#' Calculates sum of inhabitant population per pollutant concentration bins and years;
+#' derives population per bin, cumulative population per bin and relative cumulative population per bin.
+#' 
 #' @return
 #' @export
 #'
@@ -147,10 +163,14 @@ aggregate_population_exposition_distrib <- function(data) {
 }
 
 
-#' Title
+#' Aggregates sensitive ecosystem exposition towards reactive atmospheric nitrogen deposition dataset
 #'
 #' @param data 
 #'
+#' @description
+#' Calculates number of sensitive ecosystems per bin of maximum nitrogen deposition exceeding ecosystem-specific Critical Loads and year;
+#' number of sensitive ecosystems per bin, cumulative number of sensitive ecosystems per bin and relative cumulative number of sensitive ecosystems per bin.
+#' 
 #' @return
 #' @export
 #'
@@ -177,7 +197,7 @@ aggregate_ndep_exposition_distrib <- function(data) {
 }
 
 
-#' Title
+#' Aggregates to mean population-weighted concentrations from air pollutant and inhabitant population dataset
 #'
 #' @param data 
 #' @param groups 
@@ -193,7 +213,10 @@ aggregate_population_weighted_mean <- function(data, groups = c("year", "polluta
     dplyr::group_by_at(dplyr::vars(groups)) |> 
     dplyr::summarise(population_weighted_mean = calc_population_weighted_mean(concentration, population)) |> 
     dplyr::ungroup() |> 
-    dplyr::mutate(source = "BAFU & BFS")
+    dplyr::mutate(
+      unit = "μg/m3",
+      source = "BAFU & BFS"
+      )
 
   return(data_pop_weighted)
 }

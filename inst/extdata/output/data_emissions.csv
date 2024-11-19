@@ -1,385 +1,385 @@
-year;pollutant;unit;sector;subsector_new;emission
-2015;CO;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;1458.844126634
-2015;CO;t/a;Dienstleistungen;Dienstleistungen / verschiedene;952.328124883
-2015;CO;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;2609.664954044
-2015;CO;t/a;Haushalte;Haushalte / verschiedene;1125.422530709
-2015;CO;t/a;Industrie;Industrie / Punktquellen KVA;63.896688
-2015;CO;t/a;Industrie;Industrie / Flächenquellen Industrie;1033.73703163
-2015;CO;t/a;Industrie;Industrie / verschiedene;710.6746772561
-2015;CO;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1176.9164791924
-2015;CO;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1334.000051036
-2015;CO;t/a;Verkehr;Verkehr / Strassenverkehr;6136.618168315
-2015;CO;t/a;Verkehr;Verkehr / Zonenverkehr;4376.938753887
-2015;CO;t/a;Verkehr;Verkehr / verschiedene;43.213751856
-2015;eBC;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;23.12748344
-2015;eBC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.1074918216
-2015;eBC;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;51.093036581
-2015;eBC;t/a;Haushalte;Haushalte / verschiedene;4.51083684831
-2015;eBC;t/a;Industrie;Industrie / verschiedene;8.79808753848
-2015;eBC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.098039935094
-2015;eBC;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Maschinen;11.016040057
-2015;eBC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;6.300000241
-2015;eBC;t/a;Verkehr;Verkehr / Strassenverkehr;60.727519091
-2015;eBC;t/a;Verkehr;Verkehr / verschiedene;3.8663403179999998
-2015;eBC;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;0.060554877
-2015;NH3;t/a;Dienstleistungen;Dienstleistungen / verschiedene;5.171602473754
-2015;NH3;t/a;Haushalte;Haushalte / verschiedene;11.781561353632
-2015;NH3;t/a;Haushalte;Haushalte / Haushalte andere Private etc;83.017659808
-2015;NH3;t/a;Industrie;Industrie / Punktquellen KVA;4.0822883999999995
-2015;NH3;t/a;Industrie;Industrie / verschiedene;93.6799683420673
-2015;NH3;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;14.1108809876774
-2015;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Weiden;1437.415523103
-2015;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;1297.717655758
-2015;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;195.382814509
-2015;NH3;t/a;Verkehr;Verkehr / Strassenverkehr;178.81841213
-2015;NH3;t/a;Verkehr;Verkehr / verschiedene;0.00477924295
-2015;NMVOC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;214.958417766
-2015;NMVOC;t/a;Haushalte;Haushalte / verschiedene;391.15259056
-2015;NMVOC;t/a;Haushalte;Haushalte / Lösungsmittel Konsumprodukte;1281.708092448
-2015;NMVOC;t/a;Industrie;Industrie / Punktquellen KVA;24.848712
-2015;NMVOC;t/a;Industrie;Industrie / verschiedene;163.23985884764
-2015;NMVOC;t/a;Industrie;Industrie / Lösungsmittel Industrie;5758.545332818
-2015;NMVOC;t/a;Industrie;Industrie / Verluste Gasnetz;599.89338865
-2015;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;181.4558960152
-2015;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;937.867685785
-2015;NMVOC;t/a;natürl. Emissionen;natürl. Emissionen / Wälder;4289.386099001
-2015;NMVOC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;303.000003096
-2015;NMVOC;t/a;Verkehr;Verkehr / Strassenverkehr;507.70902398
-2015;NMVOC;t/a;Verkehr;Verkehr / Zonenverkehr;835.594222814
-2015;NMVOC;t/a;Verkehr;Verkehr / verschiedene;5.330298223
-2015;NOx;t/a;Dienstleistungen;Dienstleistungen / verschiedene;599.794022346
-2015;NOx;t/a;Haushalte;Haushalte / verschiedene;629.287871112
-2015;NOx;t/a;Industrie;Industrie / Punktquellen KVA;333.682704
-2015;NOx;t/a;Industrie;Industrie / verschiedene;928.9689244415
-2015;NOx;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;442.0237832822
-2015;NOx;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1153.00004487
-2015;NOx;t/a;Verkehr;Verkehr / Strassenverkehr;6282.185876585
-2015;NOx;t/a;Verkehr;Verkehr / verschiedene;179.842200263
-2015;NOx;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;18.3127079
-2015;PM10;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;83.901905161
-2015;PM10;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.642292001
-2015;PM10;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;114.247450101
-2015;PM10;t/a;Haushalte;Haushalte / verschiedene;27.098165881
-2015;PM10;t/a;Haushalte;Haushalte / Haushalte andere Private etc;64.152527439
-2015;PM10;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;87.744345906
-2015;PM10;t/a;Industrie;Industrie / Punktquellen KVA;7.2771228
-2015;PM10;t/a;Industrie;Industrie / Flächenquellen Industrie;223.89628773
-2015;PM10;t/a;Industrie;Industrie / verschiedene;6.90751105629
-2015;PM10;t/a;Industrie;Industrie / Baumaschinen;259.308302031
-2015;PM10;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;65.53415511067
-2015;PM10;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;76.068946932
-2015;PM10;t/a;Verkehr;Verkehr / Flugverkehr Zürich;21.000000835
-2015;PM10;t/a;Verkehr;Verkehr / Strassenverkehr;490.05363504
-2015;PM10;t/a;Verkehr;Verkehr / verschiedene;5.76588806
-2015;PM10;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;139.741462113
-2015;PM2.5;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;79.566556916
-2015;PM2.5;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.632142881
-2015;PM2.5;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;108.033604917
-2015;PM2.5;t/a;Haushalte;Haushalte / verschiedene;2.9113372381
-2015;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Private etc;60.066538268
-2015;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;65.298510535
-2015;PM2.5;t/a;Industrie;Industrie / Punktquellen KVA;7.2771228
-2015;PM2.5;t/a;Industrie;Industrie / Flächenquellen Industrie;154.013025364
-2015;PM2.5;t/a;Industrie;Industrie / verschiedene;4.96371970426
-2015;PM2.5;t/a;Industrie;Industrie / Baumaschinen;44.338944776
-2015;PM2.5;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;30.7668703203
-2015;PM2.5;t/a;Verkehr;Verkehr / Flugverkehr Zürich;21.000000835
-2015;PM2.5;t/a;Verkehr;Verkehr / Strassenverkehr;220.07171485199999
-2015;PM2.5;t/a;Verkehr;Verkehr / verschiedene;5.76588806
-2015;PM2.5;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;21.251889017
-2015;SO2;t/a;Dienstleistungen;Dienstleistungen / verschiedene;98.68991775518
-2015;SO2;t/a;Haushalte;Haushalte / verschiedene;136.42256371577
-2015;SO2;t/a;Industrie;Industrie / Punktquellen KVA;46.147608
-2015;SO2;t/a;Industrie;Industrie / Flächenquellen Industrie;227.059827973
-2015;SO2;t/a;Industrie;Industrie / verschiedene;16.7798275879839
-2015;SO2;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.6733867531868
-2015;SO2;t/a;Verkehr;Verkehr / Flugverkehr Zürich;97.392611217
-2015;SO2;t/a;Verkehr;Verkehr / verschiedene;9.619252904
-2020;CO;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;1255.775154277
-2020;CO;t/a;Dienstleistungen;Dienstleistungen / verschiedene;935.609074715
-2020;CO;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;2025.775194233
-2020;CO;t/a;Haushalte;Haushalte / verschiedene;1076.951295855
-2020;CO;t/a;Industrie;Industrie / Punktquellen KVA;63.966620052
-2020;CO;t/a;Industrie;Industrie / Flächenquellen Industrie;1278.435892829
-2020;CO;t/a;Industrie;Industrie / verschiedene;574.9956725641
-2020;CO;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1040.052507298
-2020;CO;t/a;Verkehr;Verkehr / Flugverkehr Zürich;544.000017649
-2020;CO;t/a;Verkehr;Verkehr / Strassenverkehr;4309.042824295
-2020;CO;t/a;Verkehr;Verkehr / Zonenverkehr;3236.477607093
-2020;CO;t/a;Verkehr;Verkehr / verschiedene;48.19111856
-2020;eBC;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;18.782723648999998
-2020;eBC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.09214949261000001
-2020;eBC;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;39.043155254
-2020;eBC;t/a;Haushalte;Haushalte / verschiedene;4.53778312823
-2020;eBC;t/a;Industrie;Industrie / verschiedene;7.270985589917
-2020;eBC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;0.9819189300816
-2020;eBC;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Maschinen;7.4737430093
-2020;eBC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;2.881942992
-2020;eBC;t/a;Verkehr;Verkehr / Strassenverkehr;31.700583656
-2020;eBC;t/a;Verkehr;Verkehr / verschiedene;1.827052943
-2020;eBC;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;0.043661743
-2020;NH3;t/a;Dienstleistungen;Dienstleistungen / verschiedene;5.893828130212
-2020;NH3;t/a;Haushalte;Haushalte / verschiedene;11.345012833754
-2020;NH3;t/a;Haushalte;Haushalte / Haushalte andere Private etc;75.413761386
-2020;NH3;t/a;Industrie;Industrie / Punktquellen KVA;4.0867562809999995
-2020;NH3;t/a;Industrie;Industrie / verschiedene;86.7371061780161
-2020;NH3;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;20.6170278253166
-2020;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Weiden;1402.738100765
-2020;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;1261.434812129
-2020;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;186.521252539
-2020;NH3;t/a;Verkehr;Verkehr / Strassenverkehr;121.988788478
-2020;NH3;t/a;Verkehr;Verkehr / verschiedene;0.00476423385
-2020;NMVOC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;178.062048114
-2020;NMVOC;t/a;Haushalte;Haushalte / verschiedene;322.010998083
-2020;NMVOC;t/a;Haushalte;Haushalte / Lösungsmittel Konsumprodukte;1254.386761995
-2020;NMVOC;t/a;Industrie;Industrie / Punktquellen KVA;24.875907798
-2020;NMVOC;t/a;Industrie;Industrie / verschiedene;135.41300208747
-2020;NMVOC;t/a;Industrie;Industrie / Lösungsmittel Industrie;5264.497795147
-2020;NMVOC;t/a;Industrie;Industrie / Verluste Gasnetz;473.445281204
-2020;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;190.7431477198
-2020;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;937.369015056
-2020;NMVOC;t/a;natürl. Emissionen;natürl. Emissionen / Wälder;4289.386099001
-2020;NMVOC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;38.289720187
-2020;NMVOC;t/a;Verkehr;Verkehr / Strassenverkehr;395.854490382
-2020;NMVOC;t/a;Verkehr;Verkehr / Zonenverkehr;556.127456579
-2020;NMVOC;t/a;Verkehr;Verkehr / verschiedene;5.105209731
-2020;NOx;t/a;Dienstleistungen;Dienstleistungen / verschiedene;538.458931158
-2020;NOx;t/a;Haushalte;Haushalte / verschiedene;500.610982928
-2020;NOx;t/a;Industrie;Industrie / Punktquellen KVA;334.04790472
-2020;NOx;t/a;Industrie;Industrie / verschiedene;757.1871534814001
-2020;NOx;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;381.0098238707
-2020;NOx;t/a;Verkehr;Verkehr / Flugverkehr Zürich;535.000005344
-2020;NOx;t/a;Verkehr;Verkehr / Strassenverkehr;3987.885359379
-2020;NOx;t/a;Verkehr;Verkehr / verschiedene;140.489229484
-2020;NOx;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;17.91116142
-2020;PM10;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;72.102778005
-2020;PM10;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.278607494
-2020;PM10;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;85.768379158
-2020;PM10;t/a;Haushalte;Haushalte / verschiedene;23.293378206
-2020;PM10;t/a;Haushalte;Haushalte / Haushalte andere Private etc;64.456916351
-2020;PM10;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;72.479510983
-2020;PM10;t/a;Industrie;Industrie / Punktquellen KVA;7.285087284
-2020;PM10;t/a;Industrie;Industrie / Flächenquellen Industrie;222.09069298400001
-2020;PM10;t/a;Industrie;Industrie / verschiedene;3.43460884216
-2020;PM10;t/a;Industrie;Industrie / Baumaschinen;265.887061241
-2020;PM10;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;63.04699300433
-2020;PM10;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;74.970453903
-2020;PM10;t/a;Verkehr;Verkehr / Flugverkehr Zürich;8.000000241
-2020;PM10;t/a;Verkehr;Verkehr / Strassenverkehr;431.72502115
-2020;PM10;t/a;Verkehr;Verkehr / verschiedene;3.239732256
-2020;PM10;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;121.943473232
-2020;PM2.5;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;67.680767419
-2020;PM2.5;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.278607494
-2020;PM2.5;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;80.846535503
-2020;PM2.5;t/a;Haushalte;Haushalte / verschiedene;2.3841900263999998
-2020;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Private etc;60.686280673
-2020;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;57.936939192
-2020;PM2.5;t/a;Industrie;Industrie / Punktquellen KVA;7.285087284
-2020;PM2.5;t/a;Industrie;Industrie / Flächenquellen Industrie;152.807347183
-2020;PM2.5;t/a;Industrie;Industrie / verschiedene;2.092030648907
-2020;PM2.5;t/a;Industrie;Industrie / Baumaschinen;43.78577548
-2020;PM2.5;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;25.806825807527
-2020;PM2.5;t/a;Verkehr;Verkehr / Flugverkehr Zürich;8.000000241
-2020;PM2.5;t/a;Verkehr;Verkehr / Strassenverkehr;171.577067991
-2020;PM2.5;t/a;Verkehr;Verkehr / verschiedene;3.239732256
-2020;PM2.5;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;18.541718597
-2020;SO2;t/a;Dienstleistungen;Dienstleistungen / verschiedene;53.93567015485
-2020;SO2;t/a;Haushalte;Haushalte / verschiedene;69.81510676001
-2020;SO2;t/a;Industrie;Industrie / Punktquellen KVA;46.198114482
-2020;SO2;t/a;Industrie;Industrie / Flächenquellen Industrie;191.696772803
-2020;SO2;t/a;Industrie;Industrie / verschiedene;11.8090206855005
-2020;SO2;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.2054885815789
-2020;SO2;t/a;Verkehr;Verkehr / Flugverkehr Zürich;36.265740543
-2020;SO2;t/a;Verkehr;Verkehr / verschiedene;8.2316201452
-2021;CO;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;1416.406717775
-2021;CO;t/a;Dienstleistungen;Dienstleistungen / verschiedene;943.913794518
-2021;CO;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;2251.645951216
-2021;CO;t/a;Haushalte;Haushalte / verschiedene;977.260645688
-2021;CO;t/a;Industrie;Industrie / Punktquellen KVA;56.832984
-2021;CO;t/a;Industrie;Industrie / Flächenquellen Industrie;895.510254925
-2021;CO;t/a;Industrie;Industrie / verschiedene;567.5652497697
-2021;CO;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1021.373455796
-2021;CO;t/a;Verkehr;Verkehr / Flugverkehr Zürich;567.999997754
-2021;CO;t/a;Verkehr;Verkehr / Strassenverkehr;4266.53628704
-2021;CO;t/a;Verkehr;Verkehr / Zonenverkehr;3326.677126073
-2021;CO;t/a;Verkehr;Verkehr / verschiedene;48.119705342
-2021;eBC;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;20.751774637
-2021;eBC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.10383341174
-2021;eBC;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;42.825092849
-2021;eBC;t/a;Haushalte;Haushalte / verschiedene;2.74636611339
-2021;eBC;t/a;Industrie;Industrie / verschiedene;6.594107295979
-2021;eBC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;0.9864596834698
-2021;eBC;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Maschinen;6.8944641866
-2021;eBC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;3.74755708
-2021;eBC;t/a;Verkehr;Verkehr / Strassenverkehr;29.583287361
-2021;eBC;t/a;Verkehr;Verkehr / verschiedene;1.542753198
-2021;eBC;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;0.034882985
-2021;NH3;t/a;Dienstleistungen;Dienstleistungen / verschiedene;6.885601385017
-2021;NH3;t/a;Haushalte;Haushalte / verschiedene;11.856737330959
-2021;NH3;t/a;Haushalte;Haushalte / Haushalte andere Private etc;75.89750117
-2021;NH3;t/a;Industrie;Industrie / Punktquellen KVA;3.6309962000000002
-2021;NH3;t/a;Industrie;Industrie / verschiedene;90.6040185136263
-2021;NH3;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;21.7637619336984
-2021;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Weiden;1407.424622042
-2021;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;1267.279398386
-2021;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;198.795053497
-2021;NH3;t/a;Verkehr;Verkehr / Strassenverkehr;127.908280736
-2021;NH3;t/a;Verkehr;Verkehr / verschiedene;0.0047620319
-2021;NMVOC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;194.034524358
-2021;NMVOC;t/a;Haushalte;Haushalte / verschiedene;327.83871778
-2021;NMVOC;t/a;Haushalte;Haushalte / Lösungsmittel Konsumprodukte;1262.212700183
-2021;NMVOC;t/a;Industrie;Industrie / Punktquellen KVA;22.101716
-2021;NMVOC;t/a;Industrie;Industrie / verschiedene;133.69583412699
-2021;NMVOC;t/a;Industrie;Industrie / Lösungsmittel Industrie;5267.442704977
-2021;NMVOC;t/a;Industrie;Industrie / Verluste Gasnetz;470.073780103
-2021;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;193.8921005577
-2021;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;941.668536947
-2021;NMVOC;t/a;natürl. Emissionen;natürl. Emissionen / Wälder;4289.386099001
-2021;NMVOC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;41.665932163
-2021;NMVOC;t/a;Verkehr;Verkehr / Strassenverkehr;396.038976376
-2021;NMVOC;t/a;Verkehr;Verkehr / Zonenverkehr;561.831388949
-2021;NMVOC;t/a;Verkehr;Verkehr / verschiedene;4.944749011
-2021;NOx;t/a;Dienstleistungen;Dienstleistungen / verschiedene;616.510890969
-2021;NOx;t/a;Haushalte;Haushalte / verschiedene;556.372613121
-2021;NOx;t/a;Industrie;Industrie / Punktquellen KVA;296.794472
-2021;NOx;t/a;Industrie;Industrie / verschiedene;798.1056790014001
-2021;NOx;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;382.2098122988
-2021;NOx;t/a;Verkehr;Verkehr / Flugverkehr Zürich;611.000007387
-2021;NOx;t/a;Verkehr;Verkehr / Strassenverkehr;3686.532896578
-2021;NOx;t/a;Verkehr;Verkehr / verschiedene;150.07428135
-2021;NOx;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;17.01884842
-2021;PM10;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;80.632436201
-2021;PM10;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.576199732
-2021;PM10;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;94.875412833
-2021;PM10;t/a;Haushalte;Haushalte / verschiedene;26.321296853
-2021;PM10;t/a;Haushalte;Haushalte / Haushalte andere Private etc;38.085761353
-2021;PM10;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;71.679462116
-2021;PM10;t/a;Industrie;Industrie / Punktquellen KVA;6.4726454
-2021;PM10;t/a;Industrie;Industrie / Flächenquellen Industrie;224.606702283
-2021;PM10;t/a;Industrie;Industrie / verschiedene;3.2030429906799998
-2021;PM10;t/a;Industrie;Industrie / Baumaschinen;266.999200131
-2021;PM10;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;62.99492924963
-2021;PM10;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;75.0265149
-2021;PM10;t/a;Verkehr;Verkehr / Flugverkehr Zürich;10.000000382
-2021;PM10;t/a;Verkehr;Verkehr / Strassenverkehr;447.52444965300003
-2021;PM10;t/a;Verkehr;Verkehr / verschiedene;2.913290041
-2021;PM10;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;124.71560383
-2021;PM2.5;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;75.720466389
-2021;PM2.5;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.576199732
-2021;PM2.5;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;89.444832789
-2021;PM2.5;t/a;Haushalte;Haushalte / verschiedene;2.6557738658
-2021;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Private etc;34.970524785
-2021;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;57.136890736
-2021;PM2.5;t/a;Industrie;Industrie / Punktquellen KVA;6.4726454
-2021;PM2.5;t/a;Industrie;Industrie / Flächenquellen Industrie;154.216842238
-2021;PM2.5;t/a;Industrie;Industrie / verschiedene;1.8807872565400001
-2021;PM2.5;t/a;Industrie;Industrie / Baumaschinen;43.695227021
-2021;PM2.5;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;25.212005701603
-2021;PM2.5;t/a;Verkehr;Verkehr / Flugverkehr Zürich;10.000000382
-2021;PM2.5;t/a;Verkehr;Verkehr / Strassenverkehr;175.529648694
-2021;PM2.5;t/a;Verkehr;Verkehr / verschiedene;2.913290041
-2021;PM2.5;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;18.963573982
-2021;SO2;t/a;Dienstleistungen;Dienstleistungen / verschiedene;55.64595838018
-2021;SO2;t/a;Haushalte;Haushalte / verschiedene;69.61995942164
-2021;SO2;t/a;Industrie;Industrie / Punktquellen KVA;41.046043999999995
-2021;SO2;t/a;Industrie;Industrie / Flächenquellen Industrie;173.98058577199998
-2021;SO2;t/a;Industrie;Industrie / verschiedene;11.8824792136119
-2021;SO2;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.2562489796396
-2021;SO2;t/a;Verkehr;Verkehr / Flugverkehr Zürich;41.555881499
-2021;SO2;t/a;Verkehr;Verkehr / verschiedene;8.4712976922
-2030;CO;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;676.618912098
-2030;CO;t/a;Dienstleistungen;Dienstleistungen / verschiedene;920.005938085
-2030;CO;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;1731.826394458
-2030;CO;t/a;Haushalte;Haushalte / verschiedene;932.133076072
-2030;CO;t/a;Industrie;Industrie / Punktquellen KVA;54.575784
-2030;CO;t/a;Industrie;Industrie / Flächenquellen Industrie;1018.232099286
-2030;CO;t/a;Industrie;Industrie / verschiedene;562.2784828734
-2030;CO;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;835.296110032
-2030;CO;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1440.40932649
-2030;CO;t/a;Verkehr;Verkehr / Strassenverkehr;2943.73455153
-2030;CO;t/a;Verkehr;Verkehr / Zonenverkehr;2301.766973491
-2030;CO;t/a;Verkehr;Verkehr / verschiedene;47.148344763000004
-2030;eBC;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;7.821901027
-2030;eBC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.06331665825
-2030;eBC;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;27.72076741
-2030;eBC;t/a;Haushalte;Haushalte / verschiedene;2.75669790868
-2030;eBC;t/a;Industrie;Industrie / verschiedene;4.5129243784512
-2030;eBC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;0.63986520371478
-2030;eBC;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Maschinen;2.8109803606
-2030;eBC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;4.9041501940000005
-2030;eBC;t/a;Verkehr;Verkehr / Strassenverkehr;22.669459791
-2030;eBC;t/a;Verkehr;Verkehr / verschiedene;0.4620295432
-2030;eBC;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;0.009146235
-2030;NH3;t/a;Dienstleistungen;Dienstleistungen / verschiedene;3.969570061196
-2030;NH3;t/a;Haushalte;Haushalte / verschiedene;11.254331806548
-2030;NH3;t/a;Haushalte;Haushalte / Haushalte andere Private etc;77.780844973
-2030;NH3;t/a;Industrie;Industrie / Punktquellen KVA;3.4867862
-2030;NH3;t/a;Industrie;Industrie / verschiedene;78.9523789276103
-2030;NH3;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;44.0508851218881
-2030;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Weiden;1379.831495497
-2030;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;1247.610612407
-2030;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;176.192618516
-2030;NH3;t/a;Verkehr;Verkehr / Strassenverkehr;125.551639646
-2030;NH3;t/a;Verkehr;Verkehr / verschiedene;0.0047452861
-2030;NMVOC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;105.184319973
-2030;NMVOC;t/a;Haushalte;Haushalte / verschiedene;245.141864519
-2030;NMVOC;t/a;Haushalte;Haushalte / Lösungsmittel Konsumprodukte;1343.634698842
-2030;NMVOC;t/a;Industrie;Industrie / Punktquellen KVA;21.223916
-2030;NMVOC;t/a;Industrie;Industrie / verschiedene;123.07176395586
-2030;NMVOC;t/a;Industrie;Industrie / Lösungsmittel Industrie;5248.289039828
-2030;NMVOC;t/a;Industrie;Industrie / Verluste Gasnetz;331.478122906
-2030;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;281.4009098457
-2030;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;925.580344298
-2030;NMVOC;t/a;natürl. Emissionen;natürl. Emissionen / Wälder;4289.386099001
-2030;NMVOC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;127.139256887
-2030;NMVOC;t/a;Verkehr;Verkehr / Strassenverkehr;291.893735712
-2030;NMVOC;t/a;Verkehr;Verkehr / Zonenverkehr;350.697586554
-2030;NMVOC;t/a;Verkehr;Verkehr / verschiedene;3.895598727
-2030;NOx;t/a;Dienstleistungen;Dienstleistungen / verschiedene;364.015879707
-2030;NOx;t/a;Haushalte;Haushalte / verschiedene;429.374729504
-2030;NOx;t/a;Industrie;Industrie / Punktquellen KVA;285.006872
-2030;NOx;t/a;Industrie;Industrie / verschiedene;784.3828305368
-2030;NOx;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;323.15134969709
-2030;NOx;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1943.31305062
-2030;NOx;t/a;Verkehr;Verkehr / Strassenverkehr;2016.068772803
-2030;NOx;t/a;Verkehr;Verkehr / verschiedene;147.022038203
-2030;NOx;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;11.70423126
-2030;PM10;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;31.668964446
-2030;PM10;t/a;Dienstleistungen;Dienstleistungen / verschiedene;1.4247671847999999
-2030;PM10;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;69.703477046
-2030;PM10;t/a;Haushalte;Haushalte / verschiedene;25.6133482379
-2030;PM10;t/a;Haushalte;Haushalte / Haushalte andere Private etc;38.172948942
-2030;PM10;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;88.10369278900001
-2030;PM10;t/a;Industrie;Industrie / Punktquellen KVA;6.2155754
-2030;PM10;t/a;Industrie;Industrie / Flächenquellen Industrie;238.247810377
-2030;PM10;t/a;Industrie;Industrie / verschiedene;2.125329919483
-2030;PM10;t/a;Industrie;Industrie / Baumaschinen;277.484014201
-2030;PM10;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;54.10095030084
-2030;PM10;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;75.013694152
-2030;PM10;t/a;Verkehr;Verkehr / Flugverkehr Zürich;13.082830794
-2030;PM10;t/a;Verkehr;Verkehr / Strassenverkehr;491.542006426
-2030;PM10;t/a;Verkehr;Verkehr / verschiedene;1.50678661
-2030;PM10;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;149.664820794
-2030;PM2.5;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;29.968041835999998
-2030;PM2.5;t/a;Dienstleistungen;Dienstleistungen / verschiedene;1.4247671847999999
-2030;PM2.5;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;65.938613585
-2030;PM2.5;t/a;Haushalte;Haushalte / verschiedene;1.9478252506999998
-2030;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Private etc;35.566471775
-2030;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;65.051668844
-2030;PM2.5;t/a;Industrie;Industrie / Punktquellen KVA;6.2155754
-2030;PM2.5;t/a;Industrie;Industrie / Flächenquellen Industrie;166.784565444
-2030;PM2.5;t/a;Industrie;Industrie / verschiedene;0.895629841195
-2030;PM2.5;t/a;Industrie;Industrie / Baumaschinen;44.322599192
-2030;PM2.5;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;17.143252996533
-2030;PM2.5;t/a;Verkehr;Verkehr / Flugverkehr Zürich;13.082830794
-2030;PM2.5;t/a;Verkehr;Verkehr / Strassenverkehr;183.192815064
-2030;PM2.5;t/a;Verkehr;Verkehr / verschiedene;1.50678661
-2030;PM2.5;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;22.760269761
-2030;SO2;t/a;Dienstleistungen;Dienstleistungen / verschiedene;16.46338342681
-2030;SO2;t/a;Haushalte;Haushalte / verschiedene;30.22371833339
-2030;SO2;t/a;Industrie;Industrie / Punktquellen KVA;39.415844
-2030;SO2;t/a;Industrie;Industrie / Flächenquellen Industrie;192.926944889
-2030;SO2;t/a;Industrie;Industrie / verschiedene;12.3153291116498
-2030;SO2;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.0340461524861
-2030;SO2;t/a;Verkehr;Verkehr / Flugverkehr Zürich;126.779692622
-2030;SO2;t/a;Verkehr;Verkehr / verschiedene;7.8778878111
+year;pollutant;unit;sector;subsector_new;emission;source
+2015;CO;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;1458.844126634;Ostluft & BAFU
+2015;CO;t/a;Dienstleistungen;Dienstleistungen / verschiedene;952.328124883;Ostluft & BAFU
+2015;CO;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;2609.664954044;Ostluft & BAFU
+2015;CO;t/a;Haushalte;Haushalte / verschiedene;1125.422530709;Ostluft & BAFU
+2015;CO;t/a;Industrie;Industrie / Punktquellen KVA;63.896688;Ostluft & BAFU
+2015;CO;t/a;Industrie;Industrie / Flächenquellen Industrie;1033.73703163;Ostluft & BAFU
+2015;CO;t/a;Industrie;Industrie / verschiedene;710.6746772561;Ostluft & BAFU
+2015;CO;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1176.9164791924;Ostluft & BAFU
+2015;CO;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1334.000051036;Ostluft & BAFU
+2015;CO;t/a;Verkehr;Verkehr / Strassenverkehr;6136.618168315;Ostluft & BAFU
+2015;CO;t/a;Verkehr;Verkehr / Zonenverkehr;4376.938753887;Ostluft & BAFU
+2015;CO;t/a;Verkehr;Verkehr / verschiedene;43.213751856;Ostluft & BAFU
+2015;eBC;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;23.12748344;Ostluft & BAFU
+2015;eBC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.1074918216;Ostluft & BAFU
+2015;eBC;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;51.093036581;Ostluft & BAFU
+2015;eBC;t/a;Haushalte;Haushalte / verschiedene;4.51083684831;Ostluft & BAFU
+2015;eBC;t/a;Industrie;Industrie / verschiedene;8.79808753848;Ostluft & BAFU
+2015;eBC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.098039935094;Ostluft & BAFU
+2015;eBC;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Maschinen;11.016040057;Ostluft & BAFU
+2015;eBC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;6.300000241;Ostluft & BAFU
+2015;eBC;t/a;Verkehr;Verkehr / Strassenverkehr;60.727519091;Ostluft & BAFU
+2015;eBC;t/a;Verkehr;Verkehr / verschiedene;3.8663403179999998;Ostluft & BAFU
+2015;eBC;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;0.060554877;Ostluft & BAFU
+2015;NH3;t/a;Dienstleistungen;Dienstleistungen / verschiedene;5.171602473754;Ostluft & BAFU
+2015;NH3;t/a;Haushalte;Haushalte / verschiedene;11.781561353632;Ostluft & BAFU
+2015;NH3;t/a;Haushalte;Haushalte / Haushalte andere Private etc;83.017659808;Ostluft & BAFU
+2015;NH3;t/a;Industrie;Industrie / Punktquellen KVA;4.0822883999999995;Ostluft & BAFU
+2015;NH3;t/a;Industrie;Industrie / verschiedene;93.6799683420673;Ostluft & BAFU
+2015;NH3;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;14.1108809876774;Ostluft & BAFU
+2015;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Weiden;1437.415523103;Ostluft & BAFU
+2015;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;1297.717655758;Ostluft & BAFU
+2015;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;195.382814509;Ostluft & BAFU
+2015;NH3;t/a;Verkehr;Verkehr / Strassenverkehr;178.81841213;Ostluft & BAFU
+2015;NH3;t/a;Verkehr;Verkehr / verschiedene;0.00477924295;Ostluft & BAFU
+2015;NMVOC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;214.958417766;Ostluft & BAFU
+2015;NMVOC;t/a;Haushalte;Haushalte / verschiedene;391.15259056;Ostluft & BAFU
+2015;NMVOC;t/a;Haushalte;Haushalte / Lösungsmittel Konsumprodukte;1281.708092448;Ostluft & BAFU
+2015;NMVOC;t/a;Industrie;Industrie / Punktquellen KVA;24.848712;Ostluft & BAFU
+2015;NMVOC;t/a;Industrie;Industrie / verschiedene;163.23985884764;Ostluft & BAFU
+2015;NMVOC;t/a;Industrie;Industrie / Lösungsmittel Industrie;5758.545332818;Ostluft & BAFU
+2015;NMVOC;t/a;Industrie;Industrie / Verluste Gasnetz;599.89338865;Ostluft & BAFU
+2015;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;181.4558960152;Ostluft & BAFU
+2015;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;937.867685785;Ostluft & BAFU
+2015;NMVOC;t/a;natürl. Emissionen;natürl. Emissionen / Wälder;4289.386099001;Ostluft & BAFU
+2015;NMVOC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;303.000003096;Ostluft & BAFU
+2015;NMVOC;t/a;Verkehr;Verkehr / Strassenverkehr;507.70902398;Ostluft & BAFU
+2015;NMVOC;t/a;Verkehr;Verkehr / Zonenverkehr;835.594222814;Ostluft & BAFU
+2015;NMVOC;t/a;Verkehr;Verkehr / verschiedene;5.330298223;Ostluft & BAFU
+2015;NOx;t/a;Dienstleistungen;Dienstleistungen / verschiedene;599.794022346;Ostluft & BAFU
+2015;NOx;t/a;Haushalte;Haushalte / verschiedene;629.287871112;Ostluft & BAFU
+2015;NOx;t/a;Industrie;Industrie / Punktquellen KVA;333.682704;Ostluft & BAFU
+2015;NOx;t/a;Industrie;Industrie / verschiedene;928.9689244415;Ostluft & BAFU
+2015;NOx;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;442.0237832822;Ostluft & BAFU
+2015;NOx;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1153.00004487;Ostluft & BAFU
+2015;NOx;t/a;Verkehr;Verkehr / Strassenverkehr;6282.185876585;Ostluft & BAFU
+2015;NOx;t/a;Verkehr;Verkehr / verschiedene;179.842200263;Ostluft & BAFU
+2015;NOx;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;18.3127079;Ostluft & BAFU
+2015;PM10;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;83.901905161;Ostluft & BAFU
+2015;PM10;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.642292001;Ostluft & BAFU
+2015;PM10;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;114.247450101;Ostluft & BAFU
+2015;PM10;t/a;Haushalte;Haushalte / verschiedene;27.098165881;Ostluft & BAFU
+2015;PM10;t/a;Haushalte;Haushalte / Haushalte andere Private etc;64.152527439;Ostluft & BAFU
+2015;PM10;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;87.744345906;Ostluft & BAFU
+2015;PM10;t/a;Industrie;Industrie / Punktquellen KVA;7.2771228;Ostluft & BAFU
+2015;PM10;t/a;Industrie;Industrie / Flächenquellen Industrie;223.89628773;Ostluft & BAFU
+2015;PM10;t/a;Industrie;Industrie / verschiedene;6.90751105629;Ostluft & BAFU
+2015;PM10;t/a;Industrie;Industrie / Baumaschinen;259.308302031;Ostluft & BAFU
+2015;PM10;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;65.53415511067;Ostluft & BAFU
+2015;PM10;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;76.068946932;Ostluft & BAFU
+2015;PM10;t/a;Verkehr;Verkehr / Flugverkehr Zürich;21.000000835;Ostluft & BAFU
+2015;PM10;t/a;Verkehr;Verkehr / Strassenverkehr;490.05363504;Ostluft & BAFU
+2015;PM10;t/a;Verkehr;Verkehr / verschiedene;5.76588806;Ostluft & BAFU
+2015;PM10;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;139.741462113;Ostluft & BAFU
+2015;PM2.5;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;79.566556916;Ostluft & BAFU
+2015;PM2.5;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.632142881;Ostluft & BAFU
+2015;PM2.5;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;108.033604917;Ostluft & BAFU
+2015;PM2.5;t/a;Haushalte;Haushalte / verschiedene;2.9113372381;Ostluft & BAFU
+2015;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Private etc;60.066538268;Ostluft & BAFU
+2015;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;65.298510535;Ostluft & BAFU
+2015;PM2.5;t/a;Industrie;Industrie / Punktquellen KVA;7.2771228;Ostluft & BAFU
+2015;PM2.5;t/a;Industrie;Industrie / Flächenquellen Industrie;154.013025364;Ostluft & BAFU
+2015;PM2.5;t/a;Industrie;Industrie / verschiedene;4.96371970426;Ostluft & BAFU
+2015;PM2.5;t/a;Industrie;Industrie / Baumaschinen;44.338944776;Ostluft & BAFU
+2015;PM2.5;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;30.7668703203;Ostluft & BAFU
+2015;PM2.5;t/a;Verkehr;Verkehr / Flugverkehr Zürich;21.000000835;Ostluft & BAFU
+2015;PM2.5;t/a;Verkehr;Verkehr / Strassenverkehr;220.07171485199999;Ostluft & BAFU
+2015;PM2.5;t/a;Verkehr;Verkehr / verschiedene;5.76588806;Ostluft & BAFU
+2015;PM2.5;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;21.251889017;Ostluft & BAFU
+2015;SO2;t/a;Dienstleistungen;Dienstleistungen / verschiedene;98.68991775518;Ostluft & BAFU
+2015;SO2;t/a;Haushalte;Haushalte / verschiedene;136.42256371577;Ostluft & BAFU
+2015;SO2;t/a;Industrie;Industrie / Punktquellen KVA;46.147608;Ostluft & BAFU
+2015;SO2;t/a;Industrie;Industrie / Flächenquellen Industrie;227.059827973;Ostluft & BAFU
+2015;SO2;t/a;Industrie;Industrie / verschiedene;16.7798275879839;Ostluft & BAFU
+2015;SO2;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.6733867531868;Ostluft & BAFU
+2015;SO2;t/a;Verkehr;Verkehr / Flugverkehr Zürich;97.392611217;Ostluft & BAFU
+2015;SO2;t/a;Verkehr;Verkehr / verschiedene;9.619252904;Ostluft & BAFU
+2020;CO;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;1255.775154277;Ostluft & BAFU
+2020;CO;t/a;Dienstleistungen;Dienstleistungen / verschiedene;935.609074715;Ostluft & BAFU
+2020;CO;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;2025.775194233;Ostluft & BAFU
+2020;CO;t/a;Haushalte;Haushalte / verschiedene;1076.951295855;Ostluft & BAFU
+2020;CO;t/a;Industrie;Industrie / Punktquellen KVA;63.966620052;Ostluft & BAFU
+2020;CO;t/a;Industrie;Industrie / Flächenquellen Industrie;1278.435892829;Ostluft & BAFU
+2020;CO;t/a;Industrie;Industrie / verschiedene;574.9956725641;Ostluft & BAFU
+2020;CO;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1040.052507298;Ostluft & BAFU
+2020;CO;t/a;Verkehr;Verkehr / Flugverkehr Zürich;544.000017649;Ostluft & BAFU
+2020;CO;t/a;Verkehr;Verkehr / Strassenverkehr;4309.042824295;Ostluft & BAFU
+2020;CO;t/a;Verkehr;Verkehr / Zonenverkehr;3236.477607093;Ostluft & BAFU
+2020;CO;t/a;Verkehr;Verkehr / verschiedene;48.19111856;Ostluft & BAFU
+2020;eBC;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;18.782723648999998;Ostluft & BAFU
+2020;eBC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.09214949261000001;Ostluft & BAFU
+2020;eBC;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;39.043155254;Ostluft & BAFU
+2020;eBC;t/a;Haushalte;Haushalte / verschiedene;4.53778312823;Ostluft & BAFU
+2020;eBC;t/a;Industrie;Industrie / verschiedene;7.270985589917;Ostluft & BAFU
+2020;eBC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;0.9819189300816;Ostluft & BAFU
+2020;eBC;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Maschinen;7.4737430093;Ostluft & BAFU
+2020;eBC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;2.881942992;Ostluft & BAFU
+2020;eBC;t/a;Verkehr;Verkehr / Strassenverkehr;31.700583656;Ostluft & BAFU
+2020;eBC;t/a;Verkehr;Verkehr / verschiedene;1.827052943;Ostluft & BAFU
+2020;eBC;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;0.043661743;Ostluft & BAFU
+2020;NH3;t/a;Dienstleistungen;Dienstleistungen / verschiedene;5.893828130212;Ostluft & BAFU
+2020;NH3;t/a;Haushalte;Haushalte / verschiedene;11.345012833754;Ostluft & BAFU
+2020;NH3;t/a;Haushalte;Haushalte / Haushalte andere Private etc;75.413761386;Ostluft & BAFU
+2020;NH3;t/a;Industrie;Industrie / Punktquellen KVA;4.0867562809999995;Ostluft & BAFU
+2020;NH3;t/a;Industrie;Industrie / verschiedene;86.7371061780161;Ostluft & BAFU
+2020;NH3;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;20.6170278253166;Ostluft & BAFU
+2020;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Weiden;1402.738100765;Ostluft & BAFU
+2020;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;1261.434812129;Ostluft & BAFU
+2020;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;186.521252539;Ostluft & BAFU
+2020;NH3;t/a;Verkehr;Verkehr / Strassenverkehr;121.988788478;Ostluft & BAFU
+2020;NH3;t/a;Verkehr;Verkehr / verschiedene;0.00476423385;Ostluft & BAFU
+2020;NMVOC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;178.062048114;Ostluft & BAFU
+2020;NMVOC;t/a;Haushalte;Haushalte / verschiedene;322.010998083;Ostluft & BAFU
+2020;NMVOC;t/a;Haushalte;Haushalte / Lösungsmittel Konsumprodukte;1254.386761995;Ostluft & BAFU
+2020;NMVOC;t/a;Industrie;Industrie / Punktquellen KVA;24.875907798;Ostluft & BAFU
+2020;NMVOC;t/a;Industrie;Industrie / verschiedene;135.41300208747;Ostluft & BAFU
+2020;NMVOC;t/a;Industrie;Industrie / Lösungsmittel Industrie;5264.497795147;Ostluft & BAFU
+2020;NMVOC;t/a;Industrie;Industrie / Verluste Gasnetz;473.445281204;Ostluft & BAFU
+2020;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;190.7431477198;Ostluft & BAFU
+2020;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;937.369015056;Ostluft & BAFU
+2020;NMVOC;t/a;natürl. Emissionen;natürl. Emissionen / Wälder;4289.386099001;Ostluft & BAFU
+2020;NMVOC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;38.289720187;Ostluft & BAFU
+2020;NMVOC;t/a;Verkehr;Verkehr / Strassenverkehr;395.854490382;Ostluft & BAFU
+2020;NMVOC;t/a;Verkehr;Verkehr / Zonenverkehr;556.127456579;Ostluft & BAFU
+2020;NMVOC;t/a;Verkehr;Verkehr / verschiedene;5.105209731;Ostluft & BAFU
+2020;NOx;t/a;Dienstleistungen;Dienstleistungen / verschiedene;538.458931158;Ostluft & BAFU
+2020;NOx;t/a;Haushalte;Haushalte / verschiedene;500.610982928;Ostluft & BAFU
+2020;NOx;t/a;Industrie;Industrie / Punktquellen KVA;334.04790472;Ostluft & BAFU
+2020;NOx;t/a;Industrie;Industrie / verschiedene;757.1871534814001;Ostluft & BAFU
+2020;NOx;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;381.0098238707;Ostluft & BAFU
+2020;NOx;t/a;Verkehr;Verkehr / Flugverkehr Zürich;535.000005344;Ostluft & BAFU
+2020;NOx;t/a;Verkehr;Verkehr / Strassenverkehr;3987.885359379;Ostluft & BAFU
+2020;NOx;t/a;Verkehr;Verkehr / verschiedene;140.489229484;Ostluft & BAFU
+2020;NOx;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;17.91116142;Ostluft & BAFU
+2020;PM10;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;72.102778005;Ostluft & BAFU
+2020;PM10;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.278607494;Ostluft & BAFU
+2020;PM10;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;85.768379158;Ostluft & BAFU
+2020;PM10;t/a;Haushalte;Haushalte / verschiedene;23.293378206;Ostluft & BAFU
+2020;PM10;t/a;Haushalte;Haushalte / Haushalte andere Private etc;64.456916351;Ostluft & BAFU
+2020;PM10;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;72.479510983;Ostluft & BAFU
+2020;PM10;t/a;Industrie;Industrie / Punktquellen KVA;7.285087284;Ostluft & BAFU
+2020;PM10;t/a;Industrie;Industrie / Flächenquellen Industrie;222.09069298400001;Ostluft & BAFU
+2020;PM10;t/a;Industrie;Industrie / verschiedene;3.43460884216;Ostluft & BAFU
+2020;PM10;t/a;Industrie;Industrie / Baumaschinen;265.887061241;Ostluft & BAFU
+2020;PM10;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;63.04699300433;Ostluft & BAFU
+2020;PM10;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;74.970453903;Ostluft & BAFU
+2020;PM10;t/a;Verkehr;Verkehr / Flugverkehr Zürich;8.000000241;Ostluft & BAFU
+2020;PM10;t/a;Verkehr;Verkehr / Strassenverkehr;431.72502115;Ostluft & BAFU
+2020;PM10;t/a;Verkehr;Verkehr / verschiedene;3.239732256;Ostluft & BAFU
+2020;PM10;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;121.943473232;Ostluft & BAFU
+2020;PM2.5;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;67.680767419;Ostluft & BAFU
+2020;PM2.5;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.278607494;Ostluft & BAFU
+2020;PM2.5;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;80.846535503;Ostluft & BAFU
+2020;PM2.5;t/a;Haushalte;Haushalte / verschiedene;2.3841900263999998;Ostluft & BAFU
+2020;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Private etc;60.686280673;Ostluft & BAFU
+2020;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;57.936939192;Ostluft & BAFU
+2020;PM2.5;t/a;Industrie;Industrie / Punktquellen KVA;7.285087284;Ostluft & BAFU
+2020;PM2.5;t/a;Industrie;Industrie / Flächenquellen Industrie;152.807347183;Ostluft & BAFU
+2020;PM2.5;t/a;Industrie;Industrie / verschiedene;2.092030648907;Ostluft & BAFU
+2020;PM2.5;t/a;Industrie;Industrie / Baumaschinen;43.78577548;Ostluft & BAFU
+2020;PM2.5;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;25.806825807527;Ostluft & BAFU
+2020;PM2.5;t/a;Verkehr;Verkehr / Flugverkehr Zürich;8.000000241;Ostluft & BAFU
+2020;PM2.5;t/a;Verkehr;Verkehr / Strassenverkehr;171.577067991;Ostluft & BAFU
+2020;PM2.5;t/a;Verkehr;Verkehr / verschiedene;3.239732256;Ostluft & BAFU
+2020;PM2.5;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;18.541718597;Ostluft & BAFU
+2020;SO2;t/a;Dienstleistungen;Dienstleistungen / verschiedene;53.93567015485;Ostluft & BAFU
+2020;SO2;t/a;Haushalte;Haushalte / verschiedene;69.81510676001;Ostluft & BAFU
+2020;SO2;t/a;Industrie;Industrie / Punktquellen KVA;46.198114482;Ostluft & BAFU
+2020;SO2;t/a;Industrie;Industrie / Flächenquellen Industrie;191.696772803;Ostluft & BAFU
+2020;SO2;t/a;Industrie;Industrie / verschiedene;11.8090206855005;Ostluft & BAFU
+2020;SO2;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.2054885815789;Ostluft & BAFU
+2020;SO2;t/a;Verkehr;Verkehr / Flugverkehr Zürich;36.265740543;Ostluft & BAFU
+2020;SO2;t/a;Verkehr;Verkehr / verschiedene;8.2316201452;Ostluft & BAFU
+2021;CO;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;1416.406717775;Ostluft & BAFU
+2021;CO;t/a;Dienstleistungen;Dienstleistungen / verschiedene;943.913794518;Ostluft & BAFU
+2021;CO;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;2251.645951216;Ostluft & BAFU
+2021;CO;t/a;Haushalte;Haushalte / verschiedene;977.260645688;Ostluft & BAFU
+2021;CO;t/a;Industrie;Industrie / Punktquellen KVA;56.832984;Ostluft & BAFU
+2021;CO;t/a;Industrie;Industrie / Flächenquellen Industrie;895.510254925;Ostluft & BAFU
+2021;CO;t/a;Industrie;Industrie / verschiedene;567.5652497697;Ostluft & BAFU
+2021;CO;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1021.373455796;Ostluft & BAFU
+2021;CO;t/a;Verkehr;Verkehr / Flugverkehr Zürich;567.999997754;Ostluft & BAFU
+2021;CO;t/a;Verkehr;Verkehr / Strassenverkehr;4266.53628704;Ostluft & BAFU
+2021;CO;t/a;Verkehr;Verkehr / Zonenverkehr;3326.677126073;Ostluft & BAFU
+2021;CO;t/a;Verkehr;Verkehr / verschiedene;48.119705342;Ostluft & BAFU
+2021;eBC;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;20.751774637;Ostluft & BAFU
+2021;eBC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.10383341174;Ostluft & BAFU
+2021;eBC;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;42.825092849;Ostluft & BAFU
+2021;eBC;t/a;Haushalte;Haushalte / verschiedene;2.74636611339;Ostluft & BAFU
+2021;eBC;t/a;Industrie;Industrie / verschiedene;6.594107295979;Ostluft & BAFU
+2021;eBC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;0.9864596834698;Ostluft & BAFU
+2021;eBC;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Maschinen;6.8944641866;Ostluft & BAFU
+2021;eBC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;3.74755708;Ostluft & BAFU
+2021;eBC;t/a;Verkehr;Verkehr / Strassenverkehr;29.583287361;Ostluft & BAFU
+2021;eBC;t/a;Verkehr;Verkehr / verschiedene;1.542753198;Ostluft & BAFU
+2021;eBC;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;0.034882985;Ostluft & BAFU
+2021;NH3;t/a;Dienstleistungen;Dienstleistungen / verschiedene;6.885601385017;Ostluft & BAFU
+2021;NH3;t/a;Haushalte;Haushalte / verschiedene;11.856737330959;Ostluft & BAFU
+2021;NH3;t/a;Haushalte;Haushalte / Haushalte andere Private etc;75.89750117;Ostluft & BAFU
+2021;NH3;t/a;Industrie;Industrie / Punktquellen KVA;3.6309962000000002;Ostluft & BAFU
+2021;NH3;t/a;Industrie;Industrie / verschiedene;90.6040185136263;Ostluft & BAFU
+2021;NH3;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;21.7637619336984;Ostluft & BAFU
+2021;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Weiden;1407.424622042;Ostluft & BAFU
+2021;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;1267.279398386;Ostluft & BAFU
+2021;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;198.795053497;Ostluft & BAFU
+2021;NH3;t/a;Verkehr;Verkehr / Strassenverkehr;127.908280736;Ostluft & BAFU
+2021;NH3;t/a;Verkehr;Verkehr / verschiedene;0.0047620319;Ostluft & BAFU
+2021;NMVOC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;194.034524358;Ostluft & BAFU
+2021;NMVOC;t/a;Haushalte;Haushalte / verschiedene;327.83871778;Ostluft & BAFU
+2021;NMVOC;t/a;Haushalte;Haushalte / Lösungsmittel Konsumprodukte;1262.212700183;Ostluft & BAFU
+2021;NMVOC;t/a;Industrie;Industrie / Punktquellen KVA;22.101716;Ostluft & BAFU
+2021;NMVOC;t/a;Industrie;Industrie / verschiedene;133.69583412699;Ostluft & BAFU
+2021;NMVOC;t/a;Industrie;Industrie / Lösungsmittel Industrie;5267.442704977;Ostluft & BAFU
+2021;NMVOC;t/a;Industrie;Industrie / Verluste Gasnetz;470.073780103;Ostluft & BAFU
+2021;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;193.8921005577;Ostluft & BAFU
+2021;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;941.668536947;Ostluft & BAFU
+2021;NMVOC;t/a;natürl. Emissionen;natürl. Emissionen / Wälder;4289.386099001;Ostluft & BAFU
+2021;NMVOC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;41.665932163;Ostluft & BAFU
+2021;NMVOC;t/a;Verkehr;Verkehr / Strassenverkehr;396.038976376;Ostluft & BAFU
+2021;NMVOC;t/a;Verkehr;Verkehr / Zonenverkehr;561.831388949;Ostluft & BAFU
+2021;NMVOC;t/a;Verkehr;Verkehr / verschiedene;4.944749011;Ostluft & BAFU
+2021;NOx;t/a;Dienstleistungen;Dienstleistungen / verschiedene;616.510890969;Ostluft & BAFU
+2021;NOx;t/a;Haushalte;Haushalte / verschiedene;556.372613121;Ostluft & BAFU
+2021;NOx;t/a;Industrie;Industrie / Punktquellen KVA;296.794472;Ostluft & BAFU
+2021;NOx;t/a;Industrie;Industrie / verschiedene;798.1056790014001;Ostluft & BAFU
+2021;NOx;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;382.2098122988;Ostluft & BAFU
+2021;NOx;t/a;Verkehr;Verkehr / Flugverkehr Zürich;611.000007387;Ostluft & BAFU
+2021;NOx;t/a;Verkehr;Verkehr / Strassenverkehr;3686.532896578;Ostluft & BAFU
+2021;NOx;t/a;Verkehr;Verkehr / verschiedene;150.07428135;Ostluft & BAFU
+2021;NOx;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;17.01884842;Ostluft & BAFU
+2021;PM10;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;80.632436201;Ostluft & BAFU
+2021;PM10;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.576199732;Ostluft & BAFU
+2021;PM10;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;94.875412833;Ostluft & BAFU
+2021;PM10;t/a;Haushalte;Haushalte / verschiedene;26.321296853;Ostluft & BAFU
+2021;PM10;t/a;Haushalte;Haushalte / Haushalte andere Private etc;38.085761353;Ostluft & BAFU
+2021;PM10;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;71.679462116;Ostluft & BAFU
+2021;PM10;t/a;Industrie;Industrie / Punktquellen KVA;6.4726454;Ostluft & BAFU
+2021;PM10;t/a;Industrie;Industrie / Flächenquellen Industrie;224.606702283;Ostluft & BAFU
+2021;PM10;t/a;Industrie;Industrie / verschiedene;3.2030429906799998;Ostluft & BAFU
+2021;PM10;t/a;Industrie;Industrie / Baumaschinen;266.999200131;Ostluft & BAFU
+2021;PM10;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;62.99492924963;Ostluft & BAFU
+2021;PM10;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;75.0265149;Ostluft & BAFU
+2021;PM10;t/a;Verkehr;Verkehr / Flugverkehr Zürich;10.000000382;Ostluft & BAFU
+2021;PM10;t/a;Verkehr;Verkehr / Strassenverkehr;447.52444965300003;Ostluft & BAFU
+2021;PM10;t/a;Verkehr;Verkehr / verschiedene;2.913290041;Ostluft & BAFU
+2021;PM10;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;124.71560383;Ostluft & BAFU
+2021;PM2.5;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;75.720466389;Ostluft & BAFU
+2021;PM2.5;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.576199732;Ostluft & BAFU
+2021;PM2.5;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;89.444832789;Ostluft & BAFU
+2021;PM2.5;t/a;Haushalte;Haushalte / verschiedene;2.6557738658;Ostluft & BAFU
+2021;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Private etc;34.970524785;Ostluft & BAFU
+2021;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;57.136890736;Ostluft & BAFU
+2021;PM2.5;t/a;Industrie;Industrie / Punktquellen KVA;6.4726454;Ostluft & BAFU
+2021;PM2.5;t/a;Industrie;Industrie / Flächenquellen Industrie;154.216842238;Ostluft & BAFU
+2021;PM2.5;t/a;Industrie;Industrie / verschiedene;1.8807872565400001;Ostluft & BAFU
+2021;PM2.5;t/a;Industrie;Industrie / Baumaschinen;43.695227021;Ostluft & BAFU
+2021;PM2.5;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;25.212005701603;Ostluft & BAFU
+2021;PM2.5;t/a;Verkehr;Verkehr / Flugverkehr Zürich;10.000000382;Ostluft & BAFU
+2021;PM2.5;t/a;Verkehr;Verkehr / Strassenverkehr;175.529648694;Ostluft & BAFU
+2021;PM2.5;t/a;Verkehr;Verkehr / verschiedene;2.913290041;Ostluft & BAFU
+2021;PM2.5;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;18.963573982;Ostluft & BAFU
+2021;SO2;t/a;Dienstleistungen;Dienstleistungen / verschiedene;55.64595838018;Ostluft & BAFU
+2021;SO2;t/a;Haushalte;Haushalte / verschiedene;69.61995942164;Ostluft & BAFU
+2021;SO2;t/a;Industrie;Industrie / Punktquellen KVA;41.046043999999995;Ostluft & BAFU
+2021;SO2;t/a;Industrie;Industrie / Flächenquellen Industrie;173.98058577199998;Ostluft & BAFU
+2021;SO2;t/a;Industrie;Industrie / verschiedene;11.8824792136119;Ostluft & BAFU
+2021;SO2;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.2562489796396;Ostluft & BAFU
+2021;SO2;t/a;Verkehr;Verkehr / Flugverkehr Zürich;41.555881499;Ostluft & BAFU
+2021;SO2;t/a;Verkehr;Verkehr / verschiedene;8.4712976922;Ostluft & BAFU
+2030;CO;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;676.618912098;Ostluft & BAFU
+2030;CO;t/a;Dienstleistungen;Dienstleistungen / verschiedene;920.005938085;Ostluft & BAFU
+2030;CO;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;1731.826394458;Ostluft & BAFU
+2030;CO;t/a;Haushalte;Haushalte / verschiedene;932.133076072;Ostluft & BAFU
+2030;CO;t/a;Industrie;Industrie / Punktquellen KVA;54.575784;Ostluft & BAFU
+2030;CO;t/a;Industrie;Industrie / Flächenquellen Industrie;1018.232099286;Ostluft & BAFU
+2030;CO;t/a;Industrie;Industrie / verschiedene;562.2784828734;Ostluft & BAFU
+2030;CO;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;835.296110032;Ostluft & BAFU
+2030;CO;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1440.40932649;Ostluft & BAFU
+2030;CO;t/a;Verkehr;Verkehr / Strassenverkehr;2943.73455153;Ostluft & BAFU
+2030;CO;t/a;Verkehr;Verkehr / Zonenverkehr;2301.766973491;Ostluft & BAFU
+2030;CO;t/a;Verkehr;Verkehr / verschiedene;47.148344763000004;Ostluft & BAFU
+2030;eBC;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;7.821901027;Ostluft & BAFU
+2030;eBC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.06331665825;Ostluft & BAFU
+2030;eBC;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;27.72076741;Ostluft & BAFU
+2030;eBC;t/a;Haushalte;Haushalte / verschiedene;2.75669790868;Ostluft & BAFU
+2030;eBC;t/a;Industrie;Industrie / verschiedene;4.5129243784512;Ostluft & BAFU
+2030;eBC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;0.63986520371478;Ostluft & BAFU
+2030;eBC;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Maschinen;2.8109803606;Ostluft & BAFU
+2030;eBC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;4.9041501940000005;Ostluft & BAFU
+2030;eBC;t/a;Verkehr;Verkehr / Strassenverkehr;22.669459791;Ostluft & BAFU
+2030;eBC;t/a;Verkehr;Verkehr / verschiedene;0.4620295432;Ostluft & BAFU
+2030;eBC;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;0.009146235;Ostluft & BAFU
+2030;NH3;t/a;Dienstleistungen;Dienstleistungen / verschiedene;3.969570061196;Ostluft & BAFU
+2030;NH3;t/a;Haushalte;Haushalte / verschiedene;11.254331806548;Ostluft & BAFU
+2030;NH3;t/a;Haushalte;Haushalte / Haushalte andere Private etc;77.780844973;Ostluft & BAFU
+2030;NH3;t/a;Industrie;Industrie / Punktquellen KVA;3.4867862;Ostluft & BAFU
+2030;NH3;t/a;Industrie;Industrie / verschiedene;78.9523789276103;Ostluft & BAFU
+2030;NH3;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;44.0508851218881;Ostluft & BAFU
+2030;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Weiden;1379.831495497;Ostluft & BAFU
+2030;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;1247.610612407;Ostluft & BAFU
+2030;NH3;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;176.192618516;Ostluft & BAFU
+2030;NH3;t/a;Verkehr;Verkehr / Strassenverkehr;125.551639646;Ostluft & BAFU
+2030;NH3;t/a;Verkehr;Verkehr / verschiedene;0.0047452861;Ostluft & BAFU
+2030;NMVOC;t/a;Dienstleistungen;Dienstleistungen / verschiedene;105.184319973;Ostluft & BAFU
+2030;NMVOC;t/a;Haushalte;Haushalte / verschiedene;245.141864519;Ostluft & BAFU
+2030;NMVOC;t/a;Haushalte;Haushalte / Lösungsmittel Konsumprodukte;1343.634698842;Ostluft & BAFU
+2030;NMVOC;t/a;Industrie;Industrie / Punktquellen KVA;21.223916;Ostluft & BAFU
+2030;NMVOC;t/a;Industrie;Industrie / verschiedene;123.07176395586;Ostluft & BAFU
+2030;NMVOC;t/a;Industrie;Industrie / Lösungsmittel Industrie;5248.289039828;Ostluft & BAFU
+2030;NMVOC;t/a;Industrie;Industrie / Verluste Gasnetz;331.478122906;Ostluft & BAFU
+2030;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;281.4009098457;Ostluft & BAFU
+2030;NMVOC;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;925.580344298;Ostluft & BAFU
+2030;NMVOC;t/a;natürl. Emissionen;natürl. Emissionen / Wälder;4289.386099001;Ostluft & BAFU
+2030;NMVOC;t/a;Verkehr;Verkehr / Flugverkehr Zürich;127.139256887;Ostluft & BAFU
+2030;NMVOC;t/a;Verkehr;Verkehr / Strassenverkehr;291.893735712;Ostluft & BAFU
+2030;NMVOC;t/a;Verkehr;Verkehr / Zonenverkehr;350.697586554;Ostluft & BAFU
+2030;NMVOC;t/a;Verkehr;Verkehr / verschiedene;3.895598727;Ostluft & BAFU
+2030;NOx;t/a;Dienstleistungen;Dienstleistungen / verschiedene;364.015879707;Ostluft & BAFU
+2030;NOx;t/a;Haushalte;Haushalte / verschiedene;429.374729504;Ostluft & BAFU
+2030;NOx;t/a;Industrie;Industrie / Punktquellen KVA;285.006872;Ostluft & BAFU
+2030;NOx;t/a;Industrie;Industrie / verschiedene;784.3828305368;Ostluft & BAFU
+2030;NOx;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;323.15134969709;Ostluft & BAFU
+2030;NOx;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1943.31305062;Ostluft & BAFU
+2030;NOx;t/a;Verkehr;Verkehr / Strassenverkehr;2016.068772803;Ostluft & BAFU
+2030;NOx;t/a;Verkehr;Verkehr / verschiedene;147.022038203;Ostluft & BAFU
+2030;NOx;t/a;Verkehr;Verkehr / Schienenverkehr Rangieren;11.70423126;Ostluft & BAFU
+2030;PM10;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;31.668964446;Ostluft & BAFU
+2030;PM10;t/a;Dienstleistungen;Dienstleistungen / verschiedene;1.4247671847999999;Ostluft & BAFU
+2030;PM10;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;69.703477046;Ostluft & BAFU
+2030;PM10;t/a;Haushalte;Haushalte / verschiedene;25.6133482379;Ostluft & BAFU
+2030;PM10;t/a;Haushalte;Haushalte / Haushalte andere Private etc;38.172948942;Ostluft & BAFU
+2030;PM10;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;88.10369278900001;Ostluft & BAFU
+2030;PM10;t/a;Industrie;Industrie / Punktquellen KVA;6.2155754;Ostluft & BAFU
+2030;PM10;t/a;Industrie;Industrie / Flächenquellen Industrie;238.247810377;Ostluft & BAFU
+2030;PM10;t/a;Industrie;Industrie / verschiedene;2.125329919483;Ostluft & BAFU
+2030;PM10;t/a;Industrie;Industrie / Baumaschinen;277.484014201;Ostluft & BAFU
+2030;PM10;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;54.10095030084;Ostluft & BAFU
+2030;PM10;t/a;Land- und Forstw.;Land- und Forstw. / Landwirtschaftliche Nutzflächen;75.013694152;Ostluft & BAFU
+2030;PM10;t/a;Verkehr;Verkehr / Flugverkehr Zürich;13.082830794;Ostluft & BAFU
+2030;PM10;t/a;Verkehr;Verkehr / Strassenverkehr;491.542006426;Ostluft & BAFU
+2030;PM10;t/a;Verkehr;Verkehr / verschiedene;1.50678661;Ostluft & BAFU
+2030;PM10;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;149.664820794;Ostluft & BAFU
+2030;PM2.5;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;29.968041835999998;Ostluft & BAFU
+2030;PM2.5;t/a;Dienstleistungen;Dienstleistungen / verschiedene;1.4247671847999999;Ostluft & BAFU
+2030;PM2.5;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;65.938613585;Ostluft & BAFU
+2030;PM2.5;t/a;Haushalte;Haushalte / verschiedene;1.9478252506999998;Ostluft & BAFU
+2030;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Private etc;35.566471775;Ostluft & BAFU
+2030;PM2.5;t/a;Haushalte;Haushalte / Haushalte andere Feuerwerk etc;65.051668844;Ostluft & BAFU
+2030;PM2.5;t/a;Industrie;Industrie / Punktquellen KVA;6.2155754;Ostluft & BAFU
+2030;PM2.5;t/a;Industrie;Industrie / Flächenquellen Industrie;166.784565444;Ostluft & BAFU
+2030;PM2.5;t/a;Industrie;Industrie / verschiedene;0.895629841195;Ostluft & BAFU
+2030;PM2.5;t/a;Industrie;Industrie / Baumaschinen;44.322599192;Ostluft & BAFU
+2030;PM2.5;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;17.143252996533;Ostluft & BAFU
+2030;PM2.5;t/a;Verkehr;Verkehr / Flugverkehr Zürich;13.082830794;Ostluft & BAFU
+2030;PM2.5;t/a;Verkehr;Verkehr / Strassenverkehr;183.192815064;Ostluft & BAFU
+2030;PM2.5;t/a;Verkehr;Verkehr / verschiedene;1.50678661;Ostluft & BAFU
+2030;PM2.5;t/a;Verkehr;Verkehr / Schienenverkehr Bau-/Dienstzüge;22.760269761;Ostluft & BAFU
+2030;SO2;t/a;Dienstleistungen;Dienstleistungen / verschiedene;16.46338342681;Ostluft & BAFU
+2030;SO2;t/a;Haushalte;Haushalte / verschiedene;30.22371833339;Ostluft & BAFU
+2030;SO2;t/a;Industrie;Industrie / Punktquellen KVA;39.415844;Ostluft & BAFU
+2030;SO2;t/a;Industrie;Industrie / Flächenquellen Industrie;192.926944889;Ostluft & BAFU
+2030;SO2;t/a;Industrie;Industrie / verschiedene;12.3153291116498;Ostluft & BAFU
+2030;SO2;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.0340461524861;Ostluft & BAFU
+2030;SO2;t/a;Verkehr;Verkehr / Flugverkehr Zürich;126.779692622;Ostluft & BAFU
+2030;SO2;t/a;Verkehr;Verkehr / verschiedene;7.8778878111;Ostluft & BAFU

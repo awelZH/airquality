@@ -36,7 +36,7 @@ siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hin
 
 
 # plotting size parameters
-basesize <- 11 # ggplot theme base_size
+basesize <- 12 # ggplot theme base_size
 pointsize <- 2 # size of point markers
 linewidth <- 1 # width of lines
 
@@ -548,6 +548,3 @@ rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass"
             "data_expo_weighmean_municip", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 
             "crs", "lbsz", "linewidth", "lsz_lrv", "lsz_who", "lty_lrv", "lty_who", "n_years", "parameters_exposition", "parameters_timeseries",
             "pointsize", "pollutants", "siteclass_levels", "years", "ressources"))
-
-
-

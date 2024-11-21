@@ -8,8 +8,8 @@ INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
 7;2024-11-20 10:39:09 CET;read selected O3 peak-season monitoring data in Kanton Zürich from intercantonal monitoring network OSTLUFT and national monitoring network NABEL (yearly values)
 8;2024-11-20 10:39:09 CET;read selected nitrogen deposition monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
 9;2024-11-20 10:39:10 CET;read site metadata OSTLUFT
-10;2024-11-21 08:46:52 CET;read selected air quality threshold values (LRV legal limits WHO air quality guideline)
-11;2024-11-21 08:46:50 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
+10;2024-11-21 09:03:16 CET;read selected air quality threshold values (LRV legal limits WHO air quality guideline)
+11;2024-11-21 09:03:15 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
 12;2024-11-20 10:40:04 CET;get polluMap raster data yearly concentrations of mean NO2, PM10, PM2.5 and eBC
 13;2024-11-20 10:40:04 CET;get jahreskarten raster data yearly concentrations of mean nitrogen dioxide (NO2)
 14;2024-11-20 10:40:04 CET;get jahreskarten raster data yearly concentrations of mean particulate matter PM10
@@ -27,10 +27,10 @@ INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
 26;2024-11-20 10:41:49 CET;write air quality population exposition weighted mean municipalities
 27;2024-11-20 10:41:50 CET;write air quality population exposition distribution
 28;2024-11-20 10:41:50 CET;write nitrogen population exposition distribution
-29;2024-11-21 08:46:53 CET;plot emissions of air pollutants in the Canton of Zurich
-30;2024-11-21 08:46:54 CET;plot monitoring data vehicle remote emission sensing (RSD)
-31;2024-11-21 08:46:54 CET;plot air quality monitoring data Canton Zürich
-32;2024-11-21 08:46:55 CET;plot nitrogen deposition monitoring data Canton Zürich
-33;2024-11-21 08:46:59 CET;plot air quality population exposition weighted means
-34;2024-11-21 08:46:58 CET;plot air quality population exposition distribution
-35;2024-11-21 08:46:58 CET;plot nitrogen sensitive ecosystem exposition distribution
+29;2024-11-21 09:03:18 CET;plot emissions of air pollutants in the Canton of Zurich
+30;2024-11-21 09:03:19 CET;plot monitoring data vehicle remote emission sensing (RSD)
+31;2024-11-21 09:03:21 CET;plot air quality monitoring data Canton Zürich
+32;2024-11-21 09:03:21 CET;plot nitrogen deposition monitoring data Canton Zürich
+33;2024-11-21 09:03:25 CET;plot air quality population exposition weighted means
+34;2024-11-21 09:03:24 CET;plot air quality population exposition distribution
+35;2024-11-21 09:03:24 CET;plot nitrogen sensitive ecosystem exposition distribution

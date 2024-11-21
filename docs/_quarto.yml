@@ -34,10 +34,10 @@ format:
     toc_float:
       collapsed: false
 
+lightbox: true
 fig-cap-location: margin
 reference-location: margin
 callout-appearance: default
-lightbox: true
 
 knitr:
   opts_chunk: 

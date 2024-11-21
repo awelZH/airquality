@@ -2,9 +2,13 @@
 .Rhistory
 .RData
 .Ruserdata
-inst/extdata/input_offline
-00_Archiv
-github_access_token_airquality.txt - Verknüpfung.lnk
-temp
-airquality_canton_zurich.html
-docs
+input_offline
+_archive
+docs/plots_emissions.rds
+docs/plots_monitoring.rds
+docs/plots_exposition.rds
+docs/.quarto/
+docs/.Rproj.user
+docs/.Rhistory
+docs/.RData
+docs/.Ruserdata

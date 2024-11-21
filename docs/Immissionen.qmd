@@ -1,0 +1,63 @@
+---
+title: "Immissonen"
+---
+
+
+```{r}
+source("read_plots.R")
+plots <- readRDS("plots_monitoring.rds")
+```
+
+
+### Übersicht Luftqualitätsmesswerte
+
+```{r}
+#| label: fig-grenzwertvergleich
+#| fig-cap: "Vergleich von Messdaten der letzten drei Jahre mit Grenz- und Richtwerten."
+get_plot(plots, "source == 'threshold_comparison'")
+```
+
+### Stickstoffdioxid
+
+```{r}
+#| label: fig-ts-no2
+get_plot(plots, "type == 'monitoring' & pollutant == 'NO2'")
+```
+
+### Feinstaub PM2.5
+
+```{r}
+#| label: fig-ts-pm25
+get_plot(plots, "type == 'monitoring' & pollutant == 'PM2.5'")
+```
+
+### Feinstaub PM10
+
+```{r}
+#| label: fig-ts-pm10
+get_plot(plots, "type == 'monitoring' & pollutant == 'PM10'")
+```
+
+### Ozon
+
+```{r}
+#| label: fig-ts-o3p98
+get_plot(plots, "type == 'monitoring' & pollutant == 'O3_max_98p_m1'")
+```
+
+```{r}
+#| label: fig-ts-o3peak
+get_plot(plots, "type == 'monitoring' & pollutant == 'O3_peakseason_mean_d1_max_mean_h8gl'")
+```
+
+### Stickstoffeintrag in empfindliche Ökosysteme
+
+```{r}
+#| label: fig-ts-ndep-bachtel
+get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_bachtel'")
+```
+
+```{r}
+#| label: fig-ts-ndep-all-cln
+get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_all_vs_CLN'")
+```

@@ -1,0 +1,16 @@
+---
+title: "About"
+date: today
+date-format: "DD. MMMM YYYY"
+author:
+  name: J. Sintermann
+  affiliations:
+    - name: Kanton Zürich / Amt für Abfall, Wasser, Energie und Luft
+      department: Luft, Klima und Strahlung
+      group: Monitoring
+      address: Stampfenbachstrasse 12
+      city: Zürich
+      country: Schweiz
+      postal-code: 8090
+      url: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html
+---

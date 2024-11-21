@@ -587,19 +587,3 @@ plotlist_to_tibble <- function(plotlist, type, source) {
   return(plottibble)
 }
 
-
-#' Extracts plot from tibble created by plotlist_to_tibble()
-#'
-#' @param plots_df 
-#' @param filter 
-#'
-#' @keywords internal
-get_plot <- function(plots_df, filter_expr = "pollutant == 'NOx' & source == 'inventory_absolute'") {
-  
-  plot <- 
-    plots_df |> 
-    dplyr::filter(!!rlang::parse_expr(filter_expr)) |> 
-    dplyr::pull(plot)
-  
-  return(plot)
-}

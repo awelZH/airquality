@@ -1,0 +1,51 @@
+project:
+  type: website
+  render:
+    - index.qmd
+    - Emissionen.qmd
+    - Immissionen.qmd
+    - Exposition.qmd
+    - about.qmd
+  # pre-render: "read_plots.R"
+
+website:
+  title: "Luftqualität im Kanton Zürich"
+  navbar:
+    background: light
+    search: true
+    pinned: true
+    left:
+      - href: index.qmd
+        text: Allgemeines
+      - href: Emissionen.qmd
+        text: Emissionen
+      - href: Immissionen.qmd
+        text: Immissionen
+      - href: Exposition.qmd
+        text: Exposition
+    right: 
+      - about.qmd
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+
+fig-cap-location: margin
+reference-location: margin
+callout-appearance: default
+lightbox: true
+
+knitr:
+  opts_chunk: 
+    collapse: true
+    echo: false
+    warning: false
+    message: false
+    fig.width: 9
+    fig.asp: 0.5
+
+

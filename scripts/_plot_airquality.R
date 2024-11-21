@@ -1,7 +1,7 @@
 # setup plotting
 # ---
 # setup analysis: load libraries & functions & read map boundaries data
-source("scripts/_setup.R", encoding = "UTF-8")
+# source("scripts/_setup.R", encoding = "UTF-8")
 
 
 # list of output data sources for plotting
@@ -540,10 +540,10 @@ plots$exposition$population_weighted_mean_overview$various <-
 
 # construct final plot tibble instead of plot list for better use in *.qmd
 # ---
-plots_df <-
+plots <-
   plots$emissions$inventory_absolute |> 
   plotlist_to_tibble("emission", "inventory_absolute") |> 
-  bind_rows(plotlist_to_tibble(plots$emissions$inventory_absolute, "emission", "inventory_relative")) |> 
+  bind_rows(plotlist_to_tibble(plots$emissions$inventory_relative, "emission", "inventory_relative")) |> 
   bind_rows(plotlist_to_tibble(plots$emissions$rsd_norm, "emission", "rsd_norm")) |> 
   bind_rows(plotlist_to_tibble(plots$emissions$rsd_yearmodel, "emission", "rsd_yearmodel")) |> 
   bind_rows(plotlist_to_tibble(plots$emissions$rsd_yearmeas, "emission", "rsd_yearmeas")) |> 
@@ -557,18 +557,22 @@ plots_df <-
   bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_overview, "exposition", "population_weighted_mean_overview")) |>
   bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map"))
 
-# get_plot(plots_df, "pollutant == 'PM2.5' & type == 'monitoring'")
+
   
 
 
-# clean up
+# save for *.qmd & clean up
 # ---
+saveRDS(dplyr::filter(plots, type == "emission"), "docs/plots_emissions.rds")
+saveRDS(dplyr::filter(plots, type == "monitoring"), "docs/plots_monitoring.rds")
+saveRDS(dplyr::filter(plots, type == "exposition"), "docs/plots_exposition.rds")
+
 rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass", "scale_fill_siteclass", "temp", "theme_map", "theme_ts", "threshold_ndep",
             "data_emikat", "data_expo_distr_ndep", "data_expo_distr_pollutants", "data_expo_weighmean_canton", "thresh",
             "data_monitoring_aq", "data_monitoring_ndep", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "data_temp", "data_thrshlds",
             "data_expo_weighmean_municip", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 
             "crs", "lbsz", "linewidth", "lsz_lrv", "lsz_who", "lty_lrv", "lty_who", "n_years", "parameters_exposition", "parameters_timeseries",
-            "pointsize", "pollutants", "siteclass_levels", "years", "ressources", "plots"))
+            "pointsize", "pollutants", "siteclass_levels", "years", "map_municipalities", "crs", "ressources"))
 
 
 

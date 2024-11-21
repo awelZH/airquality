@@ -51,4 +51,4 @@ write_local_csv(data_pop_weighted_mean$munipalities, file = "inst/extdata/output
 write_local_csv(data_expo_population_dist, file = "inst/extdata/output/data_exposition_distribution_pollutants.csv"); update_log(27)
 write_local_csv(data_expo_ecosys_dist, file = "inst/extdata/output/data_exposition_distribution_ndep.csv"); update_log(28)
 rm(list = c("cov_stack", "availability", "years", "data_raster_bfs", "data_raster_aq", "data_raster_bafu", "data_expo_pop", "data_expo_municip", 
-            "data_expo_population_dist", "data_expo_ecosys_dist", "data_pop_weighted_mean", "map_canton", "map_municipalities", "crs", "ressources"))
+            "data_expo_population_dist", "data_expo_ecosys_dist", "data_pop_weighted_mean", "map_canton"))

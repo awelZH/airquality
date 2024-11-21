@@ -14,5 +14,5 @@ source("scripts/_compile_monitoring_data.R", encoding = "UTF-8")
 # read, restructure & analyse air quality and inhabitant raster data, derive population and ecosystem exposition & save data 
 source("scripts/_compile_exposition_data.R", encoding = "UTF-8")
 
-# plot results
-# source("scripts/_plot_airquality.R", encoding = "UTF-8")
+# plot results for later use in docs/airquality.qmd
+source("scripts/_plot_airquality.R", encoding = "UTF-8")

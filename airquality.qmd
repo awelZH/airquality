@@ -1,0 +1,324 @@
+---
+title: Luftqualität im Kanton Zürich
+author:
+  name: J. Sintermann
+  affiliations:
+    - name: Kanton Zürich / Amt für Abfall, Wasser, Energie und Luft
+      department: Luft, Klima und Strahlung
+      group: Monitoring
+      address: Stampfenbachstrasse 12
+      city: Zürich
+      country: Schweiz
+      postal-code: 8090
+      url: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html
+date: "`r format(Sys.Date(), '%d. %b %Y')`"
+
+format:
+  html:
+    theme: flatly
+    toc: true
+    toc_float:
+      collapsed: true
+fig-cap-location: margin
+reference-location: margin
+callout-appearance: default
+lightbox: true
+
+knitr:
+  opts_chunk: 
+    collapse: true
+    echo: false
+    warning: false
+    message: false
+    fig.width: 9
+    fig.asp: 0.5
+    
+# project:
+#   pre-render: "read_plots.R"
+---
+
+<!-- ![foto](https://www.flickr.com/photos/labskaus/28962357157/sizes/k/) -->
+
+```{r}
+source("read_plots.R")
+```
+
+## Allgemeines
+
+Die hier präsentierten Auswertungen stellen eine systematische Grundlage zur Beurteilung der [Luftqualität im Kanton Zürich](https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html) dar sowie für Darstellungen zur Luftqualität auf dem [Internetauftritt des Kantons Zürch](https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html). Es werden Grundlagendaten aus Messungen, Erhebungen und Berechnungen verwendet. Die Quellen dafür sind der [Kanton Zürich](https://www.zh.ch/de.html), [Ostluft - die Luftqualitätsüberwachung der Ostschweizer Kantone und des Fürstentums Liechtenstein](https://www.ostluft.ch/), das [nationale Beobachtungsnetz für Luftfremdstoffe NABEL](https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/nationales-beobachtungsnetz-fuer-luftfremdstoffe--nabel-.html), das [Bundesamt für Umwelt BAFU](https://www.bafu.admin.ch/bafu/de/home.html) und das [Bundesamt für Statistik BFS](https://www.bfs.admin.ch/bfs/de/home.html).
+
+Ergebnis der entsprechenden [R-Skripte](https://github.com/awelZH/airquality/tree/main/scripts) ist ein Portfolio an [Datensätzen](https://github.com/awelZH/airquality/tree/main/inst/extdata/output) und Darstellungen zu den Emissionen ausgewählter Luftschadstoffe, den Immissionen[^1] und der Expositionsverteilung der Wohnbevölkerung durch Luftschadstoffe sowie von empfindlichen Ökosystemen durch atmosphärische Einträge von reaktiven Stickstoffverbindungen. Räumlicher Bezugsrahmen ist das Gebiet des Kantons Zürich. Luftschadstoff-Belastungskarten als Grundlage zur Berechnung der Bevölkerungsexposition sind auf dieser Seite nicht dargestellt. . Auf vertiefende fachliche Erläuterungen der Ergebnisse wird an dieser Stelle verzichtet.
+
+[^1]: in diesem Fall: Langzeitverläufe von Luftqualitätsmesswerten
+
+::: {.callout-note collapse="true"}
+### Grenz- und Richtwertvergleiche
+
+Teilweise wird die Luftqualität mit den [Immissionsgrenzwerten der Luftreinhalteverordnung](https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de) oder [gleichwertigen Referenzwerten](https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/uebermaessigkeit-von-stickstoff-eintraegen-und-ammoniak-immissionen.html) verglichen. Zusätzlich wird die Luftqualität auch mit den [Richtwerten der Weltgesundheitsorganisation WHO](https://www.who.int/publications/i/item/9789240034228). Die WHO-Richtwerte wurden im Jahr 2021 aufdatiert und drücken den gegenwärtigen Stand des Wissens zu gesundheitsschädlichen Auswirkungen durch Luftschadstoffe aus. Gemäss [Umweltschutzgesetzt](https://www.fedlex.admin.ch/eli/cc/1984/1122_1122_1122/de) sollten die Immissionsgrenzwerte vor jeglichen schädlichen Auswirkungen schützen, weshalb die [Eidgenössische Kommission für Lufthygiene EKL](https://www.ekl.admin.ch/de/eidgenoessische-kommission-fuer-lufthygiene-ekl) in einem [Bericht im Jahr 2023](https://www.ekl.admin.ch/inhalte/dateien/pdf/EKL-231120_de_orig.pdf) dem Bundesrat eine entsprechende Anpassung der Immissionsgrenzwerte empfohlen hat. Solange es massgebliche Unterschiede zwischen Richt- und Grenzwerten gibt, werden sich die rechtliche Beurteilung der "Übermässigkeit der Immissionen" gemäss Luftreinhalteverordnung von der wissenschaftlichen Beurteilung zur Gesundheitsschädlichkeit der Immissionen voneineander abweichen.
+:::
+
+::: {.callout-note collapse="true"}
+### Auswertungsprozess
+
+Dieses auf [GitHub](https://github.com/awelZH/airquality) veröffentlichte Auswerteprojekt enthält Funktionen und Skripte in der Programmiersprache [R](https://cran.r-project.org/). Die Auswertungen ergänzen die Veröffentlichung [offener Behördendaten](https://www.zh.ch/de/politik-staat/opendata.html), indem die entsprechenden Grundlagendaten skriptbasiert verarbeitet und die Ergebnisse visualisiert werden. Somit wird die fundierte Auswertung zur Luftqualität im Kanton Zürich für Fachpersonen und die interessierte Öffentlichkeit transparent und reproduzierbar dokumentiert und zur Verfügung gestellt. Wann immer möglich, werden offene, maschinenlesbare Schnittstellen verwendet, um die aktuellsten Daten ohne eine redundante Datenablage zu verwenden. Die Daten der Luftqualitätsmessnetze sind öffentlich frei verfügbar, liegen jedoch noch ohne maschinenlesbare Schnittstelle vor. Daher müssen die entsprechenden Datensätze noch im Rahmen dieser Auswertungen lokal abgelegt werden. Die Urheber der Daten werden immer angegeben. Die Auswertungen werden jährlich nachgeführt, sobald alle benötigten Grundlagendaten veröffentlicht sind.
+:::
+
+
+
+
+## Emissionen
+
+Hier werden vor allem [Daten zu den Luftschadstoffemissionen im Kanton Zürich](https://www.zh.ch/de/politik-staat/statistik-daten/datenkatalog.html#/datasets/1363@awel-kanton-zuerich) auf Grundlage der Emissionsbilanzierung dargestellt. Bei den Stickoxiden wird zusätzlich auf die Ergebnisse [langjähriger Fahrzeug-Abgasmessungen im realen Fahrbetrieb](https://www.zh.ch/de/politik-staat/statistik-daten/datenkatalog.html#/datasets/2382@awel-kanton-zuerich) eingegangen.
+
+### Stickoxide
+
+#### Emissionsinventar
+
+::: {.panel-tabset}
+
+##### absolut
+```{r}
+#| label: fig-nox-emissions-abs
+get_plot(plots, "pollutant == 'NOx' & source == 'inventory_absolute'")
+```
+
+##### relativ
+```{r}
+#| label: fig-nox-emissions-rel
+get_plot(plots, "pollutant == 'NOx' & source == 'inventory_relative'")
+```
+
+:::
+
+#### reale Fahrzeugemissionen
+
+::: {.panel-tabset}
+
+##### nach Abgasnorm
+```{r}
+#| label: fig-nox-emissions-rsd-norm
+get_plot(plots, "source == 'rsd_norm'")
+```
+
+##### nach Modelljahr
+```{r}
+#| label: fig-nox-emissions-rsd-yearmodel
+get_plot(plots, "source == 'rsd_yearmodel'")
+```
+
+##### nach Messjahr
+```{r}
+#| label: fig-nox-emissions-rsd-yearmeas
+#| fig.width: 6
+#| fig.asp: 0.75
+get_plot(plots, "source == 'rsd_yearmeas'")
+```
+
+::: 
+
+### Feinstaub PM2.5
+
+::: {.panel-tabset}
+
+##### absolut
+```{r}
+#| label: fig-pm25-emissions-abs
+get_plot(plots, "pollutant == 'PM2.5' & source == 'inventory_absolute'")
+```
+
+##### relativ
+```{r}
+#| label: fig-pm25-emissions-rel
+get_plot(plots, "pollutant == 'PM2.5' & source == 'inventory_relative'")
+```
+
+:::
+
+### Feinstaub PM10
+
+::: {.panel-tabset}
+
+##### absolut
+```{r}
+#| label: fig-pm10-emissions-abs
+get_plot(plots, "pollutant == 'PM10' & source == 'inventory_absolute'")
+```
+
+##### relativ
+```{r}
+#| label: fig-pm10-emissions-rel
+get_plot(plots, "pollutant == 'PM10' & source == 'inventory_relative'")
+```
+
+:::
+
+### Russ im Feinstaub
+
+::: {.panel-tabset}
+
+##### absolut
+```{r}
+#| label: fig-eBC-emissions-abs
+get_plot(plots, "pollutant == 'eBC' & source == 'inventory_absolute'")
+```
+
+##### relativ
+```{r}
+#| label: fig-eBC-emissions-rel
+get_plot(plots, "pollutant == 'eBC' & source == 'inventory_relative'")
+```
+
+:::
+
+### Kohlenmonoxid
+
+::: {.panel-tabset}
+
+##### absolut
+```{r}
+#| label: fig-co-emissions-abs
+get_plot(plots, "pollutant == 'CO' & source == 'inventory_absolute'")
+```
+
+##### relativ
+```{r}
+#| label: fig-co-emissions-rel
+get_plot(plots, "pollutant == 'CO' & source == 'inventory_relative'")
+```
+
+:::
+
+### Flüchtige organische Verbindungen
+
+::: {.panel-tabset}
+
+##### absolut
+```{r}
+#| label: fig-nmvoc-emissions-abs
+get_plot(plots, "pollutant == 'NMVOC' & source == 'inventory_absolute'")
+```
+
+##### relativ
+```{r}
+#| label: fig-nmvoc-emissions-rel
+get_plot(plots, "pollutant == 'NMVOC' & source == 'inventory_relative'")
+```
+
+:::
+
+### Schwefeldioxid
+
+::: {.panel-tabset}
+
+##### absolut
+```{r}
+#| label: fig-so2-emissions-abs
+get_plot(plots, "pollutant == 'SO2' & source == 'inventory_absolute'")
+```
+
+##### relativ
+```{r}
+#| label: fig-so2-emissions-rel
+get_plot(plots, "pollutant == 'SO2' & source == 'inventory_relative'")
+```
+
+:::
+
+### Ammoniak
+
+::: {.panel-tabset}
+
+##### absolut
+```{r}
+#| label: fig-nh3-emissions-abs
+get_plot(plots, "pollutant == 'NH3' & source == 'inventory_absolute'")
+```
+
+##### relativ
+```{r}
+#| label: fig-nh3-emissions-rel
+get_plot(plots, "pollutant == 'NH3' & source == 'inventory_relative'")
+```
+
+:::
+
+
+
+
+
+
+## Immissionen
+
+### Übersicht Luftqualitätsmesswerte
+
+```{r}
+#| label: fig-grenzwertvergleich
+#| fig-cap: "Vergleich von Messdaten der letzten drei Jahre mit Grenz- und Richtwerten."
+get_plot(plots, "source == 'threshold_comparison'")
+```
+
+### Stickstoffdioxid
+
+```{r}
+#| label: fig-ts-no2
+get_plot(plots, "type == 'monitoring' & pollutant == 'NO2'")
+```
+
+### Feinstaub PM2.5
+
+```{r}
+#| label: fig-ts-pm25
+get_plot(plots, "type == 'monitoring' & pollutant == 'PM2.5'")
+```
+
+### Feinstaub PM10
+
+```{r}
+#| label: fig-ts-pm10
+get_plot(plots, "type == 'monitoring' & pollutant == 'PM10'")
+```
+
+### Ozon
+
+```{r}
+#| label: fig-ts-o3p98
+get_plot(plots, "type == 'monitoring' & pollutant == 'O3_max_98p_m1'")
+```
+
+```{r}
+#| label: fig-ts-o3peak
+get_plot(plots, "type == 'monitoring' & pollutant == 'O3_peakseason_mean_d1_max_mean_h8gl'")
+```
+
+### Stickstoffeintrag in empfindliche Ökosysteme
+
+```{r}
+#| label: fig-ts-ndep-bachtel
+get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_bachtel'")
+```
+
+```{r}
+#| label: fig-ts-ndep-all-cln
+get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_all_vs_CLN'")
+```
+
+
+
+
+
+
+
+
+## Exposition
+
+### Stickstoffdioxid
+
+### Feinstaub PM2.5
+
+### Feinstaub PM10
+
+### Russ im Feinstaub
+
+### Ozon
+
+### Stickstoffeintrag in empfindliche Ökosysteme

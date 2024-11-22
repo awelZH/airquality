@@ -24,6 +24,7 @@ plots <-
 
 ```{r}
 #| label: fig-popmean-overwiew
+#| fig.asp: 1
 get_plot(plots, "source == 'population_weighted_mean_overview'")
 ```
 

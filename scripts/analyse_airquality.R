@@ -16,3 +16,6 @@ source("scripts/_compile_exposition_data.R", encoding = "UTF-8")
 
 # plot results for later use in docs/airquality.qmd
 source("scripts/_plot_airquality.R", encoding = "UTF-8")
+
+# render quarto website for plot display
+quarto::quarto_render("docs/")

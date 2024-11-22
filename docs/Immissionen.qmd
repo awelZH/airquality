@@ -1,5 +1,6 @@
 ---
 title: "Immissonen"
+lightbox: true
 ---
 
 
@@ -11,11 +12,15 @@ plots <- readRDS("plots_monitoring.rds")
 
 ### Übersicht Luftqualitätsmesswerte
 
+:::{.column-body-outset}
 ```{r}
 #| label: fig-grenzwertvergleich
 #| fig-cap: "Vergleich von Messdaten der letzten drei Jahre mit Grenz- und Richtwerten."
+#| fig.width: 11
+#| fig.asp: 0.6
 get_plot(plots, "source == 'threshold_comparison'")
 ```
+:::
 
 ### Stickstoffdioxid
 

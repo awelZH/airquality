@@ -14,6 +14,8 @@ website:
     background: light
     search: true
     pinned: true
+    # logo: "logo/logo.png"
+    logo-href: "https://www.zh.ch/de/baudirektion/amt-fuer-abfall-wasser-energie-luft.html"
     left:
       - href: index.qmd
         text: Allgemeines
@@ -28,7 +30,9 @@ website:
 
 format:
   html:
-    theme: flatly
+    theme: 
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
     toc_float:

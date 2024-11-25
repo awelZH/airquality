@@ -3,7 +3,9 @@
 .RData
 .Ruserdata
 input_offline
-_archive/
+_archive
+_archive/temp
+_archive/2022 - Standotbestimmung
 docs/plots_emissions.rds
 docs/plots_monitoring.rds
 docs/plots_exposition.rds

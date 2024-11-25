@@ -97,7 +97,7 @@ read_bafu_raster_data <- function(id, boundary, crs = 2056){
 #'
 #' @examples
 read_opendataswiss <- function(url, source){
-  
+
   read_url <- get_opendataswiss_metadata(url)
   data <- purrr::map_df(read_url, function(x) readr::read_delim(x, delim = ","))
   data <- dplyr::mutate(data, source = source)

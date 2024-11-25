@@ -43,6 +43,8 @@ data_expo_ecosys_dist <- aggregate_ndep_exposition_distrib(data_raster_bafu)
 # => population-weighted mean values per year, pollutant and municipality / canton
 data_pop_weighted_mean <- list(canton = aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant")))
 data_pop_weighted_mean$munipalities <- aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant", "geodb_oid", "gemeindename"))
+data_pop_weighted_mean$munipalities <- dplyr::mutate(data_pop_weighted_mean$munipalities , population_weighted_mean = ifelse(is.na(gemeindename), NA, population_weighted_mean)) # lakes = NA
+
 
 # write output datasets & clean up:
 # ---

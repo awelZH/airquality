@@ -176,7 +176,7 @@ aggregate_population_exposition_distrib <- function(data) {
 #'
 #' @examples
 aggregate_ndep_exposition_distrib <- function(data) { 
-
+  
   data <-
     data |> 
     na.omit() |> 
@@ -189,7 +189,7 @@ aggregate_ndep_exposition_distrib <- function(data) {
       n_ecosys_cum = cumsum(n_ecosys),
       n_ecosys_cum_rel = cumsum(n_ecosys) / sum(n_ecosys),
       source = "BAFU"
-      ) |> 
+    ) |> 
     dplyr::ungroup() |> 
     dplyr::arrange(year, ndep_exmax)
   
@@ -207,7 +207,7 @@ aggregate_ndep_exposition_distrib <- function(data) {
 #'
 #' @examples
 aggregate_population_weighted_mean <- function(data, groups = c("year", "pollutant")) {
-
+  
   data_pop_weighted <-
     data |> 
     dplyr::group_by_at(dplyr::vars(groups)) |> 
@@ -216,7 +216,7 @@ aggregate_population_weighted_mean <- function(data, groups = c("year", "polluta
     dplyr::mutate(
       unit = "μg/m3",
       source = "BAFU & BFS"
-      )
-
+    )
+  
   return(data_pop_weighted)
 }

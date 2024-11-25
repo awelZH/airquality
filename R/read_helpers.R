@@ -58,8 +58,9 @@ read_bafu_shp <- function(file){
 #' @keywords internal
 read_single_pollutant_wcs <- function(coverage, na_value){
 
-  data <- coverage$getCoverage() %>% 
-    stars::st_as_stars() %>% 
+  data <- 
+    coverage$getCoverage() |>  
+    stars::st_as_stars() |> 
     sf::st_set_crs(value = 2056)
   
   divisor <- ifelse(stringr::str_detect(names(data), "jahre"), 1, 10)

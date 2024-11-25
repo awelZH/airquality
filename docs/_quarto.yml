@@ -5,6 +5,7 @@ project:
     - Emissionen.qmd
     - Immissionen.qmd
     - Exposition.qmd
+    # - Gesundheitsfolgen.qmd
     - about.qmd
   # pre-render: "read_plots.R"
 

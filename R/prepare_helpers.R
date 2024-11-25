@@ -652,3 +652,19 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
   
   return(data)
 }
+
+
+#' Title
+#'
+#' @param data 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+calc_all_o3_peakseason <- function(data) {
+  
+  # TODO: see issue #36
+  # source("scripts/_compile_o3_peakseason.R", encoding = "UTF-8") # compile O3 peak-season data => do this offline, since some input files are strictly-speaking not open data 
+}
+

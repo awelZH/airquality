@@ -1,18 +1,27 @@
-
-# setup analysis: load libraries & functions & read ressource table + map boundaries data
+# 1) setup analysis: load libraries & functions & read ressource table + map boundaries data
+print("1) setup analysis...")
 source("scripts/_setup.R", encoding = "UTF-8")
 
-# read, restructure, analyse & save air pollutant emission data 
+# 2) read, restructure, analyse & save air pollutant emission data 
+print("2) compile emission data...")
 source("scripts/_compile_emission_data.R", encoding = "UTF-8")
   
-# read, restructure & save air quality monitoring data
+# 3) read, restructure & save air quality monitoring data
+print("3) compile monitoring data...")
 source("scripts/_compile_monitoring_data.R", encoding = "UTF-8")
 
-# read, restructure & analyse air quality and inhabitant raster data, derive population and ecosystem exposition & save data 
+# 4) read, restructure & analyse air quality and inhabitant raster data, derive population and ecosystem exposition & save data 
+print("4) compile exposition data...")
 source("scripts/_compile_exposition_data.R", encoding = "UTF-8")
 
-# plot results for later use in docs/airquality.qmd
+# 5) calculate selected health outcomes due to population air pollutant exposition & save data 
+# print("5) compile health-outcome data...")
+# TODO: source("scripts/_compile_healthoutcomes.R", encoding = "UTF-8")
+
+# 6) plot results for later use in docs/...
+print("6) plot results...")
 source("scripts/_plot_airquality.R", encoding = "UTF-8")
 
-# render quarto website for plot display
+# 7) render quarto website for plot display
+print("7) render *.qmd...")
 quarto::quarto_render("docs/")

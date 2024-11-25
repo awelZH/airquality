@@ -43,10 +43,7 @@ data_outcomes <-
   dplyr::arrange(year, pollutant, concentration) |>
   dplyr:::select(-source) |> 
   dplyr::left_join(outcomes_meta, by = "pollutant") |> 
-  dplyr::left_join(data_deaths, by = "year")
-
-data_outcomes <-
-  data_outcomes |> 
+  dplyr::left_join(data_deaths, by = "year") |> 
   dplyr::group_by(year, pollutant) |> 
   dplyr::mutate(
     population_weighted_mean = calc_population_weighted_mean(concentration, population),
@@ -63,9 +60,18 @@ data_outcomes <-
     outcome_upper_confint = conc_increment_lower / crf_factor * (crf_upper_confint - 1) * deathrate * factor_deathrate * population,
     outcome_lowest = conc_increment_lowest / crf_factor * (crf - 1) * deathrate * factor_deathrate * population,
     outcome_lowest_lower_confint = conc_increment_lowest / crf_factor * (crf_lower_confint - 1) * deathrate * factor_deathrate * population,
-    outcome_lowest_upper_confint = conc_increment_lowest / crf_factor * (crf_upper_confint - 1) * deathrate * factor_deathrate * population
-  ) |> 
-  dplyr::group_by(year, pollutant, health_outcome, population_total, population_weighted_mean) |> 
+    outcome_lowest_upper_confint = conc_increment_lowest / crf_factor * (crf_upper_confint - 1) * deathrate * factor_deathrate * population,
+    source = factor("BAFU & BFS & Statistisches Amt Kanton Zürich")
+  )
+
+
+
+# aggregate dataset ...
+# ---
+# => 
+data_outcomes <-
+  data_outcomes |> 
+  dplyr::group_by(year, pollutant, health_outcome, population_total, population_weighted_mean, source) |> 
   dplyr::summarise(
     outcome = sum(outcome, na.rm = TRUE),
     outcome_lower_confint = sum(outcome_lower_confint, na.rm = TRUE),
@@ -74,13 +80,7 @@ data_outcomes <-
     outcome_lowest_lower_confint = sum(outcome_lowest_lower_confint, na.rm = TRUE),
     outcome_lowest_upper_confint = sum(outcome_lowest_upper_confint, na.rm = TRUE)
   ) |> 
-  dplyr::ungroup() |> 
-  dplyr::mutate(source = factor("BAFU & BFS & Statistisches Amt Kanton Zürich"))
-
-
-# aggregate dataset ...
-# ---
-# => 
+  dplyr::ungroup() 
 
 
 # get population exposition from scripts

@@ -5,7 +5,7 @@
 # ---
 # => read NABEL monitoring airquality data (y1 & h1)
 data_monitoring_nabel <- read_local_csv(filter_ressources(ressources, 5)); update_log(5)
-# data_monitoring_nabel_h1 <- read_local_csv(filter_ressources(ressources, 22))
+data_monitoring_nabel_h1 <- lapply(c(filter_ressources(ressources, 22), filter_ressources(ressources, 23)), function(x) read_local_csv(x, delim = "\t"))
 
 # => read Ostluft monitoring airquality data (y1 & h1)
 data_monitoring_ostluft <- read_local_csv(filter_ressources(ressources, 6), locale = readr::locale(encoding = "UTF-8"), col_names = FALSE); update_log(6)
@@ -25,10 +25,10 @@ site_meta <- prepare_monitoring_meta(site_meta_ostluft, site_meta_nabel)
 
 # => restructure NABEL & calculate O3 peak season from h1 data
 data_monitoring_nabel <- prepare_monitoring_nabel_y1(data_monitoring_nabel)
-# data_monitoring_nabel <- 
-#   data_monitoring_nabel_h1 |> 
-#   prepare_monitoring_nabel_h1() |> 
-#   dplyr::bind_rows(data_monitoring_nabel)
+data_monitoring_nabel <-
+  data_monitoring_nabel_h1 |>
+  prepare_monitoring_nabel_h1() |>
+  dplyr::bind_rows(data_monitoring_nabel)
 
 # => restructure Ostluft & calculate O3 peak season from h1 data
 data_monitoring_ostluft <- prepare_monitoring_ostluft_y1(data_monitoring_ostluft)

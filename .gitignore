@@ -2,10 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-input_offline
-_archive
-_archive/temp
-_archive/2022 - Standotbestimmung
 docs/plots_emissions.rds
 docs/plots_monitoring.rds
 docs/plots_exposition.rds
@@ -14,3 +10,6 @@ docs/.Rproj.user
 docs/.Rhistory
 docs/.RData
 docs/.Ruserdata
+
+inst/extdata/input/nabel_due_h1.txt
+inst/extdata/input/nabel_zue_h1.txt

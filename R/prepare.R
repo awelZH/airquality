@@ -184,6 +184,83 @@ prepare_monitoring_ostluft_y1 <- function(data, keep_incomplete = FALSE, tz = "E
 
 #' Title
 #'
+#' @param data
+#' @param keep_incomplete 
+#' @param tz 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+prepare_monitoring_ostluft_h1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
+
+  data <-
+    data |> 
+    restructure_monitoring_ostluft(keep_incomplete = keep_incomplete, tz = tz, na.rm = TRUE) |> 
+    calc_O3_peakseason() |>
+    dplyr::mutate(source = factor("Ostluft"))
+  
+  return(data)
+}
+
+
+#' Title
+#'
+#' @param data
+#' @param keep_incomplete 
+#' @param tz 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+prepare_monitoring_nabel_h1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
+  browser()
+  
+  
+  # data <- 
+  #   data |> 
+  #   restructure_monitoring_nabel_y1() |> 
+  #   dplyr::mutate(
+  #     interval = "y1",
+  #     Schadstoff = dplyr::case_when(
+  #       Messparameter == "höchster 98%-Wert eines Monats" ~ "O3_max_98p_m1",
+  #       Messparameter == "Anzahl Stundenmittel > 120 µg/m3" ~ "O3_nb_h1>120",
+  #       Messparameter == "Dosis AOT40f" ~ "O3_AOT40",
+  #       Schadstoff == "Partikelanzahl" ~ "PN",
+  #       Schadstoff == "EC / Russ" ~ "eBC",
+  #       TRUE ~ Schadstoff
+  #     ),
+  #     Einheit = ifelse(Einheit == "ppm·h", "ppm*h", Einheit),
+  #     starttime = as.POSIXct(paste0(starttime, "-01-01"), tz = tz),
+  #     source = factor("NABEL (BAFU & Empa)")
+  #   ) |> 
+  #   dplyr::select(
+  #     starttime,
+  #     site = Station,
+  #     parameter = Schadstoff,
+  #     interval,
+  #     unit = Einheit,
+  #     value,
+  #     source
+  #   ) |> 
+  #   dplyr::mutate_if(is.character, as.factor)
+  
+  # data <- 
+  #   data |> 
+  #   data_monitoring_nabel_h1 |>
+  #   lapply(restructure_monitoring_nabel_h1) |>
+  #   dplyr::bind_rows() |>
+  #   calc_O3_peakseason() |>
+  #   dplyr::mutate(source = factor("NABEL (BAFU & Empa)"))
+  
+  
+  return(data)
+}
+
+
+#' Title
+#'
 #' @param data 
 #' @param meta 
 #'

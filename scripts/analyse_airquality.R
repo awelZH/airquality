@@ -18,7 +18,7 @@ source("scripts/_compile_exposition_data.R", encoding = "UTF-8")
 # print("5) compile health-outcome data...")
 # TODO: source("scripts/_compile_healthoutcomes.R", encoding = "UTF-8")
 
-# 6) plot results for later use in docs/...
+# 6) plot results for use in docs/...
 print("6) plot results...")
 source("scripts/_plot_airquality.R", encoding = "UTF-8")
 

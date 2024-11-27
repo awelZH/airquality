@@ -220,3 +220,6 @@ aggregate_population_weighted_mean <- function(data, groups = c("year", "polluta
   
   return(data_pop_weighted)
 }
+
+
+

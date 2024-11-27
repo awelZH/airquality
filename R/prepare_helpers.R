@@ -652,3 +652,38 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
   
   return(data)
 }
+
+
+#' calculate health outcome
+#'
+#' @param conc_increment 
+#' @param crf 
+#' @param crf_factor 
+#' @param deathrate_per_person 
+#' @param population 
+#'
+#' @keywords internal
+calc_outcome <- function(conc_increment, crf, crf_factor, deathrate_per_person, population) {
+  
+  outcome <- conc_increment / crf_factor * (crf - 1) * deathrate_per_person * population
+  
+  return(outcome)
+}
+
+
+#' Get year of health-outcome base scenario: either provided year or a provided function
+#'
+#' @param base 
+#' @param ... 
+#'
+#' @keywords internal
+get_base_scenario_year <- function(base = "min", ...) {
+  
+  if (is.character(base)) {
+    fun <- function(x) get(base)(x, ...)
+  } else {
+    fun <- function(x) base
+  }
+  
+  return(fun)
+}

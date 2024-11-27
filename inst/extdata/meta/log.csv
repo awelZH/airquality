@@ -1,5 +1,5 @@
 INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
-1;2024-11-25 11:42:52 CET;get estimated emissions of air pollutants in the Canton of Zurich
+1;2024-11-27 07:04:23 CET;get estimated emissions of air pollutants in the Canton of Zurich
 2;2024-11-25 11:45:25 CET;get monitoring data vehicle remote emission sensing (RSD)
 3;2024-11-25 11:45:26 CET;read metadata for vehicle type, fuel  and euronorm required for RSD NOx-Emission analysis, compiled from various sources
 4;2024-11-25 11:45:26 CET;read filter criteria applied to RSD dataset 
@@ -9,24 +9,24 @@ INTERNAL_ID;DATETIME_EXCECUTED;PROCESS
 8;2024-11-25 14:35:47 CET;read selected nitrogen deposition monitoring data Kanton Zürich from intercantonal monitoring network OSTLUFT (yearly values)
 9;2024-11-25 14:35:48 CET;read site metadata OSTLUFT
 10;2024-11-25 14:40:21 CET;read selected air quality threshold values (LRV legal limits WHO air quality guideline)
-11;2024-11-25 21:02:23 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
-12;2024-11-25 21:20:52 CET;get polluMap raster data yearly concentrations of mean NO2, PM10, PM2.5 and eBC
-13;2024-11-25 21:20:52 CET;get jahreskarten raster data yearly concentrations of mean nitrogen dioxide (NO2)
-14;2024-11-25 21:20:52 CET;get jahreskarten raster data yearly concentrations of mean particulate matter PM10
-15;2024-11-25 21:20:52 CET;get jahreskarten raster data yearly concentrations of mean particulate matter PM2.5
-16;2024-11-25 21:20:52 CET;get jahreskarten raster data yearly concentrations Ozon, maximales monatliches 98-Perzentil
+11;2024-11-27 15:22:20 CET;get vector data administrative Canton and municipality boundaries Canton Zürich
+12;2024-11-27 07:09:40 CET;get polluMap raster data yearly concentrations of mean NO2, PM10, PM2.5 and eBC
+13;2024-11-27 07:09:40 CET;get jahreskarten raster data yearly concentrations of mean nitrogen dioxide (NO2)
+14;2024-11-27 07:09:40 CET;get jahreskarten raster data yearly concentrations of mean particulate matter PM10
+15;2024-11-27 07:09:40 CET;get jahreskarten raster data yearly concentrations of mean particulate matter PM2.5
+16;2024-11-27 07:09:40 CET;get jahreskarten raster data yearly concentrations Ozon, maximales monatliches 98-Perzentil
 17;2024-08-23 13:16:59 CET;get modelled raster data ammonia concentrations
 18;2024-08-23 13:17:14 CET;get modelled raster data nitrogen deposition
 19;2024-08-23 13:17:17 CET;get modelled raster data exceedance of critical loads for nitrogen (CLN)
-20;2024-11-25 21:22:08 CET;get inhabitant population
+20;2024-11-27 07:11:18 CET;get inhabitant population
 21;2024-11-25 11:46:01 CET;write emissions of air pollutants in the Canton of Zurich
 22;2024-11-25 11:46:02 CET;write monitoring data vehicle remote emission sensing (RSD)
 23;2024-11-25 14:37:01 CET;write air quality monitoring data Canton Zürich
 24;2024-11-25 14:37:01 CET;write nitrogen deposition monitoring data Canton Zürich
-25;2024-11-25 11:48:50 CET;write air quality population exposition weighted mean Canton Zürich
-26;2024-11-25 11:48:51 CET;write air quality population exposition weighted mean municipalities
-27;2024-11-25 11:48:51 CET;write air quality population exposition distribution
-28;2024-11-25 11:48:51 CET;write nitrogen population exposition distribution
+25;2024-11-27 07:11:37 CET;write air quality population exposition weighted mean Canton Zürich
+26;2024-11-27 07:11:38 CET;write air quality population exposition weighted mean municipalities
+27;2024-11-27 07:11:39 CET;write air quality population exposition distribution
+28;2024-11-27 07:11:39 CET;write nitrogen population exposition distribution
 29;2024-11-25 14:40:22 CET;plot emissions of air pollutants in the Canton of Zurich
 30;2024-11-25 14:40:23 CET;plot monitoring data vehicle remote emission sensing (RSD)
 31;2024-11-25 14:40:24 CET;plot air quality monitoring data Canton Zürich

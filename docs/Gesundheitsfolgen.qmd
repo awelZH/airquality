@@ -1,1 +1,32 @@
+---
+title: "Gesundheitsfolgen"
+lightbox: true
+---
+
+
+```{r}
+source("read_plots.R")
+```
+
+
+
 <!-- TODO: see issue #34 -->
+
+Verweis auf Castro et al.
+
+Auswertung nur beispielhaft und nicht umfassend (weitere Schadstoffe wie NO2 und O3 => nicht 1:1 aufaddierbar, weitere Gesundheitsfolgen, etc)
+
+PM2.5 als primärer Leitschadstoff aufgrund hoher Relevanz (siehe LUDOK Studien und OL Studie). 
+Mortalität aufgrund hoher Relevanz und verfügbaren Grundlagendaten zur Sterberate im Kanton Zürich.
+
+Verwendete Grundlage Sterberate unterscheidet nicht zwischen natürlichen und unnatürlichem Todesfall => geringfügige methodische Unschärfe im Vergleich zu üblichen Analysen.
+
+Aufgrund der methodisch bedingten Einschränkung, die Auswirkungen anderer Schadstoffe nicht vollständig mitberücksichtigen zu können, sind die Ergebnisse für PM2.5 als untere Grenze der Gesundheitsauswirkungen durch Luftbelastung zu verstehen.
+
+Veränderung Mortalität über die Jahre ist einerseits durch die Entwicklung der Schadstoffbelastung getrieben, andererseits aber auch durch das Bevölkerungswachstum
+
+Fehlerbalken berücksichtigen die Konfidenzintervalle des Effektschätzers sowie ein Szenario mit unteren gesundheitsrelevanten Schwellenwerten beim Minimum der Schadstoffbelastung
+
+Sonderfall Fallzahlen & Covid in den Jahren 2020:2022 !
+
+...

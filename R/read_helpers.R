@@ -156,13 +156,13 @@ get_bfs_metadata <- function(year){
 #' @param apiurl 
 #'
 #' @keywords internal
-get_opendataswiss_metadata <- function(apiurl){
-  
+get_opendataswiss_metadata <- function(apiurl, file_filter = ".csv"){
+
   req <- httr2::request(apiurl)
   req_data <- httr2::req_perform(req)
   metadata <- httr2::resp_body_json(req_data)$result        
   links <- unlist(purrr::map(metadata$resources, function(x) x$url))
-  download_link <- links[stringr::str_detect(links, ".csv")]
+  download_link <- links[stringr::str_detect(links, file_filter)]
   
   if (any(stringr::str_detect(download_link, "ostluft_emissionsbilanzen"))) { # since this dataset may contain different files from various submissions => use only the latest one
     download_link <- download_link[which.max(extract_year(download_link))]

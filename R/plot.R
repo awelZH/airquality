@@ -119,7 +119,7 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
   
   plot <-
     ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y))) +
-    ggplot2::geom_line(linewidth = linewidth, color = "gray40") +
+    ggplot2::geom_line(linewidth = linewidth, color = "#50586C") +
     ggplot2::scale_x_continuous(limits = xlims, breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
     xlabel +

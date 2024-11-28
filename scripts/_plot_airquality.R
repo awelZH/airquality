@@ -521,7 +521,7 @@ plots$exposition$population_weighted_mean_overview$various <-
   dplyr::filter(pollutant != "eBC") |> 
   dplyr::mutate(pollutant = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")")) |> 
   ggplot2::ggplot(ggplot2::aes(x = year, y = population_weighted_mean)) + 
-  ggplot2::geom_bar(stat = "identity", fill = "gray40") +
+  ggplot2::geom_bar(stat = "identity", fill = "#50586C") +
   ggplot2::geom_hline(data = thresh, mapping = ggplot2::aes(yintercept = threshold), linewidth = thresh$lsz, color = thresh$col, linetype = thresh$lty) +
   lemon::facet_rep_wrap(pollutant~., scales = "free_y", ncol = 1, repeat.tick.labels = TRUE) +
   ggplot2::scale_x_continuous(breaks = 2015:max(years), expand = c(0.01,0.01)) + 

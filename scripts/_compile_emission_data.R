@@ -4,7 +4,7 @@
 # read dataset ...
 # ---
 # => read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss
-data_emikat <- read_opendataswiss_csv(filter_ressources(ressources, 1), source = "Ostluft")
+data_emikat <- read_opendataswiss(filter_ressources(ressources, 1), source = "Ostluft")
 
 # prepare dataset ...
 # ---
@@ -23,7 +23,7 @@ data_emikat <- aggregate_emmissions(data_emikat)
 # read dataset ...
 # ---
 # => read Canton Zürich data (RSD) from opendata.swiss, see also: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftschadstoffquellen/emissionen-verkehr/abgasmessungen-rsd.html
-data_rsd <- read_opendataswiss_csv(filter_ressources(ressources, 2), source = "Kanton Zürich/AWEL")
+data_rsd <- read_opendataswiss(filter_ressources(ressources, 2), source = "Kanton Zürich/AWEL")
 
 # => read local metadata (e.g. fractions NO:NO2, emission thresholds, etc) and filter criteria 
 rsd_auxiliary <- list(meta = read_local_csv(filter_ressources(ressources, 3)))

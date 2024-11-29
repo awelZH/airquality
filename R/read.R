@@ -87,19 +87,25 @@ read_bafu_raster_data <- function(id, boundary, crs = 2056){
 }
 
 
-#' Reads *.csv datasets from url provided by opendata.swiss
+#' Reads datasets (*.csv, *.px) from url provided by opendata.swiss
 #'
 #' @param url 
 #' @param source 
+#' @param file_filter
 #'
 #' @return
 #' @export
 #'
 #' @examples
-read_opendataswiss_csv <- function(url, source){
+read_opendataswiss <- function(url, source, file_filter = ".csv"){
 
   read_url <- get_opendataswiss_metadata(url)
-  data <- purrr::map_df(read_url, function(x) readr::read_delim(x, delim = ","))
+  if (stringr::str_detect(file_filter, ".csv")) {
+    data <- purrr::map_df(read_url, function(x) readr::read_delim(x, delim = ","))
+  }
+  if (stringr::str_detect(file_filter, "api/v1/de")) {
+    # TODO ...
+  }
   data <- dplyr:: mutate(data, source = source)
   
   return(data)

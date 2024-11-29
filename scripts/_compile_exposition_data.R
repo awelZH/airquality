@@ -21,6 +21,21 @@ data_raster_aq <- lapply(setNames(years, years), function(year) data_raster_aq[w
 
 # get monitoring data
 
+# read_local_csv(ressources_plotting$monitoring$airquality, locale = readr::locale(encoding = "UTF-8"))
+# data_monitoring_nabel_h1_additional <- lapply(c(filter_ressources(ressources, 22), filter_ressources(ressources, 23)), function(x) read_local_csv(x, delim = "\t")) # data outside Canton Zürich for deriving O3 peak-season map
+# data_monitoring_ostluft_h1_additional <- read_local_csv(filter_ressources(ressources, 21), locale = readr::locale(encoding = "UTF-8"), col_names = FALSE) # data outside Canton Zürich for deriving O3 peak-season map
+# data_monitoring_nabel <-
+#   data_monitoring_nabel_h1 |>
+#   prepare_monitoring_nabel_h1() 
+# data_monitoring_ostluft <- 
+#   data_monitoring_ostluft_h1 |> 
+#   prepare_monitoring_ostluft_h1() |> 
+#   # => merge & finalise datasets
+#   data_monitoring_aq <-
+#   data_monitoring_nabel |> 
+#   dplyr::bind_rows(data_monitoring_ostluft) |> 
+#   prepare_monitoring_aq(site_meta)
+
 # com
 
 # get DEM raster data
@@ -33,6 +48,9 @@ data_raster_aq <- lapply(setNames(years, years), function(year) data_raster_aq[w
 
 
 #---
+
+# => combine all raster data
+#TODO ...
 
 # => download / read BFS statpop data for same years as pollutant raster data
 data_raster_bfs <- lapply(setNames(years, years), function(year) read_statpop_raster_data(year, "inst/extdata", map_canton))

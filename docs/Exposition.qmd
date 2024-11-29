@@ -99,6 +99,8 @@ get_plot(plots, "source == 'population_weighted_mean_overview'")
 
 ### Ozon
 
+#### Höchstes monatliches 98%-Percentil
+
 ::: {.panel-tabset}
 
 `r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_max_98p_m1" & source == "distribution_histogram")$markdown))`
@@ -114,6 +116,26 @@ get_plot(plots, "source == 'population_weighted_mean_overview'")
 ::: {.panel-tabset}
 
 `r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_max_98p_m1" & source == "population_weighted_mean_map")$markdown))`
+
+:::
+
+#### mittlere tägliche max. 8h-Belastung in der Sommersaison
+
+::: {.panel-tabset}
+
+`r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_peakseason_mean_d1_max_mean_h8gl" & source == "distribution_histogram")$markdown))`
+
+:::
+
+::: {.panel-tabset}
+
+`r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_peakseason_mean_d1_max_mean_h8gl" & source == "distribution_cumulative")$markdown))`
+
+:::
+
+::: {.panel-tabset}
+
+`r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_peakseason_mean_d1_max_mean_h8gl" & source == "population_weighted_mean_map")$markdown))`
 
 :::
 

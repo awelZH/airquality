@@ -30,7 +30,7 @@ ressources_plotting <-
 years <- 1995:(lubridate::year(Sys.Date()) - 1) # years to consider for plotting 
 n_years <- 3 # consider last 3 years for plotting relative threshold comparison    
 parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98p_m1", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for timeseries plotting
-parameters_exposition <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "eBC") # parameters to include for exposition plotting
+parameters_exposition <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for exposition plotting
 siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
                           "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
 
@@ -445,7 +445,7 @@ plots$exposition$distribution_cumulative <-
     
     plots_years <- plot_all_expo_cumul(parameter, data_expo_distr_pollutants)
     
-    thresh <- extract_threshold(immission_threshold_values, parameter)
+    thresh <- extract_threshold(immission_threshold_values, shorttitle(parameter), aggregation = expositionpars(parameter)$aggregation, metric = expositionpars(parameter)$metric)
     data <- dplyr::filter(data_expo_distr_pollutants, pollutant == !!parameter)
     plot_all <- 
       ggplot2::ggplot(data, mapping = ggplot2::aes(x = concentration, y = population_cum_rel, color = factor(year), group = year)) +
@@ -509,8 +509,14 @@ plots$exposition$population_weighted_mean_map <-
 # plotting timeseries of population-weighted mean pollutant concentration for Kanton Zürich
 thresh <-  
   immission_threshold_values |> 
-  dplyr::mutate(pollutant = dplyr::case_when(metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" ~ "O3_max_98p_m1", TRUE ~ pollutant)) |> 
-  dplyr::filter(pollutant %in% c("NO2", "O3_max_98p_m1", "PM10", "PM2.5")) |> 
+  dplyr::mutate(
+    pollutant = dplyr::case_when(
+      metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" ~ "O3_max_98p_m1", 
+      metric == "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration" ~ "O3_peakseason_mean_d1_max_mean_h8gl", 
+      TRUE ~ pollutant
+    )
+  ) |> 
+  dplyr::filter(pollutant %in% parameters_exposition) |> 
   dplyr::mutate(pollutant = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")"))
 
 plots$exposition$population_weighted_mean_overview$various <-
@@ -555,7 +561,7 @@ plots <-
   bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map"))
 
 
-  
+
 
 
 # save for *.qmd & clean up

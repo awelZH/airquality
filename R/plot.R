@@ -231,6 +231,7 @@ immissionscale <- function(parameter) {
   switch(parameter,
          NO2 = immission_colorscale(limits = c(0,50), breaks = seq(0,50,10), name = "NO2\n(µg/m3)"),
          `O3_max_98p_m1` = immission_colorscale(limits = c(0,180), breaks = seq(0,180,30), name = paste0("O3\n",longparameter("O3_max_98p_m1"),"\n(µg/m3)")),
+         `O3_peakseason_mean_d1_max_mean_h8gl` = immission_colorscale(limits = c(0,110), breaks = seq(10,110,20), name = paste0("O3\n",longparameter("O3_peakseason_mean_d1_max_mean_h8gl"),"\n(µg/m3)")),
          PM10 = immission_colorscale(limits = c(0,34), breaks = c(seq(0,30,10), 34), name = "PM10\n(µg/m3)"),
          PM2.5 = immission_colorscale(limits = c(0,17), breaks = c(seq(0,15,2.5), 17), name = "PM2.5\n(µg/m3)"),
          eBC = immission_colorscale(limits = c(0,1.5), breaks = seq(0,1.5,0.3), name = "eBC\n(µg/m3)"),
@@ -265,8 +266,9 @@ timeseriespars <- function(parameter) {
 #' @keywords internal
 expositionpars <- function(parameter) {
   switch(parameter,
-         NO2 = list(barwidth = 1, xbreaks = seq(0,90,10), aggregation = "y1", metric = "mean"),
+         NO2 = list(barwidth = 1, xbreaks = seq(0,55,5), aggregation = "y1", metric = "mean"),
          `O3_max_98p_m1` = list(barwidth = 2, xbreaks = seq(0,180,20), aggregation = "m1", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3"),
+         `O3_peakseason_mean_d1_max_mean_h8gl` = list(barwidth = 2, xbreaks = seq(0,120,10), aggregation = "peak-season", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration"),
          PM10 = list(barwidth = 0.2, xbreaks = seq(0,24,2), aggregation = "y1", metric = "mean"),
          PM2.5 = list(barwidth = 0.2, xbreaks = seq(0,16,1), aggregation = "y1", metric = "mean"),
          eBC = list(barwidth = 0.05, xbreaks = seq(0,2.2,0.2), aggregation = "y1", metric = "mean"),
@@ -359,7 +361,6 @@ plot_all_expo_hist <- function(parameter, data) {
   
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {
-    
     thresh <- extract_threshold(immission_threshold_values, shorttitle(parameter), aggregation = expositionpars(parameter)$aggregation, metric = expositionpars(parameter)$metric)
     ggplot_expo_hist(
       data = dplyr::filter(data, year == !!year & pollutant == !!parameter), x = "concentration", y = "population", barwidth = expositionpars(parameter)$barwidth,
@@ -390,10 +391,11 @@ plot_all_expo_cumul <- function(parameter, data) {
   
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {
-    
+
+    thresh <- extract_threshold(immission_threshold_values, shorttitle(parameter), aggregation = expositionpars(parameter)$aggregation, metric = expositionpars(parameter)$metric)
     ggplot_expo_cumulative(
       data = dplyr::filter(data, year == !!year & pollutant == !!parameter), x = "concentration", y = "population_cum_rel", linewidth = 1,
-      xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = extract_threshold(immission_threshold_values, parameter),
+      xlims = range(expositionpars(parameter)$xbreaks), xbreaks = expositionpars(parameter)$xbreaks, threshold = thresh,
       xlabel = ggplot2::xlab(openair::quickText(paste0(shorttitle(parameter)," ",longparameter(parameter)," (µg/m3)"))),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText(paste0("Bevölkerungsexposition - ",longtitle(parameter))),

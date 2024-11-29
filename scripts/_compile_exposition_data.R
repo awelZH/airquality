@@ -15,43 +15,6 @@ years <- as.numeric(unique(availability$year))
 data_raster_aq <- read_geolion_wcs_stack(cov_stack, availability$layer_name, map_canton)
 data_raster_aq <- lapply(setNames(years, years), function(year) data_raster_aq[which(extract_year(names(data_raster_aq)) == year)])
 
-# => derive O3 peak-season raster data from statistical relationships
-# TODO ... 
-#---
-
-# get monitoring data
-
-# read_local_csv(ressources_plotting$monitoring$airquality, locale = readr::locale(encoding = "UTF-8"))
-# data_monitoring_nabel_h1_additional <- lapply(c(filter_ressources(ressources, 22), filter_ressources(ressources, 23)), function(x) read_local_csv(x, delim = "\t")) # data outside Canton Zürich for deriving O3 peak-season map
-# data_monitoring_ostluft_h1_additional <- read_local_csv(filter_ressources(ressources, 21), locale = readr::locale(encoding = "UTF-8"), col_names = FALSE) # data outside Canton Zürich for deriving O3 peak-season map
-# data_monitoring_nabel <-
-#   data_monitoring_nabel_h1 |>
-#   prepare_monitoring_nabel_h1() 
-# data_monitoring_ostluft <- 
-#   data_monitoring_ostluft_h1 |> 
-#   prepare_monitoring_ostluft_h1() |> 
-#   # => merge & finalise datasets
-#   data_monitoring_aq <-
-#   data_monitoring_nabel |> 
-#   dplyr::bind_rows(data_monitoring_ostluft) |> 
-#   prepare_monitoring_aq(site_meta)
-
-# com
-
-# get DEM raster data
-
-
-
-
-
-
-
-
-#---
-
-# => combine all raster data
-#TODO ...
-
 # => download / read BFS statpop data for same years as pollutant raster data
 data_raster_bfs <- lapply(setNames(years, years), function(year) read_statpop_raster_data(year, "inst/extdata", map_canton))
 
@@ -62,6 +25,26 @@ data_raster_bafu <- read_bafu_raster_data(filter_ressources(ressources, 19), map
 # ---
 # => spatially average pollutant raster data to the grid of statpop data (100x100m)
 data_raster_aq <- purrr::map2(data_raster_bfs, data_raster_aq, average_to_statpop)
+
+# => get O3 peak-season vs. NO2 & year regression coefficients from separate script to derive O3 peak-season data
+source("scripts/_derive_o3_peak-season_coef.R", encoding = "UTF-8")
+
+# => calculate O3 peak-season data_raster_aq from NO2
+data_raster_aq <-
+  lapply(data_raster_aq, function(x) { # FIXME: find a better way
+    
+    year <- unique(na.omit(extract_year(names(x))))
+    cf <- dplyr::filter(coef, year == !!year)
+    y <- x[[which(stringr::str_detect(names(x), "no2"))]]
+    y <-
+      y |> 
+      dplyr::mutate(O3_peakseason_mean_d1_max_mean_h8gl = no2 * cf$slope + cf$offset) |> 
+      dplyr::select(-no2)
+  
+    # ggplot() + geom_stars(data = y) + scale_fill_viridis_c(na.value = NA) + coord_equal()
+    
+    return(c(x, list(O3_peakseason_mean_d1_max_mean_h8gl = y)))
+  })
 
 # => convert pollutant and statpop data into a common tibble & calculate inhabitant exposition per raster cell (will also later be used to derive health outcomes)
 data_expo_pop <- prepare_exposition(data_raster_bfs, data_raster_aq, years)

@@ -16,7 +16,7 @@ load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson"
 
 # packages required for script functionality
 load_packages(c("devtools", "scales", "lemon", "openair", "ggplot2", "shades", 
-                "wesanderson", "rOstluft.plot", "quarto"))
+                "wesanderson", "MASS", "rOstluft.plot", "quarto"))
 
 # load functions 
 devtools::load_all()

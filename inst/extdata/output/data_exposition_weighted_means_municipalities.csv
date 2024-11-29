@@ -163,6 +163,170 @@ year;pollutant;geodb_oid;gemeindename;population_weighted_mean;population;unit;s
 2015;NO2;3237;Hüntwangen;15.009061451745174;1018;μg/m3;BAFU & BFS
 2015;NO2;3238;Kloten;25.132369084039773;18448;μg/m3;BAFU & BFS
 2015;NO2;3239;Lufingen;19.587483049587476;2076;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3075;Nürensdorf;98.13540606088155;5497;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3076;Oberembrach;99.37882645277229;1093;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3077;Opfikon;91.18458363630947;18245;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3078;Rafz;101.2772449755343;4370;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3079;Rorbas;99.53682101675844;3011;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3080;Wallisellen;91.66033818601836;16035;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3081;Wasterkingen;102.23143973839464;573;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3082;Wil (ZH);102.02854883480343;1391;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3083;Winkel;98.897466419155;4247;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3084;Bachs;101.88618097690009;592;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3085;Boppelsen;100.03380423606191;1335;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3086;Buchs (ZH);97.57379588248526;6348;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3087;Dällikon;97.23028034405137;3963;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3088;Dänikon;98.65563638008636;1889;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3089;Dielsdorf;97.97859138084512;5874;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3090;Hüttikon;98.78741516174384;883;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3091;Neerach;100.14176942183589;3008;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3092;Niederglatt;98.79458216269832;4668;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3093;Niederhasli;98.28621261224865;9296;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3094;Niederweningen;100.22286879293824;2866;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3095;Oberglatt;97.72110612997687;6778;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3096;Oberweningen;100.08166237355577;1681;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3097;Otelfingen;98.15852546112747;2629;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3098;Regensberg;100.57042257697886;532;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3099;Regensdorf;95.64431911470605;18048;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3100;Rümlang;96.704141297262;7803;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3101;Schleinikon;100.84431181244504;800;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3102;Schöfflisdorf;100.07018269765679;1454;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3103;Stadel;101.32130484062507;2222;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3104;Steinmaur;99.31523219694009;3460;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3105;Weiach;101.50336263116314;1408;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3106;Bäretswil;101.97675420926134;5035;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3107;Bubikon;99.11515185339803;7005;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3108;Dürnten;98.89889891711788;7446;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3109;Fischenthal;103.8011583111979;2412;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3110;Gossau (ZH);98.5665603592763;9812;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3111;Grüningen;99.27133199997323;3398;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3112;Hinwil;99.56567346139454;10874;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3113;Rüti (ZH);98.30057534612007;12170;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3114;Seegräben;98.67651236627208;1407;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3115;Wald (ZH);100.66245530452665;9610;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3116;Wetzikon (ZH);97.17269570592805;24464;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3117;Adliswil;96.61075233490023;19004;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3118;Kilchberg (ZH);96.1268723304244;7731;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3119;Langnau am Albis;98.64764409423879;7446;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3120;Oberrieden;97.1868451490399;5026;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3121;Richterswil;97.31221394549866;13089;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3122;Rüschlikon;95.81112923355295;5666;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3123;Thalwil;95.94957340409732;17934;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3124;Altikon;100.7381866255284;671;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3125;Brütten;99.65935835781636;2028;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3126;Dägerlen;101.32790635999044;1035;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3127;Dättlikon;100.46217265050473;744;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3128;Dinhard;100.78516895537281;1522;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3129;Erlenbach (ZH);97.62883850702511;5267;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3130;Herrliberg;98.48147600565555;6177;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3131;Hombrechtikon;98.96515070773852;8602;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3132;Küsnacht (ZH);97.61524513963569;13611;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3133;Männedorf;97.92976078831849;10260;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3134;Meilen;97.11433596674979;12950;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3135;Oetwil am See;98.51952540700508;4719;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3136;Stäfa;98.37841920216883;13736;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3137;Uetikon am See;98.47126998219166;6006;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3138;Zumikon;98.21324731814151;5144;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3139;Zollikon;97.29286713057469;12790;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3140;Fehraltorf;98.10177430001819;6327;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3141;Hittnau;101.20508034764974;3642;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3142;Lindau;94.8040147241568;5546;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3143;Pfäffikon;98.64828259880574;11529;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3144;Russikon;100.83340458267526;4332;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3145;Weisslingen;101.15881779771094;3271;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3146;Wila;101.62845972667188;1985;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3147;Wildberg;102.64422709821531;1096;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3148;Dübendorf;94.75253650905367;26788;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3149;Egg;98.78015150407484;8452;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3150;Fällanden;97.34603559284031;8161;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3151;Greifensee;97.61249814192743;5365;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3152;Maur;98.82141988821127;9835;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3153;Mönchaltorf;98.62880084572024;3603;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3154;Mönchaltorf;100.09019323803022;76;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3155;Schwerzenbach;96.6827866373362;5495;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3156;Uster;96.93290212797113;33959;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3157;Volketswil;96.30551236317592;18103;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3158;Wangen-Brüttisellen;92.08753537868067;7590;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3159;Ellikon an der Thur;100.01549543412499;890;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3160;Elsau;99.84755154782583;3472;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3161;Hagenbuch;100.87191402894685;1127;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3162;Hettlingen;100.17181569936223;3104;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3163;Neftenbach;99.55973255532822;5562;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3164;Pfungen;98.38787406842289;3796;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3165;Rickenbach (ZH);98.89010694835004;2611;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3166;Schlatt (ZH);102.38794235253911;757;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3167;Seuzach;97.81936173265652;7222;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3168;Turbenthal;102.07998490757743;4446;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3169;Winterthur;97.00835517599452;108359;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3170;Zell (ZH);101.00781768010319;5685;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3171;Aesch (ZH);97.74342885512594;1207;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3172;Birmensdorf (ZH);96.63164374170792;6471;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3173;Dietikon;95.39141732659543;26254;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3174;Geroldswil;91.28455537835302;4880;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3175;Oberengstringen;94.58377455822475;6582;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3176;Oetwil an der Limmat;95.15171130848178;2399;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3177;Schlieren;95.19283886315391;18052;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3178;Uitikon;97.87692010844206;3887;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3179;Unterengstringen;92.36692772087602;3970;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3180;Urdorf;95.86239227321786;10509;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3181;Weiningen (ZH);93.11448327559131;4254;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3182;Zürich;93.76072848083729;397396;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3183;Andelfingen;100.90111505591281;3403;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3184;Stammheim;101.87755357037756;2796;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3185;Wädenswil;98.68240440012929;24460;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3186;Elgg;101.59235701688333;4857;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3187;Horgen;96.71133996778985;22521;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3188;Illnau-Effretikon;97.34585193510233;16782;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3189;Bauma;102.25304969099261;4980;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3190;Wiesendangen;98.51831115866831;6376;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3191;NA;NA;2484;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3192;NA;NA;12;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3194;Aeugst am Albis;101.43336621856473;1994;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3195;Affoltern am Albis;97.38076735438239;11721;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3196;Bonstetten;98.91677718761984;5511;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3197;Hausen am Albis;100.68260558720374;3516;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3198;Hedingen;98.45226973099795;3704;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3199;Kappel am Albis;100.19870479355725;1049;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3200;Knonau;97.35264890977535;2108;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3201;Maschwanden;99.55275522129116;649;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3202;Mettmenstetten;98.13515272824178;4702;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3203;Obfelden;98.43112791511987;5031;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3204;Ottenbach;98.20954123132854;2570;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3205;Rifferswil;100.5691939407717;1082;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3206;Stallikon;98.49224452409452;3508;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3207;Wettswil am Albis;96.99915811017962;4771;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3208;Benken (ZH);101.17660003886796;870;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3209;Berg am Irchel;101.49952143545323;606;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3210;Buch am Irchel;101.93542588470575;983;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3211;Dachsen;101.13985929583231;1997;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3212;Dorf;101.34906948847825;631;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3213;Feuerthalen;100.28708748629602;3571;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3214;Flaach;100.70997526256195;1358;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3215;Flurlingen;99.23358094613852;1442;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3216;Henggart;100.77241889470808;2259;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3217;Kleinandelfingen;100.18472305844662;2069;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3218;Laufen-Uhwiesen;101.08271210499888;1583;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3219;Marthalen;101.35707993865415;1974;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3220;Ossingen;101.02546081694516;1456;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3221;Rheinau;101.60109888380245;1322;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3222;Thalheim an der Thur;101.29355743356659;901;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3223;Trüllikon;101.56514431037039;1037;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3224;Truttikon;102.0770162896382;475;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3225;Volken;100.92355920915229;340;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3226;Bachenbülach;98.52580865509665;4065;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3227;Bassersdorf;96.1865961889118;11606;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3228;Bülach;98.14908744823617;19391;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3229;Dietlikon;94.42738214862894;7671;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3230;Eglisau;99.83920872096161;5040;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3231;Embrach;98.43325719344236;9147;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3232;Freienstein-Teufen;100.089342965532;2072;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3233;Glattfelden;101.17652701868214;4966;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3234;Glattfelden;101.66878018585399;4;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3235;Hochfelden;100.28620662324404;2001;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3236;Höri;98.20147116302574;2664;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3237;Hüntwangen;101.63472242657684;1018;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3238;Kloten;94.30269008747115;18448;μg/m3;BAFU & BFS
+2015;O3_peakseason_mean_d1_max_mean_h8gl;3239;Lufingen;98.31869801669424;2076;μg/m3;BAFU & BFS
 2015;PM10;3075;Nürensdorf;13.159977018909062;5497;μg/m3;BAFU & BFS
 2015;PM10;3076;Oberembrach;12.537220336271881;1093;μg/m3;BAFU & BFS
 2015;PM10;3077;Opfikon;16.039636156244715;18245;μg/m3;BAFU & BFS
@@ -819,6 +983,170 @@ year;pollutant;geodb_oid;gemeindename;population_weighted_mean;population;unit;s
 2020;O3_max_98p_m1;3237;Hüntwangen;137.92458584546375;1073;μg/m3;BAFU & BFS
 2020;O3_max_98p_m1;3238;Kloten;140.83559720824468;20434;μg/m3;BAFU & BFS
 2020;O3_max_98p_m1;3239;Lufingen;139.6741834274761;2571;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3075;Nürensdorf;92.7025611443964;5658;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3076;Oberembrach;93.62533860901503;1120;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3077;Opfikon;88.19688054570263;20450;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3078;Rafz;94.89096828225895;4651;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3079;Rorbas;93.65259637390479;3143;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3080;Wallisellen;88.257151331065;17540;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3081;Wasterkingen;95.58834082478886;577;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3082;Wil (ZH);95.45461419442569;1498;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3083;Winkel;93.2407924529959;4657;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3084;Bachs;95.31248256856827;620;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3085;Boppelsen;94.2546803480055;1486;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3086;Buchs (ZH);92.45495752961145;6579;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3087;Dällikon;92.15062373912993;4319;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3088;Dänikon;93.16331635582075;1848;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3089;Dielsdorf;92.75329805458539;5928;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3090;Hüttikon;93.34233447683498;953;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3091;Neerach;94.21640564037682;3188;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3092;Niederglatt;93.22790821003531;4829;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3093;Niederhasli;92.92033622108187;9661;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3094;Niederweningen;94.25487865593782;3099;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3095;Oberglatt;92.54333281298543;7345;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3096;Oberweningen;94.18507698522195;1804;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3097;Otelfingen;92.83791666763078;2776;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3098;Regensberg;94.53504780465107;509;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3099;Regensdorf;91.05220626804072;18573;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3100;Rümlang;91.87311456976752;8314;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3101;Schleinikon;94.64132962311099;933;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3102;Schöfflisdorf;94.2007104751855;1430;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3103;Stadel;94.99764451062079;2357;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3104;Steinmaur;93.69874543567823;3662;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3105;Weiach;95.05867656896578;2059;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3106;Bäretswil;95.35171886641066;5136;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3107;Bubikon;93.2129271132696;7330;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3108;Dürnten;93.10149175973457;7661;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3109;Fischenthal;96.57549345694937;2483;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3110;Gossau (ZH);92.8509872299588;10352;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3111;Grüningen;93.25518770521808;3743;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3112;Hinwil;93.64489668581952;11375;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3113;Rüti (ZH);92.69368799477175;12649;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3114;Seegräben;92.958630479069555;1397;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3115;Wald (ZH);94.4444441796618;10352;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3116;Wetzikon (ZH);91.98827620789214;25118;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3117;Adliswil;91.7360092266059;19523;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3118;Kilchberg (ZH);91.39637508208054;8760;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3119;Langnau am Albis;93.19290575762672;7913;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3120;Oberrieden;92.14529516579766;5054;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3121;Richterswil;91.93523195469035;13562;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3122;Rüschlikon;91.1605159357868;6103;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3123;Thalwil;91.29991542604408;18471;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3124;Altikon;94.45581141226981;721;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3125;Brütten;93.82900453418584;2072;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3126;Dägerlen;94.9147078596427;1055;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3127;Dättlikon;94.3560047601373;794;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3128;Dinhard;94.52909536466677;1765;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3129;Erlenbach (ZH);92.43940804962509;5414;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3130;Herrliberg;93.00411634519871;6413;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3131;Hombrechtikon;93.06656719940672;8968;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3132;Küsnacht (ZH);92.42838708134336;14644;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3133;Männedorf;92.32110711916638;11009;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3134;Meilen;92.00537141965519;13943;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3135;Oetwil am See;92.85044751239236;4897;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3136;Stäfa;92.67243986586672;14357;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3137;Uetikon am See;92.7879009823501;6207;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3138;Zumikon;92.86494964098262;5576;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3139;Zollikon;92.21523855123459;13325;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3140;Fehraltorf;92.56319870636821;6603;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3141;Hittnau;94.84535471794663;3756;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3142;Lindau;90.44858418230045;5771;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3143;Pfäffikon;92.97571180931942;12243;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3144;Russikon;94.63016721791375;4448;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3145;Weisslingen;94.78892148376336;3385;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3146;Wila;95.09326039350941;2064;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3147;Wildberg;95.7610813451443;1082;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3148;Dübendorf;90.1362869798107;29938;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3149;Egg;93.01830159956059;8918;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3150;Fällanden;92.10192161177682;8709;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3151;Greifensee;92.19165461755574;5324;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3152;Maur;93.15180486761457;10702;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3153;Mönchaltorf;92.83903078371135;3975;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3154;Mönchaltorf;93.7620648041877;72;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3155;Schwerzenbach;91.52412666710481;5706;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3156;Uster;91.68680158630544;35388;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3157;Volketswil;91.28093771125215;18402;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3158;Wangen-Brüttisellen;88.45038357957655;7876;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3159;Ellikon an der Thur;94.10451548967772;939;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3160;Elsau;93.92683395536497;3622;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3161;Hagenbuch;94.58524615649213;1107;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3162;Hettlingen;94.01277638331857;3093;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3163;Neftenbach;93.66201449760314;5812;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3164;Pfungen;92.75618811827214;3989;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3165;Rickenbach (ZH);93.31368651509486;2793;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3166;Schlatt (ZH);95.71889332214461;793;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3167;Seuzach;92.52726175340848;7434;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3168;Turbenthal;95.42368679278563;4956;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3169;Winterthur;91.9027688095371;114325;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3170;Zell (ZH);94.67281443496616;6154;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3171;Aesch (ZH);92.76051152065672;1718;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3172;Birmensdorf (ZH);91.78130334898694;7141;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3173;Dietikon;90.8644975077241;27784;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3174;Geroldswil;88.07432219647467;5188;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3175;Oberengstringen;90.31343835729761;6774;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3176;Oetwil an der Limmat;90.88651604817493;2513;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3177;Schlieren;90.74245091299224;19334;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3178;Uitikon;92.7819078720164;4552;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3179;Unterengstringen;88.76683932678172;4239;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3180;Urdorf;91.23217622237269;10887;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3181;Weiningen (ZH);89.32230845325034;4487;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3182;Zürich;89.69605525163716;422338;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3183;Andelfingen;94.55265796264955;3485;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3184;Stammheim;95.23177188962192;2881;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3185;Wädenswil;92.9530183067165;24898;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3186;Elgg;95.1104404707502;5120;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3187;Horgen;91.81357375615697;23302;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3188;Illnau-Effretikon;92.0692368721255;17659;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3189;Bauma;95.49327401692676;4998;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3190;Wiesendangen;92.98106111272024;6819;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3191;NA;NA;2635;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3192;NA;NA;19;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3194;Aeugst am Albis;95.08468484926873;2032;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3195;Affoltern am Albis;92.37169239658205;12297;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3196;Bonstetten;93.44958730503565;5848;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3197;Hausen am Albis;94.52706940069669;3822;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3198;Hedingen;93.06364537157954;3835;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3199;Kappel am Albis;94.17603400460615;1260;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3200;Knonau;92.2893653908315;2382;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3201;Maschwanden;93.78009218607511;652;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3202;Mettmenstetten;92.86321694495958;5411;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3203;Obfelden;93.0204910754482;5811;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3204;Ottenbach;92.86336175693299;2707;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3205;Rifferswil;94.45703166530643;1175;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3206;Stallikon;93.14794228952974;3823;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3207;Wettswil am Albis;92.17262050889727;5090;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3208;Benken (ZH);94.61315715283658;869;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3209;Berg am Irchel;94.95597676346692;650;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3210;Buch am Irchel;95.24738034958264;1038;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3211;Dachsen;94.62550723331293;1927;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3212;Dorf;94.90347931111118;676;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3213;Feuerthalen;94.04909389612362;3709;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3214;Flaach;94.40658138717862;1412;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3215;Flurlingen;93.35571775449681;1558;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3216;Henggart;94.44633158955615;2304;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3217;Kleinandelfingen;94.05219590535461;2082;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3218;Laufen-Uhwiesen;94.66965920362736;1722;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3219;Marthalen;94.80403669233965;1951;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3220;Ossingen;94.70700376010595;1759;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3221;Rheinau;94.97719503094518;1286;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3222;Thalheim an der Thur;94.8993644927185;961;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3223;Trüllikon;95.0701589696384;1075;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3224;Truttikon;95.3192485901341;454;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3225;Volken;94.60261403290194;384;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3226;Bachenbülach;93.0597789943786;4218;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3227;Bassersdorf;91.21384946649889;11945;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3228;Bülach;92.79531201747315;21996;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3229;Dietlikon;90.14885488819381;7924;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3230;Eglisau;94.01051321319281;5504;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3231;Embrach;92.8772472039545;9616;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3232;Freienstein-Teufen;93.93322196767406;2178;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3233;Glattfelden;94.92122383503609;5240;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3234;Glattfelden;95.20596920821244;3;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3235;Hochfelden;94.27888201829225;2032;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3236;Höri;92.86140585829565;2967;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3237;Hüntwangen;95.15164418606393;1073;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3238;Kloten;90.18376157514072;20434;μg/m3;BAFU & BFS
+2020;O3_peakseason_mean_d1_max_mean_h8gl;3239;Lufingen;92.69129741645916;2571;μg/m3;BAFU & BFS
 2020;PM10;3075;Nürensdorf;10.823032269422221;5658;μg/m3;BAFU & BFS
 2020;PM10;3076;Oberembrach;10.286669093370438;1120;μg/m3;BAFU & BFS
 2020;PM10;3077;Opfikon;12.957260087486585;20450;μg/m3;BAFU & BFS
@@ -1475,6 +1803,170 @@ year;pollutant;geodb_oid;gemeindename;population_weighted_mean;population;unit;s
 2021;O3_max_98p_m1;3237;Hüntwangen;140.9954827374577;1085;μg/m3;BAFU & BFS
 2021;O3_max_98p_m1;3238;Kloten;140.95884350870384;20771;μg/m3;BAFU & BFS
 2021;O3_max_98p_m1;3239;Lufingen;140.49078525968682;2627;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3075;Nürensdorf;87.40860356819151;5751;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3076;Oberembrach;88.28631432774087;1096;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3077;Opfikon;83.013002687892;20561;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3078;Rafz;89.64339440016673;4696;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3079;Rorbas;88.45778296854333;3173;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3080;Wallisellen;83.04721635436869;17626;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3081;Wasterkingen;90.25527633185888;591;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3082;Wil (ZH);90.11535562736158;1525;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3083;Winkel;88.0494757628717;4852;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3084;Bachs;89.9633675230446;642;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3085;Boppelsen;88.90301736914358;1476;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3086;Buchs (ZH);87.07951006468457;6615;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3087;Dällikon;86.87344898649317;4343;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3088;Dänikon;87.81123692697379;1850;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3089;Dielsdorf;87.3903330216439;6010;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3090;Hüttikon;87.89691398172509;932;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3091;Neerach;88.86224414916187;3234;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3092;Niederglatt;87.91595634882209;4856;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3093;Niederhasli;87.58628692637026;9680;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3094;Niederweningen;88.95614742601128;3120;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3095;Oberglatt;87.22556623009551;7426;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3096;Oberweningen;88.846951646076;1801;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3097;Otelfingen;87.46486805572837;2768;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3098;Regensberg;89.19087792698366;507;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3099;Regensdorf;85.78772520847684;18547;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3100;Rümlang;86.59550423434948;8336;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3101;Schleinikon;89.30362794593556;933;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3102;Schöfflisdorf;88.83812024625252;1410;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3103;Stadel;89.65200729547954;2384;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3104;Steinmaur;88.3439925760467;3693;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3105;Weiach;89.7264437536498;2111;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3106;Bäretswil;90.101272648731225;5087;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3107;Bubikon;88.01222821400995;7356;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3108;Dürnten;88.0143897209898;7704;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3109;Fischenthal;91.29924639505928;2567;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3110;Gossau (ZH);87.61550723920139;10316;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3111;Grüningen;88.0397775023245;3850;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3112;Hinwil;88.39220134059497;11644;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3113;Rüti (ZH);87.47814512000458;12807;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3114;Seegräben;87.70260676396624;1401;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3115;Wald (ZH);89.13898853585188;10444;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3116;Wetzikon (ZH);86.76356625958354;25538;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3117;Adliswil;86.456874307433;19493;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3118;Kilchberg (ZH);86.12478101409484;8870;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3119;Langnau am Albis;87.8988859089765;8002;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3120;Oberrieden;86.84642909377273;5055;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3121;Richterswil;86.79854198138683;13715;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3122;Rüschlikon;85.87108146925172;6125;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3123;Thalwil;86.00986680758875;18737;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3124;Altikon;89.21707096187397;730;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3125;Brütten;88.54150555878273;2107;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3126;Dägerlen;89.71211347555436;1076;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3127;Dättlikon;89.05237420809573;788;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3128;Dinhard;89.25280687767368;1749;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3129;Erlenbach (ZH);87.1375936373165;5420;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3130;Herrliberg;87.69857774194604;6504;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3131;Hombrechtikon;87.82078766720991;8966;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3132;Küsnacht (ZH);87.12519566081131;14652;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3133;Männedorf;87.16481205692641;10986;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3134;Meilen;86.82843961303479;14096;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3135;Oetwil am See;87.58572003627714;4988;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3136;Stäfa;87.47641330072123;14361;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3137;Uetikon am See;87.54583864304664;6290;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3138;Zumikon;87.60629269638785;5573;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3139;Zollikon;86.92495911889159;13382;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3140;Fehraltorf;87.30539888893472;6690;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3141;Hittnau;89.59167763097746;3793;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3142;Lindau;85.23210483595138;5790;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3143;Pfäffikon;87.73331857537559;12404;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3144;Russikon;89.36461420131818;4488;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3145;Weisslingen;89.48124389809207;3457;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3146;Wila;89.82150321022684;2076;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3147;Wildberg;90.47847239320949;1093;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3148;Dübendorf;84.970696429958;30124;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3149;Egg;87.74538243890728;8929;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3150;Fällanden;86.9873635243461;9101;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3151;Greifensee;87.00443766415759;5364;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3152;Maur;87.93166730349668;10751;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3153;Mönchaltorf;87.56632220932862;4009;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3154;Mönchaltorf;88.56943664307904;69;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3155;Schwerzenbach;86.33553985165962;5627;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3156;Uster;86.43899126290617;35579;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3157;Volketswil;86.10158219050085;18684;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3158;Wangen-Brüttisellen;83.15848399582646;7861;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3159;Ellikon an der Thur;88.87215225805149;1041;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3160;Elsau;88.71069308203741;3657;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3161;Hagenbuch;89.46257519058467;1135;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3162;Hettlingen;88.72001210616345;3121;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3163;Neftenbach;88.36230033060951;5835;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3164;Pfungen;87.45462076675457;4046;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3165;Rickenbach (ZH);88.02892777449046;2788;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3166;Schlatt (ZH);90.40896648658902;784;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3167;Seuzach;87.27567151838616;7650;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3168;Turbenthal;90.15061565227472;5033;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3169;Winterthur;86.70726218719787;115244;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3170;Zell (ZH);89.40114874502241;6181;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3171;Aesch (ZH);87.59649279155029;1701;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3172;Birmensdorf (ZH);86.5737325112176;7194;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3173;Dietikon;85.52252778533233;27853;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3174;Geroldswil;82.73850483608098;5286;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3175;Oberengstringen;84.98674764126143;6833;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3176;Oetwil an der Limmat;85.47000263860974;2549;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3177;Schlieren;85.3425222121398;19396;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3178;Uitikon;87.53552534851374;4769;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3179;Unterengstringen;83.441689639846;4357;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3180;Urdorf;85.93219686941563;11087;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3181;Weiningen (ZH);84.03881756141614;4479;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3182;Zürich;84.46727093032199;424155;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3183;Andelfingen;89.24233761192775;3499;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3184;Stammheim;89.95088501655474;2881;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3185;Wädenswil;87.78760589885115;25015;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3186;Elgg;89.90025736428942;5168;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3187;Horgen;86.5265151489402;23536;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3188;Illnau-Effretikon;86.8877138990345;17709;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3189;Bauma;90.26860184885925;5013;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3190;Wiesendangen;87.75834410262019;6830;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3191;NA;NA;2664;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3192;NA;NA;17;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3194;Aeugst am Albis;89.83241335932526;2004;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3195;Affoltern am Albis;87.13476976285787;12412;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3196;Bonstetten;88.15852820690041;5868;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3197;Hausen am Albis;89.16085464795587;3880;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3198;Hedingen;87.80072014436891;3823;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3199;Kappel am Albis;88.93984537273948;1307;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3200;Knonau;87.10488265854923;2456;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3201;Maschwanden;88.52837242112749;650;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3202;Mettmenstetten;87.70711278356258;5602;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3203;Obfelden;87.82899935817427;5795;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3204;Ottenbach;87.6555647178709;2747;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3205;Rifferswil;89.2397085413544;1175;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3206;Stallikon;87.8733862983987;3868;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3207;Wettswil am Albis;86.89843311450558;5097;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3208;Benken (ZH);89.22764158310895;869;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3209;Berg am Irchel;89.72722151243909;641;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3210;Buch am Irchel;89.91447985468731;1042;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3211;Dachsen;89.23460078114384;1950;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3212;Dorf;89.57220464526051;706;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3213;Feuerthalen;88.67528501323609;3775;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3214;Flaach;89.10275015577827;1423;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3215;Flurlingen;87.91984468953173;1519;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3216;Henggart;89.1231446264057;2315;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3217;Kleinandelfingen;88.70688982090694;2115;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3218;Laufen-Uhwiesen;89.31201970229864;1727;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3219;Marthalen;89.45895526062783;1946;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3220;Ossingen;89.30475603235882;1732;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3221;Rheinau;89.6332731016559;1299;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3222;Thalheim an der Thur;89.55137830952353;987;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3223;Trüllikon;89.72111394062765;1080;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3224;Truttikon;89.9468821998559;456;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3225;Volken;89.27044008526588;393;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3226;Bachenbülach;87.81108292779778;4254;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3227;Bassersdorf;85.97861669648607;11985;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3228;Bülach;87.52007299712282;22195;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3229;Dietlikon;84.96599468198501;7905;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3230;Eglisau;88.68716268549846;5519;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3231;Embrach;87.7395625535913;9878;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3232;Freienstein-Teufen;88.81438238976503;2168;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3233;Glattfelden;89.58151485198006;5331;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3234;Glattfelden;89.86865908820512;3;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3235;Hochfelden;88.97915284020286;2025;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3236;Höri;87.56398038754458;3046;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3237;Hüntwangen;89.8007919813273;1085;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3238;Kloten;84.98710058393954;20771;μg/m3;BAFU & BFS
+2021;O3_peakseason_mean_d1_max_mean_h8gl;3239;Lufingen;87.5594984205016;2627;μg/m3;BAFU & BFS
 2021;PM10;3075;Nürensdorf;11.067836465140754;5751;μg/m3;BAFU & BFS
 2021;PM10;3076;Oberembrach;10.508112911760373;1096;μg/m3;BAFU & BFS
 2021;PM10;3077;Opfikon;13.310116472193705;20561;μg/m3;BAFU & BFS
@@ -2131,6 +2623,170 @@ year;pollutant;geodb_oid;gemeindename;population_weighted_mean;population;unit;s
 2022;O3_max_98p_m1;3237;Hüntwangen;148.790494252903;1097;μg/m3;BAFU & BFS
 2022;O3_max_98p_m1;3238;Kloten;148.75337493675363;20978;μg/m3;BAFU & BFS
 2022;O3_max_98p_m1;3239;Lufingen;148.2147759697779;2778;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3075;Nürensdorf;98.54858123700683;5743;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3076;Oberembrach;99.2988916013568;1104;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3077;Opfikon;93.69444922955718;20711;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3078;Rafz;100.59899808956668;4701;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3079;Rorbas;99.44447333968672;3157;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3080;Wallisellen;93.8868509923915;17621;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3081;Wasterkingen;101.37699144898724;595;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3082;Wil (ZH);101.27452923947828;1572;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3083;Winkel;99.00290692243145;4869;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3084;Bachs;101.19459717098862;646;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3085;Boppelsen;99.94175527235448;1466;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3086;Buchs (ZH);98.23512684653917;6638;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3087;Dällikon;98.08284128283812;4325;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3088;Dänikon;99.05313094605535;1867;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3089;Dielsdorf;98.50913538274841;6108;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3090;Hüttikon;99.10909350549449;961;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3091;Neerach;99.96839240544345;3279;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3092;Niederglatt;99.02158504784117;5067;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3093;Niederhasli;98.72593462692811;9710;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3094;Niederweningen;100.0798405936363;3090;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3095;Oberglatt;98.24805187627388;7476;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3096;Oberweningen;99.9259216884014;1790;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3097;Otelfingen;98.71622516438251;2785;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3098;Regensberg;100.40145899381119;520;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3099;Regensdorf;96.97219707181912;18750;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3100;Rümlang;97.51214856505653;8217;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3101;Schleinikon;100.56381365667863;938;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3102;Schöfflisdorf;99.98054559471306;1403;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3103;Stadel;100.7477495870038;2372;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3104;Steinmaur;99.48864522778818;3688;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3105;Weiach;100.76945560057649;2134;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3106;Bäretswil;101.15175918316551;5168;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3107;Bubikon;99.19780701646911;7454;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3108;Dürnten;99.08936692176255;7789;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3109;Fischenthal;102.34588337451393;2594;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3110;Gossau (ZH);98.84055532205757;10402;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3111;Grüningen;99.2910350393992;3868;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3112;Hinwil;99.47525186429513;11602;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3113;Rüti (ZH);98.61023716970803;12885;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3114;Seegräben;98.99328811946778;1388;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3115;Wald (ZH);100.31405187456954;10506;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3116;Wetzikon (ZH);97.9731778441897;26082;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3117;Adliswil;97.624448065837;19706;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3118;Kilchberg (ZH);97.21637309930895;8877;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3119;Langnau am Albis;99.06729498796004;8066;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3120;Oberrieden;98.16002081726441;5232;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3121;Richterswil;98.01774429419302;13892;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3122;Rüschlikon;97.18563649113288;6190;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3123;Thalwil;97.28909350787308;18587;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3124;Altikon;100.3218728298996;745;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3125;Brütten;99.8371526621088;2168;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3126;Dägerlen;100.66506233872138;1107;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3127;Dättlikon;99.92331872191927;824;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3128;Dinhard;100.31058795946792;1749;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3129;Erlenbach (ZH);98.30527569283606;5469;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3130;Herrliberg;98.81506732299566;6579;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3131;Hombrechtikon;99.11638362442957;9113;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3132;Küsnacht (ZH);98.25220098359846;14667;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3133;Männedorf;98.3551877436606;11027;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3134;Meilen;97.90795065940159;14151;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3135;Oetwil am See;98.87096978724566;4984;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3136;Stäfa;98.68287671990875;14458;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3137;Uetikon am See;98.7591482134061;6320;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3138;Zumikon;98.74173909556512;5620;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3139;Zollikon;98.06820492073462;13470;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3140;Fehraltorf;98.58324341458116;6812;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3141;Hittnau;100.61772775894156;3779;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3142;Lindau;96.46175120354881;5914;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3143;Pfäffikon;98.91837345458647;12448;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3144;Russikon;100.43471600882084;4542;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3145;Weisslingen;100.59479779461414;3456;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3146;Wila;100.8829515062394;2108;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3147;Wildberg;101.56905607469426;1105;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3148;Dübendorf;95.89371426244276;30455;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3149;Egg;99.04378333901435;8874;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3150;Fällanden;97.99325081024878;9203;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3151;Greifensee;98.08790651032655;5348;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3152;Maur;99.11998577617263;10702;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3153;Mönchaltorf;98.82126076295562;4009;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3154;Mönchaltorf;99.86044417080018;73;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3155;Schwerzenbach;97.41534565817021;5643;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3156;Uster;97.70222938688526;35790;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3157;Volketswil;97.23041826482837;18968;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3158;Wangen-Brüttisellen;94.23500590540328;7975;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3159;Ellikon an der Thur;99.86525886159298;1031;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3160;Elsau;99.76994465561111;3665;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3161;Hagenbuch;100.50003583130572;1160;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3162;Hettlingen;99.90713444958516;3112;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3163;Neftenbach;99.44940221977984;5787;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3164;Pfungen;98.60065673137245;4112;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3165;Rickenbach (ZH);99.1015543729646;2766;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3166;Schlatt (ZH);101.47507060605474;780;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3167;Seuzach;98.43311705666976;7716;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3168;Turbenthal;101.19560210205758;5030;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3169;Winterthur;97.8897039392937;117003;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3170;Zell (ZH);100.49236190553296;6220;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3171;Aesch (ZH);98.73833500030715;1679;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3172;Birmensdorf (ZH);97.67923980454628;7293;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3173;Dietikon;96.78499509001676;27886;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3174;Geroldswil;94.11367265233345;5395;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3175;Oberengstringen;96.19150881470796;6864;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3176;Oetwil an der Limmat;96.74634492590793;2551;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3177;Schlieren;96.65151958080098;19798;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3178;Uitikon;98.6981356401646;4847;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3179;Unterengstringen;94.76089194152368;4363;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3180;Urdorf;97.13196287961685;11204;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3181;Weiningen (ZH);95.32753197703371;4494;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3182;Zürich;95.53579812765079;428584;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3183;Andelfingen;100.38847937608116;3493;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3184;Stammheim;101.2033875422416;2900;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3185;Wädenswil;98.96588681280403;25255;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3186;Elgg;100.86703903616863;5227;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3187;Horgen;97.78313676842744;23838;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3188;Illnau-Effretikon;98.11266237833614;17874;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3189;Bauma;101.28945684148268;5052;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3190;Wiesendangen;98.84965298603201;6894;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3191;NA;NA;2701;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3192;NA;NA;16;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3194;Aeugst am Albis;100.97335735501551;2007;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3195;Affoltern am Albis;98.27152064369062;12602;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3196;Bonstetten;99.22540356752224;5854;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3197;Hausen am Albis;100.49391962745328;3910;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3198;Hedingen;98.89847686138741;3908;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3199;Kappel am Albis;100.14093165337256;1332;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3200;Knonau;98.2189269923463;2428;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3201;Maschwanden;99.64908124396472;652;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3202;Mettmenstetten;98.78272768832765;5666;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3203;Obfelden;98.92066585882806;5822;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3204;Ottenbach;98.71666905828141;2856;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3205;Rifferswil;100.40335055800281;1173;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3206;Stallikon;99.04597941910127;3901;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3207;Wettswil am Albis;98.03528374750826;5092;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3208;Benken (ZH);100.65510256717123;864;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3209;Berg am Irchel;100.69710530501412;646;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3210;Buch am Irchel;101.16025918099444;1055;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3211;Dachsen;100.53920678789888;1958;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3212;Dorf;100.63566894159939;722;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3213;Feuerthalen;100.11824700697422;3783;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3214;Flaach;100.34982002482833;1454;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3215;Flurlingen;99.33557600304856;1516;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3216;Henggart;100.32793099764974;2264;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3217;Kleinandelfingen;99.99348804246901;2116;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3218;Laufen-Uhwiesen;100.66251947049216;1726;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3219;Marthalen;100.70234940035265;1969;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3220;Ossingen;100.53748500719661;1745;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3221;Rheinau;100.80251233777325;1290;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3222;Thalheim an der Thur;100.66072546153339;989;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3223;Trüllikon;100.93251278317544;1086;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3224;Truttikon;101.27844817410634;470;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3225;Volken;100.41808693014876;382;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3226;Bachenbülach;98.81222160737967;4234;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3227;Bassersdorf;97.10350013755298;12085;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3228;Bülach;98.53917048880746;23621;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3229;Dietlikon;95.89991037381357;7896;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3230;Eglisau;99.83235057939802;5536;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3231;Embrach;98.71146950309725;10013;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3232;Freienstein-Teufen;99.8415421432527;2182;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3233;Glattfelden;100.65569726317025;5239;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3234;Glattfelden;101.07948635937963;5;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3235;Hochfelden;99.96784652632196;2004;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3236;Höri;98.70932192342356;3320;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3237;Hüntwangen;101.0267705670603;1097;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3238;Kloten;95.87306726953484;20978;μg/m3;BAFU & BFS
+2022;O3_peakseason_mean_d1_max_mean_h8gl;3239;Lufingen;98.52616247165716;2778;μg/m3;BAFU & BFS
 2022;PM10;3075;Nürensdorf;12.204106431170953;5743;μg/m3;BAFU & BFS
 2022;PM10;3076;Oberembrach;11.602075005787006;1104;μg/m3;BAFU & BFS
 2022;PM10;3077;Opfikon;14.885298536283253;20711;μg/m3;BAFU & BFS
@@ -2787,6 +3443,170 @@ year;pollutant;geodb_oid;gemeindename;population_weighted_mean;population;unit;s
 2023;O3_max_98p_m1;3237;Hüntwangen;148.89136911296157;1112;μg/m3;BAFU & BFS
 2023;O3_max_98p_m1;3238;Kloten;148.9655896916399;21269;μg/m3;BAFU & BFS
 2023;O3_max_98p_m1;3239;Lufingen;148.50266764137183;2848;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3075;Nürensdorf;92.22323547852405;5821;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3076;Oberembrach;92.92740649113013;1111;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3077;Opfikon;88.17412609491498;21019;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3078;Rafz;93.97529864771697;4794;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3079;Rorbas;93.0892441800216;3261;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3080;Wallisellen;88.26629633616032;17969;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3081;Wasterkingen;94.75102195627537;586;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3082;Wil (ZH);94.62378963625349;1586;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3083;Winkel;92.69231565092942;4942;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3084;Bachs;94.5644259579277;659;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3085;Boppelsen;93.4702193213273;1458;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3086;Buchs (ZH);91.9956478721597;6678;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3087;Dällikon;91.70381395520093;4434;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3088;Dänikon;92.62627106430458;1868;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3089;Dielsdorf;92.25047808191587;6354;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3090;Hüttikon;92.65203791749681;976;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3091;Neerach;93.49061043624388;3285;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3092;Niederglatt;92.62968723369859;5229;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3093;Niederhasli;92.32780418250805;9825;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3094;Niederweningen;93.59894238067679;3244;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3095;Oberglatt;92.02568152211829;7546;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3096;Oberweningen;93.53418131578606;1804;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3097;Otelfingen;92.33199102944252;2834;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3098;Regensberg;93.8562242040679;519;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3099;Regensdorf;90.7523638768764;19679;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3100;Rümlang;91.3868407114807;8215;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3101;Schleinikon;93.99502214413316;947;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3102;Schöfflisdorf;93.58673701540407;1429;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3103;Stadel;94.15797883593751;2382;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3104;Steinmaur;93.09490560812922;3786;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3105;Weiach;94.13127556333498;2183;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3106;Bäretswil;94.53042067459899;5211;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3107;Bubikon;92.77568354919451;7569;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3108;Dürnten;92.66758942339963;7878;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3109;Fischenthal;95.58384719022447;2614;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3110;Gossau (ZH);92.45411453641701;10632;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3111;Grüningen;92.76991827884083;3866;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3112;Hinwil;93.03821024622717;11863;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3113;Rüti (ZH);92.31921752795849;13060;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3114;Seegräben;92.59810200171324;1437;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3115;Wald (ZH);93.75236955382987;10718;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3116;Wetzikon (ZH);91.72602775425823;26529;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3117;Adliswil;91.38416310196898;20179;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3118;Kilchberg (ZH);91.138497756728;9000;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3119;Langnau am Albis;92.67267108007547;8164;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3120;Oberrieden;91.7658264717303;5331;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3121;Richterswil;91.64531255930038;14107;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3122;Rüschlikon;90.96108786829816;6257;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3123;Thalwil;91.0735452120113;18755;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3124;Altikon;93.88174701763162;773;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3125;Brütten;93.2965076476352;2194;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3126;Dägerlen;94.11454836942475;1143;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3127;Dättlikon;93.38044038855517;835;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3128;Dinhard;93.90725841282833;1754;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3129;Erlenbach (ZH);92.04036518531612;5352;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3130;Herrliberg;92.50597867134093;6569;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3131;Hombrechtikon;92.61039852691785;9157;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3132;Küsnacht (ZH);91.97416694237108;14991;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3133;Männedorf;92.07568178866927;11265;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3134;Meilen;91.6793617873013;14123;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3135;Oetwil am See;92.4154603173553;5109;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3136;Stäfa;92.33052513961478;14599;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3137;Uetikon am See;92.39431004058073;6358;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3138;Zumikon;92.34220093595104;5752;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3139;Zollikon;91.77930606264212;13569;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3140;Fehraltorf;92.31541861292104;6884;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3141;Hittnau;94.05067144371543;3937;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3142;Lindau;90.37877960805515;6057;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3143;Pfäffikon;92.54918166551644;12579;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3144;Russikon;93.93907921039475;4601;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3145;Weisslingen;94.06410725846644;3485;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3146;Wila;94.25977208010296;2146;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3147;Wildberg;94.94252470725928;1102;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3148;Dübendorf;89.97815079942784;31141;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3149;Egg;92.59917845785236;8901;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3150;Fällanden;91.75677735752805;9322;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3151;Greifensee;91.87305906587929;5411;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3152;Maur;92.66876168627832;10853;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3153;Mönchaltorf;92.39505823730174;4131;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3154;Mönchaltorf;93.27313826934083;68;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3155;Schwerzenbach;91.30062589644791;5670;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3156;Uster;91.42395424348993;36389;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3157;Volketswil;91.09302858452925;19291;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3158;Wangen-Brüttisellen;88.52051960782931;8093;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3159;Ellikon an der Thur;93.31154691945976;1027;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3160;Elsau;93.35618069811733;3728;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3161;Hagenbuch;93.94953242828277;1177;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3162;Hettlingen;93.4694108826048;3210;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3163;Neftenbach;93.01137210409378;5790;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3164;Pfungen;92.20634359010961;4192;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3165;Rickenbach (ZH);92.78678726413254;2817;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3166;Schlatt (ZH);94.84775683979703;798;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3167;Seuzach;92.10559721686846;7905;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3168;Turbenthal;94.60914608503866;5156;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3169;Winterthur;91.63818335342872;119417;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3170;Zell (ZH);94.0132035618443;6448;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3171;Aesch (ZH);92.27522056380792;1704;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3172;Birmensdorf (ZH);91.44959432949999;7532;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3173;Dietikon;90.60565173074782;27949;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3174;Geroldswil;88.31203767600104;5391;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3175;Oberengstringen;90.15569755418562;6861;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3176;Oetwil an der Limmat;90.64875263444321;2594;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3177;Schlieren;90.52376432199699;20007;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3178;Uitikon;92.26295768265204;5220;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3179;Unterengstringen;88.81210232756366;4586;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3180;Urdorf;90.95867280777621;11300;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3181;Weiningen (ZH);89.25200851833911;4661;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3182;Zürich;89.62601031461872;434844;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3183;Andelfingen;93.85840634420737;3671;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3184;Stammheim;94.53192676581432;2928;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3185;Wädenswil;92.52491234646516;25811;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3186;Elgg;94.38675206174472;5306;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3187;Horgen;91.52227517440213;23922;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3188;Illnau-Effretikon;91.85284427636512;17997;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3189;Bauma;94.63654943947546;5183;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3190;Wiesendangen;92.46680702171572;6899;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3191;NA;NA;2749;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3192;NA;NA;21;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3194;Aeugst am Albis;94.32165559893794;2016;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3195;Affoltern am Albis;91.93506078404721;12872;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3196;Bonstetten;92.80722228504992;5906;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3197;Hausen am Albis;93.90668062626419;4003;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3198;Hedingen;92.51704634202733;4002;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3199;Kappel am Albis;93.57675612927757;1336;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3200;Knonau;91.85976944459831;2465;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3201;Maschwanden;93.18238017448306;653;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3202;Mettmenstetten;92.3931224718493;5740;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3203;Obfelden;92.52883226643026;5916;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3204;Ottenbach;92.31311107071696;2973;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3205;Rifferswil;93.81474632769454;1169;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3206;Stallikon;92.64406719643607;3932;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3207;Wettswil am Albis;91.77132805422418;5131;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3208;Benken (ZH);93.99699544698782;871;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3209;Berg am Irchel;94.09421724079229;655;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3210;Buch am Irchel;94.56233986050809;1047;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3211;Dachsen;93.84896969946381;1980;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3212;Dorf;94.06041283166218;731;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3213;Feuerthalen;93.38465144602262;3823;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3214;Flaach;93.77076061550142;1469;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3215;Flurlingen;92.56594631298442;1516;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3216;Henggart;93.83471344515013;2334;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3217;Kleinandelfingen;93.40537054772186;2154;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3218;Laufen-Uhwiesen;93.87464617505985;1739;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3219;Marthalen;94.05544339418272;1978;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3220;Ossingen;93.8974407537342;1740;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3221;Rheinau;94.12219119517573;1291;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3222;Thalheim an der Thur;94.04197578798413;1040;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3223;Trüllikon;94.16314419044485;1113;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3224;Truttikon;94.63616896336744;474;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3225;Volken;93.867485133688;385;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3226;Bachenbülach;92.43763135043515;4342;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3227;Bassersdorf;90.93144943183395;12206;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3228;Bülach;92.21108662510106;24182;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3229;Dietlikon;89.97783479277378;8076;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3230;Eglisau;93.33395149699739;5683;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3231;Embrach;92.37753491349555;10316;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3232;Freienstein-Teufen;93.3477677970273;2166;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3233;Glattfelden;94.04996970584752;5382;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3234;Glattfelden;94.33562392835908;3;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3235;Hochfelden;93.53353616281903;2000;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3236;Höri;92.45325025775924;3522;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3237;Hüntwangen;94.37655549607867;1112;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3238;Kloten;89.88737563807584;21269;μg/m3;BAFU & BFS
+2023;O3_peakseason_mean_d1_max_mean_h8gl;3239;Lufingen;92.17550618171332;2848;μg/m3;BAFU & BFS
 2023;PM10;3075;Nürensdorf;10.564001584540444;5821;μg/m3;BAFU & BFS
 2023;PM10;3076;Oberembrach;10.013175100812388;1111;μg/m3;BAFU & BFS
 2023;PM10;3077;Opfikon;12.838711424702849;21019;μg/m3;BAFU & BFS

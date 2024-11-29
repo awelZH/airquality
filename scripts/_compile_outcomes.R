@@ -15,9 +15,9 @@ data_deaths <- read_opendataswiss(filter_ressources(ressources, 25), source = "S
 
 
 # ...testing
-d <- read_opendataswiss_json("https://ckan.opendata.swiss/api/3/action/package_show?id=todesfalle-nach-institutionellen-gliederungen-geschlecht-staatsangehorigkeit-kategorie-zivilsta5", source = "BFS", file_filter = "api/v1/de")
-
-
+# d <- read_opendataswiss_json("https://ckan.opendata.swiss/api/3/action/package_show?id=todesfalle-nach-institutionellen-gliederungen-geschlecht-staatsangehorigkeit-kategorie-zivilsta5", source = "BFS", file_filter = "api/v1/de")
+# 
+# 
 # read_opendataswiss_json <- function(url, source, file_filter = ".csv"){
 #   browser()
 # 

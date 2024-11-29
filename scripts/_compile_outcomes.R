@@ -148,8 +148,9 @@ data_outcomes |>
   dplyr::mutate(scenario = dplyr::recode(scenario, outcome = "aktuell", delta_base = paste0("vermieden vs. ",unique(.data$base_scenario_year)))) |> 
   ggplot(aes(x = year, y = value, fill = scenario)) + 
   geom_bar(stat = "identity") + 
-  geom_hline(yintercept = 0, color = "gray30") +
+  geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
   geom_linerange(aes(ymin = outcome_lower_confint, ymax = outcome_min_upper_confint), color = "gray0") + 
+  scale_y_continuous(breaks = seq(-2000,2000,200), labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01)) +
   facet_grid(.~outcome_type) + 
   ylab("absolut") +
   scale_fill_manual(name = "Szenario", values = c("#50586C", "#DCE2F0")) +
@@ -157,7 +158,9 @@ data_outcomes |>
   theme(
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
-    axis.ticks = element_line(color = "gray30")
+    panel.grid.minor.y = element_blank(),
+    axis.ticks = element_line(color = "gray30"),
+    axis.line.x = element_line(color = "gray30")
   )
 
 
@@ -167,8 +170,9 @@ data_outcomes |>
   dplyr::mutate(scenario = dplyr::recode(scenario, outcome = "aktuell", delta_base = paste0("vermieden vs. ",unique(.data$base_scenario_year)))) |> 
   ggplot(aes(x = year, y = value / population_total * 10000, fill = scenario)) + 
   geom_bar(stat = "identity") + 
-  geom_hline(yintercept = 0, color = "gray30") +
+  geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
   geom_linerange(aes(ymin = outcome_lower_confint / population_total * 10000, ymax = outcome_min_upper_confint / population_total * 10000), color = "gray20") +
+  scale_y_continuous(breaks = seq(-20,120,1), expand = c(0.01,0.01)) +
   facet_grid(.~outcome_type) + 
   ylab("pro 10'000 Einwohner/innen") +
   scale_fill_manual(name = "Szenario", values = c("#50586C", "#DCE2F0")) +
@@ -176,7 +180,9 @@ data_outcomes |>
   theme(
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
-    axis.ticks = element_line(color = "gray30")
+    panel.grid.minor.y = element_blank(),
+    axis.ticks = element_line(color = "gray30"),
+    axis.line.x = element_line(color = "gray30")
   )
 
 

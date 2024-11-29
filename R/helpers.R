@@ -18,26 +18,6 @@ filter_ressources <- function(ressources, internal_id) {
 
 
 
-
-#' Title
-#'
-#' @param internal_id 
-#' @param logfile 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-update_log <- function(internal_id, logfile = "inst/extdata/meta/log.csv") {
-  
-  now <- lubridate::with_tz(Sys.time(), tzone = "Etc/GMT-1")
-  log <- readr::read_delim(logfile, delim = ";", show_col_types = FALSE)
-  log$DATETIME_EXCECUTED[log$INTERNAL_ID == internal_id] <- paste0(format(now), " CET")
-  readr::write_delim(log, logfile, delim = ";", na = "")
-  
-}
-
-
 # function to extract target threshold values from overall threshold data for plotting with ggplot_timeseries()
 #' Title
 #'

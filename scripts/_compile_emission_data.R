@@ -4,7 +4,7 @@
 # read dataset ...
 # ---
 # => read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss
-data_emikat <- read_opendataswiss_csv(filter_ressources(ressources, 1), source = "Ostluft"); update_log(1)
+data_emikat <- read_opendataswiss_csv(filter_ressources(ressources, 1), source = "Ostluft")
 
 # prepare dataset ...
 # ---
@@ -23,11 +23,11 @@ data_emikat <- aggregate_emmissions(data_emikat)
 # read dataset ...
 # ---
 # => read Canton Zürich data (RSD) from opendata.swiss, see also: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftschadstoffquellen/emissionen-verkehr/abgasmessungen-rsd.html
-data_rsd <- read_opendataswiss_csv(filter_ressources(ressources, 2), source = "Kanton Zürich/AWEL"); update_log(2)
+data_rsd <- read_opendataswiss_csv(filter_ressources(ressources, 2), source = "Kanton Zürich/AWEL")
 
 # => read local metadata (e.g. fractions NO:NO2, emission thresholds, etc) and filter criteria 
-rsd_auxiliary <- list(meta = read_local_csv(filter_ressources(ressources, 3))); update_log(3)
-rsd_auxiliary$filters <- read_local_csv(filter_ressources(ressources, 4)); update_log(4)
+rsd_auxiliary <- list(meta = read_local_csv(filter_ressources(ressources, 3)))
+rsd_auxiliary$filters <- read_local_csv(filter_ressources(ressources, 4))
 
 # prepare dataset ...
 # ---
@@ -47,8 +47,8 @@ data_rsd_per_yearmeas <- aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("
 
 # write output datasets & clean up:
 # ---
-write_local_csv(data_emikat, file = "inst/extdata/output/data_emissions.csv"); update_log(21)
+write_local_csv(data_emikat, file = "inst/extdata/output/data_emissions.csv")
 write_local_csv(data_rsd_per_norm, file = "inst/extdata/output/data_nox_vehicle_emissions_rsd_per_norm.csv")
 write_local_csv(data_rsd_per_yearmodel, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmodel.csv")
-write_local_csv(data_rsd_per_yearmeas, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmeas.csv"); update_log(22)
+write_local_csv(data_rsd_per_yearmeas, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmeas.csv")
 rm(list = c("data_emikat", "data_rsd", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "rsd_auxiliary"))

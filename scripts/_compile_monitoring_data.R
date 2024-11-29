@@ -4,19 +4,19 @@
 # read datasets ...
 # ---
 # => read NABEL monitoring airquality data (y1 & h1)
-data_monitoring_nabel <- read_local_csv(filter_ressources(ressources, 5)); update_log(5)
+data_monitoring_nabel <- read_local_csv(filter_ressources(ressources, 5))
 data_monitoring_nabel_h1 <- lapply(c(filter_ressources(ressources, 22), filter_ressources(ressources, 23)), function(x) read_local_csv(x, delim = "\t"))
 
 # => read Ostluft monitoring airquality data (y1 & h1)
-data_monitoring_ostluft <- read_local_csv(filter_ressources(ressources, 6), locale = readr::locale(encoding = "UTF-8"), col_names = FALSE); update_log(6)
+data_monitoring_ostluft <- read_local_csv(filter_ressources(ressources, 6), locale = readr::locale(encoding = "UTF-8"), col_names = FALSE)
 data_monitoring_ostluft_h1 <- read_local_csv(filter_ressources(ressources, 21), locale = readr::locale(encoding = "UTF-8"), col_names = FALSE)
 
 # => read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
-data_monitoring_ndep <- read_local_csv(filter_ressources(ressources, 8), locale = readr::locale(encoding = "UTF-8")); update_log(8)
+data_monitoring_ndep <- read_local_csv(filter_ressources(ressources, 8), locale = readr::locale(encoding = "UTF-8"))
 
 # => read NABEL & Ostluft monitoring site metadata
-site_meta_nabel <- read_local_csv(filter_ressources(ressources, 5), col_select = c("Station", "Ost Y", "Nord X", "Höhe", "Zonentyp", "Stationstyp")); update_log(5)
-site_meta_ostluft <- read_local_csv(filter_ressources(ressources, 9), delim = ",", locale = readr::locale(encoding = "UTF-8")); update_log(9)
+site_meta_nabel <- read_local_csv(filter_ressources(ressources, 5), col_select = c("Station", "Ost Y", "Nord X", "Höhe", "Zonentyp", "Stationstyp"))
+site_meta_ostluft <- read_local_csv(filter_ressources(ressources, 9), delim = ",", locale = readr::locale(encoding = "UTF-8"))
 
 # prepare datasets ...
 # ---
@@ -50,6 +50,6 @@ data_monitoring_ndep <- aggregate_nitrogen_deposition(data_monitoring_ndep)
 
 # write output datasets & clean up:
 # ---
-write_local_csv(data_monitoring_aq, file = "inst/extdata/output/data_airquality_monitoring_y1.csv"); update_log(23)
-write_local_csv(data_monitoring_ndep, file = "inst/extdata/output/data_ndep_monitoring_y1.csv"); update_log(24)
+write_local_csv(data_monitoring_aq, file = "inst/extdata/output/data_airquality_monitoring_y1.csv")
+write_local_csv(data_monitoring_ndep, file = "inst/extdata/output/data_ndep_monitoring_y1.csv")
 rm(list = c("data_monitoring_aq", "data_monitoring_ndep", "site_meta_nabel", "site_meta_ostluft", "data_monitoring_nabel", "data_monitoring_nabel_h1", "site_meta", "data_monitoring_ostluft", "data_monitoring_ostluft_h1"))

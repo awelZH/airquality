@@ -42,7 +42,7 @@ linewidth <- 1 # width of lines
 
 
 # read LRV legal threshold limit values & WHO air quality guideline values
-immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8")); update_log(10)
+immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8"))
 
 
 # add plotting parameter to LRV threshold limit values & WHO air quality guideline values
@@ -145,13 +145,13 @@ pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$polluta
 plots$emissions$inventory_absolute <- 
   lapply(pollutants, function(pollutant) {
     ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), cols = cols_emissions, theme = theme_ts) #FIXME: fill shading doesn't work right
-  }); update_log(29)  
+  })
 
 # relative values
 plots$emissions$inventory_relative <- 
   lapply(pollutants, function(pollutant) {
     ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", cols = cols_emissions, theme = theme_ts)
-  }); update_log(29)
+  })
 
 
 # read & plot RSD NOx emissions by vehicle type, fuel type and euronorm
@@ -187,7 +187,7 @@ plots$emissions$rsd_norm$NOx <-
     strip.placement = "outside",
     legend.title = ggplot2::element_blank(),
     legend.position = "bottom"
-  ); update_log(30)
+  )
 
 # plots$emissions$rsd_norm$NOx <- ggiraph::girafe(ggobj = plots$emissions$rsd_norm$NOx, width_svg = 6, height_svg = 4)
 
@@ -223,7 +223,7 @@ plots$emissions$rsd_yearmodel$NOx <-
     strip.placement = "outside",
     legend.title = ggplot2::element_blank(),
     legend.position = "bottom"
-  ); update_log(30)
+  )
 
 # plots$emissions$rsd_yearmodel$NOx <- ggiraph::girafe(ggobj = plots$emissions$rsd_yearmodel$NOx, width_svg = 6, height_svg = 4)
 
@@ -250,7 +250,7 @@ plots$emissions$rsd_yearmeas$NOx <-
   ggplot2::theme(
     legend.title = ggplot2::element_blank(),
     legend.position = "bottom"
-  ); update_log(30)
+  )
 
 # plots$emissions$rsd_yearmeas$NO <- ggiraph::girafe(ggobj = plots$emissions$rsd_yearmeas$NO, width_svg = 6, height_svg = 4) 
 
@@ -269,7 +269,7 @@ data_monitoring_aq <-
 
 
 # plot timeseries of yearly values for selected pollutants
-plots$monitoring$timeseries_siteclass <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries); update_log(31)
+plots$monitoring$timeseries_siteclass <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries)
 
 
 # read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
@@ -338,9 +338,6 @@ plots$monitoring$threshold_comparison$various <-
   ) +
   scale_color_siteclass
 
-update_log(31)
-update_log(32)
-
 
 # plot long-standing timeseries of yearly nitrogen deposition at Bachtel site (since 2001)
 temp <- dplyr::filter(immission_threshold_values, source == "LRV Grenzwert" & pollutant == "NO2")
@@ -353,7 +350,7 @@ plots$monitoring$timeseries_ndep_bachtel$Ndep <-
   plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = temp$lsz, color = temp$col, title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme am Bachtel") +
   ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, site == "BA" & parameter == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
   ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: Ostluft & FUB") +
-  lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE); update_log(32)
+  lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE)
 
 
 # plot timeseries of yearly nitrogen deposition across several monitoring sites (structured per ecosystem type)
@@ -373,7 +370,7 @@ plots$monitoring$timeseries_ndep_all$Ndep <-
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
-  ); update_log(32)
+  )
 
 
 # plot timeseries of yearly nitrogen deposition vs. critical loads of nitrogen across several monitoring sites (structured per ecosystem type)
@@ -394,7 +391,7 @@ plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
-  ); update_log(32)
+  )
 
 
 # plot mean contribution of source categories to nitrogen deposition
@@ -417,7 +414,7 @@ plots$monitoring$ndep_mean_sources_fractions$Ndep <-
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
-  ); update_log(32)
+  )
 
 
 
@@ -437,10 +434,10 @@ parameters_exposition <- setNames(parameters_exposition, parameters_exposition)
 plots$exposition$distribution_histogram <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_expo_hist(parameter, data_expo_distr_pollutants)
-  }); update_log(34)
+  })
 
 # plotting histograms for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$distribution_histogram$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep); update_log(35)
+plots$exposition$distribution_histogram$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep)
 
 # plotting cumulative distributions for air pollutants
 plots$exposition$distribution_cumulative <-
@@ -473,11 +470,11 @@ plots$exposition$distribution_cumulative <-
     
     c(list(alle = plot_all), plots_years)
     
-  }); update_log(34)
+  })
 
 
 # plotting cumulative distributions for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$distribution_cumulative$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep); update_log(35)
+plots$exposition$distribution_cumulative$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep)
 plots$exposition$distribution_cumulative$Ndep$alle <-
   ggplot2::ggplot(data_expo_distr_ndep, mapping = ggplot2::aes(x = ndep_exmax, y = n_ecosys_cum_rel, color = factor(year), group = year)) +
   ggplot2::geom_vline(xintercept = threshold_ndep$value, color = threshold_ndep$color, linetype = threshold_ndep$linetype, linewidth = threshold_ndep$linesize) +
@@ -507,7 +504,7 @@ data_expo_weighmean_municip <-
 plots$exposition$population_weighted_mean_map <-
   lapply(parameters_exposition, function(parameter) {
     plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
-  }); update_log(33)
+  })
 
 # plotting timeseries of population-weighted mean pollutant concentration for Kanton Zürich
 thresh <-  

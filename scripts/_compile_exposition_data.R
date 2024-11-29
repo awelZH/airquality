@@ -12,14 +12,14 @@ availability <- filter_availability(cov_stack)
 years <- as.numeric(unique(availability$year))
 
 # => get air pollutant raster data accordingly
-data_raster_aq <- read_geolion_wcs_stack(cov_stack, availability$layer_name, map_canton); purrr::map(12:16, update_log)
+data_raster_aq <- read_geolion_wcs_stack(cov_stack, availability$layer_name, map_canton)
 data_raster_aq <- lapply(setNames(years, years), function(year) data_raster_aq[which(extract_year(names(data_raster_aq)) == year)])
 
 # => download / read BFS statpop data for same years as pollutant raster data
-data_raster_bfs <- lapply(setNames(years, years), function(year) read_statpop_raster_data(year, "inst/extdata", map_canton)); update_log(20)
+data_raster_bfs <- lapply(setNames(years, years), function(year) read_statpop_raster_data(year, "inst/extdata", map_canton))
 
 # => download BAFU nitrogen deposition raster data including pre-compiled ecosystem exposition data
-data_raster_bafu <- read_bafu_raster_data(filter_ressources(ressources, 19), map_canton); update_log(20)
+data_raster_bafu <- read_bafu_raster_data(filter_ressources(ressources, 19), map_canton)
 
 # prepare datasets ...
 # ---
@@ -48,9 +48,9 @@ data_pop_weighted_mean$munipalities <- dplyr::mutate(data_pop_weighted_mean$muni
 
 # write output datasets & clean up:
 # ---
-write_local_csv(data_pop_weighted_mean$canton, file = "inst/extdata/output/data_exposition_weighted_means_canton.csv"); update_log(25)
-write_local_csv(data_pop_weighted_mean$munipalities, file = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv"); update_log(26)
-write_local_csv(data_expo_population_dist, file = "inst/extdata/output/data_exposition_distribution_pollutants.csv"); update_log(27)
-write_local_csv(data_expo_ecosys_dist, file = "inst/extdata/output/data_exposition_distribution_ndep.csv"); update_log(28)
+write_local_csv(data_pop_weighted_mean$canton, file = "inst/extdata/output/data_exposition_weighted_means_canton.csv")
+write_local_csv(data_pop_weighted_mean$munipalities, file = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv")
+write_local_csv(data_expo_population_dist, file = "inst/extdata/output/data_exposition_distribution_pollutants.csv")
+write_local_csv(data_expo_ecosys_dist, file = "inst/extdata/output/data_exposition_distribution_ndep.csv")
 rm(list = c("cov_stack", "availability", "years", "data_raster_bfs", "data_raster_aq", "data_raster_bafu", "data_expo_municip", 
             "data_expo_population_dist", "data_expo_ecosys_dist", "data_pop_weighted_mean", "map_canton"))

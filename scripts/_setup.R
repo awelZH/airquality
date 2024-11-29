@@ -33,7 +33,7 @@ ressources <- prepare_ressources(read_local_csv("inst/extdata/meta/ressources.cs
 crs <- 2056
 
 # map boundaries Canton Zürich and municipalities
-map_municipalities <- read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs); update_log(11)
+map_municipalities <- read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs)
 map_canton <- aggregate_map(map_municipalities)
 
 # ggplot() +

@@ -9,7 +9,7 @@ outcomes_meta <-
   dplyr::select(-lower_conc_threshold_source, -crf_source, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
 
 # => get Canton Zurich yearly mortality rates from opendata.swiss
-data_deaths <- read_opendataswiss_csv(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
+data_deaths <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
 
 
 
@@ -20,37 +20,37 @@ d <- read_opendataswiss_json("https://ckan.opendata.swiss/api/3/action/package_s
 
 # read_opendataswiss_json <- function(url, source, file_filter = ".csv"){
 #   browser()
-#   
+# 
 #   read_url <- get_opendataswiss_metadata("https://ckan.opendata.swiss/api/3/action/package_show?id=todesfalle-nach-institutionellen-gliederungen-geschlecht-staatsangehorigkeit-kategorie-zivilsta5", file_filter)
 #   data <- jsonlite::read_json(read_url, simplifyVector = F)
-#   
-#   
+# 
+# 
 #   # req <- httr2::request(read_url)
 #   # req_data <- httr2::req_perform(req)
-#   # metadata <- httr2::resp_body_json(req_data)$result        
+#   # metadata <- httr2::resp_body_json(req_data)$result
 #   # links <- unlist(purrr::map(metadata$resources, function(x) x$url))
-#   
-#   
+# 
+# 
 #   #   data$variables[[1]]
-#   #   
+#   #
 #   #   data$variables$valueTexts[[1]]
 #   #   data$variables$values[[1]]
 #   #   data$variables$values[[2]]
-#   #   
-#   #   
+#   #
+#   #
 #   #   data %>% as.tbl_json %>% gather_array
 #   # as_tibble(data)
 #   # enframe(unlist(data))
-#   #   
+#   #
 #   #   gather_object(data$variables)
 #   #   spread_values(data$variables)
 #   #   spread_all(data$variables)
 #   #   as.tbl_json(data$variables)
 #   #   tidyjson::spread_all(read_url)
 #   #   tidyjson::as_data_frame.tbl_json(data$variables)
-#   
+# 
 #   data <- dplyr:: mutate(data, source = source)
-#   
+# 
 #   return(data)
 # }
 

@@ -11,9 +11,28 @@ cov_stack <- unlist(lapply(12:16, function(x) get_geolion_wcs_metadata(filter_re
 availability <- filter_availability(cov_stack)
 years <- as.numeric(unique(availability$year))
 
-# => get air pollutant raster data accordingly
+# => get air pollutant raster data from geolion accordingly
 data_raster_aq <- read_geolion_wcs_stack(cov_stack, availability$layer_name, map_canton)
 data_raster_aq <- lapply(setNames(years, years), function(year) data_raster_aq[which(extract_year(names(data_raster_aq)) == year)])
+
+# => derive O3 peak-season raster data from statistical relationships
+# TODO ... 
+#---
+
+# get monitoring data
+
+# com
+
+# get DEM raster data
+
+
+
+
+
+
+
+
+#---
 
 # => download / read BFS statpop data for same years as pollutant raster data
 data_raster_bfs <- lapply(setNames(years, years), function(year) read_statpop_raster_data(year, "inst/extdata", map_canton))

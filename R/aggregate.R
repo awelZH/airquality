@@ -211,7 +211,10 @@ aggregate_population_weighted_mean <- function(data, groups = c("year", "polluta
   data_pop_weighted <-
     data |> 
     dplyr::group_by_at(dplyr::vars(groups)) |> 
-    dplyr::summarise(population_weighted_mean = calc_population_weighted_mean(concentration, population)) |> 
+    dplyr::summarise(
+      population_weighted_mean = calc_population_weighted_mean(concentration, population),
+      population = sum(population, na.rm = TRUE)
+    ) |> 
     dplyr::ungroup() |> 
     dplyr::mutate(
       unit = "μg/m3",

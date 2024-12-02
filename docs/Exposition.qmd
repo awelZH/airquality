@@ -24,7 +24,7 @@ plots <-
 ### Stickstoffdioxid
 
 ```{r}
-#| label: fig-twmean-no2
+#| label: fig-pwmean-no2
 get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'NO2'")
 ```
 
@@ -49,7 +49,7 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'NO2'")
 ### Feinstaub PM2.5
 
 ```{r}
-#| label: fig-twmean-pm25
+#| label: fig-pwmean-pm25
 get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM2.5'")
 ```
 
@@ -74,7 +74,7 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM2.5'")
 ### Feinstaub PM10
 
 ```{r}
-#| label: fig-twmean-pm10
+#| label: fig-pwmean-pm10
 get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM10'")
 ```
 
@@ -106,10 +106,10 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM10'")
 
 ### Ozon
 
-#### Höchstes monatliches 98%-Percentil
+#### Höchstes monatliches 98%-Perzentil
 
 ```{r}
-#| label: fig-twmean-o3p98
+#| label: fig-pwmean-o3p98
 get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_max_98p_m1'")
 ```
 
@@ -134,7 +134,7 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_max_98p
 #### mittlere tägliche max. 8h-Belastung in der Sommersaison
 
 ```{r}
-#| label: fig-twmean-o3peak
+#| label: fig-pwmean-o3peak
 get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_peakseason_mean_d1_max_mean_h8gl'")
 ```
 

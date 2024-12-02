@@ -26,6 +26,8 @@ website:
         text: Immissionen
       - href: Exposition.qmd
         text: Exposition
+      - href: Gesundheitsfolgen.qmd
+        text: Gesundheitsfolgen
     right: 
       - about.qmd
 

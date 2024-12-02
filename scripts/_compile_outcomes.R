@@ -11,6 +11,12 @@ outcomes_meta <-
 # => get Canton Zurich yearly mortality rates from opendata.swiss
 data_deaths <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
 
+# => read population weighted mean data
+data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv") 
+
+# => base_scenario in wmean einbauen?
+
+
 
 
 
@@ -62,6 +68,9 @@ data_deaths <- read_opendataswiss(filter_ressources(ressources, 25), source = "S
 
 
 
+
+
+
 # prepare datasets ...
 # ---
 
@@ -86,58 +95,92 @@ data_deaths <-
 
 
 # =>
+data_expo_weighmean |> 
+  dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant)) |>
+  dplyr:::select(-source, -unit) |> 
+  dplyr::left_join(outcomes_meta, by = "pollutant") |> 
+  dplyr::left_join(data_deaths, by = "year") |>
+  dplyr::mutate(
+    # min_conc_threshold = ifelse(min_conc_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_threshold),
+    # min_conc_base_threshold = ifelse(min_conc_base_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_base_threshold),
+    conc_increment_lower = ifelse(population_weighted_mean < lower_conc_threshold, NA, population_weighted_mean - lower_conc_threshold),
+    # conc_base_increment_lower = ifelse(concentration_base < lower_conc_threshold, NA, concentration_base - lower_conc_threshold),
+    # conc_increment_min = ifelse(concentration < min_conc_threshold, NA, concentration - min_conc_threshold),
+    outcome = calc_outcome(conc_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
+    outcome_lower_confint = calc_outcome(conc_increment_lower, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
+    outcome_upper_confint = calc_outcome(conc_increment_lower, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
+    # outcome_min = calc_outcome(conc_increment_min, crf, crf_factor, deathrate * factor_deathrate, population),
+    # outcome_min_lower_confint = calc_outcome(conc_increment_min, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
+    # outcome_min_upper_confint = calc_outcome(conc_increment_min, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
+    # outcome_base = calc_outcome(conc_base_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
+    source = factor("BAFU & BFS & Statistisches Amt Kanton Zürich")
+  )  |> 
+  # dplyr::mutate(
+  #   delta_base = outcome - outcome_base,
+  #   base_scenario_year = get_base_scenario_year(unique(base_scenario_year))(.data$year)
+  # ) |>
+  # dplyr::select(-outcome_base) |> 
+  View()
+
+
+
+
+
+
+
+
 data_expo_base <- 
   data_expo_pop |> 
   dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant) & year == get_base_scenario_year(unique(outcomes_meta$base_scenario_year))(.data$year)) |> 
   dplyr:::select(x, y, pollutant, concentration) |> 
   dplyr::rename(concentration_base = concentration)
-
-data_outcomes <-
-  data_expo_pop |> 
-  dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant)) |>
-  dplyr:::select(-source) |> 
-  dplyr::left_join(outcomes_meta, by = "pollutant") |> 
-  dplyr::left_join(data_deaths, by = "year") |> 
-  dplyr::left_join(data_expo_base, by = c("x", "y", "pollutant")) |> # FIXME: join yields some NA in conc_base for years other than base_year => why? grid should have remained the same, does it?
-  dplyr::group_by(year, pollutant) |> 
-  dplyr::mutate(
-    population_total = sum(population),
-    min_conc_base_threshold = get(unique(.data$min_conc_threshold))(concentration_base, na.rm = TRUE),
-    min_conc_threshold = get(unique(.data$min_conc_threshold))(concentration, na.rm = TRUE)
-  ) |> 
-  dplyr::ungroup() |> 
-  dplyr::mutate(
-    min_conc_threshold = ifelse(min_conc_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_threshold),
-    min_conc_base_threshold = ifelse(min_conc_base_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_base_threshold),
-    conc_increment_lower = ifelse(concentration < lower_conc_threshold, NA, concentration - lower_conc_threshold),
-    conc_base_increment_lower = ifelse(concentration_base < lower_conc_threshold, NA, concentration_base - lower_conc_threshold),
-    conc_increment_min = ifelse(concentration < min_conc_threshold, NA, concentration - min_conc_threshold),
-    outcome = calc_outcome(conc_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
-    outcome_lower_confint = calc_outcome(conc_increment_lower, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
-    outcome_upper_confint = calc_outcome(conc_increment_lower, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
-    outcome_min = calc_outcome(conc_increment_min, crf, crf_factor, deathrate * factor_deathrate, population),
-    outcome_min_lower_confint = calc_outcome(conc_increment_min, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
-    outcome_min_upper_confint = calc_outcome(conc_increment_min, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
-    outcome_base = calc_outcome(conc_base_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
-    source = factor("BAFU & BFS & Statistisches Amt Kanton Zürich")
-  )
+# 
+# data_outcomes <-
+#   data_expo_pop |> 
+#   dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant)) |>
+#   dplyr:::select(-source) |> 
+#   dplyr::left_join(outcomes_meta, by = "pollutant") |> 
+#   dplyr::left_join(data_deaths, by = "year") |> 
+#   dplyr::left_join(data_expo_base, by = c("x", "y", "pollutant")) |> # FIXME: join yields some NA in conc_base for years other than base_year => why? grid should have remained the same, does it?
+#   dplyr::group_by(year, pollutant) |> 
+#   dplyr::mutate(
+#     population_total = sum(population),
+#     min_conc_base_threshold = get(unique(.data$min_conc_threshold))(concentration_base, na.rm = TRUE),
+#     min_conc_threshold = get(unique(.data$min_conc_threshold))(concentration, na.rm = TRUE)
+#   ) |> 
+#   dplyr::ungroup() |> 
+#   dplyr::mutate(
+#     min_conc_threshold = ifelse(min_conc_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_threshold),
+#     min_conc_base_threshold = ifelse(min_conc_base_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_base_threshold),
+#     conc_increment_lower = ifelse(concentration < lower_conc_threshold, NA, concentration - lower_conc_threshold),
+#     conc_base_increment_lower = ifelse(concentration_base < lower_conc_threshold, NA, concentration_base - lower_conc_threshold),
+#     conc_increment_min = ifelse(concentration < min_conc_threshold, NA, concentration - min_conc_threshold),
+#     outcome = calc_outcome(conc_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
+#     outcome_lower_confint = calc_outcome(conc_increment_lower, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
+#     outcome_upper_confint = calc_outcome(conc_increment_lower, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
+#     outcome_min = calc_outcome(conc_increment_min, crf, crf_factor, deathrate * factor_deathrate, population),
+#     outcome_min_lower_confint = calc_outcome(conc_increment_min, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
+#     outcome_min_upper_confint = calc_outcome(conc_increment_min, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
+#     outcome_base = calc_outcome(conc_base_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
+#     source = factor("BAFU & BFS & Statistisches Amt Kanton Zürich")
+#   )
 
 
 
 # aggregate dataset ...
 # ---
 # => 
-data_outcomes <-
-  aggregate_outcomes(data_outcomes,
-                     vars = c("outcome", "outcome_lower_confint", "outcome_upper_confint", "outcome_min", 
-                              "outcome_min_lower_confint", "outcome_min_upper_confint", "outcome_base"),
-                     groups = c("year", "pollutant", "outcome_type", "population_total", "base_scenario_year", "source")
-  ) |> 
-  dplyr::mutate(
-    delta_base = outcome - outcome_base,
-    base_scenario_year = get_base_scenario_year(unique(base_scenario_year))(.data$year)
-    ) |>
-  dplyr::select(-outcome_base) 
+# data_outcomes <-
+#   aggregate_outcomes(data_outcomes,
+#                      vars = c("outcome", "outcome_lower_confint", "outcome_upper_confint", "outcome_min", 
+#                               "outcome_min_lower_confint", "outcome_min_upper_confint", "outcome_base"),
+#                      groups = c("year", "pollutant", "outcome_type", "population_total", "base_scenario_year", "source")
+#   ) |> 
+  # dplyr::mutate(
+  #   delta_base = outcome - outcome_base,
+  #   base_scenario_year = get_base_scenario_year(unique(base_scenario_year))(.data$year)
+  #   ) |>
+  # dplyr::select(-outcome_base) 
 
 
 

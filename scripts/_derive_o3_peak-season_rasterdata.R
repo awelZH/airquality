@@ -37,7 +37,7 @@
 data_monitoring_aq <-
   read_local_csv("inst/extdata/output/data_airquality_monitoring_y1.csv", locale = readr::locale(encoding = "UTF-8")) |> 
   dplyr::filter(parameter %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "NO2")) |> 
-  dplyr::select(year, site, siteclass, masl, parameter, value, source) |> 
+  dplyr::select(year, site, masl, parameter, value) |> 
   tidyr::spread(parameter, value) |> 
   na.omit() |> 
   dplyr::group_by(year) |> 
@@ -52,6 +52,12 @@ data_monitoring_aq <-
 #   geom_point() +
 #   facet_wrap(year~.) +
 #   scale_color_viridis_c(direction = -1)
+# 
+# data_monitoring_aq |>
+#   ggplot(aes(x = NO2, y = O3_peakseason_mean_d1_max_mean_h8gl, color = factor(year))) +
+#   geom_smooth(method = "rlm", se = FALSE) +
+#   # geom_point() +
+#   scale_color_viridis_d(direction = -1)
 
 regr <- MASS::rlm(formula(O3_peakseason_mean_d1_max_mean_h8gl ~ NO2 + factor(year) - 1), data = data_monitoring_aq)
 # summary(regr)
@@ -66,5 +72,23 @@ coef <-
   dplyr::mutate(
     slope = coefficients(regr)[stringr::str_detect(names(coefficients(regr)), "NO2")]
   )
+
+# => calculate O3 peak-season data_raster_aq from NO2
+data_raster_aq <-
+  lapply(data_raster_aq, function(x) { # FIXME: find a better way
+    
+    year <- unique(na.omit(extract_year(names(x))))
+    cf <- dplyr::filter(coef, year == !!year)
+    y <- x[[which(stringr::str_detect(names(x), "no2"))]]
+    y <-
+      y |> 
+      dplyr::mutate(O3_peakseason_mean_d1_max_mean_h8gl = no2 * cf$slope + cf$offset) |> 
+      dplyr::select(-no2)
+    
+    # ggplot() + geom_stars(data = y) + scale_fill_viridis_c(na.value = NA) + coord_equal()
+    
+    return(c(x, list(O3_peakseason_mean_d1_max_mean_h8gl = y)))
+  })
+
 
 

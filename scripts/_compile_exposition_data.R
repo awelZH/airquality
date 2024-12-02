@@ -26,31 +26,21 @@ data_raster_bafu <- read_bafu_raster_data(filter_ressources(ressources, 19), map
 # => spatially average pollutant raster data to the grid of statpop data (100x100m)
 data_raster_aq <- purrr::map2(data_raster_bfs, data_raster_aq, average_to_statpop)
 
-# => get O3 peak-season vs. NO2 & year regression coefficients from separate script to derive O3 peak-season data
-source("scripts/_derive_o3_peak-season_coef.R", encoding = "UTF-8")
-
-# => calculate O3 peak-season data_raster_aq from NO2
-data_raster_aq <-
-  lapply(data_raster_aq, function(x) { # FIXME: find a better way
-    
-    year <- unique(na.omit(extract_year(names(x))))
-    cf <- dplyr::filter(coef, year == !!year)
-    y <- x[[which(stringr::str_detect(names(x), "no2"))]]
-    y <-
-      y |> 
-      dplyr::mutate(O3_peakseason_mean_d1_max_mean_h8gl = no2 * cf$slope + cf$offset) |> 
-      dplyr::select(-no2)
-  
-    # ggplot() + geom_stars(data = y) + scale_fill_viridis_c(na.value = NA) + coord_equal()
-    
-    return(c(x, list(O3_peakseason_mean_d1_max_mean_h8gl = y)))
-  })
+# => derive & add O3 peak-season rasterdata by statistical relationships
+source("scripts/_derive_o3_peak-season_rasterdata.R", encoding = "UTF-8")
 
 # => convert pollutant and statpop data into a common tibble & calculate inhabitant exposition per raster cell (will also later be used to derive health outcomes)
 data_expo_pop <- prepare_exposition(data_raster_bfs, data_raster_aq, years)
 
+# => get minimum year base-scenario pollutant raster data and average them to the grid ofg statpop data for the remaining years
+data_raster_aq_basescenario <- prepare_rasterdata_aq_base(data_raster_bfs, data_raster_aq, years)
+
+# => also convert base-scenario pollutant and statpop data into a common tibble & calculate inhabitant exposition per raster cell
+data_expo_pop_basescenario <- prepare_exposition(data_raster_bfs[as.character(years[years != min(years)])], data_raster_aq_basescenario, years[years != min(years)])
+
 # => join raster and municipality data 
 data_expo_municip <- prepare_weighted_mean(data_raster_bfs, data_raster_aq, years, map_municipalities)
+data_expo_municip_basescenario <- prepare_weighted_mean(data_raster_bfs[as.character(years[years != min(years)])], data_raster_aq_basescenario, years[years != min(years)], map_municipalities)
 
 # aggregate datasets ...
 # ---
@@ -60,8 +50,15 @@ data_expo_population_dist <- aggregate_population_exposition_distrib(data_expo_p
 # => sensitive ecosystem reactive nitrogen deposition exposition: distribution across all sensitive ecosystems
 data_expo_ecosys_dist <- aggregate_ndep_exposition_distrib(data_raster_bafu) 
 
-# => population-weighted mean values per year, pollutant and municipality / canton
-data_pop_weighted_mean <- list(canton = aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant")))
+# => population-weighted mean values per year, pollutant and municipality / canton (including base-scenario)
+data_pop_weighted_mean <- list(canton = 
+                                 aggregate_population_weighted_mean(data_expo_municip_basescenario, groups = c("year", "pollutant")) |> 
+                                 dplyr::rename(population_weighted_mean_base = population_weighted_mean) |> 
+                                 dplyr::select(year, pollutant, population_weighted_mean_base) |> 
+                                 dplyr::mutate(base_year = min(years)) |> 
+                                 dplyr::right_join(aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant")), by = c("year", "pollutant")) |> 
+                                 dplyr::arrange(year, pollutant)
+)
 data_pop_weighted_mean$munipalities <- aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant", "geodb_oid", "gemeindename"))
 data_pop_weighted_mean$munipalities <- dplyr::mutate(data_pop_weighted_mean$munipalities , population_weighted_mean = ifelse(is.na(gemeindename), NA, population_weighted_mean)) # lakes = NA
 

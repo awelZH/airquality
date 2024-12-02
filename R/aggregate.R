@@ -213,7 +213,11 @@ aggregate_population_weighted_mean <- function(data, groups = c("year", "polluta
     dplyr::group_by_at(dplyr::vars(groups)) |> 
     dplyr::summarise(
       population_weighted_mean = calc_population_weighted_mean(concentration, population),
-      population = sum(population, na.rm = TRUE)
+      population = sum(population, na.rm = TRUE),
+      concentration_min = min(concentration, na.rm = TRUE),
+      concentration_max = max(concentration, na.rm = TRUE),
+      concentration_mean = mean(concentration, na.rm = TRUE),
+      concentration_median = median(concentration, na.rm = TRUE)
     ) |> 
     dplyr::ungroup() |> 
     dplyr::mutate(

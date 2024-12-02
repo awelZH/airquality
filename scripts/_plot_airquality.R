@@ -506,37 +506,15 @@ plots$exposition$population_weighted_mean_map <-
     plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
   })
 
-# plotting timeseries of population-weighted mean pollutant concentration for Kanton Zürich
-thresh <-  
-  immission_threshold_values |> 
-  dplyr::mutate(
-    pollutant = dplyr::case_when(
-      metric == "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3" ~ "O3_max_98p_m1", 
-      metric == "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration" ~ "O3_peakseason_mean_d1_max_mean_h8gl", 
-      TRUE ~ pollutant
-    )
-  ) |> 
-  dplyr::filter(pollutant %in% parameters_exposition) |> 
-  dplyr::mutate(pollutant = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")"))
 
-plots$exposition$population_weighted_mean_overview$various <-
-  data_expo_weighmean_canton |> 
-  dplyr::filter(pollutant != "eBC") |> 
-  dplyr::mutate(pollutant = paste0(longtitle(pollutant), " ", longparameter(pollutant)," (",shorttitle(pollutant),")")) |> 
-  ggplot2::ggplot(ggplot2::aes(x = year, y = population_weighted_mean)) + 
-  ggplot2::geom_bar(stat = "identity", fill = "#50586C") +
-  ggplot2::geom_hline(data = thresh, mapping = ggplot2::aes(yintercept = threshold), linewidth = thresh$lsz, color = thresh$col, linetype = thresh$lty) +
-  lemon::facet_rep_wrap(pollutant~., scales = "free_y", ncol = 1, repeat.tick.labels = TRUE) +
-  ggplot2::scale_x_continuous(breaks = 2015:max(years), expand = c(0.01,0.01)) + 
-  ggplot2::scale_y_continuous(expand = c(0.01,0.01)) + 
-  theme_ts +
-  ggplot2::theme(strip.text = ggplot2::element_text(hjust = 0)) +
-  ggplot2::ylab("bevölkerungsgewichtete mittlere Belastung (μg/m3)") +
-  ggplot2::ggtitle(
-    label = "Bevölkerungsgewichtete Schadstoffbelastung",
-    subtitle = "Mittlere Schadstoffbelastung pro Einwohner/in"
-  ) +
-  ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+# plotting timeseries of population-weighted mean pollutant concentration for Kanton Zürich
+plots$exposition$population_weighted_mean <- plot_pars_popmean_timeseries(data_expo_weighmean_canton , parameters_timeseries)
+
+
+
+
+
+
 
 
 

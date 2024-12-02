@@ -233,22 +233,3 @@ bin_concentration <- function(data) {
 #' @keywords internal
 calc_population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
 
-
-
-#' Sum of health outcomes
-#'
-#' @param data 
-#' @param vars 
-#' @param groups 
-#'
-#' @keywords internal
-aggregate_outcomes <- function(data, vars, groups) {
-  
-  data <-
-    data |> 
-    dplyr::group_by_at(groups) |> 
-    dplyr::summarise_at(vars, sum, na.rm = TRUE) |> 
-    dplyr::ungroup() 
-  
-  return(data)
-}

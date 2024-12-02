@@ -125,10 +125,19 @@ prepare_monitoring_meta <- function(meta_ostluft, meta_nabel) {
 #' @export
 #'
 #' @examples
-prepare_monitoring_nabel_y1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
+prepare_monitoring_nabel_y1 <- function(data, metrics = list(Jahresmittel = c("NO2", "PM10", "PM2.5", "EC / Russ"), "höchster 98%-Wert eines Monats" = "O3"), keep_incomplete = FALSE, tz = "Etc/GMT-1") {
+
+  metrics <-
+    tibble::as_tibble(metrics) |> 
+    tidyr::gather(metric, pollutant) |> 
+    dplyr::distinct(metric, pollutant) |> 
+    dplyr::mutate(expr = paste0("(Messparameter == '", metric, "' & Schadstoff == '", pollutant, "')"))
   
-  data <- 
+  metrics_filter <- paste(metrics$expr, collapse = " | ")
+  
+  data <-
     data |> 
+    dplyr::filter(eval(rlang::parse_expr(metrics_filter))) |> 
     restructure_monitoring_nabel_y1() |> 
     dplyr::mutate(
       interval = "y1",
@@ -252,6 +261,28 @@ prepare_monitoring_aq <- function(data, meta) {
     dplyr::select(year, site, site_long, siteclass, x, y, masl, source, parameter, interval, unit, value)
   
   return(data)
+}
+
+
+#' Spatially average base-year (min(year)) scenario pollutant raster data to the grid of statpop data of the respective year
+#'
+#' @param data_raster_bfs 
+#' @param data_raster_aq 
+#' @param years 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, years) {
+
+  base_year <- min(years)
+  other_years <- years[years != base_year]
+  data_raster_aq_base <- data_raster_aq[[as.character(base_year)]]
+  data_raster_aq_base <- setNames(rep(list(data_raster_aq_base), length(other_years)), other_years)
+  data_raster_aq_base <- purrr::map2(data_raster_bfs[as.character(other_years)], data_raster_aq_base, average_to_statpop)
+
+  return(data_raster_aq_base)
 }
 
 

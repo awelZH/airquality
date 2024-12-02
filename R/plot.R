@@ -1,5 +1,5 @@
 
-#' Plot timeseries yearly data using ggplot2
+#' Plot timeseries yearly monitoring-data using ggplot2
 #'
 #' @param data 
 #' @param mapping 
@@ -40,6 +40,41 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = value, 
   
   return(plot)
 }
+
+
+#' Plot timeseries yearly population-weighted mean concentration data using ggplot2
+#'
+#' @param data 
+#' @param mapping 
+#' @param ylims 
+#' @param ybreaks 
+#' @param titlelab 
+#' @param captionlab 
+#' @param pointshape 
+#' @param pointsize 
+#' @param threshold 
+#' @param theme 
+#'
+#' @keywords internal
+ggplot_timeseries_popmean <- function(data, mapping = ggplot2::aes(x = year, y = population_weighted_mean, fill = scenario), ylims = c(NA,NA), ybreaks = waiver(), titlelab = NULL, captionlab = NULL,
+                                      theme = ggplot2::theme_minimal()) {
+
+  plot <-
+    ggplot2::ggplot(data, mapping = mapping) + 
+    ggplot2::geom_bar(stat = "identity") +
+    ggplot2::geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
+    ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
+    ggplot2::scale_y_continuous(limits = ylims, breaks = ybreaks, expand = c(0.01,0.01)) +
+    scale_fill_manual(name = "Szenario", values = c("#50586C", "#DCE2F0")) +
+    titlelab +
+    captionlab +
+    theme
+  
+  # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 4) 
+  
+  return(plot)
+}
+
 
 
 
@@ -391,7 +426,7 @@ plot_all_expo_cumul <- function(parameter, data) {
   
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {
-
+    
     thresh <- extract_threshold(immission_threshold_values, shorttitle(parameter), aggregation = expositionpars(parameter)$aggregation, metric = expositionpars(parameter)$metric)
     ggplot_expo_cumulative(
       data = dplyr::filter(data, year == !!year & pollutant == !!parameter), x = "concentration", y = "population_cum_rel", linewidth = 1,
@@ -410,6 +445,40 @@ plot_all_expo_cumul <- function(parameter, data) {
   return(plots)
 }
 
+
+#' Wrapper to plot timeseries of population-weighted mean concentration data using ggplot2 providing pollutant-specific list
+#'
+#' @param data 
+#' @param parameters 
+#'
+#' @keywords internal
+plot_pars_popmean_timeseries <- function(data, parameters) {
+
+  data <- 
+    data |> 
+    dplyr::mutate(delta_base = pmin(population_weighted_mean - population_weighted_mean_base, 0)) |> 
+    dplyr::select(year, pollutant, delta_base, population_weighted_mean, base_year) |> 
+    tidyr::gather(scenario, population_weighted_mean, - year, -pollutant, -base_year) |> 
+    dplyr::mutate(scenario = dplyr::recode(scenario, population_weighted_mean = "aktuell", delta_base = paste0("vermindert vs. ",na.omit(unique(.data$base_year)))))
+  
+  plots <- 
+    lapply(setNames(parameters, parameters), function(parameter) {
+      
+      data |>
+        dplyr::filter(pollutant == !!parameter) |>
+        ggplot_timeseries_popmean(
+          titlelab = ggplot2::ggtitle(
+            label = openair::quickText(paste0("Bevölkerungsgewichtete Schadstoffbelastung - ",longtitle(parameter))),
+            subtitle = openair::quickText(paste0(shorttitle(parameter),", mittlere Schadstoffbelastung pro Einwohner/in, " ,timeseriespars(parameter)$metric," (µg/m3)"))
+          ),
+          captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
+          theme = theme_ts
+        )
+      
+    })
+  
+  return(plots)
+}
 
 
 #' Wrapper to plot pollutant-specific population weighted mean maps by municipality in a nested list by pollutant & year
@@ -555,9 +624,9 @@ combine_thresholds <- function(data, threshold_values) {
 #'
 #' @keywords internal
 plotlist_to_tibble <- function(plotlist, type, source) {
-
-  if (!is.na(extract_year(names(plotlist[[1]][1]))) | names(plotlist[[1]][1]) == "alle") {
   
+  if (!is.na(extract_year(names(plotlist[[1]][1]))) | names(plotlist[[1]][1]) == "alle") {
+    
     plottibble <- 
       plotlist |> 
       names() |> 

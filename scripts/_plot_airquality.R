@@ -535,7 +535,7 @@ plots <-
   bind_rows(plotlist_to_tibble(plots$monitoring$timeseries_ndep_all_vs_CLN, "monitoring", "timeseries_ndep_all_vs_CLN")) |>
   bind_rows(plotlist_to_tibble(plots$exposition$distribution_histogram, "exposition", "distribution_histogram")) |>
   bind_rows(plotlist_to_tibble(plots$exposition$distribution_cumulative, "exposition", "distribution_cumulative")) |>
-  bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_overview, "exposition", "population_weighted_mean_overview")) |>
+  bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean, "exposition", "population_weighted_mean")) |>
   bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map"))
 
 

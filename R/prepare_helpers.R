@@ -225,7 +225,7 @@ restructure_monitoring_nabel_h1 <- function(data, tz = "Etc/GMT-1") {
 #'
 #' @keywords internal
 restructure_monitoring_ostluft <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1", na.rm = TRUE) {
-
+  
   header <- dplyr::slice(data, 1:which(dplyr::pull(data, 1) == "Startzeit"))
   header <- dplyr::select(header, -1)
   data <- dplyr::slice(data, (which(dplyr::pull(data, 1) == "Startzeit") + 1):nrow(data))
@@ -654,36 +654,60 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
 }
 
 
-#' calculate health outcome
+#' calculate specific health outcome
 #'
 #' @param conc_increment 
-#' @param crf 
-#' @param crf_factor 
+#' @param crf_per_concunit
 #' @param deathrate_per_person 
 #' @param population 
 #'
 #' @keywords internal
-calc_outcome <- function(conc_increment, crf, crf_factor, deathrate_per_person, population) {
-  
-  outcome <- conc_increment / crf_factor * (crf - 1) * deathrate_per_person * population
+calc_outcome <- function(conc_increment, crf, crf_conc_increment, deathrate_per_person, population) {
+
+  outcome <- conc_increment * (crf - 1) / crf_conc_increment * deathrate_per_person * population
   
   return(outcome)
 }
 
 
-#' Get year of health-outcome base scenario: either provided year or a provided function
+#' Derive health outcomes (most likely value, lower and upper confidence intervals crf) from dataset
 #'
-#' @param base 
-#' @param ... 
+#' @param data 
+#' @param conc_threshold 
 #'
-#' @keywords internal
-get_base_scenario_year <- function(base = "min", ...) {
+#' @return
+#' @export
+#'
+#' @examples
+prepare_outcome <- function(data, conc_threshold = "lower_conc_threshold") {
+
+  data <-
+    data |> 
+    dplyr::mutate(
+      conc_incr = pmax(0, population_weighted_mean - !!rlang::sym(conc_threshold)),
+      outcome = calc_outcome(conc_incr, crf, crf_conc_increment, deathrate_per_person, population),
+      outcome_lower = calc_outcome(conc_incr, crf_lower, crf_conc_increment, deathrate_per_person, population),
+      outcome_upper = calc_outcome(conc_incr, crf_upper, crf_conc_increment, deathrate_per_person, population),
+      ) |>
+    dplyr::select(-conc_incr)
   
-  if (is.character(base)) {
-    fun <- function(x) get(base)(x, ...)
-  } else {
-    fun <- function(x) base
-  }
-  
-  return(fun)
+  return(data)
 }
+
+
+# #' Get year of health-outcome base scenario: either provided year or a provided function
+# #'
+# #' @param base
+# #' @param ...
+# #'
+# #' @keywords internal
+# get_base_scenario_year <- function(base = "min", ...) {
+# 
+#   if (is.character(base)) {
+#     fun <- function(x) get(base)(x, ...)
+#   } else {
+#     fun <- function(x) base
+#   }
+# 
+#   return(fun)
+# }

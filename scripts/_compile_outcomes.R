@@ -1,20 +1,20 @@
 # TODO: see issue #34
 
+
+
 # read datasets ...
 # ---
 # =>  read effektschätzer & lower thresholds from local metadata
 outcomes_meta <- 
   filter_ressources(ressources, 24) |> 
   read_local_csv(locale = readr::locale(encoding = "UTF-8")) |> 
-  dplyr::select(-lower_conc_threshold_source, -crf_source, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
+  dplyr::select(-lower_conc_threshold_source, -min_conc_threshold, -crf_source, -base_scenario_year, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
 
 # => get Canton Zurich yearly mortality rates from opendata.swiss
 data_deaths <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
 
 # => read population weighted mean data
 data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv") 
-
-# => base_scenario in wmean einbauen?
 
 
 
@@ -67,10 +67,6 @@ data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weigh
 
 
 
-
-
-
-
 # prepare datasets ...
 # ---
 
@@ -94,105 +90,54 @@ data_deaths <-
 
 
 
-# =>
-data_expo_weighmean |> 
+# => prepare input dataset
+data <- 
+  data_expo_weighmean |> 
   dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant)) |>
-  dplyr:::select(-source, -unit) |> 
+  dplyr:::select(-source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
+  tidyr::gather(scenario, population_weighted_mean, -year, -pollutant, -base_year, -population, -concentration_min) |> 
   dplyr::left_join(outcomes_meta, by = "pollutant") |> 
-  dplyr::left_join(data_deaths, by = "year") |>
+  dplyr::left_join(data_deaths, by = "year") |> 
   dplyr::mutate(
-    # min_conc_threshold = ifelse(min_conc_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_threshold),
-    # min_conc_base_threshold = ifelse(min_conc_base_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_base_threshold),
-    conc_increment_lower = ifelse(population_weighted_mean < lower_conc_threshold, NA, population_weighted_mean - lower_conc_threshold),
-    # conc_base_increment_lower = ifelse(concentration_base < lower_conc_threshold, NA, concentration_base - lower_conc_threshold),
-    # conc_increment_min = ifelse(concentration < min_conc_threshold, NA, concentration - min_conc_threshold),
-    outcome = calc_outcome(conc_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
-    outcome_lower_confint = calc_outcome(conc_increment_lower, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
-    outcome_upper_confint = calc_outcome(conc_increment_lower, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
-    # outcome_min = calc_outcome(conc_increment_min, crf, crf_factor, deathrate * factor_deathrate, population),
-    # outcome_min_lower_confint = calc_outcome(conc_increment_min, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
-    # outcome_min_upper_confint = calc_outcome(conc_increment_min, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
-    # outcome_base = calc_outcome(conc_base_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
-    source = factor("BAFU & BFS & Statistisches Amt Kanton Zürich")
-  )  |> 
-  # dplyr::mutate(
-  #   delta_base = outcome - outcome_base,
-  #   base_scenario_year = get_base_scenario_year(unique(base_scenario_year))(.data$year)
-  # ) |>
-  # dplyr::select(-outcome_base) |> 
-  View()
+    scenario = dplyr::recode(scenario, population_weighted_mean = "aktuell", population_weighted_mean_base = paste0("vermieden vs. ",na.omit(unique(.data$base_year)))),
+    concentration_min = ifelse(stringr::str_detect(scenario, "vermieden"), NA, concentration_min),
+    deathrate_per_person = deathrate * factor_deathrate
+  ) |> 
+  dplyr::select(-base_year, -deathrate, -factor_deathrate) |> 
+  dplyr::filter(!is.na(scenario))
+
+data <- 
+  data |> 
+  dplyr::filter(scenario == "aktuell") |> 
+  dplyr::mutate(min_conc_threshold = pmin(concentration_min, lower_conc_threshold)) |> 
+  prepare_outcome(conc_threshold = "min_conc_threshold") |> 
+  dplyr::select(year, pollutant, scenario, outcome_type, outcome) |>
+  dplyr::rename(outcome_min_conc = outcome) |> 
+  dplyr::right_join(data, by = c("year", "pollutant", "scenario", "outcome_type")) |> 
+  prepare_outcome() |> 
+  dplyr::mutate(outcome_delta_min_conc = outcome_min_conc - outcome) |> 
+  dplyr::select(year, pollutant, population, scenario, outcome_type, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
+
+data <- 
+  data |> 
+  dplyr::select(year, pollutant, scenario, outcome_type, outcome) |> 
+  tidyr::spread(scenario, outcome) |> 
+  dplyr::mutate(`vermieden vs. 2015` = pmin(0, aktuell - `vermieden vs. 2015`)) |> 
+  dplyr::select(-aktuell) |> 
+  tidyr::gather(scenario, outcome, -year, -pollutant, -outcome_type) |> 
+  dplyr::bind_rows(dplyr::filter(data, scenario == "aktuell")) |> 
+  dplyr::arrange(pollutant, scenario, year, outcome_type) |> 
+  dplyr::select(year, pollutant, outcome_type,  population, scenario, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
 
 
 
 
 
-
-
-
-data_expo_base <- 
-  data_expo_pop |> 
-  dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant) & year == get_base_scenario_year(unique(outcomes_meta$base_scenario_year))(.data$year)) |> 
-  dplyr:::select(x, y, pollutant, concentration) |> 
-  dplyr::rename(concentration_base = concentration)
-# 
-# data_outcomes <-
-#   data_expo_pop |> 
-#   dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant)) |>
-#   dplyr:::select(-source) |> 
-#   dplyr::left_join(outcomes_meta, by = "pollutant") |> 
-#   dplyr::left_join(data_deaths, by = "year") |> 
-#   dplyr::left_join(data_expo_base, by = c("x", "y", "pollutant")) |> # FIXME: join yields some NA in conc_base for years other than base_year => why? grid should have remained the same, does it?
-#   dplyr::group_by(year, pollutant) |> 
-#   dplyr::mutate(
-#     population_total = sum(population),
-#     min_conc_base_threshold = get(unique(.data$min_conc_threshold))(concentration_base, na.rm = TRUE),
-#     min_conc_threshold = get(unique(.data$min_conc_threshold))(concentration, na.rm = TRUE)
-#   ) |> 
-#   dplyr::ungroup() |> 
-#   dplyr::mutate(
-#     min_conc_threshold = ifelse(min_conc_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_threshold),
-#     min_conc_base_threshold = ifelse(min_conc_base_threshold > lower_conc_threshold, lower_conc_threshold, min_conc_base_threshold),
-#     conc_increment_lower = ifelse(concentration < lower_conc_threshold, NA, concentration - lower_conc_threshold),
-#     conc_base_increment_lower = ifelse(concentration_base < lower_conc_threshold, NA, concentration_base - lower_conc_threshold),
-#     conc_increment_min = ifelse(concentration < min_conc_threshold, NA, concentration - min_conc_threshold),
-#     outcome = calc_outcome(conc_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
-#     outcome_lower_confint = calc_outcome(conc_increment_lower, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
-#     outcome_upper_confint = calc_outcome(conc_increment_lower, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
-#     outcome_min = calc_outcome(conc_increment_min, crf, crf_factor, deathrate * factor_deathrate, population),
-#     outcome_min_lower_confint = calc_outcome(conc_increment_min, crf_lower_confint, crf_factor, deathrate * factor_deathrate, population),
-#     outcome_min_upper_confint = calc_outcome(conc_increment_min, crf_upper_confint, crf_factor, deathrate * factor_deathrate, population),
-#     outcome_base = calc_outcome(conc_base_increment_lower, crf, crf_factor, deathrate * factor_deathrate, population),
-#     source = factor("BAFU & BFS & Statistisches Amt Kanton Zürich")
-#   )
-
-
-
-# aggregate dataset ...
-# ---
-# => 
-# data_outcomes <-
-#   aggregate_outcomes(data_outcomes,
-#                      vars = c("outcome", "outcome_lower_confint", "outcome_upper_confint", "outcome_min", 
-#                               "outcome_min_lower_confint", "outcome_min_upper_confint", "outcome_base"),
-#                      groups = c("year", "pollutant", "outcome_type", "population_total", "base_scenario_year", "source")
-#   ) |> 
-  # dplyr::mutate(
-  #   delta_base = outcome - outcome_base,
-  #   base_scenario_year = get_base_scenario_year(unique(base_scenario_year))(.data$year)
-  #   ) |>
-  # dplyr::select(-outcome_base) 
-
-
-
-
-data_outcomes |> 
-  dplyr::select(year, base_scenario_year, pollutant, outcome_type, outcome, outcome_lower_confint, outcome_min_upper_confint, delta_base) |> 
-  tidyr::gather(scenario, value, -year, -base_scenario_year, -pollutant, -outcome_type, -outcome_lower_confint, -outcome_min_upper_confint) |> 
-  dplyr::mutate(scenario = dplyr::recode(scenario, outcome = "aktuell", delta_base = paste0("vermieden vs. ",unique(.data$base_scenario_year)))) |> 
-  ggplot(aes(x = year, y = value, fill = scenario)) + 
+data |> 
+  ggplot(aes(x = year, y = outcome, fill = scenario)) + 
   geom_bar(stat = "identity") + 
   geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
-  geom_linerange(aes(ymin = outcome_lower_confint, ymax = outcome_min_upper_confint), color = "gray0") + 
+  geom_linerange(aes(ymin = outcome_lower, ymax = outcome_upper + outcome_delta_min_conc), color = "gray0") + 
   scale_y_continuous(breaks = seq(-2000,2000,200), labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01)) +
   facet_grid(.~outcome_type) + 
   ylab("absolut") +
@@ -203,30 +148,12 @@ data_outcomes |>
     panel.grid.minor.x = element_blank(),
     panel.grid.minor.y = element_blank(),
     axis.ticks = element_line(color = "gray30"),
-    axis.line.x = element_line(color = "gray30")
-  )
+    axis.line.x = element_line(color = "gray30"),
+    axis.title = element_blank()
+  ) +
+  facet_wrap(pollutant~., ncol = 1)
 
 
-data_outcomes |> 
-  dplyr::select(year, base_scenario_year, population_total, pollutant, outcome_type, outcome, outcome_lower_confint, outcome_min_upper_confint, delta_base) |> 
-  tidyr::gather(scenario, value, -year, -base_scenario_year, -population_total, -pollutant, -outcome_type, -outcome_lower_confint, -outcome_min_upper_confint) |> 
-  dplyr::mutate(scenario = dplyr::recode(scenario, outcome = "aktuell", delta_base = paste0("vermieden vs. ",unique(.data$base_scenario_year)))) |> 
-  ggplot(aes(x = year, y = value / population_total * 10000, fill = scenario)) + 
-  geom_bar(stat = "identity") + 
-  geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
-  geom_linerange(aes(ymin = outcome_lower_confint / population_total * 10000, ymax = outcome_min_upper_confint / population_total * 10000), color = "gray20") +
-  scale_y_continuous(breaks = seq(-20,120,1), expand = c(0.01,0.01)) +
-  facet_grid(.~outcome_type) + 
-  ylab("pro 10'000 Einwohner/innen") +
-  scale_fill_manual(name = "Szenario", values = c("#50586C", "#DCE2F0")) +
-  theme_minimal() +
-  theme(
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    panel.grid.minor.y = element_blank(),
-    axis.ticks = element_line(color = "gray30"),
-    axis.line.x = element_line(color = "gray30")
-  )
 
 
 # write output datasets & clean up:

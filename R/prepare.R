@@ -274,9 +274,9 @@ prepare_monitoring_aq <- function(data, meta) {
 #' @export
 #'
 #' @examples
-prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, years) {
+prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, base_year) {
 
-  base_year <- min(years)
+  years <- as.numeric(names(data_raster_aq))
   other_years <- years[years != base_year]
   data_raster_aq_base <- data_raster_aq[[as.character(base_year)]]
   data_raster_aq_base <- setNames(rep(list(data_raster_aq_base), length(other_years)), other_years)

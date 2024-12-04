@@ -708,19 +708,19 @@ prepare_outcome <- function(data, conc_threshold = "lower_conc_threshold") {
 }
 
 
-# #' Get year of health-outcome base scenario: either provided year or a provided function
-# #'
-# #' @param base
-# #' @param ...
-# #'
-# #' @keywords internal
-# get_base_scenario_year <- function(base = "min", ...) {
-# 
-#   if (is.character(base)) {
-#     fun <- function(x) get(base)(x, ...)
-#   } else {
-#     fun <- function(x) base
-#   }
-# 
-#   return(fun)
-# }
+#' Get year of health-outcome base scenario: either provided year or a provided function
+#'
+#' @param base
+#' @param ...
+#'
+#' @keywords internal
+get_base_scenario_year <- function(base = "min", ...) {
+
+  if (is.character(base)) {
+    fun <- function(x) get(base)(x, ...)
+  } else {
+    fun <- function(x) base
+  }
+
+  return(fun)
+}

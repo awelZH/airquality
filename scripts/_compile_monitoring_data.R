@@ -24,7 +24,11 @@ site_meta_ostluft <- read_local_csv(filter_ressources(ressources, 9), delim = ",
 site_meta <- prepare_monitoring_meta(site_meta_ostluft, site_meta_nabel)
 
 # => restructure NABEL & calculate O3 peak season from h1 data
-data_monitoring_nabel <- prepare_monitoring_nabel_y1(data_monitoring_nabel)
+data_monitoring_nabel <- 
+  data_monitoring_nabel |> 
+  prepare_monitoring_nabel_y1() |> 
+  dplyr::filter(site %in% c("Zürich-Kaserne", "Dübendorf-EMPA")) # the only NABEL-sites in Canton Zürich
+
 data_monitoring_nabel <-
   data_monitoring_nabel_h1 |>
   prepare_monitoring_nabel_h1() |>

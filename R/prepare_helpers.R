@@ -664,9 +664,21 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
 #' @keywords internal
 calc_outcome <- function(conc_increment, crf, crf_conc_increment, deathrate_per_person, population) {
 
-  outcome <- conc_increment * (crf - 1) / crf_conc_increment * deathrate_per_person * population
+  # see: 
+  # Castro, A., Kutlar Joss, M., Röösli, M. (2023). Quantifizierung des Gesundheitsnutzens der neuen 
+  # Luftqualitätsleitlinien der Weltgesundheitsorganisation in der Schweiz. Im Auftrag vom Bundesamt für Umwelt. 
   
-  return(outcome)
+  CB <- conc_increment
+  C0 <- 0 # FIXME: set to 0 here, 'cause don't really get it (yet)
+  CA <- crf_conc_increment
+  EEA <- crf
+  GD <- deathrate_per_person * population
+  
+  EEB <- exp(log(EEA) * (CB - C0) / CA)
+  
+  A <- GD * (1 - 1 / EEB)
+  
+  return(A)
 }
 
 
@@ -683,6 +695,7 @@ prepare_outcome <- function(data, conc_threshold = "lower_conc_threshold") {
 
   data <-
     data |> 
+    # dplyr::group_by(year, pollutant, outcome_type, scenario) |>
     dplyr::mutate(
       conc_incr = pmax(0, population_weighted_mean - !!rlang::sym(conc_threshold)),
       outcome = calc_outcome(conc_incr, crf, crf_conc_increment, deathrate_per_person, population),

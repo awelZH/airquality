@@ -2,9 +2,9 @@ project:
   type: website
   render:
     - index.qmd
-    - Emissionen.qmd
-    - Immissionen.qmd
-    - Exposition.qmd
+    - Schadstoffausstoss.qmd
+    - Luftqualität.qmd
+    - Belastungsverteilung.qmd
     - Gesundheitsfolgen.qmd
     - about.qmd
   # pre-render: "read_plots.R"
@@ -20,12 +20,12 @@ website:
     left:
       - href: index.qmd
         text: Allgemeines
-      - href: Emissionen.qmd
-        text: Emissionen
-      - href: Immissionen.qmd
-        text: Immissionen
-      - href: Exposition.qmd
-        text: Exposition
+      - href: Schadstoffausstoss.qmd
+        text: Schadstoffausstoss
+      - href: Luftqualität.qmd
+        text: Luftqualität
+      - href: Belastungsverteilung.qmd
+        text: Belastungsverteilung
       - href: Gesundheitsfolgen.qmd
         text: Gesundheitsfolgen
     right: 

@@ -11,7 +11,7 @@ outcomes_meta <-
   dplyr::select(-lower_conc_threshold_source, -min_conc_threshold, -crf_source, -base_scenario_year, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
 
 # => get Canton Zurich yearly mortality rates from opendata.swiss
-data_deaths <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
+data_deathrates <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
 
 # => read population weighted mean data
 data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv") 
@@ -71,22 +71,22 @@ data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weigh
 # ---
 
 # => 
-data_deaths <-
-  data_deaths |> 
+data_deathrates <-
+  data_deathrates |> 
   dplyr::filter(GEBIET_NAME == "Zürich - ganzer Kanton") |> 
   dplyr::rename(
     year = INDIKATOR_JAHR,
     parameter = INDIKATOR_NAME,
     value = INDIKATOR_VALUE,
-    unit_deathrate = EINHEIT_KURZ
+    unit_incidentrate = EINHEIT_KURZ
   ) |> 
   dplyr::mutate(
     parameter = stringr::str_remove(parameter, stringr::fixed(" [pro 1000 Einw.]")),
-    factor_deathrate = 1 / readr::parse_number(unit_deathrate)
+    factor_incidentrate = 1 / readr::parse_number(unit_incidentrate)
   ) |> 
-  dplyr::select(year, parameter, value, factor_deathrate) |> 
+  dplyr::select(year, parameter, value, factor_incidentrate) |> 
   tidyr::spread(parameter, value) |> 
-  dplyr::rename(deathrate = Sterberate)
+  dplyr::rename(incidentrate = Sterberate)
 
 
 
@@ -97,13 +97,13 @@ data <-
   dplyr:::select(-source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
   tidyr::gather(scenario, population_weighted_mean, -year, -pollutant, -base_year, -population, -concentration_min) |> 
   dplyr::left_join(outcomes_meta, by = "pollutant") |> 
-  dplyr::left_join(data_deaths, by = "year") |> 
+  dplyr::left_join(data_deathrates, by = "year") |> 
   dplyr::mutate(
     scenario = dplyr::recode(scenario, population_weighted_mean = "aktuell", population_weighted_mean_base = paste0("vermieden vs. ",na.omit(unique(.data$base_year)))),
     concentration_min = ifelse(stringr::str_detect(scenario, "vermieden"), NA, concentration_min),
-    deathrate_per_person = deathrate * factor_deathrate
+    incidentrate_per_person = incidentrate * factor_incidentrate
   ) |> 
-  dplyr::select(-base_year, -deathrate, -factor_deathrate) |> 
+  dplyr::select(-base_year, -incidentrate, -factor_incidentrate) |> 
   dplyr::filter(!is.na(scenario))
 
 data <- 

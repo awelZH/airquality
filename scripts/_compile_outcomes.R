@@ -1,10 +1,9 @@
-# TODO: see issue #34
-
+# Derive selected health outcomes per year from population-weighted mean data
 
 
 # read datasets ...
 # ---
-# =>  read effektschätzer & lower thresholds from local metadata
+# =>  read input-metadata (crf, lower threshold concentration etc)
 outcomes_meta <- 
   filter_ressources(ressources, 24) |> 
   read_local_csv(locale = readr::locale(encoding = "UTF-8")) |> 
@@ -15,6 +14,34 @@ data_deathrates <- read_opendataswiss(filter_ressources(ressources, 25), source 
 
 # => read population weighted mean data
 data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv") 
+
+
+# prepare datasets ...
+# ---
+# => rate of deaths in Canton Zürich
+data_deathrates <- prepare_deathrate(data_deathrates)
+
+# => prepare input dataset and derive preliminary deaths
+data_outcomes <- prepare_outcomes(data_expo_weighmean, data_deathrates, outcomes_meta)
+
+# => prepare input dataset and derive years of life lost
+# TODO ...
+
+# => combine
+# TODO ...
+
+
+# write output datasets & clean up:
+# ---
+write_local_csv(data_outcomes, file = "inst/extdata/output/data_health_outcomes.csv")
+rm(list = c("outcomes_meta", "data_deathrates", "data_expo_weighmean", "data_outcomes"))
+
+
+
+
+
+
+
 
 
 
@@ -61,102 +88,3 @@ data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weigh
 # }
 
 
-
-
-
-
-
-
-# prepare datasets ...
-# ---
-
-# => 
-data_deathrates <-
-  data_deathrates |> 
-  dplyr::filter(GEBIET_NAME == "Zürich - ganzer Kanton") |> 
-  dplyr::rename(
-    year = INDIKATOR_JAHR,
-    parameter = INDIKATOR_NAME,
-    value = INDIKATOR_VALUE,
-    unit_incidentrate = EINHEIT_KURZ
-  ) |> 
-  dplyr::mutate(
-    parameter = stringr::str_remove(parameter, stringr::fixed(" [pro 1000 Einw.]")),
-    factor_incidentrate = 1 / readr::parse_number(unit_incidentrate)
-  ) |> 
-  dplyr::select(year, parameter, value, factor_incidentrate) |> 
-  tidyr::spread(parameter, value) |> 
-  dplyr::rename(incidentrate = Sterberate)
-
-
-
-# => prepare input dataset
-data <- 
-  data_expo_weighmean |> 
-  dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant)) |>
-  dplyr:::select(-source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
-  tidyr::gather(scenario, population_weighted_mean, -year, -pollutant, -base_year, -population, -concentration_min) |> 
-  dplyr::left_join(outcomes_meta, by = "pollutant") |> 
-  dplyr::left_join(data_deathrates, by = "year") |> 
-  dplyr::mutate(
-    scenario = dplyr::recode(scenario, population_weighted_mean = "aktuell", population_weighted_mean_base = paste0("vermieden vs. ",na.omit(unique(.data$base_year)))),
-    concentration_min = ifelse(stringr::str_detect(scenario, "vermieden"), NA, concentration_min),
-    incidentrate_per_person = incidentrate * factor_incidentrate
-  ) |> 
-  dplyr::select(-base_year, -incidentrate, -factor_incidentrate) |> 
-  dplyr::filter(!is.na(scenario))
-
-data <- 
-  data |> 
-  dplyr::filter(scenario == "aktuell") |> 
-  dplyr::mutate(min_conc_threshold = pmin(concentration_min, lower_conc_threshold)) |> 
-  prepare_outcome(conc_threshold = "min_conc_threshold") |> 
-  dplyr::select(year, pollutant, scenario, outcome_type, outcome) |>
-  dplyr::rename(outcome_min_conc = outcome) |> 
-  dplyr::right_join(data, by = c("year", "pollutant", "scenario", "outcome_type")) |> 
-  prepare_outcome() |> 
-  dplyr::mutate(outcome_delta_min_conc = outcome_min_conc - outcome) |> 
-  dplyr::select(year, pollutant, population, scenario, outcome_type, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
-
-data <- 
-  data |> 
-  dplyr::select(year, pollutant, scenario, outcome_type, outcome) |> 
-  tidyr::spread(scenario, outcome) |> 
-  dplyr::mutate(`vermieden vs. 2015` = pmin(0, aktuell - `vermieden vs. 2015`)) |> 
-  dplyr::select(-aktuell) |> 
-  tidyr::gather(scenario, outcome, -year, -pollutant, -outcome_type) |> 
-  dplyr::bind_rows(dplyr::filter(data, scenario == "aktuell")) |> 
-  dplyr::arrange(pollutant, scenario, year, outcome_type) |> 
-  dplyr::select(year, pollutant, outcome_type,  population, scenario, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
-
-
-
-
-
-data |> 
-  ggplot(aes(x = year, y = outcome, fill = scenario)) + 
-  geom_bar(stat = "identity") + 
-  geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
-  geom_linerange(aes(ymin = outcome_lower, ymax = outcome_upper + outcome_delta_min_conc), color = "gray0") + 
-  scale_y_continuous(breaks = seq(-2000,2000,200), labels = function(x) format(x, big.mark = "'"), expand = c(0.01,0.01)) +
-  facet_grid(.~outcome_type) + 
-  ylab("absolut") +
-  scale_fill_manual(name = "Szenario", values = c("#50586C", "#DCE2F0")) +
-  theme_minimal() +
-  theme(
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    panel.grid.minor.y = element_blank(),
-    axis.ticks = element_line(color = "gray30"),
-    axis.line.x = element_line(color = "gray30"),
-    axis.title = element_blank()
-  ) +
-  facet_wrap(pollutant~., ncol = 1)
-
-
-
-
-# write output datasets & clean up:
-# ---
-# write_local_csv(d..., file = "inst/extdata/output/....csv")
-# rm(list = c("data_expo_pop", ...))

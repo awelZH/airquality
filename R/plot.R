@@ -42,7 +42,7 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = value, 
 }
 
 
-#' Plot timeseries yearly population-weighted mean concentration data using ggplot2
+#' Plot bar timeseries for yearly population-weighted mean concentration or health-outcome data using ggplot2
 #'
 #' @param data 
 #' @param mapping 
@@ -56,7 +56,7 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = value, 
 #' @param theme 
 #'
 #' @keywords internal
-ggplot_timeseries_popmean <- function(data, mapping = ggplot2::aes(x = year, y = population_weighted_mean, fill = scenario), ylims = c(NA,NA), ybreaks = waiver(), titlelab = NULL, captionlab = NULL,
+ggplot_timeseries_bars <- function(data, mapping = ggplot2::aes(x = year, y = population_weighted_mean, fill = scenario), ylims = c(NA,NA), ybreaks = waiver(), titlelab = NULL, captionlab = NULL,
                                       theme = ggplot2::theme_minimal()) {
 
   plot <-
@@ -466,7 +466,7 @@ plot_pars_popmean_timeseries <- function(data, parameters) {
       
       data |>
         dplyr::filter(pollutant == !!parameter) |>
-        ggplot_timeseries_popmean(
+        ggplot_timeseries_bars(
           titlelab = ggplot2::ggtitle(
             label = openair::quickText(paste0("Bevölkerungsgewichtete Schadstoffbelastung - ",longtitle(parameter))),
             subtitle = openair::quickText(paste0(shorttitle(parameter),", mittlere Schadstoffbelastung pro Einwohner/in, " ,timeseriespars(parameter)$metric," (µg/m3)"))
@@ -474,6 +474,36 @@ plot_pars_popmean_timeseries <- function(data, parameters) {
           captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
           theme = theme_ts
         )
+      
+    })
+  
+  return(plots)
+}
+
+
+#' Wrapper to plot timeseries of health-outcome preliminary deaths using ggplot2 providing pollutant-specific list
+#'
+#' @param data 
+#' @param parameters 
+#'
+#' @keywords internal
+plot_pars_prelim_deaths_timeseries <- function(data, parameters) {
+ 
+  plots <- 
+    lapply(setNames(parameters, parameters), function(parameter) {
+      
+      data |>
+        dplyr::filter(pollutant == !!parameter & outcome_type == "vorzeitige Todesfälle") |>
+        ggplot_timeseries_bars(
+          mapping = ggplot2::aes(x = year, y = outcome, fill = scenario),
+          titlelab = ggplot2::ggtitle(
+            label = openair::quickText(paste0("Vorzeitige Todesfälle durch ",longtitle(parameter))),
+            subtitle = "Anzahl vorzeitige Todesfälle pro Jahr"
+          ),
+          captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS & Statistisches Amt Kanton Zürich"),
+          theme = theme_ts
+        ) + 
+        geom_linerange(ggplot2::aes(ymin = outcome_lower, ymax = outcome_upper + outcome_delta_min_conc), color = "gray20")
       
     })
   

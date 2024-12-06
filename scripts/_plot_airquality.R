@@ -1,8 +1,5 @@
 # setup plotting
 # ---
-# setup analysis: load libraries & functions & read map boundaries data
-# source("scripts/_setup.R", encoding = "UTF-8")
-
 
 # list of output data sources for plotting
 ressources_plotting <-
@@ -22,6 +19,9 @@ ressources_plotting <-
       weightedmean_municip = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv",
       expo_distr_pollutants = "inst/extdata/output/data_exposition_distribution_pollutants.csv",
       expo_distr_ndep ="inst/extdata/output/data_exposition_distribution_ndep.csv"
+    ),
+    outcomes = list(
+      outcomes = "inst/extdata/output/data_health_outcomes.csv"
     )
   )
 
@@ -507,13 +507,22 @@ plots$exposition$population_weighted_mean_map <-
   })
 
 
-# plotting timeseries of population-weighted mean pollutant concentration for Kanton Zürich
-plots$exposition$population_weighted_mean <- plot_pars_popmean_timeseries(data_expo_weighmean_canton , parameters_timeseries)
+# plotting timeseries of population-weighted mean pollutant concentration for Canton Zürich
+plots$exposition$population_weighted_mean <- plot_pars_popmean_timeseries(data_expo_weighmean_canton, parameters_timeseries)
 
 
 
 
 
+# plotting selected health-outcomes due to population exposition by air pollutants
+# ---
+data_outcomes <- read_local_csv(file = ressources_plotting$outcomes$outcomes, locale = readr::locale(encoding = "UTF-8"))
+
+# plotting timeseries of preliminary deaths for Canton Zürich
+plots$outcomes$preliminary_deaths <- plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"))
+
+# plotting timeseries of years of life lost for Canton Zürich
+# TODO ...
 
 
 
@@ -536,8 +545,8 @@ plots <-
   bind_rows(plotlist_to_tibble(plots$exposition$distribution_histogram, "exposition", "distribution_histogram")) |>
   bind_rows(plotlist_to_tibble(plots$exposition$distribution_cumulative, "exposition", "distribution_cumulative")) |>
   bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean, "exposition", "population_weighted_mean")) |>
-  bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map"))
-
+  bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map")) |> 
+  bind_rows(plotlist_to_tibble(plots$outcomes$preliminary_deaths, "outcomes", "preliminary_deaths"))
 
 
 
@@ -547,6 +556,7 @@ plots <-
 saveRDS(dplyr::filter(plots, type == "emission"), "docs/plots_emissions.rds")
 saveRDS(dplyr::filter(plots, type == "monitoring"), "docs/plots_monitoring.rds")
 saveRDS(dplyr::filter(plots, type == "exposition"), "docs/plots_exposition.rds")
+saveRDS(dplyr::filter(plots, type == "outcomes"), "docs/plots_outcomes.rds")
 
 rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass", "scale_fill_siteclass", "temp", "theme_map", "theme_ts", "threshold_ndep",
             "data_emikat", "data_expo_distr_ndep", "data_expo_distr_pollutants", "data_expo_weighmean_canton", "thresh",

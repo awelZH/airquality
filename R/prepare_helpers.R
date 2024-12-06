@@ -662,8 +662,8 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
 #' @param population 
 #'
 #' @keywords internal
-calc_outcome <- function(conc_increment, crf, crf_conc_increment, incidentrate_per_person, population) {
-
+calc_outcome <- function(conc_increment, crf, crf_conc_increment, caserate_per_person, population) {
+  
   # see: 
   # Castro, A., Kutlar Joss, M., Röösli, M. (2023). Quantifizierung des Gesundheitsnutzens der neuen 
   # Luftqualitätsleitlinien der Weltgesundheitsorganisation in der Schweiz. Im Auftrag vom Bundesamt für Umwelt. 
@@ -672,7 +672,7 @@ calc_outcome <- function(conc_increment, crf, crf_conc_increment, incidentrate_p
   C0 <- 0 # FIXME: set to 0 here, 'cause don't really get it (yet)
   CA <- crf_conc_increment
   EEA <- crf
-  GD <- incidentrate_per_person * population
+  GD <- caserate_per_person * population
   
   EEB <- exp(log(EEA) * (CB - C0) / CA)
   
@@ -682,31 +682,26 @@ calc_outcome <- function(conc_increment, crf, crf_conc_increment, incidentrate_p
 }
 
 
-#' Derive health outcomes (most likely value, lower and upper confidence intervals crf) from dataset
+#' Calculate range of health outcomes from input-dataset (most likely value, lower and upper confidence intervals crf)
 #'
 #' @param data 
 #' @param conc_threshold 
 #'
-#' @return
-#' @export
-#'
-#' @examples
-prepare_outcome <- function(data, conc_threshold = "lower_conc_threshold") {
-
+#' @keywords internal
+calculate_all_outcomes <- function(data, conc_threshold = "lower_conc_threshold") {
+  
   data <-
     data |> 
-    # dplyr::group_by(year, pollutant, outcome_type, scenario) |>
     dplyr::mutate(
       conc_incr = pmax(0, population_weighted_mean - !!rlang::sym(conc_threshold)),
-      outcome = calc_outcome(conc_incr, crf, crf_conc_increment, incidentrate_per_person, population),
-      outcome_lower = calc_outcome(conc_incr, crf_lower, crf_conc_increment, incidentrate_per_person, population),
-      outcome_upper = calc_outcome(conc_incr, crf_upper, crf_conc_increment, incidentrate_per_person, population),
-      ) |>
+      outcome = calc_outcome(conc_incr, crf, crf_conc_increment, caserate_per_person, population),
+      outcome_lower = calc_outcome(conc_incr, crf_lower, crf_conc_increment, caserate_per_person, population),
+      outcome_upper = calc_outcome(conc_incr, crf_upper, crf_conc_increment, caserate_per_person, population),
+    ) |>
     dplyr::select(-conc_incr)
   
   return(data)
 }
-
 
 #' Get year of health-outcome base scenario: either provided year or a provided function
 #'
@@ -715,12 +710,12 @@ prepare_outcome <- function(data, conc_threshold = "lower_conc_threshold") {
 #'
 #' @keywords internal
 get_base_scenario_year <- function(base = "min", ...) {
-
+  
   if (is.character(base)) {
     fun <- function(x) get(base)(x, ...)
   } else {
     fun <- function(x) base
   }
-
+  
   return(fun)
 }

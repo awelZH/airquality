@@ -384,4 +384,93 @@ prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, bounda
 }
 
 
+#' Prepare input outcomes-dataset from population-weighted mean, deathrates and outcome metadata and derive health outcomes
+#' 
+#' @param data_expo_weighmean 
+#' @param data_deathrates 
+#' @param outcomes_meta 
+#' @param conc_threshold 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta, conc_threshold = "lower_conc_threshold") {
+  
+  # combine and wrangle all input data
+  data <- 
+    data_expo_weighmean |> 
+    dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant)) |>
+    dplyr:::select(-source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
+    tidyr::gather(scenario, population_weighted_mean, -year, -pollutant, -base_year, -population, -concentration_min) |> 
+    dplyr::left_join(outcomes_meta, by = "pollutant") |> 
+    dplyr::left_join(data_deathrates, by = "year") |> 
+    dplyr::mutate(
+      scenario = dplyr::recode(scenario, population_weighted_mean = "aktuell", population_weighted_mean_base = paste0("vermieden vs. ",na.omit(unique(.data$base_year)))),
+      concentration_min = ifelse(stringr::str_detect(scenario, "vermieden"), NA, concentration_min),
+      caserate_per_person = caserate * factor_caserate
+    ) |> 
+    dplyr::select(-base_year, -caserate, -factor_caserate) |> 
+    dplyr::filter(!is.na(scenario))
+  
+  # calculate outcomes
+  data <- 
+    data |> 
+    dplyr::filter(scenario == "aktuell") |> 
+    dplyr::mutate(min_conc_threshold = pmin(concentration_min, lower_conc_threshold)) |> 
+    calculate_all_outcomes(conc_threshold = "min_conc_threshold") |> 
+    dplyr::select(year, pollutant, scenario, outcome_type, outcome) |>
+    dplyr::rename(outcome_min_conc = outcome) |> 
+    dplyr::right_join(data, by = c("year", "pollutant", "scenario", "outcome_type")) |> 
+    calculate_all_outcomes() |> 
+    dplyr::mutate(outcome_delta_min_conc = outcome_min_conc - outcome) |> 
+    dplyr::select(year, pollutant, population, scenario, outcome_type, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
+  
+  # restructure dataset
+  data <- 
+    data |> 
+    dplyr::select(year, pollutant, scenario, outcome_type, outcome) |> 
+    tidyr::spread(scenario, outcome) |> 
+    dplyr::mutate(`vermieden vs. 2015` = pmin(0, aktuell - `vermieden vs. 2015`)) |> 
+    dplyr::select(-aktuell) |> 
+    tidyr::gather(scenario, outcome, -year, -pollutant, -outcome_type) |> 
+    dplyr::bind_rows(dplyr::filter(data, scenario == "aktuell")) |> 
+    dplyr::arrange(pollutant, scenario, year, outcome_type) |> 
+    dplyr::filter(!is.na(outcome)) |> 
+    dplyr::select(year, pollutant, outcome_type,  population, scenario, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
+
+  return(data)
+}
+
+
+
+#' Title
+#'
+#' @param data 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+prepare_deathrate <- function(data) {
+  
+  data <-
+    data |> 
+    dplyr::filter(GEBIET_NAME == "Zürich - ganzer Kanton") |> 
+    dplyr::rename(
+      year = INDIKATOR_JAHR,
+      parameter = INDIKATOR_NAME,
+      value = INDIKATOR_VALUE,
+      unit_caserate = EINHEIT_KURZ
+    ) |> 
+    dplyr::mutate(
+      parameter = stringr::str_remove(parameter, stringr::fixed(" [pro 1000 Einw.]")),
+      factor_caserate = 1 / readr::parse_number(unit_caserate)
+    ) |> 
+    dplyr::select(year, parameter, value, factor_caserate) |> 
+    tidyr::spread(parameter, value) |> 
+    dplyr::rename(caserate = Sterberate)
+  
+  return(data)
+}
 

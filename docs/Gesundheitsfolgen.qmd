@@ -6,6 +6,7 @@ lightbox: true
 
 ```{r}
 source("read_plots.R")
+plots <- readRDS("plots_outcomes.rds.rds")
 ```
 
 
@@ -31,3 +32,30 @@ Fehlerbalken berücksichtigen die Konfidenzintervalle des Effektschätzers sowie
 Sonderfall Fallzahlen & Covid in den Jahren 2020:2022 !
 
 ...
+
+
+
+### Feinstaub PM2.5
+
+```{r}
+#| label: fig-prelim-deaths-pm25
+get_plot(plots, "source == 'preliminary_deaths' & pollutant == 'PM2.5'")
+```
+
+
+### Stickstoffdioxid
+
+```{r}
+#| label: fig-prelim-deaths-no2
+get_plot(plots, "source == 'preliminary_deaths' & pollutant == 'NO2'")
+```
+
+
+### Ozon
+
+```{r}
+#| label: fig-prelim-deaths-o3
+get_plot(plots, "source == 'preliminary_deaths' & pollutant == 'O3_peakseason_mean_d1_max_mean_h8gl'")
+```
+
+

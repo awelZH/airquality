@@ -5,6 +5,7 @@
 docs/plots_emissions.rds
 docs/plots_monitoring.rds
 docs/plots_exposition.rds
+docs/plots_outcomes.rds
 docs/.quarto/
 docs/.Rproj.user
 docs/.Rhistory

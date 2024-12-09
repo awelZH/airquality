@@ -1,6 +1,8 @@
 # # compiling air quality monitoring O3 peak-season data from several sites outside the Canton of Zürich by Ostluft and NABEL monitoring networks for deriving O3 peak-season raster data
 # 
 # 
+# TODO: integrate additional NABEL data
+# 
 # # read datasets ...
 # # ---
 # # => read NABEL monitoring airquality data (y1 & h1)

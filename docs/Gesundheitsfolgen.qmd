@@ -6,7 +6,7 @@ lightbox: true
 
 ```{r}
 source("read_plots.R")
-plots <- readRDS("plots_outcomes.rds.rds")
+plots <- readRDS("plots_outcomes.rds")
 ```
 
 

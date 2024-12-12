@@ -5,7 +5,7 @@ project:
     - Schadstoffausstoss.qmd
     - Luftqualität.qmd
     - Belastungsverteilung.qmd
-    - Gesundheitsfolgen.qmd
+    # - Gesundheitsfolgen.qmd
     - about.qmd
   output-dir: .
   # pre-render: "read_plots.R"
@@ -27,8 +27,8 @@ website:
         text: Luftqualität
       - href: Belastungsverteilung.qmd
         text: Belastungsverteilung
-      - href: Gesundheitsfolgen.qmd
-        text: Gesundheitsfolgen
+      # - href: Gesundheitsfolgen.qmd
+        # text: Gesundheitsfolgen
     right: 
       - about.qmd
 

@@ -32,14 +32,14 @@ filter_ressources <- function(ressources, internal_id) {
 #' @export
 #'
 #' @examples
-extract_threshold <- function(threshold_values, pollutant = NULL, aggregation = "y1", metric = "mean", unit = "µg/m3", 
+extract_threshold <- function(threshold_values, pollutant = NULL, metric = "Jahresmittel", interval = "y1", unit = "µg/m3", 
                           source = c("LRV Grenzwert", "WHO Richtwert")) {
 
   thresholds <-
     threshold_values |>
     dplyr::filter(
       source %in% !!source &
-        pollutant == !!pollutant & aggregation == !!aggregation &
+        pollutant == !!pollutant & interval == !!interval &
         metric == !!metric & unit == !!unit
     ) |>
     dplyr::arrange(source)
@@ -67,7 +67,7 @@ extract_threshold <- function(threshold_values, pollutant = NULL, aggregation = 
 #' @export
 #'
 #' @examples
-longtitle <- function(x) {
+longpollutant <- function(x) {
   
   long <- dplyr::case_when(
     x == "PM10" ~ "Feinstaub PM10",
@@ -83,6 +83,7 @@ longtitle <- function(x) {
     x == "O3_max_98p_m1" ~ "Ozon",
     x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "Ozon",
     x == "O3_nb_h1>120" ~ "Ozon",
+    x == "N-Eintrag" ~ "Stickstoffeintrag in empfindliche Ökosysteme",
     TRUE ~ x
   )
   
@@ -99,7 +100,7 @@ longtitle <- function(x) {
 #' @export
 #'
 #' @examples
-shorttitle <- function(x) {
+shortpollutant <- function(x) {
   
   long <- dplyr::case_when(
     x == "O3_max_98p_m1" ~ "O3",

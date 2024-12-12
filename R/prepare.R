@@ -259,7 +259,7 @@ prepare_monitoring_aq <- function(data, meta) {
     dplyr::filter(!is.na(siteclass)) |> 
     dplyr::arrange(site, parameter, starttime) |> 
     dplyr::mutate(
-      pollutant = shorttitle(parameter),
+      pollutant = shortpollutant(parameter),
       metric = longmetric(parameter)
     ) |>
     dplyr::rename(concentration = value) |> 
@@ -332,7 +332,7 @@ prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
                                 "bc" = "eBC",
                                 "mp98" = "O3_max_98p_m1"
       ),
-      pollutant = shorttitle(parameter),
+      pollutant = shortpollutant(parameter),
       metric = longmetric(parameter),
       unit = "µg/m3",
       source = "BAFU & BFS"
@@ -386,7 +386,7 @@ prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, bounda
                                 "bc" = "eBC",
                                 "mp98" = "O3_max_98p_m1"
       ),
-      pollutant = shorttitle(parameter),
+      pollutant = shortpollutant(parameter),
       metric = longmetric(parameter),
       unit = "µg/m3",
       source = "BAFU & BFS"
@@ -419,7 +419,7 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
     dplyr::left_join(outcomes_meta, by = c("pollutant", "metric")) |> 
     dplyr::left_join(data_deathrates, by = "year") |> 
     dplyr::mutate(
-      scenario = dplyr::recode(scenario, population_weighted_mean = "aktuell", population_weighted_mean_base = paste0("vermieden vs. ",na.omit(unique(.data$base_year)))),
+      scenario = dplyr::recode(scenario, population_weighted_mean = "tatsächliche Belastung", population_weighted_mean_base = paste0("vermieden vs. ",na.omit(unique(.data$base_year)))),
       concentration_min = ifelse(stringr::str_detect(scenario, "vermieden"), NA, concentration_min),
       caserate_per_person = caserate * factor_caserate
     ) |> 
@@ -429,7 +429,7 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
   # calculate outcomes
   data <-
     data |> 
-    dplyr::filter(scenario == "aktuell") |> 
+    dplyr::filter(scenario == "tatsächliche Belastung") |> 
     dplyr::mutate(min_conc_threshold = pmin(concentration_min, lower_conc_threshold)) |> 
     calculate_all_outcomes(conc_threshold = "min_conc_threshold") |> 
     dplyr::select(year, pollutant, metric, scenario, outcome_type, outcome) |>
@@ -444,10 +444,10 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
     data |> 
     dplyr::select(year, pollutant, metric, scenario, outcome_type, outcome, population) |> 
     tidyr::spread(scenario, outcome) |> 
-    dplyr::mutate(`vermieden vs. 2015` = pmin(0, aktuell - `vermieden vs. 2015`)) |> 
-    dplyr::select(-aktuell) |> 
+    dplyr::mutate(`vermieden vs. 2015` = pmin(0, `tatsächliche Belastung` - `vermieden vs. 2015`)) |> 
+    dplyr::select(-`tatsächliche Belastung`) |> 
     tidyr::gather(scenario, outcome, -year, -pollutant, -metric, -outcome_type, -population) |> 
-    dplyr::bind_rows(dplyr::filter(data, scenario == "aktuell")) |> 
+    dplyr::bind_rows(dplyr::filter(data, scenario == "tatsächliche Belastung")) |> 
     dplyr::arrange(pollutant, metric, scenario, year, outcome_type) |> 
     dplyr::filter(!is.na(outcome)) |> 
     dplyr::select(year, pollutant, metric, outcome_type,  population, scenario, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)

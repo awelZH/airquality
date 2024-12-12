@@ -485,26 +485,42 @@ plot_pars_popmean_timeseries <- function(data, parameters) {
 #'
 #' @param data 
 #' @param parameters 
+#' @param relative
 #'
 #' @keywords internal
-plot_pars_prelim_deaths_timeseries <- function(data, parameters) {
+plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALSE) {
  
   plots <- 
     lapply(setNames(parameters, parameters), function(parameter) {
+   
+      data <- 
+        data |>
+        dplyr::filter(pollutant == !!parameter & outcome_type == "vorzeitige Todesfälle")
+
+      if (relative) {
+        mppng <- ggplot2::aes(x = year, y = outcome / population * 10^5, fill = scenario)
+        sub <- "Anzahl vorzeitige Todesfälle pro 100'000 Einwohner/innen pro Jahr"
+        uncertainty <- ggplot2::geom_linerange(ggplot2::aes(ymin = outcome_lower / population * 10^5, ymax = outcome_upper / population * 10^5 + outcome_delta_min_conc / population * 10^5), color = "gray20") 
+      } else {
+        mppng <- ggplot2::aes(x = year, y = outcome, fill = scenario)
+        sub <- "Anzahl vorzeitige Todesfälle pro Jahr"
+        uncertainty <- ggplot2::geom_linerange(ggplot2::aes(ymin = outcome_lower, ymax = outcome_upper + outcome_delta_min_conc), color = "gray20") 
+      }
       
-      data |>
-        dplyr::filter(pollutant == !!parameter & outcome_type == "vorzeitige Todesfälle") |>
+      plot <- 
+        data |> 
         ggplot_timeseries_bars(
-          mapping = ggplot2::aes(x = year, y = outcome, fill = scenario),
+          mapping = mppng,
           titlelab = ggplot2::ggtitle(
             label = openair::quickText(paste0("Vorzeitige Todesfälle durch ",longtitle(parameter))),
-            subtitle = "Anzahl vorzeitige Todesfälle pro Jahr"
+            subtitle = sub
           ),
           captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS & Statistisches Amt Kanton Zürich"),
           theme = theme_ts
         ) + 
-        geom_linerange(ggplot2::aes(ymin = outcome_lower, ymax = outcome_upper + outcome_delta_min_conc), color = "gray20")
-      
+       uncertainty
+
+      return(plot)
     })
   
   return(plots)

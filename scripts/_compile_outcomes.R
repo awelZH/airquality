@@ -13,7 +13,7 @@ outcomes_meta <-
 data_deathrates <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
 
 # => read population weighted mean data
-data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv") 
+data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv", locale = readr::locale(encoding = "UTF-8")) 
 
 
 # prepare datasets ...
@@ -48,6 +48,24 @@ rm(list = c("outcomes_meta", "data_deathrates", "data_expo_weighmean", "data_out
 
 
 # ...testing
+
+# 
+# apiurl <- "https://ckan.opendata.swiss/api/3/action/package_show?id=todesfalle-nach-alter-geschlecht-kanton-und-stadt-1999-2023"
+# req <- httr2::request(apiurl)
+# req_data <- httr2::req_perform(req)
+# metadata <- httr2::resp_body_json(req_data)$result        
+# links <- unlist(purrr::map(metadata$resources, function(x) x$url))
+# download_link <- links[stringr::str_detect(links, file_filter)]
+# 
+# 
+# get_opendataswiss_metadata(url, "32007276/master")
+# read_url <- get_opendataswiss_metadata(url, file_filter = "32007276/master")
+
+
+
+
+
+
 # d <- read_opendataswiss_json("https://ckan.opendata.swiss/api/3/action/package_show?id=todesfalle-nach-institutionellen-gliederungen-geschlecht-staatsangehorigkeit-kategorie-zivilsta5", source = "BFS", file_filter = "api/v1/de")
 # 
 # 

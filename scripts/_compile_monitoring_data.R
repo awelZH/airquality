@@ -26,13 +26,13 @@ site_meta <- prepare_monitoring_meta(site_meta_ostluft, site_meta_nabel)
 # => restructure NABEL & calculate O3 peak season from h1 data
 data_monitoring_nabel <- 
   data_monitoring_nabel |> 
-  prepare_monitoring_nabel_y1() |> 
-  dplyr::filter(site %in% c("Zürich-Kaserne", "Dübendorf-EMPA")) # the only NABEL-sites in Canton Zürich
+  prepare_monitoring_nabel_y1() 
 
 data_monitoring_nabel <-
   data_monitoring_nabel_h1 |>
   prepare_monitoring_nabel_h1() |>
-  dplyr::bind_rows(data_monitoring_nabel)
+  dplyr::bind_rows(data_monitoring_nabel) |> 
+  dplyr::filter(site %in% c("Zürich-Kaserne", "Dübendorf-EMPA")) # the only NABEL-sites in Canton Zürich
 
 # => restructure Ostluft & calculate O3 peak season from h1 data
 data_monitoring_ostluft <- prepare_monitoring_ostluft_y1(data_monitoring_ostluft)
@@ -51,6 +51,7 @@ data_monitoring_aq <-
 # ---
 # => aggregate individual components of nitrogen deposition
 data_monitoring_ndep <- aggregate_nitrogen_deposition(data_monitoring_ndep)
+
 
 # write output datasets & clean up:
 # ---

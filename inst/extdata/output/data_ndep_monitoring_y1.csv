@@ -1,205 +1,205 @@
-year;site;site_long;source;siteclass;ecosystem_category;critical_load_min;critical_load_single;critical_load_max;parameter;unit;value;estimate
-2001;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.108092928;NA
-2001;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;16.627215921;NA
-2001;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;23.73530885;geschätzt
-2001;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.587945816;NA
-2001;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;26.501188311;NA
-2001;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;35.08913413;geschätzt
-2002;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.253794452;NA
-2002;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;17.661686992;NA
-2002;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;24.91548144;geschätzt
-2002;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.546210279;NA
-2002;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;26.992942410999998;NA
-2002;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;35.53915269;geschätzt
-2003;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;6.920150188;NA
-2003;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;16.735532469;NA
-2003;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;23.65568266;geschätzt
-2003;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.502958029;NA
-2003;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;26.723804288;NA
-2003;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;35.22676232;geschätzt
-2004;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.025132536;NA
-2004;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;13.943260624;NA
-2004;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;20.96839316;gemessen
-2004;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.398768873;NA
-2004;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;20.792276893;NA
-2004;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;29.19104576;gemessen
-2005;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.548995528;NA
-2005;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;15.022971672;NA
-2005;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;22.5719672;gemessen
-2005;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.913382918;NA
-2005;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;21.960110687;NA
-2005;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;30.8734936;gemessen
-2006;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;8.048167755;NA
-2006;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;18.516759222999998;NA
-2006;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;26.56492698;gemessen
-2006;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;9.494996633;NA
-2006;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;28.479555611;NA
-2006;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;37.97455224;gemessen
-2007;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;6.903831433;NA
-2007;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;14.936159137999999;NA
-2007;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;21.83999057;gemessen
-2007;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.300701362;NA
-2007;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;23.466592975;NA
-2007;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;31.76729434;gemessen
-2008;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.003830327;NA
-2008;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;12.561062861;NA
-2008;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;19.56489319;gemessen
-2008;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.4922813089999991;NA
-2008;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;19.474052141999998;NA
-2008;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;27.96633345;gemessen
-2009;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.137177637000001;NA
-2009;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;15.74687839;NA
-2009;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;22.88405603;gemessen
-2009;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.50983168;NA
-2009;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;24.736022697;NA
-2009;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;33.245854370000004;gemessen
-2010;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.2737993240000005;NA
-2010;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;13.320279487;NA
-2010;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;20.59407881;gemessen
-2010;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.735088499;NA
-2010;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;21.299259903;NA
-2010;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;30.0343484;gemessen
-2011;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;6.671130229;NA
-2011;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;14.387985767;NA
-2011;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;21.059116;gemessen
-2011;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.169535448;NA
-2011;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;23.683404171;NA
-2011;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;31.85293962;gemessen
-2012;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.400164453;NA
-2012;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;13.638891486;NA
-2012;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;21.03905594;gemessen
-2012;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.747928979000001;NA
-2012;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;21.478120187000002;NA
-2012;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;30.22604916;gemessen
-2013;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.767668941;NA
-2013;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;13.398425537;NA
-2013;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;21.16609448;gemessen
-2013;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;9.273327588;NA
-2013;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;20.585264261;NA
-2013;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;29.85859185;gemessen
-2014;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;6.612183089;NA
-2014;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;14.635644942;NA
-2014;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;21.24782803;gemessen
-2014;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;7.941082661;NA
-2014;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;23.684067017;NA
-2014;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;31.62514968;gemessen
-2015;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;5.810171002;NA
-2015;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;12.944468749;NA
-2015;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;18.75463975;gemessen
-2015;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;7.1081931659999995;NA
-2015;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;21.510050354;NA
-2015;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;28.61824351;gemessen
-2016;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;6.594544774;NA
-2016;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;13.443287035000001;NA
-2016;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;20.03783181;gemessen
-2016;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;7.819195532;NA
-2016;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;21.10630338;NA
-2016;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;28.92549891;gemessen
-2017;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;7.0450440620000006;NA
-2017;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;14.887774009;NA
-2017;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;21.93281807;gemessen
-2017;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.261950681;NA
-2017;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;23.402912354999998;NA
-2017;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;31.66486304;gemessen
-2018;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;5.464717528;NA
-2018;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;17.741991384;NA
-2018;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;23.20670892;gemessen
-2018;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;6.737716464;NA
-2018;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;30.591148217999997;NA
-2018;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;37.32886468;gemessen
-2019;AEG;Knonau-Ägelsee;Ostluft;hoch;Hochmoor;5;5;10;aus NOx-Quellen;kg-N/ha/a;5.147228262;NA
-2019;AEG;Knonau-Ägelsee;Ostluft;hoch;Hochmoor;5;5;10;aus NH3-Quellen;kg-N/ha/a;15.972867682;NA
-2019;AEG;Knonau-Ägelsee;Ostluft;hoch;Hochmoor;5;5;10;N-Deposition;kg-N/ha/a;21.12009595;gemessen
-2019;AEG;Knonau-Ägelsee;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;7.212614480999999;NA
-2019;AEG;Knonau-Ägelsee;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;19.636523960999998;NA
-2019;AEG;Knonau-Ägelsee;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;26.84913845;gemessen
-2019;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;5.51014807;NA
-2019;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;16.694874335999998;NA
-2019;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;22.20502241;gemessen
-2019;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;6.603465764;NA
-2019;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;27.905847553999998;NA
-2019;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;34.50931332;gemessen
-2019;TAB;Tablat-Risihölzli;Ostluft;mittel;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;5.156721989;NA
-2019;TAB;Tablat-Risihölzli;Ostluft;mittel;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;12.471131434;NA
-2019;TAB;Tablat-Risihölzli;Ostluft;mittel;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;17.62785342;gemessen
-2019;TAB;Tablat-Risihölzli;Ostluft;mittel;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;6.634431331;NA
-2019;TAB;Tablat-Risihölzli;Ostluft;mittel;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;20.246934078;NA
-2019;TAB;Tablat-Risihölzli;Ostluft;mittel;Wald;5;10;20;N-Deposition;kg-N/ha/a;26.88136541;gemessen
-2020;AEG;Knonau-Ägelsee;Ostluft;hoch;Hochmoor;5;5;10;aus NOx-Quellen;kg-N/ha/a;4.955512359;NA
-2020;AEG;Knonau-Ägelsee;Ostluft;hoch;Hochmoor;5;5;10;aus NH3-Quellen;kg-N/ha/a;18.987390665;NA
-2020;AEG;Knonau-Ägelsee;Ostluft;hoch;Hochmoor;5;5;10;N-Deposition;kg-N/ha/a;23.94290303;geschätzt
-2020;AEG;Knonau-Ägelsee;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;7.074133848;NA
-2020;AEG;Knonau-Ägelsee;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;23.173696487;NA
-2020;AEG;Knonau-Ägelsee;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;30.24783033;geschätzt
-2020;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;4.379869707999999;NA
-2020;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;14.286637425;NA
-2020;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;18.66650713;geschätzt
-2020;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;5.2930439389999995;NA
-2020;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;23.951188803999997;NA
-2020;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;29.24423274;geschätzt
-2020;TAB;Tablat-Risihölzli;Ostluft;mittel;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;4.858442971;NA
-2020;TAB;Tablat-Risihölzli;Ostluft;mittel;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;12.443610550999999;NA
-2020;TAB;Tablat-Risihölzli;Ostluft;mittel;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;17.30205352;geschätzt
-2020;TAB;Tablat-Risihölzli;Ostluft;mittel;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;6.6721478020000005;NA
-2020;TAB;Tablat-Risihölzli;Ostluft;mittel;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;20.616452892999998;NA
-2020;TAB;Tablat-Risihölzli;Ostluft;mittel;Wald;5;10;20;N-Deposition;kg-N/ha/a;27.2886007;geschätzt
-2021;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;4.543817761000001;NA
-2021;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;12.672709023;NA
-2021;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;17.21652678;gemessen
-2021;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;5.503454389;NA
-2021;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;20.439211109000002;NA
-2021;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;25.9426655;gemessen
-2021;NET;Neerach-Turpenlöcher;Ostluft;mittel;Flachmoor;15;15;30;aus NOx-Quellen;kg-N/ha/a;5.444578218;NA
-2021;NET;Neerach-Turpenlöcher;Ostluft;mittel;Flachmoor;15;15;30;aus NH3-Quellen;kg-N/ha/a;18.315783025000002;NA
-2021;NET;Neerach-Turpenlöcher;Ostluft;mittel;Flachmoor;15;15;30;N-Deposition;kg-N/ha/a;23.76036124;geschätzt
-2021;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Flachmoor;15;15;25;aus NOx-Quellen;kg-N/ha/a;5.135216847;NA
-2021;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Flachmoor;15;15;25;aus NH3-Quellen;kg-N/ha/a;14.596189676;NA
-2021;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Flachmoor;15;15;25;N-Deposition;kg-N/ha/a;19.73140652;geschätzt
-2021;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;7.394963441;NA
-2021;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;17.617248893;NA
-2021;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Wald;5;10;20;N-Deposition;kg-N/ha/a;25.01221234;geschätzt
-2021;WAB;Wasterkingen-Büelhalden;Ostluft;mittel;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;4.831286298;NA
-2021;WAB;Wasterkingen-Büelhalden;Ostluft;mittel;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;10.456337505;NA
-2021;WAB;Wasterkingen-Büelhalden;Ostluft;mittel;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;15.2876238;geschätzt
-2021;WAB;Wasterkingen-Büelhalden;Ostluft;mittel;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;6.773480318000001;NA
-2021;WAB;Wasterkingen-Büelhalden;Ostluft;mittel;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;16.509898033;NA
-2021;WAB;Wasterkingen-Büelhalden;Ostluft;mittel;Wald;5;10;20;N-Deposition;kg-N/ha/a;23.28337835;geschätzt
-2021;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;5.858075357000001;NA
-2021;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;11.159646432;NA
-2021;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;17.01772179;geschätzt
-2021;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.618891272;NA
-2021;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;17.944241558999998;NA
-2021;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Wald;5;10;20;N-Deposition;kg-N/ha/a;26.56313283;geschätzt
-2022;AEG;Knonau-Ägelsee;Ostluft;hoch;Hochmoor;5;5;10;aus NOx-Quellen;kg-N/ha/a;4.7636576029999995;NA
-2022;AEG;Knonau-Ägelsee;Ostluft;hoch;Hochmoor;5;5;10;aus NH3-Quellen;kg-N/ha/a;14.419593496;NA
-2022;AEG;Knonau-Ägelsee;Ostluft;hoch;Hochmoor;5;5;10;N-Deposition;kg-N/ha/a;19.1832511;gemessen
-2022;AEG;Knonau-Ägelsee;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;6.690348932;NA
-2022;AEG;Knonau-Ägelsee;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;17.399104074;NA
-2022;AEG;Knonau-Ägelsee;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;24.08945301;gemessen
-2022;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;5.118302548;NA
-2022;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;14.518898805000001;NA
-2022;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;19.63720135;gemessen
-2022;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;5.95929233;NA
-2022;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;22.712629139;NA
-2022;BA;Hinwil-Bachtel Sennenberg;Ostluft;hoch;Wald;5;10;20;N-Deposition;kg-N/ha/a;28.67192147;gemessen
-2022;NET;Neerach-Turpenlöcher;Ostluft;mittel;Flachmoor;15;15;30;aus NOx-Quellen;kg-N/ha/a;5.259246171;NA
-2022;NET;Neerach-Turpenlöcher;Ostluft;mittel;Flachmoor;15;15;30;aus NH3-Quellen;kg-N/ha/a;19.89007229;NA
-2022;NET;Neerach-Turpenlöcher;Ostluft;mittel;Flachmoor;15;15;30;N-Deposition;kg-N/ha/a;25.14931846;geschätzt
-2022;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Flachmoor;15;15;25;aus NOx-Quellen;kg-N/ha/a;4.916032351;NA
-2022;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Flachmoor;15;15;25;aus NH3-Quellen;kg-N/ha/a;15.630611285;NA
-2022;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Flachmoor;15;15;25;N-Deposition;kg-N/ha/a;20.54664363;geschätzt
-2022;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;7.050225579;NA
-2022;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;19.016101034000002;NA
-2022;OSD;Ossingen-Dachsenhuserriet;Ostluft;mittel;Wald;5;10;20;N-Deposition;kg-N/ha/a;26.06632661;geschätzt
-2022;TAB;Tablat-Risihölzli;Ostluft;mittel;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;5.015007396;NA
-2022;TAB;Tablat-Risihölzli;Ostluft;mittel;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;12.858771739;NA
-2022;TAB;Tablat-Risihölzli;Ostluft;mittel;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;17.87377914;geschätzt
-2022;TAB;Tablat-Risihölzli;Ostluft;mittel;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;6.730022818;NA
-2022;TAB;Tablat-Risihölzli;Ostluft;mittel;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;21.018964575000002;NA
-2022;TAB;Tablat-Risihölzli;Ostluft;mittel;Wald;5;10;20;N-Deposition;kg-N/ha/a;27.74898739;geschätzt
-2022;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Trockenrasen;15;15;25;aus NOx-Quellen;kg-N/ha/a;5.632902509;NA
-2022;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Trockenrasen;15;15;25;aus NH3-Quellen;kg-N/ha/a;11.599702204;NA
-2022;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Trockenrasen;15;15;25;N-Deposition;kg-N/ha/a;17.23260471;geschätzt
-2022;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Wald;5;10;20;aus NOx-Quellen;kg-N/ha/a;8.242390139000001;NA
-2022;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Wald;5;10;20;aus NH3-Quellen;kg-N/ha/a;19.003725628999998;NA
-2022;WIH;Winterthur-Hoh Wülflingen;Ostluft;mittel;Wald;5;10;20;N-Deposition;kg-N/ha/a;27.24611577;geschätzt
+year;site;site_long;siteclass;ecosystem_category;component;metric;deposition;unit;source;critical_load_min;critical_load_single;critical_load_max;estimate
+2001;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.108092928;kg-N/ha/a;Ostluft;15;15;25;NA
+2001;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;16.627215921;kg-N/ha/a;Ostluft;15;15;25;NA
+2001;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;23.73530885;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2001;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.587945816;kg-N/ha/a;Ostluft;5;10;20;NA
+2001;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;26.501188311;kg-N/ha/a;Ostluft;5;10;20;NA
+2001;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;35.08913413;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2002;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.253794452;kg-N/ha/a;Ostluft;15;15;25;NA
+2002;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;17.661686992;kg-N/ha/a;Ostluft;15;15;25;NA
+2002;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;24.91548144;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2002;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.546210279;kg-N/ha/a;Ostluft;5;10;20;NA
+2002;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;26.992942410999998;kg-N/ha/a;Ostluft;5;10;20;NA
+2002;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;35.53915269;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2003;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;6.920150188;kg-N/ha/a;Ostluft;15;15;25;NA
+2003;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;16.735532469;kg-N/ha/a;Ostluft;15;15;25;NA
+2003;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;23.65568266;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2003;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.502958029;kg-N/ha/a;Ostluft;5;10;20;NA
+2003;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;26.723804288;kg-N/ha/a;Ostluft;5;10;20;NA
+2003;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;35.22676232;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2004;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.025132536;kg-N/ha/a;Ostluft;15;15;25;NA
+2004;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;13.943260624;kg-N/ha/a;Ostluft;15;15;25;NA
+2004;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;20.96839316;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2004;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.398768873;kg-N/ha/a;Ostluft;5;10;20;NA
+2004;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;20.792276893;kg-N/ha/a;Ostluft;5;10;20;NA
+2004;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;29.19104576;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2005;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.548995528;kg-N/ha/a;Ostluft;15;15;25;NA
+2005;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;15.022971672;kg-N/ha/a;Ostluft;15;15;25;NA
+2005;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;22.5719672;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2005;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.913382918;kg-N/ha/a;Ostluft;5;10;20;NA
+2005;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;21.960110687;kg-N/ha/a;Ostluft;5;10;20;NA
+2005;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;30.8734936;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2006;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;8.048167755;kg-N/ha/a;Ostluft;15;15;25;NA
+2006;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;18.516759222999998;kg-N/ha/a;Ostluft;15;15;25;NA
+2006;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;26.56492698;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2006;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;9.494996633;kg-N/ha/a;Ostluft;5;10;20;NA
+2006;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;28.479555611;kg-N/ha/a;Ostluft;5;10;20;NA
+2006;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;37.97455224;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2007;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;6.903831433;kg-N/ha/a;Ostluft;15;15;25;NA
+2007;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;14.936159137999999;kg-N/ha/a;Ostluft;15;15;25;NA
+2007;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;21.83999057;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2007;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.300701362;kg-N/ha/a;Ostluft;5;10;20;NA
+2007;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;23.466592975;kg-N/ha/a;Ostluft;5;10;20;NA
+2007;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;31.76729434;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2008;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.003830327;kg-N/ha/a;Ostluft;15;15;25;NA
+2008;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;12.561062861;kg-N/ha/a;Ostluft;15;15;25;NA
+2008;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;19.56489319;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2008;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.4922813089999991;kg-N/ha/a;Ostluft;5;10;20;NA
+2008;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;19.474052141999998;kg-N/ha/a;Ostluft;5;10;20;NA
+2008;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;27.96633345;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2009;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.137177637000001;kg-N/ha/a;Ostluft;15;15;25;NA
+2009;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;15.74687839;kg-N/ha/a;Ostluft;15;15;25;NA
+2009;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;22.88405603;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2009;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.50983168;kg-N/ha/a;Ostluft;5;10;20;NA
+2009;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;24.736022697;kg-N/ha/a;Ostluft;5;10;20;NA
+2009;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;33.245854370000004;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2010;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.2737993240000005;kg-N/ha/a;Ostluft;15;15;25;NA
+2010;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;13.320279487;kg-N/ha/a;Ostluft;15;15;25;NA
+2010;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;20.59407881;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2010;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.735088499;kg-N/ha/a;Ostluft;5;10;20;NA
+2010;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;21.299259903;kg-N/ha/a;Ostluft;5;10;20;NA
+2010;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;30.0343484;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2011;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;6.671130229;kg-N/ha/a;Ostluft;15;15;25;NA
+2011;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;14.387985767;kg-N/ha/a;Ostluft;15;15;25;NA
+2011;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;21.059116;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2011;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.169535448;kg-N/ha/a;Ostluft;5;10;20;NA
+2011;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;23.683404171;kg-N/ha/a;Ostluft;5;10;20;NA
+2011;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;31.85293962;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2012;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.400164453;kg-N/ha/a;Ostluft;15;15;25;NA
+2012;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;13.638891486;kg-N/ha/a;Ostluft;15;15;25;NA
+2012;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;21.03905594;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2012;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.747928979000001;kg-N/ha/a;Ostluft;5;10;20;NA
+2012;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;21.478120187000002;kg-N/ha/a;Ostluft;5;10;20;NA
+2012;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;30.22604916;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2013;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.767668941;kg-N/ha/a;Ostluft;15;15;25;NA
+2013;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;13.398425537;kg-N/ha/a;Ostluft;15;15;25;NA
+2013;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;21.16609448;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2013;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;9.273327588;kg-N/ha/a;Ostluft;5;10;20;NA
+2013;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;20.585264261;kg-N/ha/a;Ostluft;5;10;20;NA
+2013;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;29.85859185;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2014;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;6.612183089;kg-N/ha/a;Ostluft;15;15;25;NA
+2014;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;14.635644942;kg-N/ha/a;Ostluft;15;15;25;NA
+2014;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;21.24782803;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2014;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;7.941082661;kg-N/ha/a;Ostluft;5;10;20;NA
+2014;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;23.684067017;kg-N/ha/a;Ostluft;5;10;20;NA
+2014;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;31.62514968;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2015;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;5.810171002;kg-N/ha/a;Ostluft;15;15;25;NA
+2015;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;12.944468749;kg-N/ha/a;Ostluft;15;15;25;NA
+2015;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;18.75463975;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2015;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;7.1081931659999995;kg-N/ha/a;Ostluft;5;10;20;NA
+2015;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;21.510050354;kg-N/ha/a;Ostluft;5;10;20;NA
+2015;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;28.61824351;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2016;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;6.594544774;kg-N/ha/a;Ostluft;15;15;25;NA
+2016;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;13.443287035000001;kg-N/ha/a;Ostluft;15;15;25;NA
+2016;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;20.03783181;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2016;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;7.819195532;kg-N/ha/a;Ostluft;5;10;20;NA
+2016;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;21.10630338;kg-N/ha/a;Ostluft;5;10;20;NA
+2016;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;28.92549891;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2017;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;7.0450440620000006;kg-N/ha/a;Ostluft;15;15;25;NA
+2017;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;14.887774009;kg-N/ha/a;Ostluft;15;15;25;NA
+2017;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;21.93281807;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2017;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;8.261950681;kg-N/ha/a;Ostluft;5;10;20;NA
+2017;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;23.402912354999998;kg-N/ha/a;Ostluft;5;10;20;NA
+2017;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;31.66486304;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2018;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;5.464717528;kg-N/ha/a;Ostluft;15;15;25;NA
+2018;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;17.741991384;kg-N/ha/a;Ostluft;15;15;25;NA
+2018;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;23.20670892;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2018;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;6.737716464;kg-N/ha/a;Ostluft;5;10;20;NA
+2018;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;30.591148217999997;kg-N/ha/a;Ostluft;5;10;20;NA
+2018;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;37.32886468;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2019;AEG;Knonau-Ägelsee;hoch;Hochmoor;aus NOx-Quellen;Jahreseintrag;5.147228262;kg-N/ha/a;Ostluft;5;5;10;NA
+2019;AEG;Knonau-Ägelsee;hoch;Hochmoor;aus NH3-Quellen;Jahreseintrag;15.972867682;kg-N/ha/a;Ostluft;5;5;10;NA
+2019;AEG;Knonau-Ägelsee;hoch;Hochmoor;N-Deposition;Jahreseintrag;21.12009595;kg-N/ha/a;Ostluft;5;5;10;gemessen
+2019;AEG;Knonau-Ägelsee;hoch;Wald;aus NOx-Quellen;Jahreseintrag;7.212614480999999;kg-N/ha/a;Ostluft;5;10;20;NA
+2019;AEG;Knonau-Ägelsee;hoch;Wald;aus NH3-Quellen;Jahreseintrag;19.636523960999998;kg-N/ha/a;Ostluft;5;10;20;NA
+2019;AEG;Knonau-Ägelsee;hoch;Wald;N-Deposition;Jahreseintrag;26.84913845;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2019;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;5.51014807;kg-N/ha/a;Ostluft;15;15;25;NA
+2019;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;16.694874335999998;kg-N/ha/a;Ostluft;15;15;25;NA
+2019;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;22.20502241;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2019;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;6.603465764;kg-N/ha/a;Ostluft;5;10;20;NA
+2019;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;27.905847553999998;kg-N/ha/a;Ostluft;5;10;20;NA
+2019;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;34.50931332;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2019;TAB;Tablat-Risihölzli;mittel;Trockenrasen;aus NOx-Quellen;Jahreseintrag;5.156721989;kg-N/ha/a;Ostluft;15;15;25;NA
+2019;TAB;Tablat-Risihölzli;mittel;Trockenrasen;aus NH3-Quellen;Jahreseintrag;12.471131434;kg-N/ha/a;Ostluft;15;15;25;NA
+2019;TAB;Tablat-Risihölzli;mittel;Trockenrasen;N-Deposition;Jahreseintrag;17.62785342;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2019;TAB;Tablat-Risihölzli;mittel;Wald;aus NOx-Quellen;Jahreseintrag;6.634431331;kg-N/ha/a;Ostluft;5;10;20;NA
+2019;TAB;Tablat-Risihölzli;mittel;Wald;aus NH3-Quellen;Jahreseintrag;20.246934078;kg-N/ha/a;Ostluft;5;10;20;NA
+2019;TAB;Tablat-Risihölzli;mittel;Wald;N-Deposition;Jahreseintrag;26.88136541;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2020;AEG;Knonau-Ägelsee;hoch;Hochmoor;aus NOx-Quellen;Jahreseintrag;4.955512359;kg-N/ha/a;Ostluft;5;5;10;NA
+2020;AEG;Knonau-Ägelsee;hoch;Hochmoor;aus NH3-Quellen;Jahreseintrag;18.987390665;kg-N/ha/a;Ostluft;5;5;10;NA
+2020;AEG;Knonau-Ägelsee;hoch;Hochmoor;N-Deposition;Jahreseintrag;23.94290303;kg-N/ha/a;Ostluft;5;5;10;geschätzt
+2020;AEG;Knonau-Ägelsee;hoch;Wald;aus NOx-Quellen;Jahreseintrag;7.074133848;kg-N/ha/a;Ostluft;5;10;20;NA
+2020;AEG;Knonau-Ägelsee;hoch;Wald;aus NH3-Quellen;Jahreseintrag;23.173696487;kg-N/ha/a;Ostluft;5;10;20;NA
+2020;AEG;Knonau-Ägelsee;hoch;Wald;N-Deposition;Jahreseintrag;30.24783033;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2020;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;4.379869707999999;kg-N/ha/a;Ostluft;15;15;25;NA
+2020;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;14.286637425;kg-N/ha/a;Ostluft;15;15;25;NA
+2020;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;18.66650713;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2020;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;5.2930439389999995;kg-N/ha/a;Ostluft;5;10;20;NA
+2020;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;23.951188803999997;kg-N/ha/a;Ostluft;5;10;20;NA
+2020;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;29.24423274;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2020;TAB;Tablat-Risihölzli;mittel;Trockenrasen;aus NOx-Quellen;Jahreseintrag;4.858442971;kg-N/ha/a;Ostluft;15;15;25;NA
+2020;TAB;Tablat-Risihölzli;mittel;Trockenrasen;aus NH3-Quellen;Jahreseintrag;12.443610550999999;kg-N/ha/a;Ostluft;15;15;25;NA
+2020;TAB;Tablat-Risihölzli;mittel;Trockenrasen;N-Deposition;Jahreseintrag;17.30205352;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2020;TAB;Tablat-Risihölzli;mittel;Wald;aus NOx-Quellen;Jahreseintrag;6.6721478020000005;kg-N/ha/a;Ostluft;5;10;20;NA
+2020;TAB;Tablat-Risihölzli;mittel;Wald;aus NH3-Quellen;Jahreseintrag;20.616452892999998;kg-N/ha/a;Ostluft;5;10;20;NA
+2020;TAB;Tablat-Risihölzli;mittel;Wald;N-Deposition;Jahreseintrag;27.2886007;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2021;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;4.543817761000001;kg-N/ha/a;Ostluft;15;15;25;NA
+2021;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;12.672709023;kg-N/ha/a;Ostluft;15;15;25;NA
+2021;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;17.21652678;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2021;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;5.503454389;kg-N/ha/a;Ostluft;5;10;20;NA
+2021;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;20.439211109000002;kg-N/ha/a;Ostluft;5;10;20;NA
+2021;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;25.9426655;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2021;NET;Neerach-Turpenlöcher;mittel;Flachmoor;aus NOx-Quellen;Jahreseintrag;5.444578218;kg-N/ha/a;Ostluft;15;15;30;NA
+2021;NET;Neerach-Turpenlöcher;mittel;Flachmoor;aus NH3-Quellen;Jahreseintrag;18.315783025000002;kg-N/ha/a;Ostluft;15;15;30;NA
+2021;NET;Neerach-Turpenlöcher;mittel;Flachmoor;N-Deposition;Jahreseintrag;23.76036124;kg-N/ha/a;Ostluft;15;15;30;geschätzt
+2021;OSD;Ossingen-Dachsenhuserriet;mittel;Flachmoor;aus NOx-Quellen;Jahreseintrag;5.135216847;kg-N/ha/a;Ostluft;15;15;25;NA
+2021;OSD;Ossingen-Dachsenhuserriet;mittel;Flachmoor;aus NH3-Quellen;Jahreseintrag;14.596189676;kg-N/ha/a;Ostluft;15;15;25;NA
+2021;OSD;Ossingen-Dachsenhuserriet;mittel;Flachmoor;N-Deposition;Jahreseintrag;19.73140652;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2021;OSD;Ossingen-Dachsenhuserriet;mittel;Wald;aus NOx-Quellen;Jahreseintrag;7.394963441;kg-N/ha/a;Ostluft;5;10;20;NA
+2021;OSD;Ossingen-Dachsenhuserriet;mittel;Wald;aus NH3-Quellen;Jahreseintrag;17.617248893;kg-N/ha/a;Ostluft;5;10;20;NA
+2021;OSD;Ossingen-Dachsenhuserriet;mittel;Wald;N-Deposition;Jahreseintrag;25.01221234;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2021;WAB;Wasterkingen-Büelhalden;mittel;Trockenrasen;aus NOx-Quellen;Jahreseintrag;4.831286298;kg-N/ha/a;Ostluft;15;15;25;NA
+2021;WAB;Wasterkingen-Büelhalden;mittel;Trockenrasen;aus NH3-Quellen;Jahreseintrag;10.456337505;kg-N/ha/a;Ostluft;15;15;25;NA
+2021;WAB;Wasterkingen-Büelhalden;mittel;Trockenrasen;N-Deposition;Jahreseintrag;15.2876238;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2021;WAB;Wasterkingen-Büelhalden;mittel;Wald;aus NOx-Quellen;Jahreseintrag;6.773480318000001;kg-N/ha/a;Ostluft;5;10;20;NA
+2021;WAB;Wasterkingen-Büelhalden;mittel;Wald;aus NH3-Quellen;Jahreseintrag;16.509898033;kg-N/ha/a;Ostluft;5;10;20;NA
+2021;WAB;Wasterkingen-Büelhalden;mittel;Wald;N-Deposition;Jahreseintrag;23.28337835;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2021;WIH;Winterthur-Hoh Wülflingen;mittel;Trockenrasen;aus NOx-Quellen;Jahreseintrag;5.858075357000001;kg-N/ha/a;Ostluft;15;15;25;NA
+2021;WIH;Winterthur-Hoh Wülflingen;mittel;Trockenrasen;aus NH3-Quellen;Jahreseintrag;11.159646432;kg-N/ha/a;Ostluft;15;15;25;NA
+2021;WIH;Winterthur-Hoh Wülflingen;mittel;Trockenrasen;N-Deposition;Jahreseintrag;17.01772179;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2021;WIH;Winterthur-Hoh Wülflingen;mittel;Wald;aus NOx-Quellen;Jahreseintrag;8.618891272;kg-N/ha/a;Ostluft;5;10;20;NA
+2021;WIH;Winterthur-Hoh Wülflingen;mittel;Wald;aus NH3-Quellen;Jahreseintrag;17.944241558999998;kg-N/ha/a;Ostluft;5;10;20;NA
+2021;WIH;Winterthur-Hoh Wülflingen;mittel;Wald;N-Deposition;Jahreseintrag;26.56313283;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2022;AEG;Knonau-Ägelsee;hoch;Hochmoor;aus NOx-Quellen;Jahreseintrag;4.7636576029999995;kg-N/ha/a;Ostluft;5;5;10;NA
+2022;AEG;Knonau-Ägelsee;hoch;Hochmoor;aus NH3-Quellen;Jahreseintrag;14.419593496;kg-N/ha/a;Ostluft;5;5;10;NA
+2022;AEG;Knonau-Ägelsee;hoch;Hochmoor;N-Deposition;Jahreseintrag;19.1832511;kg-N/ha/a;Ostluft;5;5;10;gemessen
+2022;AEG;Knonau-Ägelsee;hoch;Wald;aus NOx-Quellen;Jahreseintrag;6.690348932;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;AEG;Knonau-Ägelsee;hoch;Wald;aus NH3-Quellen;Jahreseintrag;17.399104074;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;AEG;Knonau-Ägelsee;hoch;Wald;N-Deposition;Jahreseintrag;24.08945301;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2022;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NOx-Quellen;Jahreseintrag;5.118302548;kg-N/ha/a;Ostluft;15;15;25;NA
+2022;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;aus NH3-Quellen;Jahreseintrag;14.518898805000001;kg-N/ha/a;Ostluft;15;15;25;NA
+2022;BA;Hinwil-Bachtel Sennenberg;hoch;Trockenrasen;N-Deposition;Jahreseintrag;19.63720135;kg-N/ha/a;Ostluft;15;15;25;gemessen
+2022;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NOx-Quellen;Jahreseintrag;5.95929233;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;aus NH3-Quellen;Jahreseintrag;22.712629139;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;BA;Hinwil-Bachtel Sennenberg;hoch;Wald;N-Deposition;Jahreseintrag;28.67192147;kg-N/ha/a;Ostluft;5;10;20;gemessen
+2022;NET;Neerach-Turpenlöcher;mittel;Flachmoor;aus NOx-Quellen;Jahreseintrag;5.259246171;kg-N/ha/a;Ostluft;15;15;30;NA
+2022;NET;Neerach-Turpenlöcher;mittel;Flachmoor;aus NH3-Quellen;Jahreseintrag;19.89007229;kg-N/ha/a;Ostluft;15;15;30;NA
+2022;NET;Neerach-Turpenlöcher;mittel;Flachmoor;N-Deposition;Jahreseintrag;25.14931846;kg-N/ha/a;Ostluft;15;15;30;geschätzt
+2022;OSD;Ossingen-Dachsenhuserriet;mittel;Flachmoor;aus NOx-Quellen;Jahreseintrag;4.916032351;kg-N/ha/a;Ostluft;15;15;25;NA
+2022;OSD;Ossingen-Dachsenhuserriet;mittel;Flachmoor;aus NH3-Quellen;Jahreseintrag;15.630611285;kg-N/ha/a;Ostluft;15;15;25;NA
+2022;OSD;Ossingen-Dachsenhuserriet;mittel;Flachmoor;N-Deposition;Jahreseintrag;20.54664363;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2022;OSD;Ossingen-Dachsenhuserriet;mittel;Wald;aus NOx-Quellen;Jahreseintrag;7.050225579;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;OSD;Ossingen-Dachsenhuserriet;mittel;Wald;aus NH3-Quellen;Jahreseintrag;19.016101034000002;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;OSD;Ossingen-Dachsenhuserriet;mittel;Wald;N-Deposition;Jahreseintrag;26.06632661;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2022;TAB;Tablat-Risihölzli;mittel;Trockenrasen;aus NOx-Quellen;Jahreseintrag;5.015007396;kg-N/ha/a;Ostluft;15;15;25;NA
+2022;TAB;Tablat-Risihölzli;mittel;Trockenrasen;aus NH3-Quellen;Jahreseintrag;12.858771739;kg-N/ha/a;Ostluft;15;15;25;NA
+2022;TAB;Tablat-Risihölzli;mittel;Trockenrasen;N-Deposition;Jahreseintrag;17.87377914;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2022;TAB;Tablat-Risihölzli;mittel;Wald;aus NOx-Quellen;Jahreseintrag;6.730022818;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;TAB;Tablat-Risihölzli;mittel;Wald;aus NH3-Quellen;Jahreseintrag;21.018964575000002;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;TAB;Tablat-Risihölzli;mittel;Wald;N-Deposition;Jahreseintrag;27.74898739;kg-N/ha/a;Ostluft;5;10;20;geschätzt
+2022;WIH;Winterthur-Hoh Wülflingen;mittel;Trockenrasen;aus NOx-Quellen;Jahreseintrag;5.632902509;kg-N/ha/a;Ostluft;15;15;25;NA
+2022;WIH;Winterthur-Hoh Wülflingen;mittel;Trockenrasen;aus NH3-Quellen;Jahreseintrag;11.599702204;kg-N/ha/a;Ostluft;15;15;25;NA
+2022;WIH;Winterthur-Hoh Wülflingen;mittel;Trockenrasen;N-Deposition;Jahreseintrag;17.23260471;kg-N/ha/a;Ostluft;15;15;25;geschätzt
+2022;WIH;Winterthur-Hoh Wülflingen;mittel;Wald;aus NOx-Quellen;Jahreseintrag;8.242390139000001;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;WIH;Winterthur-Hoh Wülflingen;mittel;Wald;aus NH3-Quellen;Jahreseintrag;19.003725628999998;kg-N/ha/a;Ostluft;5;10;20;NA
+2022;WIH;Winterthur-Hoh Wülflingen;mittel;Wald;N-Deposition;Jahreseintrag;27.24611577;kg-N/ha/a;Ostluft;5;10;20;geschätzt

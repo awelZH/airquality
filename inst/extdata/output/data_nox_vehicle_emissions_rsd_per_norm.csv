@@ -1,33 +1,33 @@
-vehicle_type;vehicle_fuel_type;vehicle_euronorm;nox_emission;unit;n;standarderror;nox_emission_threshold_g_per_kg_fuel;source
-passenger car;gasoline;Euro1;7.346390593498163;g/kg fuel;27696;0.07542509970928307;8.3;Kanton Zürich/AWEL
-passenger car;gasoline;Euro2;4.735010332249811;g/kg fuel;40481;0.05244395189830677;3.6;Kanton Zürich/AWEL
-passenger car;gasoline;Euro3;1.8446683597200668;g/kg fuel;39851;0.028063286885689508;2.6;Kanton Zürich/AWEL
-passenger car;gasoline;Euro4;1.265188975537638;g/kg fuel;98288;0.014622860922942184;1.4;Kanton Zürich/AWEL
-passenger car;gasoline;Euro5;1.0929730344705864;g/kg fuel;63221;0.018337067445176658;1;Kanton Zürich/AWEL
-passenger car;gasoline;Euro6b;1.022156515441678;g/kg fuel;31782;0.023403515495146833;1;Kanton Zürich/AWEL
-passenger car;gasoline;Euro6c;0.5186518067897185;g/kg fuel;1167;0.04277839221451635;1;Kanton Zürich/AWEL
-passenger car;gasoline;Euro6d;0.3716259514154596;g/kg fuel;9465;0.020147109610197923;1;Kanton Zürich/AWEL
-passenger car;diesel;Euro1;14.574617741358264;g/kg fuel;708;0.37306818160203953;20;Kanton Zürich/AWEL
-passenger car;diesel;Euro2;20.02558218368205;g/kg fuel;2353;0.22646450474425164;10.9;Kanton Zürich/AWEL
-passenger car;diesel;Euro3;21.896575822425326;g/kg fuel;13106;0.10996704314521379;10.3;Kanton Zürich/AWEL
-passenger car;diesel;Euro4;16.356213681139927;g/kg fuel;29245;0.07014265153370383;4.4;Kanton Zürich/AWEL
-passenger car;diesel;Euro5;15.73252542496578;g/kg fuel;43143;0.059370599639641065;3.5;Kanton Zürich/AWEL
-passenger car;diesel;Euro6b;7.670031462630989;g/kg fuel;24159;0.06351819747389109;1.6;Kanton Zürich/AWEL
-passenger car;diesel;Euro6c;2.25602778076651;g/kg fuel;1248;0.13098016981782948;1.6;Kanton Zürich/AWEL
-passenger car;diesel;Euro6d;1.0323428423947254;g/kg fuel;5666;0.04154466963731331;1.6;Kanton Zürich/AWEL
-light duty vehicle;gasoline;Euro1;10.83337360401234;g/kg fuel;1451;0.4085356796998205;8.3;Kanton Zürich/AWEL
-light duty vehicle;gasoline;Euro2;6.906952038570475;g/kg fuel;2209;0.29315915809059795;3.6;Kanton Zürich/AWEL
-light duty vehicle;gasoline;Euro3;2.4763563206826493;g/kg fuel;1856;0.17985199848649247;2.6;Kanton Zürich/AWEL
-light duty vehicle;gasoline;Euro4;1.6379935037587243;g/kg fuel;2173;0.11467251843271774;1.4;Kanton Zürich/AWEL
-light duty vehicle;gasoline;Euro5;1.693161423870692;g/kg fuel;1595;0.15736737826500247;1;Kanton Zürich/AWEL
-light duty vehicle;gasoline;Euro6b;1.6898622285097613;g/kg fuel;697;0.21139512379325745;1;Kanton Zürich/AWEL
-light duty vehicle;gasoline;Euro6c;NA;g/kg fuel;17;NA;1;Kanton Zürich/AWEL
-light duty vehicle;gasoline;Euro6d;0.2822357879603352;g/kg fuel;214;0.07548432445204184;1;Kanton Zürich/AWEL
-light duty vehicle;diesel;Euro1;16.03953167843672;g/kg fuel;624;0.3818709302507647;20;Kanton Zürich/AWEL
-light duty vehicle;diesel;Euro2;17.53108437148303;g/kg fuel;1620;0.23966280570653847;10.9;Kanton Zürich/AWEL
-light duty vehicle;diesel;Euro3;23.663320558325115;g/kg fuel;4893;0.1887473011589459;10.3;Kanton Zürich/AWEL
-light duty vehicle;diesel;Euro4;20.40708842172672;g/kg fuel;9822;0.13514086263468195;4.4;Kanton Zürich/AWEL
-light duty vehicle;diesel;Euro5;23.11955379012219;g/kg fuel;14098;0.12631687026059238;3.5;Kanton Zürich/AWEL
-light duty vehicle;diesel;Euro6b;7.296420053541719;g/kg fuel;6312;0.13619189767873763;1.6;Kanton Zürich/AWEL
-light duty vehicle;diesel;Euro6c;1.7225991454348373;g/kg fuel;340;0.1933369972789938;1.6;Kanton Zürich/AWEL
-light duty vehicle;diesel;Euro6d;0.7363128689889145;g/kg fuel;1771;0.06833374607752957;1.6;Kanton Zürich/AWEL
+pollutant;metric;vehicle_type;vehicle_fuel_type;vehicle_euronorm;emission;unit;n;standarderror;nox_emission_threshold_g_per_kg_fuel;source
+NOx;Mittelwert;passenger car;gasoline;Euro1;7.346390593498163;g/kg fuel;27696;0.07542509970928307;8.3;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;gasoline;Euro2;4.735010332249811;g/kg fuel;40481;0.05244395189830677;3.6;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;gasoline;Euro3;1.8446683597200668;g/kg fuel;39851;0.028063286885689508;2.6;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;gasoline;Euro4;1.265188975537638;g/kg fuel;98288;0.014622860922942184;1.4;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;gasoline;Euro5;1.0929730344705864;g/kg fuel;63221;0.018337067445176658;1;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;gasoline;Euro6b;1.022156515441678;g/kg fuel;31782;0.023403515495146833;1;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;gasoline;Euro6c;0.5186518067897185;g/kg fuel;1167;0.04277839221451635;1;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;gasoline;Euro6d;0.3716259514154596;g/kg fuel;9465;0.020147109610197923;1;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;diesel;Euro1;14.574617741358264;g/kg fuel;708;0.37306818160203953;20;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;diesel;Euro2;20.02558218368205;g/kg fuel;2353;0.22646450474425164;10.9;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;diesel;Euro3;21.896575822425326;g/kg fuel;13106;0.10996704314521379;10.3;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;diesel;Euro4;16.356213681139927;g/kg fuel;29245;0.07014265153370383;4.4;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;diesel;Euro5;15.73252542496578;g/kg fuel;43143;0.059370599639641065;3.5;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;diesel;Euro6b;7.670031462630989;g/kg fuel;24159;0.06351819747389109;1.6;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;diesel;Euro6c;2.25602778076651;g/kg fuel;1248;0.13098016981782948;1.6;Kanton Zürich/AWEL
+NOx;Mittelwert;passenger car;diesel;Euro6d;1.0323428423947254;g/kg fuel;5666;0.04154466963731331;1.6;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;gasoline;Euro1;10.83337360401234;g/kg fuel;1451;0.4085356796998205;8.3;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;gasoline;Euro2;6.906952038570475;g/kg fuel;2209;0.29315915809059795;3.6;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;gasoline;Euro3;2.4763563206826493;g/kg fuel;1856;0.17985199848649247;2.6;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;gasoline;Euro4;1.6379935037587243;g/kg fuel;2173;0.11467251843271774;1.4;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;gasoline;Euro5;1.693161423870692;g/kg fuel;1595;0.15736737826500247;1;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;gasoline;Euro6b;1.6898622285097613;g/kg fuel;697;0.21139512379325745;1;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;gasoline;Euro6c;NA;g/kg fuel;17;NA;1;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;gasoline;Euro6d;0.2822357879603352;g/kg fuel;214;0.07548432445204184;1;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;diesel;Euro1;16.03953167843672;g/kg fuel;624;0.3818709302507647;20;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;diesel;Euro2;17.53108437148303;g/kg fuel;1620;0.23966280570653847;10.9;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;diesel;Euro3;23.663320558325115;g/kg fuel;4893;0.1887473011589459;10.3;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;diesel;Euro4;20.40708842172672;g/kg fuel;9822;0.13514086263468195;4.4;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;diesel;Euro5;23.11955379012219;g/kg fuel;14098;0.12631687026059238;3.5;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;diesel;Euro6b;7.296420053541719;g/kg fuel;6312;0.13619189767873763;1.6;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;diesel;Euro6c;1.7225991454348373;g/kg fuel;340;0.1933369972789938;1.6;Kanton Zürich/AWEL
+NOx;Mittelwert;light duty vehicle;diesel;Euro6d;0.7363128689889145;g/kg fuel;1771;0.06833374607752957;1.6;Kanton Zürich/AWEL

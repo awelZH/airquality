@@ -39,13 +39,17 @@ aggregate_emmissions <- function(data){
   )
   
   group_vars <- c("year", "pollutant", "unit", "sector", "subsector_new")
-  data <- 
+  data <-
     data |> 
     aggregate_groups(y = "emission", groups = group_vars, nmin = 1) |> 
     dplyr::rename(emission = sum) |> 
     dplyr::select(tidyr::all_of(c(group_vars,"emission"))) |> 
-    dplyr::mutate(source = "Ostluft & BAFU") |> 
-    dplyr::filter(!is.na(emission) & emission > 0) #! test possibility here: sum of emissions needs to match that of original data_emikat
+    dplyr::mutate(
+      metric = "Jahresmenge",
+      source = "Ostluft & BAFU"
+    ) |> 
+    dplyr::filter(!is.na(emission) & emission > 0) |>  #! test possibility here: sum of emissions needs to match that of original data_emikat
+    dplyr::select(year, pollutant, metric, unit, sector, subsector_new, emission, source)
   
   return(data)
 }
@@ -89,7 +93,14 @@ aggregate_rsd_nox <- function(data, rsd_auxiliary, groups = c("vehicle_type", "v
       y = "nox_emission",
       groups = groups,
       nmin = rsd_filters$min[rsd_filters$parameter == "nmin"]
-    ) 
+    ) |> 
+    dplyr::rename(emission = nox_emission) |> 
+    dplyr::mutate(
+      pollutant = "NOx",
+      metric = "Mittelwert"
+    ) |> 
+    dplyr::select(pollutant, metric, !!groups, emission, unit, dplyr::everything())
+  
   
   return(data_aggregated)
 }
@@ -115,14 +126,18 @@ aggregate_nitrogen_deposition <- function(data) {
     data |> 
     dplyr::filter(parameter == "N-Deposition") |> 
     dplyr::select(year, site, ecosystem_category, estimate)
-  
-  data <- 
+
+  data <-
     data |> 
-    dplyr::group_by(year, site, site_long, source, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, parameter, unit) |>
-    dplyr::summarise(value = sum(value)) |>
+    dplyr::group_by(year, site, site_long, source, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, component = parameter, unit) |>
+    dplyr::summarise(deposition = sum(value)) |>
     dplyr::ungroup() |>
     dplyr::left_join(estimate, by = c("year", "site", "ecosystem_category")) |> 
-    dplyr::mutate(estimate = dplyr::case_when(parameter == "N-Deposition" ~ estimate, TRUE ~ NA))
+    dplyr::mutate(
+      metric = "Jahreseintrag",
+      estimate = dplyr::case_when(component == "N-Deposition" ~ estimate, TRUE ~ NA)
+    ) |> 
+    dplyr::select(year, site, site_long, siteclass, ecosystem_category, component, metric, deposition, unit, dplyr::everything())
   
   return(data)
 }
@@ -141,17 +156,17 @@ aggregate_nitrogen_deposition <- function(data) {
 #'
 #' @examples
 aggregate_population_exposition_distrib <- function(data) { 
-  
+
   data <-
     data |> 
     dplyr::group_split(pollutant) |> 
     purrr::map(bin_concentration) |> 
     dplyr::bind_rows() |> 
-    dplyr::group_by(year, pollutant, concentration) |> 
+    dplyr::group_by(year, pollutant, metric, parameter, concentration) |> 
     dplyr::summarise(population = sum(population)) |>
     dplyr::ungroup() |> 
-    dplyr::arrange(year, pollutant, concentration) |> 
-    dplyr::group_by(year, pollutant) |> 
+    dplyr::arrange(year, pollutant, metric, concentration) |> 
+    dplyr::group_by(year, pollutant, metric, parameter) |> 
     dplyr::mutate(
       population_cum = cumsum(population),
       population_cum_rel = population_cum / sum(population)
@@ -206,8 +221,8 @@ aggregate_ndep_exposition_distrib <- function(data) {
 #' @export
 #'
 #' @examples
-aggregate_population_weighted_mean <- function(data, groups = c("year", "pollutant")) {
-  
+aggregate_population_weighted_mean <- function(data, groups = c("year", "pollutant", "metric", "parameter")) {
+
   data_pop_weighted <-
     data |> 
     dplyr::group_by_at(dplyr::vars(groups)) |> 

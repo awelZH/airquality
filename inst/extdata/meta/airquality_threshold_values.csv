@@ -1,9 +1,9 @@
-﻿pollutant;metric;aggregation;threshold;unit;source
-NO2;mean;y1;30;µg/m3;LRV Grenzwert
-PM10;mean;y1;20;µg/m3;LRV Grenzwert
-PM2.5;mean;y1;10;µg/m3;LRV Grenzwert
-O3;monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3;m1;100;µg/m3;LRV Grenzwert
-NO2;mean;y1;10;µg/m3;WHO Richtwert
-PM10;mean;y1;15;µg/m3;WHO Richtwert
-PM2.5;mean;y1;5;µg/m3;WHO Richtwert
-O3;mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration;peak-season;60;µg/m3;WHO Richtwert
+﻿pollutant;metric;parameter;interval;threshold;unit;source
+NO2;Jahresmittel;NO2;y1;30;µg/m3;LRV Grenzwert
+PM10;Jahresmittel;PM10;y1;20;µg/m3;LRV Grenzwert
+PM2.5;Jahresmittel;PM2.5;y1;10;µg/m3;LRV Grenzwert
+O3;höchstes monatl. 98%-Perzentil der ½-Stundenmittel;O3_max_98p_m1;y1;100;µg/m3;LRV Grenzwert
+NO2;Jahresmittel;NO2;y1;10;µg/m3;WHO Richtwert
+PM10;Jahresmittel;PM10;y1;15;µg/m3;WHO Richtwert
+PM2.5;Jahresmittel;PM2.5;y1;5;µg/m3;WHO Richtwert
+O3;mittlere sommerliche Tagesbelastung;O3_peakseason_mean_d1_max_mean_h8gl;y1;60;µg/m3;WHO Richtwert

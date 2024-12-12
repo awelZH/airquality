@@ -99,7 +99,7 @@ read_bafu_raster_data <- function(id, boundary, crs = 2056){
 #' @examples
 read_opendataswiss <- function(url, source, file_filter = ".csv"){
 
-  read_url <- get_opendataswiss_metadata(url)
+  read_url <- get_opendataswiss_metadata(url, file_filter)
   if (stringr::str_detect(file_filter, ".csv")) {
     data <- purrr::map_df(read_url, function(x) readr::read_delim(x, delim = ","))
   }

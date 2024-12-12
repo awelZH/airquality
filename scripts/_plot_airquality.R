@@ -519,10 +519,16 @@ plots$exposition$population_weighted_mean <- plot_pars_popmean_timeseries(data_e
 data_outcomes <- read_local_csv(file = ressources_plotting$outcomes$outcomes, locale = readr::locale(encoding = "UTF-8"))
 
 # plotting timeseries of preliminary deaths for Canton Zürich
-plots$outcomes$preliminary_deaths <- plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"))
+plots$outcomes$preliminary_deaths_abs <- plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"), relative = FALSE)
+
+# plotting timeseries of preliminary deaths per 100'000 inhabitants for Canton Zürich
+plots$outcomes$preliminary_deaths_rel <- plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"), relative = TRUE)
 
 # plotting timeseries of years of life lost for Canton Zürich
 # TODO ...
+
+
+
 
 
 
@@ -546,8 +552,8 @@ plots <-
   bind_rows(plotlist_to_tibble(plots$exposition$distribution_cumulative, "exposition", "distribution_cumulative")) |>
   bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean, "exposition", "population_weighted_mean")) |>
   bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map")) |> 
-  bind_rows(plotlist_to_tibble(plots$outcomes$preliminary_deaths, "outcomes", "preliminary_deaths"))
-
+  bind_rows(plotlist_to_tibble(plots$outcomes$preliminary_deaths_abs, "outcomes", "preliminary_deaths_abs")) |> 
+  bind_rows(plotlist_to_tibble(plots$outcomes$preliminary_deaths_rel, "outcomes", "preliminary_deaths_rel"))
 
 
 

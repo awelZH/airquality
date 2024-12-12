@@ -4,6 +4,9 @@ lightbox: true
 ---
 
 
+Hier werden Auswertungen von jahresbezogenen, flächendeckenden Rasterdaten zur Luftbelastung und Verteilung der Wohnbevölkerung im Kanton Zürich sowie zu atmosphärischen Stickstoffenträgen in empfindliche Ökosysteme dargestellt. Die Grundlagendaten stammen aus Erhebungen ([Bundesamt für Statistik BFS](https://www.bfs.admin.ch/bfs/de/home.html)) und Modellrechnungen ([Bundesamt für Umwelt BAFU](https://www.bafu.admin.ch/bafu/de/home.html)). Die Modellergbnisse zur Luftschadstoffbelastung und den atmosphärischen Stickstoffeinträgen sind an Messwerten "kalibriert", um eine ausreichend gute Genauigkeit zu erreichen.
+
+
 ```{r}
 source("read_plots.R")
 
@@ -23,11 +26,6 @@ plots <-
 
 ### Stickstoffdioxid
 
-```{r}
-#| label: fig-pwmean-no2
-get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'NO2'")
-```
-
 ::: {.panel-tabset}
 
 `r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "NO2" & source == "distribution_histogram")$markdown))`
@@ -40,6 +38,11 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'NO2'")
 
 :::
 
+```{r}
+#| label: fig-pwmean-no2
+get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'NO2'")
+```
+
 ::: {.panel-tabset}
 
 `r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "NO2" & source == "population_weighted_mean_map")$markdown))`
@@ -47,11 +50,6 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'NO2'")
 :::
 
 ### Feinstaub PM2.5
-
-```{r}
-#| label: fig-pwmean-pm25
-get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM2.5'")
-```
 
 ::: {.panel-tabset}
 
@@ -65,6 +63,11 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM2.5'")
 
 :::
 
+```{r}
+#| label: fig-pwmean-pm25
+get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM2.5'")
+```
+
 ::: {.panel-tabset}
 
 `r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "PM2.5" & source == "population_weighted_mean_map")$markdown))`
@@ -72,11 +75,6 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM2.5'")
 :::
 
 ### Feinstaub PM10
-
-```{r}
-#| label: fig-pwmean-pm10
-get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM10'")
-```
 
 ::: {.panel-tabset}
 
@@ -89,6 +87,11 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM10'")
 `r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "PM10" & source == "distribution_cumulative")$markdown))`
 
 :::
+
+```{r}
+#| label: fig-pwmean-pm10
+get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM10'")
+```
 
 ::: {.panel-tabset}
 
@@ -108,11 +111,6 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM10'")
 
 #### Höchstes monatliches 98%-Perzentil
 
-```{r}
-#| label: fig-pwmean-o3p98
-get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_max_98p_m1'")
-```
-
 ::: {.panel-tabset}
 
 `r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_max_98p_m1" & source == "distribution_histogram")$markdown))`
@@ -125,6 +123,11 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_max_98p
 
 :::
 
+```{r}
+#| label: fig-pwmean-o3p98
+get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_max_98p_m1'")
+```
+
 ::: {.panel-tabset}
 
 `r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_max_98p_m1" & source == "population_weighted_mean_map")$markdown))`
@@ -132,11 +135,6 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_max_98p
 :::
 
 #### mittlere tägliche max. 8h-Belastung in der Sommersaison
-
-```{r}
-#| label: fig-pwmean-o3peak
-get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_peakseason_mean_d1_max_mean_h8gl'")
-```
 
 ::: {.panel-tabset}
 
@@ -149,6 +147,11 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_peaksea
 `r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_peakseason_mean_d1_max_mean_h8gl" & source == "distribution_cumulative")$markdown))`
 
 :::
+
+```{r}
+#| label: fig-pwmean-o3peak
+get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_peakseason_mean_d1_max_mean_h8gl'")
+```
 
 ::: {.panel-tabset}
 

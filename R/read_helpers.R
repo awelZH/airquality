@@ -115,12 +115,12 @@ get_swisstopo_metadata <- function(id){
 }
 
 
-#' Get dataset metadata from BFS api
+#' Get statpop dataset metadata from BFS api
 #'
 #' @param year 
 #'
 #' @keywords internal
-get_bfs_metadata <- function(year){
+get_bfs_statpop_metadata <- function(year){
   
   # derive dataset url
   bfs_nr <- paste0("ag-b-00.03-vz", year, "statpop")
@@ -256,7 +256,7 @@ download_zip <- function(download_url, destination_path, file_filter = NULL){
 #' @keywords internal
 download_statpop_data <- function(year, destination_path, file_filter = NULL){
   
-  download_url <- get_bfs_metadata(year)
+  download_url <- get_bfs_statpop_metadata(year)
   download_zip(download_url, destination_path, file_filter)
   
 }

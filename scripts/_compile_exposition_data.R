@@ -54,14 +54,14 @@ data_expo_ecosys_dist <- aggregate_ndep_exposition_distrib(data_raster_bafu)
 
 # => population-weighted mean values per year, pollutant and municipality / canton (including base-scenario)
 data_pop_weighted_mean <- list(canton = 
-                                 aggregate_population_weighted_mean(data_expo_municip_basescenario, groups = c("year", "pollutant")) |> 
+                                 aggregate_population_weighted_mean(data_expo_municip_basescenario) |> 
                                  dplyr::rename(population_weighted_mean_base = population_weighted_mean) |> 
-                                 dplyr::select(year, pollutant, population_weighted_mean_base) |> 
+                                 dplyr::select(year, pollutant, metric, parameter, population_weighted_mean_base) |> 
                                  dplyr::mutate(base_year = base_scenario_year) |> 
-                                 dplyr::right_join(aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant")), by = c("year", "pollutant")) |> 
+                                 dplyr::right_join(aggregate_population_weighted_mean(data_expo_municip), by = c("year", "pollutant", "metric", "parameter")) |> 
                                  dplyr::arrange(year, pollutant)
 )
-data_pop_weighted_mean$munipalities <- aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant", "geodb_oid", "gemeindename"))
+data_pop_weighted_mean$munipalities <- aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant", "metric", "parameter", "geodb_oid", "gemeindename"))
 data_pop_weighted_mean$munipalities <- dplyr::mutate(data_pop_weighted_mean$munipalities , population_weighted_mean = ifelse(is.na(gemeindename), NA, population_weighted_mean)) # lakes = NA
 
 

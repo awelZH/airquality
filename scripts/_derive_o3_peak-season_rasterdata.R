@@ -39,8 +39,8 @@
 data_monitoring_aq <-
   read_local_csv("inst/extdata/output/data_airquality_monitoring_y1.csv", locale = readr::locale(encoding = "UTF-8")) |> 
   dplyr::filter(parameter %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "NO2")) |> 
-  dplyr::select(year, site, masl, parameter, value) |> 
-  tidyr::spread(parameter, value) |> 
+  dplyr::select(year, site, masl, parameter, concentration) |> 
+  tidyr::spread(parameter, concentration) |> 
   na.omit() |> 
   dplyr::group_by(year) |> 
   dplyr::mutate(n = dplyr::n()) |> 
@@ -71,9 +71,7 @@ coef <-
     offset = coefficients(regr)
   ) |> 
   dplyr::filter(!is.na(year)) |> 
-  dplyr::mutate(
-    slope = coefficients(regr)[stringr::str_detect(names(coefficients(regr)), "NO2")]
-  )
+  dplyr::mutate(slope = coefficients(regr)[stringr::str_detect(names(coefficients(regr)), "NO2")])
 
 # => calculate O3 peak-season data_raster_aq from NO2
 data_raster_aq <-

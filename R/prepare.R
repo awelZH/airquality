@@ -46,7 +46,7 @@ prepare_emmissions <- function(data, filter_args = canton == 'ZH' & emission != 
       unit = einheit
     ) |> 
     dplyr::mutate(
-      pollutant =ifelse(pollutant == "BC", "eBC", pollutant)
+      pollutant = ifelse(pollutant == "BC", "eBC", pollutant)
     ) |> 
     dplyr::filter(!!filter_args)
   
@@ -126,7 +126,7 @@ prepare_monitoring_meta <- function(meta_ostluft, meta_nabel) {
 #'
 #' @examples
 prepare_monitoring_nabel_y1 <- function(data, metrics = list(Jahresmittel = c("NO2", "PM10", "PM2.5", "EC / Russ"), "höchster 98%-Wert eines Monats" = "O3"), keep_incomplete = FALSE, tz = "Etc/GMT-1") {
-
+  
   metrics <-
     tibble::as_tibble(metrics) |> 
     tidyr::gather(metric, pollutant) |> 
@@ -247,7 +247,7 @@ prepare_monitoring_nabel_h1 <- function(data, keep_incomplete = FALSE, tz = "Etc
 #' @examples
 prepare_monitoring_aq <- function(data, meta) { 
   
-  data <- 
+  data <-
     data |> 
     pad2() |>
     dplyr::mutate(
@@ -258,7 +258,12 @@ prepare_monitoring_aq <- function(data, meta) {
     dplyr::left_join(meta, by = "site") |>
     dplyr::filter(!is.na(siteclass)) |> 
     dplyr::arrange(site, parameter, starttime) |> 
-    dplyr::select(year, site, site_long, siteclass, x, y, masl, source, parameter, interval, unit, value)
+    dplyr::mutate(
+      pollutant = shorttitle(parameter),
+      metric = longmetric(parameter)
+    ) |>
+    dplyr::rename(concentration = value) |> 
+    dplyr::select(year, site, site_long, siteclass, x, y, masl, pollutant, metric, parameter, concentration, unit, source)
   
   return(data)
 }
@@ -275,13 +280,13 @@ prepare_monitoring_aq <- function(data, meta) {
 #'
 #' @examples
 prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, base_year) {
-
+  
   years <- as.numeric(names(data_raster_aq))
   other_years <- years[years != base_year]
   data_raster_aq_base <- data_raster_aq[[as.character(base_year)]]
   data_raster_aq_base <- setNames(rep(list(data_raster_aq_base), length(other_years)), other_years)
   data_raster_aq_base <- purrr::map2(data_raster_bfs[as.character(other_years)], data_raster_aq_base, average_to_statpop)
-
+  
   return(data_raster_aq_base)
 }
 
@@ -297,7 +302,7 @@ prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, base_yea
 #'
 #' @examples
 prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
-  
+
   # => convert pollutant and statpop data into a common tibble
   data_statpop <-
     years |> 
@@ -314,21 +319,25 @@ prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
         dplyr::mutate(year = as.numeric(yr))
     }) |> 
     dplyr::bind_rows()
-  
+
   data <- dplyr::full_join(data_statpop, data_aq, by = c("x","y","year"))
   data <-
     data |> 
     dplyr::filter(!is.na(population)) |> 
     dplyr::mutate(
-      pollutant = dplyr::recode(pollutant,
+      parameter = dplyr::recode(pollutant,
                                 "no2" = "NO2",
                                 "pm25" = "PM2.5",
                                 "pm10" = "PM10",
                                 "bc" = "eBC",
                                 "mp98" = "O3_max_98p_m1"
       ),
+      pollutant = shorttitle(parameter),
+      metric = longmetric(parameter),
+      unit = "µg/m3",
       source = "BAFU & BFS"
-    )
+    ) |> 
+    dplyr::select(x, y, RELI, year, population, pollutant, metric, parameter, concentration, unit, source)
   
   return(data)
 }
@@ -346,7 +355,7 @@ prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
 #'
 #' @examples
 prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, boundaries) {
-  
+
   data_statpop_municip <- 
     years |> 
     as.character() |> 
@@ -370,15 +379,19 @@ prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, bounda
     data |> 
     dplyr::filter(!is.na(population)) |> 
     dplyr::mutate(
-      pollutant = dplyr::recode(pollutant,
+      parameter = dplyr::recode(pollutant,
                                 "no2" = "NO2",
                                 "pm25" = "PM2.5",
                                 "pm10" = "PM10",
                                 "bc" = "eBC",
                                 "mp98" = "O3_max_98p_m1"
       ),
+      pollutant = shorttitle(parameter),
+      metric = longmetric(parameter),
+      unit = "µg/m3",
       source = "BAFU & BFS"
-    )
+    ) |> 
+    dplyr::select(x, y, RELI, geodb_oid, gemeindename, year, population, pollutant, metric, parameter, concentration, unit, source)
   
   return(data)
 }
@@ -396,14 +409,14 @@ prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, bounda
 #'
 #' @examples
 prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta, conc_threshold = "lower_conc_threshold") {
-  
+
   # combine and wrangle all input data
   data <- 
     data_expo_weighmean |> 
-    dplyr::filter(pollutant %in% unique(outcomes_meta$pollutant)) |>
-    dplyr:::select(-source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
-    tidyr::gather(scenario, population_weighted_mean, -year, -pollutant, -base_year, -population, -concentration_min) |> 
-    dplyr::left_join(outcomes_meta, by = "pollutant") |> 
+    dplyr::filter(parameter %in% unique(outcomes_meta$parameter)) |>
+    dplyr:::select(-parameter, -source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
+    tidyr::gather(scenario, population_weighted_mean, -year, -pollutant, -metric, -base_year, -population, -concentration_min) |> 
+    dplyr::left_join(outcomes_meta, by = c("pollutant", "metric")) |> 
     dplyr::left_join(data_deathrates, by = "year") |> 
     dplyr::mutate(
       scenario = dplyr::recode(scenario, population_weighted_mean = "aktuell", population_weighted_mean_base = paste0("vermieden vs. ",na.omit(unique(.data$base_year)))),
@@ -414,31 +427,31 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
     dplyr::filter(!is.na(scenario))
   
   # calculate outcomes
-  data <- 
+  data <-
     data |> 
     dplyr::filter(scenario == "aktuell") |> 
     dplyr::mutate(min_conc_threshold = pmin(concentration_min, lower_conc_threshold)) |> 
     calculate_all_outcomes(conc_threshold = "min_conc_threshold") |> 
-    dplyr::select(year, pollutant, scenario, outcome_type, outcome) |>
+    dplyr::select(year, pollutant, metric, scenario, outcome_type, outcome) |>
     dplyr::rename(outcome_min_conc = outcome) |> 
-    dplyr::right_join(data, by = c("year", "pollutant", "scenario", "outcome_type")) |> 
+    dplyr::right_join(data, by = c("year", "pollutant", "metric", "scenario", "outcome_type")) |> 
     calculate_all_outcomes() |> 
     dplyr::mutate(outcome_delta_min_conc = outcome_min_conc - outcome) |> 
-    dplyr::select(year, pollutant, population, scenario, outcome_type, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
+    dplyr::select(year, pollutant, metric, population, scenario, outcome_type, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
   
   # restructure dataset
   data <- 
     data |> 
-    dplyr::select(year, pollutant, scenario, outcome_type, outcome) |> 
+    dplyr::select(year, pollutant, metric, scenario, outcome_type, outcome, population) |> 
     tidyr::spread(scenario, outcome) |> 
     dplyr::mutate(`vermieden vs. 2015` = pmin(0, aktuell - `vermieden vs. 2015`)) |> 
     dplyr::select(-aktuell) |> 
-    tidyr::gather(scenario, outcome, -year, -pollutant, -outcome_type) |> 
+    tidyr::gather(scenario, outcome, -year, -pollutant, -metric, -outcome_type, -population) |> 
     dplyr::bind_rows(dplyr::filter(data, scenario == "aktuell")) |> 
-    dplyr::arrange(pollutant, scenario, year, outcome_type) |> 
+    dplyr::arrange(pollutant, metric, scenario, year, outcome_type) |> 
     dplyr::filter(!is.na(outcome)) |> 
-    dplyr::select(year, pollutant, outcome_type,  population, scenario, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
-
+    dplyr::select(year, pollutant, metric, outcome_type,  population, scenario, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
+  
   return(data)
 }
 

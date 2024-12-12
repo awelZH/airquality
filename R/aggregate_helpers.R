@@ -135,7 +135,7 @@ groups_emission_subsector <- function(data, threshold_fraction = 0.02, first = 1
 #'
 #' @keywords internal
 aggregate_rsd <- function(data, meta, y = "nox_emission", groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm"), nmin = 50) {
-  
+
   if ("year" %in% groups) {
     
     data <-
@@ -176,7 +176,7 @@ aggregate_rsd <- function(data, meta, y = "nox_emission", groups = c("vehicle_ty
       dplyr::left_join(meta, by = groups) |>
       dplyr::select(!!c(groups, y, "unit", "n", "standarderror", "nox_emission_threshold_g_per_kg_fuel", "source"))
   }
-  
+
   return(data)
 }
 

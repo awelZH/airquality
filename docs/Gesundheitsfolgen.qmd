@@ -7,6 +7,14 @@ lightbox: true
 ```{r}
 source("read_plots.R")
 plots <- readRDS("plots_outcomes.rds")
+plots <- 
+  plots |> 
+  dplyr::arrange(pollutant, source, type, dplyr::desc(year)) |> 
+  dplyr::mutate(
+    id = 1:dplyr::n(),
+    year = dplyr::case_when(source == "preliminary_deaths_abs" ~ "absolut", TRUE ~ "relativ"),
+    markdown = build_panel(id, year, pollutant, source, type)
+  )
 ```
 
 
@@ -27,35 +35,50 @@ Aufgrund der methodisch bedingten Einschränkung, die Auswirkungen anderer Schad
 
 Veränderung Mortalität über die Jahre ist einerseits durch die Entwicklung der Schadstoffbelastung getrieben, andererseits aber auch durch das Bevölkerungswachstum
 
-Fehlerbalken berücksichtigen die Konfidenzintervalle des Effektschätzers sowie ein Szenario mit unteren gesundheitsrelevanten Schwellenwerten beim Minimum der Schadstoffbelastung
+Wdargestellte Werte zeigen den wahrscheinlichsten Wert an, für den Gesundheitseffekte wissenschaftlich eindeutig nachgewiesen sind (d.h. bei beobachteten Belastungsspannen)
+
+Fehlerbalken berücksichtigen die 95%-Konfidenzintervalle des Effektschätzers sowie ein Szenario mit unteren gesundheitsrelevanten Schwellenwerten beim Minimum der auftretenden Schadstoffbelastung pro Jahr (d.h., Fehlerbalken berücksichtigen extrapolation der Linearität zur angenommenen Belastungsschwelle durch anthropogene Luftbeastung)
 
 Sonderfall Fallzahlen & Covid in den Jahren 2020:2022 !
 
 ...
 
+siehe auch GeLuft:
+
+Langzeitbelastung: 
+All-cause natural mortality in adults, All-cause natural mortality in infants, Incidence of acute low respiratory infections (ALRI) in children, Incidence of chronic obstructive pulmonary disease (COPD) in adults, Incidence of dementia in seniors, Incidence of Diabetes Type 2 in adults, Incidence of ischemic heart disease, Incidence of lung cancer in adults, Incidence of low birthweight in term births, Incidence of stroke in adults, Incidence of asthma in adults, Incidence of asthma in children
+
+Kurzzeitbelastung:
+Hospital admissions due to cardio-vascular diseases, Hospital admissions due to respiratory diseases, Days of restricted activity in adults, Work days lost
+
+
+
 
 
 ### Feinstaub PM2.5
 
-```{r}
-#| label: fig-prelim-deaths-pm25
-get_plot(plots, "source == 'preliminary_deaths' & pollutant == 'PM2.5'")
-```
+::: {.panel-tabset}
+
+`r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "PM2.5" & stringr::str_detect(source, "preliminary_deaths"))$markdown))`
+
+:::
 
 
 ### Stickstoffdioxid
 
-```{r}
-#| label: fig-prelim-deaths-no2
-get_plot(plots, "source == 'preliminary_deaths' & pollutant == 'NO2'")
-```
+::: {.panel-tabset}
+
+`r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "NO2" & stringr::str_detect(source, "preliminary_deaths"))$markdown))`
+
+:::
 
 
 ### Ozon
 
-```{r}
-#| label: fig-prelim-deaths-o3
-get_plot(plots, "source == 'preliminary_deaths' & pollutant == 'O3_peakseason_mean_d1_max_mean_h8gl'")
-```
+::: {.panel-tabset}
+
+`r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_peakseason_mean_d1_max_mean_h8gl" & stringr::str_detect(source, "preliminary_deaths"))$markdown))`
+
+:::
 
 

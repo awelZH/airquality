@@ -662,17 +662,17 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
 #' @param population 
 #'
 #' @keywords internal
-calc_outcome <- function(conc_increment, crf, crf_conc_increment, caserate_per_person, population) {
+calc_outcome <- function(conc_increment, crf, crf_conc_increment, cases) {
   
   # see: 
   # Castro, A., Kutlar Joss, M., Röösli, M. (2023). Quantifizierung des Gesundheitsnutzens der neuen 
   # Luftqualitätsleitlinien der Weltgesundheitsorganisation in der Schweiz. Im Auftrag vom Bundesamt für Umwelt. 
   
   CB <- conc_increment
-  C0 <- 0 # FIXME: set to 0 here, 'cause don't really get it (yet)
+  C0 <- 0 # set to 0 here since concentration increment is already directly provided by function input
   CA <- crf_conc_increment
   EEA <- crf
-  GD <- caserate_per_person * population
+  GD <- cases
   
   EEB <- exp(log(EEA) * (CB - C0) / CA)
   
@@ -694,9 +694,9 @@ calculate_all_outcomes <- function(data, conc_threshold = "lower_conc_threshold"
     data |> 
     dplyr::mutate(
       conc_incr = pmax(0, population_weighted_mean - !!rlang::sym(conc_threshold)),
-      outcome = calc_outcome(conc_incr, crf, crf_conc_increment, caserate_per_person, population),
-      outcome_lower = calc_outcome(conc_incr, crf_lower, crf_conc_increment, caserate_per_person, population),
-      outcome_upper = calc_outcome(conc_incr, crf_upper, crf_conc_increment, caserate_per_person, population),
+      outcome = calc_outcome(conc_incr, crf, crf_conc_increment, caserate_per_person * population),
+      outcome_lower = calc_outcome(conc_incr, crf_lower, crf_conc_increment, caserate_per_person * population),
+      outcome_upper = calc_outcome(conc_incr, crf_upper, crf_conc_increment, caserate_per_person * population),
     ) |>
     dplyr::select(-conc_incr)
   

@@ -134,7 +134,7 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_max_98p
 
 :::
 
-#### mittlere tägliche max. 8h-Belastung in der Sommersaison
+#### mittlere sommerliche Tagesbelastung
 
 ::: {.panel-tabset}
 

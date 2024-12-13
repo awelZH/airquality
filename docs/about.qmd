@@ -1,11 +1,11 @@
 ---
-title: "About"
+title: "Impressum"
 date: today
 date-format: "DD. MMMM YYYY"
 author:
-  name: J. Sintermann
+  name: Amt für Abfall, Wasser, Energie und Luft
   affiliations:
-    - name: Kanton Zürich / Amt für Abfall, Wasser, Energie und Luft
+    - name: Kanton Zürich
       department: Luft, Klima und Strahlung
       group: Monitoring
       address: Stampfenbachstrasse 12
@@ -13,4 +13,13 @@ author:
       country: Schweiz
       postal-code: 8090
       url: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html
+  email: luft@bd.zh.ch
 ---
+
+## Copyright
+
+Freie Nutzung [(CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) unter Angabe der Quelle.
+
+
+Quellenangabe: 
+Kanton Zürich, Luftqualität im Kanton Zürich, [https://awelzh.github.io/airquality](https://awelzh.github.io/airquality). 

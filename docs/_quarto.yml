@@ -30,7 +30,8 @@ website:
       - href: Gesundheitsfolgen.qmd
         text: Gesundheitsfolgen
     right: 
-      - about.qmd
+      - href: about.qmd
+        text: About
 
 format:
   html:

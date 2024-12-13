@@ -19,7 +19,6 @@ plots <- readRDS("plots_monitoring.rds")
 ```{r}
 #| label: fig-grenzwertvergleich
 #| fig-cap: "Vergleich von Messdaten der letzten drei Jahre mit Grenz- und Richtwerten."
-#| fig.width: 11
 #| fig.asp: 0.6
 get_plot(plots, "source == 'threshold_comparison'")
 ```

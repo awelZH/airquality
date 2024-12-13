@@ -11,3 +11,4 @@ docs/.Rproj.user
 docs/.Rhistory
 docs/.RData
 docs/.Ruserdata
+scripts/_validate_rasterdata.R

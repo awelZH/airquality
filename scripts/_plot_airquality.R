@@ -322,7 +322,7 @@ plots$monitoring$threshold_comparison$various <-
   # lemon::facet_rep_grid(reference~., scales = "free_y", space = "free_y", repeat.tick.labels = TRUE) +
   ggplot2::scale_y_continuous(breaks = seq(0,10,1), limits = c(0,NA), labels = scales::percent_format(), expand = c(0.01,0.01)) +
   ggplot2::coord_flip() +
-  ggplot2::guides(color = ggplot2::guide_legend(nrow = 2)) +
+  ggplot2::guides(color = ggplot2::guide_legend(nrow = 3)) +
   ggplot2::ggtitle(
     label = openair::quickText("Luftqualitätsmesswerte Schwellenwertvergleich"),
     subtitle = paste0("Jahre ", max(years) - n_years + 1, " bis ", max(years))

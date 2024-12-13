@@ -101,13 +101,15 @@ ggplot_expo_hist <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks 
   
   if (is.null(fill_scale)) {
     mapping <- ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y))
+    bars <- ggplot2::geom_bar(stat = "identity", color = NA, width = barwidth, fill = "#50586C")
   } else {
     mapping <- ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y), fill = !!rlang::sym(x))
+    bars <- ggplot2::geom_bar(stat = "identity", color = NA, width = barwidth)
   }
   
   plot <-
     ggplot2::ggplot(data, mapping = mapping) +
-    ggplot2::geom_bar(stat = "identity", color = NA, width = barwidth) +
+    bars +
     ggplot2::scale_x_continuous(limits = xlims, breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'", scientific = FALSE)) +
     fill_scale +
@@ -418,7 +420,8 @@ plot_all_expo_hist <- function(parameter, data) {
         subtitle = paste0("Anzahl Personen, Wohnbevölkerung im Kanton Zürich im Jahr ",year)
       ), 
       captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
-      fill_scale = immissionscale(parameter), theme = theme_ts
+      # fill_scale = immissionscale(parameter), 
+      theme = theme_ts
     ) + 
       ggplot2::theme(legend.position = "none")
     
@@ -510,9 +513,7 @@ plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALS
   plots <- 
     lapply(setNames(parameters, parameters), function(parameter) {
       
-      data <- 
-        data |>
-        dplyr::filter(pollutant == !!parameter & outcome_type == "vorzeitige Todesfälle")
+      data <- dplyr::filter(data, parameter == !!parameter & outcome_type == "vorzeitige Todesfälle")
       
       if (relative) {
         mppng <- ggplot2::aes(x = year, y = outcome / population * 10^5, fill = scenario)
@@ -611,7 +612,8 @@ plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
         subtitle = paste0("Anzahl empfindlicher Ökosysteme im Kanton Zürich im Jahr ", year) 
       ), 
       captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
-      fill_scale = immissionscale("Ndep"), theme = theme_ts
+      # fill_scale = immissionscale("Ndep"), 
+      theme = theme_ts
     )
     
   })

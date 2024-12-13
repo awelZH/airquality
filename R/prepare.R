@@ -414,9 +414,9 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
   data <- 
     data_expo_weighmean |> 
     dplyr::filter(parameter %in% unique(outcomes_meta$parameter)) |>
-    dplyr:::select(-parameter, -source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
-    tidyr::gather(scenario, population_weighted_mean, -year, -pollutant, -metric, -base_year, -population, -concentration_min) |> 
-    dplyr::left_join(outcomes_meta, by = c("pollutant", "metric")) |> 
+    dplyr:::select(-pollutant, -metric, -source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
+    tidyr::gather(scenario, population_weighted_mean, -year, -parameter, -base_year, -population, -concentration_min) |> 
+    dplyr::left_join(outcomes_meta, by = "parameter") |> 
     dplyr::left_join(data_deathrates, by = "year") |> 
     dplyr::mutate(
       scenario = dplyr::recode(scenario, population_weighted_mean = "tatsächliche Belastung", population_weighted_mean_base = paste0("vermieden vs. ",na.omit(unique(.data$base_year)))),
@@ -437,20 +437,20 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
     dplyr::right_join(data, by = c("year", "pollutant", "metric", "scenario", "outcome_type")) |> 
     calculate_all_outcomes() |> 
     dplyr::mutate(outcome_delta_min_conc = outcome_min_conc - outcome) |> 
-    dplyr::select(year, pollutant, metric, population, scenario, outcome_type, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
+    dplyr::select(year, pollutant, metric, parameter, population, scenario, outcome_type, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
   
   # restructure dataset
   data <- 
     data |> 
-    dplyr::select(year, pollutant, metric, scenario, outcome_type, outcome, population) |> 
+    dplyr::select(year, pollutant, metric, parameter, scenario, outcome_type, outcome, population) |> 
     tidyr::spread(scenario, outcome) |> 
     dplyr::mutate(`vermieden vs. 2015` = pmin(0, `tatsächliche Belastung` - `vermieden vs. 2015`)) |> 
     dplyr::select(-`tatsächliche Belastung`) |> 
-    tidyr::gather(scenario, outcome, -year, -pollutant, -metric, -outcome_type, -population) |> 
+    tidyr::gather(scenario, outcome, -year, -pollutant, -metric, -parameter, -outcome_type, -population) |> 
     dplyr::bind_rows(dplyr::filter(data, scenario == "tatsächliche Belastung")) |> 
     dplyr::arrange(pollutant, metric, scenario, year, outcome_type) |> 
     dplyr::filter(!is.na(outcome)) |> 
-    dplyr::select(year, pollutant, metric, outcome_type,  population, scenario, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
+    dplyr::select(year, pollutant, metric, parameter, outcome_type,  population, scenario, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
   
   return(data)
 }

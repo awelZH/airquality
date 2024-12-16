@@ -18,7 +18,7 @@ author:
 
 ## Copyright
 
-Freie Nutzung [(CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) unter Angabe der Quelle.
+Freie Nutzung der Darstellungen [(CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) unter Angabe der Quelle.
 
 
 Quellenangabe: 

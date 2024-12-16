@@ -4,7 +4,7 @@ lightbox: true
 ---
 
 
-Hier werden Auswertungen von jahresbezogenen, flächendeckenden Rasterdaten zur Luftbelastung und Verteilung der Wohnbevölkerung im Kanton Zürich sowie zu atmosphärischen Stickstoffenträgen in empfindliche Ökosysteme dargestellt. Die Grundlagendaten stammen aus Erhebungen ([Bundesamt für Statistik BFS](https://www.bfs.admin.ch/bfs/de/home.html)) und Modellrechnungen ([Bundesamt für Umwelt BAFU](https://www.bafu.admin.ch/bafu/de/home.html)). Die Modellergbnisse zur Luftschadstoffbelastung und den atmosphärischen Stickstoffeinträgen sind an Messwerten "kalibriert", um eine ausreichend gute Genauigkeit zu erreichen.
+Hier werden Auswertungen von jahresbezogenen, flächendeckenden Rasterdaten zur Luftbelastung und Verteilung der Wohnbevölkerung im Kanton Zürich sowie zu atmosphärischen Stickstoffenträgen in empfindliche Ökosysteme dargestellt. Die Grundlagendaten stammen aus Erhebungen ([Bundesamt für Statistik BFS](https://www.bfs.admin.ch/bfs/de/home.html)) und Modellrechnungen ([Bundesamt für Umwelt BAFU](https://www.bafu.admin.ch/bafu/de/home.html)). Die Modellergebnisse zur Luftschadstoffbelastung und den atmosphärischen Stickstoffeinträgen sind an Messwerten "kalibriert", um eine ausreichend gute Genauigkeit zu erreichen.
 
 
 ```{r}

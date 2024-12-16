@@ -4,7 +4,8 @@ lightbox: true
 ---
 
 
-Hier werden ausgewählte Luftqualitäts-Messdaten aus dem interkantonalen Messnetz zur  [Luftqualitätsüberwachung der Ostschweizer Kantone und des Fürstentums Liechtenstein Ostluft](https://www.ostluft.ch/) sowie aus dem [nationalen Beobachtungsnetz für Luftfremdstoffe NABEL](https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/nationales-beobachtungsnetz-fuer-luftfremdstoffe--nabel-.html) im Kanton Zürich dargestellt.
+Hier werden ausgewählte Luftqualitäts-Messdaten aus dem interkantonalen Messnetz zur  [Luftqualitätsüberwachung der Ostschweizer Kantone und des Fürstentums Liechtenstein Ostluft](https://www.ostluft.ch/) sowie aus dem [nationalen Beobachtungsnetz für Luftfremdstoffe NABEL](https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/nationales-beobachtungsnetz-fuer-luftfremdstoffe--nabel-.html) im Kanton Zürich dargestellt. Belastungskarten mit flächendeckenden Informationen zur Luftqualität finden sich im [GIS-Browser des Kantons Zürich](https://geo.zh.ch/maps).
+<!-- bzw. dem [GIS-Browser des Bundes](https://map.geo.admin.ch/). -->
 
 
 ```{r}

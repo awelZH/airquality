@@ -18,10 +18,12 @@ source("scripts/_compile_exposition_data.R", encoding = "UTF-8")
 print("5) compile health-outcome data...")
 source("scripts/_compile_outcomes.R", encoding = "UTF-8")
 
+# only internal process:
+
 # 6) plot results for use in docs/...
-print("6) plot results...")
-source("scripts/_plot_airquality.R", encoding = "UTF-8")
+# print("6) plot results...")
+# source("scripts/_plot_airquality.R", encoding = "UTF-8")
 
 # 7) render quarto website for plot display
-print("7) render *.qmd...")
-quarto::quarto_render("docs/")
+# print("7) render *.qmd...")
+# quarto::quarto_render("docs/")

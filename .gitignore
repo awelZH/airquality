@@ -1,3 +1,4 @@
+# irrelevant files
 .Rproj.user
 .Rhistory
 .RData
@@ -11,4 +12,19 @@ docs/.Rproj.user
 docs/.Rhistory
 docs/.RData
 docs/.Ruserdata
+
+# internal functions/scripts for creating ggplots and html
+# R/plot.R
+# scripts/_plot_airquality.R
+# docs/read_plots.R
+# docs/_quarto.yml
+# docs/index.qmd
+# docs/Schadstoffausstoss.qmd
+# docs/Luftqualität.qmd
+# docs/Belastungsverteilung.qmd
+# docs/Gesundheitsfolgen.qmd
+# docs/about.qmd
+
+# internal side-analysis for validating maps
 scripts/_validate_rasterdata.R
+

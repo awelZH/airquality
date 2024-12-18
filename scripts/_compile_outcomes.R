@@ -1,4 +1,6 @@
 # Derive selected health outcomes per year from population-weighted mean data
+# TODO: use upcoming R-package from SwissTPH et al. for calculations instead of own functions ...
+# TODO: finalise ressurces.csv
 
 
 # read datasets ...
@@ -10,6 +12,7 @@ outcomes_meta <-
   dplyr::select(-lower_conc_threshold_source, -min_conc_threshold, -crf_source, -base_scenario_year, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
 
 # => get Canton Zurich yearly mortality rates from opendata.swiss
+# TODO: use better dataset ...
 data_deathrates <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
 
 # => read population weighted mean data
@@ -26,6 +29,23 @@ data_outcomes <- prepare_outcomes(data_expo_weighmean, data_deathrates, outcomes
 
 # => prepare input dataset and derive years of life lost
 # TODO ...
+# from here: https://opendata.swiss/de/dataset/kohortensterbetafeln-fur-die-schweiz-1876-2030-nach-geburtsjahrgang-geschlecht-und-alter1
+# pxR::read.px("px-x-0102020300_10.px", encoding = "UTF-8") |> 
+#   tibble::as_tibble() |> 
+#   dplyr::mutate(
+#     Alter = readr::parse_number(as.character(Alter)),
+#     Geburtsjahrgang = as.numeric(as.character(Geburtsjahrgang)),
+#     source = "BFS"
+#   ) |> 
+#   dplyr::filter(stringr::str_detect(Beobachtungseinheit, "Lebensdauer")) |> 
+#   tidyr::spread(Beobachtungseinheit, value) |> 
+#   dplyr::rename(
+#     age = Alter,
+#     gender = Geschlecht,
+#     year_of_birth = Geburtsjahrgang,
+#     remaining_lifeyears = `Verbleibende Lebensdauer (ex)`
+#   ) |> 
+#   dplyr::select(gender, year_of_birth, age, remaining_lifeyears, source)
 
 # => combine
 # TODO ...
@@ -35,74 +55,5 @@ data_outcomes <- prepare_outcomes(data_expo_weighmean, data_deathrates, outcomes
 # ---
 write_local_csv(data_outcomes, file = "inst/extdata/output/data_health_outcomes.csv")
 rm(list = c("outcomes_meta", "data_deathrates", "data_expo_weighmean", "data_outcomes"))
-
-
-
-
-
-
-
-
-
-
-
-
-# ...testing
-
-# 
-# apiurl <- "https://ckan.opendata.swiss/api/3/action/package_show?id=todesfalle-nach-alter-geschlecht-kanton-und-stadt-1999-2023"
-# req <- httr2::request(apiurl)
-# req_data <- httr2::req_perform(req)
-# metadata <- httr2::resp_body_json(req_data)$result        
-# links <- unlist(purrr::map(metadata$resources, function(x) x$url))
-# download_link <- links[stringr::str_detect(links, file_filter)]
-# 
-# 
-# get_opendataswiss_metadata(url, "32007276/master")
-# read_url <- get_opendataswiss_metadata(url, file_filter = "32007276/master")
-
-
-
-
-
-
-# d <- read_opendataswiss_json("https://ckan.opendata.swiss/api/3/action/package_show?id=todesfalle-nach-institutionellen-gliederungen-geschlecht-staatsangehorigkeit-kategorie-zivilsta5", source = "BFS", file_filter = "api/v1/de")
-# 
-# 
-# read_opendataswiss_json <- function(url, source, file_filter = ".csv"){
-#   browser()
-# 
-#   read_url <- get_opendataswiss_metadata("https://ckan.opendata.swiss/api/3/action/package_show?id=todesfalle-nach-institutionellen-gliederungen-geschlecht-staatsangehorigkeit-kategorie-zivilsta5", file_filter)
-#   data <- jsonlite::read_json(read_url, simplifyVector = F)
-# 
-# 
-#   # req <- httr2::request(read_url)
-#   # req_data <- httr2::req_perform(req)
-#   # metadata <- httr2::resp_body_json(req_data)$result
-#   # links <- unlist(purrr::map(metadata$resources, function(x) x$url))
-# 
-# 
-#   #   data$variables[[1]]
-#   #
-#   #   data$variables$valueTexts[[1]]
-#   #   data$variables$values[[1]]
-#   #   data$variables$values[[2]]
-#   #
-#   #
-#   #   data %>% as.tbl_json %>% gather_array
-#   # as_tibble(data)
-#   # enframe(unlist(data))
-#   #
-#   #   gather_object(data$variables)
-#   #   spread_values(data$variables)
-#   #   spread_all(data$variables)
-#   #   as.tbl_json(data$variables)
-#   #   tidyjson::spread_all(read_url)
-#   #   tidyjson::as_data_frame.tbl_json(data$variables)
-# 
-#   data <- dplyr:: mutate(data, source = source)
-# 
-#   return(data)
-# }
 
 

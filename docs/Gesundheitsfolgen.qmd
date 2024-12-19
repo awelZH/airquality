@@ -18,38 +18,41 @@ plots <-
 ```
 
 
-### Work-in-progress !
 
-<!-- TODO: see issue #34 -->
+Hier werden die Gesundheitsauswirkungen in der Wohnbevölkerung im Kanton Zürich durch Langzeitbelastung ausgewählter Luftschadstoffe statistisch abgeschätzt. Die Abschätzung behandelt vorzeitige Todesfälle als Fallbeispiel für ausgewählte Gesundheitsfolgen. Der Nutzen der Verminderung von Luftverschutzung für die Bevölkerung kann auch als vermiedene Gesundheitsfolgen ausgedrückt werden (vergleiche z.B. [Projekt GeLuft](https://www.swisstph.ch/fileadmin/user_upload/SwissTPH/Institute/Ludok/Aktuelle_Berichte/SwissTPH2023_Gesundheitsnutzen_AQG_WHO_2021.pdf)).
 
-Verweis auf Castro et al.
+::: {.callout-note collapse="true"}
+### weitere Gesundheitsfolgen
 
-Auswertung nur beispielhaft und nicht umfassend (weitere Schadstoffe wie NO2 und O3 => nicht 1:1 aufaddierbar, weitere Gesundheitsfolgen, etc)
+Es gibt eine [Vielzahl weiterer Gesundheitsfolgen](https://www.swisstph.ch/de/projects/ludok/healtheffects), welche in [epidemiologischen Studien auf Luftverschmutzung zurückgeführt werden](https://www.swisstph.ch/de/projects/ludok/aktuelle-berichte/gesundheitsfolgenabschaetzung) und an dieser Stelle nicht angeschaut werden. Dies betrifft für langfristige Luftbelastung z.B. Atemwegserkrankungen, chronisch obstruktive Lungenerkrankungen (COPD), Diabetes Typ 2, Demenz und Alzheimer, Lungenkrebs, Herz-Kreislauferkrankungen, niedriges Geburtsgewicht, Schlaganfälle, Asthma, etc. Teilweise lassen sich solche Gesundheitsfolgen auch auf verschiedene Bevölkerungsgruppen beziehen (z.B. Frauen/Männer, Kinder/Erwachsene, etc). Auch kurzzeitige Belastung durch Luftschadstoffe kann bestimmte kurzzeitige Gesundheitsfolgen hervorrufen, z.B. gemessen als Spitaleinweisungen durch Herz-Kreislauferkrankungen oder Atemwegserkrankungen, Tage eingeschränkter Aktivität, verlorene Arbeitstage. 
+:::
 
-PM2.5 als primärer Leitschadstoff aufgrund hoher Relevanz (siehe LUDOK Studien und OL Studie). 
-Mortalität aufgrund hoher Relevanz und verfügbaren Grundlagendaten zur Sterberate im Kanton Zürich.
+::: {.callout-note collapse="true"}
+### Gesundheitsfolgen unterschiedlicher Schadstoffe sollten nicht aufsummiert werden
+In Gesundheitsstudien wird meist Feinstaub PM2.5 als Leitschadstoff berücksichtigt, weil die wissenschaftlichen Grundlagen für diesen Schadstoff am besten abgestützt sind und die hohe Gesundheitsrelevanz gut belegt ist. Es sind auch wichtige Gesundheitfolgen u.a. für Stickstoffdioxid und Ozon belegt. Jedoch lassen sich die Gesundheitsauswirkungen der drei Schadstoffe aufgrund ihrer hohen Korrelation statistisch nicht eindeutig voneinander abgrenzen. Daher darf man die Gesundheitsfolgen der einzelnen Schadstoffe nicht 1:1 aufsummieren, sondern muss sie grösstenteils separat betrachten ([Castro et al., 2023](https://edoc.unibas.ch/96059/)). Insgesamt ist damit die Wahrscheinlichkeit hoch, dass die schadstoffspezifischen Ergebnisse eher als untere Grenze der Gesundheitswirkungen durch Luftbelastung zu verstehen sind. 
+:::
 
-Verwendete Grundlage Sterberate unterscheidet nicht zwischen natürlichen und unnatürlichem Todesfall => geringfügige methodische Unschärfe im Vergleich zu üblichen Analysen.
+::: {.callout-note collapse="true"}
+### Grundlagen
 
-Aufgrund der methodisch bedingten Einschränkung, die Auswirkungen anderer Schadstoffe nicht vollständig mitberücksichtigen zu können, sind die Ergebnisse für PM2.5 als untere Grenze der Gesundheitsauswirkungen durch Luftbelastung zu verstehen.
+In der vorliegenden Berechnung richten wir uns nach dem etablierten epidemiologischen Vorgehen (vergleiche z.B. [Castro et al., 2023](https://edoc.unibas.ch/96059/)). Die Ergebnisse sind somit methodisch konsistent mit anderen Studien in der Schweiz und international. Wir nutzen Dosis-Wirkungsbeziehungen und Schwellenwerte, die dem aktuellen Stand der Wissenschaft entsprechen und möglichst repräsentativ für die Schweizer Bevölkerung sind. Dafür richten wir uns nach den Empfehlungen der Schweizer [Dokumentationsstelle Luftverschmutzung und Gesundheit (LUDOK)](https://www.swisstph.ch/de/projects/ludok).
 
-Veränderung Mortalität über die Jahre ist einerseits durch die Entwicklung der Schadstoffbelastung getrieben, andererseits aber auch durch das Bevölkerungswachstum
 
-Wdargestellte Werte zeigen den wahrscheinlichsten Wert an, für den Gesundheitseffekte wissenschaftlich eindeutig nachgewiesen sind (d.h. bei beobachteten Belastungsspannen)
+In den Grafiken wird der wissenschaftlich und statistisch am sichersten abgestützte Wert als Balken dargestellt. Die Unsicherheitsbereiche (vertikale Linien) enthalten zwei Unsicherheitsbeträge: 1) die statistische Unsicherheit der verwendeten Dosis-Wirkungsbeziehungen (95% Vertrauensbereich) sowie 2) die Verwendung alternativer Schwellenwerte, nämlich der minimal auftretenden Luftbelastung als unterste Wirkschwelle, da gemäss dem aktuellen [wissenschaftlichen Synthesebericht der Weltgesundheitsorganisation](https://www.who.int/publications/i/item/9789240034228) auch unterhalb der WHO-Richtwerte Gesundheitsauswirkungen durch Luftverschmutzung wahrscheinlich sind. 
 
-Fehlerbalken berücksichtigen die 95%-Konfidenzintervalle des Effektschätzers sowie ein Szenario mit unteren gesundheitsrelevanten Schwellenwerten beim Minimum der auftretenden Schadstoffbelastung pro Jahr (d.h., Fehlerbalken berücksichtigen extrapolation der Linearität zur angenommenen Belastungsschwelle durch anthropogene Luftbeastung)
 
-Sonderfall Fallzahlen & Covid in den Jahren 2020:2022 !
+Betrachtet man die Veränderung der Gesundheitswirkungen durch Luftbelastung über mehrere Jahre, so wird diese einerseits durch die Entwicklung der Luftqualität und andererseits durch die Veränderung der Anzahl und räumlichen Verteilung der Wohnbevölkerung beeinflusst. 
+:::
 
-...
+::: {.callout-note collapse="true"}
+## Work-in-Progress ! 
 
-siehe auch GeLuft:
 
-Langzeitbelastung: 
-All-cause natural mortality in adults, All-cause natural mortality in infants, Incidence of acute low respiratory infections (ALRI) in children, Incidence of chronic obstructive pulmonary disease (COPD) in adults, Incidence of dementia in seniors, Incidence of Diabetes Type 2 in adults, Incidence of ischemic heart disease, Incidence of lung cancer in adults, Incidence of low birthweight in term births, Incidence of stroke in adults, Incidence of asthma in adults, Incidence of asthma in children
+Aktuell wird die Gesamt-Sterberate im Kanton Zürich als Grundlage verwendet. Diese unterscheidet nicht zwischen natürlichen und unnatürlichem Todesfällen und umfasst alle Altersgruppen. Daher ist das aktuelle Ergebnis eine Überschätzung der Todesfälle aufgrund von Luftbelastung. Wir arbeiten daran, eine gänzlich korrekte Grundlage zu verwenden.
 
-Kurzzeitbelastung:
-Hospital admissions due to cardio-vascular diseases, Hospital admissions due to respiratory diseases, Days of restricted activity in adults, Work days lost
+
+Vor allem in den Jahren 2020 bis 2022 hat die Schweiz eine Übersterblichkeit durch die Covid-19 Pandemie erlebt. Da jährliche Daten zu Todesfällen eine Grundlage der Gesundheitsfolgenabschätzung durch Luftbelastung sind, werden die Ergebnisse dieser Jahre etwas überschätzt. Es wird an einer entsprechenden Korrektur gearbeitet.
+:::
 
 
 

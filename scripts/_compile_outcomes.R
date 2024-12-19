@@ -30,7 +30,7 @@ data_outcomes <- prepare_outcomes(data_expo_weighmean, data_deathrates, outcomes
 # => prepare input dataset and derive years of life lost
 # TODO ...
 # from here: https://opendata.swiss/de/dataset/kohortensterbetafeln-fur-die-schweiz-1876-2030-nach-geburtsjahrgang-geschlecht-und-alter1
-# pxR::read.px("px-x-0102020300_10.px", encoding = "UTF-8") |> 
+# pxR::read.px("px-x-0102020300_101.px", encoding = "UTF-8") |> 
 #   tibble::as_tibble() |> 
 #   dplyr::mutate(
 #     Alter = readr::parse_number(as.character(Alter)),

@@ -68,7 +68,7 @@ read_single_pollutant_wcs <- function(coverage, na_value){
   
   data <- setNames(data, "value")
   data <-
-    data %>% 
+    data |> 
     dplyr::mutate(
       value = ifelse(value %in% na_value, NA, value),
       value = value / divisor
@@ -131,12 +131,12 @@ get_bfs_statpop_metadata <- function(year){
     new = c("no_proxy" = "dam-api.bfs.admin.ch"),
     code = {
       # Build the request URL with the order number as a query parameter
-      response <- httr2::request(base_url) %>%
-        httr2::req_url_query(orderNr = bfs_nr) %>%
+      response <- httr2::request(base_url) |> 
+        httr2::req_url_query(orderNr = bfs_nr) |> 
         httr2::req_headers(
           "accept" = "application/json",      # Ensure we accept JSON
           "Content-Type" = "application/json" # Request content type is JSON
-        ) %>%
+        ) |> 
         httr2::req_perform()
       
       # Parse the JSON response body into a list

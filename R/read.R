@@ -1,11 +1,10 @@
 #' Reads Swiss BFS inhabitant population raster data from official api
 #'
-#' @param year calendar year of surveyed statpop data (numeric) 
-#' @param destination_path local folder path for temporary *.zip download (character)
-#' @param boundary sf polygon object to confine statpop raster data for desired subdomain (sf)
-#' @param crs statpop data coordinate reference system (numeric)
+#' @param year
+#' @param destination_path
+#' @param boundary
+#' @param crs
 #'
-#' @return stars raster data
 #' @export
 read_statpop_raster_data <- function(year, destination_path, boundary, crs = 2056){
   
@@ -37,10 +36,7 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
 #' @param boundary 
 #' @param crs 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 read_bafu_raster_data <- function(id, boundary, crs = 2056){
   
   download_url <- get_swisstopo_metadata(id)
@@ -93,10 +89,7 @@ read_bafu_raster_data <- function(id, boundary, crs = 2056){
 #' @param source 
 #' @param file_filter
 #'
-#' @return
 #' @export
-#'
-#' @examples
 read_opendataswiss <- function(url, source, file_filter = ".csv"){
 
   read_url <- get_opendataswiss_metadata(url, file_filter)
@@ -119,10 +112,7 @@ read_opendataswiss <- function(url, source, file_filter = ".csv"){
 #' @param locale 
 #' @param ... 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 read_local_csv <- function(file, delim = ";", locale = readr::locale(encoding = "latin1", tz = "Etc/GMT-1"), ...){
   
   data <- readr::read_delim(file, delim = delim, locale = locale, ...)
@@ -137,10 +127,7 @@ read_local_csv <- function(file, delim = ";", locale = readr::locale(encoding = 
 #' @param version 
 #' @param crs 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
   
   request <- get_geolion_wfs_metadata(apiurl, version = version, crs = crs)
@@ -160,10 +147,7 @@ read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
 #' @param boundary 
 #' @param na_value 
 #' 
-#' @return
 #' @export
-#'
-#' @examples
 read_geolion_wcs_stack <- function(cov_stack, layer_names, boundary, na_value = c(0, -999)){
   
   cov_stack_filtered <- cov_stack[sapply(cov_stack, function(x) x$CoverageId %in% layer_names)]

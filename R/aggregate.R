@@ -2,10 +2,7 @@
 #'
 #' @param map 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 aggregate_map <- function(map) {
   
   map <- 
@@ -25,10 +22,7 @@ aggregate_map <- function(map) {
 #' @description
 #' Merges subsectors with small emissions into one common category and sums up emissions accordingly.
 #' 
-#' @return
 #' @export
-#'
-#' @examples
 aggregate_emmissions <- function(data){
   
   groups <- groups_emission_subsector(data)
@@ -65,10 +59,7 @@ aggregate_emmissions <- function(data){
 #' Combines measurement data with auxiliary metadata, filters dataset using provided filter criteria 
 #' and calculates mean values of specified vehicle groups.
 #'
-#' @return
 #' @export
-#'
-#' @examples
 aggregate_rsd_nox <- function(data, rsd_auxiliary, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")){
   
   if (!("year" %in% groups)) {
@@ -114,10 +105,7 @@ aggregate_rsd_nox <- function(data, rsd_auxiliary, groups = c("vehicle_type", "v
 #' Simplifies nitrogen deposition components to broader source categories and aggregates nitrogen deposition input dataset 
 #' per year, site, ecosystem category and source category.
 #' 
-#' @return
 #' @export
-#'
-#' @examples
 aggregate_nitrogen_deposition <- function(data) {
   
   data <- simplify_nitrogen_parameters(data)
@@ -151,10 +139,7 @@ aggregate_nitrogen_deposition <- function(data) {
 #' Calculates sum of inhabitant population per pollutant concentration bins and years;
 #' derives population per bin, cumulative population per bin and relative cumulative population per bin.
 #' 
-#' @return
 #' @export
-#'
-#' @examples
 aggregate_population_exposition_distrib <- function(data) { 
 
   data <-
@@ -186,10 +171,7 @@ aggregate_population_exposition_distrib <- function(data) {
 #' Calculates number of sensitive ecosystems per bin of maximum nitrogen deposition exceeding ecosystem-specific Critical Loads and year;
 #' number of sensitive ecosystems per bin, cumulative number of sensitive ecosystems per bin and relative cumulative number of sensitive ecosystems per bin.
 #' 
-#' @return
 #' @export
-#'
-#' @examples
 aggregate_ndep_exposition_distrib <- function(data) { 
   
   data <-
@@ -217,10 +199,7 @@ aggregate_ndep_exposition_distrib <- function(data) {
 #' @param data 
 #' @param groups 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 aggregate_population_weighted_mean <- function(data, groups = c("year", "pollutant", "metric", "parameter")) {
 
   data_pop_weighted <-

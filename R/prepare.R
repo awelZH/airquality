@@ -1,11 +1,8 @@
-#' Title
+#' Prepare data from ressources.csv for use in scripts 
 #'
 #' @param ressources 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_ressources <- function(ressources) {
   
   ressources <- 
@@ -22,15 +19,12 @@ prepare_ressources <- function(ressources) {
 }
 
 
-#' Title
+#' Prepares emission dataset for appropriate aggregation
 #'
 #' @param data 
 #' @param filter_args 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_emmissions <- function(data, filter_args = canton == 'ZH' & emission != 0 & !(subsector %in% c('Weitere Punktquellen OL', 'Rheinschifffahrt', 'Flugverkehr Genf'))){
   
   filter_args <- rlang::enquo(filter_args)
@@ -54,15 +48,12 @@ prepare_emmissions <- function(data, filter_args = canton == 'ZH' & emission != 
 }
 
 
-#' Title
+#' Merge RSD metadate with dataset, apply filters, calculate vehicle specific power, calculate NOx-emissions and prepare dataset for aggregation
 #'
 #' @param data 
 #' @param rsd_auxiliary 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_rsd <- function(data, rsd_auxiliary){
   
   rsd_meta <- rsd_auxiliary$meta
@@ -90,15 +81,12 @@ prepare_rsd <- function(data, rsd_auxiliary){
 }
 
 
-#' Title
+#' Prepare and merge monitoring site metadata from Ostluft and NABEL for use in scripts
 #'
 #' @param meta_ostluft 
 #' @param meta_nabel 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_monitoring_meta <- function(meta_ostluft, meta_nabel) {
   
   meta_ostluft <- prep_site_meta_ostluft(meta_ostluft)
@@ -114,17 +102,13 @@ prepare_monitoring_meta <- function(meta_ostluft, meta_nabel) {
 }
 
 
-# function to prepare tibble with air pollutant year-statistics exported and read from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
-#' Title
+#' Prepare usable tibble with air pollutant year-statistics exported and read from https://www.arias.ch/ibonline/ib_online.php and restructure the data similar to a standard long-format (see rOstluft::format_rolf())
 #'
 #' @param data 
 #' @param keep_incomplete 
 #' @param tz 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_monitoring_nabel_y1 <- function(data, metrics = list(Jahresmittel = c("NO2", "PM10", "PM2.5", "EC / Russ"), "höchster 98%-Wert eines Monats" = "O3"), keep_incomplete = FALSE, tz = "Etc/GMT-1") {
   
   metrics <-
@@ -168,16 +152,13 @@ prepare_monitoring_nabel_y1 <- function(data, metrics = list(Jahresmittel = c("N
 }
 
 
-#' Title
+#' Restructure Ostluft monitoring data from database export and remove duplicate NO2 and PM values per site due to different measurement methods
 #'
 #' @param data 
 #' @param keep_incomplete 
 #' @param tz 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_monitoring_ostluft_y1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
   
   data <- restructure_monitoring_ostluft(data, keep_incomplete = keep_incomplete, tz = tz, na.rm = TRUE) 
@@ -191,16 +172,13 @@ prepare_monitoring_ostluft_y1 <- function(data, keep_incomplete = FALSE, tz = "E
 }
 
 
-#' Title
+#' Calculate O3 peak-season metric from Ostluft monitoring h1 data
 #'
 #' @param data
 #' @param keep_incomplete 
 #' @param tz 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @exports
 prepare_monitoring_ostluft_h1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
   
   data <-
@@ -213,16 +191,13 @@ prepare_monitoring_ostluft_h1 <- function(data, keep_incomplete = FALSE, tz = "E
 }
 
 
-#' Title
+#' Calculate O3 peak-season metric from NABEL monitoring h1 data
 #'
 #' @param data
 #' @param keep_incomplete 
 #' @param tz 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_monitoring_nabel_h1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
   
   data <-
@@ -236,15 +211,12 @@ prepare_monitoring_nabel_h1 <- function(data, keep_incomplete = FALSE, tz = "Etc
 }
 
 
-#' Title
+#' Merge monitoring dataset with site metadata, derive pollutant and metric variable and prepare final dataset
 #'
 #' @param data 
 #' @param meta 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_monitoring_aq <- function(data, meta) { 
   
   data <-
@@ -275,10 +247,7 @@ prepare_monitoring_aq <- function(data, meta) {
 #' @param data_raster_aq 
 #' @param years 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, base_year) {
   
   years <- as.numeric(names(data_raster_aq))
@@ -291,16 +260,13 @@ prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, base_yea
 }
 
 
-#' Title
+#' Convert BFS statpop spatial raster rasterdata as well as air quality spatial rasterdata to combined tibble dataset for use in script
 #'
 #' @param data_raster_bfs 
 #' @param data_raster_aq 
 #' @param years 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
 
   # => convert pollutant and statpop data into a common tibble
@@ -343,17 +309,14 @@ prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
 }
 
 
-#' Title
+#' Merge municipaity boundaries with BFS statpop spatial rasterdata, convert respective data as well as air quality spatial rasterdata to combined tibble dataset for use in script to calculate population weighted means
 #'
 #' @param data_raster_bfs 
 #' @param data_raster_aq 
 #' @param years 
 #' @param boundaries 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, boundaries) {
 
   data_statpop_municip <- 
@@ -404,10 +367,7 @@ prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, bounda
 #' @param outcomes_meta 
 #' @param conc_threshold 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta, conc_threshold = "lower_conc_threshold") {
 
   # combine and wrangle all input data
@@ -457,14 +417,11 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
 
 
 
-#' Title
+#' Work in progress, will be replaced
 #'
 #' @param data 
 #'
-#' @return
 #' @export
-#'
-#' @examples
 prepare_deathrate <- function(data) {
   
   data <-

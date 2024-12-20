@@ -1,12 +1,9 @@
-#' Title
+#' Get entry from ressources.csv by internal id
 #'
 #' @param ressources 
 #' @param internal_id 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 filter_ressources <- function(ressources, internal_id) {
   
   filters <- paste0("INTERNAL_ID == ", internal_id)
@@ -17,9 +14,7 @@ filter_ressources <- function(ressources, internal_id) {
 }
 
 
-
-# function to extract target threshold values from overall threshold data for plotting with ggplot_timeseries()
-#' Title
+#' Extract target threshold values from threshold table for plotting
 #'
 #' @param threshold_values 
 #' @param pollutant 
@@ -28,10 +23,7 @@ filter_ressources <- function(ressources, internal_id) {
 #' @param unit 
 #' @param source 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 extract_threshold <- function(threshold_values, pollutant = NULL, metric = "Jahresmittel", interval = "y1", unit = "µg/m3", 
                           source = c("LRV Grenzwert", "WHO Richtwert")) {
 
@@ -59,14 +51,11 @@ extract_threshold <- function(threshold_values, pollutant = NULL, metric = "Jahr
 
 
 
-#' Title
+#' Recode short pollutant/parameter string to long string
 #'
 #' @param x 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 longpollutant <- function(x) {
   
   long <- dplyr::case_when(
@@ -92,14 +81,11 @@ longpollutant <- function(x) {
 
 
 
-#' Title
+#' Recode parameter string to short pollutant string
 #'
 #' @param x 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 shortpollutant <- function(x) {
   
   long <- dplyr::case_when(
@@ -113,14 +99,11 @@ shortpollutant <- function(x) {
 }
 
 
-#' Title
+#' Recode short pollutant/parameter string to long metric string
 #'
 #' @param x 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 longmetric <- function(x) {
   
   long <- dplyr::case_when(
@@ -144,14 +127,11 @@ longmetric <- function(x) {
 }
 
 
-#' Title
+#' Recode short parameter string to long metric string
 #'
 #' @param x 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 longparameter <- function(x) {
   
   long <- dplyr::case_when(
@@ -164,38 +144,19 @@ longparameter <- function(x) {
 }
 
 
-#' Title
+#' Extract numeric year from string
 #'
 #' @param string 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 extract_year <- function(string) {as.numeric(stringr::str_extract(string, "(1|2)[0-9]{3}"))}
 
 
-
-#' Title
-#'
-#' @param maps 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-set_year <- function(maps) {setNames(as.character(unique(extract_year(maps))), unique(extract_year(maps)))}
-
-
-
-#' Title
+#' Return function to bin concentration depending on parameter
 #'
 #' @param pollutant 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 bin_fun <- function(pollutant) {
   
   fun <- function(x) {floor(x) + 0.5} # default, e.g. NO2: abgerundet auf 1, Klassenmitte
@@ -210,17 +171,14 @@ bin_fun <- function(pollutant) {
 
 
 
-#' Title
+#' Write local *csv 
 #'
 #' @param data 
 #' @param file 
 #' @param delim 
 #' @param na 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 write_local_csv <- function(data, file, delim = ";", na = "NA"){
   
   readr::write_delim(data, file, delim = delim, na = na)
@@ -228,17 +186,12 @@ write_local_csv <- function(data, file, delim = ";", na = "NA"){
 }
 
 
-
-# see here: https://gist.github.com/sotoattanito/8e6fad4b7322ceae9f14f342985f1681
-#' Title
+#' Round to nearest whole number (kaufmännisches Runden)
 #'
 #' @param x 
 #' @param digits 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 round_off <- function (x, digits = 0) {
   
   posneg = sign(x)
@@ -250,15 +203,12 @@ round_off <- function (x, digits = 0) {
 
 
 
-#' Title
+#' Converts coverage stack from geolion api request of air pollutant raster data to unambiguous matrix of coverages
 #'
 #' @param cov_stack 
 #' @param years_pollumap 
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @keywords internal
 filter_availability <- function(cov_stack, years_pollumap = 2015) {
   
   data_availability <- 

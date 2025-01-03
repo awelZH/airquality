@@ -87,8 +87,8 @@ scale_color_siteclass <-
     "empf. Ökosystem" = "gray20"
   ))
 
-cols_emissions <- c(wesanderson::wes_palette(name = "BottleRocket2", n = 5, type = "discrete"), "#003333")
-
+cols_emissions <- c("Dienstleistungen" = "Gold", "Haushalte" =  "Green", "Industrie" = "Blue", 
+                    "Land- und Forstw." = "Purple", "Verkehr" = "Gray", "natürl. Emissionen" = "natural")
 
 # ggplot2 custom themes
 theme_ts <-
@@ -138,13 +138,12 @@ plots <- list()
 # ---
 # read & plot details of Canton Zürich air pollutant emissions per pollutant, subsector and year (absolute and relative values)
 data_emikat <- read_local_csv(ressources_plotting$emissions$emikat, delim = ";", locale = readr::locale(encoding = "UTF-8"))
-cols_emissions <- setNames(as.character(cols_emissions), unique(data_emikat$sector))
 pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$pollutant))
 
 # absolute values
 plots$emissions$inventory_absolute <- 
   lapply(pollutants, function(pollutant) {
-    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), cols = cols_emissions, theme = theme_ts) #FIXME: fill shading doesn't work right
+    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), cols = cols_emissions, theme = theme_ts)
   })
 
 # relative values

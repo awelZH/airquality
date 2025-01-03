@@ -53,7 +53,7 @@ aggregate_groups <- function(data, y, groups, nmin = 3, perc = list(ymin = 0.05,
 #' @param first 
 #'
 #' @keywords internal
-groups_emission_subsector <- function(data, threshold_fraction = 0.02, first = 1:3) {
+groups_emission_subsector <- function(data, threshold_fraction = 0.05, first = 1:3) {
   
   # mean emissions per category over all years
   group_vars <- c("pollutant", "sector", "subsector")

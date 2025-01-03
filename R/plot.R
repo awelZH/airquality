@@ -191,7 +191,7 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
 #'
 #' @keywords internal
 ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width = 0.8, theme = ggplot2::theme_minimal()) {
-  
+
   pollutant <- unique(as.character(data$pollutant))
   metric <- unique(as.character(data$metric))
   unit <- unique(as.character(data$unit))
@@ -203,27 +203,28 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
     yscale <- ggplot2::scale_y_continuous(labels = function(x) format(x, big.mark = "'"), expand = c(0,0))
     sub <- openair::quickText(paste0(pollutant, ", ", metric, " nach Quellgruppen (", unit, ")"))
   }
-  
+
   order <-
     data |>
     dplyr::group_by(sector, subsector_new) |> 
     dplyr::summarise(emission = mean(emission)) |> 
     dplyr::ungroup() |> 
-    dplyr::arrange(sector, dplyr::desc(emission)) |> 
+    dplyr::arrange(sector, emission) |> 
     dplyr::ungroup() 
-  
+
   data <-
     data |> 
     dplyr::mutate(subsector_new = factor(subsector_new, levels = order$subsector_new)) |> 
-    dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols))
-  
-  cols <- 
+    dplyr::mutate(rootcol = dplyr::recode(sector, !!!cols)) |> 
+    dplyr::arrange(sector, dplyr::desc(emission))
+
+  cols <-
     data |> 
     dplyr::distinct(sector, subsector_new, rootcol) |> 
     dplyr::group_by(sector) |>
-    dplyr::mutate(col = colorRampPalette(c(unique(rootcol), shades::brightness(unique(rootcol), 0.5)))(length(unique(subsector_new)))) |> #FIXME: better color grading function
+    dplyr::mutate(col = pal_emissions(n = length(.data$rootcol), name = unique(.data$rootcol))) |> 
     dplyr::ungroup()
-  
+
   data <- dplyr::left_join(data, cols, by = c("sector", "subsector_new", "rootcol"))
   
   plot <-
@@ -280,6 +281,24 @@ immissionscale <- function(parameter) {
   )
 }
 
+
+#' Provides custom color scales for emissions
+#'
+#' @param n
+#' @param name 
+#'
+#' @keywords internal
+pal_emissions <- function(n, name) {
+  pal <- switch(name,
+                "Gray" = colorRampPalette(c("gray10","gray90")),
+                "Purple" = colorRampPalette(c("#3c096c","#5a189a","#7b2cbf","#9d4edd","#c77dff")),
+                "Blue" = colorRampPalette(c("#293961","#2c497f","#8897bd","#e3e4fa")),
+                "Green" = colorRampPalette(c("#354f52","#52796f","#84a98c","#cad2c5")),
+                "Gold" = colorRampPalette(c("#a67c00","#ffbf00","#ffd447")),
+                "natural" = colorRampPalette(c("#636b2f","#d4de94"))
+  )
+  return(pal(n))
+}
 
 
 #' Wrapper to supply pollutant-specific list of parameters for timeseries plotting

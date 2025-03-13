@@ -6,9 +6,9 @@
 #'
 #' @keywords internal
 read_statpop_csv <- function(file, year, crs = 2056) {
-
+  # browser()
   var <- ifelse(as.numeric(year) > 2022, "BBTOT", paste0("B", year %% 100, "BTOT")) #FIXME: derive from data itself 
-  delim <- ifelse(as.numeric(year) > 2015, ";", ",") #FIXME: derive from data itself 
+  delim <- ifelse(as.numeric(year) > 2019, ";", ",") #FIXME: derive from data itself
   
   data <- readr::read_delim(
     file,
@@ -100,14 +100,14 @@ to_stack_df <- function(cov_stack){
 }
 
 
-#' Get dataset metadata from swisstopo api
+#' Get dataset metadata from geo.admin api
 #'
 #' @param id 
 #'
 #' @keywords internal
-get_swisstopo_metadata <- function(id){
+get_geo_admin_metadata <- function(id, stac_version = "0.9"){
 
-  metadata_url <- paste0("https://data.geo.admin.ch/api/stac/v0.9/collections/",id,"/items")
+  metadata_url <- paste0("https://data.geo.admin.ch/api/stac/v",stac_version,"/collections/",id,"/items")
   metadata <- rjson::fromJSON(file = metadata_url)
   url <- unlist(purrr::map(metadata$features, function(x) x$assets[which(grepl("tiff", x$assets))][[1]]$href))
 

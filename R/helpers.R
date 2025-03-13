@@ -25,8 +25,8 @@ filter_ressources <- function(ressources, internal_id) {
 #'
 #' @keywords internal
 extract_threshold <- function(threshold_values, pollutant = NULL, metric = "Jahresmittel", interval = "y1", unit = "µg/m3", 
-                          source = c("LRV Grenzwert", "WHO Richtwert")) {
-
+                              source = c("LRV Grenzwert", "WHO Richtwert")) {
+  
   thresholds <-
     threshold_values |>
     dplyr::filter(
@@ -182,7 +182,7 @@ bin_fun <- function(pollutant) {
 write_local_csv <- function(data, file, delim = ";", na = "NA"){
   
   readr::write_delim(data, file, delim = delim, na = na)
-
+  
 }
 
 
@@ -225,4 +225,24 @@ filter_availability <- function(cov_stack, years_pollumap = 2015) {
 }
 
 
+
+#' Extract polutant from BAFU data.geo.admin.ch ressource string
+#'
+#' @param id
+#'
+#' @keywords internal
+extract_pollutant <- function(id) {
+  
+  pollutant <- dplyr::case_when(
+    stringr::str_detect(id, "feinstaub_pm2_5") ~ "pm25",
+    stringr::str_detect(id, "feinstaub_pm10") ~ "pm10",
+    stringr::str_detect(id, "ozon") ~ "mp98",
+    stringr::str_detect(id, "schwefeldioxid") ~ "so2",
+    stringr::str_detect(id, "stickstoffdioxid") ~ "no2",
+    stringr::str_detect(id, "stickstoff_kritischer_eintrag") ~ "ndep_exmax",
+    TRUE ~ NA
+  )
+  
+  return(pollutant)
+} 
 

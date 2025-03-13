@@ -4,22 +4,24 @@
 
 # read datasets ...
 # ---
-# => check for available raster data in geolion "pollumap" & "jahreskarte" wcs datasets
-cov_stack <- unlist(lapply(12:16, function(x) get_geolion_wcs_metadata(filter_ressources(ressources, x))), recursive = FALSE)
+# => get all available BAFU air pollutant PM2.5, PM10, NO2, O3 raster data as well as nitrogen deposition including pre-compiled ecosystem exposition data from geo.admin.ch
+data_raster_pm25 <- read_bafu_raster_data(filter_ressources(ressources, 15), yearmin = 2010, map_canton) # since statpop raster data only available from 2010 on
+data_raster_pm10 <- read_bafu_raster_data(filter_ressources(ressources, 14), yearmin = 2010, map_canton)
+data_raster_no2 <- read_bafu_raster_data(filter_ressources(ressources, 13), yearmin = 2010, map_canton)
+data_raster_o3mp98 <- read_bafu_raster_data(filter_ressources(ressources, 16), yearmin = 2010, map_canton)
+data_raster_ndep <- read_bafu_raster_data(filter_ressources(ressources, 19), map_canton)
 
-# => availability matrix, filtered for desired source & pollutants => years
-availability <- filter_availability(cov_stack)
-years <- as.numeric(unique(availability$year))
+years <- unique(as.numeric(names(c(data_raster_pm25, data_raster_pm10, data_raster_no2, data_raster_o3mp98))))
 
-# => get air pollutant raster data from geolion accordingly
-data_raster_aq <- read_geolion_wcs_stack(cov_stack, availability$layer_name, map_canton)
-data_raster_aq <- lapply(setNames(years, years), function(year) data_raster_aq[which(extract_year(names(data_raster_aq)) == year)])
+data_raster_aq <- purrr::map(setNames(years, years), function(year) list(
+  pm25 = data_raster_pm25[[as.character(year)]]$pm25, 
+  pm10 = data_raster_pm10[[as.character(year)]]$pm10,
+  no2 = data_raster_no2[[as.character(year)]]$no2,
+  mp98 = data_raster_o3mp98[[as.character(year)]]$mp98
+))
 
 # => download / read BFS statpop data for same years as pollutant raster data
 data_raster_bfs <- lapply(setNames(years, years), function(year) read_statpop_raster_data(year, "inst/extdata", map_canton))
-
-# => download BAFU nitrogen deposition raster data including pre-compiled ecosystem exposition data
-data_raster_bafu <- read_bafu_raster_data(filter_ressources(ressources, 19), map_canton)
 
 # prepare datasets ...
 # ---
@@ -50,7 +52,8 @@ data_expo_municip_basescenario <- prepare_weighted_mean(data_raster_bfs[as.chara
 data_expo_population_dist <- aggregate_population_exposition_distrib(data_expo_pop)
 
 # => sensitive ecosystem reactive nitrogen deposition exposition: distribution across all sensitive ecosystems
-data_expo_ecosys_dist <- aggregate_ndep_exposition_distrib(data_raster_bafu) 
+data_raster_ndep <- bafu_rasterlist_to_tibble(data_raster_ndep)
+data_expo_ecosys_dist <- aggregate_ndep_exposition_distrib(data_raster_ndep) 
 
 # => population-weighted mean values per year, pollutant and municipality / canton (including base-scenario)
 data_pop_weighted_mean <- list(canton = 
@@ -71,5 +74,6 @@ write_local_csv(data_pop_weighted_mean$canton, file = "inst/extdata/output/data_
 write_local_csv(data_pop_weighted_mean$munipalities, file = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv")
 write_local_csv(data_expo_population_dist, file = "inst/extdata/output/data_exposition_distribution_pollutants.csv")
 write_local_csv(data_expo_ecosys_dist, file = "inst/extdata/output/data_exposition_distribution_ndep.csv")
-rm(list = c("cov_stack", "availability", "years", "data_raster_bfs", "data_raster_aq", "data_raster_bafu", "data_expo_municip", 
-            "data_expo_population_dist", "data_expo_ecosys_dist", "data_pop_weighted_mean", "map_canton"))
+rm(list = c("cov_stack", "availability", "years", "data_raster_bfs", "data_raster_aq", "data_raster_ndep", "data_expo_municip", 
+            "data_expo_population_dist", "data_expo_ecosys_dist", "data_pop_weighted_mean", "map_canton", "data_raster_pm25", "data_raster_pm10", 
+            "data_raster_no2", "data_raster_o3mp98"))

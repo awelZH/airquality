@@ -719,3 +719,5 @@ get_base_scenario_year <- function(base = "min", ...) {
   
   return(fun)
 }
+
+

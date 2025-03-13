@@ -268,7 +268,7 @@ prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, base_yea
 #'
 #' @export
 prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
-
+  
   # => convert pollutant and statpop data into a common tibble
   data_statpop <-
     years |> 
@@ -285,7 +285,7 @@ prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
         dplyr::mutate(year = as.numeric(yr))
     }) |> 
     dplyr::bind_rows()
-
+  
   data <- dplyr::full_join(data_statpop, data_aq, by = c("x","y","year"))
   data <-
     data |> 
@@ -318,7 +318,7 @@ prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
 #'
 #' @export
 prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, boundaries) {
-
+  
   data_statpop_municip <- 
     years |> 
     as.character() |> 
@@ -369,7 +369,7 @@ prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, bounda
 #'
 #' @export
 prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta, conc_threshold = "lower_conc_threshold") {
-
+  
   # combine and wrangle all input data
   data <- 
     data_expo_weighmean |> 
@@ -443,4 +443,31 @@ prepare_deathrate <- function(data) {
   
   return(data)
 }
+
+
+#' Converts list of stars raster data to tibble data (for BAFU raster data)
+#'
+#' @param rasterlist
+#'
+#' @keywords internal
+bafu_rasterlist_to_tibble <- function(rasterlist) {
+
+  years <- names(rasterlist)
+  
+  data <- 
+    purrr::map(years, function(yr) 
+      
+      rasterlist[[yr]]$ndep_exmax |>
+        tibble::as_tibble() |>
+        na.omit() |>
+        dplyr::mutate(
+          year = as.numeric(yr),
+          source = "BAFU"
+        ) 
+    ) |> 
+    dplyr::bind_rows()
+  
+  return(data)
+}
+
 

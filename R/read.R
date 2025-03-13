@@ -7,7 +7,7 @@
 #'
 #' @export
 read_statpop_raster_data <- function(year, destination_path, boundary, crs = 2056){
-  
+ 
   # download zip
   download_statpop_data(year, destination_path, file_filter = paste0("STATPOP", year, "\\.csv"))
   
@@ -30,23 +30,25 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
 }
 
 
-#' Reads raster data from official swisstopo api, used for BAFU data on sensitive ecosystem nitrogen deposition CLE exceedance
+#' Reads raster data from official swisstopo api, used for BAFU data on air pollutants and sensitive ecosystem nitrogen deposition CLE exceedance
 #'
 #' @param id 
+#' @param yearmin
 #' @param boundary 
 #' @param crs 
 #'
 #' @export
-read_bafu_raster_data <- function(id, boundary, crs = 2056){
-  
-  download_url <- get_swisstopo_metadata(id)
+read_bafu_raster_data <- function(id, yearmin = -Inf, boundary, crs = 2056){
+
+  download_url <- get_geo_admin_metadata(id)
   years <- extract_year(download_url)
   download_url <- setNames(download_url, years)
-  
+  pollutant <- extract_pollutant(id)
+  years <- years[which(years >= yearmin)]
+
   # FIXME: read_stars returns a curvilinear LV95 grid in this case which creates problems later on (?)
   data <-
-    years |> 
-    as.character() |> 
+    setNames(as.character(years), as.character(years)) |> 
     purrr::map(function(yr) {
       
       data <- 
@@ -54,7 +56,7 @@ read_bafu_raster_data <- function(id, boundary, crs = 2056){
         stars::read_stars() |>
         sf::st_transform(crs = sf::st_crs(crs))
       
-      names(data) <- "ndep_exmax" # FIXME: derive from data
+      names(data) <- extract_pollutant(download_url[[yr]])
       
       # crop to boundary
       # FIXME regular grid workaround: 
@@ -64,20 +66,9 @@ read_bafu_raster_data <- function(id, boundary, crs = 2056){
         stars::st_as_stars() |> 
         sf::st_set_crs(value = crs) |> 
         sf::st_crop(boundary)
-      
-      # convert to tibble
-      data <- 
-        data |> 
-        tibble::as_tibble() |> 
-        na.omit() |> 
-        dplyr::mutate(
-          year = as.numeric(yr),
-          source = "BAFU"
-        )
-      
-      return(data)
-    }) |> 
-    dplyr::bind_rows()
+
+      return(setNames(list(data), pollutant))
+    })
   
   return(data)
 }

@@ -5,13 +5,15 @@
 # read datasets ...
 # ---
 # => get all available BAFU air pollutant PM2.5, PM10, NO2, O3 raster data as well as nitrogen deposition including pre-compiled ecosystem exposition data from geo.admin.ch
-data_raster_pm25 <- read_bafu_raster_data(filter_ressources(ressources, 15), yearmin = 2010, map_canton) # since statpop raster data only available from 2010 on
-data_raster_pm10 <- read_bafu_raster_data(filter_ressources(ressources, 14), yearmin = 2010, map_canton)
-data_raster_no2 <- read_bafu_raster_data(filter_ressources(ressources, 13), yearmin = 2010, map_canton)
-data_raster_o3mp98 <- read_bafu_raster_data(filter_ressources(ressources, 16), yearmin = 2010, map_canton)
-data_raster_ndep <- read_bafu_raster_data(filter_ressources(ressources, 19), map_canton)
+years <- 2010:(lubridate::year(Sys.Date()) - 2) # since statpop raster data are only available from 2010 on and new data are usually published end of year for preceeding year
 
-years <- unique(as.numeric(names(c(data_raster_pm25, data_raster_pm10, data_raster_no2, data_raster_o3mp98))))
+data_raster_pm25 <- read_bafu_raster_data(filter_ressources(ressources, 15), years_filter = years, map_canton) 
+data_raster_pm10 <- read_bafu_raster_data(filter_ressources(ressources, 14), years_filter = years, map_canton)
+data_raster_no2 <- read_bafu_raster_data(filter_ressources(ressources, 13), years_filter = years, map_canton) # NO2 may take a while since data from 2020 on are in highres
+data_raster_o3mp98 <- read_bafu_raster_data(filter_ressources(ressources, 16), years_filter = years, map_canton)
+data_raster_ndep <- read_bafu_raster_data(filter_ressources(ressources, 19), years_filter =  1990:(lubridate::year(Sys.Date()) - 2), map_canton) # ndep is already exposition data and exists from 1990 on
+
+years <- sort(unique(as.numeric(names(c(data_raster_pm25, data_raster_pm10, data_raster_no2, data_raster_o3mp98)))))
 
 data_raster_aq <- purrr::map(setNames(years, years), function(year) list(
   pm25 = data_raster_pm25[[as.character(year)]]$pm25, 
@@ -19,6 +21,7 @@ data_raster_aq <- purrr::map(setNames(years, years), function(year) list(
   no2 = data_raster_no2[[as.character(year)]]$no2,
   mp98 = data_raster_o3mp98[[as.character(year)]]$mp98
 ))
+data_raster_aq <- lapply(data_raster_aq, function(x) x[which(!sapply(x, is.null))])
 
 # => download / read BFS statpop data for same years as pollutant raster data
 data_raster_bfs <- lapply(setNames(years, years), function(year) read_statpop_raster_data(year, "inst/extdata", map_canton))

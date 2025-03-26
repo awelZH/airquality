@@ -33,41 +33,48 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
 #' Reads raster data from official swisstopo api, used for BAFU data on air pollutants and sensitive ecosystem nitrogen deposition CLE exceedance
 #'
 #' @param id 
-#' @param yearmin
+#' @param years_filter
 #' @param boundary 
 #' @param crs 
 #'
 #' @export
-read_bafu_raster_data <- function(id, yearmin = -Inf, boundary, crs = 2056){
+read_bafu_raster_data <- function(id, years_filter, boundary, crs = 2056){
 
   download_url <- get_geo_admin_metadata(id)
   years <- extract_year(download_url)
   download_url <- setNames(download_url, years)
   pollutant <- extract_pollutant(id)
-  years <- years[which(years >= yearmin)]
+  years <- years[which(years %in% years_filter)]
 
   # FIXME: read_stars returns a curvilinear LV95 grid in this case which creates problems later on (?)
   data <-
     setNames(as.character(years), as.character(years)) |> 
     purrr::map(function(yr) {
       
-      data <- 
-        download_url[[yr]] |>
-        stars::read_stars() |>
-        sf::st_transform(crs = sf::st_crs(crs))
-      
-      names(data) <- extract_pollutant(download_url[[yr]])
+      data <- stars::read_stars(download_url[[yr]], proxy = FALSE) # |> 
+        # sf::st_transform(crs = sf::st_crs(crs)) # needs a lot of time and RAM => not really nessecary here
       
       # crop to boundary
-      # FIXME regular grid workaround: 
+      # FIXME regular grid workaround including pre-filtering to reduce large input dataset and speed / RAM problems: 
+      bbox <- sf::st_bbox(boundary)
+      margin <- 500 # m
+      
       data <- 
         data |> 
+        sf::st_coordinates() |> # for some reason, that's more memory friendly than as_tibble() straight away
+        dplyr::mutate(
+          value = as.numeric(sf::st_drop_geometry(data[[1]]))
+        ) |>
         tibble::as_tibble() |> 
+        dplyr::filter(x >= bbox$xmin - !!margin & x <= !!bbox$xmax + !!margin & y >= !!bbox$ymin - !!margin & y <= !!bbox$xmax + !!margin) |> 
         stars::st_as_stars() |> 
         sf::st_set_crs(value = crs) |> 
         sf::st_crop(boundary)
-
+    
+      names(data) <- extract_pollutant(download_url[[yr]])
+      
       return(setNames(list(data), pollutant))
+      
     })
   
   return(data)

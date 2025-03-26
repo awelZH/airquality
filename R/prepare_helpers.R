@@ -598,8 +598,8 @@ average_to_grid <- function(data, grid, method = "average", na_val = -999) {
 #' @keywords internal
 average_to_statpop <- function(x, y) {
   
-  grid <- dplyr::select(x, RELI) 
-  data_avg <- purrr::map(y, function(data) average_to_grid(data, grid))
+    grid <- dplyr::select(x, RELI) 
+    data_avg <- purrr::map(y, function(data) average_to_grid(data, grid))
   
   return(data_avg)
 }

@@ -257,7 +257,7 @@ get_years <- function(read_all_raster, yearmax, base_scenario_year) {
   
   if (read_all_raster) {
     
-    years <- list(PM2.5 = 2015:yearmax, PM10 = 2010:yearmax, NO2 = 2010:yearmax, O3 = 2010:yearmax, ndep_exmax = 1990:yearmax, all = 2010:yearmax) # since statpop raster data are only available from 2010 on and new data are usually published end of year for preceeding year
+    years <- list(PM2.5 = 2015:yearmax, PM10 = 2010:yearmax, NO2 = 2010:yearmax, O3 = 2010:yearmax, ndep_exmax = 1990:yearmax, all = 2010:yearmax, base_analysed = FALSE) # since statpop raster data are only available from 2010 on and new data are usually published end of year for preceeding year
     
   } else {
     
@@ -306,7 +306,7 @@ get_years <- function(read_all_raster, yearmax, base_scenario_year) {
       unstack(year ~ pollutant)
     
     years$all <- unique(unlist(years[names(years) != "ndep_exmax"]))
-    years$base_analysed <- base_scenario_year %in%  dplyr::distinct(read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv"), year)$year
+    years$base_analysed <- base_scenario_year %in% dplyr::distinct(read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv"), year)$year
     
   }
   

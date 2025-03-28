@@ -32,5 +32,6 @@ Suggests:
     rOstluft.plot,
     scales,
     RColorBrewer,
+    colorspace,
     MASS,
     quarto

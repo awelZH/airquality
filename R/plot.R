@@ -458,7 +458,7 @@ plot_all_expo_hist <- function(parameter, data) {
 #'
 #' @keywords internal
 plot_all_expo_cumul <- function(parameter, data) {
-  
+
   data <- dplyr::filter(data, parameter == !!parameter)
   years_exposition <- setNames(unique(data$year), as.character(unique(data$year)))
   plots <- lapply(years_exposition, function(year) {

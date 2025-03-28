@@ -1,6 +1,6 @@
 # Derive selected health outcomes per year from population-weighted mean data
 # TODO: use upcoming R-package from SwissTPH et al. for calculations instead of own functions ...
-# TODO: finalise ressurces.csv
+# TODO: finalise ressources.csv
 
 
 # read datasets ...
@@ -9,7 +9,7 @@
 outcomes_meta <- 
   filter_ressources(ressources, 24) |> 
   read_local_csv(locale = readr::locale(encoding = "UTF-8")) |> 
-  dplyr::select(-lower_conc_threshold_source, -min_conc_threshold, -crf_source, -base_scenario_year, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
+  dplyr::select(-lower_conc_threshold_source, -min_conc_threshold, -crf_source, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
 
 # => get Canton Zurich yearly mortality rates from opendata.swiss
 # TODO: use better dataset ...

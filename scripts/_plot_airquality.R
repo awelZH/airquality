@@ -446,14 +446,15 @@ plots$exposition$distribution_cumulative <-
     pollutant <- unique(data_plot$pollutant)
     metric <- unique(data_plot$metric)
     thresh <- extract_threshold(immission_threshold_values, pollutant, metric)
-    plot_all <- 
+    plot_all <-
       ggplot2::ggplot(data_plot, mapping = ggplot2::aes(x = concentration, y = population_cum_rel, color = factor(year), group = year)) +
       ggplot2::geom_vline(xintercept = thresh$value, color = thresh$color, linetype = thresh$linetype, linewidth = thresh$linesize) +
       ggplot2::geom_line(linewidth = 1) +
       # ggiraph::geom_line_interactive(mapping = ggplot2::aes(data_id = year, tooltip = population_cum), linewidth = 1) +
       ggplot2::scale_x_continuous(limits = range(expositionpars(parameter)$xbreaks), breaks = expositionpars(parameter)$xbreaks, expand = c(0.01,0.01)) +
       ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
-      ggplot2::scale_color_brewer(name = "Jahr") +
+      # ggplot2::scale_color_brewer(name = "Jahr") +
+      colorspace::scale_color_discrete_diverging(name = "Jahr", palette = "Blue-Yellow") +
       ggplot2::xlab(openair::quickText(paste0(pollutant," ",metric," (µg/m3)"))) +
       ggplot2::ggtitle(
         label = openair::quickText(paste0("Bevölkerungsexposition ",longpollutant(parameter))),
@@ -480,7 +481,7 @@ plots$exposition$distribution_cumulative$Ndep$alle <-
   ggplot2::geom_line(linewidth = 1) +
   ggplot2::scale_x_continuous(limits = range(expositionpars("Ndep")$xbreaks), breaks = expositionpars("Ndep")$xbreaks, expand = c(0.01,0.01)) +
   ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
-  ggplot2::scale_color_brewer(name = "Jahr") +
+  colorspace::scale_color_discrete_diverging(name = "Jahr", palette = "Blue-Yellow") +
   ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")) +
   ggplot2::ggtitle(
     label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),

@@ -12,10 +12,8 @@ RoxygenNote: 7.3.2
 Imports: 
     archive,
     dplyr,
-    ggplot2,
     httr2,
     lubridate,
-    ows4R,
     purrr,
     readr,
     rjson,
@@ -31,8 +29,8 @@ Suggests:
     ggplot2,
     lemon,
     openair,
-    quarto,
     rOstluft.plot,
     scales,
-    shades,
-    wesanderson
+    RColorBrewer,
+    MASS,
+    quarto

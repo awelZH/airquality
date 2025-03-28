@@ -201,16 +201,16 @@ get_geolion_wfs_metadata <- function(apiurl, type = "ms:gem_grenzen", version = 
 #' @param version 
 #'
 #' @keywords internal
-get_geolion_wcs_metadata <- function(wcs_stack, version = "2.0.1"){
-  
-  client <- ows4R::WCSClient$new(wcs_stack, serviceVersion = version)
-  cap <- client$getCapabilities()
-  cov <- cap$getCoverageSummaries()
-  cov_ids <- sapply(cov, function(x) x$CoverageId)
-  cov_list <- lapply(cov_ids, function(x) cap$findCoverageSummaryById(x))
-  
-  return(cov_list)
-}
+# get_geolion_wcs_metadata <- function(wcs_stack, version = "2.0.1"){
+#   
+#   client <- ows4R::WCSClient$new(wcs_stack, serviceVersion = version)
+#   cap <- client$getCapabilities()
+#   cov <- cap$getCoverageSummaries()
+#   cov_ids <- sapply(cov, function(x) x$CoverageId)
+#   cov_list <- lapply(cov_ids, function(x) cap$findCoverageSummaryById(x))
+#   
+#   return(cov_list)
+# }
 
 
 #' Download *.zip into tempfile & unzip & delete
@@ -259,5 +259,31 @@ download_statpop_data <- function(year, destination_path, file_filter = NULL){
   download_url <- get_bfs_statpop_metadata(year)
   download_zip(download_url, destination_path, file_filter)
   
+}
+
+
+#' just to bring ist into required structure
+#'
+#' @param years
+#' @param data_raster_pm25
+#' @param data_raster_pm10
+#' @param data_raster_no2
+#' @param data_raster_o3mp98
+#' @param data_raster_ndep
+#'
+#' @keywords internal
+combine_raster_aq <- function(years, data_raster_pm25, data_raster_pm10, data_raster_no2, data_raster_o3mp98, data_raster_ndep) {
+  
+  data_raster_aq <- 
+    setNames(years$all, years$all) |> 
+    purrr::map(function(year) list(
+      pm25 = data_raster_pm25[[as.character(year)]]$pm25, 
+      pm10 = data_raster_pm10[[as.character(year)]]$pm10,
+      no2 = data_raster_no2[[as.character(year)]]$no2,
+      mp98 = data_raster_o3mp98[[as.character(year)]]$mp98
+    )) |> 
+    purrr::map(function(x) x[which(!sapply(x, is.null))])
+  
+  return(data_raster_aq )
 }
 

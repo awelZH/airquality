@@ -179,9 +179,9 @@ bin_fun <- function(pollutant) {
 #' @param na 
 #'
 #' @keywords internal
-write_local_csv <- function(data, file, delim = ";", na = "NA"){
+write_local_csv <- function(data, file, delim = ";", na = "NA", append = FALSE){
   
-  readr::write_delim(data, file, delim = delim, na = na)
+  readr::write_delim(data, file, delim = delim, na = na, append = append)
   
 }
 
@@ -245,4 +245,72 @@ extract_pollutant <- function(id) {
   
   return(pollutant)
 } 
+
+
+
+#' Check previously analysed years and determine which new years should be analysed
+#'
+#' @param yearmax
+#'
+#' @keywords internal
+get_years <- function(read_all_raster, yearmax, base_scenario_year) {
+  
+  if (read_all_raster) {
+    
+    years <- list(PM2.5 = 2015:yearmax, PM10 = 2010:yearmax, NO2 = 2010:yearmax, O3 = 2010:yearmax, ndep_exmax = 1990:yearmax, all = 2010:yearmax) # since statpop raster data are only available from 2010 on and new data are usually published end of year for preceeding year
+    
+  } else {
+    
+    years <- 
+      read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv") |> 
+      dplyr::distinct(year, pollutant) |> 
+      dplyr::mutate(analysed = TRUE)
+    
+    if (base_scenario_year %in% years$year) {
+      
+      years <- 
+        years |> 
+        dplyr::mutate(
+          analysed = ifelse(year == !!base_scenario_year, NA, analysed)
+        )
+      
+    } else {
+      
+      years <- # make sure, base scenario year is always included to be downloaded
+        tibble::tibble(
+          pollutant = c("NO2", "O3", "PM10", "PM2.5"),
+          year = base_scenario_year,
+          analysed = NA
+        ) |> 
+        dplyr::bind_rows(years)
+      
+    }
+    
+    years <-
+      read_local_csv("inst/extdata/output/data_exposition_distribution_ndep.csv") |> 
+      dplyr::distinct(year) |> 
+      dplyr::mutate(
+        pollutant = "ndep_exmax",
+        analysed = TRUE
+      ) |> 
+      dplyr::bind_rows(years)
+    
+    years <- 
+      years |> 
+      dplyr::group_by(pollutant) |> 
+      tidyr::expand(year = min(year):!!yearmax) |> 
+      dplyr::ungroup() |> 
+      dplyr::left_join(years, by = c("pollutant", "year")) |> 
+      dplyr::filter(is.na(analysed)) |> 
+      dplyr::select(-analysed) |> 
+      unstack(year ~ pollutant)
+    
+    years$all <- unique(unlist(years[names(years) != "ndep_exmax"]))
+    years$base_analysed <- base_scenario_year %in%  dplyr::distinct(read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv"), year)$year
+    
+  }
+  
+  return(years)
+}  
+
 

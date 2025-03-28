@@ -268,7 +268,7 @@ prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, base_yea
 #'
 #' @export
 prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
-  
+
   # => convert pollutant and statpop data into a common tibble
   data_statpop <-
     years |> 
@@ -289,7 +289,7 @@ prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
   data <- dplyr::full_join(data_statpop, data_aq, by = c("x","y","year"))
   data <-
     data |> 
-    dplyr::filter(!is.na(population)) |> 
+    dplyr::filter(!is.na(population) & !is.na(concentration)) |> 
     dplyr::mutate(
       parameter = dplyr::recode(pollutant,
                                 "no2" = "NO2",
@@ -369,7 +369,7 @@ prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, bounda
 #'
 #' @export
 prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta, conc_threshold = "lower_conc_threshold") {
-  
+
   # combine and wrangle all input data
   data <- 
     data_expo_weighmean |> 
@@ -400,11 +400,12 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
     dplyr::select(year, pollutant, metric, parameter, population, scenario, outcome_type, outcome, outcome_lower, outcome_upper, outcome_delta_min_conc)
   
   # restructure dataset
-  data <- 
+  scen <- unique(data$scenario)[stringr::str_detect(unique(data$scenario), "vermieden")]
+  data <-
     data |> 
     dplyr::select(year, pollutant, metric, parameter, scenario, outcome_type, outcome, population) |> 
     tidyr::spread(scenario, outcome) |> 
-    dplyr::mutate(`vermieden vs. 2015` = pmin(0, `tatsächliche Belastung` - `vermieden vs. 2015`)) |> 
+    dplyr::mutate(!!scen := pmin(0, `tatsächliche Belastung` - !!rlang::sym(scen))) |> 
     dplyr::select(-`tatsächliche Belastung`) |> 
     tidyr::gather(scenario, outcome, -year, -pollutant, -metric, -parameter, -outcome_type, -population) |> 
     dplyr::bind_rows(dplyr::filter(data, scenario == "tatsächliche Belastung")) |> 

@@ -12,7 +12,7 @@ load_packages <- function(packages) {
 
 # packages necessary for function functionality
 load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-                "readr", "archive", "sf", "stars", "ows4R", "withr"))
+                "readr", "archive", "sf", "stars", "withr"))
 
 # packages required for script functionality
 load_packages(c("devtools", "scales", "lemon", "openair", "ggplot2",
@@ -22,12 +22,16 @@ load_packages(c("devtools", "scales", "lemon", "openair", "ggplot2",
 devtools::load_all()
 
 
-
-
 # reading input data for several scripts:
 # ---
 # read ressource table for input datasets
 ressources <- prepare_ressources(read_local_csv("inst/extdata/meta/ressources.csv"))
+
+# read all available raster data?
+read_all_raster <- FALSE
+
+# reference year for all pollutants in exposition & outcomes calculation
+base_scenario_year <- 2015 # 2015 since only then do we have the full set of raster data for each pollutant
 
 # map projection CRS = CH1903+ / LV95 throughout analysis
 crs <- 2056

@@ -74,12 +74,12 @@ coef <-
   dplyr::mutate(slope = coefficients(regr)[stringr::str_detect(names(coefficients(regr)), "NO2")])
 
 # => calculate O3 peak-season data_raster_aq from NO2
-data_raster_aq <-
-  lapply(data_raster_aq, function(x) { # FIXME: find a better way
+data_raster_aq  <-
+  purrr::map(setNames(names(data_raster_aq), names(data_raster_aq)), function(year) { # FIXME: find a better way
     
-    year <- unique(na.omit(extract_year(names(x))))
+    
     cf <- dplyr::filter(coef, year == !!year)
-    y <- x[[which(stringr::str_detect(names(x), "no2"))]]
+    y <- data_raster_aq[[year]][[which(stringr::str_detect(names(data_raster_aq[[year]]), "no2"))]]
     y <-
       y |> 
       dplyr::mutate(O3_peakseason_mean_d1_max_mean_h8gl = no2 * cf$slope + cf$offset) |> 
@@ -87,7 +87,7 @@ data_raster_aq <-
     
     # ggplot() + geom_stars(data = y) + scale_fill_viridis_c(na.value = NA) + coord_equal()
     
-    return(c(x, list(O3_peakseason_mean_d1_max_mean_h8gl = y)))
+    return(c(data_raster_aq[[year]], list(O3_peakseason_mean_d1_max_mean_h8gl = y)))
   })
 
 

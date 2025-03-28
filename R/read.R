@@ -139,27 +139,48 @@ read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
 
 
 #' Reads spatial air quality raster data from Canton Zurich geolion wcs api
-#'
-#' @param cov_stack 
-#' @param layer_names 
-#' @param boundary 
-#' @param na_value 
+#' 
+#' @param cov_stack
+#' @param layer_names
+#' @param boundary
+#' @param na_value
 #' 
 #' @export
-read_geolion_wcs_stack <- function(cov_stack, layer_names, boundary, na_value = c(0, -999)){
+#' # read_geolion_wcs_stack <- function(cov_stack, layer_names, boundary, na_value = c(0, -999)){#   #   cov_stack_filtered <- cov_stack[sapply(cov_stack, function(x) x$CoverageId %in% layer_names)]
+#   data_list <- lapply(cov_stack_filtered, function(x) read_single_pollutant_wcs(x, na_value))
+#   
+#   list_names <- gsub("pm-", "pm", layer_names)
+#   list_names <- gsub("jahre-", "", list_names)
+#   names(data_list) <- list_names
+#   
+#   return(data_list)
+# }
+
+
+
+#' Reads and combines all spatial air quality raster data
+#'
+#' @param ressources
+#' @param years 
+#' @param boundary 
+#' 
+#' @export
+read_all_raster_data <-function(ressources, years, boundary) {
   
-  cov_stack_filtered <- cov_stack[sapply(cov_stack, function(x) x$CoverageId %in% layer_names)]
-  data_list <- lapply(cov_stack_filtered, function(x) read_single_pollutant_wcs(x, na_value))
+  print("get PM2.5")
+  data_raster_pm25 <- read_bafu_raster_data(filter_ressources(ressources, 15), years_filter = years$PM2.5, boundary) 
+  print("get PM10")
+  data_raster_pm10 <- read_bafu_raster_data(filter_ressources(ressources, 14), years_filter = years$PM10, boundary)
+  print("get NO2")
+  data_raster_no2 <- read_bafu_raster_data(filter_ressources(ressources, 13), years_filter = years$NO2, boundary) # NO2 may take a while since data from 2020 on are in highres
+  print("get O3mp98")
+  data_raster_o3mp98 <- read_bafu_raster_data(filter_ressources(ressources, 16), years_filter = years$O3, boundary)
+  print("combine")
+  years$all <- sort(unique(as.numeric(names(c(data_raster_pm25, data_raster_pm10, data_raster_no2, data_raster_o3mp98)))))
+  data_raster_aq <- combine_raster_aq(years, data_raster_pm25, data_raster_pm10, data_raster_no2, data_raster_o3mp98)
   
-  list_names <- gsub("pm-", "pm", layer_names)
-  list_names <- gsub("jahre-", "", list_names)
-  names(data_list) <- list_names
-  
-  return(data_list)
+  return(data_raster_aq)
 }
-
-
-
 
 
 

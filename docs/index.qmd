@@ -4,7 +4,6 @@ title: "Allgemeines"
 
 <!-- ![foto](https://www.flickr.com/photos/labskaus/28962357157/sizes/k/) -->
 
-
 Die hier präsentierten Darstellungen sind das Ergebnis [systematischer Auswertungen zu Luftschadstoffen im Kanton Zürich](https://github.com/awelZH/airquality) durch das kantonale [Amt für Abfall, Wasser, Energie und Luft](https://www.zh.ch/de/baudirektion/amt-fuer-abfall-wasser-energie-luft.html). Diese stellen eine Grundlage zur Beurteilung der [Luftqualität im Kanton Zürich](https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html) dar sowie für entsprechende Darstellungen auf dem [Internetauftritt des Kantons Zürch](https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html). Die Auswertungen behandeln die Langzeitbelastung durch Luftschadstoffe, in der Regel Jahreswerte. Sie ergänzen die Veröffentlichung [offener Behördendaten](https://www.zh.ch/de/politik-staat/opendata.html), indem die entsprechenden Grundlagendaten skriptbasiert verarbeitet werden. Somit wird die fundierte Auswertung zur Luftqualität im Kanton Zürich für Fachpersonen und die interessierte Öffentlichkeit transparent sowie reproduzierbar dokumentiert und zur Verfügung gestellt.
 
 

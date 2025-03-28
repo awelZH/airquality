@@ -25,6 +25,9 @@ if ((length(years$all) == 1 & !years$base_analysed) | length(years$all) > 1) {
   # => derive & add O3 peak-season rasterdata by statistical relationships
   source("scripts/_derive_o3_peak-season_rasterdata.R", encoding = "UTF-8")
   
+  # => derive PM2.5 raster data from PM10 raster data before 2015 using measured PM2.5:PM10 ratios
+  if (any(years$all %in% 2010:2014)) {source("scripts/_derive_pm25_rasterdata.R", encoding = "UTF-8")}
+  
   # if already analysed: exclude base_scenario_year from analysis
   if (years$base_analysed) {years$all <- years$all[years$all != base_scenario_year]}
   
@@ -35,11 +38,11 @@ if ((length(years$all) == 1 & !years$base_analysed) | length(years$all) > 1) {
   data_raster_aq_basescenario <- prepare_rasterdata_aq_base(data_raster_bfs, data_raster_aq, base_scenario_year)
   
   # => also convert base-scenario pollutant and statpop data into a common tibble & calculate inhabitant exposition per raster cell
-  data_expo_pop_basescenario <- prepare_exposition(data_raster_bfs[as.character(years$all)], data_raster_aq_basescenario, years$all)
+  data_expo_pop_basescenario <- prepare_exposition(data_raster_bfs[as.character(years$all[years$all != base_scenario_year])], data_raster_aq_basescenario, years$all[years$all != base_scenario_year])
   
   # => join raster and municipality data 
   data_expo_municip <- prepare_weighted_mean(data_raster_bfs, data_raster_aq, years$all, map_municipalities)
-  data_expo_municip_basescenario <- prepare_weighted_mean(data_raster_bfs[as.character(years$all)], data_raster_aq_basescenario, years$all, map_municipalities)
+  data_expo_municip_basescenario <- prepare_weighted_mean(data_raster_bfs[as.character(years$all[years$all != base_scenario_year])], data_raster_aq_basescenario, years$all[years$all != base_scenario_year], map_municipalities)
   
   # aggregate datasets ...
   # ---

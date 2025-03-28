@@ -31,7 +31,7 @@ ressources <- prepare_ressources(read_local_csv("inst/extdata/meta/ressources.cs
 read_all_raster <- FALSE
 
 # reference year for all pollutants in exposition & outcomes calculation
-base_scenario_year <- 2015 # 2015 since only then do we have the full set of raster data for each pollutant
+base_scenario_year <- 2010
 
 # map projection CRS = CH1903+ / LV95 throughout analysis
 crs <- 2056

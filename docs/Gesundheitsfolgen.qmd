@@ -41,17 +41,16 @@ In der vorliegenden Berechnung richten wir uns nach dem etablierten epidemiologi
 In den Grafiken wird der wissenschaftlich und statistisch am sichersten abgestützte Wert als Balken dargestellt. Die Unsicherheitsbereiche (vertikale Linien) enthalten zwei Unsicherheitsbeträge: 1) die statistische Unsicherheit der verwendeten Dosis-Wirkungsbeziehungen (95% Vertrauensbereich) sowie 2) die Verwendung alternativer Schwellenwerte, nämlich der minimal auftretenden Luftbelastung als unterste Wirkschwelle, da gemäss dem aktuellen [wissenschaftlichen Synthesebericht der Weltgesundheitsorganisation](https://www.who.int/publications/i/item/9789240034228) auch unterhalb der WHO-Richtwerte Gesundheitsauswirkungen durch Luftverschmutzung wahrscheinlich sind. 
 
 
+Vor allem in den Jahren 2020 bis 2022 hat die Schweiz eine [Übersterblichkeit durch die Covid-19 Pandemie](https://www.bfs.admin.ch/bfs/de/home/statistiken/gesundheit/gesundheitszustand/sterblichkeit-todesursachen.html) erlebt. Da jährliche Daten zu Todesfällen eine Grundlage der Gesundheitsfolgenabschätzung durch Luftbelastung sind, werden die Ergebnisse dieser Jahre geringfügig überschätzt. Die entsprechenden Jahre sind in den Abbildungen gekennzeichnet.
+
+
 Betrachtet man die Veränderung der Gesundheitswirkungen durch Luftbelastung über mehrere Jahre, so wird diese einerseits durch die Entwicklung der Luftqualität und andererseits durch die Veränderung der Anzahl und räumlichen Verteilung der Wohnbevölkerung beeinflusst. 
 :::
 
 ::: {.callout-note collapse="true"}
 ## Work-in-Progress ! 
 
-
-Aktuell wird die Gesamt-Sterberate im Kanton Zürich als Grundlage verwendet. Diese unterscheidet nicht zwischen natürlichen und unnatürlichem Todesfällen und umfasst alle Altersgruppen. Daher ist das aktuelle Ergebnis eine Überschätzung der Todesfälle aufgrund von Luftbelastung. Wir arbeiten daran, eine gänzlich korrekte Grundlage zu verwenden.
-
-
-Vor allem in den Jahren 2020 bis 2022 hat die Schweiz eine Übersterblichkeit durch die Covid-19 Pandemie erlebt. Da jährliche Daten zu Todesfällen eine Grundlage der Gesundheitsfolgenabschätzung durch Luftbelastung sind, werden die Ergebnisse dieser Jahre etwas überschätzt. Es wird an einer entsprechenden Korrektur gearbeitet.
+Aktuell wird die Gesamt-Sterberate im Kanton Zürich als Grundlage verwendet. Diese unterscheidet nicht zwischen krankheitsbedingten und unnatürlichen Todesfällen und umfasst alle Altersgruppen. Daher ist das aktuelle Ergebnis eine Überschätzung der Todesfälle aufgrund von Luftbelastung. Wir arbeiten daran, eine gänzlich korrekte Grundlage zu verwenden.
 :::
 
 

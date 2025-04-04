@@ -528,23 +528,28 @@ plot_pars_popmean_timeseries <- function(data, parameters) {
 #'
 #' @keywords internal
 plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALSE) {
-  
+
   plots <- 
     lapply(setNames(parameters, parameters), function(parameter) {
       
-      data <- dplyr::filter(data, parameter == !!parameter & outcome_type == "vorzeitige Todesfälle")
+      data <- 
+        data |> 
+        dplyr::filter(parameter == !!parameter & outcome_type == "vorzeitige Todesfälle") |> 
+        dplyr::mutate(
+          covid = ifelse(year %in% 2020:2022, "Covid-19", "normal")
+        )
       
       if (relative) {
-        mppng <- ggplot2::aes(x = year, y = outcome / population * 10^5, fill = scenario)
+        mppng <- ggplot2::aes(x = year, y = outcome / population * 10^5, fill = scenario, alpha = covid)
         sub <- "Anzahl vorzeitige Todesfälle pro 100'000 Einwohner/innen pro Jahr"
         uncertainty <- ggplot2::geom_linerange(ggplot2::aes(ymin = outcome_lower / population * 10^5, ymax = outcome_upper / population * 10^5 + outcome_delta_min_conc / population * 10^5), color = "gray20") 
       } else {
-        mppng <- ggplot2::aes(x = year, y = outcome, fill = scenario)
+        mppng <- ggplot2::aes(x = year, y = outcome, fill = scenario, alpha = covid)
         sub <- "Anzahl vorzeitige Todesfälle pro Jahr"
         uncertainty <- ggplot2::geom_linerange(ggplot2::aes(ymin = outcome_lower, ymax = outcome_upper + outcome_delta_min_conc), color = "gray20") 
       }
       
-      plot <- 
+      plot <-
         data |> 
         ggplot_timeseries_bars(
           mapping = mppng,
@@ -555,7 +560,8 @@ plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALS
           captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS & Statistisches Amt Kanton Zürich"),
           theme = theme_ts
         ) + 
-        uncertainty
+        uncertainty +
+        ggplot2::scale_alpha_manual(name = "Aussergewöhnliches", values = c("normal" = 1, "Covid-19" = 0.4))
       
       return(plot)
     })

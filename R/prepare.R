@@ -472,3 +472,31 @@ bafu_rasterlist_to_tibble <- function(rasterlist) {
 }
 
 
+#' Wrangle life-expectancy data from *.px format into tibble()
+#'
+#' @param data
+#'
+#' @keywords internal
+prepare_life_expectancy_data <- function(data) {
+  
+  # wrangle data
+  data <- 
+    data |> 
+    tibble::as_tibble() |>
+    dplyr::mutate(
+      Alter = readr::parse_number(as.character(Alter)),
+      Geburtsjahrgang = as.numeric(as.character(Geburtsjahrgang)),
+      source = "BFS"
+    ) |>
+    dplyr::filter(stringr::str_detect(Beobachtungseinheit, "Lebensdauer")) |>
+    tidyr::spread(Beobachtungseinheit, value) |>
+    dplyr::rename(
+      age = Alter,
+      sex = Geschlecht,
+      year_of_birth = Geburtsjahrgang,
+      remaining_lifeyears = `Verbleibende Lebensdauer (ex)`
+    ) |>
+    dplyr::select(sex, year_of_birth, age, remaining_lifeyears, source)
+  
+  return(data)
+}

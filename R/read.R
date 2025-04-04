@@ -30,6 +30,29 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
 }
 
 
+#' Reads Swiss BFS life expectancy data ("Periodensterbetafeln) from official api
+#'
+#' @param destination_path
+#'
+#' @export
+read_bfs_life_expectancy_data <- function(destination_path = "inst/extdata"){
+  
+  # get downoad url from BFS api
+  url <- get_bfs_metadata(bfs_nr = "px-x-0102020300_101")
+  
+  # download temp file from api
+  temp <- download_file(download_url = url, destination_path = destination_path, file_ext = ".px")
+  
+  # read *.px
+  data <- pxR::read.px(temp, encoding = "UTF-8")
+  
+  # delete temp *.px
+  unlink(temp)
+  
+  return(data)
+}
+
+
 #' Reads raster data from official swisstopo api, used for BAFU data on air pollutants and sensitive ecosystem nitrogen deposition CLE exceedance
 #'
 #' @param id 

@@ -26,7 +26,7 @@ read_statpop_csv <- function(file, year, crs = 2056) {
       crs = sf::st_crs(crs)
     ) |>
     stars::st_rasterize() 
-
+  
   return(data_stars)
 }
 
@@ -56,30 +56,30 @@ read_bafu_shp <- function(file){
 #' @param na_value 
 #'
 #' @keywords internal
-read_single_pollutant_wcs <- function(coverage, na_value){
-
-  data <- 
-    coverage$getCoverage() |>  
-    stars::st_as_stars() |> 
-    sf::st_set_crs(value = 2056)
-  
-  divisor <- ifelse(stringr::str_detect(names(data), "jahre"), 1, 10)
-  divisor <- ifelse(stringr::str_detect(names(data), "eBC") & !stringr::str_detect(names(data), "jahre"), 100, divisor)
-  
-  data <- setNames(data, "value")
-  data <-
-    data |> 
-    dplyr::mutate(
-      value = ifelse(value %in% na_value, NA, value),
-      value = value / divisor
-    )
-  
-  name <- gsub("\\d{4}|jahre|-", "",coverage$CoverageId)
-  
-  data <- setNames(data, name)
-  
-  return(data)
-}
+# read_single_pollutant_wcs <- function(coverage, na_value){
+# 
+#   data <- 
+#     coverage$getCoverage() |>  
+#     stars::st_as_stars() |> 
+#     sf::st_set_crs(value = 2056)
+#   
+#   divisor <- ifelse(stringr::str_detect(names(data), "jahre"), 1, 10)
+#   divisor <- ifelse(stringr::str_detect(names(data), "eBC") & !stringr::str_detect(names(data), "jahre"), 100, divisor)
+#   
+#   data <- setNames(data, "value")
+#   data <-
+#     data |> 
+#     dplyr::mutate(
+#       value = ifelse(value %in% na_value, NA, value),
+#       value = value / divisor
+#     )
+#   
+#   name <- gsub("\\d{4}|jahre|-", "",coverage$CoverageId)
+#   
+#   data <- setNames(data, name)
+#   
+#   return(data)
+# }
 
 
 #' Convert wcs geolion coverage list to a data.frame
@@ -87,17 +87,17 @@ read_single_pollutant_wcs <- function(coverage, na_value){
 #' @param cov_stack 
 #'
 #' @keywords internal
-to_stack_df <- function(cov_stack){
-  
-  df <- purrr::map_df(cov_stack, ~data.frame(
-    pollutant = gsub("-jahre", "", gsub("^(.*)-.*", "\\1", .x$CoverageId)),
-    year = gsub(".*-(\\d{4})$", "\\1", .x$CoverageId),
-    layer_name = .x$CoverageId
-  )) |> 
-    dplyr::mutate(pollutant = gsub("pm-", "pm", pollutant))
-  
-  return(df)
-}
+# to_stack_df <- function(cov_stack){
+#   
+#   df <- purrr::map_df(cov_stack, ~data.frame(
+#     pollutant = gsub("-jahre", "", gsub("^(.*)-.*", "\\1", .x$CoverageId)),
+#     year = gsub(".*-(\\d{4})$", "\\1", .x$CoverageId),
+#     layer_name = .x$CoverageId
+#   )) |> 
+#     dplyr::mutate(pollutant = gsub("pm-", "pm", pollutant))
+#   
+#   return(df)
+# }
 
 
 #' Get dataset metadata from geo.admin api
@@ -106,24 +106,23 @@ to_stack_df <- function(cov_stack){
 #'
 #' @keywords internal
 get_geo_admin_metadata <- function(id, stac_version = "0.9"){
-
+  
   metadata_url <- paste0("https://data.geo.admin.ch/api/stac/v",stac_version,"/collections/",id,"/items")
   metadata <- rjson::fromJSON(file = metadata_url)
   url <- unlist(purrr::map(metadata$features, function(x) x$assets[which(grepl("tiff", x$assets))][[1]]$href))
-
+  
   return(url)
 }
 
 
-#' Get statpop dataset metadata from BFS api
+#' Get dataset download url from BFS api based on BFS dataset id
 #'
-#' @param year 
+#' @param bfs_nr
 #'
 #' @keywords internal
-get_bfs_statpop_metadata <- function(year){
+get_bfs_metadata <- function(bfs_nr){
   
   # derive dataset url
-  bfs_nr <- paste0("ag-b-00.03-vz", year, "statpop")
   base_url <- "https://dam-api.bfs.admin.ch/hub/api/dam/assets"
   
   # Use withr::with_envvar to set no_proxy environment variable
@@ -151,13 +150,27 @@ get_bfs_statpop_metadata <- function(year){
 }
 
 
+#' Wrapper to get statpop dataset download url based on year
+#'
+#' @param year 
+#'
+#' @keywords internal
+get_bfs_statpop_metadata <- function(year){
+  
+  bfs_nr <- paste0("ag-b-00.03-vz", year, "statpop")
+  download_url <- get_bfs_metadata(bfs_nr)
+  
+  return(download_url)
+}
+
+
 #' Get dataset metadata from opendata.swiss api
 #'
 #' @param apiurl 
 #'
 #' @keywords internal
 get_opendataswiss_metadata <- function(apiurl, file_filter = ".csv"){
-
+  
   req <- httr2::request(apiurl)
   req_data <- httr2::req_perform(req)
   metadata <- httr2::resp_body_json(req_data)$result        
@@ -213,19 +226,19 @@ get_geolion_wfs_metadata <- function(apiurl, type = "ms:gem_grenzen", version = 
 # }
 
 
-#' Download *.zip into tempfile & unzip & delete
+#' Download file into tempfile
 #'
 #' @param download_url 
 #' @param destination_path 
-#' @param file_filter 
+#' @param file_ext
 #'
 #' @keywords internal
-download_zip <- function(download_url, destination_path, file_filter = NULL){
-
-  temp <- tempfile(tmpdir = destination_path, fileext = ".zip")
+download_file <- function(download_url, destination_path, file_ext){
+  
+  temp <- tempfile(tmpdir = destination_path, fileext = file_ext)
   
   # if (!dir.exists(destination_path)) {dir.create(destination_path, recursive = TRUE)}
-
+  
   # op <- options(timeout = 1000,
   #               download.file.method="curl",
   #               download.file.extra = paste0('--noproxy "*"'))
@@ -235,10 +248,26 @@ download_zip <- function(download_url, destination_path, file_filter = NULL){
   command <- paste0("curl ", download_url, " --output ", temp)
   system(command, intern = TRUE)
   
+  return(temp)
+}
+
+
+#' Download *.zip into tempfile & unzip & delete
+#'
+#' @param download_url 
+#' @param destination_path 
+#' @param file_filter 
+#' @param file_ext
+#'
+#' @keywords internal
+download_zip <- function(download_url, destination_path, file_filter = NULL, file_ext = ".zip"){
+  
+  temp <- download_file(download_url, destination_path, file_ext)
+  
   # which files are in there?
   files <- unzip(temp, list = TRUE)
   file <- files$Name[stringr::str_detect(files$Name, file_filter)]
-
+  
   # unzip specific file
   unzip(temp, files = file, exdir = destination_path, junkpaths = TRUE)
   

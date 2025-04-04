@@ -30,7 +30,7 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
 }
 
 
-#' Reads Swiss BFS life expectancy data ("Periodensterbetafeln) from official api
+#' Reads Swiss BFS life expectancy data ("Kohortensterbetafeln) from official api
 #'
 #' @param destination_path
 #'

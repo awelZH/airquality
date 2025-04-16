@@ -240,7 +240,7 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
       label = openair::quickText(paste0("Luftschadstoff-Emissionen ", longpollutant(pollutant))),
       subtitle = sub
     ) +
-    ggplot2::labs(caption = "Quelle: Ostluft, Grundlage: EMIS Schweiz")
+    ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz")
   
   # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 3)
   
@@ -329,7 +329,7 @@ expositionpars <- function(parameter) {
          `O3_max_98p_m1` = list(barwidth = 2, xbreaks = seq(0,180,20), aggregation = "m1", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3"),
          `O3_peakseason_mean_d1_max_mean_h8gl` = list(barwidth = 2, xbreaks = seq(0,120,10), aggregation = "peak-season", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration"),
          PM10 = list(barwidth = 0.2, xbreaks = seq(0,24,2), aggregation = "y1", metric = "mean"),
-         PM2.5 = list(barwidth = 0.2, xbreaks = seq(0,16,1), aggregation = "y1", metric = "mean"),
+         PM2.5 = list(barwidth = 0.2, xbreaks = seq(0,18.5,1), aggregation = "y1", metric = "mean"),
          eBC = list(barwidth = 0.05, xbreaks = seq(0,2.2,0.2), aggregation = "y1", metric = "mean"),
          Ndep = list(barwidth = 1, xlim = c(-5,90), xbreaks = seq(-5,45,5), aggregation = "y1", metric = "sum")
   )
@@ -358,7 +358,7 @@ plot_pars_monitoring_timeseries <- function(data, parameters) {
                           label = openair::quickText(paste0("Luftqualitätsmesswerte ",longpollutant(pollutant))),
                           subtitle = openair::quickText(paste0(pollutant, ", ", metric," (", unit, ")"))
                         ),
-                        captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: Ostluft & NABEL (BAFU & Empa)"),
+                        captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Daten: Ostluft & NABEL (BAFU & Empa)"),
                         pointsize = pointsize, theme = theme_ts, threshold = timeseriespars(parameter)$thresh
       ) +
         scale_color_siteclass
@@ -636,7 +636,7 @@ plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
         label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
         subtitle = paste0("Anzahl empfindlicher Ökosysteme im Kanton Zürich im Jahr ", year) 
       ), 
-      captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
+      captionlab = ggplot2::labs(caption = "Daten: BAFU"),
       # fill_scale = immissionscale("Ndep"), 
       theme = theme_ts
     )
@@ -668,7 +668,7 @@ plot_all_expo_cumul_ndep <- function(data, threshold_ndep) {
         label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
         subtitle = paste0("relativer Anteil empfindlicher Ökosysteme (kumuliert) im Kanton Zürich im Jahr ", year) 
       ), 
-      captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
+      captionlab = ggplot2::labs(caption = "Daten: BAFU"),
       theme = theme_ts
     )
     

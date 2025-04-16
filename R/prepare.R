@@ -199,7 +199,7 @@ prepare_monitoring_ostluft_h1 <- function(data, keep_incomplete = FALSE, tz = "E
 #'
 #' @export
 prepare_monitoring_nabel_h1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
-
+  
   data <-
     data |>
     lapply(restructure_monitoring_nabel_h1) |>
@@ -268,7 +268,7 @@ prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, base_yea
 #'
 #' @export
 prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
-
+  
   # => convert pollutant and statpop data into a common tibble
   data_statpop <-
     years |> 
@@ -360,16 +360,80 @@ prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, bounda
 }
 
 
-#' Prepare input outcomes-dataset from population-weighted mean, deathrates and outcome metadata and derive health outcomes
+#' Prepare mortality data
+#' 
+#' @param data_mortality 
+#'
+#' @export
+prepare_mortality <- function(data_mortality) {
+  
+  data_mortality <- 
+    data_mortality |> 
+    dplyr::mutate(alterkat = ifelse(alterkat == 290, 291, alterkat)) |> #FIXME once original dataset is adjusted
+    dplyr::filter(tukat == "krankheitsbedingt" & alterkat != 290) # 290 = younger than 30 years 
+  
+  data_freq_na <- 
+    data_mortality |> 
+    dplyr::filter(alterkat == 291) |>
+    dplyr::group_by(jahr, geschlecht) |> 
+    dplyr::summarise(freq_na = sum(anzahl)) |> 
+    dplyr::ungroup()
+  
+  data_freq_na <- 
+    data_mortality |> 
+    dplyr::filter(alterkat == 291) |>
+    dplyr::group_by(jahr, geschlecht) |> 
+    dplyr::summarise(freq_na = sum(anzahl)) |> 
+    dplyr::ungroup()
+  
+  data_freq_na <- 
+    data_mortality |> 
+    dplyr::filter(alterkat != 291) |> 
+    dplyr::group_by(jahr, geschlecht) |> 
+    dplyr::summarise(na = sum(is.na(anzahl))) |> 
+    dplyr::ungroup() |> 
+    dplyr::full_join(data_freq_na, by = c("jahr", "geschlecht"))
+  
+  data_mortality <- 
+    data_mortality |> 
+    dplyr::filter(alterkat != 291) |> 
+    left_join(data_freq_na, by = c("jahr", "geschlecht")) |>
+    dplyr::mutate(
+      anzahl = ifelse(is.na(anzahl), freq_na / na, anzahl), # when NA, then actually < 4 due to privacy protection. So, for better average accuracy distribute alterkat == 291 over all NA cases
+      year_of_birth = jahr - alterkat,
+      geschlecht = factor(geschlecht),
+      source = "Statistisches Amt Kanton Zürich & BFS"
+    ) |> 
+    dplyr::rename(
+      age = alterkat,
+      frequency = anzahl,
+      sex = geschlecht,
+      year_of_death = jahr
+    ) |> 
+    dplyr::select(-tukat, -na, -freq_na)
+  
+  return(data_mortality)
+}
+
+
+#' Prepare preliminary deaths from population-weighted mean, mortality cases and outcome metadata and derive health outcomes
 #' 
 #' @param data_expo_weighmean 
-#' @param data_deathrates 
+#' @param data_mortality 
 #' @param outcomes_meta 
 #' @param conc_threshold 
 #'
 #' @export
-prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta, conc_threshold = "lower_conc_threshold") {
+prepare_preliminary_deaths <- function(data_expo_weighmean, data_mortality, outcomes_meta, conc_threshold = "lower_conc_threshold") {
 
+  # aggregate mortality
+  data_mortality <-
+    data_mortality |> 
+    dplyr::rename(year = year_of_death) |> 
+    dplyr::group_by(year) |> 
+    dplyr::summarise(number_of_deaths = sum(frequency)) |> 
+    dplyr::ungroup()
+  
   # combine and wrangle all input data
   data <- 
     data_expo_weighmean |> 
@@ -377,13 +441,12 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
     dplyr:::select(-pollutant, -metric, -source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
     tidyr::gather(scenario, population_weighted_mean, -year, -parameter, -base_year, -population, -concentration_min) |> 
     dplyr::left_join(outcomes_meta, by = "parameter") |> 
-    dplyr::left_join(data_deathrates, by = "year") |> 
+    dplyr::left_join(data_mortality, by = "year") |> 
     dplyr::mutate(
       scenario = dplyr::recode(scenario, population_weighted_mean = "tatsächliche Belastung", population_weighted_mean_base = paste0("vermieden vs. ",na.omit(unique(.data$base_year)))),
-      concentration_min = ifelse(stringr::str_detect(scenario, "vermieden"), NA, concentration_min),
-      caserate_per_person = caserate * factor_caserate
+      concentration_min = ifelse(stringr::str_detect(scenario, "vermieden"), NA, concentration_min)
     ) |> 
-    dplyr::select(-base_year, -caserate, -factor_caserate) |> 
+    dplyr::select(-base_year) |> 
     dplyr::filter(!is.na(scenario))
   
   # calculate outcomes
@@ -417,42 +480,13 @@ prepare_outcomes <- function(data_expo_weighmean, data_deathrates, outcomes_meta
 }
 
 
-
-#' Work in progress, will be replaced
-#'
-#' @param data 
-#'
-#' @export
-prepare_deathrate <- function(data) {
-  
-  data <-
-    data |> 
-    dplyr::filter(GEBIET_NAME == "Zürich - ganzer Kanton") |> 
-    dplyr::rename(
-      year = INDIKATOR_JAHR,
-      parameter = INDIKATOR_NAME,
-      value = INDIKATOR_VALUE,
-      unit_caserate = EINHEIT_KURZ
-    ) |> 
-    dplyr::mutate(
-      parameter = stringr::str_remove(parameter, stringr::fixed(" [pro 1000 Einw.]")),
-      factor_caserate = 1 / readr::parse_number(unit_caserate)
-    ) |> 
-    dplyr::select(year, parameter, value, factor_caserate) |> 
-    tidyr::spread(parameter, value) |> 
-    dplyr::rename(caserate = Sterberate)
-  
-  return(data)
-}
-
-
 #' Converts list of stars raster data to tibble data (for BAFU raster data)
 #'
 #' @param rasterlist
 #'
 #' @keywords internal
 bafu_rasterlist_to_tibble <- function(rasterlist) {
-
+  
   years <- names(rasterlist)
   
   data <- 

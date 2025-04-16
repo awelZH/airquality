@@ -47,14 +47,6 @@ Vor allem in den Jahren 2020 bis 2022 hat die Schweiz eine [Übersterblichkeit d
 Betrachtet man die Veränderung der Gesundheitswirkungen durch Luftbelastung über mehrere Jahre, so wird diese einerseits durch die Entwicklung der Luftqualität und andererseits durch die Veränderung der Anzahl und räumlichen Verteilung der Wohnbevölkerung beeinflusst. 
 :::
 
-::: {.callout-note collapse="true"}
-## Work-in-Progress ! 
-
-Aktuell wird die Gesamt-Sterberate im Kanton Zürich als Grundlage verwendet. Diese unterscheidet nicht zwischen krankheitsbedingten und unnatürlichen Todesfällen und umfasst alle Altersgruppen. Daher ist das aktuelle Ergebnis eine Überschätzung der Todesfälle aufgrund von Luftbelastung. Wir arbeiten daran, eine gänzlich korrekte Grundlage zu verwenden.
-:::
-
-
-
 
 
 ### Feinstaub PM2.5

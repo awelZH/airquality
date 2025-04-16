@@ -696,9 +696,9 @@ calculate_all_outcomes <- function(data, conc_threshold = "lower_conc_threshold"
     data |> 
     dplyr::mutate(
       conc_incr = pmax(0, population_weighted_mean - !!rlang::sym(conc_threshold)),
-      outcome = calc_outcome(conc_incr, crf, crf_conc_increment, caserate_per_person * population),
-      outcome_lower = calc_outcome(conc_incr, crf_lower, crf_conc_increment, caserate_per_person * population),
-      outcome_upper = calc_outcome(conc_incr, crf_upper, crf_conc_increment, caserate_per_person * population),
+      outcome = calc_outcome(conc_incr, crf, crf_conc_increment, number_of_deaths),
+      outcome_lower = calc_outcome(conc_incr, crf_lower, crf_conc_increment, number_of_deaths),
+      outcome_upper = calc_outcome(conc_incr, crf_upper, crf_conc_increment, number_of_deaths),
     ) |>
     dplyr::select(-conc_incr)
   

@@ -178,7 +178,7 @@ plots$emissions$rsd_norm$NOx <-
     label = openair::quickText("Abgasmessungen von Stickoxiden im realen Fahrbetrieb"),
     subtitle = openair::quickText("NOx Emissionen, Mittelwert pro Abgasnorm (g/kg Treibstoff)")
   ) +
-  ggplot2::labs(caption = "Quelle: Kanton Zürich/AWEL") +
+  ggplot2::labs(caption = "Daten: Kanton Zürich/AWEL") +
   theme_ts +
   ggplot2::theme(
     strip.background = ggplot2::element_blank(),
@@ -214,7 +214,7 @@ plots$emissions$rsd_yearmodel$NOx <-
     label = openair::quickText("Abgasmessungen von Stickoxiden im realen Fahrbetrieb"),
     subtitle = openair::quickText("NOx Emissionen, Mittelwert pro Fahrzeug-Modelljahr (g/kg Treibstoff)")
   ) +
-  ggplot2::labs(caption = "Quelle: Kanton Zürich/AWEL") +
+  ggplot2::labs(caption = "Daten: Kanton Zürich/AWEL") +
   theme_ts +
   ggplot2::theme(
     strip.background = ggplot2::element_blank(),
@@ -244,7 +244,7 @@ plots$emissions$rsd_yearmeas$NOx <-
     label = openair::quickText("Abgasmessungen von Stickoxiden im realen Fahrbetrieb"),
     subtitle = openair::quickText("NOx Emissionen, Trend der Mittelwerte (g/kg Treibstoff)") # ... "Trend der Mittelwerte Personenwagen und leichte Nutzfahrzeuge", but too long for subtitle
   ) +
-  ggplot2::labs(caption = "Quelle: Kanton Zürich/AWEL") +
+  ggplot2::labs(caption = "Daten: Kanton Zürich/AWEL") +
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank(),
@@ -326,7 +326,7 @@ plots$monitoring$threshold_comparison$various <-
     label = openair::quickText("Luftqualitätsmesswerte Schwellenwertvergleich"),
     subtitle = paste0("Jahre ", max(years) - n_years + 1, " bis ", max(years))
   ) +
-  ggplot2::labs(caption = "Quelle: Ostluft & NABEL (BAFU & Empa)") +
+  ggplot2::labs(caption = "Daten: Ostluft & NABEL (BAFU & Empa)") +
   theme_ts +
   ggplot2::theme(
     legend.position = "bottom",
@@ -346,7 +346,7 @@ plots$monitoring$timeseries_ndep_bachtel$Ndep <-
   dplyr::ungroup() |>
   plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = temp$lsz, color = temp$col, title = "Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme am Bachtel") +
   ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, site == "BA" & component == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
-  ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: Ostluft & FUB") +
+  ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Daten: Ostluft & FUB") +
   lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE)
 
 
@@ -363,7 +363,7 @@ plots$monitoring$timeseries_ndep_all$Ndep <-
     label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme"),
     subtitle = expression("Stickstoffeintrag (kgN " * ha^-1 * Jahr^-1 * ")")
   ) +
-  ggplot2::labs(caption = "geschätzt: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: Ostluft") +
+  ggplot2::labs(caption = "geschätzt: mind. NH3 gemessen, restlicher Eintrag geschätzt; Daten: Ostluft") +
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
@@ -384,7 +384,7 @@ plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
     label = openair::quickText("Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme"),
     subtitle = expression("Stickstoffeintrag vs. kritische Eintragsrate (relativ)")
   ) +
-  ggplot2::labs(caption = "geschätzt: mind. NH3 gemessen, restlicher Eintrag geschätzt; Quelle: Ostluft") +
+  ggplot2::labs(caption = "geschätzt: mind. NH3 gemessen, restlicher Eintrag geschätzt; Daten: Ostluft") +
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
@@ -407,7 +407,7 @@ plots$monitoring$ndep_mean_sources_fractions$Ndep <-
     label = openair::quickText("Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme seit dem Jahr 2019"),
     subtitle = expression("mittlerer Beitrag der Quellgruppen")
   ) +
-  ggplot2::labs(caption = "Quelle: Ostluft") +
+  ggplot2::labs(caption = "Daten: Ostluft") +
   theme_ts +
   ggplot2::theme(
     legend.title = ggplot2::element_blank()
@@ -487,7 +487,7 @@ plots$exposition$distribution_cumulative$Ndep$alle <-
     label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
     subtitle = "relativer Anteil empfindlicher Ökosysteme (kumuliert) im Kanton Zürich"
   ) +
-  ggplot2::labs(caption = "Quelle: BAFU") +
+  ggplot2::labs(caption = "Daten: BAFU") +
   theme_ts +
   ggplot2::theme(axis.title.x = ggplot2::element_text()) +
   ggplot2::geom_text(data = tibble::tibble(x = threshold_ndep$value, label = threshold_ndep$labels), mapping = ggplot2::aes(x = x, y = 0, label = label), size = threshold_ndep$labelsize,

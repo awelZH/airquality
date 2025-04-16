@@ -12,7 +12,7 @@ outcomes_meta <-
   dplyr::select(-lower_conc_threshold_source, -min_conc_threshold, -crf_source, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
 
 # => get Canton Zurich yearly mortality cases from opendata.swiss
-# TODO: use better dataset ...
+# TODO: OGD dataset ...
 # data_deathrates <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
 data_mortality <- read_local_csv("inst/extdata/tod_nat_gatu.csv", delim = ",", locale = readr::locale(encoding = "UTF-8"))
 
@@ -24,62 +24,30 @@ data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weigh
 
 # prepare datasets ...
 # ---
-# => rate of deaths in Canton Zürich
-# data_deathrates <- prepare_deathrate(data_deathrates)
-#TODO: wrapper-function & replace data_deathrates & adjust prepare_outcomes() ...
-sum(is.na(data_mortality$anzahl))
-sort(unique(data_mortality$anzahl))
-unique(data_mortality$tukat)
-unique(data_mortality$geschlecht)
+# => number of deaths in Canton Zürich
+data_mortality <- prepare_mortality(data_mortality )  #FIXME once original dataset is adjusted
 
-data_mortality <- 
-  data_mortality |> 
-  dplyr::filter(tukat == "krankheitsbedingt" & alterkat != 290) |> # 290 = younger than 30 years 
-  dplyr::mutate(
-    anzahl = ifelse(is.na(anzahl), 2, anzahl), # when NA, then actually < 4 due to privacy protection. So, for better average accuracy assume 2
-    year_of_birth = jahr - alterkat,
-    geschlecht = factor(geschlecht),
-    source = "Statistisches Amt Kanton Zürich & BFS"
-  ) |> 
-  dplyr::rename(
-    age = alterkat,
-    frequency = anzahl,
-    sex = geschlecht,
-    year_of_death = jahr
-  ) |> 
-  dplyr::select(-tukat)
-  
-
-# => include life expectancy in Switzerland
+# => add life expectancy in Switzerland
 data_life_exp <- prepare_life_expectancy_data(data_life_exp)
 data_mortality <- 
   data_life_exp |> 
   dplyr::select(-source) |> 
   dplyr::right_join(data_mortality, by = c("sex", "year_of_birth", "age")) 
 
+# => derive preliminary deaths
+data_preliminary_deaths <- prepare_preliminary_deaths(data_expo_weighmean, data_mortality, outcomes_meta)
 
-# => prepare input dataset and derive preliminary deaths
-data_outcomes <- prepare_outcomes(data_expo_weighmean, data_deathrates, outcomes_meta)
-
-# => prepare input dataset and derive years of life lost
+# => derive lifeyears lost / decrease in life expectancy
 # TODO ...
-# from here: https://opendata.swiss/de/dataset/kohortensterbetafeln-fur-die-schweiz-1876-2030-nach-geburtsjahrgang-geschlecht-und-alter1
-
-
-
-
-
-
-
-
 
 # => combine
 # TODO ...
+data_outcomes <- data_preliminary_deaths
 
 
 # write output datasets & clean up:
 # ---
 write_local_csv(data_outcomes, file = "inst/extdata/output/data_health_outcomes.csv")
-rm(list = c("outcomes_meta", "data_deathrates", "data_expo_weighmean", "data_outcomes"))
+rm(list = c("outcomes_meta", "data_mortality", "data_life_exp", "data_expo_weighmean", "data_outcomes", "data_preliminary_deaths"))
 
 

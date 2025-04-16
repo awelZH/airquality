@@ -11,11 +11,12 @@ outcomes_meta <-
   read_local_csv(locale = readr::locale(encoding = "UTF-8")) |> 
   dplyr::select(-lower_conc_threshold_source, -min_conc_threshold, -crf_source, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
 
-# => get Canton Zurich yearly mortality rates from opendata.swiss
+# => get Canton Zurich yearly mortality cases from opendata.swiss
 # TODO: use better dataset ...
-data_deathrates <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
+# data_deathrates <- read_opendataswiss(filter_ressources(ressources, 25), source = "Statistisches Amt Kanton Zürich")
+data_mortality <- read_local_csv("inst/extdata/tod_nat_gatu.csv", delim = ",", locale = readr::locale(encoding = "UTF-8"))
 
-# => read Swiss life-expectancy data
+# => read Swiss life-expectancy data (BFS Kohortensterbetafeln)
 data_life_exp <- read_bfs_life_expectancy_data()
 
 # => read population weighted mean data
@@ -24,10 +25,38 @@ data_expo_weighmean <- read_local_csv("inst/extdata/output/data_exposition_weigh
 # prepare datasets ...
 # ---
 # => rate of deaths in Canton Zürich
-data_deathrates <- prepare_deathrate(data_deathrates)
+# data_deathrates <- prepare_deathrate(data_deathrates)
+#TODO: wrapper-function & replace data_deathrates & adjust prepare_outcomes() ...
+sum(is.na(data_mortality$anzahl))
+sort(unique(data_mortality$anzahl))
+unique(data_mortality$tukat)
+unique(data_mortality$geschlecht)
 
-# => life expectancy in Switzerland
+data_mortality <- 
+  data_mortality |> 
+  dplyr::filter(tukat == "krankheitsbedingt" & alterkat != 290) |> # 290 = younger than 30 years 
+  dplyr::mutate(
+    anzahl = ifelse(is.na(anzahl), 2, anzahl), # when NA, then actually < 4 due to privacy protection. So, for better average accuracy assume 2
+    year_of_birth = jahr - alterkat,
+    geschlecht = factor(geschlecht),
+    source = "Statistisches Amt Kanton Zürich & BFS"
+  ) |> 
+  dplyr::rename(
+    age = alterkat,
+    frequency = anzahl,
+    sex = geschlecht,
+    year_of_death = jahr
+  ) |> 
+  dplyr::select(-tukat)
+  
+
+# => include life expectancy in Switzerland
 data_life_exp <- prepare_life_expectancy_data(data_life_exp)
+data_mortality <- 
+  data_life_exp |> 
+  dplyr::select(-source) |> 
+  dplyr::right_join(data_mortality, by = c("sex", "year_of_birth", "age")) 
+
 
 # => prepare input dataset and derive preliminary deaths
 data_outcomes <- prepare_outcomes(data_expo_weighmean, data_deathrates, outcomes_meta)

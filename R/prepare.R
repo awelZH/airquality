@@ -199,7 +199,7 @@ prepare_monitoring_ostluft_h1 <- function(data, keep_incomplete = FALSE, tz = "E
 #'
 #' @export
 prepare_monitoring_nabel_h1 <- function(data, keep_incomplete = FALSE, tz = "Etc/GMT-1") {
-  
+
   data <-
     data |>
     lapply(restructure_monitoring_nabel_h1) |>
@@ -486,6 +486,7 @@ prepare_life_expectancy_data <- function(data) {
     dplyr::mutate(
       Alter = readr::parse_number(as.character(Alter)),
       Geburtsjahrgang = as.numeric(as.character(Geburtsjahrgang)),
+      Geschlecht = dplyr::recode(Geschlecht, Frau = "weiblich", Mann = "männlich"),
       source = "BFS"
     ) |>
     dplyr::filter(stringr::str_detect(Beobachtungseinheit, "Lebensdauer")) |>

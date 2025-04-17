@@ -561,7 +561,7 @@ plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALS
           theme = theme_ts
         ) + 
         uncertainty +
-        ggplot2::scale_alpha_manual(name = "Aussergewöhnliches", values = c("normal" = 1, "Covid-19" = 0.4))
+        ggplot2::scale_alpha_manual(name = "Aussergewöhnliches", values = c("normal" = 1, "Covid-19" = 0.3))
       
       return(plot)
     })

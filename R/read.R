@@ -75,7 +75,7 @@ read_bafu_raster_data <- function(id, years_filter, boundary, crs = 2056){
     purrr::map(function(yr) {
       
       data <- stars::read_stars(download_url[[yr]], proxy = FALSE) # |> 
-        # sf::st_transform(crs = sf::st_crs(crs)) # needs a lot of time and RAM => not really nessecary here
+        # sf::st_transform(crs = sf::st_crs(crs)) # needs a lot of time and RAM => not really necessary here
       
       # crop to boundary
       # FIXME regular grid workaround including pre-filtering to reduce large input dataset and speed / RAM problems: 
@@ -92,7 +92,7 @@ read_bafu_raster_data <- function(id, years_filter, boundary, crs = 2056){
         dplyr::filter(x >= bbox$xmin - !!margin & x <= !!bbox$xmax + !!margin & y >= !!bbox$ymin - !!margin & y <= !!bbox$xmax + !!margin) |> 
         stars::st_as_stars() |> 
         sf::st_set_crs(value = crs) |> 
-        sf::st_crop(boundary)
+        sf::st_crop(boundary) #TODO: as_points = TRUE (default) => cells are interpreted as points, with FALSE, they are interpreted as cells (i.e., everything that touches the polygon is included ...)
     
       names(data) <- extract_pollutant(download_url[[yr]])
       
@@ -188,7 +188,7 @@ read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
 #' @param boundary 
 #' 
 #' @export
-read_all_raster_data <-function(ressources, years, boundary) {
+read_all_raster_data <- function(ressources, years, boundary) {
   
   print("get PM2.5")
   data_raster_pm25 <- read_bafu_raster_data(filter_ressources(ressources, 15), years_filter = years$PM2.5, boundary) 

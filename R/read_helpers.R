@@ -6,26 +6,33 @@
 #'
 #' @keywords internal
 read_statpop_csv <- function(file, year, crs = 2056) {
-  # browser()
+
   var <- ifelse(as.numeric(year) > 2022, "BBTOT", paste0("B", year %% 100, "BTOT")) #FIXME: derive from data itself 
   delim <- ifelse(as.numeric(year) > 2019, ";", ",") #FIXME: derive from data itself
   
-  data <- readr::read_delim(
-    file,
-    delim = delim, 
-    col_select = c(RELI, E_KOORD, N_KOORD, !!var),
-    locale = readr::locale(encoding = "UTF-8")
-  ) |> 
-    dplyr::rename(population = !!var)
+  data <- 
+    readr::read_delim(
+      file,
+      delim = delim, 
+      col_select = c(RELI, E_KOORD, N_KOORD, !!var),
+      locale = readr::locale(encoding = "UTF-8")
+    ) |> 
+      dplyr::rename(population = !!var)
+  
+  dim <- diff(sort(unique(dplyr::pull(data, E_KOORD))))[1]
   
   data_stars <- 
     data |> 
+    dplyr::mutate( # BFS coordinate points represent lower left corner of rastercell and rasterize assumes centre
+      E_KOORD = E_KOORD + dim / 2,
+      N_KOORD = N_KOORD + dim / 2
+    ) |>
     sf::st_as_sf(
       coords = c("E_KOORD", "N_KOORD"), 
       dim = "XY",
       crs = sf::st_crs(crs)
     ) |>
-    stars::st_rasterize() 
+    stars::st_rasterize()
   
   return(data_stars)
 }

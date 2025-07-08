@@ -12,7 +12,7 @@ load_packages <- function(packages) {
 
 # packages necessary for function functionality
 load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-                "readr", "archive", "sf", "stars", "withr"))
+                "readr", "archive", "sf", "stars", "withr", "pxR"))
 
 # packages required for script functionality
 load_packages(c("devtools", "scales", "lemon", "openair", "ggplot2",

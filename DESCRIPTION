@@ -15,6 +15,7 @@ Imports:
     httr2,
     lubridate,
     purrr,
+    pxR,
     readr,
     rjson,
     rlang,

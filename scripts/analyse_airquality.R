@@ -14,11 +14,11 @@ source("scripts/_compile_monitoring_data.R", encoding = "UTF-8")
 print("4) compile exposition data...")
 source("scripts/_compile_exposition_data.R", encoding = "UTF-8")
 
-# 5) calculate selected health-otcomes due to population air pollutant exposition & save data 
+# 5) calculate selected health-outcomes due to population air pollutant exposition & save data 
 print("5) compile health-outcome data...")
 source("scripts/_compile_outcomes.R", encoding = "UTF-8")
 
-# internal process:
+# internal process to produce *.html:
 
 # 6) plot results for use in docs/...
 # print("6) plot results...")

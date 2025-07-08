@@ -190,7 +190,7 @@ restructure_monitoring_nabel_y1 <- function(data, keep_incomplete = FALSE) {
 #'
 #' @keywords internal
 restructure_monitoring_nabel_h1 <- function(data, tz = "Etc/GMT-1") {
-  
+
   header <- dplyr::slice(data, 1:which(dplyr::pull(data, 1) == "Einheit"))
   data <- dplyr::slice(data, (which(dplyr::pull(data, 1) == "Einheit") + 1):nrow(data))
   colnames(data)[1] <- "endtime"
@@ -198,16 +198,18 @@ restructure_monitoring_nabel_h1 <- function(data, tz = "Etc/GMT-1") {
   # FIXME! generalise for more complicated files
   data <- 
     data |> 
+    tidyr::gather(site, value, -endtime) |> 
     dplyr::mutate(
       starttime = endtime - lubridate::hours(1),
-      site = colnames(data)[2],
       parameter = dplyr::pull(header,2)[dplyr::pull(header,1) == "Messwert"],
       interval = "h1", 
       unit = dplyr::pull(header,2)[dplyr::pull(header,1) == "Einheit"],
-      site = dplyr::recode(site, DUE = "Dübendorf-Empa", ZUE = "Zürich-Kaserne"),
+      site = dplyr::recode(site, DUE = "Dübendorf-Empa", ZUE = "Zürich-Kaserne", BAS = "Basel-Binningen", BRM = "Beromünster", CHA = "Chaumont",
+                           DAV = "Davos-Seehornwald", HAE = "Härkingen-A1", JUN = "Jungfraujoch", LAE = "Lägeren", LAU = "Lausanne-César-Roux", 
+                           LUG = "Lugano-Università", MAG = "Magadino-Cadenazzo", PAY = "Payerne", RIG = "Rigi-Seebodenalp", SIO = "Sion-Aéroport-A9",
+                           TAE = "Tänikon"),
       unit = stringr::str_replace(unit, "ug", "µg")
     ) 
-  colnames(data)[2] <- "value"
   data <- dplyr::mutate(data, value = as.numeric(value))
   data <- dplyr::mutate_if(data, is.character, factor)
   data <- dplyr::select(data, starttime, site, parameter, interval, unit, value)
@@ -694,9 +696,9 @@ calculate_all_outcomes <- function(data, conc_threshold = "lower_conc_threshold"
     data |> 
     dplyr::mutate(
       conc_incr = pmax(0, population_weighted_mean - !!rlang::sym(conc_threshold)),
-      outcome = calc_outcome(conc_incr, crf, crf_conc_increment, caserate_per_person * population),
-      outcome_lower = calc_outcome(conc_incr, crf_lower, crf_conc_increment, caserate_per_person * population),
-      outcome_upper = calc_outcome(conc_incr, crf_upper, crf_conc_increment, caserate_per_person * population),
+      outcome = calc_outcome(conc_incr, crf, crf_conc_increment, number_of_deaths),
+      outcome_lower = calc_outcome(conc_incr, crf_lower, crf_conc_increment, number_of_deaths),
+      outcome_upper = calc_outcome(conc_incr, crf_upper, crf_conc_increment, number_of_deaths),
     ) |>
     dplyr::select(-conc_incr)
   

@@ -63,7 +63,7 @@ ggplot_timeseries_bars <- function(data, mapping = ggplot2::aes(x = year, y = po
     ggplot2::ggplot(data, mapping = mapping) + 
     ggplot2::geom_bar(stat = "identity") +
     ggplot2::geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
-    ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
+    ggplot2::scale_x_continuous(breaks = seq(1990,2100,5), expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = ylims, breaks = ybreaks, expand = c(0.01,0.01)) +
     scale_fill_manual(name = "Szenario", values = c("#50586C", "#DCE2F0")) +
     titlelab +
@@ -240,7 +240,7 @@ ggplot_emissions <- function(data, cols, relative = FALSE, pos = "stack", width 
       label = openair::quickText(paste0("Luftschadstoff-Emissionen ", longpollutant(pollutant))),
       subtitle = sub
     ) +
-    ggplot2::labs(caption = "Quelle: Ostluft, Grundlage: EMIS Schweiz")
+    ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz")
   
   # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 3)
   
@@ -324,14 +324,15 @@ timeseriespars <- function(parameter) {
 #'
 #' @keywords internal
 expositionpars <- function(parameter) {
+  wscale <- 0.9 
   switch(parameter,
-         NO2 = list(barwidth = 1, xbreaks = seq(0,55,5), aggregation = "y1", metric = "mean"),
-         `O3_max_98p_m1` = list(barwidth = 2, xbreaks = seq(0,180,20), aggregation = "m1", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3"),
-         `O3_peakseason_mean_d1_max_mean_h8gl` = list(barwidth = 2, xbreaks = seq(0,120,10), aggregation = "peak-season", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration"),
-         PM10 = list(barwidth = 0.2, xbreaks = seq(0,24,2), aggregation = "y1", metric = "mean"),
-         PM2.5 = list(barwidth = 0.2, xbreaks = seq(0,16,1), aggregation = "y1", metric = "mean"),
-         eBC = list(barwidth = 0.05, xbreaks = seq(0,2.2,0.2), aggregation = "y1", metric = "mean"),
-         Ndep = list(barwidth = 1, xlim = c(-5,90), xbreaks = seq(-5,45,5), aggregation = "y1", metric = "sum")
+         NO2 = list(barwidth = 1 * wscale, xbreaks = seq(0,55,5), aggregation = "y1", metric = "mean"),
+         `O3_max_98p_m1` = list(barwidth = 2 * wscale, xbreaks = seq(0,180,20), aggregation = "m1", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3"),
+         `O3_peakseason_mean_d1_max_mean_h8gl` = list(barwidth = 2 * wscale, xbreaks = seq(0,120,10), aggregation = "peak-season", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration"),
+         PM10 = list(barwidth = 0.5 * wscale, xbreaks = seq(0,24,2), aggregation = "y1", metric = "mean"),
+         PM2.5 = list(barwidth = 0.5 * wscale, xbreaks = seq(0,18.5,1), aggregation = "y1", metric = "mean"),
+         eBC = list(barwidth = 0.05 * wscale, xbreaks = seq(0,2.2,0.2), aggregation = "y1", metric = "mean"),
+         Ndep = list(barwidth = 1 * wscale, xlim = c(-5,90), xbreaks = seq(-5,45,5), aggregation = "y1", metric = "sum")
   )
 }
 
@@ -358,7 +359,7 @@ plot_pars_monitoring_timeseries <- function(data, parameters) {
                           label = openair::quickText(paste0("Luftqualitätsmesswerte ",longpollutant(pollutant))),
                           subtitle = openair::quickText(paste0(pollutant, ", ", metric," (", unit, ")"))
                         ),
-                        captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Quelle: Ostluft & NABEL (BAFU & Empa)"),
+                        captionlab = ggplot2::labs(caption = "Datenabdeckung: Kanton Zürich, Daten: Ostluft & NABEL (BAFU & Empa)"),
                         pointsize = pointsize, theme = theme_ts, threshold = timeseriespars(parameter)$thresh
       ) +
         scale_color_siteclass
@@ -528,23 +529,28 @@ plot_pars_popmean_timeseries <- function(data, parameters) {
 #'
 #' @keywords internal
 plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALSE) {
-  
+
   plots <- 
     lapply(setNames(parameters, parameters), function(parameter) {
       
-      data <- dplyr::filter(data, parameter == !!parameter & outcome_type == "vorzeitige Todesfälle")
+      data <- 
+        data |> 
+        dplyr::filter(parameter == !!parameter & outcome_type == "vorzeitige Todesfälle") |> 
+        dplyr::mutate(
+          covid = ifelse(year %in% 2020:2022, "Covid-19", "normal")
+        )
       
       if (relative) {
-        mppng <- ggplot2::aes(x = year, y = outcome / population * 10^5, fill = scenario)
+        mppng <- ggplot2::aes(x = year, y = outcome / population * 10^5, fill = scenario, alpha = covid)
         sub <- "Anzahl vorzeitige Todesfälle pro 100'000 Einwohner/innen pro Jahr"
         uncertainty <- ggplot2::geom_linerange(ggplot2::aes(ymin = outcome_lower / population * 10^5, ymax = outcome_upper / population * 10^5 + outcome_delta_min_conc / population * 10^5), color = "gray20") 
       } else {
-        mppng <- ggplot2::aes(x = year, y = outcome, fill = scenario)
+        mppng <- ggplot2::aes(x = year, y = outcome, fill = scenario, alpha = covid)
         sub <- "Anzahl vorzeitige Todesfälle pro Jahr"
         uncertainty <- ggplot2::geom_linerange(ggplot2::aes(ymin = outcome_lower, ymax = outcome_upper + outcome_delta_min_conc), color = "gray20") 
       }
       
-      plot <- 
+      plot <-
         data |> 
         ggplot_timeseries_bars(
           mapping = mppng,
@@ -555,7 +561,8 @@ plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALS
           captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS & Statistisches Amt Kanton Zürich"),
           theme = theme_ts
         ) + 
-        uncertainty
+        uncertainty +
+        ggplot2::scale_alpha_manual(name = "Aussergewöhnliches", values = c("normal" = 1, "Covid-19" = 0.25))
       
       return(plot)
     })
@@ -630,7 +637,7 @@ plot_all_expo_hist_ndep <- function(data, threshold_ndep) {
         label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
         subtitle = paste0("Anzahl empfindlicher Ökosysteme im Kanton Zürich im Jahr ", year) 
       ), 
-      captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
+      captionlab = ggplot2::labs(caption = "Daten: BAFU"),
       # fill_scale = immissionscale("Ndep"), 
       theme = theme_ts
     )
@@ -662,7 +669,7 @@ plot_all_expo_cumul_ndep <- function(data, threshold_ndep) {
         label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
         subtitle = paste0("relativer Anteil empfindlicher Ökosysteme (kumuliert) im Kanton Zürich im Jahr ", year) 
       ), 
-      captionlab = ggplot2::labs(caption = "Quelle: BAFU"),
+      captionlab = ggplot2::labs(caption = "Daten: BAFU"),
       theme = theme_ts
     )
     

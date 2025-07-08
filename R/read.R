@@ -30,6 +30,29 @@ read_statpop_raster_data <- function(year, destination_path, boundary, crs = 205
 }
 
 
+#' Reads Swiss BFS life expectancy data ("Kohortensterbetafeln) from official api
+#'
+#' @param destination_path
+#'
+#' @export
+read_bfs_life_expectancy_data <- function(destination_path = "inst/extdata"){
+  
+  # get downoad url from BFS api
+  url <- get_bfs_metadata(bfs_nr = "px-x-0102020300_101")
+  
+  # download temp file from api
+  temp <- download_file(download_url = url, destination_path = destination_path, file_ext = ".px")
+  
+  # read *.px
+  data <- pxR::read.px(temp, encoding = "UTF-8")
+  
+  # delete temp *.px
+  unlink(temp)
+  
+  return(data)
+}
+
+
 #' Reads raster data from official swisstopo api, used for BAFU data on air pollutants and sensitive ecosystem nitrogen deposition CLE exceedance
 #'
 #' @param id 
@@ -52,7 +75,7 @@ read_bafu_raster_data <- function(id, years_filter, boundary, crs = 2056){
     purrr::map(function(yr) {
       
       data <- stars::read_stars(download_url[[yr]], proxy = FALSE) # |> 
-        # sf::st_transform(crs = sf::st_crs(crs)) # needs a lot of time and RAM => not really nessecary here
+        # sf::st_transform(crs = sf::st_crs(crs)) # needs a lot of time and RAM => not really necessary here
       
       # crop to boundary
       # FIXME regular grid workaround including pre-filtering to reduce large input dataset and speed / RAM problems: 
@@ -69,7 +92,7 @@ read_bafu_raster_data <- function(id, years_filter, boundary, crs = 2056){
         dplyr::filter(x >= bbox$xmin - !!margin & x <= !!bbox$xmax + !!margin & y >= !!bbox$ymin - !!margin & y <= !!bbox$xmax + !!margin) |> 
         stars::st_as_stars() |> 
         sf::st_set_crs(value = crs) |> 
-        sf::st_crop(boundary)
+        sf::st_crop(boundary) #TODO: as_points = TRUE (default) => cells are interpreted as points, with FALSE, they are interpreted as cells (i.e., everything that touches the polygon is included ...)
     
       names(data) <- extract_pollutant(download_url[[yr]])
       
@@ -165,7 +188,7 @@ read_geolion_wfs <- function(apiurl, version = "2.0.0", crs = 2056){
 #' @param boundary 
 #' 
 #' @export
-read_all_raster_data <-function(ressources, years, boundary) {
+read_all_raster_data <- function(ressources, years, boundary) {
   
   print("get PM2.5")
   data_raster_pm25 <- read_bafu_raster_data(filter_ressources(ressources, 15), years_filter = years$PM2.5, boundary) 

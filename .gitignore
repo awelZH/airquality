@@ -28,3 +28,5 @@ docs/.Ruserdata
 # internal side-analysis for validating maps
 scripts/_validate_rasterdata.R
 
+# temp data => later ogd
+inst/extdata/tod_nat_gatu.csv

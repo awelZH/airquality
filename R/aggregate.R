@@ -144,7 +144,7 @@ aggregate_population_exposition_distrib <- function(data) {
 
   data <-
     data |> 
-    dplyr::group_split(pollutant) |> 
+    dplyr::group_split(parameter) |> 
     purrr::map(bin_concentration) |> 
     dplyr::bind_rows() |> 
     dplyr::group_by(year, pollutant, metric, parameter, concentration) |> 

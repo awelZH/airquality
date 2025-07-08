@@ -218,7 +218,7 @@ simplify_nitrogen_parameters <- function(data) {
 #' @keywords internal
 bin_concentration <- function(data) {
   
-  fun <- bin_fun(unique(data$pollutant))
+  fun <- bin_fun(unique(data$parameter))
   data <- dplyr::mutate(data, concentration = fun(concentration))
   
   return(data)

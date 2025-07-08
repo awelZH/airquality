@@ -160,10 +160,10 @@ extract_year <- function(string) {as.numeric(stringr::str_extract(string, "(1|2)
 bin_fun <- function(pollutant) {
   
   fun <- function(x) {floor(x) + 0.5} # default, e.g. NO2: abgerundet auf 1, Klassenmitte
-  if (pollutant == "O3_max_98p_m1") {fun <- function(x) {floor(x * 2) / 2 + 1}} # abgerundet auf 2, Klassenmitte
-  if (pollutant == "O3_peakseason_mean_d1_max_mean_h8gl") {fun <- function(x) {floor(x * 2) / 2 + 1}} # abgerundet auf 2, Klassenmitte
-  if (pollutant == "PM10") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
-  if (pollutant == "PM2.5") {fun <- function(x) {floor(x * 5) / 5 + 0.1}} # abgerundet auf 0.2, Klassenmitte
+  if (pollutant == "O3_max_98p_m1") {fun <- function(x) {floor(x * 0.5) / 0.5 + 1}} # abgerundet auf 2, Klassenmitte
+  if (pollutant == "O3_peakseason_mean_d1_max_mean_h8gl") {fun <- function(x) {floor(x * 0.5) / 0.5 + 1}} # abgerundet auf 2, Klassenmitte
+  if (pollutant == "PM10") {fun <- function(x) {floor(x * 2) / 2 + 0.25}} # abgerundet auf 0.5, Klassenmitte
+  if (pollutant == "PM2.5") {fun <- function(x) {floor(x * 2) / 2 + 0.25}} # abgerundet auf 0.5, Klassenmitte
   if (pollutant == "eBC") {fun <- function(x) {floor(x * 20) / 20 + 0.025}} # abgerundet auf 0.05, Klassenmitte
   
   return(fun)

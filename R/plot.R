@@ -63,7 +63,7 @@ ggplot_timeseries_bars <- function(data, mapping = ggplot2::aes(x = year, y = po
     ggplot2::ggplot(data, mapping = mapping) + 
     ggplot2::geom_bar(stat = "identity") +
     ggplot2::geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
-    ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
+    ggplot2::scale_x_continuous(breaks = seq(1990,2100,5), expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = ylims, breaks = ybreaks, expand = c(0.01,0.01)) +
     scale_fill_manual(name = "Szenario", values = c("#50586C", "#DCE2F0")) +
     titlelab +
@@ -324,14 +324,15 @@ timeseriespars <- function(parameter) {
 #'
 #' @keywords internal
 expositionpars <- function(parameter) {
+  wscale <- 0.9 
   switch(parameter,
-         NO2 = list(barwidth = 1, xbreaks = seq(0,55,5), aggregation = "y1", metric = "mean"),
-         `O3_max_98p_m1` = list(barwidth = 2, xbreaks = seq(0,180,20), aggregation = "m1", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3"),
-         `O3_peakseason_mean_d1_max_mean_h8gl` = list(barwidth = 2, xbreaks = seq(0,120,10), aggregation = "peak-season", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration"),
-         PM10 = list(barwidth = 0.2, xbreaks = seq(0,24,2), aggregation = "y1", metric = "mean"),
-         PM2.5 = list(barwidth = 0.2, xbreaks = seq(0,18.5,1), aggregation = "y1", metric = "mean"),
-         eBC = list(barwidth = 0.05, xbreaks = seq(0,2.2,0.2), aggregation = "y1", metric = "mean"),
-         Ndep = list(barwidth = 1, xlim = c(-5,90), xbreaks = seq(-5,45,5), aggregation = "y1", metric = "sum")
+         NO2 = list(barwidth = 1 * wscale, xbreaks = seq(0,55,5), aggregation = "y1", metric = "mean"),
+         `O3_max_98p_m1` = list(barwidth = 2 * wscale, xbreaks = seq(0,180,20), aggregation = "m1", metric = "monthly 98%-percentile of ½ hour mean values ≤ 100 µg/m3"),
+         `O3_peakseason_mean_d1_max_mean_h8gl` = list(barwidth = 2 * wscale, xbreaks = seq(0,120,10), aggregation = "peak-season", metric = "mean of daily maximum 8-hour mean concentration in the six consecutive months with the highest six-month running-mean concentration"),
+         PM10 = list(barwidth = 0.5 * wscale, xbreaks = seq(0,24,2), aggregation = "y1", metric = "mean"),
+         PM2.5 = list(barwidth = 0.5 * wscale, xbreaks = seq(0,18.5,1), aggregation = "y1", metric = "mean"),
+         eBC = list(barwidth = 0.05 * wscale, xbreaks = seq(0,2.2,0.2), aggregation = "y1", metric = "mean"),
+         Ndep = list(barwidth = 1 * wscale, xlim = c(-5,90), xbreaks = seq(-5,45,5), aggregation = "y1", metric = "sum")
   )
 }
 

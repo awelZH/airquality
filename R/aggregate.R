@@ -31,7 +31,6 @@ aggregate_emmissions <- function(data){
     groups, 
     by = c("pollutant", "sector", "subsector")
   )
-  
   group_vars <- c("year", "pollutant", "unit", "sector", "subsector_new")
   data <-
     data |> 

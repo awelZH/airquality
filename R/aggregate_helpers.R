@@ -28,7 +28,7 @@ aggregate_groups <- function(data, y, groups, nmin = 3, perc = list(ymin = 0.05,
       standarderror = standarddeviation / sqrt(n),
       sum = sum(!!rlang::sym(y), na.rm = TRUE)
     ) |>
-    ungroup()
+    dplyr::ungroup()
   
   data_all <-
     data |> 

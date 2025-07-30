@@ -176,9 +176,10 @@ get_bfs_statpop_metadata <- function(year){
 #' @param apiurl 
 #'
 #' @keywords internal
-get_opendataswiss_metadata <- function(apiurl, file_filter = ".csv"){
-  
+get_opendataswiss_metadata <- function(apiurl, file_filter = ".csv", useragent = "Amt für Abfall, Wasser, Energie und Luft, Kanton Zürich"){
+
   req <- httr2::request(apiurl)
+  req <- httr2::req_user_agent(req, useragent)
   req_data <- httr2::req_perform(req)
   metadata <- httr2::resp_body_json(req_data)$result        
   links <- unlist(purrr::map(metadata$resources, function(x) x$url))

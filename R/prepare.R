@@ -354,7 +354,7 @@ prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, bounda
       unit = "µg/m3",
       source = "BAFU & BFS"
     ) |> 
-    dplyr::select(x, y, RELI, geodb_oid, gemeindename, year, population, pollutant, metric, parameter, concentration, unit, source)
+    dplyr::select(x, y, RELI, bfsnr, gemeindename, year, population, pollutant, metric, parameter, concentration, unit, source)
   
   return(data)
 }

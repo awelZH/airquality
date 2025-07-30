@@ -498,7 +498,7 @@ plots$exposition$distribution_cumulative$Ndep$alle <-
 data_expo_weighmean_municip <- 
   data_expo_weighmean_municip |> 
   dplyr::select(-gemeindename) |> 
-  dplyr::full_join(map_municipalities, by = "geodb_oid") |> 
+  dplyr::full_join(map_municipalities, by = "bfsnr") |> 
   sf::st_as_sf()
 
 plots$exposition$population_weighted_mean_map <-

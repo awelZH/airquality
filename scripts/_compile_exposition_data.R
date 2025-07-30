@@ -64,7 +64,7 @@ if ((length(years$all) == 1 & !years$base_analysed) | length(years$all) > 1) {
                                    dplyr::right_join(aggregate_population_weighted_mean(data_expo_municip), by = c("year", "pollutant", "metric", "parameter")) |> 
                                    dplyr::arrange(year, pollutant)
   )
-  data_pop_weighted_mean$munipalities <- aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant", "metric", "parameter", "geodb_oid", "gemeindename"))
+  data_pop_weighted_mean$munipalities <- aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant", "metric", "parameter", "bfsnr", "gemeindename"))
   data_pop_weighted_mean$munipalities <- dplyr::mutate(data_pop_weighted_mean$munipalities , population_weighted_mean = ifelse(is.na(gemeindename), NA, population_weighted_mean)) # lakes = NA
   
   

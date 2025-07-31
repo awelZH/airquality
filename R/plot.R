@@ -311,8 +311,8 @@ timeseriespars <- function(parameter) {
          NO2 = list(ylim = c(0,70), ybreaks = seq(0,70,10), metric = "Jahresmittel", thresh = extract_threshold(immission_threshold_values, pollutant = "NO2")),
          PM10 = list(ylim = c(0,35), ybreaks = seq(0,35,5), metric = "Jahresmittel", thresh = extract_threshold(immission_threshold_values, pollutant = "PM10")),
          PM2.5 = list(ylim = c(0,20), ybreaks = seq(0,20,4), metric = "Jahresmittel", thresh = extract_threshold(immission_threshold_values, pollutant = "PM2.5")),
-         `O3_max_98p_m1` = list(ylim = c(0,210), ybreaks = seq(0,210,30), metric = "höchstes 98%-Perzentil der Halbstundenmittel eines Monats", thresh = extract_threshold(immission_threshold_values, pollutant = "O3", metric = "höchstes monatl. 98%-Perzentil der ½-Stundenmittel", source = "LRV Grenzwert")),
-         O3_peakseason_mean_d1_max_mean_h8gl = list(ylim = c(0,130), ybreaks = seq(0,120,20), metric = "mittlere tägliche max. 8-Stundenmittel während der Sommersaison", thresh = extract_threshold(immission_threshold_values, pollutant = "O3", metric = "mittlere sommerliche Tagesbelastung", source = "WHO Richtwert"))
+         `O3_max_98p_m1` = list(ylim = c(0,210), ybreaks = seq(0,210,30), metric = "höchstes 98%-Perzentil der Halbstundenmittel eines Monats", thresh = extract_threshold(immission_threshold_values, pollutant = "O3", metric = "höchste 2% monatl. Kurzzeitbelastung", source = "LRV Grenzwert")),
+         O3_peakseason_mean_d1_max_mean_h8gl = list(ylim = c(0,130), ybreaks = seq(0,120,20), metric = "mittlere tägliche max. 8-Stundenmittel während der Sommersaison", thresh = extract_threshold(immission_threshold_values, pollutant = "O3", metric = "mittlere Sommertagbelastung", source = "WHO Richtwert"))
   )
 }
 
@@ -532,7 +532,7 @@ plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALS
 
   plots <- 
     lapply(setNames(parameters, parameters), function(parameter) {
-      
+
       data <- 
         data |> 
         dplyr::filter(parameter == !!parameter & outcome_type == "vorzeitige Todesfälle") |> 
@@ -690,7 +690,8 @@ combine_thresholds <- function(data, threshold_values) {
   
   data <- 
     threshold_values |> 
-    dplyr::select(source, pollutant, metric, interval, threshold) |> 
+    dplyr::select(source, pollutant, metric_description, interval, threshold) |> 
+    dplyr::rename(metric = metric_description) |> 
     tidyr::spread(source, threshold) |> 
     dplyr::right_join(data, by = c("pollutant", "metric")) |> 
     dplyr::select(year, site, pollutant, metric, parameter, interval, unit, concentration, siteclass, `LRV Grenzwert`, `WHO Richtwert`, source)

@@ -4,7 +4,11 @@
 load_packages <- function(packages) {
   for (package in packages) {
     if (!require(package, character.only = TRUE, quietly = TRUE)) {
-      install.packages(package)
+      if (package %in% c("rOstluft", "rOstluft.plot", "rOstluft.data")) {
+        renv::install(paste0("Ostluft/",package))
+      } else {
+        renv::install(package)
+      }
       library(package, character.only = TRUE)
     }
   }
@@ -15,7 +19,7 @@ load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson"
                 "readr", "archive", "sf", "stars", "withr", "pxR"))
 
 # packages required for script functionality
-load_packages(c("devtools", "scales", "lemon", "openair", "ggplot2",
+load_packages(c("devtools", "renv", "scales", "lemon", "openair", "ggplot2",
                 "RColorBrewer", "colorspace", "MASS", "rOstluft.plot", "quarto"))
 
 # load functions 

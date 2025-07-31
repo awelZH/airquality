@@ -635,10 +635,10 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
   
   municip_raster <- 
     data_municip |> 
-    dplyr::select(geodb_oid) |> 
+    dplyr::select(bfs) |> 
     stars::st_rasterize(data_raster)
   #TODO: terra::rasterize(..., cover = TRUE, touches = TRUE)
-  
+
   data <-
     dplyr::left_join(
       tibble::as_tibble(municip_raster),
@@ -649,8 +649,9 @@ merge_statpop_with_municipalities <- function(data_raster, data_municip) {
   data <- 
     data_municip |> 
     st_drop_geometry() |> 
-    dplyr::select(geodb_oid, gemeindename) |> 
-    dplyr::right_join(data, by = "geodb_oid")
+    dplyr::select(bfs, gemeindename) |> 
+    dplyr::right_join(data, by = "bfs") |> 
+    dplyr::rename(bfsnr = bfs)
   
   return(data)
 }

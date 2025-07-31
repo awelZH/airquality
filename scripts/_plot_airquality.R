@@ -313,7 +313,7 @@ plots$monitoring$threshold_comparison$various <-
     x = factor(x, levels = rev(sort(unique(.data$x)))),
     reference = dplyr::recode(reference, !!!c("value_relative_lrv" = "relativ zu Immissionsgrenzwerten bzw. kritischen Eintragsraten:", 
                                               "value_relative_who" = "relativ zu Richtwerten der Weltgesundheitsorganisation:"))
-  ) |>
+  ) |> 
   ggplot2::ggplot(aes(x = x, y = value, color = siteclass)) +
   ggplot2::geom_hline(yintercept = 1, linetype = data_thrshlds$lty, color = data_thrshlds$col, linewidth = data_thrshlds$lsz, show.legend = FALSE) +
   ggplot2::geom_jitter(shape = 21, size = pointsize, width = 0.2) +
@@ -498,7 +498,7 @@ plots$exposition$distribution_cumulative$Ndep$alle <-
 data_expo_weighmean_municip <- 
   data_expo_weighmean_municip |> 
   dplyr::select(-gemeindename) |> 
-  dplyr::full_join(map_municipalities, by = "geodb_oid") |> 
+  dplyr::full_join(dplyr::rename(map_municipalities, bfsnr = bfs), by = "bfsnr") |> 
   sf::st_as_sf()
 
 plots$exposition$population_weighted_mean_map <-

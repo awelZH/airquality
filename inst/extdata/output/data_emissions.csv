@@ -1,6 +1,7 @@
 year;pollutant;metric;unit;sector;subsector_new;emission;source
 2015;CO;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2411.172251517;Ostluft & BAFU
-2015;CO;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;3735.087484753;Ostluft & BAFU
+2015;CO;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;2609.664954044;Ostluft & BAFU
+2015;CO;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;1125.422530709;Ostluft & BAFU
 2015;CO;Jahresmenge;t/a;Industrie;Industrie / verschiedene;1808.3083968861001;Ostluft & BAFU
 2015;CO;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1176.9164791924;Ostluft & BAFU
 2015;CO;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1334.000051036;Ostluft & BAFU
@@ -8,8 +9,8 @@ year;pollutant;metric;unit;sector;subsector_new;emission;source
 2015;CO;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;4420.152505743;Ostluft & BAFU
 2015;eBC;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.1074918216;Ostluft & BAFU
 2015;eBC;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;23.12748344;Ostluft & BAFU
-2015;eBC;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;4.51083684831;Ostluft & BAFU
 2015;eBC;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;51.093036581;Ostluft & BAFU
+2015;eBC;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;4.51083684831;Ostluft & BAFU
 2015;eBC;Jahresmenge;t/a;Industrie;Industrie / verschiedene;8.79808753848;Ostluft & BAFU
 2015;eBC;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;12.114079992094;Ostluft & BAFU
 2015;eBC;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;6.300000241;Ostluft & BAFU
@@ -49,9 +50,10 @@ year;pollutant;metric;unit;sector;subsector_new;emission;source
 2015;PM10;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;21.000000835;Ostluft & BAFU
 2015;PM10;Jahresmenge;t/a;Verkehr;Verkehr / Strassenverkehr;490.05363504;Ostluft & BAFU
 2015;PM10;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;145.507350173;Ostluft & BAFU
-2015;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;82.198699797;Ostluft & BAFU
-2015;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;128.2763860411;Ostluft & BAFU
+2015;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.632142881;Ostluft & BAFU
+2015;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;79.566556916;Ostluft & BAFU
 2015;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;108.033604917;Ostluft & BAFU
+2015;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;128.2763860411;Ostluft & BAFU
 2015;PM2.5;Jahresmenge;t/a;Industrie;Industrie / verschiedene;49.30266448026;Ostluft & BAFU
 2015;PM2.5;Jahresmenge;t/a;Industrie;Industrie / Punktquellen KVA;7.2771228;Ostluft & BAFU
 2015;PM2.5;Jahresmenge;t/a;Industrie;Industrie / Flächenquellen Industrie;154.013025364;Ostluft & BAFU
@@ -68,7 +70,8 @@ year;pollutant;metric;unit;sector;subsector_new;emission;source
 2015;SO2;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;97.392611217;Ostluft & BAFU
 2015;SO2;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;9.619252904;Ostluft & BAFU
 2020;CO;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2191.384228992;Ostluft & BAFU
-2020;CO;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;3102.726490088;Ostluft & BAFU
+2020;CO;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;2025.775194233;Ostluft & BAFU
+2020;CO;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;1076.951295855;Ostluft & BAFU
 2020;CO;Jahresmenge;t/a;Industrie;Industrie / verschiedene;1917.3981854451;Ostluft & BAFU
 2020;CO;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1040.052507298;Ostluft & BAFU
 2020;CO;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;544.000017649;Ostluft & BAFU
@@ -76,8 +79,8 @@ year;pollutant;metric;unit;sector;subsector_new;emission;source
 2020;CO;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;3284.668725653;Ostluft & BAFU
 2020;eBC;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.09214949261000001;Ostluft & BAFU
 2020;eBC;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;18.782723648999998;Ostluft & BAFU
-2020;eBC;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;4.53778312823;Ostluft & BAFU
 2020;eBC;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;39.043155254;Ostluft & BAFU
+2020;eBC;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;4.53778312823;Ostluft & BAFU
 2020;eBC;Jahresmenge;t/a;Industrie;Industrie / verschiedene;7.270985589917;Ostluft & BAFU
 2020;eBC;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;8.4556619393816;Ostluft & BAFU
 2020;eBC;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;2.881942992;Ostluft & BAFU
@@ -117,9 +120,10 @@ year;pollutant;metric;unit;sector;subsector_new;emission;source
 2020;PM10;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;8.000000241;Ostluft & BAFU
 2020;PM10;Jahresmenge;t/a;Verkehr;Verkehr / Strassenverkehr;431.72502115;Ostluft & BAFU
 2020;PM10;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;125.183205488;Ostluft & BAFU
-2020;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;69.959374913;Ostluft & BAFU
-2020;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;121.0074098914;Ostluft & BAFU
+2020;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.278607494;Ostluft & BAFU
+2020;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;67.680767419;Ostluft & BAFU
 2020;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;80.846535503;Ostluft & BAFU
+2020;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;121.0074098914;Ostluft & BAFU
 2020;PM2.5;Jahresmenge;t/a;Industrie;Industrie / verschiedene;45.877806128907;Ostluft & BAFU
 2020;PM2.5;Jahresmenge;t/a;Industrie;Industrie / Punktquellen KVA;7.285087284;Ostluft & BAFU
 2020;PM2.5;Jahresmenge;t/a;Industrie;Industrie / Flächenquellen Industrie;152.807347183;Ostluft & BAFU
@@ -136,7 +140,8 @@ year;pollutant;metric;unit;sector;subsector_new;emission;source
 2020;SO2;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;36.265740543;Ostluft & BAFU
 2020;SO2;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;8.2316201452;Ostluft & BAFU
 2021;CO;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2360.320512293;Ostluft & BAFU
-2021;CO;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;3228.906596904;Ostluft & BAFU
+2021;CO;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;2251.645951216;Ostluft & BAFU
+2021;CO;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;977.260645688;Ostluft & BAFU
 2021;CO;Jahresmenge;t/a;Industrie;Industrie / verschiedene;1519.9084886947;Ostluft & BAFU
 2021;CO;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1021.373455796;Ostluft & BAFU
 2021;CO;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;567.999997754;Ostluft & BAFU
@@ -144,8 +149,8 @@ year;pollutant;metric;unit;sector;subsector_new;emission;source
 2021;CO;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;3374.796831415;Ostluft & BAFU
 2021;eBC;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.10383341174;Ostluft & BAFU
 2021;eBC;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;20.751774637;Ostluft & BAFU
-2021;eBC;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;2.74636611339;Ostluft & BAFU
 2021;eBC;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;42.825092849;Ostluft & BAFU
+2021;eBC;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;2.74636611339;Ostluft & BAFU
 2021;eBC;Jahresmenge;t/a;Industrie;Industrie / verschiedene;6.594107295979;Ostluft & BAFU
 2021;eBC;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;7.8809238700698;Ostluft & BAFU
 2021;eBC;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;3.74755708;Ostluft & BAFU
@@ -185,9 +190,10 @@ year;pollutant;metric;unit;sector;subsector_new;emission;source
 2021;PM10;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;10.000000382;Ostluft & BAFU
 2021;PM10;Jahresmenge;t/a;Verkehr;Verkehr / Strassenverkehr;447.52444965300003;Ostluft & BAFU
 2021;PM10;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;127.628893871;Ostluft & BAFU
-2021;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;78.296666121;Ostluft & BAFU
-2021;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;94.7631893868;Ostluft & BAFU
+2021;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;2.576199732;Ostluft & BAFU
+2021;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;75.720466389;Ostluft & BAFU
 2021;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;89.444832789;Ostluft & BAFU
+2021;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;94.7631893868;Ostluft & BAFU
 2021;PM2.5;Jahresmenge;t/a;Industrie;Industrie / verschiedene;45.57601427754;Ostluft & BAFU
 2021;PM2.5;Jahresmenge;t/a;Industrie;Industrie / Punktquellen KVA;6.4726454;Ostluft & BAFU
 2021;PM2.5;Jahresmenge;t/a;Industrie;Industrie / Flächenquellen Industrie;154.216842238;Ostluft & BAFU
@@ -203,71 +209,3 @@ year;pollutant;metric;unit;sector;subsector_new;emission;source
 2021;SO2;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.2562489796396;Ostluft & BAFU
 2021;SO2;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;41.555881499;Ostluft & BAFU
 2021;SO2;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;8.4712976922;Ostluft & BAFU
-2030;CO;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;1596.624850183;Ostluft & BAFU
-2030;CO;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;2663.95947053;Ostluft & BAFU
-2030;CO;Jahresmenge;t/a;Industrie;Industrie / verschiedene;1635.0863661594;Ostluft & BAFU
-2030;CO;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;835.296110032;Ostluft & BAFU
-2030;CO;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1440.40932649;Ostluft & BAFU
-2030;CO;Jahresmenge;t/a;Verkehr;Verkehr / Strassenverkehr;2943.73455153;Ostluft & BAFU
-2030;CO;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;2348.915318254;Ostluft & BAFU
-2030;eBC;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;0.06331665825;Ostluft & BAFU
-2030;eBC;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / Feuerungen Dienstleistungen Holz und Kohle;7.821901027;Ostluft & BAFU
-2030;eBC;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;2.75669790868;Ostluft & BAFU
-2030;eBC;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;27.72076741;Ostluft & BAFU
-2030;eBC;Jahresmenge;t/a;Industrie;Industrie / verschiedene;4.5129243784512;Ostluft & BAFU
-2030;eBC;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;3.45084556431478;Ostluft & BAFU
-2030;eBC;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;4.9041501940000005;Ostluft & BAFU
-2030;eBC;Jahresmenge;t/a;Verkehr;Verkehr / Strassenverkehr;22.669459791;Ostluft & BAFU
-2030;eBC;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;0.4711757782;Ostluft & BAFU
-2030;NH3;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;3.969570061196;Ostluft & BAFU
-2030;NH3;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;89.035176779548;Ostluft & BAFU
-2030;NH3;Jahresmenge;t/a;Industrie;Industrie / verschiedene;82.4391651276103;Ostluft & BAFU
-2030;NH3;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;220.2435036378881;Ostluft & BAFU
-2030;NH3;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / Weiden;1379.831495497;Ostluft & BAFU
-2030;NH3;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;1247.610612407;Ostluft & BAFU
-2030;NH3;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;125.5563849321;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;105.184319973;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;245.141864519;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;Haushalte;Haushalte / Lösungsmittel Konsumprodukte;1343.634698842;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;Industrie;Industrie / verschiedene;475.77380286186;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;Industrie;Industrie / Lösungsmittel Industrie;5248.289039828;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;281.4009098457;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / Ställe;925.580344298;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;natürl. Emissionen;natürl. Emissionen / Wälder;4289.386099001;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;127.139256887;Ostluft & BAFU
-2030;NMVOC;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;646.486920993;Ostluft & BAFU
-2030;NOx;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;364.015879707;Ostluft & BAFU
-2030;NOx;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;429.374729504;Ostluft & BAFU
-2030;NOx;Jahresmenge;t/a;Industrie;Industrie / verschiedene;784.3828305368;Ostluft & BAFU
-2030;NOx;Jahresmenge;t/a;Industrie;Industrie / Punktquellen KVA;285.006872;Ostluft & BAFU
-2030;NOx;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;323.15134969709;Ostluft & BAFU
-2030;NOx;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;1943.31305062;Ostluft & BAFU
-2030;NOx;Jahresmenge;t/a;Verkehr;Verkehr / Strassenverkehr;2016.068772803;Ostluft & BAFU
-2030;NOx;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;158.726269463;Ostluft & BAFU
-2030;PM10;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;33.0937316308;Ostluft & BAFU
-2030;PM10;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;221.5934670149;Ostluft & BAFU
-2030;PM10;Jahresmenge;t/a;Industrie;Industrie / verschiedene;8.340905319483;Ostluft & BAFU
-2030;PM10;Jahresmenge;t/a;Industrie;Industrie / Baumaschinen;277.484014201;Ostluft & BAFU
-2030;PM10;Jahresmenge;t/a;Industrie;Industrie / Flächenquellen Industrie;238.247810377;Ostluft & BAFU
-2030;PM10;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;129.11464445284;Ostluft & BAFU
-2030;PM10;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;13.082830794;Ostluft & BAFU
-2030;PM10;Jahresmenge;t/a;Verkehr;Verkehr / Strassenverkehr;491.542006426;Ostluft & BAFU
-2030;PM10;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;151.17160740399999;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;31.392809020799998;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;102.5659658697;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Haushalte;Haushalte / Feuerungen Haushalte Holz und Kohle;65.938613585;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Industrie;Industrie / verschiedene;45.218229033195;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Industrie;Industrie / Punktquellen KVA;6.2155754;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Industrie;Industrie / Flächenquellen Industrie;166.784565444;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;17.143252996533;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;13.082830794;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Verkehr;Verkehr / Strassenverkehr;183.192815064;Ostluft & BAFU
-2030;PM2.5;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;24.267056371;Ostluft & BAFU
-2030;SO2;Jahresmenge;t/a;Dienstleistungen;Dienstleistungen / verschiedene;16.46338342681;Ostluft & BAFU
-2030;SO2;Jahresmenge;t/a;Haushalte;Haushalte / verschiedene;30.22371833339;Ostluft & BAFU
-2030;SO2;Jahresmenge;t/a;Industrie;Industrie / verschiedene;12.3153291116498;Ostluft & BAFU
-2030;SO2;Jahresmenge;t/a;Industrie;Industrie / Punktquellen KVA;39.415844;Ostluft & BAFU
-2030;SO2;Jahresmenge;t/a;Industrie;Industrie / Flächenquellen Industrie;192.926944889;Ostluft & BAFU
-2030;SO2;Jahresmenge;t/a;Land- und Forstw.;Land- und Forstw. / verschiedene;1.0340461524861;Ostluft & BAFU
-2030;SO2;Jahresmenge;t/a;Verkehr;Verkehr / Flugverkehr Zürich;126.779692622;Ostluft & BAFU
-2030;SO2;Jahresmenge;t/a;Verkehr;Verkehr / verschiedene;7.8778878111;Ostluft & BAFU

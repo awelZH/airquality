@@ -4,7 +4,11 @@
 load_packages <- function(packages) {
   for (package in packages) {
     if (!require(package, character.only = TRUE, quietly = TRUE)) {
-      install.packages(package)
+      if (package %in% c("rOstluft", "rOstluft.plot", "rOstluft.data")) {
+        renv::install(paste0("Ostluft/",package))
+      } else {
+        renv::install(package)
+      }
       library(package, character.only = TRUE)
     }
   }

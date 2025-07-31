@@ -532,7 +532,7 @@ plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALS
 
   plots <- 
     lapply(setNames(parameters, parameters), function(parameter) {
-      
+
       data <- 
         data |> 
         dplyr::filter(parameter == !!parameter & outcome_type == "vorzeitige Todesfälle") |> 
@@ -690,7 +690,8 @@ combine_thresholds <- function(data, threshold_values) {
   
   data <- 
     threshold_values |> 
-    dplyr::select(source, pollutant, metric, interval, threshold) |> 
+    dplyr::select(source, pollutant, metric_description, interval, threshold) |> 
+    dplyr::rename(metric = metric_description) |> 
     tidyr::spread(source, threshold) |> 
     dplyr::right_join(data, by = c("pollutant", "metric")) |> 
     dplyr::select(year, site, pollutant, metric, parameter, interval, unit, concentration, siteclass, `LRV Grenzwert`, `WHO Richtwert`, source)

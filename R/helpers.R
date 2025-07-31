@@ -32,7 +32,7 @@ extract_threshold <- function(threshold_values, pollutant = NULL, metric = "Jahr
     dplyr::filter(
       source %in% !!source &
         pollutant == !!pollutant & interval == !!interval &
-        metric == !!metric & unit == !!unit
+        metric_description == !!metric & unit == !!unit
     ) |>
     dplyr::arrange(source)
   
@@ -117,8 +117,10 @@ longmetric <- function(x) {
     x == "NOx" ~ "Jahresmittel",
     x == "eBC" ~ "Jahresmittel",
     x == "O3" ~ "Jahresmittel", 
-    x == "O3_max_98p_m1" ~ "höchstes monatl. 98%-Perzentil der ½-Stundenmittel",
-    x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "mittlere sommerliche Tagesbelastung",
+    x == "O3_max_98p_m1" ~ "höchste 2% monatl. Kurzzeitbelastung",
+    x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "mittlere Sommertagbelastung",
+    # x == "O3_max_98p_m1" ~ "höchstes monatl. 98%-Perzentil der ½-Stundenmittel",
+    # x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "mittlere sommerliche Tagesbelastung",
     x == "O3_nb_h1>120" ~ "Anzahl Stundenmittel > 120 μg/m3", 
     TRUE ~ x
   )
@@ -255,11 +257,11 @@ extract_pollutant <- function(id) {
 #' @keywords internal
 get_years <- function(read_all_raster, yearmax, base_scenario_year) {
   
-  if (read_all_raster) {
+  if (all(read_all_raster & !any(is.numeric(read_all_raster)))) {
     
     years <- list(PM2.5 = 2015:yearmax, PM10 = 2010:yearmax, NO2 = 2010:yearmax, O3 = 2010:yearmax, ndep_exmax = 1990:yearmax, all = 2010:yearmax, base_analysed = FALSE) # since statpop raster data are only available from 2010 on and new data are usually published end of year for preceeding year
     
-  } else {
+  } else if (all(!read_all_raster & !any(is.numeric(read_all_raster)))) {
     
     years <- 
       read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv") |> 
@@ -307,6 +309,10 @@ get_years <- function(read_all_raster, yearmax, base_scenario_year) {
     
     years$all <- unique(unlist(years[names(years) != "ndep_exmax"]))
     years$base_analysed <- base_scenario_year %in% dplyr::distinct(read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv"), year)$year
+    
+  } else if (any(is.numeric(read_all_raster))) {
+    
+    years <- list(PM2.5 = read_all_raster, PM10 = read_all_raster, NO2 = read_all_raster, O3 = read_all_raster, ndep_exmax = read_all_raster, all = read_all_raster, base_analysed = FALSE) # since statpop raster data are only available from 2010 on and new data are usually published end of year for preceeding year
     
   }
   

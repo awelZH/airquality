@@ -15,7 +15,7 @@ load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson"
                 "readr", "archive", "sf", "stars", "withr", "pxR"))
 
 # packages required for script functionality
-load_packages(c("devtools", "scales", "lemon", "openair", "ggplot2",
+load_packages(c("devtools", "renv", "scales", "lemon", "openair", "ggplot2",
                 "RColorBrewer", "colorspace", "MASS", "rOstluft.plot", "quarto"))
 
 # load functions 

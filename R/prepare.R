@@ -25,8 +25,10 @@ prepare_ressources <- function(ressources) {
 #' @param filter_args 
 #'
 #' @export
-prepare_emmissions <- function(data, filter_args = canton == 'ZH' & emission != 0 & !(subsector %in% c('Weitere Punktquellen OL', 'Rheinschifffahrt', 'Flugverkehr Genf'))){
-  
+prepare_emmissions <- function(data, 
+                               filter_args = canton == 'ZH' & year <= lubridate::year(Sys.Date()) & emission != 0 & !(subsector %in% c('Weitere Punktquellen OL', 'Rheinschifffahrt', 'Flugverkehr Genf'))
+){
+
   filter_args <- rlang::enquo(filter_args)
   data_prep <- 
     data |> 
@@ -425,7 +427,7 @@ prepare_mortality <- function(data_mortality) {
 #'
 #' @export
 prepare_preliminary_deaths <- function(data_expo_weighmean, data_mortality, outcomes_meta, conc_threshold = "lower_conc_threshold") {
-
+  
   # aggregate mortality
   data_mortality <-
     data_mortality |> 

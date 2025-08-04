@@ -2,7 +2,7 @@
 NO2;Jahresmittel;Jahresmittel;NO2;y1;30;µg/m3;LRV Grenzwert
 PM10;Jahresmittel;Jahresmittel;PM10;y1;20;µg/m3;LRV Grenzwert
 PM2.5;Jahresmittel;Jahresmittel;PM2.5;y1;10;µg/m3;LRV Grenzwert
-O3;höchstes monatl. 98%-Perzentil der ½-Stundenmittel;höchste 2% monatl. Kurzzeitbelastung;O3_max_98p_m1;y1;100;µg/m3;LRV Grenzwert
+O3;höchstes monatl. 98%-Perzentil der ½-Stundenmittel;typische Spitzenbelastung;O3_max_98p_m1;y1;100;µg/m3;LRV Grenzwert
 NO2;Jahresmittel;Jahresmittel;NO2;y1;10;µg/m3;WHO Richtwert
 PM10;Jahresmittel;Jahresmittel;PM10;y1;15;µg/m3;WHO Richtwert
 PM2.5;Jahresmittel;Jahresmittel;PM2.5;y1;5;µg/m3;WHO Richtwert

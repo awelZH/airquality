@@ -117,7 +117,7 @@ longmetric <- function(x) {
     x == "NOx" ~ "Jahresmittel",
     x == "eBC" ~ "Jahresmittel",
     x == "O3" ~ "Jahresmittel", 
-    x == "O3_max_98p_m1" ~ "höchste 2% monatl. Kurzzeitbelastung",
+    x == "O3_max_98p_m1" ~ "typische Spitzenbelastung",
     x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "mittlere Sommertagbelastung",
     # x == "O3_max_98p_m1" ~ "höchstes monatl. 98%-Perzentil der ½-Stundenmittel",
     # x == "O3_peakseason_mean_d1_max_mean_h8gl" ~ "mittlere sommerliche Tagesbelastung",

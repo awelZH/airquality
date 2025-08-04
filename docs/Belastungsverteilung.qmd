@@ -109,7 +109,10 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'PM10'")
 
 ### Ozon
 
-#### Höchstes monatliches 98%-Perzentil
+#### Typische Spitzenbelastung
+
+Die "typische Spitzenbelastung" entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.
+
 
 ::: {.panel-tabset}
 
@@ -134,7 +137,10 @@ get_plot(plots, "source == 'population_weighted_mean' & pollutant == 'O3_max_98p
 
 :::
 
-#### mittlere sommerliche Tagesbelastung
+#### mittlere Sommertagbelastung
+
+Die "mittlere Sommertagbelastung" entspricht dem Durchschnitt des maximalen 8-Stunden-Mittelwerts der O3-Konzentration in den sechs aufeinanderfolgenden Monaten mit der höchsten O3-Konzentration im Sechsmonatsdurchschnitt.
+
 
 ::: {.panel-tabset}
 

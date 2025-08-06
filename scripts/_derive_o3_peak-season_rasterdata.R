@@ -5,7 +5,7 @@
 # derive O3 peak-season raster data from statistical relationships
 # => read & prepare monitoring data
 data_monitoring_aq <-
-  read_local_csv("inst/extdata/output/data_airquality_monitoring_y1.csv", locale = readr::locale(encoding = "UTF-8")) |> 
+  airquality.data::data_monitoring_aq |> 
   dplyr::filter(parameter %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "NO2")) |> 
   dplyr::select(year, site, masl, parameter, concentration) |> 
   tidyr::spread(parameter, concentration) |> 

@@ -1,19 +1,12 @@
 
 
-# => read NABEL monitoring airquality data (y1 & h1)
-data_monitoring_nabel <- read_local_csv(filter_ressources(ressources, 5))
-data_monitoring_nabel <- prepare_monitoring_nabel_y1(data_monitoring_nabel) 
-
-# => PM2.5:PM10 ratios
+# => read NABEL monitoring airquality data (y1) => PM2.5:PM10 ratios
 data_monitoring_nabel <- 
-  data_monitoring_nabel |> 
-  dplyr::filter(parameter %in% c("NO2", "PM2.5", "PM10") & lubridate::year(starttime) >= 2000) |> 
-  dplyr::select(starttime, site, parameter, value) |> 
-  tidyr::spread(parameter, value) |> 
-  dplyr::mutate(
-    year = lubridate::year(starttime),
-    PMratio = PM2.5 / PM10
-  ) |> 
+  airquality.data::data_monitoring_aq |> 
+  dplyr::filter(source == "NABEL (BAFU & Empa)" & parameter %in% c("NO2", "PM2.5", "PM10") & year >= 2000) |> 
+  dplyr::select(year, site, parameter, concentration) |> 
+  tidyr::spread(parameter, concentration) |> 
+  dplyr::mutate(PMratio = PM2.5 / PM10) |> 
   dplyr::filter(!is.na(PMratio) & site != "Bern-Bollwerk")
 
 # data_monitoring_nabel |>

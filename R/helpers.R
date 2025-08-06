@@ -204,30 +204,6 @@ round_off <- function (x, digits = 0) {
 }
 
 
-
-#' Converts coverage stack from geolion api request of air pollutant raster data to unambiguous matrix of coverages
-#'
-#' @param cov_stack 
-#' @param years_pollumap 
-#'
-#' @keywords internal
-filter_availability <- function(cov_stack, years_pollumap = 2015) {
-  
-  data_availability <- 
-    cov_stack |> 
-    to_stack_df() |> 
-    dplyr::filter(
-      (!stringr::str_detect(layer_name, "jahre") & as.numeric(year) %in% years_pollumap) | # only select pollumap for the year in which it calibrated with monitoring data
-        as.numeric(year) < lubridate::year(Sys.Date()) & # no future pollumap projections
-        stringr::str_detect(layer_name, "jahre") # apart from that: always use jahreskarte
-    ) |> 
-    dplyr::filter(pollutant != "bc") # no bc since this only available for pollumap
-  
-  return(data_availability)
-}
-
-
-
 #' Extract polutant from BAFU data.geo.admin.ch ressource string
 #'
 #' @param id
@@ -247,7 +223,6 @@ extract_pollutant <- function(id) {
   
   return(pollutant)
 } 
-
 
 
 #' Check previously analysed years and determine which new years should be analysed

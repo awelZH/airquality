@@ -2,24 +2,29 @@
 # ---
 # load packages
 load_packages <- function(packages) {
+  
+  if (!("renv" %in% installed.packages())) {install.packages("renv")}
   for (package in packages) {
     if (!require(package, character.only = TRUE, quietly = TRUE)) {
-      if (package %in% c("rOstluft", "rOstluft.plot", "rOstluft.data")) {
+      if (package %in% c("airquality.data", "rOstluft", "rOstluft.plot", "rOstluft.data")) {
         renv::install(paste0("Ostluft/",package))
+      } else if (package %in% c("airquality", "airquality.data")) {
+        renv::install(paste0("awelZH/",package))
       } else {
         renv::install(package)
       }
-      library(package, character.only = TRUE)
     }
+    library(package, character.only = TRUE)
   }
+  
 }
 
 # packages necessary for function functionality
 load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-                "readr", "archive", "sf", "stars", "withr", "pxR"))
+                "readr", "sf", "stars", "withr", "pxR"))
 
 # packages required for script functionality
-load_packages(c("devtools", "renv", "scales", "lemon", "openair", "ggplot2",
+load_packages(c("devtools", "renv", "airquality.data", "scales", "lemon", "openair", "ggplot2",
                 "RColorBrewer", "colorspace", "MASS", "rOstluft.plot", "quarto"))
 
 # load functions 
@@ -51,8 +56,6 @@ map_canton <- aggregate_map(map_municipalities)
 # ggplot() +
 #   ggplot2::geom_sf(data = map_canton) +
 #   ggplot2::theme_void()
-
-
 
 
 # clean up:

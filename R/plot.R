@@ -397,12 +397,12 @@ plot_timeseries_ndep_bars <- function(data, xlim = NULL, xbreaks = waiver(), lin
     ggplot2::scale_linetype_manual(values = c("critical_load_single" = 1, "critical_load_min" = 2, "critical_load_max" = 2)) +
     ggplot2::scale_x_continuous(limits = xlim, breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(expand = c(0.01,0.01)) +
-    ggplot2::scale_fill_manual(values = c("aus NH3-Quellen" = "gold2", "aus NOx-Quellen" = "steelblue4")) +
+    ggplot2::scale_fill_manual(values = c("aus NH3-Quellen" = "khaki3", "aus NOx-Quellen" = "khaki4")) +
     theme_ts +
     ggplot2::theme(
       strip.text = ggplot2::element_text(hjust = 0),
       legend.title = ggplot2::element_blank(),
-      legend.position = "right"
+      legend.position = "bottom"
     ) +
     ggplot2::ggtitle(
       label = openair::quickText(title),

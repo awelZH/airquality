@@ -26,4 +26,4 @@ source("scripts/_compile_outcomes.R", encoding = "UTF-8")
 
 # 7) render quarto website for plot display
 # print("7) render *.qmd...")
-# quarto::quarto_render("docs/")
+# quarto::quarto_render(input = "docs/")

@@ -1,8 +1,8 @@
 
 
-# => read NABEL monitoring airquality data (y1 & h1)
-data_monitoring_nabel <- read_local_csv(filter_ressources(ressources, 5))
-data_monitoring_nabel <- prepare_monitoring_nabel_y1(data_monitoring_nabel) 
+# => read NABEL monitoring airquality data (y1)
+# TODO airquality.data
+# data_monitoring_nabel <- ...
 
 # => PM2.5:PM10 ratios
 data_monitoring_nabel <- 

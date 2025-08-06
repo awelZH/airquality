@@ -355,9 +355,9 @@ plots$monitoring$timeseries_ndep_all$Ndep <-
   data_monitoring_ndep |>
   dplyr::filter(year >= 2000 & component == "N-Deposition") |>
   ggplot2::ggplot(ggplot2::aes(x = year, y = deposition, color = ecosystem_category, shape = estimate)) +
-  ggplot2::geom_jitter(size = pointsize * 2, width = 0) +
+  ggplot2::geom_jitter(size = pointsize * 1.5, width = 0) +
   ggplot2::scale_x_continuous(limits = c(2000,NA), expand = c(0.01,0.01)) +
-  ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01)) +
+  ggplot2::scale_y_continuous(limits = c(0,NA), expand = ggplot2::expansion(mult = c(0, 0.02))) +
   ggplot2::scale_color_viridis_d(direction = -1) +
   ggplot2::ggtitle(
     label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme"),
@@ -376,9 +376,9 @@ plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
   dplyr::filter(year >= 2000 & component == "N-Deposition") |>
   ggplot2::ggplot(ggplot2::aes(x = year, y = deposition / critical_load_single, color = ecosystem_category, shape = estimate)) +
   ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1), color = temp$col, linewidth = temp$lsz, show.legend = FALSE) +
-  ggplot2::geom_jitter(size = pointsize * 2, width = 0) +
+  ggplot2::geom_jitter(size = pointsize * 1.5, width = 0) +
   ggplot2::scale_x_continuous(limits = c(2000,NA), expand = c(0.01,0.01)) +
-  ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = scales::percent_format()) +
+  ggplot2::scale_y_continuous(limits = c(0,NA), expand = ggplot2::expansion(mult = c(0, 0.02)), labels = scales::percent_format()) +
   ggplot2::scale_color_viridis_d(direction = -1) +
   ggplot2::ggtitle(
     label = openair::quickText("Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme"),
@@ -402,7 +402,7 @@ plots$monitoring$ndep_mean_sources_fractions$Ndep <-
   geom_bar(stat = "identity", position = "fill") +
   ggplot2::scale_x_continuous(breaks = seq(2018,max(years),1), expand = c(0.01,0.01)) +
   ggplot2::scale_y_continuous(expand = c(0.01,0.01), labels = scales::percent_format()) +
-  ggplot2::scale_fill_manual(values = c("aus NOx-Quellen" = "steelblue4", "aus NH3-Quellen" = "gold2")) +
+  ggplot2::scale_fill_manual(values = c("aus NOx-Quellen" = "khaki4", "aus NH3-Quellen" = "khaki3")) +
   ggplot2::ggtitle(
     label = openair::quickText("Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme seit dem Jahr 2019"),
     subtitle = expression("mittlerer Beitrag der Quellgruppen")

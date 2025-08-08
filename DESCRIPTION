@@ -1,6 +1,6 @@
 Package: airquality
 Title: Air quality in the Canton of Zurich
-Version: 0.0.0.9000
+Version: 0.2.9
 Authors@R: 
     person("Jörg", "Sintermann", , "luft@bd.zh.ch", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
@@ -9,31 +9,32 @@ License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Imports: 
-    dplyr,
-    httr2,
-    lubridate,
-    purrr,
-    pxR,
-    readr,
-    rjson,
-    rlang,
-    sf,
-    stars,
-    stringr,
-    tibble,
-    tidyr,
-    withr
+Imports:
+    airquality.data (>= 0.1.0),
+    airquality.methods (>= 0.2.9),
+    colorspace (>= 2.1.1),
+    devtools (>= 2.4.5),
+    ggplot2 (>= 3.5.2),
+    lemon (>= 0.5.1),
+    MASS (>= 7.3.65),
+    openair (>= 2.18.2),
+    quarto (>= 1.5.0),
+    RColorBrewer (>= 1.1.3),
+    renv (>= 1.1.5),
+    rOstluft.plot (>= 0.2.1),
+    scales (>= 1.4.0)
 Suggests: 
-    airquality.data
-    devtools,
-    ggplot2,
-    lemon,
-    openair,
-    rOstluft.plot,
-    scales,
-    RColorBrewer,
-    colorspace,
-    MASS,
-    renv,
-    quarto
+    dplyr (>= 1.1.4),
+    httr2 (>= 1.2.1),
+    lubridate (>= 1.9.4),
+    purrr (>= 1.1.0),
+    pxR (>= 0.42.8),
+    readr (>= 2.1.5),
+    rjson (>= 0.2.23),
+    rlang (>= 1.1.6),
+    sf (>= 1.0.21),
+    stars (>= 0.6.8),
+    stringr (>= 1.5.1),
+    tibble (>= 3.3.0),
+    tidyr (>= 1.3.1),
+    withr (>= 3.0.2)

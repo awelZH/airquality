@@ -6,9 +6,9 @@ load_packages <- function(packages) {
   if (!("renv" %in% installed.packages())) {install.packages("renv")}
   for (package in packages) {
     if (!require(package, character.only = TRUE, quietly = TRUE)) {
-      if (package %in% c("airquality.data", "rOstluft", "rOstluft.plot", "rOstluft.data")) {
+      if (package %in% c("rOstluft", "rOstluft.plot", "rOstluft.data")) {
         renv::install(paste0("Ostluft/",package))
-      } else if (package %in% c("airquality", "airquality.data")) {
+      } else if (package %in% c("airquality.methods", "airquality.data")) {
         renv::install(paste0("awelZH/",package))
       } else {
         renv::install(package)
@@ -19,20 +19,17 @@ load_packages <- function(packages) {
   
 }
 
-# packages necessary for function functionality
-imports <- c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-             "readr", "sf", "stars", "withr", "pxR")
+# packages required for script functionality
+imports <- c("devtools", "renv", "airquality.methods", "airquality.data", "scales", "lemon", "openair", "ggplot2",
+             "RColorBrewer", "colorspace", "MASS", "rOstluft.plot", "quarto")
 load_packages(imports)
 # sapply(imports, function(x) usethis::use_package(x, "Import", min_version = TRUE))
 
-# packages required for script functionality
-depends <- c("devtools", "renv", "airquality.data", "scales", "lemon", "openair", "ggplot2",
-             "RColorBrewer", "colorspace", "MASS", "rOstluft.plot", "quarto")
+# packages necessary for function functionality
+depends <- c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
+             "readr", "sf", "stars", "withr", "pxR")
 load_packages(depends)
 # sapply(depends, function(x) usethis::use_package(x, "Suggests", min_version = TRUE))
-
-# load functions 
-devtools::load_all()
 
 
 # reading input data for several scripts:

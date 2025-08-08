@@ -280,7 +280,7 @@ prepare_preliminary_deaths <- function(data_expo_weighmean, data_mortality, outc
   data <- 
     data_expo_weighmean |> 
     dplyr::filter(parameter %in% unique(outcomes_meta$parameter)) |>
-    dplyr:::select(-pollutant, -metric, -source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
+    dplyr::select(-pollutant, -metric, -source, -unit, -concentration_max, -concentration_mean, -concentration_median) |> 
     tidyr::gather(scenario, population_weighted_mean, -year, -parameter, -base_year, -population, -concentration_min) |> 
     dplyr::left_join(outcomes_meta, by = "parameter") |> 
     dplyr::left_join(data_mortality, by = "year") |> 

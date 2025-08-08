@@ -20,12 +20,16 @@ load_packages <- function(packages) {
 }
 
 # packages necessary for function functionality
-load_packages(c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-                "readr", "sf", "stars", "withr", "pxR"))
+imports <- c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
+             "readr", "sf", "stars", "withr", "pxR")
+load_packages(imports)
+# sapply(imports, function(x) usethis::use_package(x, "Import", min_version = TRUE))
 
 # packages required for script functionality
-load_packages(c("devtools", "renv", "airquality.data", "scales", "lemon", "openair", "ggplot2",
-                "RColorBrewer", "colorspace", "MASS", "rOstluft.plot", "quarto"))
+depends <- c("devtools", "renv", "airquality.data", "scales", "lemon", "openair", "ggplot2",
+             "RColorBrewer", "colorspace", "MASS", "rOstluft.plot", "quarto")
+load_packages(depends)
+# sapply(depends, function(x) usethis::use_package(x, "Suggests", min_version = TRUE))
 
 # load functions 
 devtools::load_all()
@@ -60,4 +64,4 @@ map_canton <- aggregate_map(map_municipalities)
 
 # clean up:
 # ---
-rm(list = "load_packages")
+rm(list = c("load_packages", "imports", "depends"))

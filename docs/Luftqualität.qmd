@@ -46,6 +46,17 @@ get_plot(plots, "type == 'monitoring' & pollutant == 'PM2.5'")
 get_plot(plots, "type == 'monitoring' & pollutant == 'PM10'")
 ```
 
+### Russ im Feinstaub
+
+```{r}
+#| label: fig-ts-ebc
+get_plot(plots, "type == 'monitoring' & pollutant == 'eBC'") + 
+  ggplot2::ggtitle(
+    label = openair::quickText("Luftqualitätsmesswerte Russ im Feinstaub"),
+    subtitle = openair::quickText("eBC, Sichproben-Jahresmittelwert (μg/m3)")
+  )
+```
+
 ### Ozon
 
 Die "typische Spitzenbelastung" entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.

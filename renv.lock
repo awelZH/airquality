@@ -318,7 +318,7 @@
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.data",
       "RemoteRef": "main",
-      "RemoteSha": "d94442169cc1cd711982da434259e6bb5040a43b"
+      "RemoteSha": "1406ada3c58b0ae8b77ee90f301745c823c130f8"
     },
     "airquality.methods": {
       "Package": "airquality.methods",
@@ -356,7 +356,7 @@
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.methods",
       "RemoteRef": "master",
-      "RemoteSha": "cb28c21423f739fcbb3ab41c4686e452b63d68a9"
+      "RemoteSha": "e04e91c6781c2e95b3621a51b2f8c0b36b272fbf"
     },
     "askpass": {
       "Package": "askpass",

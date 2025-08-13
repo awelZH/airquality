@@ -1961,6 +1961,7 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2007;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;593;1;Ostluft
 2008;Bac_Turm;Hinwil - Bachtel Turm;ländlich - Hintergrund;2709501;1239250;1145;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;409;1;Ostluft
 2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95.88197291201766;µg/m3;Ostluft
+2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;eBC;Jahresmittel;eBC;0.445;µg/m3;Ostluft
 2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;NO2;Jahresmittel;NO2;17.46695096;µg/m3;Ostluft
 2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;O3;typische Spitzenbelastung;O3_max_98p_m1;153.105559;µg/m3;Ostluft
 2019;Bul_Stadthalle;Bülach - Stadthalle;klein-/vorstädtisch - Hintergrund;2682598;1263398;406;PM10;Jahresmittel;PM10;13.50233828;µg/m3;Ostluft
@@ -2173,6 +2174,8 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2012;Hed_Affolternstrasse;Hedingen - Affolternstrasse 21;klein-/vorstädtisch - verkehrsbelastet;2676457;1238755;502;NO2;Jahresmittel;NO2;18.05;µg/m3;Ostluft
 2017;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91.80089888476776;µg/m3;Ostluft
 2018;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;106.51443015668033;µg/m3;Ostluft
+2017;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;eBC;Jahresmittel;eBC;0.413;µg/m3;Ostluft
+2018;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;eBC;Jahresmittel;eBC;0.3930219;µg/m3;Ostluft
 2018;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;NO2;Jahresmittel;NO2;17.9480753;µg/m3;Ostluft
 2017;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;O3;typische Spitzenbelastung;O3_max_98p_m1;141.977448;µg/m3;Ostluft
 2018;Hor_Sekundarschule;Horgen - Sekundarschule;klein-/vorstädtisch - Hintergrund;2687799;1234471;477;O3;typische Spitzenbelastung;O3_max_98p_m1;167.9622046;µg/m3;Ostluft
@@ -2184,6 +2187,11 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2021;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87.38186759854396;µg/m3;Ostluft
 2022;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;98.08864426829756;µg/m3;Ostluft
 2023;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89.7167776738587;µg/m3;Ostluft
+2020;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;eBC;Jahresmittel;eBC;0.349146071;µg/m3;Ostluft
+2021;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;eBC;Jahresmittel;eBC;0.303340847;µg/m3;Ostluft
+2022;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;eBC;Jahresmittel;eBC;0.340987896;µg/m3;Ostluft
+2023;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;eBC;Jahresmittel;eBC;0.317583905;µg/m3;Ostluft
+2024;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;eBC;Jahresmittel;eBC;0.288291132;µg/m3;Ostluft
 2021;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;NO2;Jahresmittel;NO2;16.70228008;µg/m3;Ostluft
 2022;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;NO2;Jahresmittel;NO2;16.3743232;µg/m3;Ostluft
 2023;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;NO2;Jahresmittel;NO2;15.71901462;µg/m3;Ostluft
@@ -2198,12 +2206,15 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2022;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;294;1;Ostluft
 2023;Klo_Feld;Kloten - Feld;städtisch - Hintergrund;2686370;1256639;440;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;280;1;Ostluft
 2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93.69394419415761;µg/m3;Ostluft
+2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;eBC;Jahresmittel;eBC;0.457264837;µg/m3;Ostluft
+2020;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;eBC;Jahresmittel;eBC;0.649803497;µg/m3;Ostluft
 2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;NO2;Jahresmittel;NO2;22.73172978;µg/m3;Ostluft
 2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;O3;typische Spitzenbelastung;O3_max_98p_m1;157.1943659;µg/m3;Ostluft
 2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;PM2.5;Jahresmittel;PM2.5;10.35554544;µg/m3;Ostluft
 2019;Klo_Gerlisbergstrasse;Kloten - Gerlisbergstrasse;klein-/vorstädtisch - Hintergrund;2686430;1256533;440;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;271;1;Ostluft
 2012;Kno_Oberdorfstrasse;Knonau - Oberdorfstrasse;klein-/vorstädtisch - Hintergrund;2677585;1230948;432;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87.05309607954234;µg/m3;Ostluft
 2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;106.15102726172815;µg/m3;Ostluft
+2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;eBC;Jahresmittel;eBC;0.367;µg/m3;Ostluft
 2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;NO2;Jahresmittel;NO2;15.43550094;µg/m3;Ostluft
 2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;O3;typische Spitzenbelastung;O3_max_98p_m1;163.4975875;µg/m3;Ostluft
 2018;Mei_Bezirksgericht;Meilen - Bezirksgericht;klein-/vorstädtisch - Hintergrund;2691909;1235880;423;PM10;Jahresmittel;PM10;13.65008485;µg/m3;Ostluft
@@ -2232,6 +2243,23 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2022;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;82.14632279883152;µg/m3;Ostluft
 2023;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81.37655095425951;µg/m3;Ostluft
 2024;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;76.75189007599727;µg/m3;Ostluft
+2008;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;2.391;µg/m3;Ostluft
+2009;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;2.077;µg/m3;Ostluft
+2010;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;1.642;µg/m3;Ostluft
+2011;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;1.815;µg/m3;Ostluft
+2012;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;1.461;µg/m3;Ostluft
+2013;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;1.068;µg/m3;Ostluft
+2014;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;1.296901604;µg/m3;Ostluft
+2015;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;0.96924828;µg/m3;Ostluft
+2016;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;0.96647266;µg/m3;Ostluft
+2017;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;1.151365343;µg/m3;Ostluft
+2018;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;0.667886606;µg/m3;Ostluft
+2019;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;0.666804386;µg/m3;Ostluft
+2020;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;0.522673254;µg/m3;Ostluft
+2021;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;0.576316118;µg/m3;Ostluft
+2022;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;0.536156035;µg/m3;Ostluft
+2023;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;0.487780634;µg/m3;Ostluft
+2024;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;eBC;Jahresmittel;eBC;0.451771647;µg/m3;Ostluft
 2002;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;NO2;Jahresmittel;NO2;38.91830495;µg/m3;Ostluft
 2003;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
 2004;Opf_Balsberg;Opfikon - Balsberg;städtisch - verkehrsbelastet;2685351;1254830;430;NO2;Jahresmittel;NO2;38.52210602;µg/m3;Ostluft
@@ -2333,6 +2361,10 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2020;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
 2021;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
 2022;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;96.79578767426912;µg/m3;Ostluft
+2019;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;eBC;Jahresmittel;eBC;0.578;µg/m3;Ostluft
+2020;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2021;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2022;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;eBC;Jahresmittel;eBC;0.463;µg/m3;Ostluft
 2019;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;NO2;Jahresmittel;NO2;25.35422553;µg/m3;Ostluft
 2020;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
 2021;Opf_Glattpark;Opfikon - Glattpark;städtisch - Hintergrund;2684665;1253012;426;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
@@ -2363,6 +2395,13 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2022;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
 2023;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
 2024;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;88.59810288277322;µg/m3;Ostluft
+2015;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;eBC;Jahresmittel;eBC;0.51426383;µg/m3;Ostluft
+2016;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2017;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2018;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;eBC;Jahresmittel;eBC;0.479;µg/m3;Ostluft
+2019;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2020;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2021;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;eBC;Jahresmittel;eBC;0.355;µg/m3;Ostluft
 2015;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;NO2;Jahresmittel;NO2;25.90044882;µg/m3;Ostluft
 2016;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
 2017;Sch_Güterstrasse;Schlieren - Güterstrasse;klein-/vorstädtisch - Hintergrund;2676061;1250243;392;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
@@ -2430,6 +2469,7 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2005;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93.49146595090353;µg/m3;Ostluft
 2006;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99.88272531913043;µg/m3;Ostluft
 2007;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;94.41406635993478;µg/m3;Ostluft
+2007;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;eBC;Jahresmittel;eBC;1.332;µg/m3;Ostluft
 1990;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;NO2;Jahresmittel;NO2;36.88858316;µg/m3;Ostluft
 1991;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;NO2;Jahresmittel;NO2;36.29776125;µg/m3;Ostluft
 1992;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;NO2;Jahresmittel;NO2;33.88511506;µg/m3;Ostluft
@@ -2510,11 +2550,17 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2005;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;282;1;Ostluft
 2006;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;430;1;Ostluft
 2007;Wal_Dietlikonerstrasse;Wallisellen - Dietlikonerstrasse;städtisch - Hintergrund;2688071;1252880;470;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;315;1;Ostluft
+2024;Wal_Feuerwehrdepot;Wald - Feuerwehrdepot;klein-/vorstädtisch - Hintergrund;2711719;1236440;613;eBC;Jahresmittel;eBC;0.28;µg/m3;Ostluft
 2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;84.39400633070652;µg/m3;Ostluft
+2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;eBC;Jahresmittel;eBC;0.623997336;µg/m3;Ostluft
 2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;NO2;Jahresmittel;NO2;27.20379723;µg/m3;Ostluft
 2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;O3;typische Spitzenbelastung;O3_max_98p_m1;137.9425268;µg/m3;Ostluft
 2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;PM10;Jahresmittel;PM10;15.04095952;µg/m3;Ostluft
 2017;Wei_Nägelseestrasse;Weiningen - Nägelseestrasse;klein-/vorstädtisch - verkehrsbelastet;2675817;1252111;418;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;117;1;Ostluft
+2009;Wet_Filderen;Wettswil - Filderen;ländlich - verkehrsbelastet;2677330;1243853;528;eBC;Jahresmittel;eBC;1.064;µg/m3;Ostluft
+2010;Wet_Filderen;Wettswil - Filderen;ländlich - verkehrsbelastet;2677330;1243853;528;eBC;Jahresmittel;eBC;0.862;µg/m3;Ostluft
+2011;Wet_Filderen;Wettswil - Filderen;ländlich - verkehrsbelastet;2677330;1243853;528;eBC;Jahresmittel;eBC;0.799;µg/m3;Ostluft
+2012;Wet_Filderen;Wettswil - Filderen;ländlich - verkehrsbelastet;2677330;1243853;528;eBC;Jahresmittel;eBC;0.592;µg/m3;Ostluft
 2008;Wet_Filderen;Wettswil - Filderen;ländlich - verkehrsbelastet;2677330;1243853;528;NO2;Jahresmittel;NO2;17.5887745;µg/m3;Ostluft
 2009;Wet_Filderen;Wettswil - Filderen;ländlich - verkehrsbelastet;2677330;1243853;528;NO2;Jahresmittel;NO2;20.19781402;µg/m3;Ostluft
 2010;Wet_Filderen;Wettswil - Filderen;ländlich - verkehrsbelastet;2677330;1243853;528;NO2;Jahresmittel;NO2;22.48440654;µg/m3;Ostluft
@@ -2537,6 +2583,8 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2009;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93.5433691892663;µg/m3;Ostluft
 2010;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93.93469321701502;µg/m3;Ostluft
 2011;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;96.97277011325815;µg/m3;Ostluft
+2010;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;eBC;Jahresmittel;eBC;0.777;µg/m3;Ostluft
+2011;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;eBC;Jahresmittel;eBC;0.728;µg/m3;Ostluft
 2007;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;NO2;Jahresmittel;NO2;16.06307894;µg/m3;Ostluft
 2008;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;NO2;Jahresmittel;NO2;17.1230181;µg/m3;Ostluft
 2009;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;NO2;Jahresmittel;NO2;19.12923548;µg/m3;Ostluft
@@ -2558,6 +2606,7 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2010;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;333;1;Ostluft
 2011;Wet_Weieraecher;Wettswil - Weieraecher;klein-/vorstädtisch - Hintergrund;2678079;1243686;550;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;304;1;Ostluft
 2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99.48756087352459;µg/m3;Ostluft
+2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;eBC;Jahresmittel;eBC;0.464047841;µg/m3;Ostluft
 2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;NO2;Jahresmittel;NO2;19.141873789999998;µg/m3;Ostluft
 2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;O3;typische Spitzenbelastung;O3_max_98p_m1;166.3264219;µg/m3;Ostluft
 2015;Wez_Turnhallenstrasse;Wetzikon - Turnhallenstrasse;städtisch - Hintergrund;2703076;1242612;544;PM10;Jahresmittel;PM10;13.54892216;µg/m3;Ostluft
@@ -2566,6 +2615,10 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2021;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
 2022;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
 2023;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;90.81211465205843;µg/m3;Ostluft
+2020;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;eBC;Jahresmittel;eBC;0.378;µg/m3;Ostluft
+2021;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2022;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2023;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;eBC;Jahresmittel;eBC;0.253;µg/m3;Ostluft
 2020;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;NO2;Jahresmittel;NO2;14.80089115;µg/m3;Ostluft
 2021;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
 2022;Win_Neuhegi;Winterthur - Neuhegi;städtisch - Hintergrund;2700093;1262210;459;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
@@ -2607,6 +2660,14 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2012;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85.62627792642759;µg/m3;Ostluft
 2013;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;84.88560288768544;µg/m3;Ostluft
 2014;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;86.08632385991848;µg/m3;Ostluft
+2007;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;eBC;Jahresmittel;eBC;1.495;µg/m3;Ostluft
+2008;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;eBC;Jahresmittel;eBC;1.314;µg/m3;Ostluft
+2009;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;eBC;Jahresmittel;eBC;1.269;µg/m3;Ostluft
+2010;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;eBC;Jahresmittel;eBC;1.063;µg/m3;Ostluft
+2011;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;eBC;Jahresmittel;eBC;0.974;µg/m3;Ostluft
+2012;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;eBC;Jahresmittel;eBC;0.753;µg/m3;Ostluft
+2013;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;eBC;Jahresmittel;eBC;0.61;µg/m3;Ostluft
+2014;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;eBC;Jahresmittel;eBC;0.757;µg/m3;Ostluft
 1992;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;NO2;Jahresmittel;NO2;40.08266386;µg/m3;Ostluft
 1993;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
 1994;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;NO2;Jahresmittel;NO2;38.36036038;µg/m3;Ostluft
@@ -2688,6 +2749,7 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2013;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;204;1;Ostluft
 2014;Win_Obertor;Winterthur - Obertor;städtisch - Hintergrund;2697436;1261855;448;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;141;1;Ostluft
 2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81.81983476305774;µg/m3;Ostluft
+2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;eBC;Jahresmittel;eBC;0.822064516;µg/m3;Ostluft
 2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;NO2;Jahresmittel;NO2;27.46514079;µg/m3;Ostluft
 2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;O3;typische Spitzenbelastung;O3_max_98p_m1;127.8202199;µg/m3;Ostluft
 2017;Win_St.Gallerstrasse;Winterthur - St. Gallerstrasse;städtisch - verkehrsbelastet;2697547;1261627;444;PM10;Jahresmittel;PM10;14.51868548;µg/m3;Ostluft
@@ -2701,6 +2763,15 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2022;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;98.57424380807541;µg/m3;Ostluft
 2023;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89.55798602910326;µg/m3;Ostluft
 2024;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87.25326750310792;µg/m3;Ostluft
+2016;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;eBC;Jahresmittel;eBC;0.642;µg/m3;Ostluft
+2017;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;eBC;Jahresmittel;eBC;0.443;µg/m3;Ostluft
+2018;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;eBC;Jahresmittel;eBC;0.47037805;µg/m3;Ostluft
+2019;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;eBC;Jahresmittel;eBC;0.381792095;µg/m3;Ostluft
+2020;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;eBC;Jahresmittel;eBC;0.395;µg/m3;Ostluft
+2021;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;eBC;Jahresmittel;eBC;0.331;µg/m3;Ostluft
+2022;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;eBC;Jahresmittel;eBC;0.362;µg/m3;Ostluft
+2023;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;eBC;Jahresmittel;eBC;0.316;µg/m3;Ostluft
+2024;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;eBC;Jahresmittel;eBC;0.55139452;µg/m3;Ostluft
 2016;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;NO2;Jahresmittel;NO2;18.83897756;µg/m3;Ostluft
 2017;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;NO2;Jahresmittel;NO2;17.92737001;µg/m3;Ostluft
 2018;Win_Veltheim;Winterthur - Veltheim;städtisch - Hintergrund;2696556;1262725;440;NO2;Jahresmittel;NO2;16.11251612;µg/m3;Ostluft
@@ -2756,6 +2827,23 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2021;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89.79076135979619;µg/m3;Ostluft
 2022;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
 2023;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95.36855034971312;µg/m3;Ostluft
+2007;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.635;µg/m3;Ostluft
+2008;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2009;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.402;µg/m3;Ostluft
+2010;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.385;µg/m3;Ostluft
+2011;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.369;µg/m3;Ostluft
+2012;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.3;µg/m3;Ostluft
+2013;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.32;µg/m3;Ostluft
+2014;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2015;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.239;µg/m3;Ostluft
+2016;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2017;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.317;µg/m3;Ostluft
+2018;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.293;µg/m3;Ostluft
+2019;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.191;µg/m3;Ostluft
+2020;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.166;µg/m3;Ostluft
+2021;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.152;µg/m3;Ostluft
+2022;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2023;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;eBC;Jahresmittel;eBC;0.178;µg/m3;Ostluft
 2007;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;NO2;Jahresmittel;NO2;8.21;µg/m3;Ostluft
 2008;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
 2009;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;NO2;Jahresmittel;NO2;8.282713341;µg/m3;Ostluft
@@ -2819,7 +2907,9 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2021;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;128;1;Ostluft
 2022;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;NA;1;Ostluft
 2023;Wld_Höhenklinik;Wald - Höhenklinik;ländlich - Hintergrund;2713780;1237408;910;O3;Anzahl Stundenmittel > 120 μg/m3;O3_nb_h1>120;352;1;Ostluft
+2024;Zch_Aubrücke;Zürich - Aubrücke;städtisch - Hintergrund;2685497;1251608;427;eBC;Jahresmittel;eBC;0.377714814;µg/m3;Ostluft
 2024;Zch_Bullingerhof;Zürich - Bullingerhof;städtisch - Hintergrund;2681189;1248091;411;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
+2024;Zch_Bullingerhof;Zürich - Bullingerhof;städtisch - Hintergrund;2681189;1248091;411;eBC;Jahresmittel;eBC;0.275261536;µg/m3;Ostluft
 2024;Zch_Bullingerhof;Zürich - Bullingerhof;städtisch - Hintergrund;2681189;1248091;411;O3;typische Spitzenbelastung;O3_max_98p_m1;146.0513087;µg/m3;Ostluft
 2024;Zch_Bullingerhof;Zürich - Bullingerhof;städtisch - Hintergrund;2681189;1248091;411;PM10;Jahresmittel;PM10;10.70822347;µg/m3;Ostluft
 2024;Zch_Bullingerhof;Zürich - Bullingerhof;städtisch - Hintergrund;2681189;1248091;411;PM2.5;Jahresmittel;PM2.5;7.181243674;µg/m3;Ostluft
@@ -2852,6 +2942,17 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2022;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;102.76925262319752;µg/m3;Ostluft
 2023;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;98.49658479072404;µg/m3;Ostluft
 2024;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93.33815213565573;µg/m3;Ostluft
+2014;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.52;µg/m3;Ostluft
+2015;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.49;µg/m3;Ostluft
+2016;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.46;µg/m3;Ostluft
+2017;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.43;µg/m3;Ostluft
+2018;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.38;µg/m3;Ostluft
+2019;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.36;µg/m3;Ostluft
+2020;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.31;µg/m3;Ostluft
+2021;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.301;µg/m3;Ostluft
+2022;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.293;µg/m3;Ostluft
+2023;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.214;µg/m3;Ostluft
+2024;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;eBC;Jahresmittel;eBC;0.29;µg/m3;Ostluft
 1999;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;NO2;Jahresmittel;NO2;22.93;µg/m3;Ostluft
 2000;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
 2001;Zch_Heubeeribüel;Zürich - Heubeeribüel;städtisch - Hintergrund;2685126;1248460;610;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
@@ -2959,6 +3060,18 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2022;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81.5777089587106;µg/m3;Ostluft
 2023;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;72.19291578534647;µg/m3;Ostluft
 2024;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;76.54606912019068;µg/m3;Ostluft
+2013;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;2.741066667;µg/m3;Ostluft
+2014;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;2.113224852;µg/m3;Ostluft
+2015;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;1.816896552;µg/m3;Ostluft
+2016;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;1.694428571;µg/m3;Ostluft
+2017;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;1.45775;µg/m3;Ostluft
+2018;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;1.22;µg/m3;Ostluft
+2019;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;1.31;µg/m3;Ostluft
+2020;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;0.94;µg/m3;Ostluft
+2021;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;0.859;µg/m3;Ostluft
+2022;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;0.714;µg/m3;Ostluft
+2023;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;0.648;µg/m3;Ostluft
+2024;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;eBC;Jahresmittel;eBC;0.52;µg/m3;Ostluft
 2014;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;NO2;Jahresmittel;NO2;48.32527183;µg/m3;Ostluft
 2015;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;NO2;Jahresmittel;NO2;50.02978464;µg/m3;Ostluft
 2016;Zch_Rosengartenstrasse;Zürich - Rosengartenstrasse;städtisch - verkehrsbelastet;2682096;1249940;433;NO2;Jahresmittel;NO2;46.76414676;µg/m3;Ostluft
@@ -3039,6 +3152,27 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2022;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87.39687137140028;µg/m3;Ostluft
 2023;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;86.71278915178472;µg/m3;Ostluft
 2024;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83.59966305014345;µg/m3;Ostluft
+2004;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;3.158860399;µg/m3;Ostluft
+2005;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2006;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;3.841088235;µg/m3;Ostluft
+2007;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2008;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;3.194721408;µg/m3;Ostluft
+2009;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2010;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;1.837246377;µg/m3;Ostluft
+2011;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;2.094885057;µg/m3;Ostluft
+2012;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;1.807492447;µg/m3;Ostluft
+2013;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;1.668095238;µg/m3;Ostluft
+2014;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;1.478804665;µg/m3;Ostluft
+2015;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;1.23829912;µg/m3;Ostluft
+2016;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;1.121040462;µg/m3;Ostluft
+2017;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;0.9;µg/m3;Ostluft
+2018;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;0.81;µg/m3;Ostluft
+2019;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;0.85;µg/m3;Ostluft
+2020;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;0.57;µg/m3;Ostluft
+2021;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;0.523;µg/m3;Ostluft
+2022;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;0.547;µg/m3;Ostluft
+2023;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;0.498;µg/m3;Ostluft
+2024;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;eBC;Jahresmittel;eBC;0.39;µg/m3;Ostluft
 1990;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;NO2;Jahresmittel;NO2;67.88212581;µg/m3;Ostluft
 1991;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;NO2;Jahresmittel;NO2;65.08385967;µg/m3;Ostluft
 1992;Zch_Schimmelstrasse;Zürich - Schimmelstrasse;städtisch - verkehrsbelastet;2681942;1247245;415;NO2;Jahresmittel;NO2;NA;µg/m3;Ostluft
@@ -3223,6 +3357,19 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2013;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
 2014;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;NA;µg/m3;Ostluft
 2015;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77.48155225424385;µg/m3;Ostluft
+2003;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;2.942268657;µg/m3;Ostluft
+2004;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2005;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;3.189314286;µg/m3;Ostluft
+2006;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2007;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;2.8352149;µg/m3;Ostluft
+2008;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2009;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;2.64722063;µg/m3;Ostluft
+2010;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2011;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2012;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2013;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2014;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;NA;µg/m3;Ostluft
+2015;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;eBC;Jahresmittel;eBC;1.419085546;µg/m3;Ostluft
 2003;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;NO2;Jahresmittel;NO2;51.22971631;µg/m3;Ostluft
 2004;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;NO2;Jahresmittel;NO2;52.56;µg/m3;Ostluft
 2005;Zch_Schwamendingen;Zürich - Schwamendingen;städtisch - verkehrsbelastet;2685101;1251305;430;NO2;Jahresmittel;NO2;49.21699556;µg/m3;Ostluft
@@ -3312,6 +3459,28 @@ year;site;site_long;siteclass;x;y;masl;pollutant;metric;parameter;concentration;
 2022;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89.71989148967896;µg/m3;Ostluft
 2023;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;90.10111014551913;µg/m3;Ostluft
 2024;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83.86202052599727;µg/m3;Ostluft
+2003;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;2.119427711;µg/m3;Ostluft
+2004;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;1.774753623;µg/m3;Ostluft
+2005;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;2.065698006;µg/m3;Ostluft
+2006;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;1.969017341;µg/m3;Ostluft
+2007;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;1.538299712;µg/m3;Ostluft
+2008;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;1.56257485;µg/m3;Ostluft
+2009;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;1.458328358;µg/m3;Ostluft
+2010;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;1.179528024;µg/m3;Ostluft
+2011;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;1.25;µg/m3;Ostluft
+2012;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;1.082109827;µg/m3;Ostluft
+2013;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.969051724;µg/m3;Ostluft
+2014;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.848428571;µg/m3;Ostluft
+2015;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.758846154;µg/m3;Ostluft
+2016;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.718086957;µg/m3;Ostluft
+2017;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.59;µg/m3;Ostluft
+2018;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.54;µg/m3;Ostluft
+2019;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.61;µg/m3;Ostluft
+2020;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.42;µg/m3;Ostluft
+2021;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.377;µg/m3;Ostluft
+2022;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.356;µg/m3;Ostluft
+2023;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.352;µg/m3;Ostluft
+2024;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;eBC;Jahresmittel;eBC;0.29;µg/m3;Ostluft
 1990;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;NO2;Jahresmittel;NO2;58.93980149;µg/m3;Ostluft
 1991;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;NO2;Jahresmittel;NO2;53.70485602;µg/m3;Ostluft
 1992;Zch_Stampfenbachstrasse;Zürich - Stampfenbachstrasse;städtisch - Hintergrund;2683146;1249020;445;NO2;Jahresmittel;NO2;49.40338861;µg/m3;Ostluft

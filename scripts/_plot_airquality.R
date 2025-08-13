@@ -87,9 +87,6 @@ scale_color_siteclass <-
     "empf. Ökosystem" = "gray20"
   ))
 
-cols_emissions <- c("Dienstleistungen" = "Gold", "Haushalte" =  "Green", "Industrie" = "Blue", 
-                    "Land- und Forstw." = "Purple", "Verkehr" = "Gray", "natürl. Emissionen" = "natural")
-
 # ggplot2 custom themes
 theme_ts <-
   theme_minimal(base_size = basesize, base_family = "Arial") +
@@ -143,13 +140,13 @@ pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$polluta
 # absolute values
 plots$emissions$inventory_absolute <- 
   lapply(pollutants, function(pollutant) {
-    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), cols = cols_emissions, theme = theme_ts)
+    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), theme = theme_ts)
   })
 
 # relative values
 plots$emissions$inventory_relative <- 
   lapply(pollutants, function(pollutant) {
-    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", cols = cols_emissions, theme = theme_ts)
+    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", theme = theme_ts)
   })
 
 

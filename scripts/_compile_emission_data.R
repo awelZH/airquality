@@ -3,8 +3,9 @@
 
 # read dataset ...
 # ---
-# => read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss
+# => read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss. Also new pre-defined subsector groups for aggregation
 data_emikat <- read_opendataswiss(filter_ressources(ressources, 1), source = "Ostluft")
+subsector_new <- read_local_csv(filter_ressources(ressources, 27), locale = readr::locale(encoding = "UTF-8"))
 
 # prepare dataset ...
 # ---
@@ -15,7 +16,7 @@ data_emikat <- prepare_emmissions(data_emikat)
 # aggregate dataset ...
 # ---
 # => aggregate emissions per pollutant, subsector_new and year
-data_emikat <- aggregate_emmissions(data_emikat)
+data_emikat <- aggregate_emmissions(data_emikat, subsector_new)
 
 
 # compiling average vehicle NOx emissions from real-world vehicle remote sensing (RS) emission measurements using a remote sensing detector (RSD):

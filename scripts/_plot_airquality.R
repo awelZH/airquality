@@ -29,7 +29,7 @@ ressources_plotting <-
 # data subsetting parameters
 years <- 1995:(lubridate::year(Sys.Date()) - 1) # years to consider for plotting 
 n_years <- 3 # consider last 3 years for plotting relative threshold comparison    
-parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98p_m1", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for timeseries plotting
+parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98p_m1", "O3_peakseason_mean_d1_max_mean_h8gl", "eBC") # parameters to include for timeseries plotting
 parameters_exposition <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for exposition plotting
 siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
                           "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))

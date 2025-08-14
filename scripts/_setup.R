@@ -1,9 +1,12 @@
 # loading packages and functions:
 # ---
-# load packages
+
+# make sure renv is instaled
+if (!("renv" %in% installed.packages())) {install.packages("renv")}
+
+# function to instakll / load packages
 load_packages <- function(packages) {
   
-  if (!("renv" %in% installed.packages())) {install.packages("renv")}
   for (package in packages) {
     if (!require(package, character.only = TRUE, quietly = TRUE)) {
       if (package %in% c("rOstluft", "rOstluft.plot", "rOstluft.data")) {
@@ -18,6 +21,12 @@ load_packages <- function(packages) {
   }
   
 }
+
+# make sure airquality.data is installed
+load_packages("airquality.data")
+
+# update package airquality.data if newer version available
+renv::update("airquality.data", prompt = FALSE)
 
 # packages required for script functionality
 imports <- c("devtools", "renv", "airquality.methods", "airquality.data", "scales", "lemon", "openair", "ggplot2",

@@ -25,7 +25,7 @@ regr <- MASS::rlm(formula(PMratio ~ factor(year) -1), data = data_monitoring_nab
 
 coef <- 
   tibble::tibble(
-    year = extract_year(names(coefficients(regr))),
+    year = airquality.methods::extract_year(names(coefficients(regr))),
     offset = coefficients(regr)
   ) |> 
   dplyr::filter(!is.na(year)) #|>  dplyr::mutate(slope = coefficients(regr)[stringr::str_detect(names(coefficients(regr)), "NO2")])

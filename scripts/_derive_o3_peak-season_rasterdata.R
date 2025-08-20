@@ -35,7 +35,7 @@ regr <- MASS::rlm(formula(O3_peakseason_mean_d1_max_mean_h8gl ~ NO2 + factor(yea
 
 coef <- 
   tibble::tibble(
-    year = extract_year(names(coefficients(regr))),
+    year = airquality.methods::extract_year(names(coefficients(regr))),
     offset = coefficients(regr)
   ) |> 
   dplyr::filter(!is.na(year)) |> 

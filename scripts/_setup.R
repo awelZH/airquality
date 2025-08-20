@@ -10,9 +10,9 @@ load_packages <- function(packages) {
   for (package in packages) {
     if (!require(package, character.only = TRUE, quietly = TRUE)) {
       if (package %in% c("rOstluft", "rOstluft.plot", "rOstluft.data")) {
-        renv::install(paste0("Ostluft/",package))
+        renv::install(paste0("Ostluft/",package), prompt = FALSE)
       } else if (package %in% c("airquality.methods", "airquality.data")) {
-        renv::install(paste0("awelZH/",package))
+        renv::install(paste0("awelZH/",package), prompt = FALSE)
       } else {
         renv::install(package)
       }
@@ -44,7 +44,7 @@ load_packages(depends)
 # reading input data for several scripts:
 # ---
 # read ressource table for input datasets
-ressources <- prepare_ressources(read_local_csv("inst/extdata/meta/ressources.csv"))
+ressources <- airquality.methods::prepare_ressources(airquality.methods::read_local_csv("inst/extdata/meta/ressources.csv"))
 
 # read all available raster data?
 read_all_raster <- FALSE
@@ -56,8 +56,8 @@ base_scenario_year <- 2010
 crs <- 2056
 
 # map boundaries Canton Zürich and municipalities
-map_municipalities <- read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs)
-map_canton <- aggregate_map(map_municipalities)
+map_municipalities <- airquality.methods::read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs)
+map_canton <- airquality.methods::aggregate_map(map_municipalities)
 
 # ggplot() +
 #   ggplot2::geom_sf(data = map_municipalities) +

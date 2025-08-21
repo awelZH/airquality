@@ -487,10 +487,10 @@ plots$monitoring$ndep_mean_sources_fractions$Ndep <-
 #   return(plot)
 # }
 # 
-# plot_timeseries_relative(data_emikat, data_monitoring_aq, base_scenario_year, theme = theme_ts, 
+# plot_timeseries_relative(data_emikat, data_monitoring_aq, base_scenario_year, theme = theme_ts,
 #                          titlelab =  ggplot2::ggtitle(
-#                            label = "Relative Entwicklung Emissionen - Immissionen",
-#                            subtitle = paste0("Immissionsverlauf: Median aller verfügbaren Messwerte pro Jahr, Referenzjahr = ", base_scenario_year)), 
+#                            label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
+#                            subtitle = paste0("Veränderung gegenüber dem Jahr ",base_scenario_year,"; Immissionsverlauf = Median aller Messwerte pro Jahr")),
 #                          captionlab = ggplot2::labs(caption = "Daten: Ostluft & NABEL (BAFU & Empa)"))
 
 

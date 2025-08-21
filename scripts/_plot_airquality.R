@@ -91,16 +91,16 @@ scale_color_siteclass <-
 theme_ts <-
   theme_minimal(base_size = basesize, base_family = "Arial") +
   theme(
-    plot.title = element_text(size = ggplot2::rel(1)),
-    plot.subtitle = element_text(size = ggplot2::rel(0.8)),
-    plot.caption = element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.66)),
-    plot.background = element_blank(),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    panel.background = element_blank(),
-    axis.line.x = element_line(color = "gray30"),
-    axis.ticks = element_line(color = "gray30"),
-    axis.title = element_blank()
+    plot.title = ggplot2::element_text(size = ggplot2::rel(1)),
+    plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
+    plot.caption = ggplot2::element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.66)),
+    plot.background = ggplot2::element_blank(),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.background = ggplot2::element_blank(),
+    axis.line.x = ggplot2::element_line(color = "gray30"),
+    axis.ticks = ggplot2::element_line(color = "gray30"),
+    axis.title = ggplot2::element_blank()
   )
 
 theme_map <-
@@ -314,8 +314,7 @@ plots$monitoring$threshold_comparison$various <-
   ggplot2::ggplot(aes(x = x, y = value, color = siteclass)) +
   ggplot2::geom_hline(yintercept = 1, linetype = data_thrshlds$lty, color = data_thrshlds$col, linewidth = data_thrshlds$lsz, show.legend = FALSE) +
   ggplot2::geom_jitter(shape = 21, size = pointsize, width = 0.2) +
-  lemon::facet_rep_wrap(reference~., scales = "free_y", ncol = 1, repeat.tick.labels = TRUE) +
-  # lemon::facet_rep_grid(reference~., scales = "free_y", space = "free_y", repeat.tick.labels = TRUE) +
+  ggplot2::facet_wrap(reference~., scales = "free_y", ncol = 1, axes = "all_x") +
   ggplot2::scale_y_continuous(breaks = seq(0,10,1), limits = c(0,NA), labels = scales::percent_format(), expand = c(0.01,0.01)) +
   ggplot2::coord_flip() +
   ggplot2::guides(color = ggplot2::guide_legend(nrow = 3)) +
@@ -344,7 +343,7 @@ plots$monitoring$timeseries_ndep_bachtel$Ndep <-
   airquality.methods::plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = temp$lsz, color = temp$col, title = "Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme am Bachtel") +
   ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, site == "BA" & component == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
   ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Daten: Ostluft & FUB") +
-  lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE)
+  ggplot2::facet_wrap(ecosystem_category~., ncol = 1, scales = "free_y", axes = "all_x")
 
 
 # plot timeseries of yearly nitrogen deposition across several monitoring sites (structured per ecosystem type)
@@ -412,6 +411,87 @@ plots$monitoring$ndep_mean_sources_fractions$Ndep <-
 
 
 
+# ...
+#TODO ... 
+# plot_timeseries_relative <- function(data_emikat, data_monitoring_aq, reference_year,
+#                                      nmin = 1, fit_formula = 0.66, fit_method = "rlm", fit_se = FALSE,
+#                                      pt_size = 1.5, facet_ncol = NULL, facet_scale = "free_y", theme = ggplot2::theme_minimal(),
+#                                      titlelab = NULL, captionlab = NULL
+# ) {
+#   
+#   emission_groups <- c("year", "pollutant")
+#   concentration_groups <- c("year", "pollutant")
+#   
+#   emissions <-
+#     data_emikat |>
+#     airquality.methods::aggregate_groups(y = "emission", groups = emission_groups, nmin = 1) |>
+#     dplyr::select(year, pollutant, sum) |>
+#     dplyr::rename(emission = sum) |>
+#     dplyr::mutate(
+#       emission = ifelse(is.na(emission), 0, emission),
+#       pollutant = dplyr::recode(pollutant, NOx = "NO2 | NOx")
+#     )
+#   
+#   data <-
+#     data_monitoring_aq |>
+#     dplyr::filter(metric == "Jahresmittel" & pollutant != "O3") |>
+#     airquality.methods::aggregate_groups(y = "concentration", groups = concentration_groups, nmin = nmin) |>
+#     dplyr::select(year, pollutant, middle) |>
+#     dplyr::rename(concentration_median = middle) |>
+#     dplyr::mutate(pollutant = dplyr::recode(pollutant, NO2 = "NO2 | NOx")) |>
+#     dplyr::left_join(emissions, by = c("year", "pollutant"))
+#   
+#   data <-
+#     data |>
+#     dplyr::filter(year == !!reference_year) |>
+#     dplyr::select(-year) |>
+#     dplyr::rename(
+#       concentration_refyear = concentration_median,
+#       emission_refyear = emission
+#     ) |>
+#     dplyr::right_join(data, by = c("pollutant")) |>
+#     dplyr::mutate(
+#       "relative Immission" = concentration_median / concentration_refyear - 1,
+#       "relative Emission" = emission / emission_refyear - 1
+#     ) |>
+#     dplyr::select(year, pollutant, `relative Immission`, `relative Emission`) |>
+#     tidyr::gather(parameter, value, -year, -pollutant)
+#   
+#   if (is.numeric(fit_formula)) {
+#     smooth <- ggplot2::geom_smooth(mapping = ggplot2::aes(group = parameter, color = parameter), span = fit_formula, se = fit_se)
+#   } else if (is.formula(fit_formula)) {
+#     smooth <- ggplot2::geom_smooth(mapping = ggplot2::aes(group = parameter, color = parameter), method = fit_method, formula = fit_formula, se = fit_se)
+#   } else if (is.na(fit_formula)) {
+#     smooth <- ggplot2::geom_path()
+#   }
+#   
+#   plot <-
+#     data |>
+#     ggplot2::ggplot(ggplot2::aes(x = year, y = value, group = pollutant, color = parameter)) +
+#     ggplot2::geom_hline(yintercept = 0, linetype = 2, color = "gray30") +
+#     smooth +
+#     ggplot2::geom_point(shape = 21, fill = "white", size = pt_size) +
+#     ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
+#     ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.02, 0.02)) +
+#     ggplot2::scale_color_manual(values = c("relative Immission" = "steelblue", "relative Emission" = "gold3")) +
+#     ggplot2::facet_wrap(pollutant~., ncol = facet_ncol, scales = facet_scale, axes = "all_x") +
+#     theme +
+#     ggplot2::theme(
+#       strip.text.x = ggplot2::element_text(hjust = 0),
+#       legend.title = ggplot2::element_blank(),
+#       legend.position = "bottom"
+#     ) + 
+#     titlelab + 
+#     captionlab
+#   
+#   return(plot)
+# }
+# 
+# plot_timeseries_relative(data_emikat, data_monitoring_aq, base_scenario_year, theme = theme_ts, 
+#                          titlelab =  ggplot2::ggtitle(
+#                            label = "Relative Entwicklung Emissionen - Immissionen",
+#                            subtitle = paste0("Immissionsverlauf: Median aller verfügbaren Messwerte pro Jahr, Referenzjahr = ", base_scenario_year)), 
+#                          captionlab = ggplot2::labs(caption = "Daten: Ostluft & NABEL (BAFU & Empa)"))
 
 
 

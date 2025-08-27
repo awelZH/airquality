@@ -4,7 +4,7 @@ lightbox: true
 ---
 
 
-Hier werden Auswertungen von jahresbezogenen, flächendeckenden Rasterdaten zur Luftbelastung und Verteilung der Wohnbevölkerung im Kanton Zürich sowie zu atmosphärischen Stickstoffenträgen in empfindliche Ökosysteme dargestellt. Die Grundlagendaten stammen aus Erhebungen ([Bundesamt für Statistik BFS](https://www.bfs.admin.ch/bfs/de/home.html)) und Modellrechnungen ([Bundesamt für Umwelt BAFU](https://www.bafu.admin.ch/bafu/de/home.html)). Die Modellergebnisse zur Luftschadstoffbelastung und den atmosphärischen Stickstoffeinträgen sind an Messwerten "kalibriert", um eine ausreichend gute Genauigkeit zu erreichen.
+Hier werden Auswertungen von jahresbezogenen, flächendeckenden Rasterdaten zur Luftbelastung und Verteilung der Wohnbevölkerung im Kanton Zürich sowie zu atmosphärischen Stickstoffenträgen in empfindliche Ökosysteme dargestellt. Die Grundlagendaten stammen aus Erhebungen ([Bundesamt für Statistik BFS](https://www.bfs.admin.ch/bfs/de/home.html)) und Modellrechnungen ([Bundesamt für Umwelt BAFU](https://www.bafu.admin.ch/bafu/de/home.html)). Die Modellergebnisse zur Luftschadstoffbelastung und den atmosphärischen Stickstoffeinträgen sind an Messwerten "kalibriert", um eine ausreichend gute Genauigkeit zu erreichen. Die Expositionsverteilung der Bevölkerung wird in einigen Darstellungen immer mit den aktuellen Grenzwerten der [Luftreinhalteverordnung des Bundes](https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de) verglichen, auch wenn diese erst ab einem bestimmten Zeitpunkt eingeführt oder angepasst wurden. Das Gleiche gilt für die [Richtwerte der Weltgesundheitsorganisation WHO](https://www.who.int/publications/i/item/9789240034228).
 
 
 ```{r}
@@ -21,6 +21,15 @@ plots <-
       TRUE ~ NA
     )
   )
+```
+
+
+### Einwohner/innen mit Belastung über Grenz-/Richtwert
+
+```{r}
+#| label: fig-population-over-thresh
+#| fig.asp: 0.6
+get_plot(plots, "source == 'population_over_thresh'")
 ```
 
 

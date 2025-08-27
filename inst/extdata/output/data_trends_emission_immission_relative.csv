@@ -1,0 +1,281 @@
+year;pollutant;parameter;value
+1990;Russ im Feinstaub;relative Immission;NA
+1991;Russ im Feinstaub;relative Immission;NA
+1992;Russ im Feinstaub;relative Immission;NA
+1993;Russ im Feinstaub;relative Immission;NA
+1994;Russ im Feinstaub;relative Immission;NA
+1995;Russ im Feinstaub;relative Immission;NA
+1996;Russ im Feinstaub;relative Immission;NA
+1997;Russ im Feinstaub;relative Immission;NA
+1998;Russ im Feinstaub;relative Immission;NA
+1999;Russ im Feinstaub;relative Immission;NA
+2000;Russ im Feinstaub;relative Immission;NA
+2001;Russ im Feinstaub;relative Immission;NA
+2002;Russ im Feinstaub;relative Immission;NA
+2003;Russ im Feinstaub;relative Immission;2.6154974057142857
+2004;Russ im Feinstaub;relative Immission;2.5240100157142864
+2005;Russ im Feinstaub;relative Immission;2.753580208571429
+2006;Russ im Feinstaub;relative Immission;3.1500754114285714
+2007;Russ im Feinstaub;relative Immission;1.1357142857142861
+2008;Russ im Feinstaub;relative Immission;1.8239820357142857
+2009;Russ im Feinstaub;relative Immission;0.9480916842857143
+2010;Russ im Feinstaub;relative Immission;0.5285714285714287
+2011;Russ im Feinstaub;relative Immission;0.6000000000000003
+2012;Russ im Feinstaub;relative Immission;0.19285714285714284
+2013;Russ im Feinstaub;relative Immission;0.22789408857142845
+2014;Russ im Feinstaub;relative Immission;0.14673469357142865
+2015;Russ im Feinstaub;relative Immission;0
+2016;Russ im Feinstaub;relative Immission;-0.028509316428571352
+2017;Russ im Feinstaub;relative Immission;-0.16428571428571426
+2018;Russ im Feinstaub;relative Immission;-0.30785714285714283
+2019;Russ im Feinstaub;relative Immission;-0.3305251164285714
+2020;Russ im Feinstaub;relative Immission;-0.40714285714285714
+2021;Russ im Feinstaub;relative Immission;-0.4614285714285714
+2022;Russ im Feinstaub;relative Immission;-0.4107142857142857
+2023;Russ im Feinstaub;relative Immission;-0.5463087071428572
+2024;Russ im Feinstaub;relative Immission;-0.523060847142857
+1990;Stickstoxide NO2 | NOx;relative Immission;1.17353579175705
+1991;Stickstoxide NO2 | NOx;relative Immission;1.1561822125813448
+1992;Stickstoxide NO2 | NOx;relative Immission;0.7389442021691972
+1993;Stickstoxide NO2 | NOx;relative Immission;0.8481561822125814
+1994;Stickstoxide NO2 | NOx;relative Immission;0.4672451193058569
+1995;Stickstoxide NO2 | NOx;relative Immission;0.49522776572668126
+1996;Stickstoxide NO2 | NOx;relative Immission;0.5509761388286334
+1997;Stickstoxide NO2 | NOx;relative Immission;0.5001686937093277
+1998;Stickstoxide NO2 | NOx;relative Immission;0.5248251173535792
+1999;Stickstoxide NO2 | NOx;relative Immission;0.5010845986984815
+2000;Stickstoxide NO2 | NOx;relative Immission;0.4086767895878525
+2001;Stickstoxide NO2 | NOx;relative Immission;0.3978308026030368
+2002;Stickstoxide NO2 | NOx;relative Immission;0.11930582386117128
+2003;Stickstoxide NO2 | NOx;relative Immission;0.34490238611713653
+2004;Stickstoxide NO2 | NOx;relative Immission;0.13036876355748372
+2005;Stickstoxide NO2 | NOx;relative Immission;0.21843817787418662
+2006;Stickstoxide NO2 | NOx;relative Immission;0.3343167028199565
+2007;Stickstoxide NO2 | NOx;relative Immission;-0.03882863340563991
+2008;Stickstoxide NO2 | NOx;relative Immission;0.01942574793926255
+2009;Stickstoxide NO2 | NOx;relative Immission;0.011636471800433812
+2010;Stickstoxide NO2 | NOx;relative Immission;0.018438177874186668
+2011;Stickstoxide NO2 | NOx;relative Immission;-0.04295010845986991
+2012;Stickstoxide NO2 | NOx;relative Immission;-0.052494577006507614
+2013;Stickstoxide NO2 | NOx;relative Immission;0.07049450347071584
+2014;Stickstoxide NO2 | NOx;relative Immission;-0.04945770065075927
+2015;Stickstoxide NO2 | NOx;relative Immission;0
+2016;Stickstoxide NO2 | NOx;relative Immission;-0.06616052060737532
+2017;Stickstoxide NO2 | NOx;relative Immission;-0.08112798264642085
+2018;Stickstoxide NO2 | NOx;relative Immission;-0.1581344902386117
+2019;Stickstoxide NO2 | NOx;relative Immission;-0.11930585683297179
+2020;Stickstoxide NO2 | NOx;relative Immission;-0.2444685466377441
+2021;Stickstoxide NO2 | NOx;relative Immission;-0.22733188720173547
+2022;Stickstoxide NO2 | NOx;relative Immission;-0.08156182212581342
+2023;Stickstoxide NO2 | NOx;relative Immission;-0.2672451193058568
+2024;Stickstoxide NO2 | NOx;relative Immission;-0.33547761388286335
+1990;Feinstaub PM10;relative Immission;NA
+1991;Feinstaub PM10;relative Immission;NA
+1992;Feinstaub PM10;relative Immission;NA
+1993;Feinstaub PM10;relative Immission;NA
+1994;Feinstaub PM10;relative Immission;NA
+1995;Feinstaub PM10;relative Immission;NA
+1996;Feinstaub PM10;relative Immission;NA
+1997;Feinstaub PM10;relative Immission;0.7910407692236949
+1998;Feinstaub PM10;relative Immission;0.6193841233276887
+1999;Feinstaub PM10;relative Immission;0.5109001722174518
+2000;Feinstaub PM10;relative Immission;0.34953516214573077
+2001;Feinstaub PM10;relative Immission;0.37636630541328264
+2002;Feinstaub PM10;relative Immission;0.5175320803274654
+2003;Feinstaub PM10;relative Immission;0.7175169281225577
+2004;Feinstaub PM10;relative Immission;0.44694919287037416
+2005;Feinstaub PM10;relative Immission;0.42162952096588
+2006;Feinstaub PM10;relative Immission;0.5477150387564735
+2007;Feinstaub PM10;relative Immission;0.2293186232110087
+2008;Feinstaub PM10;relative Immission;0.2107595252561698
+2009;Feinstaub PM10;relative Immission;0.19401183299815772
+2010;Feinstaub PM10;relative Immission;0.1469719211777356
+2011;Feinstaub PM10;relative Immission;0.13351749881108343
+2012;Feinstaub PM10;relative Immission;0.016711378244701258
+2013;Feinstaub PM10;relative Immission;0.10359159914085869
+2014;Feinstaub PM10;relative Immission;-0.05076971363717042
+2015;Feinstaub PM10;relative Immission;0
+2016;Feinstaub PM10;relative Immission;-0.14712344322681203
+2017;Feinstaub PM10;relative Immission;-0.1377510509897083
+2018;Feinstaub PM10;relative Immission;-0.08298385317015788
+2019;Feinstaub PM10;relative Immission;-0.20006060881963061
+2020;Feinstaub PM10;relative Immission;-0.28828921814099495
+2021;Feinstaub PM10;relative Immission;-0.24123395983626728
+2022;Feinstaub PM10;relative Immission;-0.16199788565019746
+2023;Feinstaub PM10;relative Immission;-0.25250949376083565
+2024;Feinstaub PM10;relative Immission;-0.3436326778872788
+1990;Feinstaub PM2.5;relative Immission;NA
+1991;Feinstaub PM2.5;relative Immission;NA
+1992;Feinstaub PM2.5;relative Immission;NA
+1993;Feinstaub PM2.5;relative Immission;NA
+1994;Feinstaub PM2.5;relative Immission;NA
+1995;Feinstaub PM2.5;relative Immission;NA
+1996;Feinstaub PM2.5;relative Immission;NA
+1997;Feinstaub PM2.5;relative Immission;NA
+1998;Feinstaub PM2.5;relative Immission;0.7092511013215856
+1999;Feinstaub PM2.5;relative Immission;0.6475770925110129
+2000;Feinstaub PM2.5;relative Immission;0.48898678414096874
+2001;Feinstaub PM2.5;relative Immission;0.5682819383259912
+2002;Feinstaub PM2.5;relative Immission;0.6475770925110129
+2003;Feinstaub PM2.5;relative Immission;NA
+2004;Feinstaub PM2.5;relative Immission;NA
+2005;Feinstaub PM2.5;relative Immission;NA
+2006;Feinstaub PM2.5;relative Immission;NA
+2007;Feinstaub PM2.5;relative Immission;NA
+2008;Feinstaub PM2.5;relative Immission;0.2951541850220263
+2009;Feinstaub PM2.5;relative Immission;0.31277533039647554
+2010;Feinstaub PM2.5;relative Immission;0.2951541850220263
+2011;Feinstaub PM2.5;relative Immission;0.2643171806167399
+2012;Feinstaub PM2.5;relative Immission;0.12334801762114522
+2013;Feinstaub PM2.5;relative Immission;0.23348017621145356
+2014;Feinstaub PM2.5;relative Immission;-0.20264317180616742
+2015;Feinstaub PM2.5;relative Immission;0
+2016;Feinstaub PM2.5;relative Immission;-0.06167400881057272
+2017;Feinstaub PM2.5;relative Immission;-0.09505062643171824
+2018;Feinstaub PM2.5;relative Immission;-0.026431718061674103
+2019;Feinstaub PM2.5;relative Immission;-0.11781790872246711
+2020;Feinstaub PM2.5;relative Immission;-0.22374483118942745
+2021;Feinstaub PM2.5;relative Immission;-0.19018813383259925
+2022;Feinstaub PM2.5;relative Immission;-0.17890136872246698
+2023;Feinstaub PM2.5;relative Immission;-0.28687343563876655
+2024;Feinstaub PM2.5;relative Immission;-0.36416774237885463
+1990;Russ im Feinstaub;relative Emission;NA
+1991;Russ im Feinstaub;relative Emission;NA
+1992;Russ im Feinstaub;relative Emission;NA
+1993;Russ im Feinstaub;relative Emission;NA
+1994;Russ im Feinstaub;relative Emission;NA
+1995;Russ im Feinstaub;relative Emission;NA
+1996;Russ im Feinstaub;relative Emission;NA
+1997;Russ im Feinstaub;relative Emission;NA
+1998;Russ im Feinstaub;relative Emission;NA
+1999;Russ im Feinstaub;relative Emission;NA
+2000;Russ im Feinstaub;relative Emission;NA
+2001;Russ im Feinstaub;relative Emission;NA
+2002;Russ im Feinstaub;relative Emission;NA
+2003;Russ im Feinstaub;relative Emission;NA
+2004;Russ im Feinstaub;relative Emission;NA
+2005;Russ im Feinstaub;relative Emission;NA
+2006;Russ im Feinstaub;relative Emission;NA
+2007;Russ im Feinstaub;relative Emission;NA
+2008;Russ im Feinstaub;relative Emission;NA
+2009;Russ im Feinstaub;relative Emission;NA
+2010;Russ im Feinstaub;relative Emission;NA
+2011;Russ im Feinstaub;relative Emission;NA
+2012;Russ im Feinstaub;relative Emission;NA
+2013;Russ im Feinstaub;relative Emission;NA
+2014;Russ im Feinstaub;relative Emission;NA
+2015;Russ im Feinstaub;relative Emission;0
+2016;Russ im Feinstaub;relative Emission;NA
+2017;Russ im Feinstaub;relative Emission;NA
+2018;Russ im Feinstaub;relative Emission;NA
+2019;Russ im Feinstaub;relative Emission;NA
+2020;Russ im Feinstaub;relative Emission;-0.3284589723683605
+2021;Russ im Feinstaub;relative Emission;-0.32157648240369585
+2022;Russ im Feinstaub;relative Emission;NA
+2023;Russ im Feinstaub;relative Emission;NA
+2024;Russ im Feinstaub;relative Emission;NA
+1990;Stickstoxide NO2 | NOx;relative Emission;NA
+1991;Stickstoxide NO2 | NOx;relative Emission;NA
+1992;Stickstoxide NO2 | NOx;relative Emission;NA
+1993;Stickstoxide NO2 | NOx;relative Emission;NA
+1994;Stickstoxide NO2 | NOx;relative Emission;NA
+1995;Stickstoxide NO2 | NOx;relative Emission;NA
+1996;Stickstoxide NO2 | NOx;relative Emission;NA
+1997;Stickstoxide NO2 | NOx;relative Emission;NA
+1998;Stickstoxide NO2 | NOx;relative Emission;NA
+1999;Stickstoxide NO2 | NOx;relative Emission;NA
+2000;Stickstoxide NO2 | NOx;relative Emission;NA
+2001;Stickstoxide NO2 | NOx;relative Emission;NA
+2002;Stickstoxide NO2 | NOx;relative Emission;NA
+2003;Stickstoxide NO2 | NOx;relative Emission;NA
+2004;Stickstoxide NO2 | NOx;relative Emission;NA
+2005;Stickstoxide NO2 | NOx;relative Emission;NA
+2006;Stickstoxide NO2 | NOx;relative Emission;NA
+2007;Stickstoxide NO2 | NOx;relative Emission;NA
+2008;Stickstoxide NO2 | NOx;relative Emission;NA
+2009;Stickstoxide NO2 | NOx;relative Emission;NA
+2010;Stickstoxide NO2 | NOx;relative Emission;NA
+2011;Stickstoxide NO2 | NOx;relative Emission;NA
+2012;Stickstoxide NO2 | NOx;relative Emission;NA
+2013;Stickstoxide NO2 | NOx;relative Emission;NA
+2014;Stickstoxide NO2 | NOx;relative Emission;NA
+2015;Stickstoxide NO2 | NOx;relative Emission;0
+2016;Stickstoxide NO2 | NOx;relative Emission;NA
+2017;Stickstoxide NO2 | NOx;relative Emission;NA
+2018;Stickstoxide NO2 | NOx;relative Emission;NA
+2019;Stickstoxide NO2 | NOx;relative Emission;NA
+2020;Stickstoxide NO2 | NOx;relative Emission;-0.31934004397116955
+2021;Stickstoxide NO2 | NOx;relative Emission;-0.3267196527970867
+2022;Stickstoxide NO2 | NOx;relative Emission;NA
+2023;Stickstoxide NO2 | NOx;relative Emission;NA
+2024;Stickstoxide NO2 | NOx;relative Emission;NA
+1990;Feinstaub PM10;relative Emission;NA
+1991;Feinstaub PM10;relative Emission;NA
+1992;Feinstaub PM10;relative Emission;NA
+1993;Feinstaub PM10;relative Emission;NA
+1994;Feinstaub PM10;relative Emission;NA
+1995;Feinstaub PM10;relative Emission;NA
+1996;Feinstaub PM10;relative Emission;NA
+1997;Feinstaub PM10;relative Emission;NA
+1998;Feinstaub PM10;relative Emission;NA
+1999;Feinstaub PM10;relative Emission;NA
+2000;Feinstaub PM10;relative Emission;NA
+2001;Feinstaub PM10;relative Emission;NA
+2002;Feinstaub PM10;relative Emission;NA
+2003;Feinstaub PM10;relative Emission;NA
+2004;Feinstaub PM10;relative Emission;NA
+2005;Feinstaub PM10;relative Emission;NA
+2006;Feinstaub PM10;relative Emission;NA
+2007;Feinstaub PM10;relative Emission;NA
+2008;Feinstaub PM10;relative Emission;NA
+2009;Feinstaub PM10;relative Emission;NA
+2010;Feinstaub PM10;relative Emission;NA
+2011;Feinstaub PM10;relative Emission;NA
+2012;Feinstaub PM10;relative Emission;NA
+2013;Feinstaub PM10;relative Emission;NA
+2014;Feinstaub PM10;relative Emission;NA
+2015;Feinstaub PM10;relative Emission;0
+2016;Feinstaub PM10;relative Emission;NA
+2017;Feinstaub PM10;relative Emission;NA
+2018;Feinstaub PM10;relative Emission;NA
+2019;Feinstaub PM10;relative Emission;NA
+2020;Feinstaub PM10;relative Emission;-0.09152608069257306
+2021;Feinstaub PM10;relative Emission;-0.0816031673545573
+2022;Feinstaub PM10;relative Emission;NA
+2023;Feinstaub PM10;relative Emission;NA
+2024;Feinstaub PM10;relative Emission;NA
+1990;Feinstaub PM2.5;relative Emission;NA
+1991;Feinstaub PM2.5;relative Emission;NA
+1992;Feinstaub PM2.5;relative Emission;NA
+1993;Feinstaub PM2.5;relative Emission;NA
+1994;Feinstaub PM2.5;relative Emission;NA
+1995;Feinstaub PM2.5;relative Emission;NA
+1996;Feinstaub PM2.5;relative Emission;NA
+1997;Feinstaub PM2.5;relative Emission;NA
+1998;Feinstaub PM2.5;relative Emission;NA
+1999;Feinstaub PM2.5;relative Emission;NA
+2000;Feinstaub PM2.5;relative Emission;NA
+2001;Feinstaub PM2.5;relative Emission;NA
+2002;Feinstaub PM2.5;relative Emission;NA
+2003;Feinstaub PM2.5;relative Emission;NA
+2004;Feinstaub PM2.5;relative Emission;NA
+2005;Feinstaub PM2.5;relative Emission;NA
+2006;Feinstaub PM2.5;relative Emission;NA
+2007;Feinstaub PM2.5;relative Emission;NA
+2008;Feinstaub PM2.5;relative Emission;NA
+2009;Feinstaub PM2.5;relative Emission;NA
+2010;Feinstaub PM2.5;relative Emission;NA
+2011;Feinstaub PM2.5;relative Emission;NA
+2012;Feinstaub PM2.5;relative Emission;NA
+2013;Feinstaub PM2.5;relative Emission;NA
+2014;Feinstaub PM2.5;relative Emission;NA
+2015;Feinstaub PM2.5;relative Emission;0
+2016;Feinstaub PM2.5;relative Emission;NA
+2017;Feinstaub PM2.5;relative Emission;NA
+2018;Feinstaub PM2.5;relative Emission;NA
+2019;Feinstaub PM2.5;relative Emission;NA
+2020;Feinstaub PM2.5;relative Emission;-0.14856910679554935
+2021;Feinstaub PM2.5;relative Emission;-0.15286908017222756
+2022;Feinstaub PM2.5;relative Emission;NA
+2023;Feinstaub PM2.5;relative Emission;NA
+2024;Feinstaub PM2.5;relative Emission;NA

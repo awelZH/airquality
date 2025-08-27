@@ -11,6 +11,7 @@ Hier werden ausgewählte Luftqualitäts-Messdaten aus dem interkantonalen Messne
 ```{r}
 source("read_plots.R")
 plots <- readRDS("plots_monitoring.rds")
+plots <- dplyr::bind_rows(plots, readRDS("plots_trends.rds"))
 ```
 
 

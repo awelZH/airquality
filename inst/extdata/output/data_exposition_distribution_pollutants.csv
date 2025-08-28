@@ -43,23 +43,23 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2010;NO2;Jahresmittel;NO2;47.5;108;1375704;0.9993237132573267;BAFU & BFS
 2010;NO2;Jahresmittel;NO2;48.5;433;1376137;0.9996382483374315;BAFU & BFS
 2010;NO2;Jahresmittel;NO2;51.5;498;1376635;1;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;996;996;3.6175166256850944e-4;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;1082;2078;7.547389104591994e-4;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;3574;5652;0.002052831723732144;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;4894;10546;0.003830354451252511;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;24578;35124;0.012757194172747314;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;83480;118604;0.043077504204091864;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;201398;320002;0.11622616016591181;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;268632;588634;0.2137945061690281;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;307840;896474;0.32560337344321477;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;372406;1268880;0.46086290120474926;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;519746;1788626;0.6496369771217497;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;535516;2324142;0.844138787696085;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;305866;2630008;0.9552306893257835;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;99538;2729546;0.991383336904844;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;19240;2748786;0.9983713911094807;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;4348;2753134;0.9999506041906533;BAFU & BFS
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;136;2753270;1;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;498;498;3.6175166256850944e-4;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;541;1039;7.547389104591994e-4;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;1787;2826;0.002052831723732144;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;2447;5273;0.003830354451252511;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;12289;17562;0.012757194172747314;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;41740;59302;0.043077504204091864;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;100699;160001;0.11622616016591181;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;134316;294317;0.2137945061690281;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;153920;448237;0.32560337344321477;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;186203;634440;0.46086290120474926;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;259873;894313;0.6496369771217497;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;267758;1162071;0.844138787696085;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;152933;1315004;0.9552306893257835;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;49769;1364773;0.991383336904844;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;9620;1374393;0.9983713911094807;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;2174;1376567;0.9999506041906533;BAFU & BFS
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;68;1376635;1;BAFU & BFS
 2010;O3;typische Spitzenbelastung;O3_max_98p_m1;157;18;18;1.3075361297656968e-5;BAFU & BFS
 2010;O3;typische Spitzenbelastung;O3_max_98p_m1;159;65;83;6.029194376141824e-5;BAFU & BFS
 2010;O3;typische Spitzenbelastung;O3_max_98p_m1;161;481;564;4.0969465399325164e-4;BAFU & BFS
@@ -165,22 +165,22 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2011;NO2;Jahresmittel;NO2;44.5;357;1395094;0.999308052662493;BAFU & BFS
 2011;NO2;Jahresmittel;NO2;45.5;459;1395553;0.9996368350930476;BAFU & BFS
 2011;NO2;Jahresmittel;NO2;48.5;507;1396060;1;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;1014;1014;3.6316490695242323e-4;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;2234;3248;0.0011632737847943498;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;3604;6852;0.0024540492528974398;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;7160;14012;0.005018408950904689;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;43242;57254;0.020505565663366903;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;155232;212486;0.07610202999871066;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;228082;440568;0.15778977980889072;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;335576;776144;0.2779765912639858;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;353472;1129616;0.40457286936091574;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;508566;1638182;0.5867161869833675;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;629548;2267730;0.8121893041846339;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;355254;2622984;0.9394238069996992;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;135538;2758522;0.9879668495623397;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;27488;2786010;0.9978116986375943;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;5910;2791920;0.9999283698408378;BAFU & BFS
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;200;2792120;1;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;507;507;3.6316490695242323e-4;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;1117;1624;0.0011632737847943498;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;1802;3426;0.0024540492528974398;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;3580;7006;0.005018408950904689;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;21621;28627;0.020505565663366903;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;77616;106243;0.07610202999871066;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;114041;220284;0.15778977980889072;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;167788;388072;0.2779765912639858;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;176736;564808;0.40457286936091574;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;254283;819091;0.5867161869833675;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;314774;1133865;0.8121893041846339;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;177627;1311492;0.9394238069996992;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;67769;1379261;0.9879668495623397;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;13744;1393005;0.9978116986375943;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;2955;1395960;0.9999283698408378;BAFU & BFS
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;100;1396060;1;BAFU & BFS
 2011;O3;typische Spitzenbelastung;O3_max_98p_m1;143;1343;1343;9.619930375485295e-4;BAFU & BFS
 2011;O3;typische Spitzenbelastung;O3_max_98p_m1;145;9920;11263;0.008067704826440125;BAFU & BFS
 2011;O3;typische Spitzenbelastung;O3_max_98p_m1;147;34566;45829;0.0328273856424509;BAFU & BFS
@@ -282,22 +282,22 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2012;NO2;Jahresmittel;NO2;43.5;346;1411187;0.9993315067794701;BAFU & BFS
 2012;NO2;Jahresmittel;NO2;44.5;431;1411618;0.9996367192562163;BAFU & BFS
 2012;NO2;Jahresmittel;NO2;47.5;513;1412131;1;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;1026;1026;3.632807437836858e-4;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;862;1888;6.684932205298234e-4;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;3072;4960;0.0017562110030868241;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;3340;8300;0.002938820831778355;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;19364;27664;0.009795125239797158;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;87178;114842;0.040662658067842146;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;206708;321550;0.11385275162148555;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;300804;622354;0.22035986746272124;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;352444;974798;0.3451514059248044;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;444454;1419252;0.5025213666437462;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;651558;2070810;0.7332216345367392;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;483766;2554576;0.90451098375434;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;210958;2765534;0.9792058952037735;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;47814;2813348;0.996135627643611;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;10074;2823422;0.999702577168832;BAFU & BFS
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;840;2824262;1;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;513;513;3.632807437836858e-4;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;431;944;6.684932205298234e-4;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;1536;2480;0.0017562110030868241;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;1670;4150;0.002938820831778355;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;9682;13832;0.009795125239797158;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;43589;57421;0.040662658067842146;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;103354;160775;0.11385275162148555;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;150402;311177;0.22035986746272124;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;176222;487399;0.3451514059248044;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;222227;709626;0.5025213666437462;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;325779;1035405;0.7332216345367392;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;241883;1277288;0.90451098375434;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;105479;1382767;0.9792058952037735;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;23907;1406674;0.996135627643611;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;5037;1411711;0.999702577168832;BAFU & BFS
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;420;1412131;1;BAFU & BFS
 2012;O3;typische Spitzenbelastung;O3_max_98p_m1;129;3;3;2.124448794056642e-6;BAFU & BFS
 2012;O3;typische Spitzenbelastung;O3_max_98p_m1;131;157;160;1.1330393568302091e-4;BAFU & BFS
 2012;O3;typische Spitzenbelastung;O3_max_98p_m1;133;1567;1727;0.001222974355778607;BAFU & BFS
@@ -397,23 +397,23 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2013;NO2;Jahresmittel;NO2;46.5;449;1428640;0.9996564345745771;BAFU & BFS
 2013;NO2;Jahresmittel;NO2;48.5;315;1428955;0.999876848238545;BAFU & BFS
 2013;NO2;Jahresmittel;NO2;49.5;176;1429131;1;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;352;352;1.2315176145503808e-4;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;630;982;3.4356542542286186e-4;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;3980;4962;0.0017360200009656217;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;3118;8080;0.00282689270612701;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;11444;19524;0.006830724405250463;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;60766;80290;0.028090496952343766;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;169088;249378;0.08724812490947297;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;285558;534936;0.18715429166395522;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;347776;882712;0.3088282319815328;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;409194;1291906;0.4519900554952625;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;587856;1879762;0.657659094932515;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;561492;2441254;0.8541043473271519;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;305326;2746580;0.9609266050488023;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;90982;2837562;0.9927578367553429;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;16860;2854422;0.9986565262386723;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;3726;2858148;0.9999601156227106;BAFU & BFS
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;114;2858262;1;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;176;176;1.2315176145503808e-4;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;315;491;3.4356542542286186e-4;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;1990;2481;0.0017360200009656217;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;1559;4040;0.00282689270612701;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;5722;9762;0.006830724405250463;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;30383;40145;0.028090496952343766;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;84544;124689;0.08724812490947297;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;142779;267468;0.18715429166395522;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;173888;441356;0.3088282319815328;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;204597;645953;0.4519900554952625;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;293928;939881;0.657659094932515;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;280746;1220627;0.8541043473271519;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;152663;1373290;0.9609266050488023;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;45491;1418781;0.9927578367553429;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;8430;1427211;0.9986565262386723;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;1863;1429074;0.9999601156227106;BAFU & BFS
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;57;1429131;1;BAFU & BFS
 2013;O3;typische Spitzenbelastung;O3_max_98p_m1;139;10;10;6.997259173581708e-6;BAFU & BFS
 2013;O3;typische Spitzenbelastung;O3_max_98p_m1;141;423;433;3.02981322216088e-4;BAFU & BFS
 2013;O3;typische Spitzenbelastung;O3_max_98p_m1;143;1627;2060;0.001441435389757832;BAFU & BFS
@@ -517,22 +517,22 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2014;NO2;Jahresmittel;NO2;42.5;613;1449339;0.9996110084605659;BAFU & BFS
 2014;NO2;Jahresmittel;NO2;43.5;77;1449416;0.9996641154615171;BAFU & BFS
 2014;NO2;Jahresmittel;NO2;45.5;487;1449903;1;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;974;974;3.358845384829192e-4;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;1332;2306;7.952256116443651e-4;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;3476;5782;0.0019939264902548654;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;4972;10754;0.0037085239495331756;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;35682;46436;0.016013485040033713;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;133642;180078;0.06210001634592107;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;268738;448816;0.15477449181083147;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;364618;813434;0.28051324812763334;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;376684;1190118;0.41041297245401936;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;567334;1757452;0.6060584742565537;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;673614;2431066;0.8383547037284563;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;346326;2777392;0.9577854518543655;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;100394;2877786;0.992406388565304;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;18756;2896542;0.9988744074603612;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;3216;2899758;0.9999834471685347;BAFU & BFS
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;48;2899806;1;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;487;487;3.358845384829192e-4;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;666;1153;7.952256116443651e-4;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;1738;2891;0.0019939264902548654;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;2486;5377;0.0037085239495331756;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;17841;23218;0.016013485040033713;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;66821;90039;0.06210001634592107;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;134369;224408;0.15477449181083147;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;182309;406717;0.28051324812763334;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;188342;595059;0.41041297245401936;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;283667;878726;0.6060584742565537;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;336807;1215533;0.8383547037284563;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;173163;1388696;0.9577854518543655;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;50197;1438893;0.992406388565304;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;9378;1448271;0.9988744074603612;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;1608;1449879;0.9999834471685347;BAFU & BFS
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;24;1449903;1;BAFU & BFS
 2014;O3;typische Spitzenbelastung;O3_max_98p_m1;127;17;17;1.1724922287904776e-5;BAFU & BFS
 2014;O3;typische Spitzenbelastung;O3_max_98p_m1;129;124;141;9.724788485850433e-5;BAFU & BFS
 2014;O3;typische Spitzenbelastung;O3_max_98p_m1;131;875;1016;7.007365320300737e-4;BAFU & BFS
@@ -625,23 +625,23 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2015;NO2;Jahresmittel;NO2;46.5;641;1469632;0.999697294767553;BAFU & BFS
 2015;NO2;Jahresmittel;NO2;49.5;274;1469906;0.999883679562363;BAFU & BFS
 2015;NO2;Jahresmittel;NO2;50.5;171;1470077;1;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;890;890;3.027052324470079e-4;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;2466;3356;0.001141436809092313;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;3548;6904;0.0023481763200158905;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;4830;11734;0.003990947412958641;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;38086;49820;0.01694469065225835;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;139884;189704;0.06452179035519909;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;238274;427978;0.1455631235642759;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;337708;765686;0.26042377372069625;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;369816;1135502;0.38620494028544083;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;491468;1626970;0.5533621708250657;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;645286;2272256;0.7728357086057397;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;424868;2697124;0.9173410644476446;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;181530;2878654;0.979082728319673;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;46582;2925236;0.9949261161150063;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;12794;2938030;0.9992775888609916;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;107;2086;2940116;0.9999870755069292;BAFU & BFS
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;109;38;2940154;1;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;445;445;3.027052324470079e-4;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;1233;1678;0.001141436809092313;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;1774;3452;0.0023481763200158905;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;2415;5867;0.003990947412958641;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;19043;24910;0.01694469065225835;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;69942;94852;0.06452179035519909;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;119137;213989;0.1455631235642759;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;168854;382843;0.26042377372069625;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;184908;567751;0.38620494028544083;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;245734;813485;0.5533621708250657;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;322643;1136128;0.7728357086057397;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;212434;1348562;0.9173410644476446;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;90765;1439327;0.979082728319673;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;23291;1462618;0.9949261161150063;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;6397;1469015;0.9992775888609916;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;107;1043;1470058;0.9999870755069292;BAFU & BFS
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;109;19;1470077;1;BAFU & BFS
 2015;O3;typische Spitzenbelastung;O3_max_98p_m1;155;17;17;1.156402011595311e-5;BAFU & BFS
 2015;O3;typische Spitzenbelastung;O3_max_98p_m1;157;295;312;2.1223378095161e-4;BAFU & BFS
 2015;O3;typische Spitzenbelastung;O3_max_98p_m1;159;1247;1559;0.0010604886682806412;BAFU & BFS
@@ -734,22 +734,22 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2016;NO2;Jahresmittel;NO2;41.5;559;1491038;0.9996540520825931;BAFU & BFS
 2016;NO2;Jahresmittel;NO2;42.5;88;1491126;0.9997130509522284;BAFU & BFS
 2016;NO2;Jahresmittel;NO2;44.5;428;1491554;1;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;856;856;2.8694904777165295e-4;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;1294;2150;7.207248279311376e-4;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;3704;5854;0.0019623828570738975;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;6244;12098;0.004055501845726001;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;39842;51940;0.017411370959415483;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;175040;226980;0.0760884285785161;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;300562;527542;0.17684307775648753;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;387026;914568;0.3065822625261975;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;407610;1322178;0.44322163327643516;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;688144;2010322;0.6739018500168281;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;630160;2640482;0.8851446209791936;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;262310;2902792;0.9730764021952943;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;65064;2967856;0.9948872115927415;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;13552;2981408;0.9994301245546591;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;1692;2983100;0.9999973182331984;BAFU & BFS
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;8;2983108;1;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;428;428;2.8694904777165295e-4;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;647;1075;7.207248279311376e-4;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;1852;2927;0.0019623828570738975;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;3122;6049;0.004055501845726001;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;19921;25970;0.017411370959415483;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;87520;113490;0.0760884285785161;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;150281;263771;0.17684307775648753;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;193513;457284;0.3065822625261975;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;203805;661089;0.44322163327643516;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;344072;1005161;0.6739018500168281;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;315080;1320241;0.8851446209791936;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;131155;1451396;0.9730764021952943;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;32532;1483928;0.9948872115927415;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;6776;1490704;0.9994301245546591;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;846;1491550;0.9999973182331984;BAFU & BFS
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;4;1491554;1;BAFU & BFS
 2016;O3;typische Spitzenbelastung;O3_max_98p_m1;125;3;3;2.011325101203175e-6;BAFU & BFS
 2016;O3;typische Spitzenbelastung;O3_max_98p_m1;127;16;19;1.2738392307620106e-5;BAFU & BFS
 2016;O3;typische Spitzenbelastung;O3_max_98p_m1;129;357;376;2.520860793507979e-4;BAFU & BFS
@@ -837,21 +837,21 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2017;NO2;Jahresmittel;NO2;39.5;574;1506656;0.9991849511070141;BAFU & BFS
 2017;NO2;Jahresmittel;NO2;40.5;839;1507495;0.9997413595864406;BAFU & BFS
 2017;NO2;Jahresmittel;NO2;43.5;390;1507885;1;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;780;780;2.5864041355938946e-4;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;2826;3606;0.001195714527301485;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;4460;8066;0.0026746071484231226;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;15738;23804;0.007893174877394497;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;82722;106526;0.035322985506189133;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;246500;353026;0.1170599879964321;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;388168;741194;0.24577272139453604;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;419448;1160642;0.38485759855691914;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;559464;1720106;0.5703704194948553;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;735258;2455364;0.8141748210241497;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;431278;2886642;0.9571824111255168;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;109408;2996050;0.9934610398007806;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;17794;3013844;0.9993613571326726;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;1918;3015762;0.9999973472778096;BAFU & BFS
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;8;3015770;1;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;390;390;2.5864041355938946e-4;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;1413;1803;0.001195714527301485;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;2230;4033;0.0026746071484231226;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;7869;11902;0.007893174877394497;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;41361;53263;0.035322985506189133;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;123250;176513;0.1170599879964321;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;194084;370597;0.24577272139453604;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;209724;580321;0.38485759855691914;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;279732;860053;0.5703704194948553;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;367629;1227682;0.8141748210241497;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;215639;1443321;0.9571824111255168;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;54704;1498025;0.9934610398007806;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;8897;1506922;0.9993613571326726;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;959;1507881;0.9999973472778096;BAFU & BFS
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;4;1507885;1;BAFU & BFS
 2017;O3;typische Spitzenbelastung;O3_max_98p_m1;135;20;20;1.3263610951763562e-5;BAFU & BFS
 2017;O3;typische Spitzenbelastung;O3_max_98p_m1;137;137;157;1.0411934597134396e-4;BAFU & BFS
 2017;O3;typische Spitzenbelastung;O3_max_98p_m1;139;1092;1249;8.283125039376345e-4;BAFU & BFS
@@ -931,20 +931,20 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2018;NO2;Jahresmittel;NO2;36.5;1001;1523963;0.9996189024390244;BAFU & BFS
 2018;NO2;Jahresmittel;NO2;37.5;364;1524327;0.999857662356744;BAFU & BFS
 2018;NO2;Jahresmittel;NO2;39.5;217;1524544;1;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;52;52;1.7054279837118507e-5;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;1520;1572;5.155639981528903e-4;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;3622;5194;0.0017034601821921834;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;7644;12838;0.004210439318248604;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;69222;82060;0.026912965450652786;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;257644;339704;0.11141167457285589;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;418004;757708;0.2485031589773729;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;470906;1228614;0.40294474938079844;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;711588;1940202;0.636322074010327;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;107;744696;2684898;0.880557727425381;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;109;319142;3004040;0.9852257461903362;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;111;41774;3045814;0.9989262363041014;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;113;3266;3049080;0.9999973762646405;BAFU & BFS
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;115;8;3049088;1;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;26;26;1.7054279837118507e-5;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;760;786;5.155639981528903e-4;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;1811;2597;0.0017034601821921834;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;3822;6419;0.004210439318248604;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;34611;41030;0.026912965450652786;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;128822;169852;0.11141167457285589;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;209002;378854;0.2485031589773729;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;235453;614307;0.40294474938079844;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;355794;970101;0.636322074010327;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;107;372348;1342449;0.880557727425381;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;109;159571;1502020;0.9852257461903362;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;111;20887;1522907;0.9989262363041014;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;113;1633;1524540;0.9999973762646405;BAFU & BFS
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;115;4;1524544;1;BAFU & BFS
 2018;O3;typische Spitzenbelastung;O3_max_98p_m1;151;3;3;1.96780151966752e-6;BAFU & BFS
 2018;O3;typische Spitzenbelastung;O3_max_98p_m1;153;36;39;2.5581419755677765e-5;BAFU & BFS
 2018;O3;typische Spitzenbelastung;O3_max_98p_m1;155;288;327;2.144903656437597e-4;BAFU & BFS
@@ -1029,19 +1029,19 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2019;NO2;Jahresmittel;NO2;35.5;743;1542389;0.9997381372614472;BAFU & BFS
 2019;NO2;Jahresmittel;NO2;36.5;88;1542477;0.9997951766698449;BAFU & BFS
 2019;NO2;Jahresmittel;NO2;38.5;316;1542793;1;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;808;808;2.6186273855274166e-4;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;3600;4408;0.001428577910322383;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;3734;8142;0.002638720813485672;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;37412;45554;0.014763484148553954;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;184088;229642;0.07442411263208998;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;416408;646050;0.20937676020049353;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;487390;1133440;0.36733379008071726;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;692708;1826148;0.5918318270824408;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;822604;2648752;0.8584275401819946;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;377758;3026510;0.9808542040312602;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;54478;3080988;0.9985098454556119;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;4590;3085578;0.9999974072996183;BAFU & BFS
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;8;3085586;1;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;404;404;2.6186273855274166e-4;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;1800;2204;0.001428577910322383;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;1867;4071;0.002638720813485672;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;18706;22777;0.014763484148553954;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;92044;114821;0.07442411263208998;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;208204;323025;0.20937676020049353;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;243695;566720;0.36733379008071726;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;346354;913074;0.5918318270824408;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;411302;1324376;0.8584275401819946;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;188879;1513255;0.9808542040312602;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;27239;1540494;0.9985098454556119;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;2295;1542789;0.9999974072996183;BAFU & BFS
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;4;1542793;1;BAFU & BFS
 2019;O3;typische Spitzenbelastung;O3_max_98p_m1;149;3;3;1.944525286282735e-6;BAFU & BFS
 2019;O3;typische Spitzenbelastung;O3_max_98p_m1;151;151;154;9.981896469584708e-5;BAFU & BFS
 2019;O3;typische Spitzenbelastung;O3_max_98p_m1;153;1032;1186;7.687356631771081e-4;BAFU & BFS
@@ -1122,22 +1122,22 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2020;NO2;Jahresmittel;NO2;41.5;54;1557630;0.9999800983654338;BAFU & BFS
 2020;NO2;Jahresmittel;NO2;45.5;11;1557641;0.9999871602357637;BAFU & BFS
 2020;NO2;Jahresmittel;NO2;46.5;20;1557661;1;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;62;62;1.9901634566186094e-5;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;102;164;5.2643033368621286e-5;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;6;170;5.456899800405865e-5;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;238;408;1.3096559520974077e-4;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;1246;1654;5.309242511689e-4;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;2652;4306;0.001382200620032215;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;5438;9744;0.0031277665679502794;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;11222;20966;0.0067299624244299625;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;45698;66664;0.02139875107613274;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;167236;233900;0.07508052137146658;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;595626;829526;0.2662729566959692;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;1152462;1981988;0.6362064659768717;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;880394;2862382;0.9188077508520789;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;243022;3105404;0.996816380457622;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;9824;3115228;0.9999698265540448;BAFU & BFS
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;94;3115322;1;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;31;31;1.9901634566186094e-5;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;51;82;5.2643033368621286e-5;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;3;85;5.456899800405865e-5;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;119;204;1.3096559520974077e-4;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;623;827;5.309242511689e-4;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;1326;2153;0.001382200620032215;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;2719;4872;0.0031277665679502794;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;5611;10483;0.0067299624244299625;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;22849;33332;0.02139875107613274;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;83618;116950;0.07508052137146658;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;297813;414763;0.2662729566959692;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;576231;990994;0.6362064659768717;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;440197;1431191;0.9188077508520789;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;121511;1552702;0.996816380457622;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;4912;1557614;0.9999698265540448;BAFU & BFS
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;47;1557661;1;BAFU & BFS
 2020;O3;typische Spitzenbelastung;O3_max_98p_m1;125;6;6;3.8519342166674475e-6;BAFU & BFS
 2020;O3;typische Spitzenbelastung;O3_max_98p_m1;127;20;26;1.6691714938892274e-5;BAFU & BFS
 2020;O3;typische Spitzenbelastung;O3_max_98p_m1;129;709;735;4.718619415417624e-4;BAFU & BFS
@@ -1223,22 +1223,22 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2021;NO2;Jahresmittel;NO2;40.5;3;1568839;0.9999547456514395;BAFU & BFS
 2021;NO2;Jahresmittel;NO2;41.5;36;1568875;0.9999776915183153;BAFU & BFS
 2021;NO2;Jahresmittel;NO2;45.5;35;1568910;1;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;65;70;70;2.230848168473654e-5;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;67;78;148;4.716650413344296e-5;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;8;156;4.971604489741285e-5;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;342;498;1.5870891255712565e-4;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;2262;2760;8.79591563569612e-4;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;3666;6426;0.002047918618658814;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;6710;13136;0.00418634593443856;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;22276;35412;0.011285542191712718;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;73056;108468;0.03456794844828575;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;300040;408508;0.13018847480097648;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;787532;1196040;0.3811690919173184;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;1306180;2502220;0.7974389863025922;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;590624;3092844;0.9856664818249613;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;42112;3134956;0.9990872644064988;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;2856;3137812;0.999997450459236;BAFU & BFS
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;8;3137820;1;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;65;35;35;2.230848168473654e-5;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;67;39;74;4.716650413344296e-5;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;69;4;78;4.971604489741285e-5;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;171;249;1.5870891255712565e-4;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;1131;1380;8.79591563569612e-4;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;1833;3213;0.002047918618658814;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;3355;6568;0.00418634593443856;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;11138;17706;0.011285542191712718;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;36528;54234;0.03456794844828575;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;150020;204254;0.13018847480097648;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;393766;598020;0.3811690919173184;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;653090;1251110;0.7974389863025922;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;295312;1546422;0.9856664818249613;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;21056;1567478;0.9990872644064988;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;1428;1568906;0.999997450459236;BAFU & BFS
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;4;1568910;1;BAFU & BFS
 2021;O3;typische Spitzenbelastung;O3_max_98p_m1;135;9;9;5.7362619712600525e-6;BAFU & BFS
 2021;O3;typische Spitzenbelastung;O3_max_98p_m1;137;1770;1779;0.001133867782985737;BAFU & BFS
 2021;O3;typische Spitzenbelastung;O3_max_98p_m1;139;72689;74468;0.04746310627508818;BAFU & BFS
@@ -1317,21 +1317,21 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2022;NO2;Jahresmittel;NO2;37.5;4;1584116;0.9999495011980841;BAFU & BFS
 2022;NO2;Jahresmittel;NO2;40.5;43;1584159;0.9999766443041139;BAFU & BFS
 2022;NO2;Jahresmittel;NO2;44.5;37;1584196;1;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;74;74;2.3355695886115102e-5;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;86;160;5.0498801915924544e-5;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;190;350;1.1046612919108494e-4;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;1092;1442;4.5512045226726996e-4;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;2418;3860;0.0012182835962216796;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;5142;9002;0.002841188842794705;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;9946;18948;0.005980320616893364;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;44254;63202;0.019947657991814145;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;153958;217160;0.06853949890038859;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;545624;762784;0.24074798825397867;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;1059588;1822372;0.5751725165320453;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;1105882;2928254;0.9242082419094607;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;233104;3161358;0.9977799464207712;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;6940;3168298;0.9999703319538744;BAFU & BFS
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;94;3168392;1;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;37;37;2.3355695886115102e-5;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;43;80;5.0498801915924544e-5;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;95;175;1.1046612919108494e-4;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;546;721;4.5512045226726996e-4;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;1209;1930;0.0012182835962216796;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;2571;4501;0.002841188842794705;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;4973;9474;0.005980320616893364;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;22127;31601;0.019947657991814145;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;76979;108580;0.06853949890038859;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;272812;381392;0.24074798825397867;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;529794;911186;0.5751725165320453;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;99;552941;1464127;0.9242082419094607;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;101;116552;1580679;0.9977799464207712;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;103;3470;1584149;0.9999703319538744;BAFU & BFS
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;105;47;1584196;1;BAFU & BFS
 2022;O3;typische Spitzenbelastung;O3_max_98p_m1;135;9;9;5.680903642406052e-6;BAFU & BFS
 2022;O3;typische Spitzenbelastung;O3_max_98p_m1;137;250;259;1.634837825981297e-4;BAFU & BFS
 2022;O3;typische Spitzenbelastung;O3_max_98p_m1;139;2223;2482;0.0015666669822724246;BAFU & BFS
@@ -1413,20 +1413,20 @@ year;pollutant;metric;parameter;concentration;population;population_cum;populati
 2023;NO2;Jahresmittel;NO2;32.5;4;1609591;0.9999527852655239;BAFU & BFS
 2023;NO2;Jahresmittel;NO2;35.5;42;1609633;0.999978877618787;BAFU & BFS
 2023;NO2;Jahresmittel;NO2;39.5;34;1609667;1;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;36;36;1.1182437112769287e-5;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;32;68;2.1122381213008655e-5;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;84;152;4.721473447613699e-5;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;244;396;1.2300680824046216e-4;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;1472;1868;5.802442368514731e-4;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;2988;4856;0.001508386517211324;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;8510;13366;0.004151790401368731;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;31774;45140;0.014021533646400157;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;131758;176898;0.05494863223262948;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;582530;759428;0.23589599587989318;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;1294540;2053968;0.6380102219900141;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;1070010;3123978;0.9703802090742992;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;91926;3215904;0.9989345622417556;BAFU & BFS
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;3430;3219334;1;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;71;18;18;1.1182437112769287e-5;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;73;16;34;2.1122381213008655e-5;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;75;42;76;4.721473447613699e-5;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;77;122;198;1.2300680824046216e-4;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;79;736;934;5.802442368514731e-4;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;81;1494;2428;0.001508386517211324;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;83;4255;6683;0.004151790401368731;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;85;15887;22570;0.014021533646400157;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;87;65879;88449;0.05494863223262948;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;89;291265;379714;0.23589599587989318;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;91;647270;1026984;0.6380102219900141;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;93;535005;1561989;0.9703802090742992;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;95;45963;1607952;0.9989345622417556;BAFU & BFS
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;97;1715;1609667;1;BAFU & BFS
 2023;O3;typische Spitzenbelastung;O3_max_98p_m1;143;125;125;7.765219519649733e-5;BAFU & BFS
 2023;O3;typische Spitzenbelastung;O3_max_98p_m1;145;9067;9192;0.005710231825969627;BAFU & BFS
 2023;O3;typische Spitzenbelastung;O3_max_98p_m1;147;107351;116543;0.0723985582782831;BAFU & BFS

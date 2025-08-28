@@ -26,33 +26,33 @@ year;pollutant;metric;parameter;outcome_type;population;scenario;outcome;outcome
 2021;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1579369;vermieden vs. 2010;-432.2872315699733;NA;NA;NA
 2022;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1594568;vermieden vs. 2010;-476.2775131997107;NA;NA;NA
 2023;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1620319;vermieden vs. 2010;-556.7797961184349;NA;NA;NA
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2770434;tatsächliche Belastung;363.395008700157;57.13157915312493;630.558833735808;0
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2809632;tatsächliche Belastung;394.811498677679;62.161228288014684;684.1849726657141;0
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2841906;tatsächliche Belastung;340.8592848580402;53.517209969257884;592.1578364971699;0
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2876276;tatsächliche Belastung;359.3220472752603;56.43500094733455;624.0448804483269;0
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2918524;tatsächliche Belastung;330.2950260462006;51.83163681347537;574.0706279845506;0
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2959160;tatsächliche Belastung;460.73466104508464;72.63282667613352;797.5236515036747;0
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3002474;tatsächliche Belastung;330.592549508711;51.86583746058043;574.7110807068539;0
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3035426;tatsächliche Belastung;378.10247288200327;59.410430629977036;656.4075156055933;0
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3068972;tatsächliche Belastung;575.2220289560888;91.15180195438168;991.1374465421234;0
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3105734;tatsächliche Belastung;466.3532839420317;73.51854212703412;807.2497423872005;0
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3135966;tatsächliche Belastung;404.12313499826814;63.58254565139333;700.7600769392927;0
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3158738;tatsächliche Belastung;340.9681145275344;53.50481103196799;592.6378494655177;0
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3189136;tatsächliche Belastung;504.8363971416953;79.69285490899944;872.8149065627291;0
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3240638;tatsächliche Belastung;428.40238602099544;67.4033777931321;742.8524362929512;0
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2809632;vermieden vs. 2010;0;NA;NA;NA
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2841906;vermieden vs. 2010;-30.139102057275068;NA;NA;NA
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2876276;vermieden vs. 2010;-23.154288149403953;NA;NA;NA
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2918524;vermieden vs. 2010;-41.811273167261106;NA;NA;NA
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;2959160;vermieden vs. 2010;0;NA;NA;NA
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3002474;vermieden vs. 2010;-48.01268060467288;NA;NA;NA
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3035426;vermieden vs. 2010;-13.045904562592398;NA;NA;NA
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3068972;vermieden vs. 2010;0;NA;NA;NA
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3105734;vermieden vs. 2010;0;NA;NA;NA
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3135966;vermieden vs. 2010;0;NA;NA;NA
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3158738;vermieden vs. 2010;-44.087977893164464;NA;NA;NA
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3189136;vermieden vs. 2010;0;NA;NA;NA
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;3240638;vermieden vs. 2010;0;NA;NA;NA
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1385217;tatsächliche Belastung;363.395008700157;57.13157915312493;630.558833735808;0
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1404816;tatsächliche Belastung;394.811498677679;62.161228288014684;684.1849726657141;0
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1420953;tatsächliche Belastung;340.8592848580402;53.517209969257884;592.1578364971699;0
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1438138;tatsächliche Belastung;359.3220472752603;56.43500094733455;624.0448804483246;0
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1459262;tatsächliche Belastung;330.2950260462006;51.83163681347537;574.0706279845506;0
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1479580;tatsächliche Belastung;460.73466104508697;72.63282667613352;797.523651503677;0
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1501237;tatsächliche Belastung;330.592549508711;51.86583746058043;574.7110807068539;0
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1517713;tatsächliche Belastung;378.10247288200327;59.410430629977036;656.4075156055933;0
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1534486;tatsächliche Belastung;575.2220289560865;91.15180195438168;991.1374465421234;0
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1552867;tatsächliche Belastung;466.35328394203407;73.51854212703412;807.2497423872005;0
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1567983;tatsächliche Belastung;404.12313499826814;63.58254565139333;700.7600769392927;0
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1579369;tatsächliche Belastung;340.9681145275344;53.50481103196799;592.6378494655154;0
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1594568;tatsächliche Belastung;504.8363971416953;79.69285490899944;872.814906562728;0
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1620319;tatsächliche Belastung;428.40238602099544;67.4033777931321;742.8524362929512;0
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1404816;vermieden vs. 2010;0;NA;NA;NA
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1420953;vermieden vs. 2010;-30.139102057275068;NA;NA;NA
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1438138;vermieden vs. 2010;-23.154288149403953;NA;NA;NA
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1459262;vermieden vs. 2010;-41.811273167261106;NA;NA;NA
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1479580;vermieden vs. 2010;0;NA;NA;NA
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1501237;vermieden vs. 2010;-48.01268060467288;NA;NA;NA
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1517713;vermieden vs. 2010;-13.045904562592398;NA;NA;NA
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1534486;vermieden vs. 2010;0;NA;NA;NA
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1552867;vermieden vs. 2010;0;NA;NA;NA
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1567983;vermieden vs. 2010;0;NA;NA;NA
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1579369;vermieden vs. 2010;-44.087977893164464;NA;NA;NA
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1594568;vermieden vs. 2010;0;NA;NA;NA
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1620319;vermieden vs. 2010;0;NA;NA;NA
 2010;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1385217;tatsächliche Belastung;1004.9185345653643;538.7724563984325;1445.9650950799949;0
 2011;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1404816;tatsächliche Belastung;977.9120145032175;523.9370314527235;1408.042958983161;0
 2012;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1420953;tatsächliche Belastung;805.8875313904655;429.58891187115944;1166.1400359850215;0

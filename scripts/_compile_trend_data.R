@@ -1,7 +1,7 @@
 #TODO: work in progress!
 
 # years to consider for analysis and later plotting
-years <- 1990:(lubridate::year(Sys.Date()) - 1)  
+years <- 1995:(lubridate::year(Sys.Date()) - 1)  
 
 # reference year for relative trends
 reference_year <- 2015 # base_scenario_year

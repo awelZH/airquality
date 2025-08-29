@@ -450,26 +450,30 @@ plots$exposition$population_over_thresh$various <-
   dplyr::right_join(data_expo_distr_pollutants, by = "parameter") |> 
   dplyr::mutate(
     "über LRV-Grenzwert" = ifelse(concentration <= `LRV Grenzwert`, NA, population),
-    "über WHO-Richtwert" = ifelse(concentration <= `WHO Richtwert`, NA, population)
+    "zusätzlich über WHO-Richtwert" = ifelse(concentration <= `WHO Richtwert`, NA, population),
+    `über LRV-Grenzwert` = ifelse(parameter == "O3_peakseason_mean_d1_max_mean_h8gl", NA, `über LRV-Grenzwert`),
+    `zusätzlich über WHO-Richtwert` = ifelse(parameter == "O3_max_98p_m1", NA, `zusätzlich über WHO-Richtwert`)
   ) |> 
-  dplyr::group_by(parameter, pollutant, metric, year) |> 
+  dplyr::group_by(pollutant, year) |> 
   dplyr::summarise(
     `über LRV-Grenzwert` = sum(`über LRV-Grenzwert`, na.rm = TRUE),
-    `über WHO-Richtwert` = sum(`über WHO-Richtwert`, na.rm = TRUE)
+    `zusätzlich über WHO-Richtwert` = sum(`zusätzlich über WHO-Richtwert`, na.rm = TRUE)
     ) |> 
   dplyr::ungroup() |> 
   dplyr::mutate(
-    `über LRV-Grenzwert` = ifelse(parameter == "O3_peakseason_mean_d1_max_mean_h8gl", NA, `über LRV-Grenzwert`),
-    `über WHO-Richtwert` = ifelse(parameter == "O3_max_98p_m1", NA, `über WHO-Richtwert`)
-  ) |> 
-  tidyr::gather(reference, population, -year, -parameter, -pollutant, -metric) |> 
+    `zusätzlich über WHO-Richtwert` = `zusätzlich über WHO-Richtwert` - `über LRV-Grenzwert`
+  ) |>
+  tidyr::gather(reference, population, -year,  -pollutant) |> 
   dplyr::filter(!is.na(population)) |> 
-  dplyr::mutate(pollutant = airquality.methods::longpollutant(pollutant)) |> 
-  ggplot2::ggplot(ggplot2::aes(x = year, y = population, color = reference)) + 
-  ggplot2::geom_line() + 
+  dplyr::mutate(
+    pollutant = airquality.methods::longpollutant(pollutant),
+    reference = factor(reference, levels = c("zusätzlich über WHO-Richtwert", "über LRV-Grenzwert"))
+    ) |> 
+  ggplot2::ggplot(ggplot2::aes(x = year, y = population, fill = reference)) + 
+  ggplot2::geom_bar(stat = "identity", position = "stack", width = 0.8) + 
   ggplot2::scale_x_continuous(breaks = seq(1990,2100,2), expand = c(0.01,0.01)) +
   ggplot2::scale_y_continuous(labels = function(x) format(x, scientific = FALSE, big.mark = "'"), expand = c(0.01, 0.01)) +
-  ggplot2::scale_color_manual(values = c("über LRV-Grenzwert" = "red3", "über WHO-Richtwert" = "gray30")) +
+  ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "zusätzlich über WHO-Richtwert" = col_who)) +
   ggplot2::facet_wrap(pollutant~., axes = "all_x") + 
   theme_ts + 
   ggplot2::theme(

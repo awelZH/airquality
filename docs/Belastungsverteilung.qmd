@@ -40,9 +40,10 @@ p$data |>
   tidyr::spread(reference, population) |> 
   dplyr::arrange(pollutant, dplyr::desc(year)) |> 
   dplyr::mutate(
-    `über LRV-Grenzwert` = format(`über LRV-Grenzwert`, scientific = FALSE, big.mark = "'"),
-    `über WHO-Richtwert` = format(`über WHO-Richtwert`, scientific = FALSE, big.mark = "'"),
+    `über WHO-Richtwert` = format(`über LRV-Grenzwert` + `zusätzlich über WHO-Richtwert`, scientific = FALSE, big.mark = "'"),
+        `über LRV-Grenzwert` = format(`über LRV-Grenzwert`, scientific = FALSE, big.mark = "'")
   ) |> 
+  dplyr::select(-`zusätzlich über WHO-Richtwert`) |> 
   dplyr::rename(
     Jahr = year,
     Schadstoff = pollutant,

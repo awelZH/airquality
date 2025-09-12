@@ -11,7 +11,7 @@ print("3) compile monitoring data...")
 source("scripts/_compile_monitoring_data.R", encoding = "UTF-8")
 
 # 4) read, restructure & save air quality monitoring data
-print("4) compile monitoring data...")
+print("4) compile trends data...")
 source("scripts/_compile_trend_data.R", encoding = "UTF-8")
 
 # 5) read, restructure & analyse air quality and inhabitant raster data, derive population and ecosystem exposition & save data 

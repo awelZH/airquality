@@ -82,7 +82,8 @@ data_monitoring_met <- airquality.data::data_monitoring_met_d1
 
 
 
-nmin <- 4 #minimum number of years available for trend analysis per site
+nmin_per_site <- 4 # minimum number of years available for trend analysis per site
+nmin_sites <- 2 # minimum number of sites per year for which median trend / observed is derived
 cantons <- c("ZH", NA) # NA = NABEL sites
 trend_vars <- c("T", "T_max_min10", "Hr", "StrGlo", "p", "WVs", "WD", "RainSum")
 
@@ -137,7 +138,7 @@ data_trends <-
 
 
 # select subset of sites per pollutant used for trend analysis, needs to include the reference year
-pollutant <- "PM10"
+pollutant <- "NOx"
 
 
 # how many data, reference year included?
@@ -162,7 +163,7 @@ data_trends_agg <-
   dplyr::summarise(n = dplyr::n()) |> 
   dplyr::ungroup() |> 
   dplyr::arrange(dplyr::desc(n)) |> 
-  dplyr::filter(n >= !!nmin) |>
+  dplyr::filter(n >= !!nmin_per_site) |>
   dplyr::filter(site %in% !!sites_trends_refyears) |>
   tidyr::spread(parameter, n)
 
@@ -209,7 +210,7 @@ results_y1 <-
   dplyr::bind_rows()
 
 results_y1 |> 
-  ggplot(aes(x = year, y = value, color = type, size = n)) +
+  ggplot(aes(x = year, y = value, color = type)) +
   geom_line() +
   geom_point() +
   facet_wrap(site~.)
@@ -229,21 +230,30 @@ results_y1 <-
     # "relative Emission" = emission / emission_refyear,
     pollutant = airquality.methods::longpollutant(pollutant)
   ) |>
-  dplyr::select(year, site, pollutant, type, value, `relative Immission`) #, `relative Emission`) |>
-# tidyr::gather(parameter, value, -year, -pollutant)
+  dplyr::select(year, site, pollutant, type, value, `relative Immission`) |> #, `relative Emission`) |>
+  # tidyr::gather(parameter, value, -year, -pollutant)
+  dplyr::group_by(year, pollutant, type) |>
+  dplyr::summarise(
+    n = sum(!is.na(`relative Immission`)),
+    `relative Immission` = median(`relative Immission`, na.rm = TRUE)
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::mutate(
+    `relative Immission` = ifelse(n < !!nmin_sites, NA, `relative Immission`)
+  )
 
 results_y1 |> 
-  dplyr::group_by(year, pollutant, type) |>
-  dplyr::summarise(`relative Immission` = median(`relative Immission`, na.rm = TRUE)) |> 
-  dplyr::ungroup() |> 
-  # dplyr::filter(type == "normalised") |> 
-  ggplot(aes(x = year, y = `relative Immission` - 1, color = type, group = type)) +
+  dplyr::filter(type == "Trend") |> 
+  ggplot(aes(x = year, y = `relative Immission` - 1)) + 
   geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
-  geom_line() +
-  geom_point(shape = 21, fill = "white") +
+  geom_line(data = results_y1, mapping = aes(color = type), linewidth = 1) +
+  geom_point(mapping = aes(size = n, color = type), shape = 21, fill = "white") +
   # geom_smooth(se = FALSE, span = 0.8) +
   scale_y_continuous(labels = scales::percent_format()) + 
-  scale_color_manual(values = c("normalised" = "steelblue", "observed" = "gray80"))
+  scale_color_manual(name = "Grundlage", values = c("Trend" = "steelblue", "gemessen" = "gray90")) +
+  scale_size_binned(name = "Anzahl\nMessorte", breaks = c(2,4,6,Inf), range = c(1,4)) +
+  theme_minimal() +
+  theme(axis.line.x = element_line(color = "gray30"))
 
 
 
@@ -292,11 +302,11 @@ rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 
     dplyr::select(date, site, parameter, value) |> 
     dplyr::left_join(list_normalised$normalised, by = "date") |> 
     dplyr::rename(
-      observed = value,
-      normalised = value_predict
+      gemessen = value,
+      Trend = value_predict
     ) |> 
     tidyr::gather(type, value, -date, -site, -parameter) |> 
-    dplyr::mutate(type = factor(type, levels = c("observed", "normalised"))) 
+    dplyr::mutate(type = factor(type, levels = c("gemessen", "Trend"))) 
   
   # normalised trend and observations based on yearly interval
   data_y1 <-
@@ -344,7 +354,7 @@ rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 
 #   ggplot2::ggplot(ggplot2::aes(x = date, y = value, group = type, color = type)) + 
 #   ggplot2::geom_line() +
 #   ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01)) +
-#   ggplot2::scale_color_manual(values = c("observed" = "gray80", "normalised" = "steelblue")) +
+#   ggplot2::scale_color_manual(values = c("gemessen" = "gray80", "Trend" = "steelblue")) +
 #   theme_custom
 # plot_trend_y1 <-
 #   data_y1 |> 
@@ -352,7 +362,7 @@ rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 
 #   ggplot2::geom_line() +
 #   ggplot2::geom_point() +
 #   ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01)) +
-#   ggplot2::scale_color_manual(values = c("observed" = "gray80", "normalised" = "steelblue")) +
+#   ggplot2::scale_color_manual(values = c("gemessen" = "gray80", "Trend" = "steelblue")) +
 #   theme_custom
 
 

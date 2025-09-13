@@ -4,7 +4,16 @@
 years <- 1990:(lubridate::year(Sys.Date()) - 1)  
 
 # reference year for relative trends
-reference_year <- 2021 # base_scenario_year
+# reference_year <- 2021 # base_scenario_year
+reference_year <- function(pollutant, base_year = 2015){
+  dplyr::case_when(
+    pollutant == "PM2.5" ~ 2021,
+    pollutant == "eBC" ~ 2020,
+    pollutant == "NHx" ~ 2020,
+    pollutant == "Ndep" ~ 2020,
+    TRUE ~ base_year
+  )
+}
 
 # read pre-compiled emission data
 data_emikat <- airquality.methods::read_local_csv("inst/extdata/output/data_emissions.csv", delim = ";", locale = readr::locale(encoding = "UTF-8"))
@@ -21,9 +30,9 @@ yearmin_per_site <- 4
 # minimum number of sites per year for which median trend is derived
 nmin_sites <- function(pollutant){
   dplyr::case_when(
-    pollutant == "PM10" ~ 4,
-    pollutant == "PM2.5" ~ 4,
-    pollutant == "eBC" ~ 4,
+    pollutant == "PM10" ~ 3,
+    pollutant == "PM2.5" ~ 3,
+    pollutant == "eBC" ~ 3,
     pollutant == "NOx" ~ 5,
     pollutant == "NO2" ~ 5,
     pollutant == "O3" ~ 6,
@@ -46,42 +55,54 @@ data_trends <- prepare_data_trends(data_monitoring_aq, data_monitoring_met)
 # trend analysis and result aggregation (takes a while)
 fun <- function(x) {
   print(x)
-  trends <- derive_trends_per_pollutant(data_trends, pollutant = x, reference_year = reference_year, 
-                                        nmin_sites_fun = nmin_sites, yearmin_per_site = yearmin_per_site)
+  trends <- derive_trends_per_pollutant(data_trends, pollutant = x, reference_year_fun = reference_year, yearmin_per_site = yearmin_per_site)
   return(trends)
 }
 trends <- purrr::map(pollutants, fun)
 trends <- dplyr::bind_rows(trends)
 
 # prepare relative trend results for plotting
-trends_relative <- prepare_trend_results(trends, reference_year)
+trends_relative <- prepare_trend_results(trends, reference_year_fun = reference_year, nmin_sites_fun = nmin_sites)
 
 
 
 
 # plot results
+theme_custom <-
+  ggplot2::theme_minimal() +
+  ggplot2::theme(
+    axis.line.x = ggplot2::element_line(color = "gray30"),
+    axis.ticks = ggplot2::element_line(color = "gray30"),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    legend.title = ggplot2::element_blank()
+  )
 
 trends_relative$all |> 
   ggplot(aes(x = year, y = value, color = type)) +
   geom_line() +
   geom_point() +
-  facet_wrap(site~.)
+  scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01)) + 
+  facet_grid(pollutant~site, scales = "free_y")
 
 trends_relative$agg |> 
   dplyr::filter(type == "Trend") |> 
   ggplot(aes(x = year, y = `relative Immission` - 1)) + 
-  geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
+  geom_hline(yintercept = 0, color = "gray60", linetype = 2) +
+  geom_segment(
+    data = tibble(pollutant = airquality.methods::longpollutant(pollutants), refyear = reference_year(pollutants)), 
+    mapping = aes(x = refyear, y = -Inf, yend = 0), color = "gray60", linetype = 2, inherit_aes = FALSE
+    ) +
   geom_line(data = dplyr::filter(trends_relative$all, type == "Trend"), mapping = aes(group = site), color = "gray80") +
-  geom_line(linewidth = 1) +
+  geom_point(data = dplyr::filter(trends_relative$all, type == "Trend"), shape = 21, fill = "white", color = "gray80", size = 1) +
+  geom_line(linewidth = 1, color = "steelblue") +
   # geom_point(data = dplyr::filter(results_y1, type == "gemessen"), shape = 21, fill = "white", color = "gray80") +
-  geom_point(data = dplyr::filter(trends_relative$all, type == "Trend"), shape = 21, fill = "white", color = "gray80") +
-  geom_point(mapping = aes(size = n), shape = 21, fill = "white") +
-  # geom_smooth(se = FALSE, span = 0.8) +
-  scale_y_continuous(labels = scales::percent_format()) + 
+  # geom_point(mapping = aes(size = n), shape = 21, fill = "white") +
+  scale_y_continuous(labels = scales::percent_format(), expand = c(0.01,0.01)) + 
   # scale_color_manual(name = "Grundlage", values = c("Trend" = "steelblue", "gemessen" = "gray90")) +
-  scale_size_binned(name = "Anzahl\nMessorte", breaks = c(-Inf,6,8,Inf), range = c(1,4)) +
-  theme_minimal() +
-  theme(axis.line.x = element_line(color = "gray30"))
+  scale_size_binned(name = "Anzahl\nMessorte", breaks = c(-Inf,4,6,8,Inf), range = c(0.25,3)) +
+  theme_custom + 
+  facet_wrap(pollutant~., axes = "all", nrow = 2)
 
 
 
@@ -145,7 +166,7 @@ prepare_data_trends <- function(data_aq, data_met) {
 
 
 
-rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 300, nsamples = 300, verbose = TRUE, minimal = TRUE) {
+rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 300, nsamples = 300, verbose = TRUE, minimal = TRUE, coverage = 0.8) {
   
   # see example at https://github.com/skgrange/rmweather
   # prepare, grow/train a random forest model and then create a meteorological normalised trend 
@@ -182,23 +203,23 @@ rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 
   print(paste0("R2 = ", airquality.methods::round_off(model_stats$r_squared,2)))
   print(imp)
   
+  # normalised trend and observations based on yearly interval
+  data_y1 <-
+    data |>
+    dplyr::group_by(year = lubridate::year(date), site, parameter, type) |>
+    dplyr::summarise(
+      n = sum(!is.na(value)),
+      value = mean(value, na.rm = TRUE)
+    ) |>
+    dplyr::ungroup() |>
+    dplyr::mutate(
+      value = ifelse(is.nan(value), NA, value),
+      value = ifelse(n < 365 * !!coverage, NA, value)
+    )
+  
   if (!minimal) {
     
-    # normalised trend and observations based on yearly interval
-    data_y1 <-
-      data |>
-      dplyr::group_by(year = lubridate::year(date), site, parameter, type) |>
-      dplyr::summarise(
-        n = sum(!is.na(value)),
-        value = mean(value, na.rm = TRUE)
-      ) |>
-      dplyr::ungroup() |>
-      dplyr::mutate(
-        value = ifelse(is.nan(value), NA, value),
-        value = ifelse(n < 365*0.9, NA, value)
-      )
-    
-    # Check if model has suffered from overfitting
+     # Check if model has suffered from overfitting
     pred_obs <-
       rmweather::rmw_predict_the_test_set(
         model = list_normalised$model,
@@ -217,7 +238,7 @@ rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 
     
   } else {
     
-    results <- list(data = data, model_stats = model_stats, imp = imp)
+    results <- list(data = data, data_y1 = data_y1, model_stats = model_stats, imp = imp)
     
   }
   
@@ -225,10 +246,8 @@ rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 
 }
 
 
-derive_trends_per_pollutant <- function(data_trends, pollutant, reference_year, nmin_sites_fun, yearmin_per_site = 4) {
-  
-  nmin_sites <- nmin_sites_fun(pollutant)
-  
+derive_trends_per_pollutant <- function(data_trends, pollutant, reference_year_fun, yearmin_per_site = 4, coverage = 0.8) {
+
   # how many data, reference year included?
   data_trends_agg <-
     data_trends |> 
@@ -236,11 +255,12 @@ derive_trends_per_pollutant <- function(data_trends, pollutant, reference_year, 
     dplyr::group_by(year = lubridate::year(starttime), site, parameter) |> 
     dplyr::summarise(n = dplyr::n()) |> 
     dplyr::ungroup() |> 
-    dplyr::filter(n >= 0.9*365)
+    dplyr::filter(n >= 365 * !!coverage)
   
   sites_trends_refyears <-
     data_trends_agg |>
-    dplyr::filter(year == !!reference_year & parameter == !!pollutant) |>
+    dplyr::mutate(reference_year = reference_year_fun(parameter)) |> 
+    dplyr::filter(year == reference_year & parameter == !!pollutant) |>
     dplyr::distinct(site)  |>
     dplyr::pull(site) |>
     as.character()
@@ -288,17 +308,18 @@ derive_trends_per_pollutant <- function(data_trends, pollutant, reference_year, 
 
 
 
-prepare_trend_results <- function(trends, reference_year) {
-  browser() # ! per pollutant!
-  results_y1 <-
-    results_y1 |>
-    dplyr::filter(year == !!reference_year) |>
+prepare_trend_results <- function(trends, reference_year_fun, nmin_sites_fun) {
+ 
+  trends <-
+    trends |>
+    dplyr::mutate(reference_year = reference_year_fun(parameter)) |> 
+    dplyr::filter(year == reference_year) |>
     dplyr::select(-year, -n) |>
     dplyr::rename(
       value_refyear = value,
       # emission_refyear = emission
     ) |>
-    dplyr::right_join(results_y1, by = c("site", "parameter", "type")) |>
+    dplyr::right_join(trends, by = c("site", "parameter", "type")) |>
     dplyr::rename(pollutant = parameter) |> 
     dplyr::mutate(
       "relative Immission" = value / value_refyear,
@@ -309,17 +330,21 @@ prepare_trend_results <- function(trends, reference_year) {
     dplyr::select(year, site, pollutant, type, value, `relative Immission`) #, `relative Emission`) |>
   # tidyr::gather(parameter, value, -year, -pollutant)
   
-  results_y1_agg <-
-    results_y1 |> 
+  trends_agg <-
+    trends |> 
     dplyr::group_by(year, pollutant, type) |>
     dplyr::summarise(
       n = sum(!is.na(`relative Immission`)),
       `relative Immission` = median(`relative Immission`, na.rm = TRUE)
     ) |> 
     dplyr::ungroup() |> 
-    dplyr::mutate(`relative Immission` = ifelse(n < !!nmin_sites, NA, `relative Immission`))
+    dplyr::mutate(
+      nmin = nmin_sites_fun(pollutant),
+      `relative Immission` = ifelse(n < nmin, NA, `relative Immission`)
+      ) |> 
+      dplyr::select(-nmin)
   
-  return(list(all = results_y1, agg = results_y1_agg))
+  return(list(all = trends, agg = trends_agg))
 }
 
 
@@ -381,17 +406,7 @@ prepare_trend_results <- function(trends, reference_year) {
 # rm(list = c("data_monitoring_aq", "data_emikat", "years", "reference_year", "nmin"))
 
 
-# theme_custom <- 
-#   ggplot2::theme_minimal() +
-#   ggplot2::theme(
-#     axis.line.x = ggplot2::element_line(color = "gray30"),
-#     axis.ticks = ggplot2::element_line(color = "gray30"),
-#     panel.grid.major.x = ggplot2::element_blank(),
-#     panel.grid.minor.x = ggplot2::element_blank(),
-#     legend.title = ggplot2::element_blank()
-#   )
-# 
-# 
+
 # plot_imp <- rmweather::rmw_plot_importance(imp)
 # plot_pred_obs <- rmweather::rmw_plot_test_prediction(pred_obs)
 # plot_pd <- rmweather::rmw_plot_partial_dependencies(partialdep)

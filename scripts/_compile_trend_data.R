@@ -145,11 +145,12 @@ prepare_data_trends <- function(data_aq, data_met) {
 
 
 
-rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 300, nsamples = 300, verbose = TRUE) {
+rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 300, nsamples = 300, verbose = TRUE, minimal = TRUE) {
   
   # see example at https://github.com/skgrange/rmweather
   # prepare, grow/train a random forest model and then create a meteorological normalised trend 
   print(paste0("processing ", unique(data$site)))
+  
   list_normalised <- 
     data |> 
     rmweather::rmw_prepare_data(na.rm = TRUE, fraction = frac_train) |> 
@@ -166,21 +167,6 @@ rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 
   # Plot variable importances
   imp <- rmweather::rmw_model_importance(list_normalised$model)
   
-  # Check if model has suffered from overfitting
-  pred_obs <- 
-    rmweather::rmw_predict_the_test_set(
-      model = list_normalised$model,
-      df = list_normalised$observations
-    ) 
-  
-  # Investigate partial dependencies, if variable is NA, predict all
-  partialdep <- 
-    rmweather::rmw_partial_dependencies(
-      model = list_normalised$model, 
-      df = list_normalised$observations,
-      variable = NA
-    )
-  
   # normalised trend and observations based in original interval
   data <- 
     data |>
@@ -193,24 +179,47 @@ rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 
     tidyr::gather(type, value, -date, -site, -parameter) |> 
     dplyr::mutate(type = factor(type, levels = c("gemessen", "Trend"))) 
   
-  # normalised trend and observations based on yearly interval
-  data_y1 <-
-    data |> 
-    dplyr::group_by(year = lubridate::year(date), site, parameter, type) |> 
-    dplyr::summarise(
-      n = sum(!is.na(value)),
-      value = mean(value, na.rm = TRUE)
-    ) |> 
-    dplyr::ungroup() |>
-    dplyr::mutate(
-      value = ifelse(is.nan(value), NA, value),
-      value = ifelse(n < 365*0.9, NA, value)
-    )
-  
   print(paste0("R2 = ", airquality.methods::round_off(model_stats$r_squared,2)))
   print(imp)
   
-  results <- list(data = data, data_y1 = data_y1, model_stats = model_stats, imp = imp, partialdep = partialdep)
+  if (!minimal) {
+    
+    # normalised trend and observations based on yearly interval
+    data_y1 <-
+      data |>
+      dplyr::group_by(year = lubridate::year(date), site, parameter, type) |>
+      dplyr::summarise(
+        n = sum(!is.na(value)),
+        value = mean(value, na.rm = TRUE)
+      ) |>
+      dplyr::ungroup() |>
+      dplyr::mutate(
+        value = ifelse(is.nan(value), NA, value),
+        value = ifelse(n < 365*0.9, NA, value)
+      )
+    
+    # Check if model has suffered from overfitting
+    pred_obs <-
+      rmweather::rmw_predict_the_test_set(
+        model = list_normalised$model,
+        df = list_normalised$observations
+      )
+    
+    # Investigate partial dependencies, if variable is NA, predict all
+    partialdep <-
+      rmweather::rmw_partial_dependencies(
+        model = list_normalised$model,
+        df = list_normalised$observations,
+        variable = NA
+      )
+    
+    results <- list(data = data, data_y1 = data_y1, model_stats = model_stats, imp = imp, partialdep = partialdep)
+    
+  } else {
+    
+    results <- list(data = data, model_stats = model_stats, imp = imp)
+    
+  }
   
   return(results)
 }

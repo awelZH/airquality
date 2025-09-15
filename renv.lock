@@ -296,7 +296,7 @@
     },
     "airquality.data": {
       "Package": "airquality.data",
-      "Version": "0.1.2",
+      "Version": "0.1.3",
       "Source": "GitHub",
       "Type": "Package",
       "Title": "Air quality monitoring data within the Canton of Zurich, Switzerland",
@@ -314,11 +314,11 @@
       "Author": "Jörg Sintermann [aut, cre]",
       "Maintainer": "Jörg Sintermann <luft@bd.zh.ch>",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.data",
       "RemoteRef": "main",
-      "RemoteSha": "f1048653204955f3f0545614e3854d9fc75d4a5b",
-      "RemoteHost": "api.github.com"
+      "RemoteSha": "583516ab608cd9ffcc89934a0873182f878ef325"
     },
     "airquality.methods": {
       "Package": "airquality.methods",

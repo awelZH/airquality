@@ -49,8 +49,11 @@ ressources <- airquality.methods::prepare_ressources(airquality.methods::read_lo
 # read all available raster data?
 read_all_raster <- FALSE
 
+# max year from now - year_offset to be considered for raster data download
+year_offset <- 1
+
 # reference year for all pollutants in exposition & outcomes calculation
-base_scenario_year <- 2010
+base_scenario_year <- 2015
 
 # map projection CRS = CH1903+ / LV95 throughout analysis
 crs <- 2056

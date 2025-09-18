@@ -1,0 +1,417 @@
+year;pollutant;type;n;relative Immission;reference_year;aggregation
+1990;Stickoxide | Stickstoffdioxid;Messwerte;5;2.1849105974705627;2015;Median
+1991;Stickoxide | Stickstoffdioxid;Messwerte;5;2.1674662014827737;2015;Median
+1992;Stickoxide | Stickstoffdioxid;Messwerte;5;1.74804465154819;2015;Median
+1993;Stickoxide | Stickstoffdioxid;Messwerte;5;1.8578281726995203;2015;Median
+1994;Stickoxide | Stickstoffdioxid;Messwerte;32;1.4749236807675534;2015;Median
+1995;Stickoxide | Stickstoffdioxid;Messwerte;18;1.5030527692978632;2015;Median
+1996;Stickoxide | Stickstoffdioxid;Messwerte;18;1.559092891408635;2015;Median
+1997;Stickoxide | Stickstoffdioxid;Messwerte;18;1.5080195547317925;2015;Median
+1998;Stickoxide | Stickstoffdioxid;Messwerte;18;1.532805013301352;2015;Median
+1999;Stickoxide | Stickstoffdioxid;Messwerte;34;1.514391626689926;2015;Median
+2000;Stickoxide | Stickstoffdioxid;Messwerte;21;1.4160488443087658;2015;Median
+2001;Stickoxide | Stickstoffdioxid;Messwerte;23;1.4108155255124293;2015;Median
+2002;Stickoxide | Stickstoffdioxid;Messwerte;37;1.1251635080680331;2015;Median
+2003;Stickoxide | Stickstoffdioxid;Messwerte;35;1.3519406890536416;2015;Median
+2004;Stickoxide | Stickstoffdioxid;Messwerte;58;1.136284343654601;2015;Median
+2005;Stickoxide | Stickstoffdioxid;Messwerte;36;1.2248146532926298;2015;Median
+2006;Stickoxide | Stickstoffdioxid;Messwerte;37;1.3412996075010903;2015;Median
+2007;Stickoxide | Stickstoffdioxid;Messwerte;86;0.966201482773659;2015;Median
+2008;Stickoxide | Stickstoffdioxid;Messwerte;89;1.0247607278674227;2015;Median
+2009;Stickoxide | Stickstoffdioxid;Messwerte;82;1.0169306879633668;2015;Median
+2010;Stickoxide | Stickstoffdioxid;Messwerte;95;1.026602703881378;2015;Median
+2011;Stickoxide | Stickstoffdioxid;Messwerte;98;0.962370665721762;2015;Median
+2012;Stickoxide | Stickstoffdioxid;Messwerte;99;0.9572612298299171;2015;Median
+2013;Stickoxide | Stickstoffdioxid;Messwerte;61;1.0789716362843436;2015;Median
+2014;Stickoxide | Stickstoffdioxid;Messwerte;71;0.9555167902311382;2015;Median
+2015;Stickoxide | Stickstoffdioxid;Messwerte;81;1;2015;Median
+2016;Stickoxide | Stickstoffdioxid;Messwerte;76;0.9387265590928914;2015;Median
+2017;Stickoxide | Stickstoffdioxid;Messwerte;99;0.9140863497601396;2015;Median
+2018;Stickoxide | Stickstoffdioxid;Messwerte;89;0.85041430440471;2015;Median
+2019;Stickoxide | Stickstoffdioxid;Messwerte;77;0.8853030963802879;2015;Median
+2020;Stickoxide | Stickstoffdioxid;Messwerte;83;0.7566506759703446;2015;Median
+2021;Stickoxide | Stickstoffdioxid;Messwerte;63;0.7767117313563018;2015;Median
+2022;Stickoxide | Stickstoffdioxid;Messwerte;53;0.8935891844744875;2015;Median
+2023;Stickoxide | Stickstoffdioxid;Messwerte;50;0.735281290885303;2015;Median
+2024;Stickoxide | Stickstoffdioxid;Messwerte;74;0.6559092891408634;2015;Median
+1990;Feinstaub PM10;Messwerte;0;NA;2015;Median
+1991;Feinstaub PM10;Messwerte;0;NA;2015;Median
+1992;Feinstaub PM10;Messwerte;0;NA;2015;Median
+1993;Feinstaub PM10;Messwerte;0;NA;2015;Median
+1994;Feinstaub PM10;Messwerte;0;NA;2015;Median
+1995;Feinstaub PM10;Messwerte;0;NA;2015;Median
+1996;Feinstaub PM10;Messwerte;0;NA;2015;Median
+1997;Feinstaub PM10;Messwerte;2;NA;2015;Median
+1998;Feinstaub PM10;Messwerte;5;1.6193841233276887;2015;Median
+1999;Feinstaub PM10;Messwerte;4;1.5109001722174518;2015;Median
+2000;Feinstaub PM10;Messwerte;4;1.3495351621457308;2015;Median
+2001;Feinstaub PM10;Messwerte;5;1.3763663054132826;2015;Median
+2002;Feinstaub PM10;Messwerte;5;1.5175320803274654;2015;Median
+2003;Feinstaub PM10;Messwerte;5;1.7175169281225577;2015;Median
+2004;Feinstaub PM10;Messwerte;7;1.4469491928703742;2015;Median
+2005;Feinstaub PM10;Messwerte;6;1.42162952096588;2015;Median
+2006;Feinstaub PM10;Messwerte;7;1.5477150387564735;2015;Median
+2007;Feinstaub PM10;Messwerte;8;1.2293186232110087;2015;Median
+2008;Feinstaub PM10;Messwerte;7;1.2107595252561698;2015;Median
+2009;Feinstaub PM10;Messwerte;9;1.1940118329981577;2015;Median
+2010;Feinstaub PM10;Messwerte;9;1.1469719211777356;2015;Median
+2011;Feinstaub PM10;Messwerte;9;1.1335174988110834;2015;Median
+2012;Feinstaub PM10;Messwerte;9;1.0167113782447013;2015;Median
+2013;Feinstaub PM10;Messwerte;8;1.1035915991408587;2015;Median
+2014;Feinstaub PM10;Messwerte;7;0.9492302863628296;2015;Median
+2015;Feinstaub PM10;Messwerte;10;1;2015;Median
+2016;Feinstaub PM10;Messwerte;9;0.852876556773188;2015;Median
+2017;Feinstaub PM10;Messwerte;12;0.8622489490102917;2015;Median
+2018;Feinstaub PM10;Messwerte;10;0.9170161468298421;2015;Median
+2019;Feinstaub PM10;Messwerte;11;0.7999393911803694;2015;Median
+2020;Feinstaub PM10;Messwerte;7;0.711710781859005;2015;Median
+2021;Feinstaub PM10;Messwerte;9;0.7587660401637327;2015;Median
+2022;Feinstaub PM10;Messwerte;5;0.8380021143498025;2015;Median
+2023;Feinstaub PM10;Messwerte;5;0.7474905062391644;2015;Median
+2024;Feinstaub PM10;Messwerte;6;0.6563673221127212;2015;Median
+1990;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+1991;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+1992;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+1993;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+1994;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+1995;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+1996;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+1997;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+1998;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+1999;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+2000;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+2001;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+2002;Russ im Feinstaub;Messwerte;0;NA;2020;Median
+2003;Russ im Feinstaub;Messwerte;2;NA;2020;Median
+2004;Russ im Feinstaub;Messwerte;2;NA;2020;Median
+2005;Russ im Feinstaub;Messwerte;2;NA;2020;Median
+2006;Russ im Feinstaub;Messwerte;2;NA;2020;Median
+2007;Russ im Feinstaub;Messwerte;5;3.6024096385542173;2020;Median
+2008;Russ im Feinstaub;Messwerte;4;4.763343192771084;2020;Median
+2009;Russ im Feinstaub;Messwerte;6;3.2859377807228913;2020;Median
+2010;Russ im Feinstaub;Messwerte;9;2.5783132530120483;2020;Median
+2011;Russ im Feinstaub;Messwerte;9;2.698795180722892;2020;Median
+2012;Russ im Feinstaub;Messwerte;8;2.0120481927710845;2020;Median
+2013;Russ im Feinstaub;Messwerte;8;2.071146655421687;2020;Median
+2014;Russ im Feinstaub;Messwerte;8;1.934251290361446;2020;Median
+2015;Russ im Feinstaub;Messwerte;11;1.686746987951807;2020;Median
+2016;Russ im Feinstaub;Messwerte;8;1.6386589843373496;2020;Median
+2017;Russ im Feinstaub;Messwerte;12;1.4096385542168675;2020;Median
+2018;Russ im Feinstaub;Messwerte;12;1.1674698795180722;2020;Median
+2019;Russ im Feinstaub;Messwerte;12;1.129234743373494;2020;Median
+2020;Russ im Feinstaub;Messwerte;12;1;2020;Median
+2021;Russ im Feinstaub;Messwerte;11;0.9084337349397591;2020;Median
+2022;Russ im Feinstaub;Messwerte;8;0.9939759036144579;2020;Median
+2023;Russ im Feinstaub;Messwerte;9;0.7652624216867471;2020;Median
+2024;Russ im Feinstaub;Messwerte;10;0.8044756795180723;2020;Median
+1990;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+1991;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+1992;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+1993;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+1994;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+1995;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+1996;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+1997;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+1998;Feinstaub PM2.5;Messwerte;2;NA;2021;Median
+1999;Feinstaub PM2.5;Messwerte;1;NA;2021;Median
+2000;Feinstaub PM2.5;Messwerte;1;NA;2021;Median
+2001;Feinstaub PM2.5;Messwerte;1;NA;2021;Median
+2002;Feinstaub PM2.5;Messwerte;1;NA;2021;Median
+2003;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+2004;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+2005;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+2006;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+2007;Feinstaub PM2.5;Messwerte;0;NA;2021;Median
+2008;Feinstaub PM2.5;Messwerte;1;NA;2021;Median
+2009;Feinstaub PM2.5;Messwerte;1;NA;2021;Median
+2010;Feinstaub PM2.5;Messwerte;1;NA;2021;Median
+2011;Feinstaub PM2.5;Messwerte;2;NA;2021;Median
+2012;Feinstaub PM2.5;Messwerte;2;NA;2021;Median
+2013;Feinstaub PM2.5;Messwerte;2;NA;2021;Median
+2014;Feinstaub PM2.5;Messwerte;2;NA;2021;Median
+2015;Feinstaub PM2.5;Messwerte;2;NA;2021;Median
+2016;Feinstaub PM2.5;Messwerte;2;NA;2021;Median
+2017;Feinstaub PM2.5;Messwerte;4;1.117480999446376;2021;Median
+2018;Feinstaub PM2.5;Messwerte;6;1.2022153818836165;2021;Median
+2019;Feinstaub PM2.5;Messwerte;8;1.089366713595639;2021;Median
+2020;Feinstaub PM2.5;Messwerte;7;0.9585623540988081;2021;Median
+2021;Feinstaub PM2.5;Messwerte;9;1;2021;Median
+2022;Feinstaub PM2.5;Messwerte;6;1.0139375150966226;2021;Median
+2023;Feinstaub PM2.5;Messwerte;6;0.8806076993366988;2021;Median
+2024;Feinstaub PM2.5;Messwerte;7;0.7851604603305589;2021;Median
+1990;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1990;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1990;Feinstaub PM10;gemessen;0;NA;2015;Median
+1990;Feinstaub PM10;Trend;0;NA;2015;Median
+1990;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1990;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1991;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1991;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1991;Feinstaub PM10;gemessen;0;NA;2015;Median
+1991;Feinstaub PM10;Trend;0;NA;2015;Median
+1991;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1991;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1992;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1992;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1992;Feinstaub PM10;gemessen;0;NA;2015;Median
+1992;Feinstaub PM10;Trend;0;NA;2015;Median
+1992;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1992;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1992;Russ im Feinstaub;gemessen;0;NA;2020;Median
+1992;Russ im Feinstaub;Trend;0;NA;2020;Median
+1993;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1993;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1993;Feinstaub PM10;gemessen;0;NA;2015;Median
+1993;Feinstaub PM10;Trend;0;NA;2015;Median
+1993;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1993;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1993;Russ im Feinstaub;gemessen;0;NA;2020;Median
+1993;Russ im Feinstaub;Trend;0;NA;2020;Median
+1994;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1994;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1994;Feinstaub PM10;gemessen;0;NA;2015;Median
+1994;Feinstaub PM10;Trend;0;NA;2015;Median
+1994;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1994;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1994;Russ im Feinstaub;gemessen;0;NA;2020;Median
+1994;Russ im Feinstaub;Trend;0;NA;2020;Median
+1995;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1995;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1995;Feinstaub PM10;gemessen;0;NA;2015;Median
+1995;Feinstaub PM10;Trend;0;NA;2015;Median
+1995;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1995;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1995;Russ im Feinstaub;gemessen;0;NA;2020;Median
+1995;Russ im Feinstaub;Trend;0;NA;2020;Median
+1996;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1996;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1996;Feinstaub PM10;gemessen;0;NA;2015;Median
+1996;Feinstaub PM10;Trend;0;NA;2015;Median
+1996;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1996;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1996;Russ im Feinstaub;gemessen;0;NA;2020;Median
+1996;Russ im Feinstaub;Trend;0;NA;2020;Median
+1997;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1997;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1997;Feinstaub PM10;gemessen;0;NA;2015;Median
+1997;Feinstaub PM10;Trend;0;NA;2015;Median
+1997;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1997;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1997;Russ im Feinstaub;gemessen;0;NA;2020;Median
+1997;Russ im Feinstaub;Trend;0;NA;2020;Median
+1998;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1998;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1998;Feinstaub PM10;gemessen;0;NA;2015;Median
+1998;Feinstaub PM10;Trend;0;NA;2015;Median
+1998;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1998;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1998;Russ im Feinstaub;gemessen;0;NA;2020;Median
+1998;Russ im Feinstaub;Trend;0;NA;2020;Median
+1999;Stickoxide | Stickstoffdioxid;gemessen;1;NA;2015;Median
+1999;Stickoxide | Stickstoffdioxid;Trend;1;NA;2015;Median
+1999;Feinstaub PM10;gemessen;0;NA;2015;Median
+1999;Feinstaub PM10;Trend;0;NA;2015;Median
+1999;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+1999;Feinstaub PM2.5;Trend;0;NA;2021;Median
+1999;Russ im Feinstaub;gemessen;0;NA;2020;Median
+1999;Russ im Feinstaub;Trend;0;NA;2020;Median
+2000;Stickoxide | Stickstoffdioxid;gemessen;3;NA;2015;Median
+2000;Stickoxide | Stickstoffdioxid;Trend;3;NA;2015;Median
+2000;Feinstaub PM10;gemessen;1;NA;2015;Median
+2000;Feinstaub PM10;Trend;1;NA;2015;Median
+2000;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2000;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2000;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2000;Russ im Feinstaub;Trend;0;NA;2020;Median
+2001;Stickoxide | Stickstoffdioxid;gemessen;4;NA;2015;Median
+2001;Stickoxide | Stickstoffdioxid;Trend;4;NA;2015;Median
+2001;Feinstaub PM10;gemessen;2;NA;2015;Median
+2001;Feinstaub PM10;Trend;2;NA;2015;Median
+2001;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2001;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2001;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2001;Russ im Feinstaub;Trend;0;NA;2020;Median
+2002;Stickoxide | Stickstoffdioxid;gemessen;4;NA;2015;Median
+2002;Stickoxide | Stickstoffdioxid;Trend;4;NA;2015;Median
+2002;Feinstaub PM10;gemessen;3;1.5408214170903867;2015;Median
+2002;Feinstaub PM10;Trend;3;1.5685772045480897;2015;Median
+2002;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2002;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2002;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2002;Russ im Feinstaub;Trend;0;NA;2020;Median
+2003;Stickoxide | Stickstoffdioxid;gemessen;4;NA;2015;Median
+2003;Stickoxide | Stickstoffdioxid;Trend;4;NA;2015;Median
+2003;Feinstaub PM10;gemessen;4;1.7259975129550775;2015;Median
+2003;Feinstaub PM10;Trend;4;1.507781831171791;2015;Median
+2003;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2003;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2003;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2003;Russ im Feinstaub;Trend;0;NA;2020;Median
+2004;Stickoxide | Stickstoffdioxid;gemessen;4;NA;2015;Median
+2004;Stickoxide | Stickstoffdioxid;Trend;4;NA;2015;Median
+2004;Feinstaub PM10;gemessen;4;1.450366506824714;2015;Median
+2004;Feinstaub PM10;Trend;4;1.4843545839130843;2015;Median
+2004;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2004;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2004;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2004;Russ im Feinstaub;Trend;0;NA;2020;Median
+2005;Stickoxide | Stickstoffdioxid;gemessen;5;1.1118313247444407;2015;Median
+2005;Stickoxide | Stickstoffdioxid;Trend;5;1.1356404898747148;2015;Median
+2005;Feinstaub PM10;gemessen;4;1.4389414406691494;2015;Median
+2005;Feinstaub PM10;Trend;4;1.4369977851541476;2015;Median
+2005;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2005;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2005;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2005;Russ im Feinstaub;Trend;0;NA;2020;Median
+2006;Stickoxide | Stickstoffdioxid;gemessen;5;1.178685007224765;2015;Median
+2006;Stickoxide | Stickstoffdioxid;Trend;5;1.1144960879428447;2015;Median
+2006;Feinstaub PM10;gemessen;4;1.5969630294924388;2015;Median
+2006;Feinstaub PM10;Trend;4;1.4174328927403863;2015;Median
+2006;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2006;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2006;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2006;Russ im Feinstaub;Trend;0;NA;2020;Median
+2007;Stickoxide | Stickstoffdioxid;gemessen;5;1.0138561303260607;2015;Median
+2007;Stickoxide | Stickstoffdioxid;Trend;5;1.1078867180306886;2015;Median
+2007;Feinstaub PM10;gemessen;4;1.2836426967392423;2015;Median
+2007;Feinstaub PM10;Trend;4;1.3642241648237277;2015;Median
+2007;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2007;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2007;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2007;Russ im Feinstaub;Trend;0;NA;2020;Median
+2008;Stickoxide | Stickstoffdioxid;gemessen;5;1.0314486086047772;2015;Median
+2008;Stickoxide | Stickstoffdioxid;Trend;5;1.0806176098984408;2015;Median
+2008;Feinstaub PM10;gemessen;4;1.2165247446254686;2015;Median
+2008;Feinstaub PM10;Trend;4;1.3108856285713768;2015;Median
+2008;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2008;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2008;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2008;Russ im Feinstaub;Trend;0;NA;2020;Median
+2009;Stickoxide | Stickstoffdioxid;gemessen;6;1.039648696174234;2015;Median
+2009;Stickoxide | Stickstoffdioxid;Trend;6;1.0591029102806924;2015;Median
+2009;Feinstaub PM10;gemessen;6;1.2816621058316615;2015;Median
+2009;Feinstaub PM10;Trend;6;1.2411985466584932;2015;Median
+2009;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2009;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2009;Russ im Feinstaub;gemessen;0;NA;2020;Median
+2009;Russ im Feinstaub;Trend;0;NA;2020;Median
+2010;Stickoxide | Stickstoffdioxid;gemessen;6;0.9667545156121783;2015;Median
+2010;Stickoxide | Stickstoffdioxid;Trend;6;1.0576643287434147;2015;Median
+2010;Feinstaub PM10;gemessen;6;1.2449629828136213;2015;Median
+2010;Feinstaub PM10;Trend;6;1.2336625281831588;2015;Median
+2010;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2010;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2010;Russ im Feinstaub;gemessen;1;NA;2020;Median
+2010;Russ im Feinstaub;Trend;1;NA;2020;Median
+2011;Stickoxide | Stickstoffdioxid;gemessen;6;1.0552088616921351;2015;Median
+2011;Stickoxide | Stickstoffdioxid;Trend;6;1.0463040225766513;2015;Median
+2011;Feinstaub PM10;gemessen;6;1.2596853171765903;2015;Median
+2011;Feinstaub PM10;Trend;6;1.1949153306985232;2015;Median
+2011;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2011;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2011;Russ im Feinstaub;gemessen;2;NA;2020;Median
+2011;Russ im Feinstaub;Trend;2;NA;2020;Median
+2012;Stickoxide | Stickstoffdioxid;gemessen;6;0.9531544321716896;2015;Median
+2012;Stickoxide | Stickstoffdioxid;Trend;6;1.0272934942362748;2015;Median
+2012;Feinstaub PM10;gemessen;6;1.075516645911306;2015;Median
+2012;Feinstaub PM10;Trend;6;1.1339288465984658;2015;Median
+2012;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2012;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2012;Russ im Feinstaub;gemessen;2;NA;2020;Median
+2012;Russ im Feinstaub;Trend;2;NA;2020;Median
+2013;Stickoxide | Stickstoffdioxid;gemessen;6;1.0094138943179538;2015;Median
+2013;Stickoxide | Stickstoffdioxid;Trend;6;1.0204781067284399;2015;Median
+2013;Feinstaub PM10;gemessen;6;1.1991312110583277;2015;Median
+2013;Feinstaub PM10;Trend;6;1.109097903808156;2015;Median
+2013;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2013;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2013;Russ im Feinstaub;gemessen;2;NA;2020;Median
+2013;Russ im Feinstaub;Trend;2;NA;2020;Median
+2014;Stickoxide | Stickstoffdioxid;gemessen;7;0.9637830665025844;2015;Median
+2014;Stickoxide | Stickstoffdioxid;Trend;7;1.0176273978107802;2015;Median
+2014;Feinstaub PM10;gemessen;6;0.9308000658490696;2015;Median
+2014;Feinstaub PM10;Trend;6;1.0304074283557652;2015;Median
+2014;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2014;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2014;Russ im Feinstaub;gemessen;3;1.854039375424304;2020;Median
+2014;Russ im Feinstaub;Trend;3;1.7580167066625947;2020;Median
+2015;Stickoxide | Stickstoffdioxid;gemessen;9;1;2015;Median
+2015;Stickoxide | Stickstoffdioxid;Trend;9;1;2015;Median
+2015;Feinstaub PM10;gemessen;8;1;2015;Median
+2015;Feinstaub PM10;Trend;8;1;2015;Median
+2015;Feinstaub PM2.5;gemessen;0;NA;2021;Median
+2015;Feinstaub PM2.5;Trend;0;NA;2021;Median
+2015;Russ im Feinstaub;gemessen;3;1.770078728344079;2020;Median
+2015;Russ im Feinstaub;Trend;3;1.6218245074184263;2020;Median
+2016;Stickoxide | Stickstoffdioxid;gemessen;7;0.9270903738298043;2015;Median
+2016;Stickoxide | Stickstoffdioxid;Trend;7;0.9828185700007659;2015;Median
+2016;Feinstaub PM10;gemessen;7;0.9016683715471115;2015;Median
+2016;Feinstaub PM10;Trend;7;0.9790378622368796;2015;Median
+2016;Feinstaub PM2.5;gemessen;2;NA;2021;Median
+2016;Feinstaub PM2.5;Trend;2;NA;2021;Median
+2016;Russ im Feinstaub;gemessen;3;1.4486505491874868;2020;Median
+2016;Russ im Feinstaub;Trend;3;1.3917853452577769;2020;Median
+2017;Stickoxide | Stickstoffdioxid;gemessen;7;0.799225956935339;2015;Median
+2017;Stickoxide | Stickstoffdioxid;Trend;7;0.9017410165178428;2015;Median
+2017;Feinstaub PM10;gemessen;7;0.8911303318598308;2015;Median
+2017;Feinstaub PM10;Trend;7;0.9638494669371088;2015;Median
+2017;Feinstaub PM2.5;gemessen;4;1.1311377317920137;2021;Median
+2017;Feinstaub PM2.5;Trend;4;1.1040263462271338;2021;Median
+2017;Russ im Feinstaub;gemessen;4;1.5844617455024999;2020;Median
+2017;Russ im Feinstaub;Trend;4;1.5067867442594975;2020;Median
+2018;Stickoxide | Stickstoffdioxid;gemessen;8;0.7563620085326019;2015;Median
+2018;Stickoxide | Stickstoffdioxid;Trend;8;0.855549027850883;2015;Median
+2018;Feinstaub PM10;gemessen;7;0.9445984683941633;2015;Median
+2018;Feinstaub PM10;Trend;7;0.9523797054902641;2015;Median
+2018;Feinstaub PM2.5;gemessen;6;1.2389575615194106;2021;Median
+2018;Feinstaub PM2.5;Trend;6;1.078719649225202;2021;Median
+2018;Russ im Feinstaub;gemessen;4;1.2195426231664612;2020;Median
+2018;Russ im Feinstaub;Trend;4;1.163870865589844;2020;Median
+2019;Stickoxide | Stickstoffdioxid;gemessen;7;0.6900675424562295;2015;Median
+2019;Stickoxide | Stickstoffdioxid;Trend;7;0.7925186632310667;2015;Median
+2019;Feinstaub PM10;gemessen;7;0.816316069552419;2015;Median
+2019;Feinstaub PM10;Trend;7;0.9235726778097292;2015;Median
+2019;Feinstaub PM2.5;gemessen;6;1.056660605789013;2021;Median
+2019;Feinstaub PM2.5;Trend;6;1.041254158406535;2021;Median
+2019;Russ im Feinstaub;gemessen;4;1.1092551404699176;2020;Median
+2019;Russ im Feinstaub;Trend;4;1.0787718247115483;2020;Median
+2020;Stickoxide | Stickstoffdioxid;gemessen;7;0.6102774583813362;2015;Median
+2020;Stickoxide | Stickstoffdioxid;Trend;7;0.7190442770014811;2015;Median
+2020;Feinstaub PM10;gemessen;7;0.7679401552524192;2015;Median
+2020;Feinstaub PM10;Trend;7;0.8909814068213793;2015;Median
+2020;Feinstaub PM2.5;gemessen;7;0.982276691311659;2021;Median
+2020;Feinstaub PM2.5;Trend;7;1.007932786263807;2021;Median
+2020;Russ im Feinstaub;gemessen;4;1;2020;Median
+2020;Russ im Feinstaub;Trend;4;1;2020;Median
+2021;Stickoxide | Stickstoffdioxid;gemessen;8;0.5841939807363009;2015;Median
+2021;Stickoxide | Stickstoffdioxid;Trend;8;0.6766447455120488;2015;Median
+2021;Feinstaub PM10;gemessen;7;0.7994029989458932;2015;Median
+2021;Feinstaub PM10;Trend;7;0.8892583501471228;2015;Median
+2021;Feinstaub PM2.5;gemessen;7;1;2021;Median
+2021;Feinstaub PM2.5;Trend;7;1;2021;Median
+2021;Russ im Feinstaub;gemessen;3;0.9665217658081172;2020;Median
+2021;Russ im Feinstaub;Trend;3;0.985045203653225;2020;Median
+2022;Stickoxide | Stickstoffdioxid;gemessen;7;0.5630948627217415;2015;Median
+2022;Stickoxide | Stickstoffdioxid;Trend;7;0.6538419065343808;2015;Median
+2022;Feinstaub PM10;gemessen;6;0.8330335891104663;2015;Median
+2022;Feinstaub PM10;Trend;6;0.8737539877817911;2015;Median
+2022;Feinstaub PM2.5;gemessen;7;1.001791254781951;2021;Median
+2022;Feinstaub PM2.5;Trend;7;0.9690975460794571;2021;Median
+2022;Russ im Feinstaub;gemessen;3;1.0252863289512126;2020;Median
+2022;Russ im Feinstaub;Trend;3;0.9636631238524012;2020;Median
+2023;Stickoxide | Stickstoffdioxid;gemessen;7;0.4613119051097351;2015;Median
+2023;Stickoxide | Stickstoffdioxid;Trend;7;0.6357526289836679;2015;Median
+2023;Feinstaub PM10;gemessen;7;0.7202720777737904;2015;Median
+2023;Feinstaub PM10;Trend;7;0.8656196123137891;2015;Median
+2023;Feinstaub PM2.5;gemessen;7;0.8864746854599813;2021;Median
+2023;Feinstaub PM2.5;Trend;7;0.9293710414574281;2021;Median
+2023;Russ im Feinstaub;gemessen;3;0.9174646397587515;2020;Median
+2023;Russ im Feinstaub;Trend;3;0.9360906470341553;2020;Median
+2024;Stickoxide | Stickstoffdioxid;gemessen;8;0.4632292835660676;2015;Median
+2024;Stickoxide | Stickstoffdioxid;Trend;8;0.6166553517971181;2015;Median
+2024;Feinstaub PM10;gemessen;6;0.6735531987111657;2015;Median
+2024;Feinstaub PM10;Trend;6;0.8264671393881089;2015;Median
+2024;Feinstaub PM2.5;gemessen;6;0.7716399102846303;2021;Median
+2024;Feinstaub PM2.5;Trend;6;0.9040290903761132;2021;Median
+2024;Russ im Feinstaub;gemessen;3;0.8639005865065176;2020;Median
+2024;Russ im Feinstaub;Trend;3;0.910273442845797;2020;Median

@@ -1,0 +1,1341 @@
+year;site;pollutant;type;value;relative Immission;reference_year
+2000;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2001;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2002;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2003;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2004;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2005;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2006;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2007;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2008;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2009;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2010;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2011;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2012;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2013;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2014;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2015;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;NA;NA;2021
+2016;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;9.760989010989011;1.1356880294070641;2021
+2017;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;9.6;1.116957008150871;2021
+2018;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;10.810684931506849;1.2578198226205828;2021
+2019;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;9.03917808219178;1.0517055527945687;2021
+2020;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;8.373901098901099;0.9743007831229025;2021
+2021;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;8.594780219780219;1;2021
+2022;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;9.550684931506849;1.111219215300781;2021
+2023;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;8.086301369863014;0.9408386442800503;2021
+2024;Dübendorf-EMPA;Feinstaub PM2.5;gemessen;7.240710382513661;0.8424543964311884;2021
+2000;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2001;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2002;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2003;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2004;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2005;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2006;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2007;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2008;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2009;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2010;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2011;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2012;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2013;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2014;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2015;Dübendorf-EMPA;Feinstaub PM2.5;Trend;NA;NA;2021
+2016;Dübendorf-EMPA;Feinstaub PM2.5;Trend;9.697967659500552;1.090285156551265;2021
+2017;Dübendorf-EMPA;Feinstaub PM2.5;Trend;9.463156629325216;1.063886740946746;2021
+2018;Dübendorf-EMPA;Feinstaub PM2.5;Trend;9.427468272754947;1.059874510055034;2021
+2019;Dübendorf-EMPA;Feinstaub PM2.5;Trend;9.171129810248605;1.031055892532625;2021
+2020;Dübendorf-EMPA;Feinstaub PM2.5;Trend;8.965452299704925;1.007932786263807;2021
+2021;Dübendorf-EMPA;Feinstaub PM2.5;Trend;8.89489103032153;1;2021
+2022;Dübendorf-EMPA;Feinstaub PM2.5;Trend;8.907465252511415;1.0014136454451237;2021
+2023;Dübendorf-EMPA;Feinstaub PM2.5;Trend;8.724840715271435;0.9808822486447091;2021
+2024;Dübendorf-EMPA;Feinstaub PM2.5;Trend;8.558870345324832;0.9622231813912901;2021
+2020;Klo_Feld;Feinstaub PM2.5;gemessen;8.913563941825657;0.9689221132360614;2021
+2021;Klo_Feld;Feinstaub PM2.5;gemessen;9.199463837248619;1;2021
+2022;Klo_Feld;Feinstaub PM2.5;gemessen;8.74205585364835;0.9502788432356;2021
+2023;Klo_Feld;Feinstaub PM2.5;gemessen;7.895514290326923;0.8582580930812506;2021
+2024;Klo_Feld;Feinstaub PM2.5;gemessen;NA;NA;2021
+2020;Klo_Feld;Feinstaub PM2.5;Trend;8.900705298903452;1.0142497033077704;2021
+2021;Klo_Feld;Feinstaub PM2.5;Trend;8.775654821367558;1;2021
+2022;Klo_Feld;Feinstaub PM2.5;Trend;8.504465552627657;0.9690975460794571;2021
+2023;Klo_Feld;Feinstaub PM2.5;Trend;8.405451612462628;0.9578147481366821;2021
+2024;Klo_Feld;Feinstaub PM2.5;Trend;NA;NA;2021
+2001;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2002;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2003;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2004;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2006;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2007;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2008;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2009;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2010;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2011;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2012;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2013;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2014;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2015;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2016;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2017;Opf_Balsberg;Feinstaub PM2.5;gemessen;NA;NA;2021
+2018;Opf_Balsberg;Feinstaub PM2.5;gemessen;10.68478330241096;1.2200953004182382;2021
+2019;Opf_Balsberg;Feinstaub PM2.5;gemessen;9.55115288785989;1.090646054508605;2021
+2020;Opf_Balsberg;Feinstaub PM2.5;gemessen;9.1927899601694;1.0497245953133933;2021
+2021;Opf_Balsberg;Feinstaub PM2.5;gemessen;8.757335020263014;1;2021
+2022;Opf_Balsberg;Feinstaub PM2.5;gemessen;8.79821365090884;1.0046679304321737;2021
+2023;Opf_Balsberg;Feinstaub PM2.5;gemessen;8.289409649309588;0.9465676064840818;2021
+2024;Opf_Balsberg;Feinstaub PM2.5;gemessen;7.6362604349699454;0.8719845041100873;2021
+2001;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2002;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2003;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2004;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2006;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2007;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2008;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2009;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2010;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2011;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2012;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2013;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2014;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2015;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2016;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2017;Opf_Balsberg;Feinstaub PM2.5;Trend;NA;NA;2021
+2018;Opf_Balsberg;Feinstaub PM2.5;Trend;10.03796125519499;1.1199210052618886;2021
+2019;Opf_Balsberg;Feinstaub PM2.5;Trend;9.541038804720833;1.064480076957428;2021
+2020;Opf_Balsberg;Feinstaub PM2.5;Trend;9.164810577108918;1.022504830773152;2021
+2021;Opf_Balsberg;Feinstaub PM2.5;Trend;8.963097582804652;1;2021
+2022;Opf_Balsberg;Feinstaub PM2.5;Trend;8.812430131435871;0.983190247570457;2021
+2023;Opf_Balsberg;Feinstaub PM2.5;Trend;8.592834330553266;0.9586902576000377;2021
+2024;Opf_Balsberg;Feinstaub PM2.5;Trend;8.362750859865328;0.9330201732835013;2021
+2013;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2014;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2015;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2016;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2017;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2018;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;13.041767996382717;1.1107294803124246;2021
+2019;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;10.971571243711049;0.934416838968303;2021
+2020;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;11.68274807587569;0.9949857030532616;2021
+2021;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;11.741624065577465;1;2021
+2022;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;9.78398647891989;0.8332736957235143;2021
+2023;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;9.261977648910959;0.788815720651796;2021
+2024;Zch_Rosengartenstrasse;Feinstaub PM2.5;gemessen;8.282110121379938;0.7053632508692157;2021
+2013;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2014;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2015;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2016;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2017;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2018;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;12.14357739079815;1.0628666699492413;2021
+2019;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;11.530164824873395;1.0091777321455015;2021
+2020;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;11.446572024993786;1.0018612719311417;2021
+2021;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;11.425306422844253;1;2021
+2022;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;9.883191259381613;0.8650263628484163;2021
+2023;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;9.23755034365849;0.8085166385724704;2021
+2024;Zch_Rosengartenstrasse;Feinstaub PM2.5;Trend;8.890920512792672;0.7781778609469747;2021
+1990;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1991;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1992;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1993;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1994;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1995;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1996;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1997;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1998;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1999;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2000;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2001;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2002;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2003;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2004;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2005;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2006;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2007;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2008;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2009;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2010;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2011;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2012;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2013;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2014;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2015;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2016;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2017;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;11.334255229333333;1.1453184554331564;2021
+2018;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;12.88332425939944;1.3018507826991805;2021
+2019;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;10.579738752922864;1.069075100411043;2021
+2020;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;9.782055780096867;0.9884698015292975;2021
+2021;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;9.896160474465374;1;2021
+2022;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;10.445637577147945;1.0555242716708528;2021
+2023;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;8.857628908645893;0.895057121547376;2021
+2024;Zch_Schimmelstrasse;Feinstaub PM2.5;gemessen;7.750467938438017;0.7831792904365493;2021
+1990;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1991;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1992;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1993;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1994;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1995;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1996;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1997;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1998;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1999;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2000;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2001;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2002;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2003;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2004;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2005;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2006;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2007;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2008;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2009;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2010;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2011;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2012;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2013;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2014;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2015;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2016;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2017;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;11.383934609147074;1.1164249861035371;2021
+2018;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;11.174657642611686;1.0959011476875709;2021
+2019;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;10.799090734124123;1.0590692178684842;2021
+2020;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;10.349944049746146;1.0150213031464317;2021
+2021;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;10.196775198375335;1;2021
+2022;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;9.827853261747357;0.9638197440415517;2021
+2023;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;9.312373034243024;0.9132664840671172;2021
+2024;Zch_Schimmelstrasse;Feinstaub PM2.5;Trend;8.922565852192866;0.8750380074687251;2021
+1990;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1991;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1992;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1993;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1994;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1995;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1996;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1997;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1998;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+1999;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2000;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2001;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2002;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2003;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2004;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2005;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2006;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2007;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2008;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2009;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2010;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2011;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2012;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2013;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2014;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2015;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2016;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;NA;NA;2021
+2017;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;10.448020442136364;1.0631947660350927;2021
+2018;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;11.897344107085873;1.210678525604579;2021
+2019;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;10.19454974631233;1.0374014859935883;2021
+2020;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;9.652838105035912;0.982276691311659;2021
+2021;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;9.827005150805556;1;2021
+2022;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;9.844607820774193;1.001791254781951;2021
+2023;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;8.711391300073972;0.8864746854599813;2021
+2024;Zch_Stampfenbachstrasse;Feinstaub PM2.5;gemessen;7.4666815745137365;0.7598125227299454;2021
+1990;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1991;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1992;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1993;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1994;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1995;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1996;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1997;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1998;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+1999;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2000;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2001;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2002;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2003;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2004;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2005;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2006;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2007;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2008;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2009;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2010;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2011;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2012;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2013;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2014;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2015;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2016;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;NA;NA;2021
+2017;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;10.86673098581267;1.105648903827471;2021
+2018;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;10.386103715754675;1.056746891347085;2021
+2019;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;10.127916985695334;1.0304773650796542;2021
+2020;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;9.875786009633806;1.00482398894774;2021
+2021;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;9.828374041881515;1;2021
+2022;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;9.502835707769128;0.9668777019754056;2021
+2023;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;9.031551477327717;0.918926308547242;2021
+2024;Zch_Stampfenbachstrasse;Feinstaub PM2.5;Trend;8.547146566831902;0.8696399353962379;2021
+2000;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2001;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2002;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2003;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2004;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2005;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2006;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2007;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2008;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2009;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2010;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2011;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2012;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2013;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2014;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2015;Zürich-Kaserne;Feinstaub PM2.5;gemessen;NA;NA;2021
+2016;Zürich-Kaserne;Feinstaub PM2.5;gemessen;10.289750692520776;1.1489366462021118;2021
+2017;Zürich-Kaserne;Feinstaub PM2.5;gemessen;10.40611111111111;1.1619292592479291;2021
+2018;Zürich-Kaserne;Feinstaub PM2.5;gemessen;11.35917808219178;1.2683471504175716;2021
+2019;Zürich-Kaserne;Feinstaub PM2.5;gemessen;9.50771349862259;1.0616156587834578;2021
+2020;Zürich-Kaserne;Feinstaub PM2.5;gemessen;8.297540983606558;0.9264897852538755;2021
+2021;Zürich-Kaserne;Feinstaub PM2.5;gemessen;8.955890410958904;1;2021
+2022;Zürich-Kaserne;Feinstaub PM2.5;gemessen;8.905785123966941;0.9944053260264718;2021
+2023;Zürich-Kaserne;Feinstaub PM2.5;gemessen;7.291780821917809;0.814188259047386;2021
+2024;Zürich-Kaserne;Feinstaub PM2.5;gemessen;6.807377049180328;0.7601005301327112;2021
+2000;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2001;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2002;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2003;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2004;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2005;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2006;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2007;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2008;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2009;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2010;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2011;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2012;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2013;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2014;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2015;Zürich-Kaserne;Feinstaub PM2.5;Trend;NA;NA;2021
+2016;Zürich-Kaserne;Feinstaub PM2.5;Trend;10.30537194403406;1.151239381404239;2021
+2017;Zürich-Kaserne;Feinstaub PM2.5;Trend;9.86821790308642;1.1024037886267966;2021
+2018;Zürich-Kaserne;Feinstaub PM2.5;Trend;9.798116915271436;1.0945726285011625;2021
+2019;Zürich-Kaserne;Feinstaub PM2.5;Trend;9.412124436230997;1.0514524242804448;2021
+2020;Zürich-Kaserne;Feinstaub PM2.5;Trend;8.99896967825339;1.0052978526083651;2021
+2021;Zürich-Kaserne;Feinstaub PM2.5;Trend;8.951545708472857;1;2021
+2022;Zürich-Kaserne;Feinstaub PM2.5;Trend;8.754432655545353;0.9779799981649056;2021
+2023;Zürich-Kaserne;Feinstaub PM2.5;Trend;8.31930735773719;0.9293710414574281;2021
+2024;Zürich-Kaserne;Feinstaub PM2.5;Trend;8.388423269378668;0.9370921562115044;2021
+1990;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1991;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1992;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1993;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1994;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1995;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1996;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1997;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1998;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1999;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2000;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2001;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2002;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2003;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2004;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2005;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2006;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2007;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2008;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2009;Bachtel/Wald;Feinstaub PM10;gemessen;12.946289146575419;1.326007115011455;2015
+2010;Bachtel/Wald;Feinstaub PM10;gemessen;13.207491709814814;1.3527604536240323;2015
+2011;Bachtel/Wald;Feinstaub PM10;gemessen;12.737804204956165;1.3046533113979302;2015
+2012;Bachtel/Wald;Feinstaub PM10;gemessen;10.74951832563662;1.101005672077907;2015
+2013;Bachtel/Wald;Feinstaub PM10;gemessen;12.051588574852055;1.2343685527579755;2015
+2014;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2015;Bachtel/Wald;Feinstaub PM10;gemessen;9.763363258019607;1;2015
+2016;Bachtel/Wald;Feinstaub PM10;gemessen;8.803315849681441;0.9016683715471115;2015
+2017;Bachtel/Wald;Feinstaub PM10;gemessen;9.735065761441096;0.9971016650891005;2015
+2018;Bachtel/Wald;Feinstaub PM10;gemessen;10.66927932548415;1.0927872950666282;2015
+2019;Bachtel/Wald;Feinstaub PM10;gemessen;8.863768657402204;0.9078601730936849;2015
+2020;Bachtel/Wald;Feinstaub PM10;gemessen;8.266983605885246;0.8467352271354609;2015
+2021;Bachtel/Wald;Feinstaub PM10;gemessen;8.583298725871233;0.8791333989156788;2015
+2022;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+2023;Bachtel/Wald;Feinstaub PM10;gemessen;8.632856539862258;0.8842092946578882;2015
+2024;Bachtel/Wald;Feinstaub PM10;gemessen;NA;NA;2015
+1990;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+1991;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+1992;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+1993;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+1994;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+1995;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+1996;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+1997;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+1998;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+1999;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2000;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2001;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2002;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2003;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2004;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2005;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2006;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2007;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2008;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2009;Bachtel/Wald;Feinstaub PM10;Trend;12.511142148667803;1.2287847305493154;2015
+2010;Bachtel/Wald;Feinstaub PM10;Trend;12.02437491772244;1.1809767739607058;2015
+2011;Bachtel/Wald;Feinstaub PM10;Trend;11.682622303102296;1.1474114615791136;2015
+2012;Bachtel/Wald;Feinstaub PM10;Trend;11.093632553557452;1.0895636965956557;2015
+2013;Bachtel/Wald;Feinstaub PM10;Trend;11.256565122508237;1.1055661566793833;2015
+2014;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2015;Bachtel/Wald;Feinstaub PM10;Trend;10.181720066683143;1;2015
+2016;Bachtel/Wald;Feinstaub PM10;Trend;9.816900896085885;0.9641692004682954;2015
+2017;Bachtel/Wald;Feinstaub PM10;Trend;9.826203886259504;0.9650828958078541;2015
+2018;Bachtel/Wald;Feinstaub PM10;Trend;9.783746076279847;0.9609128921442699;2015
+2019;Bachtel/Wald;Feinstaub PM10;Trend;9.663490156197435;0.9491019290363844;2015
+2020;Bachtel/Wald;Feinstaub PM10;Trend;9.465122918405338;0.9296192447263729;2015
+2021;Bachtel/Wald;Feinstaub PM10;Trend;9.357774826627798;0.9190760269719576;2015
+2022;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2023;Bachtel/Wald;Feinstaub PM10;Trend;9.575592154036885;0.940469006348972;2015
+2024;Bachtel/Wald;Feinstaub PM10;Trend;NA;NA;2015
+2000;Dübendorf-EMPA;Feinstaub PM10;gemessen;NA;NA;2015
+2001;Dübendorf-EMPA;Feinstaub PM10;gemessen;19.160194174757283;1.1972866196069931;2015
+2002;Dübendorf-EMPA;Feinstaub PM10;gemessen;23.164364640883978;1.4475001444800897;2015
+2003;Dübendorf-EMPA;Feinstaub PM10;gemessen;26.947802197802197;1.6839204605635585;2015
+2004;Dübendorf-EMPA;Feinstaub PM10;gemessen;22.093972602739726;1.3806132406567255;2015
+2005;Dübendorf-EMPA;Feinstaub PM10;gemessen;21.320821917808217;1.332300422865556;2015
+2006;Dübendorf-EMPA;Feinstaub PM10;gemessen;23.856868131868133;1.4907734618705155;2015
+2007;Dübendorf-EMPA;Feinstaub PM10;gemessen;20.380672268907563;1.2735521354113541;2015
+2008;Dübendorf-EMPA;Feinstaub PM10;gemessen;18.502739726027396;1.1562034548287137;2015
+2009;Dübendorf-EMPA;Feinstaub PM10;gemessen;18.711019283746555;1.1692184757267454;2015
+2010;Dübendorf-EMPA;Feinstaub PM10;gemessen;18.334246575342465;1.145674616082587;2015
+2011;Dübendorf-EMPA;Feinstaub PM10;gemessen;18.472727272727273;1.154328029745331;2015
+2012;Dübendorf-EMPA;Feinstaub PM10;gemessen;16.354520547945206;1.0219650408313503;2015
+2013;Dübendorf-EMPA;Feinstaub PM10;gemessen;17.716483516483517;1.1070716960018632;2015
+2014;Dübendorf-EMPA;Feinstaub PM10;gemessen;13.791780821917808;0.8618239715122151;2015
+2015;Dübendorf-EMPA;Feinstaub PM10;gemessen;16.003013698630138;1;2015
+2016;Dübendorf-EMPA;Feinstaub PM10;gemessen;13.772252747252747;0.8606036966919334;2015
+2017;Dübendorf-EMPA;Feinstaub PM10;gemessen;13.782191780821918;0.8612247693071511;2015
+2018;Dübendorf-EMPA;Feinstaub PM10;gemessen;14.844383561643836;0.9275992535652531;2015
+2019;Dübendorf-EMPA;Feinstaub PM10;gemessen;12.72082191780822;0.7949016452380545;2015
+2020;Dübendorf-EMPA;Feinstaub PM10;gemessen;11.922252747252747;0.7450004712720639;2015
+2021;Dübendorf-EMPA;Feinstaub PM10;gemessen;12.792857142857143;0.7994029989458932;2015
+2022;Dübendorf-EMPA;Feinstaub PM10;gemessen;13.77041095890411;0.8604886065980722;2015
+2023;Dübendorf-EMPA;Feinstaub PM10;gemessen;11.425205479452055;0.7139408673023916;2015
+2024;Dübendorf-EMPA;Feinstaub PM10;gemessen;11.077049180327869;0.6921851964218506;2015
+2000;Dübendorf-EMPA;Feinstaub PM10;Trend;NA;NA;2015
+2001;Dübendorf-EMPA;Feinstaub PM10;Trend;22.347012812297738;1.4876932902336824;2015
+2002;Dübendorf-EMPA;Feinstaub PM10;Trend;22.16986563863311;1.4759001855418685;2015
+2003;Dübendorf-EMPA;Feinstaub PM10;Trend;22.009287948412698;1.4652101503989763;2015
+2004;Dübendorf-EMPA;Feinstaub PM10;Trend;21.446521535870115;1.4277454644948384;2015
+2005;Dübendorf-EMPA;Feinstaub PM10;Trend;21.077273130289193;1.4031637282231375;2015
+2006;Dübendorf-EMPA;Feinstaub PM10;Trend;20.832193787342288;1.3868482189808307;2015
+2007;Dübendorf-EMPA;Feinstaub PM10;Trend;20.31863373674655;1.3526593165167435;2015
+2008;Dübendorf-EMPA;Feinstaub PM10;Trend;19.413508993708778;1.2924030299896798;2015
+2009;Dübendorf-EMPA;Feinstaub PM10;Trend;18.634535240332617;1.2405449120434584;2015
+2010;Dübendorf-EMPA;Feinstaub PM10;Trend;18.136629949923897;1.2073981838460646;2015
+2011;Dübendorf-EMPA;Feinstaub PM10;Trend;17.526624581012143;1.1667886893261916;2015
+2012;Dübendorf-EMPA;Feinstaub PM10;Trend;16.73413510279046;1.1140307977353126;2015
+2013;Dübendorf-EMPA;Feinstaub PM10;Trend;16.287406759208384;1.0842910394559182;2015
+2014;Dübendorf-EMPA;Feinstaub PM10;Trend;15.475653816184678;1.030250733630379;2015
+2015;Dübendorf-EMPA;Feinstaub PM10;Trend;15.021249984119736;1;2015
+2016;Dübendorf-EMPA;Feinstaub PM10;Trend;14.706372472578348;0.9790378622368796;2015
+2017;Dübendorf-EMPA;Feinstaub PM10;Trend;14.438405623947235;0.9611986778205092;2015
+2018;Dübendorf-EMPA;Feinstaub PM10;Trend;14.305933635971588;0.9523797054902641;2015
+2019;Dübendorf-EMPA;Feinstaub PM10;Trend;14.002843524403856;0.9322022827133211;2015
+2020;Dübendorf-EMPA;Feinstaub PM10;Trend;13.753774272995523;0.9156211558649133;2015
+2021;Dübendorf-EMPA;Feinstaub PM10;Trend;13.694283948463573;0.9116607448075883;2015
+2022;Dübendorf-EMPA;Feinstaub PM10;Trend;13.687859843023846;0.9112330769739181;2015
+2023;Dübendorf-EMPA;Feinstaub PM10;Trend;13.474607800152206;0.89703638607954606;2015
+2024;Dübendorf-EMPA;Feinstaub PM10;Trend;13.538017687310262;0.9012577316549869;2015
+2001;Opf_Balsberg;Feinstaub PM10;gemessen;NA;NA;2015
+2002;Opf_Balsberg;Feinstaub PM10;gemessen;NA;NA;2015
+2003;Opf_Balsberg;Feinstaub PM10;gemessen;NA;NA;2015
+2004;Opf_Balsberg;Feinstaub PM10;gemessen;26.01396016032044;1.5299243336264827;2015
+2006;Opf_Balsberg;Feinstaub PM10;gemessen;27.871677384129576;1.6391797783256654;2015
+2007;Opf_Balsberg;Feinstaub PM10;gemessen;NA;NA;2015
+2008;Opf_Balsberg;Feinstaub PM10;gemessen;22.37479963473178;1.315899240647235;2015
+2009;Opf_Balsberg;Feinstaub PM10;gemessen;22.295069860279778;1.3112101997900598;2015
+2010;Opf_Balsberg;Feinstaub PM10;gemessen;21.561533359473685;1.2680696961808378;2015
+2011;Opf_Balsberg;Feinstaub PM10;gemessen;21.85951289504696;1.2855943690713438;2015
+2012;Opf_Balsberg;Feinstaub PM10;gemessen;18.381279537430135;1.0810336709287287;2015
+2013;Opf_Balsberg;Feinstaub PM10;gemessen;20.403726018823203;1.199977117688524;2015
+2014;Opf_Balsberg;Feinstaub PM10;gemessen;16.143311945936812;0.949415068647802;2015
+2015;Opf_Balsberg;Feinstaub PM10;gemessen;17.003429247156163;1;2015
+2016;Opf_Balsberg;Feinstaub PM10;gemessen;15.97178818065374;0.9393274702704476;2015
+2017;Opf_Balsberg;Feinstaub PM10;gemessen;16.96483445978082;0.9977301762594862;2015
+2018;Opf_Balsberg;Feinstaub PM10;gemessen;16.375392976257533;0.9630641406642328;2015
+2019;Opf_Balsberg;Feinstaub PM10;gemessen;14.872667885379121;0.8746863746833061;2015
+2020;Opf_Balsberg;Feinstaub PM10;gemessen;13.765986736286886;0.8096006126875411;2015
+2021;Opf_Balsberg;Feinstaub PM10;gemessen;14.065839196506849;0.8272354353966198;2015
+2022;Opf_Balsberg;Feinstaub PM10;gemessen;14.235531527593922;0.8372153240779254;2015
+2023;Opf_Balsberg;Feinstaub PM10;gemessen;13.245311700832877;0.778978846461114;2015
+2024;Opf_Balsberg;Feinstaub PM10;gemessen;12.392279828472677;0.7288106209837228;2015
+2001;Opf_Balsberg;Feinstaub PM10;Trend;NA;NA;2015
+2002;Opf_Balsberg;Feinstaub PM10;Trend;NA;NA;2015
+2003;Opf_Balsberg;Feinstaub PM10;Trend;NA;NA;2015
+2004;Opf_Balsberg;Feinstaub PM10;Trend;24.72739812317589;1.461918426787429;2015
+2006;Opf_Balsberg;Feinstaub PM10;Trend;23.65232564364615;1.3983586353315085;2015
+2007;Opf_Balsberg;Feinstaub PM10;Trend;NA;NA;2015
+2008;Opf_Balsberg;Feinstaub PM10;Trend;22.48387426535111;1.329278152531594;2015
+2009;Opf_Balsberg;Feinstaub PM10;Trend;22.026358340477234;1.3022291699500046;2015
+2010;Opf_Balsberg;Feinstaub PM10;Trend;21.289721919138934;1.25867819249444;2015
+2011;Opf_Balsberg;Feinstaub PM10;Trend;20.686958458556763;1.223041972070855;2015
+2012;Opf_Balsberg;Feinstaub PM10;Trend;19.598882051656037;1.158713370206757;2015
+2013;Opf_Balsberg;Feinstaub PM10;Trend;19.06311400479032;1.1270380125207093;2015
+2014;Opf_Balsberg;Feinstaub PM10;Trend;17.494186668192146;1.034280829891225;2015
+2015;Opf_Balsberg;Feinstaub PM10;Trend;16.914348755774586;1;2015
+2016;Opf_Balsberg;Feinstaub PM10;Trend;16.663388746458505;0.9851628925866623;2015
+2017;Opf_Balsberg;Feinstaub PM10;Trend;16.465347332022603;0.9734544066558464;2015
+2018;Opf_Balsberg;Feinstaub PM10;Trend;16.23769755908045;0.9599954330808552;2015
+2019;Opf_Balsberg;Feinstaub PM10;Trend;15.613240595161567;0.9230766623415626;2015
+2020;Opf_Balsberg;Feinstaub PM10;Trend;15.228898118368551;0.9003537965462242;2015
+2021;Opf_Balsberg;Feinstaub PM10;Trend;15.083031185700445;0.8917299390880228;2015
+2022;Opf_Balsberg;Feinstaub PM10;Trend;14.90162708262942;0.8810050743184528;2015
+2023;Opf_Balsberg;Feinstaub PM10;Trend;14.641392012513819;0.8656196123137891;2015
+2024;Opf_Balsberg;Feinstaub PM10;Trend;14.442680397610227;0.8538715031921918;2015
+2013;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+2014;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;19.636076793327433;0.9685215348778952;2015
+2015;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;20.27428000948169;1;2015
+2016;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;17.85592784747159;0.8807182222560256;2015
+2017;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;17.600396913639663;0.8681145227060331;2015
+2018;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;18.27709517100554;0.9014917009362541;2015
+2019;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;16.383141315985835;0.8080751231769472;2015
+2020;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;15.33411819846685;0.7563335512430296;2015
+2021;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;15.529086984270423;0.7659501090548183;2015
+2022;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;15.376218970464087;0.7584101118892054;2015
+2023;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;13.988328481520547;0.6899543892546919;2015
+2024;Zch_Rosengartenstrasse;Feinstaub PM10;gemessen;13.259901529264438;0.6540257667874355;2015
+2013;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;NA;NA;2015
+2014;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;19.82984645403948;1.0507092521294212;2015
+2015;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;18.87281987272054;1;2015
+2016;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;18.229234882999314;0.9658988432008782;2015
+2017;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;17.543214136731155;0.9295491746884499;2015
+2018;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;17.304065365613603;0.9168775775063444;2015
+2019;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;16.801487942816177;0.8902478832589112;2015
+2020;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;16.085631623848272;0.852317339556609;2015
+2021;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;15.689912144975073;0.8313496473123151;2015
+2022;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;15.22995601483574;0.8069782956414304;2015
+2023;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;14.9602988883934;0.7926901750393728;2015
+2024;Zch_Rosengartenstrasse;Feinstaub PM10;Trend;14.711191673010637;0.7794909172144819;2015
+1990;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1991;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1992;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1993;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1994;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1995;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1996;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1997;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1998;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1999;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+2000;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+2001;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+2002;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;30.895399630473538;NA;2015
+2003;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+2004;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;28.647996161835692;NA;2015
+2005;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+2006;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;33.36917918533524;NA;2015
+2007;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+2008;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;24.75465498681268;NA;2015
+2009;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+2010;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;23.529285924107345;1.2242441070120018;2015
+2011;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;25.68857647219663;1.3365934038564327;2015
+2012;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;20.56479330755874;1.0699996208938831;2015
+2013;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;23.030372280378153;1.1982853044281312;2015
+2014;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;17.53168591237569;0.9121850630503371;2015
+2015;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;19.21943980725788;1;2015
+2016;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;17.474765167236768;0.9092234395217769;2015
+2017;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;17.55628814368595;0.9134651332062306;2015
+2018;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;18.154653405329608;0.9445984683941633;2015
+2019;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;15.689137562460054;0.816316069552419;2015
+2020;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;14.759379589450143;0.7679401552524192;2015
+2021;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;14.965855770177285;0.7786832457273648;2015
+2022;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;15.930068319835616;0.8288518541430072;2015
+2023;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;12.632992769396601;0.657302860857889;2015
+2024;Zch_Schimmelstrasse;Feinstaub PM10;gemessen;11.5922800084573;0.603153896508455;2015
+1990;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1991;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1992;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1993;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1994;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1995;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1996;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1997;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1998;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1999;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+2000;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+2001;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+2002;Zch_Schimmelstrasse;Feinstaub PM10;Trend;30.54814151994124;NA;2015
+2003;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+2004;Zch_Schimmelstrasse;Feinstaub PM10;Trend;29.285250217557763;NA;2015
+2005;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+2006;Zch_Schimmelstrasse;Feinstaub PM10;Trend;28.32698195175885;NA;2015
+2007;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+2008;Zch_Schimmelstrasse;Feinstaub PM10;Trend;25.491580094485816;NA;2015
+2009;Zch_Schimmelstrasse;Feinstaub PM10;Trend;NA;NA;2015
+2010;Zch_Schimmelstrasse;Feinstaub PM10;Trend;24.094982557811488;1.32110430842372;2015
+2011;Zch_Schimmelstrasse;Feinstaub PM10;Trend;23.591395078510715;1.2934930998670733;2015
+2012;Zch_Schimmelstrasse;Feinstaub PM10;Trend;21.627154995422828;1.1857957387953304;2015
+2013;Zch_Schimmelstrasse;Feinstaub PM10;Trend;20.451614706458464;1.1213420154215816;2015
+2014;Zch_Schimmelstrasse;Feinstaub PM10;Trend;18.638482321709677;1.0219297415389579;2015
+2015;Zch_Schimmelstrasse;Feinstaub PM10;Trend;18.23851637162587;1;2015
+2016;Zch_Schimmelstrasse;Feinstaub PM10;Trend;17.97104498042745;0.985334805433268;2015
+2017;Zch_Schimmelstrasse;Feinstaub PM10;Trend;17.579184282515328;0.9638494669371088;2015
+2018;Zch_Schimmelstrasse;Feinstaub PM10;Trend;17.316327328023384;0.9494372774181808;2015
+2019;Zch_Schimmelstrasse;Feinstaub PM10;Trend;16.732344064447663;0.9174180467046432;2015
+2020;Zch_Schimmelstrasse;Feinstaub PM10;Trend;16.064228454831106;0.8807859218101007;2015
+2021;Zch_Schimmelstrasse;Feinstaub PM10;Trend;15.679014073008;0.8596649943193979;2015
+2022;Zch_Schimmelstrasse;Feinstaub PM10;Trend;15.337383297442873;0.8409337132982831;2015
+2023;Zch_Schimmelstrasse;Feinstaub PM10;Trend;14.446790311016109;0.7921033716038084;2015
+2024;Zch_Schimmelstrasse;Feinstaub PM10;Trend;14.05303543229822;0.7705141770281759;2015
+2003;Zch_Schwamendingen;Feinstaub PM10;gemessen;34.27768508118391;1.713981150100934;2015
+2004;Zch_Schwamendingen;Feinstaub PM10;gemessen;NA;NA;2015
+2005;Zch_Schwamendingen;Feinstaub PM10;gemessen;28.77874941372191;1.4390188223554914;2015
+2006;Zch_Schwamendingen;Feinstaub PM10;gemessen;NA;NA;2015
+2007;Zch_Schwamendingen;Feinstaub PM10;gemessen;25.836191296532213;1.291882598482889;2015
+2008;Zch_Schwamendingen;Feinstaub PM10;gemessen;NA;NA;2015
+2009;Zch_Schwamendingen;Feinstaub PM10;gemessen;25.040864528878874;1.2521140118732634;2015
+2010;Zch_Schwamendingen;Feinstaub PM10;gemessen;NA;NA;2015
+2015;Zch_Schwamendingen;Feinstaub PM10;gemessen;19.998869345304843;1;2015
+2016;Zch_Schwamendingen;Feinstaub PM10;gemessen;NA;NA;2015
+2003;Zch_Schwamendingen;Feinstaub PM10;Trend;32.45133656382474;1.4626482978550366;2015
+2004;Zch_Schwamendingen;Feinstaub PM10;Trend;NA;NA;2015
+2005;Zch_Schwamendingen;Feinstaub PM10;Trend;28.45762292769303;1.2826434330162733;2015
+2006;Zch_Schwamendingen;Feinstaub PM10;Trend;NA;NA;2015
+2007;Zch_Schwamendingen;Feinstaub PM10;Trend;26.806438202040365;1.2082211507885405;2015
+2008;Zch_Schwamendingen;Feinstaub PM10;Trend;NA;NA;2015
+2009;Zch_Schwamendingen;Feinstaub PM10;Trend;25.313904600076366;1.1409496001049346;2015
+2010;Zch_Schwamendingen;Feinstaub PM10;Trend;NA;NA;2015
+2015;Zch_Schwamendingen;Feinstaub PM10;Trend;22.186698341231036;1;2015
+2016;Zch_Schwamendingen;Feinstaub PM10;Trend;NA;NA;2015
+1990;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1991;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1992;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1993;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1994;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1995;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1996;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1997;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1998;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+1999;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;NA;NA;2015
+2000;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;24.470729969774855;1.374874399422534;2015
+2001;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;25.611921345953622;1.4389916043399154;2015
+2002;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;27.837974754894738;1.5640611812377294;2015
+2003;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;31.98551056094253;1.7970881815547075;2015
+2004;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;25.493436092524078;1.4323345760514017;2015
+2005;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;26.30285855313881;1.4778115283446653;2015
+2006;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;29.665280395135213;1.6667273357737866;2015
+2007;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;24.374854613874653;1.3694876956942217;2015
+2008;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;22.48332106396857;1.2632129316546172;2015
+2009;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;24.09454260596532;1.3537385209045325;2015
+2010;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;22.527264310707245;1.2656818586152405;2015
+2011;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;21.95939195864723;1.2337762652818367;2015
+2012;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;19.525576481342938;1.097033691733885;2015
+2013;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;22.328944487600566;1.2545393692810785;2015
+2014;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;16.950245698701703;0.9523401591963752;2015
+2015;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;17.7985203448787;1;2015
+2016;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;16.21514605924286;0.9110389934132116;2015
+2017;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;15.860801341545706;0.8911303318598308;2015
+2018;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;17.89938060901108;1.0056667780342425;2015
+2019;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;15.094036766575343;0.8480500892265722;2015
+2020;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;13.966711228646409;0.784711928745535;2015
+2021;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;14.383733880055555;0.8081421152626485;2015
+2022;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;15.08859168426393;0.8477441602950709;2015
+2023;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;13.05224745759452;0.7333332886489151;2015
+2024;Zch_Stampfenbachstrasse;Feinstaub PM10;gemessen;11.65662832029945;0.6549212010004808;2015
+1990;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1991;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1992;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1993;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1994;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1995;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1996;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1997;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1998;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+1999;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;NA;NA;2015
+2000;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;27.127053841991884;1.5661213203888478;2015
+2001;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;27.184964300914356;1.5694646544980457;2015
+2002;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;27.220754561945338;1.5715309272009126;2015
+2003;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;27.118513167155466;1.5656282431446422;2015
+2004;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;26.444059237327707;1.5266901157211543;2015
+2005;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;25.80385318702341;1.4897292149663721;2015
+2006;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;25.520276905035917;1.4733575564824075;2015
+2007;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;24.856071459951227;1.435011102985299;2015
+2008;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;24.288489805765618;1.402243013429416;2015
+2009;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;23.925691708203143;1.3812976561156936;2015
+2010;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;22.952180423669557;1.3250941042214186;2015
+2011;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;21.281668294949014;1.2286507279522434;2015
+2012;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;19.962819133866038;1.1525098465435997;2015
+2013;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;19.272047480758907;1.112629650936929;2015
+2014;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;17.850576510577344;1.0305641230811513;2015
+2015;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;17.32117013467168;1;2015
+2016;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;17.072020836605716;0.9856159083867411;2015
+2017;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;16.651865976216772;0.9613591834009433;2015
+2018;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;16.60896700983883;0.9588825050908519;2015
+2019;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;16.030931091045144;0.9255108613566545;2015
+2020;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;15.422146413284604;0.8903640050514942;2015
+2021;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;15.22404812279291;0.8789272320764882;2015
+2022;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;15.0088441746535;0.8665029012451295;2015
+2023;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;14.251652148246235;0.8227880701730879;2015
+2024;Zch_Stampfenbachstrasse;Feinstaub PM10;Trend;13.840702284173886;0.7990627755840258;2015
+2000;Zürich-Kaserne;Feinstaub PM10;gemessen;NA;NA;2015
+2001;Zürich-Kaserne;Feinstaub PM10;gemessen;NA;NA;2015
+2002;Zürich-Kaserne;Feinstaub PM10;gemessen;25.879889807162535;1.5408214170903867;2015
+2003;Zürich-Kaserne;Feinstaub PM10;gemessen;29.19196675900277;1.738013875809221;2015
+2004;Zürich-Kaserne;Feinstaub PM10;gemessen;24.66346153846154;1.4683984375980266;2015
+2005;Zürich-Kaserne;Feinstaub PM10;gemessen;24.167397260273972;1.4388640589828074;2015
+2006;Zürich-Kaserne;Feinstaub PM10;gemessen;26.113774104683195;1.554746280659212;2015
+2007;Zürich-Kaserne;Feinstaub PM10;gemessen;21.421875;1.2754027949955957;2015
+2008;Zürich-Kaserne;Feinstaub PM10;gemessen;19.648767123287673;1.16983655759632;2015
+2009;Zürich-Kaserne;Feinstaub PM10;gemessen;20.323204419889503;1.2099908024108028;2015
+2010;Zürich-Kaserne;Feinstaub PM10;gemessen;19.512602739726027;1.1617296838808597;2015
+2011;Zürich-Kaserne;Feinstaub PM10;gemessen;20.26;1.2062277754216553;2015
+2012;Zürich-Kaserne;Feinstaub PM10;gemessen;17.38021978021978;1.0347731412553778;2015
+2013;Zürich-Kaserne;Feinstaub PM10;gemessen;18.71731843575419;1.1143805221430658;2015
+2014;Zürich-Kaserne;Feinstaub PM10;gemessen;14.624383561643835;0.8706978109809805;2015
+2015;Zürich-Kaserne;Feinstaub PM10;gemessen;16.796164383561646;1;2015
+2016;Zürich-Kaserne;Feinstaub PM10;gemessen;14.579889807162534;0.8680487684099965;2015
+2017;Zürich-Kaserne;Feinstaub PM10;gemessen;14.827222222222222;0.8827742979661225;2015
+2018;Zürich-Kaserne;Feinstaub PM10;gemessen;15.849041095890412;0.9436107395687208;2015
+2019;Zürich-Kaserne;Feinstaub PM10;gemessen;13.578787878787878;0.8084457599186988;2015
+2020;Zürich-Kaserne;Feinstaub PM10;gemessen;12.107650273224044;0.7208580481073265;2015
+2021;Zürich-Kaserne;Feinstaub PM10;gemessen;12.923287671232877;0.7694189801976967;2015
+2022;Zürich-Kaserne;Feinstaub PM10;gemessen;13.861432506887052;0.8252736869170674;2015
+2023;Zürich-Kaserne;Feinstaub PM10;gemessen;12.097808219178082;0.7202720777737904;2015
+2024;Zürich-Kaserne;Feinstaub PM10;gemessen;11.813934426229508;0.7033709694929974;2015
+2000;Zürich-Kaserne;Feinstaub PM10;Trend;NA;NA;2015
+2001;Zürich-Kaserne;Feinstaub PM10;Trend;NA;NA;2015
+2002;Zürich-Kaserne;Feinstaub PM10;Trend;25.123598379451078;1.5685772045480897;2015
+2003;Zürich-Kaserne;Feinstaub PM10;Trend;24.8317130118498;1.5503535119446057;2015
+2004;Zürich-Kaserne;Feinstaub PM10;Trend;24.13397651704314;1.5067907410387398;2015
+2005;Zürich-Kaserne;Feinstaub PM10;Trend;23.55802977189244;1.4708318420851576;2015
+2006;Zürich-Kaserne;Feinstaub PM10;Trend;23.008257805172942;1.4365071501492641;2015
+2007;Zürich-Kaserne;Feinstaub PM10;Trend;22.03574712200126;1.3757890131307118;2015
+2008;Zürich-Kaserne;Feinstaub PM10;Trend;20.701612629781838;1.2924931046111596;2015
+2009;Zürich-Kaserne;Feinstaub PM10;Trend;19.890506733425415;1.241852181273528;2015
+2010;Zürich-Kaserne;Feinstaub PM10;Trend;19.35866357260274;1.208646863871878;2015
+2011;Zürich-Kaserne;Feinstaub PM10;Trend;18.665651529883306;1.1653790613752373;2015
+2012;Zürich-Kaserne;Feinstaub PM10;Trend;17.86431121876272;1.115347846653332;2015
+2013;Zürich-Kaserne;Feinstaub PM10;Trend;17.297553849317193;1.079962681009663;2015
+2014;Zürich-Kaserne;Feinstaub PM10;Trend;16.37755940081177;1.02252336445791;2015
+2015;Zürich-Kaserne;Feinstaub PM10;Trend;16.016807018873667;1;2015
+2016;Zürich-Kaserne;Feinstaub PM10;Trend;15.664514980461178;0.9780048521532813;2015
+2017;Zürich-Kaserne;Feinstaub PM10;Trend;15.45617424696502;0.964997220029684;2015
+2018;Zürich-Kaserne;Feinstaub PM10;Trend;15.19925307914764;0.9489564968371881;2015
+2019;Zürich-Kaserne;Feinstaub PM10;Trend;14.792685348382818;0.9235726778097292;2015
+2020;Zürich-Kaserne;Feinstaub PM10;Trend;14.270677250462601;0.8909814068213793;2015
+2021;Zürich-Kaserne;Feinstaub PM10;Trend;14.243079384228455;0.8892583501471228;2015
+2022;Zürich-Kaserne;Feinstaub PM10;Trend;14.190993327605055;0.8860063875954093;2015
+2023;Zürich-Kaserne;Feinstaub PM10;Trend;14.00683133426107;0.8745083410042895;2015
+2024;Zürich-Kaserne;Feinstaub PM10;Trend;14.194742629058606;0.8862404730438469;2015
+2000;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;59.480167597765366;1.204308593731396;2015
+2001;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;52.287921348314605;1.0586855345460118;2015
+2002;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;52.02073863636364;1.0532758249050609;2015
+2003;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;63.39587912087912;1.2835909029163504;2015
+2004;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;50.26401098901099;1.0177069573648858;2015
+2005;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;51.37961432506887;1.040294833947473;2015
+2006;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;53.41745152354571;1.0815553910351325;2015
+2007;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;47.244383561643836;0.9565678683623539;2015
+2008;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;47.97349726775956;0.9713304007751828;2015
+2009;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;48.254120879120876;0.9770122513888497;2015
+2010;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;43.77616438356164;0.8863460393091125;2015
+2011;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;48.99116022099447;0.9919352559664268;2015
+2012;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;43.043169398907104;0.871504921759628;2015
+2013;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;45.310192837465564;0.9174058652087017;2015
+2014;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;43.30849315068493;0.8768769926076445;2015
+2015;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;49.38947368421053;1;2015
+2016;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;43.881967213114756;0.8884882534624684;2015
+2017;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;36.796164383561646;0.7450203786100503;2015
+2018;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;34.535833333333336;0.6992549374822393;2015
+2019;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;32.78027397260274;0.6637097245092201;2015
+2020;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;31.259836065573772;0.6329250695288807;2015
+2021;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;28.806371191135735;0.5832492035715888;2015
+2022;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;27.81095890410959;0.5630948627217415;2015
+2023;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;23.179726027397262;0.46932522860245945;2015
+2024;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;gemessen;23.05013698630137;0.46670140956918804;2015
+2000;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;54.84549591577252;1.2618501549486296;2015
+2001;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;52.76472700542477;1.213977152287357;2015
+2002;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;51.78655663822;1.1914720329732926;2015
+2003;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;51.32904379190651;1.1809458694958348;2015
+2004;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;50.16760517785918;1.1542242313626023;2015
+2005;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;48.99302388679727;1.127200214907315;2015
+2006;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;48.44084727469258;1.1144960879428447;2015
+2007;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;48.153575312089586;1.1078867180306886;2015
+2008;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;46.96834127076647;1.0806176098984408;2015
+2009;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;46.22277660358161;1.063464134027674;2015
+2010;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;45.902317965999856;1.0560912262850188;2015
+2011;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;45.384482226760504;1.0441771921991458;2015
+2012;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;44.61286385483708;1.026424289323255;2015
+2013;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;44.413517161630736;1.0218378478751327;2015
+2014;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;43.81257064748134;1.0080116541406499;2015
+2015;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;43.46434931333451;1;2015
+2016;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;42.78460864091277;0.9843609605766445;2015
+2017;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;39.494184581206056;0.9086569845206347;2015
+2018;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;37.28625131128748;0.8578582654600643;2015
+2019;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;35.30005492733203;0.8121611271079643;2015
+2020;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;33.824636344341805;0.7782156383039348;2015
+2021;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;32.85565176073957;0.7559218596345056;2015
+2022;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;32.45333572646228;0.746665629169004;2015
+2023;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;31.938717233500036;0.7348256154314842;2015
+2024;Dübendorf-EMPA;Stickoxide | Stickstoffdioxid;Trend;31.877631645364936;0.7334201972186234;2015
+2001;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;55.02571606239875;1.216836992476035;2015
+2002;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;55.71760069679775;1.2321373079995575;2015
+2003;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2004;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;50.33223562054571;1.1130455103509664;2015
+2006;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;53.30047240146974;1.178685007224765;2015
+2007;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2008;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;50.28326081791218;1.1119624830719372;2015
+2009;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;47.22763460496953;1.0443904589864779;2015
+2010;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;46.79882454331405;1.0349077664727335;2015
+2011;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;47.615841335925;1.0529752506940335;2015
+2012;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;47.335200608134244;1.0467691702718556;2015
+2013;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;51.64862622522802;1.1421561316922475;2015
+2014;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;46.17046597077686;1.0210122643272346;2015
+2015;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;45.22028538139011;1;2015
+2016;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;46.84358913618132;1.035897689302493;2015
+2017;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;40.13908432345455;0.8876344760967237;2015
+2018;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;34.90520131350411;0.7718925482029121;2015
+2019;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;35.47535355889011;0.7845008774201497;2015
+2020;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;28.996627919206613;0.6412305379023513;2015
+2021;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;26.30197092719452;0.5816409760655512;2015
+2022;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;25.128484048129835;0.5556905233170238;2015
+2023;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;23.42282700848077;0.5179716760062767;2015
+2024;Opf_Balsberg;Stickoxide | Stickstoffdioxid;gemessen;22.82530907159726;0.5047581827290005;2015
+2001;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;53.68971325633369;1.1622702412245638;2015
+2002;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;53.00275932626308;1.147399122315782;2015
+2003;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2004;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;50.926768454468686;1.1024582525476645;2015
+2006;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;49.88197175031229;1.0798405844000845;2015
+2007;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2008;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;49.02287457277729;1.0612429234477576;2015
+2009;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;48.336249853544075;1.0463789312665404;2015
+2010;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;48.073530571701404;1.0406916071114687;2015
+2011;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;47.98062451859393;1.038680384957219;2015
+2012;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;47.960743873616906;1.0382500104844998;2015
+2013;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;47.92555015415724;1.0374881399077158;2015
+2014;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;47.00810642169189;1.0176273978107802;2015
+2015;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;46.193829414204394;1;2015
+2016;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;45.40015336772768;0.9828185700007659;2015
+2017;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;40.52931636402456;0.8773751143385826;2015
+2018;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;37.451561740258605;0.8107481500276402;2015
+2019;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;35.355393917615054;0.765370491383064;2015
+2020;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;29.5586206069762;0.6398824471107185;2015
+2021;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;27.373227503952553;0.5925732473596442;2015
+2022;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;26.871935585488767;0.5817213235243444;2015
+2023;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;26.2346266998283;0.567924916217517;2015
+2024;Opf_Balsberg;Stickoxide | Stickstoffdioxid;Trend;26.021648126343905;0.5633143745892253;2015
+2015;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;gemessen;23.152795456674156;1;2015
+2016;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2018;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;gemessen;18.0785831376759;0.7808380275939623;2015
+2021;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;gemessen;13.657412804635854;0.589881806289568;2015
+2022;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2024;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;gemessen;10.569580385467237;0.4565142211551128;2015
+2015;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;Trend;21.248382019590686;1;2015
+2016;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2018;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;Trend;18.82053173064682;0.8857395218748692;2015
+2021;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;Trend;14.430062680063115;0.6791134810527605;2015
+2022;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2024;Sch_Güterstrasse;Stickoxide | Stickstoffdioxid;Trend;12.863654064303102;0.60539452144841;2015
+1992;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+1993;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+1994;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+1995;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+1996;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+1997;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+1998;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+1999;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2000;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2001;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2002;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2003;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2004;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2005;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;14.504764573251396;1.1118313247444407;2015
+2006;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;15.845782034086834;1.2146241148277528;2015
+2007;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;13.226596655663911;1.0138561303260607;2015
+2008;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;13.456105170142466;1.0314486086047772;2015
+2009;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;13.597875730997261;1.0423157240059902;2015
+2010;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;12.286651237302777;0.941806649315445;2015
+2011;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;13.461426933884932;1.0318565368825428;2015
+2012;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;11.673862395797814;0.894834647391642;2015
+2013;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;12.4457734780854;0.9540038201741782;2015
+2014;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;11.564973910252055;0.8864880362817301;2015
+2015;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;13.045831908527473;1;2015
+2016;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;11.895601402835196;0.9118315708988689;2015
+2017;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;9.950354298658192;0.7627228656958315;2015
+2018;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;9.252539997882353;0.709233421276445;2015
+2019;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;8.32431222167036;0.6380821307554277;2015
+2020;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;7.956004808255556;0.609850323386052;2015
+2021;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;7.690565371588889;0.5895036380594412;2015
+2022;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;6.532320499390449;0.5007208850453274;2015
+2023;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;5.612762703269122;0.43023417307717354;2015
+2024;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;gemessen;6.075887715530055;0.4657340182007496;2015
+1992;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+1993;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+1994;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+1995;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+1996;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+1997;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+1998;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+1999;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2000;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2001;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2002;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2003;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2004;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2005;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;13.705156058543091;1.166860188684608;2015
+2006;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;13.50768919919145;1.1500478141463126;2015
+2007;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;13.224893717729367;1.1259705407866776;2015
+2008;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;12.928321707152575;1.1007203305196815;2015
+2009;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;12.628796240261792;1.0752186622921123;2015
+2010;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;12.441091433615563;1.0592374312018107;2015
+2011;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;12.314164623720792;1.048430852954157;2015
+2012;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;12.047290720168391;1.025709146457423;2015
+2013;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;11.912204731065746;1.014207893785827;2015
+2014;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;11.852671586407473;1.0091392279412204;2015
+2015;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;11.745328353341803;1;2015
+2016;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;11.47418965210312;0.9769151876318948;2015
+2017;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;10.591244328678277;0.9017410165178428;2015
+2018;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;10.021581500525272;0.8532397902417018;2015
+2019;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;9.308391925800391;0.7925186632310667;2015
+2020;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;8.447685755380565;0.7192379387994728;2015
+2021;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;8.032777947200474;0.6839125910783902;2015
+2022;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;7.679587883421323;0.6538419065343808;2015
+2023;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;7.511243289317754;0.6395090084629811;2015
+2024;Zch_Heubeeribüel;Stickoxide | Stickstoffdioxid;Trend;7.510333442400902;0.6394315438839178;2015
+2013;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2014;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;58.64379795054794;0.9748299995445076;2015
+2015;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;60.157974188268156;1;2015
+2016;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;57.374735594818944;0.9537345026822397;2015
+2017;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;56.156592285506846;0.93348542804585255;2015
+2018;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;50.85039205634349;0.8452809912980779;2015
+2019;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;51.428285452575345;0.8548872555386805;2015
+2020;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;41.05774671042896;0.6824988252087107;2015
+2021;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;39.07477765171348;0.6495361284844219;2015
+2022;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;34.800518196491716;0.5784855402141919;2015
+2023;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;32.395533363442304;0.5385077173985023;2015
+2024;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;gemessen;29.577789244285714;0.4916686381712284;2015
+2013;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2014;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;58.891185030508886;1.0276913608888656;2015
+2015;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;57.30434960509255;1;2015
+2016;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;56.41579479265249;0.9844941122521511;2015
+2017;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;55.83696280140866;0.9743930990614806;2015
+2018;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;54.6659690766356;0.953958459582229;2015
+2019;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;53.18718565950287;0.9281526799629921;2015
+2020;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;41.46114059655576;0.7235251928044075;2015
+2021;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;38.10218527747541;0.6649091306341138;2015
+2022;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;35.99058026314678;0.6280601823626379;2015
+2023;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;34.28761011690618;0.5983421913553852;2015
+2024;Zch_Rosengartenstrasse;Stickoxide | Stickstoffdioxid;Trend;32.89902604793937;0.5741104519056558;2015
+1990;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;116.38808686086054;NA;2015
+1991;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;125.08496775524927;NA;2015
+1992;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;111.56760094227405;NA;2015
+1993;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;104.5603442992068;NA;2015
+1994;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;96.13442505889807;NA;2015
+1995;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;92.34296128779006;NA;2015
+1996;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;88.3739508584573;NA;2015
+1997;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;90.81271399792244;NA;2015
+1998;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;85.72383665242253;NA;2015
+1999;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;81.35912045767124;NA;2015
+2000;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;94.30361282266476;NA;2015
+2001;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;71.52864603794444;NA;2015
+2002;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;65.92846721407821;NA;2015
+2003;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2004;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;67.21859519358543;NA;2015
+2005;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2006;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;66.83801590358543;NA;2015
+2007;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2008;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;63.79854227504202;NA;2015
+2009;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2010;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;46.06044407935635;0.904579158298949;2015
+2011;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;54.12252103758904;1.062909954599022;2015
+2012;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;48.430190180008196;0.9511185040641932;2015
+2013;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;51.9384195104011;1.020016474942177;2015
+2014;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;49.263302270714284;0.967479957993756;2015
+2015;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;50.919196685862744;1;2015
+2016;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;48.56939561051912;0.9538523537627603;2015
+2017;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;43.13402556971233;0.8471073460922863;2015
+2018;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;40.23503205752909;0.7901741322776992;2015
+2019;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;37.26428997915703;0.7318318513360035;2015
+2020;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;30.906092351144068;0.6069634708067746;2015
+2021;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;29.7947955020831;0.585138757901013;2015
+2022;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;29.241360145252056;0.5742698637932491;2015
+2023;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;23.095833791725212;0.45357812563719335;2015
+2024;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;gemessen;23.459723925042614;0.46072454893138554;2015
+1990;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;113.6685970317517;NA;2015
+1991;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;112.72736157262545;NA;2015
+1992;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;107.8476167960879;NA;2015
+1993;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;102.67102726989417;NA;2015
+1994;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;98.76607434749951;NA;2015
+1995;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;94.81475255632606;NA;2015
+1996;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;91.44651785586645;NA;2015
+1997;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;89.91878106652257;NA;2015
+1998;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;88.31026927952482;NA;2015
+1999;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;87.27090833258912;NA;2015
+2000;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;89.89062352213872;NA;2015
+2001;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;77.08766375795244;NA;2015
+2002;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;68.38363527698183;NA;2015
+2003;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2004;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;65.91241515046971;NA;2015
+2005;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2006;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;63.450238073140895;NA;2015
+2007;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2008;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;59.30652797989484;NA;2015
+2009;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2010;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;51.187676979671956;1.0662694570949145;2015
+2011;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;50.34190124491284;1.048651450442966;2015
+2012;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;49.21733167068424;1.0252260039267198;2015
+2013;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;48.86862204082055;1.0179621769734828;2015
+2014;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;48.475143777469185;1.0097657930194128;2015
+2015;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;48.006323954110464;1;2015
+2016;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;47.53898160857107;0.9902649837136848;2015
+2017;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;44.46787596392004;0.9262920444903706;2015
+2018;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;41.880102642341;0.8723872022022441;2015
+2019;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;38.827276113511495;0.8087950277264871;2015
+2020;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;34.51867249908224;0.7190442770014811;2015
+2021;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;32.75042316018109;0.6822106019091864;2015
+2022;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;31.6873611398858;0.660066393964594;2015
+2023;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;30.520146661667358;0.6357526289836679;2015
+2024;Zch_Schimmelstrasse;Stickoxide | Stickstoffdioxid;Trend;30.059194221866885;0.6261507181970578;2015
+2003;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;70.99019453711864;1.2937929918095163;2015
+2004;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2005;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;64.91386152854749;1.1830521054990888;2015
+2006;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2007;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;62.00752034689751;1.1300841727142303;2015
+2008;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2009;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;59.018728725882355;1.0756135845088897;2015
+2010;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2015;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;54.8698246060452;1;2015
+2016;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;gemessen;NA;NA;2015
+2003;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;69.66204770078502;1.2008624881955523;2015
+2004;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2005;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;65.10452122353621;1.1222980077342;2015
+2006;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2007;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;63.00267704527962;1.0860655696562693;2015
+2008;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2009;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;60.168097481124775;1.0372019433238941;2015
+2010;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+2015;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;58.01001229163304;1;2015
+2016;Zch_Schwamendingen;Stickoxide | Stickstoffdioxid;Trend;NA;NA;2015
+1990;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;82.34585286833334;2.408105605152446;2015
+1991;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;74.22383292509804;2.170586882968122;2015
+1992;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;71.54657055137884;2.092293559090287;2015
+1993;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;62.56094743845304;1.8295197990246463;2015
+1994;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;56.13174173687671;1.6415053969952054;2015
+1995;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;54.3917406416741;1.5906211539595716;2015
+1996;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;53.80210198911233;1.5733778794680329;2015
+1997;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;53.50411604050281;1.564663638154015;2015
+1998;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;49.46406070548493;1.4465170702517003;2015
+1999;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;48.79106208847383;1.4268360336793349;2015
+2000;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;44.64655798265374;1.305634986872997;2015
+2001;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;41.178512635925415;1.2042161643400298;2015
+2002;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;39.66237443858517;1.1598785229892434;2015
+2003;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;46.08878824885511;1.347811279509291;2015
+2004;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;40.372401118124294;1.1806424007954501;2015
+2005;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;36.463804465043836;1.066340184221011;2015
+2006;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;37.83048137819178;1.106307009754366;2015
+2007;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;32.57680357493699;0.9526695098075043;2015
+2008;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;34.78643740227933;1.0172875982674732;2015
+2009;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;35.459881703602775;1.0369816683424775;2015
+2010;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;33.91154368609066;0.9917023819089116;2015
+2011;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;36.15954470043454;1.0574424726902367;2015
+2012;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;33.11237960015028;0.9683317876682193;2015
+2013;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;34.34916964516438;1.004500227681311;2015
+2014;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;32.9568347922137;0.9637830665025844;2015
+2015;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;34.19528308565206;1;2015
+2016;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;31.70211777909315;0.9270903738298043;2015
+2017;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;27.324426661147946;0.7990700528112591;2015
+2018;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;25.332941796505494;0.7408314688622918;2015
+2019;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;23.10828992367671;0.6757741956922907;2015
+2020;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;20.27195270763014;0.5928289190311167;2015
+2021;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;18.77940398470685;0.549181123538833;2015
+2022;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;18.00718871851781;0.5265986151778173;2015
+2023;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;15.190164889443835;0.44421813533157883;2015
+2024;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;gemessen;14.809563328662088;0.4330878996254313;2015
+1990;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;74.46351312658375;2.294110897932968;2015
+1991;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;69.79176084970426;2.1501811078811177;2015
+1992;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;66.55291910519156;2.0503971757137514;2015
+1993;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;62.20952607238789;1.916583649166563;2015
+1994;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;59.030269518638455;1.8186354487521839;2015
+1995;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;57.11734968708975;1.7597012130686234;2015
+1996;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;55.229863162962005;1.7015505400357496;2015
+1997;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;54.209696459572754;1.6701207101273068;2015
+1998;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;51.26362310180203;1.5793565396981932;2015
+1999;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;49.16692652317357;1.5147604137738966;2015
+2000;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;47.13061207654947;1.4520245721855825;2015
+2001;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;43.85715715494722;1.3511742591366398;2015
+2002;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;42.393471048016764;1.3060802512383813;2015
+2003;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;42.06386579220789;1.2959255999518955;2015
+2004;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;40.076541394418285;1.234699069436918;2015
+2005;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;36.90186781091606;1.1368920635693385;2015
+2006;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;35.746274431331216;1.10128993771774;2015
+2007;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;34.83131949716322;1.0731015270793092;2015
+2008;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;34.506208659166624;1.0630853421698458;2015
+2009;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;34.23538569609852;1.0547416865337107;2015
+2010;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;33.961047927351956;1.0462897449240498;2015
+2011;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;33.71706677056814;1.0387730457090054;2015
+2012;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;33.37267030698021;1.0281626991492945;2015
+2013;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;33.07910435429018;1.019118365581747;2015
+2014;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;33.04081696569285;1.0179387876683974;2015
+2015;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;32.45854993046614;1;2015
+2016;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;31.705519679726212;0.97680024978463;2015
+2017;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;29.158859684879637;0.8983414153541912;2015
+2018;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;26.863460076093524;0.8276235424454076;2015
+2019;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;24.514684489016656;0.7552612344523364;2015
+2020;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;22.224144272845127;0.6846930722553681;2015
+2021;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;21.069463883797503;0.6491190742942385;2015
+2022;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;20.591981410557814;0.6344085442717154;2015
+2023;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;19.915280261282373;0.6135603809765252;2015
+2024;Zch_Stampfenbachstrasse;Stickoxide | Stickstoffdioxid;Trend;19.707532701795408;0.6071599853971784;2015
+2000;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;62.533701657458565;1.2931668547567141;2015
+2001;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;58.73030303030303;1.214514401604229;2015
+2002;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;55.26308539944903;1.1428140096618356;2015
+2003;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;67.29944903581267;1.3917202169355574;2015
+2004;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;53.41160220994475;1.1045262283639792;2015
+2005;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;55.52575342465754;1.1482458580092223;2015
+2006;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;60.13095890410959;1.2434792909825778;2015
+2007;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;51.378787878787875;1.0624886063257677;2015
+2008;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;51.864657534246575;1.072536156966748;2015
+2009;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;50.10328767123288;1.036111875891984;2015
+2010;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;47.95922865013774;0.991773767204448;2015
+2011;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;51.55835616438356;1.0662019920512733;2015
+2012;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;46.19016393442623;0.955190360279186;2015
+2013;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;49.049863013698634;1.0143275609545963;2015
+2014;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;44.97068493150685;0.9299721213960092;2015
+2015;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;48.35702479338843;1;2015
+2016;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;44.08164383561644;0.9115871794007364;2015
+2017;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;38.648189415041784;0.799225956935339;2015
+2018;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;35.408767123287674;0.7322362629747416;2015
+2019;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;33.36961325966851;0.6900675424562295;2015
+2020;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;29.51120218579235;0.6102774583813362;2015
+2021;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;27.969421487603306;0.5783941755537325;2015
+2022;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;27.350415512465375;0.5655934298961427;2015
+2023;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;22.30767123287671;0.4613119051097351;2015
+2024;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;gemessen;22.17225274725275;0.45851151599972356;2015
+2000;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;58.081456156486595;1.2344419282759331;2015
+2001;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;56.372612344403635;1.198122789774539;2015
+2002;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;55.195201028262424;1.1730985222776067;2015
+2003;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;54.78818278512397;1.1644479060886874;2015
+2004;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;53.86949871751586;1.1449225324679042;2015
+2005;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;53.43277136925419;1.1356404898747148;2015
+2006;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;53.12184728488077;1.1290322236283032;2015
+2007;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;52.39053997229875;1.1134892867109885;2015
+2008;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;51.37169732100457;1.0918351793538181;2015
+2009;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;50.590672977371895;1.0752355749260856;2015
+2010;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;50.40151246694215;1.0712152269406732;2015
+2011;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;49.98465710152207;1.0623555361692347;2015
+2012;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;49.14726661116171;1.0445579463695698;2015
+2013;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;48.82739097513952;1.0377594271334845;2015
+2014;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;48.237747925367835;1.0252273704062294;2015
+2015;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;47.05078045883073;1;2015
+2016;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;45.48014019096905;0.9666181888473458;2015
+2017;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;40.59814619493449;0.8628580822470677;2015
+2018;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;37.260583054134955;0.7919227415736033;2015
+2019;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;35.27779400931042;0.7497812717512383;2015
+2020;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;32.921831363590364;0.6997085073306457;2015
+2021;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;31.72050743577186;0.6741760099713372;2015
+2022;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;31.065971049399817;0.660264734111742;2015
+2023;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;30.463714712328766;0.6474645992107275;2015
+2024;Zürich-Kaserne;Stickoxide | Stickstoffdioxid;Trend;30.39640518421856;0.6460340272318184;2015
+2000;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2001;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2002;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2003;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2004;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2005;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2006;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2007;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2008;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2009;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2010;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2011;Dübendorf-EMPA;Russ im Feinstaub;gemessen;1.0610027855153203;2.235997605838072;2020
+2012;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.8805479452054794;1.8557002151024566;2020
+2013;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.8402203856749312;1.770712383033946;2020
+2014;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.756;1.5932231404958679;2020
+2015;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.7614958448753463;1.6048052929191183;2020
+2016;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.6756830601092896;1.4239601679989162;2020
+2017;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.5862637362637363;1.2355144855144857;2020
+2018;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.5695530726256983;1.2002977976822569;2020
+2019;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.5027777777777778;1.059573002754821;2020
+2020;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.4745098039215686;1;2020
+2021;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2022;Dübendorf-EMPA;Russ im Feinstaub;gemessen;NA;NA;2020
+2023;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.3494475138121547;0.7364389753892517;2020
+2024;Dübendorf-EMPA;Russ im Feinstaub;gemessen;0.3320441988950276;0.6997625679192732;2020
+2000;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2001;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2002;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2003;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2004;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2005;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2006;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2007;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2008;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2009;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2010;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2011;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.9501800332198495;1.8989476583677984;2020
+2012;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.8482910399797058;1.695321126171393;2020
+2013;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.8134024689317417;1.6255958446678185;2020
+2014;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.7710980086772488;1.5410498082008581;2020
+2015;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.7335294593208167;1.465968553770662;2020
+2016;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.6964102668994131;1.3917853452577769;2020
+2017;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.5994931854904355;1.1980952461575398;2020
+2018;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.5644001399751708;1.127961319663225;2020
+2019;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.5320975972222223;1.063404250712646;2020
+2020;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.5003718923124807;1;2020
+2021;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2022;Dübendorf-EMPA;Russ im Feinstaub;Trend;NA;NA;2020
+2023;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.44351388142009424;0.8863684955811251;2020
+2024;Dübendorf-EMPA;Russ im Feinstaub;Trend;0.43361707417638645;0.8665895923378405;2020
+2001;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2002;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2003;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2004;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2006;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2007;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2008;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2009;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2010;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2011;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2012;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2013;Opf_Balsberg;Russ im Feinstaub;gemessen;NA;NA;2020
+2014;Opf_Balsberg;Russ im Feinstaub;gemessen;1.2965700198083334;2.479567497823222;2020
+2015;Opf_Balsberg;Russ im Feinstaub;gemessen;0.9697577267403314;1.8545699061773144;2020
+2016;Opf_Balsberg;Russ im Feinstaub;gemessen;0.9655157285619834;1.8464574859854517;2020
+2017;Opf_Balsberg;Russ im Feinstaub;gemessen;1.151403971769863;2.201951164725496;2020
+2018;Opf_Balsberg;Russ im Feinstaub;gemessen;0.6678193020958905;1.2771412346405657;2020
+2019;Opf_Balsberg;Russ im Feinstaub;gemessen;0.6670813691620879;1.2757300077185514;2020
+2020;Opf_Balsberg;Russ im Feinstaub;gemessen;0.5229016838406594;1;2020
+2021;Opf_Balsberg;Russ im Feinstaub;gemessen;0.5762923155911602;1.1021045320763783;2020
+2022;Opf_Balsberg;Russ im Feinstaub;gemessen;0.5361239478273973;1.0252863289512126;2020
+2023;Opf_Balsberg;Russ im Feinstaub;gemessen;0.4881539830552486;0.9335483096359674;2020
+2024;Opf_Balsberg;Russ im Feinstaub;gemessen;0.45173507135519125;0.8639005865065176;2020
+2001;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2002;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2003;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2004;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2006;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2007;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2008;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2009;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2010;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2011;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2012;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2013;Opf_Balsberg;Russ im Feinstaub;Trend;NA;NA;2020
+2014;Opf_Balsberg;Russ im Feinstaub;Trend;1.1708822586162748;2.048473974546595;2020
+2015;Opf_Balsberg;Russ im Feinstaub;Trend;1.0192016473175007;1.7831067419300102;2020
+2016;Opf_Balsberg;Russ im Feinstaub;Trend;1.011593518930843;1.769796220841839;2020
+2017;Opf_Balsberg;Russ im Feinstaub;Trend;1.0377047945436488;1.8154782423614555;2020
+2018;Opf_Balsberg;Russ im Feinstaub;Trend;0.6911602305437071;1.2091939510498695;2020
+2019;Opf_Balsberg;Russ im Feinstaub;Trend;0.6464222846114529;1.1309243238157878;2020
+2020;Opf_Balsberg;Russ im Feinstaub;Trend;0.5715875686804542;1;2020
+2021;Opf_Balsberg;Russ im Feinstaub;Trend;0.5630395929964898;0.985045203653225;2020
+2022;Opf_Balsberg;Russ im Feinstaub;Trend;0.5508178619898054;0.9636631238524012;2020
+2023;Opf_Balsberg;Russ im Feinstaub;Trend;0.5350577770027661;0.9360906470341553;2020
+2024;Opf_Balsberg;Russ im Feinstaub;Trend;0.5203009840306155;0.910273442845797;2020
+1992;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+1993;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+1994;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+1995;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+1996;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+1997;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+1998;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+1999;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2000;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2001;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2002;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2003;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2004;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2005;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2006;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2007;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2008;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2009;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2010;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2011;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2012;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2013;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2014;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2015;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2016;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2017;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;0.6022191011235956;1.933409005490514;2020
+2018;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;0.3814076246334311;1.2244994136738259;2020
+2019;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;0.36098630136986304;1.1589372781850145;2020
+2020;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;0.3114804469273743;1;2020
+2021;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;0.30105263157894735;0.9665217658081172;2020
+2022;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;0.29342105263157897;0.9420207769895549;2020
+2023;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+2024;Zch_Heubeeribüel;Russ im Feinstaub;gemessen;NA;NA;2020
+1992;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+1993;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+1994;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+1995;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+1996;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+1997;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+1998;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+1999;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2000;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2001;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2002;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2003;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2004;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2005;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2006;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2007;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2008;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2009;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2010;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2011;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2012;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2013;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2014;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2015;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2016;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2017;Zch_Heubeeribüel;Russ im Feinstaub;Trend;0.630270168596546;1.9146157224275575;2020
+2018;Zch_Heubeeribüel;Russ im Feinstaub;Trend;0.3949543469153905;1.199780411516463;2020
+2019;Zch_Heubeeribüel;Russ im Feinstaub;Trend;0.3601785022526636;1.0941393987104506;2020
+2020;Zch_Heubeeribüel;Russ im Feinstaub;Trend;0.3291888608317815;1;2020
+2021;Zch_Heubeeribüel;Russ im Feinstaub;Trend;0.31621913076844155;0.9606009449087416;2020
+2022;Zch_Heubeeribüel;Russ im Feinstaub;Trend;0.30470030834416284;0.9256094133144666;2020
+2023;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2024;Zch_Heubeeribüel;Russ im Feinstaub;Trend;NA;NA;2020
+2000;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2001;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2002;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2003;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2004;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2005;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2006;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2007;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2008;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2009;Zürich-Kaserne;Russ im Feinstaub;gemessen;NA;NA;2020
+2010;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.9950276243093923;2.4588598455439157;2020
+2011;Zürich-Kaserne;Russ im Feinstaub;gemessen;1.0564383561643835;2.6106148108882254;2020
+2012;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.8366120218579235;2.067391554353592;2020
+2013;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.8254189944134078;2.0397319345993243;2020
+2014;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.7502747252747253;1.854039375424304;2020
+2015;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.7162983425414364;1.770078728344079;2020
+2016;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.5862258953168045;1.4486505491874868;2020
+2017;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.48662952646239555;1.2025332493707535;2020
+2018;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.4915068493150685;1.2145858326590966;2020
+2019;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.4212707182320442;1.0410220056786428;2020
+2020;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.4046703296703297;1;2020
+2021;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.36481994459833794;0.9015238277922268;2020
+2022;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.4180790960451977;1.033135037070278;2020
+2023;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.3712707182320442;0.9174646397587515;2020
+2024;Zürich-Kaserne;Russ im Feinstaub;gemessen;0.37637362637362637;0.9300746775288526;2020
+2000;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2001;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2002;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2003;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2004;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2005;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2006;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2007;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2008;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2009;Zürich-Kaserne;Russ im Feinstaub;Trend;NA;NA;2020
+2010;Zürich-Kaserne;Russ im Feinstaub;Trend;0.9801714372825865;2.2687234732939854;2020
+2011;Zürich-Kaserne;Russ im Feinstaub;Trend;0.9319372812785388;2.1570797773255648;2020
+2012;Zürich-Kaserne;Russ im Feinstaub;Trend;0.8506757210078931;1.9689902225292883;2020
+2013;Zürich-Kaserne;Russ im Feinstaub;Trend;0.8234226719946203;1.9059097963268485;2020
+2014;Zürich-Kaserne;Russ im Feinstaub;Trend;0.7595274533984534;1.7580167066625947;2020
+2015;Zürich-Kaserne;Russ im Feinstaub;Trend;0.7006874470022508;1.6218245074184263;2020
+2016;Zürich-Kaserne;Russ im Feinstaub;Trend;0.5833691494745435;1.3502773419695908;2020
+2017;Zürich-Kaserne;Russ im Feinstaub;Trend;0.505381177138141;1.169764896142027;2020
+2018;Zürich-Kaserne;Russ im Feinstaub;Trend;0.471859490258752;1.0921749613664078;2020
+2019;Zürich-Kaserne;Russ im Feinstaub;Trend;0.4465695625127891;1.0336384130313094;2020
+2020;Zürich-Kaserne;Russ im Feinstaub;Trend;0.4320365389702891;1;2020
+2021;Zürich-Kaserne;Russ im Feinstaub;Trend;0.4272006760028728;0.9888068194904486;2020
+2022;Zürich-Kaserne;Russ im Feinstaub;Trend;0.4264918383553046;0.9871661303736029;2020
+2023;Zürich-Kaserne;Russ im Feinstaub;Trend;0.42720162691835495;0.988809020497531;2020
+2024;Zürich-Kaserne;Russ im Feinstaub;Trend;0.4272056006817258;0.9888182182458981;2020

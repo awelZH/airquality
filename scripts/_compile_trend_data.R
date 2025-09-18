@@ -14,6 +14,9 @@ prepare_data_trends <- function(data_aq, data_met) {
     dplyr::mutate(
       site_met = dplyr::case_when( # TODO: besser...
         site %in% c("Bac_Turm", "Wld_Höhenklinik") ~ "Hörnli",
+        stringr::str_detect(site, "Zch_") ~ "Zürich / Fluntern",
+        stringr::str_detect(site, "Zürich-") ~ "Zürich / Fluntern",
+        stringr::str_detect(site, "Sch_Güterstrasse") ~ "Zürich / Affoltern",
         TRUE ~ "Zürich / Kloten"
       )
     )
@@ -353,7 +356,10 @@ trends_relative$agg <-
   ) |> 
   dplyr::select(year, pollutant, type, n, `relative Immission`, reference_year) |> 
   dplyr::bind_rows(trends_relative$agg) |> 
-  dplyr::mutate(pollutant = dplyr::recode(pollutant, Stickstoffdioxid = "Stickoxide | Stickstoffdioxid", Stickoxide = "Stickoxide | Stickstoffdioxid")) |> 
+  dplyr::mutate(
+    pollutant = dplyr::recode(pollutant, Stickstoffdioxid = "Stickoxide | Stickstoffdioxid", Stickoxide = "Stickoxide | Stickstoffdioxid"),
+    aggregation = "Median"
+  ) |> 
   dplyr::filter(year %in% !!years)
 
 # emissions <-
@@ -385,7 +391,7 @@ rm(list = c("years", "reference_year", "nmin_sites", "yearmin_per_site", "pollut
 
 
 
-  
+
 
 
 # plot results
@@ -405,22 +411,22 @@ theme_custom <-
 # detailed aggregated plot
 trends_relative$agg |> 
   dplyr::filter(type %in% c("Trend", "Messwerte")) |>
-  dplyr::mutate(type = dplyr::recode(type, Trend = "Median Trend", Messwerte = "Median Messwerte")) |> 
+  dplyr::mutate(type = dplyr::recode(type, Trend = "Median Trend Langzeitmessreihen", Messwerte = "Median Messwerte")) |> 
   dplyr::bind_rows(dplyr::filter(trends_relative$all, type == "Trend")) |>   
   dplyr::mutate(type = dplyr::recode(type, Trend = "Trend pro Standort")) |> 
   ggplot(aes(x = year, y = `relative Immission` - 1, color = type)) + 
   geom_hline(yintercept = 0, color = "gray80", linetype = 2) +
   geom_vline(data = . %>% dplyr::distinct(pollutant, reference_year), mapping = aes(xintercept = reference_year), color = "gray80", linetype = 2, inherit.aes = FALSE) +
   # geom_segment(data = . %>% dplyr::distinct(pollutant, reference_year), mapping = aes(x = reference_year, y = -Inf, yend = 0), color = "gray80", linetype = 2, inherit.aes = FALSE) +
-  geom_point(data = . %>% dplyr::filter(type != "Median Trend"), mapping = aes(size = type, shape = type), fill = "white") +
+  geom_point(data = . %>% dplyr::filter(type != "Median Trend Langzeitmessreihen"), mapping = aes(size = type, shape = type), fill = "white") +
   geom_line(data = . %>% dplyr::filter(type != "Median Messwerte"), mapping = aes(linewidth = type, group = site)) +
   # geom_point(mapping = aes(size = n), shape = 21, fill = "white") +
   # scale_size_binned(name = "Anzahl\nMessorte", breaks = c(-Inf,4,6,8,Inf), range = c(0.25,3)) +
   scale_y_continuous(labels = scales::percent_format(), expand = c(0.01,0.01)) + 
-  scale_color_manual(name = "Grundlage", values = c("Median Trend" = "steelblue", "Median Messwerte" = "gold3", "Trend pro Standort" = "gray80")) +
+  scale_color_manual(name = "Grundlage", values = c("Median Trend Langzeitmessreihen" = "steelblue", "Median Messwerte" = "gold3", "Trend pro Standort" = "gray80")) +
   scale_shape_manual(values = c("Median Messwerte" = 21, "Trend pro Standort" = 19)) +
   scale_size_manual(values = c("Median Messwerte" = 1, "Trend pro Standort" = 0.75)) +
-  scale_linewidth_manual(values = c("Median Trend" = 1, "Trend pro Standort" = 0.5)) +
+  scale_linewidth_manual(values = c("Median Trend Langzeitmessreihen" = 1, "Trend pro Standort" = 0.5)) +
   guides(shape = "none", size = "none", linewidth = "none") +
   theme_custom + 
   facet_wrap(pollutant~., axes = "all", nrow = 2, scales = "free_y")
@@ -428,14 +434,14 @@ trends_relative$agg |>
 # simplified aggregated plot
 trends_relative$agg |> 
   dplyr::filter(type %in% c("Trend", "Messwerte")) |>
-  dplyr::mutate(type = dplyr::recode(type, Trend = "Median Trend", Messwerte = "Median Messwerte")) |> 
+  dplyr::mutate(type = dplyr::recode(type, Trend = "Median Trend Langzeitmessreihen", Messwerte = "Median Messwerte")) |> 
   ggplot(aes(x = year, y = `relative Immission` - 1, color = type)) + 
   geom_hline(yintercept = 0, color = "gray80", linetype = 2) +
   geom_vline(data = . %>% dplyr::distinct(pollutant, reference_year), mapping = aes(xintercept = reference_year), color = "gray80", linetype = 2, inherit.aes = FALSE) +
   geom_line(mapping = aes(linewidth = type)) +
   scale_y_continuous(labels = scales::percent_format(), expand = c(0.01,0.01)) + 
-  scale_color_manual(name = "Grundlage", values = c("Median Trend" = "steelblue", "Median Messwerte" = "gold3", "Trend pro Standort" = "gray80")) +
-  scale_linewidth_manual(values = c("Median Trend" = 1, "Median Messwerte" = 0.5)) +
+  scale_color_manual(name = "Grundlage", values = c("Median Trend Langzeitmessreihen" = "steelblue", "Median Messwerte" = "gold3", "Trend pro Standort" = "gray80")) +
+  scale_linewidth_manual(values = c("Median Trend Langzeitmessreihen" = 1, "Median Messwerte" = 0.5)) +
   guides(linewidth = "none") +
   theme_custom + 
   facet_wrap(pollutant~., axes = "all", nrow = 2, scales = "free_y")

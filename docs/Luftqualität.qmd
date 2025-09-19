@@ -25,14 +25,6 @@ get_plot(plots, "source == 'threshold_comparison'")
 ```
 :::
 
-
-```{r}
-#| label: fig-emi-immi
-#| fig.asp: 0.6
-get_plot(plots, "source == 'timeseries_emi_immi'")
-```
-
-
 ### Stickstoffdioxid
 
 ```{r}

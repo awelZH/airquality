@@ -28,8 +28,14 @@ plots <-
 
 ```{r}
 #| label: fig-population-over-thresh
+get_plot(plots, "pollutant == 'various' & source == 'population_over_thresh'")
+```
+
+
+```{r}
+#| label: fig-population-over-thresh-ts
 #| fig.asp: 0.6
-get_plot(plots, "source == 'population_over_thresh'")
+get_plot(plots, "pollutant == 'timeseries_various' & source == 'population_over_thresh'")
 ```
 
 

@@ -4,6 +4,7 @@ project:
     - index.qmd
     - Schadstoffausstoss.qmd
     - Luftqualität.qmd
+    - Trends.qmd
     - Belastungsverteilung.qmd
     - Gesundheitsfolgen.qmd
     - about.qmd
@@ -25,6 +26,8 @@ website:
         text: Schadstoffausstoss
       - href: Luftqualität.qmd
         text: Luftqualität
+      - href: Trends.qmd
+        text: Trends
       - href: Belastungsverteilung.qmd
         text: Belastungsverteilung
       - href: Gesundheitsfolgen.qmd

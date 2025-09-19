@@ -13,6 +13,8 @@ load_packages <- function(packages) {
         renv::install(paste0("Ostluft/",package), prompt = FALSE)
       } else if (package %in% c("airquality.methods", "airquality.data")) {
         renv::install(paste0("awelZH/",package), prompt = FALSE)
+      } else if (package == "healthiar") {
+        renv::install(paste0("SwissTPH/",package), prompt = FALSE)
       } else {
         renv::install(package)
       }
@@ -36,7 +38,7 @@ load_packages(imports)
 
 # packages necessary for function functionality
 depends <- c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-             "readr", "sf", "stars", "withr", "pxR")
+             "readr", "sf", "stars", "withr", "pxR", "healthiar")
 load_packages(depends)
 # sapply(depends, function(x) usethis::use_package(x, "Suggests", min_version = TRUE))
 

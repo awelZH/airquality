@@ -22,6 +22,7 @@ plots <- readRDS("plots_trends.rds")
 
 ```{r}
 #| label: fig-trends-rel
+#| fig.asp: 0.6
 get_plot(plots, "pollutant == 'timeseries' & source == 'relative'")
 ```
 
@@ -29,6 +30,7 @@ get_plot(plots, "pollutant == 'timeseries' & source == 'relative'")
 
 ```{r}
 #| label: fig-trends-rel-detail
+#| fig.asp: 0.6
 get_plot(plots, "pollutant == 'timeseries_detailed' & source == 'relative'")
 ```
 

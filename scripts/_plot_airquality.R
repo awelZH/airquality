@@ -503,20 +503,23 @@ pop <-
 plots$exposition$population_over_thresh$various <-
   d |> 
   dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |> 
-  tidyr::spread(reference, population) |> 
-  dplyr::mutate("über WHO-Richtwert" = `über LRV-Grenzwert` + `zusätzlich über WHO-Richtwert`) |> 
-  dplyr::select(-`zusätzlich über WHO-Richtwert`) |> 
-  tidyr::gather(reference, population, -pollutant, -year) |> 
   dplyr::group_by(pollutant, reference) |> 
   dplyr::summarise(population = sum(population)) |> 
   dplyr::ungroup() |> 
   dplyr::mutate(population_relative = population / !!pop) |> 
-  ggplot(aes(x = pollutant, y = population_relative, fill = reference)) +
-  geom_bar(stat = "identity", position = "dodge", width = 0.75) +
-  scale_y_continuous(limits = c(0,1), labels = scales::percent_format(), expand = c(0,0)) +
-  ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "über WHO-Richtwert" = col_who)) +
+  ggplot2::ggplot(ggplot2::aes(x = pollutant, y = population_relative, fill = reference)) +
+  ggplot2::geom_bar(stat = "identity", width = 0.75) +
+  ggplot2::scale_y_continuous(limits = c(0,1), labels = scales::percent_format(), expand = c(0,0)) +
+  ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "zusätzlich über WHO-Richtwert" = col_who)) +
+  ggplot2::coord_flip() +
   theme_ts + 
-  theme(legend.title = element_blank()) +
+  ggplot2::theme(
+    legend.title = ggplot2::element_blank(),
+    panel.grid.major.x = ggplot2::element_line(),
+    panel.grid.major.y = ggplot2::element_blank()
+    # axis.line.x = element_blank(),
+    # axis.line.y = element_line(color = "gray30")
+  ) +
   ggplot2::ggtitle(
     label = "Luftschadstoffbelastete Wohnbevölkerung",
     subtitle = paste0("Anteil belasteter Personen an Gesamtbevölkerung im Kanton Zürich in den Jahren ", max(years) - n_years + 1, " bis ", max(years))

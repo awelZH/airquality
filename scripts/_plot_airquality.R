@@ -492,7 +492,7 @@ d <-
     reference = factor(reference, levels = c("zusätzlich über WHO-Richtwert", "über LRV-Grenzwert"))
   ) 
 
-# plotting doughnut of population over threshold values for all air pollutants for last x years
+# barplot of population over threshold values for all air pollutants for last x years
 pop <-
   data_expo_weighmean_canton |> 
   dplyr::distinct(year, population, pollutant) |> 
@@ -546,6 +546,37 @@ plots$exposition$population_over_thresh$timeseries_various <-
     label = "Entwicklung Luftschadstoffbelasteter Wohnbevölkerung",
     subtitle = "Anzahl Personen, Wohnbevölkerung im Kanton Zürich") + 
   ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+
+
+# --- für Umweltbericht ---
+
+  # d |> 
+  # dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |> 
+  # dplyr::group_by(pollutant, reference) |> 
+  # dplyr::summarise(population = sum(population)) |> 
+  # dplyr::ungroup() |> 
+  # dplyr::mutate(population_relative = population / !!pop) |> 
+  # ggplot2::ggplot(ggplot2::aes(x = 1, y = population_relative, fill = reference)) +
+  # ggplot2::geom_bar(stat = "identity", width = 0.75) +
+  # ggplot2::scale_y_continuous(limits = c(0,1), labels = scales::percent_format(), expand = c(0,0)) +
+  # ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "zusätzlich über WHO-Richtwert" = col_who)) +
+  # ggplot2::coord_polar(theta = "y") +
+  # facet_wrap(pollutant~.) +
+  # theme_minimal() +
+  # ggplot2::theme(
+  #   legend.title = ggplot2::element_blank(),
+  #   axis.text.y = element_blank(),
+  #   axis.title = element_blank(), 
+  #   panel.spacing.x = unit(2, "lines")
+  # ) +
+  # ggplot2::ggtitle(
+  #   label = "Luftschadstoffbelastete Wohnbevölkerung im Kanton Zürich ",
+  #   subtitle = paste0("Durchschnittlicher Anteil an Gesamtbevölkerung in den Jahren ", max(years) - n_years + 1, " bis ", max(years))
+  # ) + 
+  # ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+
+
+# --- für Umweltbericht ---
 
 
 

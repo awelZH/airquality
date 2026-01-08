@@ -1,5 +1,5 @@
 # Derive selected health outcomes per year from population-weighted mean data
-# TODO: use upcoming R-package from SwissTPH et al. for calculations instead of own functions ...
+# TODO: update airquality.methods
 # TODO: finalise ressources.csv
 
 
@@ -262,6 +262,8 @@ results_prelim_deaths <-
   dplyr::ungroup() |> 
   estimate_all_prelim_deaths(data_expo_weighmean, outcomes_meta)
 
+# old manual way: results_prelim_deaths <- airquality.methods::prepare_preliminary_deaths(data_expo_weighmean, data_mortality, outcomes_meta)
+
 # # visual check
 # results_prelim_deaths |>
 #   ggplot(aes(x = year, y = outcome, fill = scenario, group = scenario)) +
@@ -269,7 +271,6 @@ results_prelim_deaths <-
 #   geom_segment(data = . %>% dplyr::filter(scenario == "tatsächliche Belastung"), mapping = aes(y = outcome_lower, yend = outcome_upper)) +
 #   facet_wrap(parameter~.)
 
-# old manual way: results_prelim_deaths <- airquality.methods::prepare_preliminary_deaths(data_expo_weighmean, data_mortality, outcomes_meta)
 
 
 # => derive lifeyears lost / decrease in life expectancy

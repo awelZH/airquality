@@ -420,35 +420,35 @@ plots$monitoring$ndep_mean_sources_fractions$Ndep <-
 # ---
 # read trend-data 
 data_trends <- airquality.methods::read_local_csv(ressources_plotting$trends$trends, delim = ";", locale = readr::locale(encoding = "UTF-8"))
-data_trends_agg <- airquality.methods::read_local_csv(ressources_plotting$trends$trends_agg, delim = ";", locale = readr::locale(encoding = "UTF-8"))
+data_trends_agg <- 
+  airquality.methods::read_local_csv(ressources_plotting$trends$trends_agg, delim = ";", locale = readr::locale(encoding = "UTF-8")) |> 
+  dplyr::mutate(type = dplyr::recode(type, Trend = "Median Trend", Messwerte = "Median Messwerte", emission = "Emission"))
 
 
 # plotting relative trends of emissions and immissions vs. reference year
 plots$trends$relative$timeseries <-
   data_trends_agg |> 
-  dplyr::filter(type %in% c("Trend", "Messwerte")) |>
-  dplyr::mutate(type = dplyr::recode(type, Trend = "Median Trend", Messwerte = "Median Messwerte")) |> 
+  # dplyr::filter(type %in% c("Trend", "Messwerte")) |>
   airquality.methods::plot_timeseries_trend_relative(
     theme = theme_ts,
     titlelab =  ggplot2::ggtitle(
       label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
       subtitle = "Veränderung gegenüber Bezugsjahr (schadstoffspezifisch)"),
-    captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft & NABEL (BAFU & Empa)")
+    captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft, NABEL (BAFU & Empa) & BAFU")
   )
 
-plots$trends$relative$timeseries_detailed <-
-  data_trends_agg |> 
-  dplyr::filter(type %in% c("Trend", "Messwerte")) |>
-  dplyr::mutate(type = dplyr::recode(type, Trend = "Median Trend", Messwerte = "Median Messwerte")) |> 
-  dplyr::bind_rows(dplyr::filter(data_trends, type == "Trend")) |>   
-  dplyr::mutate(type = dplyr::recode(type, Trend = "Trend pro Standort")) |> 
-  airquality.methods::plot_timeseries_trend_relative(
-    detailed = TRUE, theme = theme_ts,
-    titlelab =  ggplot2::ggtitle(
-      label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
-      subtitle = "Veränderung gegenüber Bezugsjahr (schadstoffspezifisch)"),
-    captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft & NABEL (BAFU & Empa)")
-  )
+# plots$trends$relative$timeseries_detailed <-
+#   data_trends_agg |> 
+#   # dplyr::filter(type %in% c("Trend", "Messwerte")) |>
+#   dplyr::bind_rows(dplyr::filter(data_trends, type == "Trend" & parameter == "relative Immission")) |>   
+#   dplyr::mutate(type = dplyr::recode(type, Trend = "Trend pro Standort")) |> 
+#   airquality.methods::plot_timeseries_trend_relative(
+#     detailed = TRUE, theme = theme_ts,
+#     titlelab =  ggplot2::ggtitle(
+#       label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
+#       subtitle = "Veränderung gegenüber Bezugsjahr (schadstoffspezifisch)"),
+#     captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft & NABEL (BAFU & Empa)")
+#   )
 
 
 

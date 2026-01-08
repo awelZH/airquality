@@ -207,19 +207,14 @@ prepare_trend_results <- function(trends, reference_year_fun, nmin_sites_fun) {
     dplyr::mutate(reference_year = reference_year_fun(parameter)) |> 
     dplyr::filter(year == reference_year) |>
     dplyr::select(-year, -n) |>
-    dplyr::rename(
-      value_refyear = value,
-      # emission_refyear = emission
-    ) |>
+    dplyr::rename(value_refyear = value) |>
     dplyr::right_join(trends, by = c("site", "parameter", "type")) |>
     dplyr::rename(pollutant = parameter) |> 
     dplyr::mutate(
       "relative Immission" = value / value_refyear,
-      # "relative Emission" = emission / emission_refyear,
       `relative Immission` = ifelse(site == "Zch_Schimmelstrasse" & year < 2009, NA, `relative Immission`) # due to strong traffic changes at this site
     ) |>
-    dplyr::select(year, site, pollutant, type, value, `relative Immission`, reference_year) #, `relative Emission`) |>
-  # tidyr::gather(parameter, value, -year, -pollutant)
+    dplyr::select(year, site, pollutant, type, value, `relative Immission`, reference_year)
   
   trends_agg <-
     trends |> 
@@ -240,6 +235,26 @@ prepare_trend_results <- function(trends, reference_year_fun, nmin_sites_fun) {
   trends <- dplyr::mutate(trends, pollutant = airquality.methods::longpollutant(pollutant))
   
   return(list(all = trends, agg = trends_agg))
+}
+
+
+prepare_emission_trends <- function(emissions, reference_year_fun) {
+  
+  emissions <-
+    emissions |>
+    dplyr::mutate(reference_year = reference_year_fun(pollutant)) |> 
+    dplyr::filter(year == reference_year) |>
+    dplyr::select(-year) |>
+    dplyr::rename(emission_refyear = emission) |>
+    dplyr::right_join(emissions, by = "pollutant") |>
+    dplyr::mutate(
+      "relative Emission" = emission / emission_refyear,
+      pollutant = airquality.methods::longpollutant(pollutant),
+      type = "emission"
+      ) |>
+    dplyr::select(year, pollutant, type, `relative Emission`, reference_year)
+  
+  return(emissions)
 }
 
 
@@ -286,20 +301,19 @@ yearmin_per_site <- 4
 cantons <- "ZH"
 trend_vars <- c("T", "T_max_min10", "Hr", "StrGlo", "p", "WVs", "WD", "RainSum")
 pollutants <- c("PM2.5", "PM10", "NOx", "eBC")
+# TODO: also include NHx, Ndep and O3 on different time-interval than d1
 
 
-
-# get monitoring datasets from airquality.data (see here: https://github.com/awelZH/airquality.data) and read local emission data
+# get monitoring datasets from airquality.data (see here: https://github.com/awelZH/airquality.data) 
 # TODO: ... remove data_monitoring_ndep from airquality.data when ndep-analysis is online at github. Integrate future github dataset instead
 # TODO: ... replace airquality.data as soon as useful api methods are available for this kind of data
 # ---
-# read pre-compiled emission data
-data_emikat <- airquality.methods::read_local_csv("inst/extdata/output/data_emissions.csv", delim = ";", locale = readr::locale(encoding = "UTF-8"))
-
 # get pre-compiled airquality monitoring data as daily averages and yearly values
 data_monitoring_aq <- airquality.data::data_monitoring_aq_d1 
 data_monitoring_aq_y1 <- airquality.methods::read_local_csv("inst/extdata/output/data_airquality_monitoring_y1.csv", locale = readr::locale(encoding = "UTF-8"))
 
+# get local pre-compiled emission data
+data_emikat <- airquality.methods::read_local_csv("inst/extdata/output/data_emissions.csv", delim = ";", locale = readr::locale(encoding = "UTF-8"))
 
 # get pre-compiled airquality-network meteorological data as daily averages
 data_monitoring_met <- airquality.data::data_monitoring_met_d1
@@ -327,7 +341,7 @@ trends <- dplyr::bind_rows(trends)
 trends_relative <- prepare_trend_results(trends, reference_year_fun = reference_year, nmin_sites_fun = nmin_sites)
 trends_relative$all <- 
   trends_relative$all |> 
-  dplyr::mutate(pollutant = dplyr::recode(pollutant, Stickoxide = "Stickoxide | Stickstoffdioxid")) |> 
+  dplyr::mutate(pollutant = dplyr::recode(pollutant, Stickoxide = "Stickoxide | Stickstoffdioxid", NOx = "Stickoxide | Stickstoffdioxid", NO2 = "Stickoxide | Stickstoffdioxid", NH3 = "Ammoniak | reduzierter Stickstoff", NHx = "Ammoniak | reduzierter Stickstoff")) |> 
   dplyr::filter(year %in% !!years)
 
 # add pure measurement results
@@ -357,20 +371,41 @@ trends_relative$agg <-
   dplyr::select(year, pollutant, type, n, `relative Immission`, reference_year) |> 
   dplyr::bind_rows(trends_relative$agg) |> 
   dplyr::mutate(
-    pollutant = dplyr::recode(pollutant, Stickstoffdioxid = "Stickoxide | Stickstoffdioxid", Stickoxide = "Stickoxide | Stickstoffdioxid"),
-    aggregation = "Median"
+    pollutant = dplyr::recode(pollutant, Stickstoffdioxid = "Stickoxide | Stickstoffdioxid", Stickoxide = "Stickoxide | Stickstoffdioxid", Ammoniak = "Ammoniak | reduzierter Stickstoff"),
+    site = "Kanton Zürich"
+    # aggregation = "Median"
   ) |> 
   dplyr::filter(year %in% !!years)
 
-# emissions <-
-#   data_emikat |>
-#   airquality.methods::aggregate_groups(y = "emission", groups = c("year", "pollutant"), nmin = 1) |>
-#   dplyr::select(year, pollutant, sum) |>
-#   dplyr::rename(emission = sum) |>
-#   dplyr::mutate(
-#     emission = ifelse(is.na(emission), 0, emission),
-#     pollutant = dplyr::recode(pollutant, NOx = "NO2 | NOx")
-#   )
+
+# derive relative emissions
+emissions <-
+  data_emikat |>
+  airquality.methods::aggregate_groups(y = "emission", groups = c("year", "pollutant"), nmin = 1) |>
+  dplyr::select(year, pollutant, sum) |>
+  dplyr::rename(emission = sum) |>
+  dplyr::mutate(
+    pollutant = dplyr::recode(pollutant, NOx = "Stickoxide | Stickstoffdioxid", NH3 = "Ammoniak | reduzierter Stickstoff"),
+    emission = ifelse(is.na(emission), 0, emission)
+  )
+
+emissions_relative <- 
+  prepare_emission_trends(emissions, reference_year_fun = reference_year) |> 
+  tidyr::gather(parameter, value, -year, -pollutant, -type, -reference_year) |> 
+  dplyr::mutate(site = "Kanton Zürich")
+
+
+# combine relative monitoring & emission trends
+trends_relative$agg <- 
+  trends_relative$agg |> 
+  tidyr::gather(parameter, value, -year, -pollutant, -type, -n, -reference_year, -site) |> 
+  dplyr::bind_rows(emissions_relative)
+
+trends_relative$all <-
+  trends_relative$all |> 
+  dplyr::rename(Immission = value) |> 
+  tidyr::gather(parameter, value, -year, -pollutant, -site, -type, -reference_year) |> 
+  dplyr::bind_rows(emissions_relative)
 
 # trends_relative$all |> 
 #   ggplot(aes(x = year, y = value, color = type)) +

@@ -26,11 +26,10 @@ plots <-
 
 ### Einwohner/innen mit Belastung über Grenz-/Richtwert
 
-```{r}
-#| label: fig-population-over-thresh
-get_plot(plots, "pollutant == 'various' & source == 'population_over_thresh'")
-```
-
+<!-- ```{r} -->
+<!-- #| label: fig-population-over-thresh -->
+<!-- get_plot(plots, "pollutant == 'various' & source == 'population_over_thresh'") -->
+<!-- ``` -->
 
 ```{r}
 #| label: fig-population-over-thresh-ts
@@ -46,13 +45,14 @@ p$data |>
   tidyr::spread(reference, population) |> 
   dplyr::arrange(pollutant, dplyr::desc(year)) |> 
   dplyr::mutate(
-    `über WHO-Richtwert` = format(`über LRV-Grenzwert` + `zusätzlich über WHO-Richtwert`, scientific = FALSE, big.mark = "'"),
-        `über LRV-Grenzwert` = format(`über LRV-Grenzwert`, scientific = FALSE, big.mark = "'")
+    `über WHO-Richtwert` = format(`über LRV-Grenzwert` + `über WHO-Richtwert`, scientific = FALSE, big.mark = "'"),
+    `über LRV-Grenzwert` = format(`über LRV-Grenzwert`, scientific = FALSE, big.mark = "'"),
+    `unter Grenz-/Richtwert` = format(`unter Grenz-/Richtwert`, scientific = FALSE, big.mark = "'")
   ) |> 
-  dplyr::select(-`zusätzlich über WHO-Richtwert`) |> 
   dplyr::rename(
     Jahr = year,
     Schadstoff = pollutant,
+    "< Grenz-/Richtwert" = `unter Grenz-/Richtwert`,
     "> LRV-Grenzwert" = `über LRV-Grenzwert`,
     "> WHO-Richtwert" = `über WHO-Richtwert`
   ) |> 

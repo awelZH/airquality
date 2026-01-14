@@ -10,12 +10,12 @@
 years <- 1990:(lubridate::year(Sys.Date()) - 1)  
 
 # reference year for relative trends
-reference_year <- function(pollutant, base_year = 2015){
+reference_year <- function(parameter, base_year = 2015){
   dplyr::case_when(
-    pollutant == "PM2.5" ~ 2021,
-    pollutant == "eBC" ~ 2020,
-    pollutant == "NHx" ~ 2020,
-    pollutant == "Ndep" ~ 2020,
+    parameter == "PM2.5" ~ 2021,
+    parameter == "eBC" ~ 2020,
+    parameter == "NHx" ~ 2020,
+    parameter == "Ndep" ~ 2020,
     TRUE ~ base_year
   )
 }
@@ -80,8 +80,8 @@ pars <- parameters[!(parameters %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "O
 trends <- purrr::map(pars, fun)
 trends <- dplyr::bind_rows(trends)
 
-# prepare relative trend results for plotting
-trends_relative <- airquality.methods::prepare_trend_results(trends, reference_year_fun = reference_year, nmin_sites_fun = nmin_sites)
+# wrangle and aggregate relative trend results for plotting
+trends_relative <- airquality.methods::aggregate_trend_results(trends, reference_year_fun = reference_year, nmin_sites_fun = nmin_sites)
 trends_relative$all <- 
   trends_relative$all |> 
   dplyr::mutate(pollutant = dplyr::recode(pollutant, Stickoxide = "Stickoxide | Stickstoffdioxid", NOx = "Stickoxide | Stickstoffdioxid", NO2 = "Stickoxide | Stickstoffdioxid", NH3 = "Ammoniak | reduzierter Stickstoff", NHx = "Ammoniak | reduzierter Stickstoff")) |> 

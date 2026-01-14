@@ -428,21 +428,21 @@ data_trends_agg <-
 # plotting relative trends of emissions and immissions vs. reference year
 plots$trends$relative$timeseries <-
   data_trends_agg |> 
-  dplyr::filter(type %in% c("Emission", "Median Trend", "Median Messwerte")) |>
+  dplyr::filter(type %in% c("Emission", "Median Trend", "Median Messwerte") & year <= lubridate::year(Sys.Date())) |>
   dplyr::mutate(pollutant = dplyr::case_when(pollutant == "Ozon" ~ paste0(pollutant,", ",metric), TRUE ~ pollutant)) |> 
   dplyr::mutate(type = factor(type, levels = c("Emission", "Median Trend", "Median Messwerte"))) |> 
   airquality.methods::plot_timeseries_trend_relative(
     theme = theme_ts, facet_ncol = 2, 
     titlelab =  ggplot2::ggtitle(
       label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
-      subtitle = "Veränderung gegenüber Bezugsjahr (schadstoffspezifisch)"),
+      subtitle = "Veränderung gegenüber Bezugsjahr (gestrichelte Linie)"),
     captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft, BAFU, NABEL (BAFU & Empa)")
   )
 
 plots$trends$relative$timeseries_detailed <-
   data_trends_agg |>
-  dplyr::filter(type %in% c("Emission")) |>
-  dplyr::bind_rows(dplyr::filter(data_trends, type == "Trend" & class == "relative Immission")) |>
+  dplyr::filter(type %in% c("Emission") & year <= lubridate::year(Sys.Date())) |>
+  dplyr::bind_rows(dplyr::filter(data_trends, type == "Trend" & class == "relative Immission" & year <= lubridate::year(Sys.Date()))) |>
   dplyr::mutate(
     pollutant = dplyr::case_when(pollutant == "Ozon" ~ paste0(pollutant,", ",metric), TRUE ~ pollutant),
     type = dplyr::recode(type, Trend = "Trend pro Standort"),
@@ -452,7 +452,7 @@ plots$trends$relative$timeseries_detailed <-
     detailed = TRUE, theme = theme_ts, facet_ncol = 2, 
     titlelab =  ggplot2::ggtitle(
       label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
-      subtitle = "Veränderung gegenüber Bezugsjahr (schadstoffspezifisch)"),
+      subtitle = "Veränderung gegenüber Bezugsjahr (gestrichelte Linie)"),
     captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft & NABEL (BAFU & Empa)")
   )
 

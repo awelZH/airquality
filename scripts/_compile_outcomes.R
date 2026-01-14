@@ -1,6 +1,6 @@
 # Derive selected health outcomes per year from population-weighted mean data
 # TODO: update airquality.methods
-# TODO: finalise ressources.csv
+# TODO: finalise ressources.csv sobald Sterbedaten OGD sind
 
 
 

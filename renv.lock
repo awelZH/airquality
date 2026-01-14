@@ -356,7 +356,7 @@
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.methods",
       "RemoteRef": "master",
-      "RemoteSha": "b8b093f873bc401fd0e1116a7590a09909a5508d"
+      "RemoteSha": "229e0fb3509ab61fdc952e8932403ecc44e84ad5"
     },
     "askpass": {
       "Package": "askpass",

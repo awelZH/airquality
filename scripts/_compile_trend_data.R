@@ -336,7 +336,7 @@ data_monitoring_met <- dplyr::filter(data_monitoring_met, parameter %in% !!trend
 data_trends <- prepare_data_trends(data_monitoring_aq, data_monitoring_met)
 
 
-# trend analysis and result aggregation (takes a while)
+# trend analysis and result aggregation (takes a while) for d1 data
 # ---
 fun <- function(x) {
   print(x)
@@ -347,7 +347,6 @@ pars <- parameters[!(parameters %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "O
 trends <- purrr::map(pars, fun)
 trends <- dplyr::bind_rows(trends)
 
-
 # prepare relative trend results for plotting
 trends_relative <- prepare_trend_results(trends, reference_year_fun = reference_year, nmin_sites_fun = nmin_sites)
 trends_relative$all <- 
@@ -355,6 +354,14 @@ trends_relative$all <-
   dplyr::mutate(pollutant = dplyr::recode(pollutant, Stickoxide = "Stickoxide | Stickstoffdioxid", NOx = "Stickoxide | Stickstoffdioxid", NO2 = "Stickoxide | Stickstoffdioxid", NH3 = "Ammoniak | reduzierter Stickstoff", NHx = "Ammoniak | reduzierter Stickstoff")) |> 
   dplyr::filter(year %in% !!years)
 
+
+# trend analysis and result aggregation (takes a while) for m1 data
+# ---
+# ...
+
+
+# combine yearly trends with median measurement results and emission data; derive relative time series
+# ---
 # add pure measurement results
 data_monitoring_median <- 
   data_monitoring_aq_y1 |> 
@@ -386,7 +393,6 @@ trends_relative$agg <-
   dplyr::mutate(
     pollutant = dplyr::recode(pollutant, Stickstoffdioxid = "Stickoxide | Stickstoffdioxid", Stickoxide = "Stickoxide | Stickstoffdioxid", Ammoniak = "Ammoniak | reduzierter Stickstoff"),
     site = "Kanton Zürich"
-    # aggregation = "Median"
   ) |> 
   dplyr::filter(year %in% !!years)
 
@@ -435,29 +441,4 @@ airquality.methods::write_local_csv(trends_relative$all, file = "inst/extdata/ou
 airquality.methods::write_local_csv(trends_relative$agg, file = "inst/extdata/output/data_airquality_trends_relative_aggregated_y1.csv")
 rm(list = c("years", "reference_year", "nmin_sites", "yearmin_per_site", "parameters", "cantons", "trend_vars", 
             "data_monitoring_median", "data_emikat", "data_monitoring_aq", "data_monitoring_met", "data_trends", "fun", "trends", "trends_relative"))
-
-
-
-
-
-
-
-# plot_imp <- rmweather::rmw_plot_importance(imp)
-# plot_pred_obs <- rmweather::rmw_plot_test_prediction(pred_obs)
-# plot_pd <- rmweather::rmw_plot_partial_dependencies(partialdep)
-# plot_trend_d1 <-
-#   data |> 
-#   ggplot2::ggplot(ggplot2::aes(x = date, y = value, group = type, color = type)) + 
-#   ggplot2::geom_line() +
-#   ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01)) +
-#   ggplot2::scale_color_manual(values = c("gemessen" = "gray80", "Trend" = "steelblue")) +
-#   theme_custom
-# plot_trend_y1 <-
-#   data_y1 |> 
-#   ggplot2::ggplot(ggplot2::aes(x = year, y = value, group = type, color = type)) + 
-#   ggplot2::geom_line() +
-#   ggplot2::geom_point() +
-#   ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01)) +
-#   ggplot2::scale_color_manual(values = c("gemessen" = "gray80", "Trend" = "steelblue")) +
-#   theme_custom
 

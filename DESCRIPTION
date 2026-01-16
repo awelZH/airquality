@@ -15,7 +15,6 @@ Imports:
     colorspace (>= 2.1.1),
     devtools (>= 2.4.5),
     ggplot2 (>= 3.5.2),
-    lemon (>= 0.5.1),
     MASS (>= 7.3.65),
     openair (>= 2.18.2),
     quarto (>= 1.5.0),

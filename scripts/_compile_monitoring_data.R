@@ -5,7 +5,11 @@
 # TODO: ... remove data_monitoring_ndep from airquality.data when ndep-analysis is online at github. Integrate future github dataset instead
 # TODO: ... replace airquality.data as soon as useful api methods are available for this kind of data
 # ---
-data_monitoring_aq <- airquality.data::data_monitoring_aq
+data_monitoring_aq <- airquality.data::data_monitoring_aq_y1
+data_monitoring_aq <- 
+  data_monitoring_aq |> 
+  dplyr::filter(canton == "ZH" | site %in% c("Zürich-Kaserne", "Dübendorf-EMPA")) |> # only sites in Canton Zürich & the only NABEL-sites in Canton Zürich
+  dplyr::select(-canton)
 # data_monitoring_ndep <- airquality.data::data_monitoring_ndep
 
 

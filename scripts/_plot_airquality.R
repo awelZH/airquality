@@ -14,6 +14,10 @@ ressources_plotting <-
       airquality = "inst/extdata/output/data_airquality_monitoring_y1.csv",
       ndep = "inst/extdata/output/data_ndep_monitoring_y1.csv"
     ),
+    trends = list(
+      trends = "inst/extdata/output/data_airquality_trends_relative_y1.csv",
+      trends_agg = "inst/extdata/output/data_airquality_trends_relative_aggregated_y1.csv"
+    ),
     exposition = list(
       weightedmean_canton = "inst/extdata/output/data_exposition_weighted_means_canton.csv",
       weightedmean_municip = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv",
@@ -33,6 +37,7 @@ parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98p_m1", "O3_peakseas
 parameters_exposition <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for exposition plotting
 siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
                           "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
+reference_year_emissions <- 2015
 
 
 # plotting size parameters
@@ -89,27 +94,27 @@ scale_color_siteclass <-
 
 # ggplot2 custom themes
 theme_ts <-
-  theme_minimal(base_size = basesize, base_family = "Arial") +
-  theme(
-    plot.title = element_text(size = ggplot2::rel(1)),
-    plot.subtitle = element_text(size = ggplot2::rel(0.8)),
-    plot.caption = element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.66)),
-    plot.background = element_blank(),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    panel.background = element_blank(),
-    axis.line.x = element_line(color = "gray30"),
-    axis.ticks = element_line(color = "gray30"),
-    axis.title = element_blank()
+  ggplot2::theme_minimal(base_size = basesize, base_family = "Arial") +
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(size = ggplot2::rel(1)),
+    plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
+    plot.caption = ggplot2::element_text(hjust = 1, color = "gray40", size = ggplot2::rel(0.66)),
+    plot.background = ggplot2::element_blank(),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.background = ggplot2::element_blank(),
+    axis.line.x = ggplot2::element_line(color = "gray30"),
+    axis.ticks = ggplot2::element_line(color = "gray30"),
+    axis.title = ggplot2::element_blank()
   )
 
 theme_map <-
-  theme_void(base_size = basesize, base_family = "Arial") +
-  theme(
-    plot.subtitle = element_text(size = ggplot2::rel(0.8)),
-    plot.caption = element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.75)),
-    panel.background = element_blank(),
-    plot.background = element_blank()
+  ggplot2::theme_void(base_size = basesize, base_family = "Arial") +
+  ggplot2::theme(
+    plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
+    plot.caption = ggplot2::element_text(hjust = 1, color = "gray40", size = ggplot2::rel(0.75)),
+    panel.background = ggplot2::element_blank(),
+    plot.background = ggplot2::element_blank()
   )
 
 # ggiraph::set_girafe_defaults(
@@ -314,8 +319,7 @@ plots$monitoring$threshold_comparison$various <-
   ggplot2::ggplot(aes(x = x, y = value, color = siteclass)) +
   ggplot2::geom_hline(yintercept = 1, linetype = data_thrshlds$lty, color = data_thrshlds$col, linewidth = data_thrshlds$lsz, show.legend = FALSE) +
   ggplot2::geom_jitter(shape = 21, size = pointsize, width = 0.2) +
-  lemon::facet_rep_wrap(reference~., scales = "free_y", ncol = 1, repeat.tick.labels = TRUE) +
-  # lemon::facet_rep_grid(reference~., scales = "free_y", space = "free_y", repeat.tick.labels = TRUE) +
+  ggplot2::facet_wrap(reference~., scales = "free_y", ncol = 1, axes = "all_x") +
   ggplot2::scale_y_continuous(breaks = seq(0,10,1), limits = c(0,NA), labels = scales::percent_format(), expand = c(0.01,0.01)) +
   ggplot2::coord_flip() +
   ggplot2::guides(color = ggplot2::guide_legend(nrow = 3)) +
@@ -344,7 +348,7 @@ plots$monitoring$timeseries_ndep_bachtel$Ndep <-
   airquality.methods::plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = temp$lsz, color = temp$col, title = "Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme am Bachtel") +
   ggplot2::geom_text(data = dplyr::filter(data_monitoring_ndep, site == "BA" & component == "N-Deposition" & estimate == "geschätzt"), label = "*", color = "gray40") +
   ggplot2::labs(caption = "*: mind. NH3 gemessen, restlicher Eintrag geschätzt; Daten: Ostluft & FUB") +
-  lemon::facet_rep_wrap(ecosystem_category~., ncol = 1, scales = "free_y", repeat.tick.labels = TRUE)
+  ggplot2::facet_wrap(ecosystem_category~., ncol = 1, scales = "free_y", axes = "all_x")
 
 
 # plot timeseries of yearly nitrogen deposition across several monitoring sites (structured per ecosystem type)
@@ -413,6 +417,71 @@ plots$monitoring$ndep_mean_sources_fractions$Ndep <-
 
 
 
+# plotting relative trends of emissions and immissions
+# ---
+# read trend-data 
+data_trends <- airquality.methods::read_local_csv(ressources_plotting$trends$trends, delim = ";", locale = readr::locale(encoding = "UTF-8"))
+data_trends_agg <- 
+  airquality.methods::read_local_csv(ressources_plotting$trends$trends_agg, delim = ";", locale = readr::locale(encoding = "UTF-8")) |> 
+  dplyr::mutate(type = dplyr::recode(type, Trend = "Median Trend", Messwerte = "Median Messwerte", emission = "Emission"))
+emissions_relative <- 
+  data_emikat |> 
+  airquality.methods::aggregate_groups(y = "emission", groups = c("year", "pollutant"), nmin = 1) |>
+  dplyr::select(year, pollutant, sum) |>
+  dplyr::rename(emission = sum) |>
+  dplyr::mutate(emission = ifelse(is.na(emission), 0, emission)) |>  
+  airquality.methods::prepare_emission_trends(reference_year_fun = function(x) reference_year_emissions) |> 
+  tidyr::gather(class, value, -year, -pollutant, -type, -reference_year) |> 
+  dplyr::mutate(site = "Kanton Zürich")
+
+plots$trends$relative$timeseries_emissions <-
+  emissions_relative |> 
+  ggplot2::ggplot(ggplot2::aes(x = year, y = value - 1, color = pollutant)) +
+  ggplot2::geom_hline(yintercept = 0, color = "gray80", linetype = 2) +
+  ggplot2::geom_vline(data = . %>% dplyr::distinct(pollutant, reference_year), mapping = ggplot2::aes(xintercept = reference_year), color = "gray80", linetype = 2) +
+  ggplot2::geom_line() +
+  ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.02,0.02)) +
+  ggplot2::scale_color_viridis_d(name = "Schadstoff") +
+  theme_ts +
+  ggplot2::theme(legend.title = ggplot2::element_blank()) +
+  ggplot2::ggtitle(
+    label = "Relative Entwicklung Emissionen im Kanton Zürich",
+    subtitle = paste0("Veränderung gegenüber dem Jahr ", reference_year_emissions)) +
+  ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz")
+
+# plotting relative trends of emissions and immissions vs. reference year
+plots$trends$relative$timeseries <-
+  data_trends_agg |> 
+  dplyr::filter(type %in% c("Emission", "Median Trend", "Median Messwerte")) |>
+  dplyr::mutate(pollutant = dplyr::case_when(pollutant == "Ozon" ~ paste0(pollutant,", ",airquality.methods::longmetric(parameter)), TRUE ~ pollutant)) |> 
+  dplyr::mutate(type = factor(type, levels = c("Emission", "Median Trend", "Median Messwerte"))) |> 
+  airquality.methods::plot_timeseries_trend_relative(
+    theme = theme_ts, facet_ncol = 2, 
+    titlelab =  ggplot2::ggtitle(
+      label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
+      subtitle = "Veränderung gegenüber Bezugsjahr (gestrichelte Linie)"),
+    captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft, BAFU, NABEL (BAFU & Empa)")
+  )
+
+plots$trends$relative$timeseries_detailed <-
+  data_trends_agg |>
+  dplyr::filter(type == "Emission") |>
+  dplyr::bind_rows(dplyr::filter(data_trends, type == "Trend" & class == "relative Immission" & year <= lubridate::year(Sys.Date()))) |>
+  dplyr::mutate(
+    pollutant = dplyr::case_when(pollutant == "Ozon" ~ paste0(pollutant,", ",airquality.methods::longmetric(parameter)), TRUE ~ pollutant),
+    type = dplyr::recode(type, Trend = "Trend pro Standort"),
+    type = factor(type, levels = c("Emission", "Trend pro Standort", "Median Messwerte"))
+  ) |> 
+  airquality.methods::plot_timeseries_trend_relative(
+    detailed = TRUE, theme = theme_ts, facet_ncol = 2, 
+    titlelab =  ggplot2::ggtitle(
+      label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
+      subtitle = "Veränderung gegenüber Bezugsjahr (gestrichelte Linie)"),
+    captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft, BAFU, NABEL (BAFU & Empa)")
+  )
+
+
+
 
 
 # plotting air pollutant population and ecosystem exposition
@@ -423,6 +492,146 @@ data_expo_distr_ndep <- airquality.methods::read_local_csv(ressources_plotting$e
 data_expo_weighmean_canton <- airquality.methods::read_local_csv(ressources_plotting$exposition$weightedmean_canton, locale = readr::locale(encoding = "UTF-8")) 
 data_expo_weighmean_municip <- airquality.methods::read_local_csv(ressources_plotting$exposition$weightedmean_municip, locale = readr::locale(encoding = "UTF-8")) 
 parameters_exposition <- setNames(parameters_exposition, parameters_exposition)
+
+
+# plotting time series of population over threshold values for all air pollutants
+d <- 
+  immission_threshold_values |> 
+  dplyr::select(source, parameter, threshold) |> 
+  tidyr::spread(source, threshold) |> 
+  dplyr::right_join(data_expo_distr_pollutants, by = "parameter") |> 
+  dplyr::mutate(
+    "über LRV-Grenzwert" = ifelse(concentration <= `LRV Grenzwert`, NA, population),
+    "über WHO-Richtwert" = ifelse(concentration <= `WHO Richtwert`, NA, population),
+    `über LRV-Grenzwert` = ifelse(parameter == "O3_peakseason_mean_d1_max_mean_h8gl", NA, `über LRV-Grenzwert`),
+    `über WHO-Richtwert` = ifelse(parameter == "O3_max_98p_m1", NA, `über WHO-Richtwert`)
+  ) |> 
+  dplyr::group_by(pollutant, year) |> 
+  dplyr::summarise(
+    `über LRV-Grenzwert` = sum(`über LRV-Grenzwert`, na.rm = TRUE),
+    `über WHO-Richtwert` = sum(`über WHO-Richtwert`, na.rm = TRUE)
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::mutate(
+    `über WHO-Richtwert` = `über WHO-Richtwert` - `über LRV-Grenzwert`
+  ) |>
+  tidyr::gather(reference, population, -year,  -pollutant) |> 
+  dplyr::filter(!is.na(population)) |> 
+  dplyr::mutate(pollutant = airquality.methods::longpollutant(pollutant)) 
+
+# # barplot of population over threshold values for all air pollutants for last x years
+# pop <-
+#   data_expo_weighmean_canton |> 
+#   dplyr::distinct(year, population, pollutant) |> 
+#   dplyr::filter(pollutant == "PM2.5" & year %in% seq(max(years) - n_years + 1, max(years), 1)) |>
+#   dplyr::summarise(population = sum(population)) |> 
+#   dplyr::pull(population)
+# 
+# plots$exposition$population_over_thresh$various <-
+#   d |> 
+#   dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |> 
+#   dplyr::group_by(pollutant, reference) |> 
+#   dplyr::summarise(population = sum(population)) |> 
+#   dplyr::ungroup() |> 
+#   dplyr::mutate(population_relative = population / !!pop) |> 
+#   ggplot2::ggplot(ggplot2::aes(x = pollutant, y = population_relative, fill = reference)) +
+#   ggplot2::geom_bar(stat = "identity", width = 0.75) +
+#   ggplot2::scale_y_continuous(limits = c(0,1), labels = scales::percent_format(), expand = c(0,0)) +
+#   ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "über WHO-Richtwert" = col_who)) +
+#   ggplot2::coord_flip() +
+#   theme_ts + 
+#   ggplot2::theme(
+#     legend.title = ggplot2::element_blank(),
+#     panel.grid.major.x = ggplot2::element_line(),
+#     panel.grid.major.y = ggplot2::element_blank()
+#     # axis.line.x = element_blank(),
+#     # axis.line.y = element_line(color = "gray30")
+#   ) +
+#   ggplot2::ggtitle(
+#     label = "Luftschadstoffbelastete Wohnbevölkerung",
+#     subtitle = paste0("Anteil belasteter Personen an Gesamtbevölkerung im Kanton Zürich in den Jahren ", max(years) - n_years + 1, " bis ", max(years))
+#   ) + 
+#   ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+
+
+# plotting time series of population over threshold values for all air pollutants
+pop <-
+  data_expo_weighmean_canton |>
+  dplyr::filter(parameter != "O3_peakseason_mean_d1_max_mean_h8gl") |> 
+  dplyr::distinct(year, population, pollutant) |>
+  dplyr::group_by(year, pollutant) |> 
+  dplyr::summarise(population_total = sum(population)) |> 
+  dplyr::ungroup() |> 
+  dplyr::mutate(pollutant = airquality.methods::longpollutant(pollutant)) 
+
+pop <-
+  d |> 
+  dplyr::group_by(year, pollutant) |> 
+  dplyr::summarise(population = sum(population)) |> 
+  dplyr::ungroup() |> 
+  dplyr::left_join(pop, by = c("year", "pollutant")) |> 
+  dplyr::mutate(
+    population = population_total - population,
+    reference = "unter Grenz-/Richtwert"
+  ) |> 
+  dplyr::select(-population_total)
+
+plots$exposition$population_over_thresh$timeseries_various <-
+  d |> 
+  dplyr::bind_rows(pop) |> 
+  dplyr::mutate(reference = factor(reference, levels = c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert"))) |> 
+  ggplot2::ggplot(ggplot2::aes(x = year, y = population)) + 
+  ggplot2::geom_bar(mapping = ggplot2::aes(fill = reference), stat = "identity", position = "stack", width = 0.8) + 
+  ggplot2::scale_x_continuous(breaks = seq(1990,2100,5), expand = c(0.01,0.01)) +
+  ggplot2::scale_y_continuous(labels = function(x) format(x, scientific = FALSE, big.mark = "'"), expand = c(0.01, 0.01)) +
+  ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "über WHO-Richtwert" = col_who, "unter Grenz-/Richtwert" = alpha("gray60", 0.25))) +
+  ggplot2::facet_wrap(pollutant~., axes = "all_x") + 
+  theme_ts + 
+  ggplot2::theme(
+    strip.text.x = ggplot2::element_text(hjust = 0),
+    legend.title = ggplot2::element_blank(),
+    legend.position = "bottom"
+  ) + 
+  ggplot2::ggtitle(
+    label = "Entwicklung luftschadstoffbelasteter Wohnbevölkerung",
+    subtitle = "Anzahl Personen, Wohnbevölkerung im Kanton Zürich") + 
+  ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+
+
+# --- für Umweltbericht ---
+
+# plots$exposition$population_over_thresh$timeseries_various %+% dplyr::filter(plots$exposition$population_over_thresh$timeseries_various$data, pollutant == "Stickstoffdioxid")
+# plots$exposition$population_over_thresh$timeseries_various %+% dplyr::filter(plots$exposition$population_over_thresh$timeseries_various$data, pollutant == "Feinstaub PM2.5")
+
+# d |> 
+# dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |> 
+# dplyr::group_by(pollutant, reference) |> 
+# dplyr::summarise(population = sum(population)) |> 
+# dplyr::ungroup() |> 
+# dplyr::mutate(population_relative = population / !!pop) |> 
+# ggplot2::ggplot(ggplot2::aes(x = 1, y = population_relative, fill = reference)) +
+# ggplot2::geom_bar(stat = "identity", width = 0.75) +
+# ggplot2::scale_y_continuous(limits = c(0,1), labels = scales::percent_format(), expand = c(0,0)) +
+# ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "zusätzlich über WHO-Richtwert" = col_who)) +
+# ggplot2::coord_polar(theta = "y") +
+# facet_wrap(pollutant~.) +
+# theme_minimal() +
+# ggplot2::theme(
+#   legend.title = ggplot2::element_blank(),
+#   axis.text.y = element_blank(),
+#   axis.title = element_blank(), 
+#   panel.spacing.x = unit(2, "lines")
+# ) +
+# ggplot2::ggtitle(
+#   label = "Luftschadstoffbelastete Wohnbevölkerung im Kanton Zürich ",
+#   subtitle = paste0("Durchschnittlicher Anteil an Gesamtbevölkerung in den Jahren ", max(years) - n_years + 1, " bis ", max(years))
+# ) + 
+# ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+
+
+# --- für Umweltbericht ---
+
+
 
 # plotting histograms for air pollutants
 plots$exposition$distribution_histogram <-
@@ -527,17 +736,13 @@ plots$outcomes$preliminary_deaths_rel <- airquality.methods::plot_pars_prelim_de
 
 
 
-
-
-
-
 # construct final plot tibble instead of plot list for better use in *.qmd
 # ---
 plots <-
   plots$emissions$inventory_absolute |> 
   airquality.methods::plotlist_to_tibble("emission", "inventory_absolute") |> 
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$emissions$inventory_relative, "emission", "inventory_relative")) |> 
-  bind_rows(airquality.methods::plotlist_to_tibble(plots$emissions$rsd_norm, "emission", "rsd_norm")) |> 
+  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$emissions$rsd_norm, "emission", "rsd_norm")) |> 
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$emissions$rsd_yearmodel, "emission", "rsd_yearmodel")) |> 
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$emissions$rsd_yearmeas, "emission", "rsd_yearmeas")) |> 
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$monitoring$threshold_comparison, "monitoring", "threshold_comparison")) |> 
@@ -545,6 +750,8 @@ plots <-
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$monitoring$timeseries_ndep_bachtel, "monitoring", "timeseries_ndep_bachtel")) |> 
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$monitoring$timeseries_ndep_all, "monitoring", "timeseries_ndep_all")) |>
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$monitoring$timeseries_ndep_all_vs_CLN, "monitoring", "timeseries_ndep_all_vs_CLN")) |>
+  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$trends$relative, "trends", "relative")) |>
+  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$exposition$population_over_thresh, "exposition", "population_over_thresh")) |>
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$exposition$distribution_histogram, "exposition", "distribution_histogram")) |>
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$exposition$distribution_cumulative, "exposition", "distribution_cumulative")) |>
   dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$exposition$population_weighted_mean, "exposition", "population_weighted_mean")) |>
@@ -558,6 +765,7 @@ plots <-
 # ---
 saveRDS(dplyr::filter(plots, type == "emission"), "docs/plots_emissions.rds")
 saveRDS(dplyr::filter(plots, type == "monitoring"), "docs/plots_monitoring.rds")
+saveRDS(dplyr::filter(plots, type == "trends"), "docs/plots_trends.rds")
 saveRDS(dplyr::filter(plots, type == "exposition"), "docs/plots_exposition.rds")
 saveRDS(dplyr::filter(plots, type == "outcomes"), "docs/plots_outcomes.rds")
 

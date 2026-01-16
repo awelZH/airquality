@@ -3,7 +3,7 @@
 
 
 # => check which year for each parameter is last available and which might be added, always include base_scenario_year for pollutants
-years <- airquality.methods::get_years(read_all_raster, lubridate::year(Sys.Date()) - 2, base_scenario_year)
+years <- airquality.methods::get_years(read_all_raster, lubridate::year(Sys.Date()) - year_offset, base_scenario_year)
 
 if ((length(years$all) == 1 & !years$base_analysed) | length(years$all) > 1) {
   

@@ -4,7 +4,7 @@
 # read dataset ...
 # ---
 # => read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss. Also new pre-defined subsector groups for aggregation
-data_emikat <- airquality.methods::read_opendataswiss(airquality.methods::filter_ressources(ressources, 1), source = "Ostluft")
+data_emikat <- airquality.methods::read_opendataswiss(airquality.methods::filter_ressources(ressources, 1), source = "Ostluft & BAFU")
 subsector_new <- airquality.methods::read_local_csv(airquality.methods::filter_ressources(ressources, 27), locale = readr::locale(encoding = "UTF-8"))
 
 # prepare dataset ...
@@ -17,7 +17,8 @@ data_emikat <- airquality.methods::prepare_emmissions(data_emikat)
 # ---
 # => aggregate emissions per pollutant, subsector_new and year
 data_emikat <- airquality.methods::aggregate_emmissions(data_emikat, subsector_new)
-
+data_emikat <- dplyr::filter(data_emikat, year <= lubridate::year(Sys.Date())) # no uncertain future
+  
 
 # compiling average vehicle NOx emissions from real-world vehicle remote sensing (RS) emission measurements using a remote sensing detector (RSD):
 
@@ -45,6 +46,7 @@ data_rsd_per_yearmodel <- airquality.methods::aggregate_rsd_nox(data_rsd, rsd_au
 
 # => aggregate NOx emissions per year of measurement and fuel type (including all = gasoline and diesel) as mean values
 data_rsd_per_yearmeas <- airquality.methods::aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("year", "vehicle_fuel_type"))
+
 
 # write output datasets & clean up:
 # ---

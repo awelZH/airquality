@@ -13,6 +13,8 @@ load_packages <- function(packages) {
         renv::install(paste0("Ostluft/",package), prompt = FALSE)
       } else if (package %in% c("airquality.methods", "airquality.data")) {
         renv::install(paste0("awelZH/",package), prompt = FALSE)
+      } else if (package == "healthiar") {
+        renv::install(paste0("SwissTPH/",package), prompt = FALSE)
       } else {
         renv::install(package)
       }
@@ -29,14 +31,14 @@ load_packages("airquality.data")
 renv::update("airquality.data", prompt = FALSE)
 
 # packages required for script functionality
-imports <- c("devtools", "renv", "airquality.methods", "airquality.data", "scales", "lemon", "openair", "ggplot2",
-             "RColorBrewer", "colorspace", "MASS", "rOstluft.plot", "quarto")
+imports <- c("devtools", "renv", "airquality.methods", "airquality.data", "scales", "openair", "ggplot2",
+             "RColorBrewer", "colorspace", "rmweather", "ranger", "MASS", "rOstluft.plot", "quarto", "kableExtra")
 load_packages(imports)
 # sapply(imports, function(x) usethis::use_package(x, "Import", min_version = TRUE))
 
 # packages necessary for function functionality
 depends <- c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-             "readr", "sf", "stars", "withr", "pxR")
+             "readr", "sf", "stars", "withr", "pxR", "healthiar")
 load_packages(depends)
 # sapply(depends, function(x) usethis::use_package(x, "Suggests", min_version = TRUE))
 
@@ -49,8 +51,11 @@ ressources <- airquality.methods::prepare_ressources(airquality.methods::read_lo
 # read all available raster data?
 read_all_raster <- FALSE
 
+# max year from now - year_offset to be considered for raster data download
+year_offset <- 1
+
 # reference year for all pollutants in exposition & outcomes calculation
-base_scenario_year <- 2010
+base_scenario_year <- 2015
 
 # map projection CRS = CH1903+ / LV95 throughout analysis
 crs <- 2056

@@ -2,7 +2,7 @@
 
 # => read NABEL monitoring airquality data (y1) => PM2.5:PM10 ratios
 data_monitoring_nabel <- 
-  airquality.data::data_monitoring_aq |> 
+  airquality.data::data_monitoring_aq_y1 |> 
   dplyr::filter(source == "NABEL (BAFU & Empa)" & parameter %in% c("NO2", "PM2.5", "PM10") & year >= 2000) |> 
   dplyr::select(year, site, parameter, concentration) |> 
   tidyr::spread(parameter, concentration) |> 

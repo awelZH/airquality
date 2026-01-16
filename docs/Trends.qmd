@@ -3,39 +3,190 @@ title: "Trends"
 lightbox: true
 ---
 
-
-WORK IN PROGRESS
-
-<!-- Hier werden ausgewählte Luftqualitäts-Messdaten aus dem interkantonalen Messnetz zur  [Luftqualitätsüberwachung der Ostschweizer Kantone und des Fürstentums Liechtenstein Ostluft](https://www.ostluft.ch/) sowie aus dem [nationalen Beobachtungsnetz für Luftfremdstoffe NABEL](https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/nationales-beobachtungsnetz-fuer-luftfremdstoffe--nabel-.html) im Kanton Zürich dargestellt. Belastungskarten mit flächendeckenden Informationen zur Luftqualität finden sich im [GIS-Browser des Kantons Zürich](https://geo.zh.ch/maps). In Darstellungen der Langzeitverläufe der Schadstoffkonzentrationen (Immissionsverläufe) werden die aktuellen Grenzwerte über den Gesamtzeitraum konstant dargestellt, auch wenn sie erst ab einem bestimmten Zeitpunkt in der [Luftreinhalteverordnung des Bundes](https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de) eingeführt oder angepasst wurden. Das Gleiche gilt für die [Richtwerte der Weltgesundheitsorganisation WHO](https://www.who.int/publications/i/item/9789240034228). -->
-<!-- <!-- bzw. dem [GIS-Browser des Bundes](https://map.geo.admin.ch/). --> 
+Eine wichtige Fragestellung der Luftreinhaltung ist die der Wirkungsbeurteilung. Das heisst, haben Emissionsminderungsmassnahmen den gewünschten Effekt. Die Grundlage zur Beantwortung dieser Frage ist die Langzeitentwicklung der bilanzierten Emissionen, welche Aufschluss über Verbesserungen (oder Verschlechterungen) des quellspezifischen Schadstoffausstosses gibt. Die Emissionsbilanzierung enthält Annahmen, Verallgemeinerungen und deshalb Unicherheiten. Eine zentrale Art, die Emissionsbilanzierung zu verifizieren ist, den Verlauf der gemessenen Immissionen mit dem der bilanzierten Emissionen zu vergleichen. Der Vergleich ist immissionsseitig ebenfalls mit Unsicherheiten behaftet, denn Messungen finden immer punktuell statt, während die Emissionsbilanzierung ein grösseres Gebiet zusammenfasst. Zudem erwschwert der zeitlich schwankende Einfluss der Witterung und Klimaentwicklung auf die gemessenen Immissionen sowie teils die realen Emissionen den direkten Vergleich. Um diese Unsicherheit zu minimieren, kann man mit Hilfe statistischer Modelle die Messdaten auf einen durchschnittlichen Witterungszustand "normalisieren" und erhält so einen hypothetischen Langzeitverlauf der Immissionen auf der Grundlage von Messungen, welcher besser mit dem Verlauf der Emissionen verglichen werden kann. Stimmt der Verlauf der Emissionen und mit dem der gemessenen und normalisierten Immissionen qualitativ überein, so wird die Emissionsbilanzierung auf Grundlage der Messdaten allgemein bestätigt. Hier nutzen wir die Methodik des R-packages [rmweather](https://CRAN.R-project.org/package=rmweather) (siehe auch [Grange et al., 2018](https://doi.org/10.5194/acp-18-6223-2018)), um Langzeitmessreihen im Kanton Zürich statistisch zu normalisieren. 
 
 
 ```{r}
 source("read_plots.R")
+library(dplyr)
+library(ggplot2)
 plots <- readRDS("plots_trends.rds")
+plot <- get_plot(plots, "pollutant == 'timeseries' & source == 'relative'")
+plot2 <- get_plot(plots, "pollutant == 'timeseries_detailed' & source == 'relative'")
 ```
 
 
-### Relative Entwicklung Emissionen / Immissionen
+
+### Übersicht Entwicklung Schadstoffausstoss
+
+```{r}
+#| label: fig-trends-rel-allemissions
+get_plot(plots, "pollutant == 'timeseries_emissions' & source == 'relative'")
+```
+
+
+
+### Vergleich Entwicklung Schadstoffausstoss mit Messdaten und normalisierten Trends
+
+### Stickoxide
 
 ::: {.panel-tabset}
 
 #### einfach
 
 ```{r}
-#| label: fig-trends-rel
-#| fig.asp: 1.25
-get_plot(plots, "pollutant == 'timeseries' & source == 'relative'")
+#| label: fig-trends-rel-nox
+# #| fig.asp: 1.25
+plot %+% dplyr::filter(plot$data, pollutant == "Stickoxide | Stickstoffdioxid") + ggplot2::theme(legend.position = "right")
 ```
 
 #### detailliert
 
 ```{r}
-#| label: fig-trends-rel-detail
-#| fig.asp: 1.25
-get_plot(plots, "pollutant == 'timeseries_detailed' & source == 'relative'")
+#| label: fig-trends-rel-detail-nox
+plot2 %+% dplyr::filter(plot2$data, pollutant == "Stickoxide | Stickstoffdioxid") + ggplot2::theme(legend.position = "right")
 ```
 
 :::
+
+### Feinstaub PM2.5
+
+beachte: Referenzjahr 2021 statt 2015 aufgrund Verfügbarkeit von Messdaten
+
+::: {.panel-tabset}
+
+#### einfach
+
+```{r}
+#| label: fig-trends-rel-pm25
+plot %+% dplyr::filter(plot$data, pollutant == "Feinstaub PM2.5") + ggplot2::theme(legend.position = "right")
+```
+
+#### detailliert
+
+```{r}
+#| label: fig-trends-rel-detail-pm25
+plot2 %+% dplyr::filter(plot2$data, pollutant == "Feinstaub PM2.5") + ggplot2::theme(legend.position = "right")
+```
+
+:::
+
+### Feinstaub PM10
+
+::: {.panel-tabset}
+
+#### einfach
+
+```{r}
+#| label: fig-trends-rel-pm10
+plot %+% dplyr::filter(plot$data, pollutant == "Feinstaub PM10") + ggplot2::theme(legend.position = "right")
+```
+
+#### detailliert
+
+```{r}
+#| label: fig-trends-rel-detail-pm10
+plot2 %+% dplyr::filter(plot2$data, pollutant == "Feinstaub PM10") + ggplot2::theme(legend.position = "right")
+```
+
+:::
+
+### Russ im Feinstaub
+
+beachte: Referenzjahr 2020 statt 2015 aufgrund Verfügbarkeit von Messdaten
+
+::: {.panel-tabset}
+
+#### einfach
+
+```{r}
+#| label: fig-trends-rel-ebc
+plot %+% dplyr::filter(plot$data, pollutant == "Russ im Feinstaub") + ggplot2::theme(legend.position = "right")
+```
+
+#### detailliert
+
+```{r}
+#| label: fig-trends-rel-detail-ebc
+plot2 %+% dplyr::filter(plot2$data, pollutant == "Russ im Feinstaub") + ggplot2::theme(legend.position = "right")
+```
+
+:::
+
+### Ozon
+
+::: {.panel-tabset}
+
+#### einfach
+
+```{r}
+#| label: fig-trends-rel-o3
+plot %+% dplyr::filter(plot$data, pollutant == "Ozon, typische Spitzenbelastung") + ggplot2::theme(legend.position = "right")
+```
+
+#### detailliert
+
+WORK-IN-PROGRESS
+
+<!-- ```{r} -->
+<!-- #| label: fig-trends-rel-detail-o3 -->
+<!-- plot2 %+% dplyr::filter(plot2$data, pollutant == "Ozon, typische Spitzenbelastung") + ggplot2::theme(legend.position = "right") -->
+<!-- ``` -->
+
+:::
+
+<!-- ### Ammoniak und reduzierter Stickstoff -->
+
+<!-- beachte: Referenzjahr 2020 statt 2015 aufgrund Verfügbarkeit von Messdaten -->
+
+<!-- ::: {.panel-tabset} -->
+
+<!-- ```{r} -->
+<!-- #| label: fig-trends-rel-nhx -->
+<!-- plot %+% dplyr::filter(plot$data, pollutant == "Ammoniak | reduzierter Stickstoff") + ggplot2::theme(legend.position = "right") -->
+<!-- ``` -->
+
+<!-- #### detailliert -->
+
+<!-- WORK-IN-PROGRESS -->
+
+<!-- ```{r} -->
+<!-- #| label: fig-trends-rel-detail-nhx -->
+<!-- plot2 %+% dplyr::filter(plot2$data, pollutant == "Ammoniak | reduzierter Stickstoff") + ggplot2::theme(legend.position = "right") -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ### Stickstoffeinträge in empfindliche Ökosysteme -->
+
+<!-- WORK-IN-PROGRESS -->
+
+
+
+<!-- ### Kohlenmonoxid -->
+
+
+<!-- ```{r} -->
+<!-- #| label: fig-trends-rel-co -->
+<!-- plot %+% dplyr::filter(plot$data, pollutant == "Kohlenstoffmonoxid") + ggplot2::theme(legend.position = "right") -->
+<!-- ``` -->
+
+
+
+<!-- ### Flüchtige organische Verbindungen -->
+
+<!-- ```{r} -->
+<!-- #| label: fig-trends-rel-nmvoc -->
+<!-- plot %+% dplyr::filter(plot$data, pollutant == "nicht-Methan Kohlenwasserstoffe") + ggplot2::theme(legend.position = "right") -->
+<!-- ``` -->
+
+
+
+<!-- ### Schwefeldioxid -->
+
+<!-- ```{r} -->
+<!-- #| label: fig-trends-rel-so2 -->
+<!-- plot %+% dplyr::filter(plot$data, pollutant == "Schwefeldioxid") + ggplot2::theme(legend.position = "right") -->
+<!-- ``` -->
 
 

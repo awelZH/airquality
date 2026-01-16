@@ -314,11 +314,11 @@
       "Author": "Jörg Sintermann [aut, cre]",
       "Maintainer": "Jörg Sintermann <luft@bd.zh.ch>",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.data",
       "RemoteRef": "main",
-      "RemoteSha": "6de4a51a0024529d249af199873154927473d5de"
+      "RemoteSha": "71cfad5f70ba188d307a4e5130cd95d9889e7493",
+      "RemoteHost": "api.github.com"
     },
     "airquality.methods": {
       "Package": "airquality.methods",
@@ -357,7 +357,7 @@
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.methods",
       "RemoteRef": "master",
-      "RemoteSha": "04e714f8507821428ced10a360ca6b9ee9e9b21e"
+      "RemoteSha": "145f89f05853b66ade0a2ac65d65696c2994df89"
     },
     "askpass": {
       "Package": "askpass",

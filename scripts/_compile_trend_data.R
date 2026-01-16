@@ -7,14 +7,15 @@
 # ---
 
 # years to consider for analysis and later plotting
-years <- 1990:(lubridate::year(Sys.Date()) - 1)  
+years <- 1990:(lubridate::year(Sys.Date()) - 1) 
 
-# reference year for relative trends
+# reference year for relative trends with monitoring data
 reference_year <- function(parameter, base_year = 2015){
   dplyr::case_when(
     parameter == "PM2.5" ~ 2021,
     parameter == "eBC" ~ 2020,
     parameter == "NHx" ~ 2020,
+    parameter == "NH3" ~ 2020,
     parameter == "Ndep" ~ 2020,
     TRUE ~ base_year
   )
@@ -30,10 +31,12 @@ nmin_sites <- function(parameter){
     parameter == "NO2" ~ 5,
     parameter == "O3" ~ 5,
     parameter == "O3_nb_h1>120" ~ 5,
+    parameter == "O3_max_h1" ~ 5,
+    parameter == "O3_nb_d1_max_h1>120" ~ 5,
     parameter == "O3_max_98p_m1" ~ 5,
     parameter == "O3_peakseason_mean_d1_max_mean_h8gl" ~ 5,
-    parameter == "NHx" ~ 3,
-    parameter == "Ndep" ~ 3,
+    parameter == "NHx" ~ 4,
+    parameter == "Ndep" ~ 4,
     TRUE ~ 4
   )
 }
@@ -43,37 +46,37 @@ yearmin_per_site <- 4
 
 # for analysis
 cantons <- "ZH"
-trend_vars <- c("T", "T_max_min10", "Hr", "StrGlo", "p", "WVs", "WD", "RainSum")
+trend_vars_d1 <- c("T", "T_max_min10", "Hr", "StrGlo", "p", "WVs", "WD", "RainSum")
 parameters <- c("PM2.5", "PM10", "NOx", "eBC", "NHx", "Ndep", "O3_max_98p_m1")
-# TODO: also include NHx, Ndep and O3 on different time-interval than d1
+# TODO: also include NHx on different time-interval than d1
 # TODO: ... remove data_monitoring_ndep from airquality.data when ndep-analysis is online at github. Integrate future github dataset instead
 
 
 # get monitoring datasets from airquality.data (see here: https://github.com/awelZH/airquality.data) 
 # ---
 # get pre-compiled airquality monitoring data as daily averages and yearly values
-data_monitoring_aq <- airquality.data::data_monitoring_aq_d1 
+data_monitoring_aq <- airquality.data::data_monitoring_aq_d1
 data_monitoring_aq_y1 <- airquality.methods::read_local_csv("inst/extdata/output/data_airquality_monitoring_y1.csv", locale = readr::locale(encoding = "UTF-8"))
 
 # get local pre-compiled emission data
 data_emikat <- airquality.methods::read_local_csv("inst/extdata/output/data_emissions.csv", delim = ";", locale = readr::locale(encoding = "UTF-8"))
 
 # get pre-compiled airquality-network meteorological data as daily averages
-data_monitoring_met <- airquality.data::data_monitoring_met_d1
+data_monitoring_met_d1 <- airquality.data::data_monitoring_met_d1
 
 
 # prepare data
 # ---
 data_monitoring_aq <- dplyr::filter(data_monitoring_aq, lubridate::year(starttime) %in% !!years & canton %in% !!cantons)
-data_monitoring_met <- dplyr::filter(data_monitoring_met, parameter %in% !!trend_vars)
-data_trends <- airquality.methods::prepare_data_trends(data_monitoring_aq, data_monitoring_met)
+data_monitoring_met_d1 <- dplyr::filter(data_monitoring_met_d1, parameter %in% !!trend_vars_d1)
+data_trends <- airquality.methods::prepare_data_trends(data_monitoring_aq, data_monitoring_met_d1)
 
 
 # trend analysis and result aggregation (takes a while) for d1 data
 # ---
 fun <- function(x) {
   print(x)
-  trends <- airquality.methods::derive_trends_per_parameter(data_trends, parameter = x, reference_year_fun = reference_year, yearmin_per_site = yearmin_per_site)
+  trends <- airquality.methods::derive_trends_per_parameter(data_trends, parameter = x, trend_vars = trend_vars_d1, reference_year_fun = reference_year, yearmin_per_site = yearmin_per_site)
   return(trends)
 }
 pars <- parameters[!(parameters %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "O3_max_98p_m1", "NH3", "NHx", "Ndep"))] # no d1 trend analysis for these ones
@@ -88,9 +91,11 @@ trends_relative$all <-
   dplyr::filter(year %in% !!years)
 
 
-# trend analysis and result aggregation (takes a while) for m1 data
+# trend analysis and result aggregation (takes a while) for m1 data (NHx)
 # ---
 #TODO: work in progress!
+
+
 
 
 # combine yearly trends with median measurement results and emission data; derive relative time series
@@ -172,6 +177,6 @@ trends_relative$all <-
 # ---
 airquality.methods::write_local_csv(trends_relative$all, file = "inst/extdata/output/data_airquality_trends_relative_y1.csv")
 airquality.methods::write_local_csv(trends_relative$agg, file = "inst/extdata/output/data_airquality_trends_relative_aggregated_y1.csv")
-rm(list = c("years", "reference_year", "nmin_sites", "yearmin_per_site", "parameters", "cantons", "trend_vars", 
-            "data_monitoring_median", "data_emikat", "data_monitoring_aq", "data_monitoring_met", "data_trends", "fun", "trends", "trends_relative"))
+rm(list = c("years", "reference_year", "nmin_sites", "yearmin_per_site", "parameters", "cantons", "trend_vars_d1", 
+            "data_monitoring_median", "data_emikat", "data_monitoring_aq", "data_monitoring_met_d1", "data_trends", "fun", "trends", "trends_relative"))
 

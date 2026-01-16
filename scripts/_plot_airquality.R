@@ -37,6 +37,7 @@ parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98p_m1", "O3_peakseas
 parameters_exposition <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for exposition plotting
 siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
                           "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
+reference_year_emissions <- 2015
 
 
 # plotting size parameters
@@ -93,11 +94,11 @@ scale_color_siteclass <-
 
 # ggplot2 custom themes
 theme_ts <-
-  theme_minimal(base_size = basesize, base_family = "Arial") +
-  theme(
+  ggplot2::theme_minimal(base_size = basesize, base_family = "Arial") +
+  ggplot2::theme(
     plot.title = ggplot2::element_text(size = ggplot2::rel(1)),
     plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
-    plot.caption = ggplot2::element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.66)),
+    plot.caption = ggplot2::element_text(hjust = 1, color = "gray40", size = ggplot2::rel(0.66)),
     plot.background = ggplot2::element_blank(),
     panel.grid.major.x = ggplot2::element_blank(),
     panel.grid.minor.x = ggplot2::element_blank(),
@@ -108,12 +109,12 @@ theme_ts <-
   )
 
 theme_map <-
-  theme_void(base_size = basesize, base_family = "Arial") +
-  theme(
-    plot.subtitle = element_text(size = ggplot2::rel(0.8)),
-    plot.caption = element_text(hjust = 1, color = "gray40", face = "italic", size = ggplot2::rel(0.75)),
-    panel.background = element_blank(),
-    plot.background = element_blank()
+  ggplot2::theme_void(base_size = basesize, base_family = "Arial") +
+  ggplot2::theme(
+    plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
+    plot.caption = ggplot2::element_text(hjust = 1, color = "gray40", size = ggplot2::rel(0.75)),
+    panel.background = ggplot2::element_blank(),
+    plot.background = ggplot2::element_blank()
   )
 
 # ggiraph::set_girafe_defaults(
@@ -423,13 +424,36 @@ data_trends <- airquality.methods::read_local_csv(ressources_plotting$trends$tre
 data_trends_agg <- 
   airquality.methods::read_local_csv(ressources_plotting$trends$trends_agg, delim = ";", locale = readr::locale(encoding = "UTF-8")) |> 
   dplyr::mutate(type = dplyr::recode(type, Trend = "Median Trend", Messwerte = "Median Messwerte", emission = "Emission"))
+emissions_relative <- 
+  data_emikat |> 
+  airquality.methods::aggregate_groups(y = "emission", groups = c("year", "pollutant"), nmin = 1) |>
+  dplyr::select(year, pollutant, sum) |>
+  dplyr::rename(emission = sum) |>
+  dplyr::mutate(emission = ifelse(is.na(emission), 0, emission)) |>  
+  airquality.methods::prepare_emission_trends(reference_year_fun = function(x) reference_year_emissions) |> 
+  tidyr::gather(class, value, -year, -pollutant, -type, -reference_year) |> 
+  dplyr::mutate(site = "Kanton Zürich")
 
+plots$trends$relative$timeseries_emissions <-
+  emissions_relative |> 
+  ggplot2::ggplot(ggplot2::aes(x = year, y = value - 1, color = pollutant)) +
+  ggplot2::geom_hline(yintercept = 0, color = "gray80", linetype = 2) +
+  ggplot2::geom_vline(data = . %>% dplyr::distinct(pollutant, reference_year), mapping = ggplot2::aes(xintercept = reference_year), color = "gray80", linetype = 2) +
+  ggplot2::geom_line() +
+  ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.02,0.02)) +
+  ggplot2::scale_color_viridis_d(name = "Schadstoff") +
+  theme_ts +
+  ggplot2::theme(legend.title = ggplot2::element_blank()) +
+  ggplot2::ggtitle(
+    label = "Relative Entwicklung Emissionen im Kanton Zürich",
+    subtitle = paste0("Veränderung gegenüber dem Jahr ", reference_year_emissions)) +
+  ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz")
 
 # plotting relative trends of emissions and immissions vs. reference year
 plots$trends$relative$timeseries <-
   data_trends_agg |> 
-  dplyr::filter(type %in% c("Emission", "Median Trend", "Median Messwerte") & year <= lubridate::year(Sys.Date())) |>
-  dplyr::mutate(pollutant = dplyr::case_when(pollutant == "Ozon" ~ paste0(pollutant,", ",metric), TRUE ~ pollutant)) |> 
+  dplyr::filter(type %in% c("Emission", "Median Trend", "Median Messwerte")) |>
+  dplyr::mutate(pollutant = dplyr::case_when(pollutant == "Ozon" ~ paste0(pollutant,", ",airquality.methods::longmetric(parameter)), TRUE ~ pollutant)) |> 
   dplyr::mutate(type = factor(type, levels = c("Emission", "Median Trend", "Median Messwerte"))) |> 
   airquality.methods::plot_timeseries_trend_relative(
     theme = theme_ts, facet_ncol = 2, 
@@ -441,10 +465,10 @@ plots$trends$relative$timeseries <-
 
 plots$trends$relative$timeseries_detailed <-
   data_trends_agg |>
-  dplyr::filter(type %in% c("Emission") & year <= lubridate::year(Sys.Date())) |>
+  dplyr::filter(type == "Emission") |>
   dplyr::bind_rows(dplyr::filter(data_trends, type == "Trend" & class == "relative Immission" & year <= lubridate::year(Sys.Date()))) |>
   dplyr::mutate(
-    pollutant = dplyr::case_when(pollutant == "Ozon" ~ paste0(pollutant,", ",metric), TRUE ~ pollutant),
+    pollutant = dplyr::case_when(pollutant == "Ozon" ~ paste0(pollutant,", ",airquality.methods::longmetric(parameter)), TRUE ~ pollutant),
     type = dplyr::recode(type, Trend = "Trend pro Standort"),
     type = factor(type, levels = c("Emission", "Trend pro Standort", "Median Messwerte"))
   ) |> 
@@ -453,7 +477,7 @@ plots$trends$relative$timeseries_detailed <-
     titlelab =  ggplot2::ggtitle(
       label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
       subtitle = "Veränderung gegenüber Bezugsjahr (gestrichelte Linie)"),
-    captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft & NABEL (BAFU & Empa)")
+    captionlab = ggplot2::labs(caption = "Datengrundlage: Ostluft, BAFU, NABEL (BAFU & Empa)")
   )
 
 
@@ -569,12 +593,15 @@ plots$exposition$population_over_thresh$timeseries_various <-
     legend.position = "bottom"
   ) + 
   ggplot2::ggtitle(
-    label = "Entwicklung Luftschadstoffbelasteter Wohnbevölkerung",
+    label = "Entwicklung luftschadstoffbelasteter Wohnbevölkerung",
     subtitle = "Anzahl Personen, Wohnbevölkerung im Kanton Zürich") + 
   ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
 
 
 # --- für Umweltbericht ---
+
+# plots$exposition$population_over_thresh$timeseries_various %+% dplyr::filter(plots$exposition$population_over_thresh$timeseries_various$data, pollutant == "Stickstoffdioxid")
+# plots$exposition$population_over_thresh$timeseries_various %+% dplyr::filter(plots$exposition$population_over_thresh$timeseries_various$data, pollutant == "Feinstaub PM2.5")
 
 # d |> 
 # dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |> 

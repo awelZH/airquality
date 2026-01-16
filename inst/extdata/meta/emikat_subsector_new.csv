@@ -2,10 +2,10 @@
 Abfallverbrennung Land- und Forstwirtschaft;verschiedene
 Deponien;verschiedene
 Dienstleistungen Landschaftspflege;verschiedene
-Feuerungen Dienstleistungen Holz und Kohle;Feuerungen Holz und Kohle
-Feuerungen Dienstleistungen Öl und Gas;Feuerungen Öl und Gas
-Feuerungen Haushalte Holz und Kohle;Feuerungen Holz und Kohle
-Feuerungen Haushalte Öl und Gas;Feuerungen Öl und Gas
+Feuerungen Dienstleistungen Holz und Kohle;Feuerungen Holz & Kohle
+Feuerungen Dienstleistungen Öl und Gas;Feuerungen Öl & Gas
+Feuerungen Haushalte Holz und Kohle;Feuerungen Holz & Kohle
+Feuerungen Haushalte Öl und Gas;Feuerungen Öl & Gas
 Feuerungen Landwirtschaft Holz;verschiedene
 Flächenquellen Industrie;verschiedene
 Flugverkehr Zürich;Flugverkehr
@@ -29,3 +29,4 @@ Vergärung;verschiedene
 Verluste Gasnetz;verschiedene
 Zonenverkehr;verschiedene
 Landwirtschaftliche Nutzflächen;verschiedene
+Weiden;Düngerausbringung & Weiden

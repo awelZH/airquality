@@ -47,6 +47,7 @@ data_rsd_per_yearmodel <- airquality.methods::aggregate_rsd_nox(data_rsd, rsd_au
 # => aggregate NOx emissions per year of measurement and fuel type (including all = gasoline and diesel) as mean values
 data_rsd_per_yearmeas <- airquality.methods::aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("year", "vehicle_fuel_type"))
 
+
 # write output datasets & clean up:
 # ---
 airquality.methods::write_local_csv(data_emikat, file = "inst/extdata/output/data_emissions.csv")

@@ -18,6 +18,7 @@ plots <-
 ```
 
 
+! WORK-IN-PROGRESS !
 
 Hier werden die Gesundheitsauswirkungen in der Wohnbevölkerung im Kanton Zürich durch Langzeitbelastung ausgewählter Luftschadstoffe statistisch abgeschätzt. Die Abschätzung behandelt vorzeitige Todesfälle als Fallbeispiel für ausgewählte Gesundheitsfolgen. Der Nutzen der Verminderung von Luftverschutzung für die Bevölkerung kann auch als vermiedene Gesundheitsfolgen ausgedrückt werden (vergleiche z.B. [Projekt GeLuft](https://www.swisstph.ch/fileadmin/user_upload/SwissTPH/Institute/Ludok/Aktuelle_Berichte/SwissTPH2023_Gesundheitsnutzen_AQG_WHO_2021.pdf)).
 

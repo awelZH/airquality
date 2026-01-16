@@ -112,6 +112,24 @@ get_plot(plots, "pollutant == 'eBC' & source == 'inventory_relative'")
 
 :::
 
+### Ammoniak
+
+::: {.panel-tabset}
+
+##### absolut
+```{r}
+#| label: fig-nh3-emissions-abs
+get_plot(plots, "pollutant == 'NH3' & source == 'inventory_absolute'")
+```
+
+##### relativ
+```{r}
+#| label: fig-nh3-emissions-rel
+get_plot(plots, "pollutant == 'NH3' & source == 'inventory_relative'")
+```
+
+:::
+
 ### Kohlenmonoxid
 
 ::: {.panel-tabset}
@@ -162,24 +180,6 @@ get_plot(plots, "pollutant == 'SO2' & source == 'inventory_absolute'")
 ```{r}
 #| label: fig-so2-emissions-rel
 get_plot(plots, "pollutant == 'SO2' & source == 'inventory_relative'")
-```
-
-:::
-
-### Ammoniak
-
-::: {.panel-tabset}
-
-##### absolut
-```{r}
-#| label: fig-nh3-emissions-abs
-get_plot(plots, "pollutant == 'NH3' & source == 'inventory_absolute'")
-```
-
-##### relativ
-```{r}
-#| label: fig-nh3-emissions-rel
-get_plot(plots, "pollutant == 'NH3' & source == 'inventory_relative'")
 ```
 
 :::

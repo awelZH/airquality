@@ -154,6 +154,18 @@ plots$emissions$inventory_relative <-
     airquality.methods::ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", theme = theme_ts)
   })
 
+# ... for NH3 change level order to better illustrate influence of agriculture over time
+levels <- levels(plots$emissions$inventory_absolute$NH3$data$subsector_new2)
+levels <- levels[c(which(!stringr::str_detect(levels, "Land-")), which(stringr::str_detect(levels, "Land-")))]
+
+plots$emissions$inventory_absolute$NH3 <- 
+  plots$emissions$inventory_absolute$NH3 %+% 
+  dplyr::mutate(plots$emissions$inventory_absolute$NH3$data, subsector_new2 = factor(subsector_new2, levels))
+
+plots$emissions$inventory_relative$NH3 <- 
+  plots$emissions$inventory_relative$NH3 %+% 
+  dplyr::mutate(plots$emissions$inventory_relative$NH3$data, subsector_new2 = factor(subsector_new2, levels))
+
 
 # read & plot RSD NOx emissions by vehicle type, fuel type and euronorm
 data_rsd_per_norm <- airquality.methods::read_local_csv(ressources_plotting$emissions$rsd_norm)

@@ -1,32 +1,33 @@
-﻿subsector;subsector_new
-Abfallverbrennung Land- und Forstwirtschaft;verschiedene
-Deponien;verschiedene
-Dienstleistungen Landschaftspflege;verschiedene
-Feuerungen Dienstleistungen Holz und Kohle;Feuerungen Holz & Kohle
-Feuerungen Dienstleistungen Öl und Gas;Feuerungen Öl & Gas
-Feuerungen Haushalte Holz und Kohle;Feuerungen Holz & Kohle
-Feuerungen Haushalte Öl und Gas;Feuerungen Öl & Gas
-Feuerungen Landwirtschaft Holz;verschiedene
-Flächenquellen Industrie;verschiedene
-Flugverkehr Zürich;Flugverkehr
-Forstwirtschaftliche Maschinen;verschiedene
-Haushalte andere Brände etc;verschiedene
-Haushalte andere Feuerwerk etc;verschiedene
-Haushalte andere Private etc;verschiedene
-Industriefahrzeuge;verschiedene
-Kläranlagen;verschiedene
-Kompostierung;verschiedene
-Landwirtschaftliche Maschinen;verschiedene
-Lösungsmittel Industrie;Lösungsmittel
-Lösungsmittel Konsumprodukte;Lösungsmittel
-Maschinen Garten und Hobby;verschiedene
-Punktquellen KVA;Kehrichtverbrennungsanagen
-Schienenverkehr Bau-/Dienstzüge;verschiedene
-Schienenverkehr Rangieren;verschiedene
-Schifffahrt Seen;verschiedene
-Schifffahrt Fährlinien;verschiedene
-Vergärung;verschiedene
-Verluste Gasnetz;verschiedene
-Zonenverkehr;verschiedene
-Landwirtschaftliche Nutzflächen;verschiedene
-Weiden;Düngerausbringung & Weiden
+﻿subsector;subsector_new;comment
+Abfallverbrennung Land- und Forstwirtschaft;verschiedene;
+Deponien;verschiedene;
+Dienstleistungen Landschaftspflege;verschiedene;
+Feuerungen Dienstleistungen Holz und Kohle;Feuerungen Holz & Kohle;
+Feuerungen Dienstleistungen Öl und Gas;Feuerungen Öl & Gas;
+Feuerungen Haushalte Holz und Kohle;Feuerungen Holz & Kohle;
+Feuerungen Haushalte Öl und Gas;Feuerungen Öl & Gas;
+Feuerungen Landwirtschaft Holz;verschiedene;
+Flächenquellen Industrie;verschiedene;
+Flugverkehr Zürich;Flugverkehr;
+Forstwirtschaftliche Maschinen;verschiedene;
+Haushalte andere Brände etc;verschiedene;
+Haushalte andere Feuerwerk etc;verschiedene;
+Haushalte andere Private etc;verschiedene;
+Industriefahrzeuge;verschiedene;
+Kläranlagen;verschiedene;
+Kompostierung;verschiedene;
+Landwirtschaftliche Maschinen;verschiedene;
+Landwirtschaftliche Nutzflächen;verschiedene;"enthält ""Nutzflaechen Handelsduenger"", ""Nutzflaechen Hofduenger"", ""Nutzflaechen weitere"", d.h. Flächen-Emissionen durch Anwendung verschiedener Arten Mineraldünger, Klärschlammund andere organische Dünger / direkte Boden-Emissionen von Acker-, Grass- und Weideland"
+Lösungsmittel Industrie;Lösungsmittel;
+Lösungsmittel Konsumprodukte;Lösungsmittel;
+Maschinen Garten und Hobby;verschiedene;
+Punktquellen KVA;Kehrichtverbrennungsanagen;
+Schienenverkehr Bau-/Dienstzüge;verschiedene;
+Schienenverkehr Rangieren;verschiedene;
+Schifffahrt Seen;verschiedene;
+Schifffahrt Fährlinien;verschiedene;
+Ställe;Stall-Laufhof & Hofdünger-Lager;"enthält ""Nutztierhaltung, Geflügel, Rindvieh, Schweine, weitere"", d.h. v.a. Emissionen aus Ställen und Laufhöfen / Hofdünger-Lagerung / Hofdünger-Management / entherische Tier-Emissionen aus Ställen"
+Vergärung;verschiedene;
+Verluste Gasnetz;verschiedene;
+Weiden;Hofdüngerausbringung & Weiden;"enthält ""Nutzflaechen Hofduenger"", ""Nutzflaechen weitere"", ""Nutztierhaltung Rindvieh"", ""Nutztierhaltung weitere"", d.h. Ausbringung Gülle, Mist, u.ä. / Weide-Ausscheidungs-Emissionen / indirekte Flächen-Emissionen / Pflanzenschutzmittel / entherische Tier-Emissionen von Weiden"
+Zonenverkehr;verschiedene;

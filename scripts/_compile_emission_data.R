@@ -5,7 +5,9 @@
 # ---
 # => read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss. Also new pre-defined subsector groups for aggregation
 data_emikat <- airquality.methods::read_opendataswiss(airquality.methods::filter_ressources(ressources, 1), source = "Ostluft & BAFU")
-subsector_new <- airquality.methods::read_local_csv(airquality.methods::filter_ressources(ressources, 27), locale = readr::locale(encoding = "UTF-8"))
+subsector_new <- 
+  airquality.methods::read_local_csv(airquality.methods::filter_ressources(ressources, 27), locale = readr::locale(encoding = "UTF-8")) |> 
+  dplyr::select(-comment)
 
 # prepare dataset ...
 # ---

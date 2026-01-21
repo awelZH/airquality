@@ -451,9 +451,11 @@ plots$trends$relative$timeseries_emissions <-
   ggplot2::ggplot(ggplot2::aes(x = year, y = value - 1, color = pollutant)) +
   ggplot2::geom_hline(yintercept = 0, color = "gray80", linetype = 2) +
   ggplot2::geom_vline(data = . %>% dplyr::distinct(pollutant, reference_year), mapping = ggplot2::aes(xintercept = reference_year), color = "gray80", linetype = 2) +
-  ggplot2::geom_line() +
+  ggplot2::geom_line(linewidth = linewidth) +
   ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.02,0.02)) +
-  ggplot2::scale_color_viridis_d(name = "Schadstoff") +
+  # ggplot2::scale_color_manual(name = "Schadstoff", values = colorspace::diverging_hcl(palette = "Tofino", n = 8)) +
+  # ggplot2::scale_color_manual(name = "Schadstoff", values = colorspace::sequential_hcl(palette = "YlGnBu", n = 8)) +
+  ggplot2::scale_color_manual(name = "Schadstoff", values = c(colorspace::sequential_hcl(palette = "Mako", n = 4), colorspace::sequential_hcl(palette = "ag_sunset", n = 4))) +
   theme_ts +
   ggplot2::theme(legend.title = ggplot2::element_blank()) +
   ggplot2::ggtitle(

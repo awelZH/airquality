@@ -61,7 +61,7 @@ if ((length(years$all) == 1 & !years$base_analysed) | length(years$all) > 1) {
                                    dplyr::rename(population_weighted_mean_base = population_weighted_mean) |> 
                                    dplyr::select(year, pollutant, metric, parameter, population_weighted_mean_base) |> 
                                    dplyr::mutate(base_year = base_scenario_year) |> 
-                                   dplyr::right_join(aggregate_population_weighted_mean(data_expo_municip), by = c("year", "pollutant", "metric", "parameter")) |> 
+                                   dplyr::right_join(airquality.methods::aggregate_population_weighted_mean(data_expo_municip), by = c("year", "pollutant", "metric", "parameter")) |> 
                                    dplyr::arrange(year, pollutant)
   )
   data_pop_weighted_mean$munipalities <- airquality.methods::aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant", "metric", "parameter", "bfsnr", "gemeindename"))

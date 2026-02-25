@@ -172,6 +172,7 @@ data_rsd_per_norm <- airquality.methods::read_local_csv(ressources_plotting$emis
 
 plots$emissions$rsd_norm$NOx <-
   data_rsd_per_norm |> 
+  dplyr::filter(vehicle_euronorm != "Euro6c") |> # only few measured vehicles and not relevant for vehicle fleet...
   tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_euronorm) |>
   dplyr::left_join(data_rsd_per_norm, by = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) |>
   dplyr::mutate(
@@ -184,7 +185,7 @@ plots$emissions$rsd_norm$NOx <-
   # ggiraph::geom_bar_interactive(mapping = ggplot2::aes(data_id = vehicle_type, tooltip = round_off(nox_emission, 1)), stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
   ggplot2::geom_linerange(mapping = aes(ymin = emission - standarderror, ymax = emission + standarderror), color = "gray60", position = ggplot2::position_dodge(width = 0.75)) +
   ggplot2::geom_segment(mapping = aes(x = as.numeric(vehicle_euronorm) - 0.45, xend = as.numeric(vehicle_euronorm) + 0.45, y = nox_emission_threshold_g_per_kg_fuel, yend = nox_emission_threshold_g_per_kg_fuel), color = "red3", linewidth = 1) +
-  ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "bottom") +
+  ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "top") +
   ggplot2::scale_y_continuous(limits = c(0,25), breaks = seq(0,25,5), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'")) +
   ggplot2::scale_fill_manual(name = "Fahrzeugkategorie:", values = c("Personenwagen" = "cadetblue3", "leichte Nutzfahrzeuge" = "darkslategray")) +
   # ggplot2::guides(fill = ggplot2::guide_legend(ncol = 1)) +
@@ -221,7 +222,7 @@ plots$emissions$rsd_yearmodel$NOx <-
   # ggiraph::geom_bar_interactive(mapping = ggplot2::aes(data_id = vehicle_type, tooltip = round_off(nox_emission, 1)), stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
   ggplot2::geom_linerange(mapping = aes(ymin = emission - standarderror, ymax = emission + standarderror), color = "gray60", position = ggplot2::position_dodge(width = 0.75)) +
   ggplot2::geom_step(mapping = aes(x = vehicle_model_year + 0.475, y = nox_emission_threshold_g_per_kg_fuel), color = "red3", linewidth = 1) +
-  ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "bottom") +
+  ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "top") +
   ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'")) +
   ggplot2::scale_fill_manual(name = "Fahrzeugkategorie:", values = c("Personenwagen" = "cadetblue3", "leichte Nutzfahrzeuge" = "darkslategray")) +
   ggplot2::ggtitle(
@@ -581,7 +582,7 @@ plots$exposition$population_over_thresh$timeseries_various <-
   ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
 
 
-# donought plot ofrelative population over threshold values for all air pollutants for last x years
+# donought plot of relative population over threshold values for all air pollutants for last x years
 plots$exposition$population_over_thresh$rel_various <-
   plots$exposition$population_over_thresh$timeseries_various$data |> 
   dplyr::filter(year %in% tail(unique(year), !!n_years)) |> 

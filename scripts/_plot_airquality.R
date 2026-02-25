@@ -172,6 +172,7 @@ data_rsd_per_norm <- airquality.methods::read_local_csv(ressources_plotting$emis
 
 plots$emissions$rsd_norm$NOx <-
   data_rsd_per_norm |> 
+  dplyr::filter(vehicle_euronorm != "Euro6c") |> # only few measured vehicles and not relevant for vehicle fleet...
   tidyr::expand(vehicle_type, vehicle_fuel_type, vehicle_euronorm) |>
   dplyr::left_join(data_rsd_per_norm, by = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")) |>
   dplyr::mutate(
@@ -184,7 +185,7 @@ plots$emissions$rsd_norm$NOx <-
   # ggiraph::geom_bar_interactive(mapping = ggplot2::aes(data_id = vehicle_type, tooltip = round_off(nox_emission, 1)), stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
   ggplot2::geom_linerange(mapping = aes(ymin = emission - standarderror, ymax = emission + standarderror), color = "gray60", position = ggplot2::position_dodge(width = 0.75)) +
   ggplot2::geom_segment(mapping = aes(x = as.numeric(vehicle_euronorm) - 0.45, xend = as.numeric(vehicle_euronorm) + 0.45, y = nox_emission_threshold_g_per_kg_fuel, yend = nox_emission_threshold_g_per_kg_fuel), color = "red3", linewidth = 1) +
-  ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "bottom") +
+  ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "top") +
   ggplot2::scale_y_continuous(limits = c(0,25), breaks = seq(0,25,5), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'")) +
   ggplot2::scale_fill_manual(name = "Fahrzeugkategorie:", values = c("Personenwagen" = "cadetblue3", "leichte Nutzfahrzeuge" = "darkslategray")) +
   # ggplot2::guides(fill = ggplot2::guide_legend(ncol = 1)) +
@@ -221,7 +222,7 @@ plots$emissions$rsd_yearmodel$NOx <-
   # ggiraph::geom_bar_interactive(mapping = ggplot2::aes(data_id = vehicle_type, tooltip = round_off(nox_emission, 1)), stat = "identity", width = 0.75, position = ggplot2::position_dodge()) +
   ggplot2::geom_linerange(mapping = aes(ymin = emission - standarderror, ymax = emission + standarderror), color = "gray60", position = ggplot2::position_dodge(width = 0.75)) +
   ggplot2::geom_step(mapping = aes(x = vehicle_model_year + 0.475, y = nox_emission_threshold_g_per_kg_fuel), color = "red3", linewidth = 1) +
-  ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "bottom") +
+  ggplot2::facet_wrap(vehicle_fuel_type~., strip.position = "top") +
   ggplot2::scale_y_continuous(limits = c(0,NA), expand = c(0.01,0.01), labels = function(x) format(x, big.mark = "'")) +
   ggplot2::scale_fill_manual(name = "Fahrzeugkategorie:", values = c("Personenwagen" = "cadetblue3", "leichte Nutzfahrzeuge" = "darkslategray")) +
   ggplot2::ggtitle(
@@ -451,9 +452,11 @@ plots$trends$relative$timeseries_emissions <-
   ggplot2::ggplot(ggplot2::aes(x = year, y = value - 1, color = pollutant)) +
   ggplot2::geom_hline(yintercept = 0, color = "gray80", linetype = 2) +
   ggplot2::geom_vline(data = . %>% dplyr::distinct(pollutant, reference_year), mapping = ggplot2::aes(xintercept = reference_year), color = "gray80", linetype = 2) +
-  ggplot2::geom_line() +
+  ggplot2::geom_line(linewidth = linewidth) +
   ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.02,0.02)) +
-  ggplot2::scale_color_viridis_d(name = "Schadstoff") +
+  # ggplot2::scale_color_manual(name = "Schadstoff", values = colorspace::diverging_hcl(palette = "Tofino", n = 8)) +
+  # ggplot2::scale_color_manual(name = "Schadstoff", values = colorspace::sequential_hcl(palette = "YlGnBu", n = 8)) +
+  ggplot2::scale_color_manual(name = "Schadstoff", values = c(colorspace::sequential_hcl(palette = "Mako", n = 4), colorspace::sequential_hcl(palette = "ag_sunset", n = 4))) +
   theme_ts +
   ggplot2::theme(legend.title = ggplot2::element_blank()) +
   ggplot2::ggtitle(
@@ -531,40 +534,6 @@ d <-
   dplyr::filter(!is.na(population)) |> 
   dplyr::mutate(pollutant = airquality.methods::longpollutant(pollutant)) 
 
-# # barplot of population over threshold values for all air pollutants for last x years
-# pop <-
-#   data_expo_weighmean_canton |> 
-#   dplyr::distinct(year, population, pollutant) |> 
-#   dplyr::filter(pollutant == "PM2.5" & year %in% seq(max(years) - n_years + 1, max(years), 1)) |>
-#   dplyr::summarise(population = sum(population)) |> 
-#   dplyr::pull(population)
-# 
-# plots$exposition$population_over_thresh$various <-
-#   d |> 
-#   dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |> 
-#   dplyr::group_by(pollutant, reference) |> 
-#   dplyr::summarise(population = sum(population)) |> 
-#   dplyr::ungroup() |> 
-#   dplyr::mutate(population_relative = population / !!pop) |> 
-#   ggplot2::ggplot(ggplot2::aes(x = pollutant, y = population_relative, fill = reference)) +
-#   ggplot2::geom_bar(stat = "identity", width = 0.75) +
-#   ggplot2::scale_y_continuous(limits = c(0,1), labels = scales::percent_format(), expand = c(0,0)) +
-#   ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "über WHO-Richtwert" = col_who)) +
-#   ggplot2::coord_flip() +
-#   theme_ts + 
-#   ggplot2::theme(
-#     legend.title = ggplot2::element_blank(),
-#     panel.grid.major.x = ggplot2::element_line(),
-#     panel.grid.major.y = ggplot2::element_blank()
-#     # axis.line.x = element_blank(),
-#     # axis.line.y = element_line(color = "gray30")
-#   ) +
-#   ggplot2::ggtitle(
-#     label = "Luftschadstoffbelastete Wohnbevölkerung",
-#     subtitle = paste0("Anteil belasteter Personen an Gesamtbevölkerung im Kanton Zürich in den Jahren ", max(years) - n_years + 1, " bis ", max(years))
-#   ) + 
-#   ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
-
 
 # plotting time series of population over threshold values for all air pollutants
 pop <-
@@ -591,12 +560,15 @@ pop <-
 plots$exposition$population_over_thresh$timeseries_various <-
   d |> 
   dplyr::bind_rows(pop) |> 
-  dplyr::mutate(reference = factor(reference, levels = c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert"))) |> 
+  dplyr::mutate(
+    reference = factor(reference, levels = c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert")),
+    population = pmax(0, population) # small negative numbers possible due to different O3 metrics and fundamental data
+  ) |> 
   ggplot2::ggplot(ggplot2::aes(x = year, y = population)) + 
   ggplot2::geom_bar(mapping = ggplot2::aes(fill = reference), stat = "identity", position = "stack", width = 0.8) + 
   ggplot2::scale_x_continuous(breaks = seq(1990,2100,5), expand = c(0.01,0.01)) +
   ggplot2::scale_y_continuous(labels = function(x) format(x, scientific = FALSE, big.mark = "'"), expand = c(0.01, 0.01)) +
-  ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "über WHO-Richtwert" = col_who, "unter Grenz-/Richtwert" = alpha("gray60", 0.25))) +
+  ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "über WHO-Richtwert" = col_who, "unter Grenz-/Richtwert" = alpha("gray60", 0.3))) +
   ggplot2::facet_wrap(pollutant~., axes = "all_x") + 
   theme_ts + 
   ggplot2::theme(
@@ -609,6 +581,50 @@ plots$exposition$population_over_thresh$timeseries_various <-
     subtitle = "Anzahl Personen, Wohnbevölkerung im Kanton Zürich") + 
   ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
 
+
+# donought plot of relative population over threshold values for all air pollutants for last x years
+plots$exposition$population_over_thresh$rel_various <-
+  plots$exposition$population_over_thresh$timeseries_various$data |> 
+  dplyr::filter(year %in% tail(unique(year), !!n_years)) |> 
+  dplyr::group_by(pollutant, reference) |> 
+  dplyr::summarise(population = sum(population)) |> 
+  dplyr::group_by(pollutant) |> 
+  dplyr::mutate(population_relative = population / sum(population)) |> 
+  dplyr::ungroup() |> 
+  ggplot2::ggplot(ggplot2::aes(x = 1, y = population_relative, fill = reference)) +
+  ggplot2::geom_bar(stat = "identity", width = 0.5) +
+  ggplot2::scale_x_continuous(limits = c(0.25,1.25), expand = c(0,0)) +
+  ggplot2::scale_y_continuous(limits = c(0,1), labels = scales::percent_format(), expand = c(0,0)) +
+  ggplot2::scale_fill_manual(values = c("über LRV-Grenzwert" = col_lrv, "über WHO-Richtwert" = col_who, "unter Grenz-/Richtwert" = alpha("gray60", 0.3))) +
+  ggplot2::coord_polar(theta = "y") +
+  ggplot2::facet_wrap(pollutant~., nrow = 1) + 
+  theme_ts +
+  ggplot2::theme(
+    legend.position = "bottom",
+    legend.title = ggplot2::element_blank(),
+    panel.grid.major = ggplot2::element_blank(),
+    panel.grid.minor = ggplot2::element_blank(),
+    axis.text = ggplot2::element_blank(),
+    axis.title = ggplot2::element_blank(),
+    axis.line.x = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_blank(),
+    plot.title = ggplot2::element_text(size = ggplot2::rel(1), hjust = 0.5),
+    plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8), hjust = 0.5),
+    plot.caption = ggplot2::element_text(hjust = 0.5, color = "gray40", size = ggplot2::rel(0.66))
+  ) +
+  ggplot2::ggtitle(
+    label = "Luftschadstoffbelastete Wohnbevölkerung",
+    subtitle = paste0("Anteil Personen im Kanton Zürich in den Jahren ", max(plots$exposition$population_over_thresh$timeseries_various$data$year) - n_years + 1, " bis ", max(plots$exposition$population_over_thresh$timeseries_various$data$year))
+  ) +
+  ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+
+
+
+# --- für ZUP ---
+
+# plots$exposition$population_over_thresh$timeseries_various$data |> 
+#   dplyr::mutate_if(is.factor, as.character()) |> 
+#   write.table("luftschadstoffbelastete_bevoelkerung.csv", sep = ";", quote = F, fileEncoding = "latin1", row.names = F)
 
 # --- für Umweltbericht ---
 

@@ -26,10 +26,11 @@ plots <-
 
 ### Einwohner/innen mit Belastung über Grenz-/Richtwert
 
-<!-- ```{r} -->
-<!-- #| label: fig-population-over-thresh -->
-<!-- get_plot(plots, "pollutant == 'various' & source == 'population_over_thresh'") -->
-<!-- ``` -->
+```{r}
+#| label: fig-population-over-thresh-rel
+get_plot(plots, "pollutant == 'rel_various' & source == 'population_over_thresh'")
+
+```
 
 ```{r}
 #| label: fig-population-over-thresh-ts
@@ -39,7 +40,7 @@ get_plot(plots, "pollutant == 'timeseries_various' & source == 'population_over_
 
 
 ```{r}
-p <- get_plot(plots, "source == 'population_over_thresh'")
+p <- get_plot(plots, "pollutant == 'timeseries_various' & source == 'population_over_thresh'")
 p$data |> 
   dplyr::select(year, pollutant, reference, population) |> 
   tidyr::spread(reference, population) |> 

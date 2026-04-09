@@ -26,7 +26,7 @@ nmin_sites <- function(parameter){
   dplyr::case_when(
     parameter == "PM10" ~ 3,
     parameter == "PM2.5" ~ 3,
-    parameter == "eBC" ~ 3,
+    parameter == "eBC" ~ 2, #! simply not a lot high timeres sites available
     parameter == "NOx" ~ 5,
     parameter == "NO2" ~ 5,
     parameter == "O3" ~ 5,

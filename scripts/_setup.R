@@ -4,7 +4,7 @@
 # make sure renv is instaled
 if (!("renv" %in% installed.packages())) {install.packages("renv")}
 
-# function to instakll / load packages
+# function to install / load packages
 load_packages <- function(packages) {
   
   for (package in packages) {

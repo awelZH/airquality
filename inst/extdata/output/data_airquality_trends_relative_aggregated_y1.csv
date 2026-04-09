@@ -31,9 +31,10 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 2019;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;77;2015;Kanton Zürich;relative Immission;0.8853030963802879
 2020;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;83;2015;Kanton Zürich;relative Immission;0.7566506759703446
 2021;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;63;2015;Kanton Zürich;relative Immission;0.7767117313563018
-2022;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;53;2015;Kanton Zürich;relative Immission;0.8935891844744875
-2023;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;50;2015;Kanton Zürich;relative Immission;0.735281290885303
-2024;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;74;2015;Kanton Zürich;relative Immission;0.6559092891408634
+2022;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;55;2015;Kanton Zürich;relative Immission;0.8935891844744875
+2023;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;52;2015;Kanton Zürich;relative Immission;0.735281290885303
+2024;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;76;2015;Kanton Zürich;relative Immission;0.6598899149585696
+2025;Stickoxide | Stickstoffdioxid;Jahresmittel;NO2;Messwerte;65;2015;Kanton Zürich;relative Immission;0.697775839511557
 1990;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;4;2015;Kanton Zürich;relative Immission;NA
 1991;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;5;2015;Kanton Zürich;relative Immission;0.921095486216339
 1992;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;6;2015;Kanton Zürich;relative Immission;1.0235687981385797
@@ -66,9 +67,10 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 2019;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;12;2015;Kanton Zürich;relative Immission;0.9455275699830487
 2020;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;10;2015;Kanton Zürich;relative Immission;0.8218477231330528
 2021;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;11;2015;Kanton Zürich;relative Immission;0.8214009341635421
-2022;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;8;2015;Kanton Zürich;relative Immission;0.8450555429175809
+2022;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;10;2015;Kanton Zürich;relative Immission;0.8653911974310176
 2023;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;9;2015;Kanton Zürich;relative Immission;0.8719094282747404
 2024;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;8;2015;Kanton Zürich;relative Immission;0.8079279937419834
+2025;Ozon;max. monatl. 98%-Perz.;O3_max_98p_m1;Messwerte;8;2015;Kanton Zürich;relative Immission;0.8400639987356506
 1990;Feinstaub PM10;Jahresmittel;PM10;Messwerte;0;2015;Kanton Zürich;relative Immission;NA
 1991;Feinstaub PM10;Jahresmittel;PM10;Messwerte;0;2015;Kanton Zürich;relative Immission;NA
 1992;Feinstaub PM10;Jahresmittel;PM10;Messwerte;0;2015;Kanton Zürich;relative Immission;NA
@@ -77,33 +79,34 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 1995;Feinstaub PM10;Jahresmittel;PM10;Messwerte;0;2015;Kanton Zürich;relative Immission;NA
 1996;Feinstaub PM10;Jahresmittel;PM10;Messwerte;0;2015;Kanton Zürich;relative Immission;NA
 1997;Feinstaub PM10;Jahresmittel;PM10;Messwerte;2;2015;Kanton Zürich;relative Immission;NA
-1998;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;1.6193841233276887
-1999;Feinstaub PM10;Jahresmittel;PM10;Messwerte;4;2015;Kanton Zürich;relative Immission;1.5109001722174518
-2000;Feinstaub PM10;Jahresmittel;PM10;Messwerte;4;2015;Kanton Zürich;relative Immission;1.3495351621457308
-2001;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;1.3763663054132826
-2002;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;1.5175320803274654
-2003;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;1.7175169281225577
-2004;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;1.4469491928703742
-2005;Feinstaub PM10;Jahresmittel;PM10;Messwerte;6;2015;Kanton Zürich;relative Immission;1.42162952096588
-2006;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;1.5477150387564735
-2007;Feinstaub PM10;Jahresmittel;PM10;Messwerte;8;2015;Kanton Zürich;relative Immission;1.2293186232110087
-2008;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;1.2107595252561698
-2009;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;1.1940118329981577
-2010;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;1.1469719211777356
-2011;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;1.1335174988110834
-2012;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;1.0167113782447013
-2013;Feinstaub PM10;Jahresmittel;PM10;Messwerte;8;2015;Kanton Zürich;relative Immission;1.1035915991408587
-2014;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;0.9492302863628296
+1998;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;1.6289655476544869
+1999;Feinstaub PM10;Jahresmittel;PM10;Messwerte;4;2015;Kanton Zürich;relative Immission;1.519839728593798
+2000;Feinstaub PM10;Jahresmittel;PM10;Messwerte;4;2015;Kanton Zürich;relative Immission;1.357519968743613
+2001;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;1.3845098640732088
+2002;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;1.526510875773025
+2003;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;1.727678975681098
+2004;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;1.4555103699231169
+2005;Feinstaub PM10;Jahresmittel;PM10;Messwerte;6;2015;Kanton Zürich;relative Immission;1.4300408888925253
+2006;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;1.5568724179784088
+2007;Feinstaub PM10;Jahresmittel;PM10;Messwerte;8;2015;Kanton Zürich;relative Immission;1.2365921435525666
+2008;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;1.2179232368191517
+2009;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;1.2010764533426284
+2010;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;1.1537582200610073
+2011;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;1.1402241917948592
+2012;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;1.0227269634245957
+2013;Feinstaub PM10;Jahresmittel;PM10;Messwerte;8;2015;Kanton Zürich;relative Immission;1.1160379381109105
+2014;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;0.9548466055711475
 2015;Feinstaub PM10;Jahresmittel;PM10;Messwerte;10;2015;Kanton Zürich;relative Immission;1
-2016;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;0.852876556773188
-2017;Feinstaub PM10;Jahresmittel;PM10;Messwerte;12;2015;Kanton Zürich;relative Immission;0.8622489490102917
-2018;Feinstaub PM10;Jahresmittel;PM10;Messwerte;10;2015;Kanton Zürich;relative Immission;0.9170161468298421
-2019;Feinstaub PM10;Jahresmittel;PM10;Messwerte;11;2015;Kanton Zürich;relative Immission;0.7999393911803694
-2020;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;0.711710781859005
-2021;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;0.7587660401637327
-2022;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;0.8380021143498025
-2023;Feinstaub PM10;Jahresmittel;PM10;Messwerte;5;2015;Kanton Zürich;relative Immission;0.7474905062391644
-2024;Feinstaub PM10;Jahresmittel;PM10;Messwerte;6;2015;Kanton Zürich;relative Immission;0.6563673221127212
+2016;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;0.863839487840549
+2017;Feinstaub PM10;Jahresmittel;PM10;Messwerte;12;2015;Kanton Zürich;relative Immission;0.8703089793830615
+2018;Feinstaub PM10;Jahresmittel;PM10;Messwerte;10;2015;Kanton Zürich;relative Immission;0.9254002187650427
+2019;Feinstaub PM10;Jahresmittel;PM10;Messwerte;11;2015;Kanton Zürich;relative Immission;0.8046723996322922
+2020;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;0.7159217673199071
+2021;Feinstaub PM10;Jahresmittel;PM10;Messwerte;9;2015;Kanton Zürich;relative Immission;0.7632554378865125
+2022;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;0.8429603288516466
+2023;Feinstaub PM10;Jahresmittel;PM10;Messwerte;7;2015;Kanton Zürich;relative Immission;0.7159217673199071
+2024;Feinstaub PM10;Jahresmittel;PM10;Messwerte;8;2015;Kanton Zürich;relative Immission;0.6718409946913847
+2025;Feinstaub PM10;Jahresmittel;PM10;Messwerte;10;2015;Kanton Zürich;relative Immission;0.7718388215729856
 1990;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;0;2020;Kanton Zürich;relative Immission;NA
 1991;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;0;2020;Kanton Zürich;relative Immission;NA
 1992;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;0;2020;Kanton Zürich;relative Immission;NA
@@ -117,28 +120,29 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 2000;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;0;2020;Kanton Zürich;relative Immission;NA
 2001;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;0;2020;Kanton Zürich;relative Immission;NA
 2002;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;0;2020;Kanton Zürich;relative Immission;NA
-2003;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;2;2020;Kanton Zürich;relative Immission;NA
-2004;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;2;2020;Kanton Zürich;relative Immission;NA
-2005;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;2;2020;Kanton Zürich;relative Immission;NA
-2006;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;2;2020;Kanton Zürich;relative Immission;NA
-2007;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;5;2020;Kanton Zürich;relative Immission;3.6024096385542173
-2008;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;4;2020;Kanton Zürich;relative Immission;4.763343192771084
-2009;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;6;2020;Kanton Zürich;relative Immission;3.2859377807228913
-2010;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;9;2020;Kanton Zürich;relative Immission;2.5783132530120483
-2011;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;9;2020;Kanton Zürich;relative Immission;2.698795180722892
-2012;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;8;2020;Kanton Zürich;relative Immission;2.0120481927710845
-2013;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;8;2020;Kanton Zürich;relative Immission;2.071146655421687
-2014;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;8;2020;Kanton Zürich;relative Immission;1.934251290361446
-2015;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;11;2020;Kanton Zürich;relative Immission;1.686746987951807
-2016;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;8;2020;Kanton Zürich;relative Immission;1.6386589843373496
-2017;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;12;2020;Kanton Zürich;relative Immission;1.4096385542168675
-2018;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;12;2020;Kanton Zürich;relative Immission;1.1674698795180722
-2019;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;12;2020;Kanton Zürich;relative Immission;1.129234743373494
-2020;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;12;2020;Kanton Zürich;relative Immission;1
-2021;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;11;2020;Kanton Zürich;relative Immission;0.9084337349397591
-2022;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;8;2020;Kanton Zürich;relative Immission;0.9939759036144579
-2023;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;9;2020;Kanton Zürich;relative Immission;0.7652624216867471
-2024;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;10;2020;Kanton Zürich;relative Immission;0.8044756795180723
+2003;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;2;2020;Kanton Zürich;relative Immission;6.172800448780488
+2004;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;2;2020;Kanton Zürich;relative Immission;6.016602465853659
+2005;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;2;2020;Kanton Zürich;relative Immission;6.408551575609756
+2006;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;2;2020;Kanton Zürich;relative Immission;7.085494604878049
+2007;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;5;2020;Kanton Zürich;relative Immission;3.6463414634146347
+2008;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;4;2020;Kanton Zürich;relative Immission;4.821432743902439
+2009;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;6;2020;Kanton Zürich;relative Immission;3.3260101926829266
+2010;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;9;2020;Kanton Zürich;relative Immission;2.6097560975609757
+2011;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;9;2020;Kanton Zürich;relative Immission;2.731707317073171
+2012;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;8;2020;Kanton Zürich;relative Immission;2.0365853658536586
+2013;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;8;2020;Kanton Zürich;relative Immission;2.0964045414634147
+2014;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;8;2020;Kanton Zürich;relative Immission;1.9578397207317075
+2015;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;11;2020;Kanton Zürich;relative Immission;1.7073170731707317
+2016;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;8;2020;Kanton Zürich;relative Immission;1.658642630487805
+2017;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;12;2020;Kanton Zürich;relative Immission;1.4268292682926829
+2018;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;12;2020;Kanton Zürich;relative Immission;1.1817073170731707
+2019;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;12;2020;Kanton Zürich;relative Immission;1.1430058987804879
+2020;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;11;2020;Kanton Zürich;relative Immission;1
+2021;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;11;2020;Kanton Zürich;relative Immission;0.9195121951219513
+2022;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;10;2020;Kanton Zürich;relative Immission;0.9878048780487806
+2023;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;11;2020;Kanton Zürich;relative Immission;0.7745948902439025
+2024;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;11;2020;Kanton Zürich;relative Immission;0.7317073170731707
+2025;Russ im Feinstaub;Jahresmittel;eBC;Messwerte;12;2020;Kanton Zürich;relative Immission;0.8763936390243904
 1990;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;0;2021;Kanton Zürich;relative Immission;NA
 1991;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;0;2021;Kanton Zürich;relative Immission;NA
 1992;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;0;2021;Kanton Zürich;relative Immission;NA
@@ -166,14 +170,15 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 2014;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;2;2021;Kanton Zürich;relative Immission;NA
 2015;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;2;2021;Kanton Zürich;relative Immission;NA
 2016;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;2;2021;Kanton Zürich;relative Immission;NA
-2017;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;4;2021;Kanton Zürich;relative Immission;1.117480999446376
-2018;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;6;2021;Kanton Zürich;relative Immission;1.2022153818836165
+2017;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;4;2021;Kanton Zürich;relative Immission;1.1392405538696087
+2018;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;6;2021;Kanton Zürich;relative Immission;1.191335604672
 2019;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;8;2021;Kanton Zürich;relative Immission;1.089366713595639
 2020;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;7;2021;Kanton Zürich;relative Immission;0.9585623540988081
 2021;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;9;2021;Kanton Zürich;relative Immission;1
-2022;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;6;2021;Kanton Zürich;relative Immission;1.0139375150966226
-2023;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;6;2021;Kanton Zürich;relative Immission;0.8806076993366988
-2024;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;7;2021;Kanton Zürich;relative Immission;0.7851604603305589
+2022;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;8;2021;Kanton Zürich;relative Immission;1.0144735034586319
+2023;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;8;2021;Kanton Zürich;relative Immission;0.8650031395158393
+2024;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;9;2021;Kanton Zürich;relative Immission;0.7851604603305589
+2025;Feinstaub PM2.5;Jahresmittel;PM2.5;Messwerte;11;2021;Kanton Zürich;relative Immission;0.935165865387558
 1990;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;1;2015;Kanton Zürich;relative Immission;NA
 1990;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;1;2015;Kanton Zürich;relative Immission;NA
 1990;Feinstaub PM10;Jahresmittel;PM10;gemessen;0;2015;Kanton Zürich;relative Immission;NA
@@ -192,64 +197,48 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 1992;Feinstaub PM10;Jahresmittel;PM10;Trend;0;2015;Kanton Zürich;relative Immission;NA
 1992;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 1992;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
-1992;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
-1992;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 1993;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;1;2015;Kanton Zürich;relative Immission;NA
 1993;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;1;2015;Kanton Zürich;relative Immission;NA
 1993;Feinstaub PM10;Jahresmittel;PM10;gemessen;0;2015;Kanton Zürich;relative Immission;NA
 1993;Feinstaub PM10;Jahresmittel;PM10;Trend;0;2015;Kanton Zürich;relative Immission;NA
 1993;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 1993;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
-1993;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
-1993;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 1994;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;1;2015;Kanton Zürich;relative Immission;NA
 1994;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;1;2015;Kanton Zürich;relative Immission;NA
 1994;Feinstaub PM10;Jahresmittel;PM10;gemessen;0;2015;Kanton Zürich;relative Immission;NA
 1994;Feinstaub PM10;Jahresmittel;PM10;Trend;0;2015;Kanton Zürich;relative Immission;NA
 1994;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 1994;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
-1994;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
-1994;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 1995;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;1;2015;Kanton Zürich;relative Immission;NA
 1995;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;1;2015;Kanton Zürich;relative Immission;NA
 1995;Feinstaub PM10;Jahresmittel;PM10;gemessen;0;2015;Kanton Zürich;relative Immission;NA
 1995;Feinstaub PM10;Jahresmittel;PM10;Trend;0;2015;Kanton Zürich;relative Immission;NA
 1995;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 1995;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
-1995;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
-1995;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 1996;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;1;2015;Kanton Zürich;relative Immission;NA
 1996;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;1;2015;Kanton Zürich;relative Immission;NA
 1996;Feinstaub PM10;Jahresmittel;PM10;gemessen;0;2015;Kanton Zürich;relative Immission;NA
 1996;Feinstaub PM10;Jahresmittel;PM10;Trend;0;2015;Kanton Zürich;relative Immission;NA
 1996;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 1996;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
-1996;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
-1996;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 1997;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;1;2015;Kanton Zürich;relative Immission;NA
 1997;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;1;2015;Kanton Zürich;relative Immission;NA
 1997;Feinstaub PM10;Jahresmittel;PM10;gemessen;0;2015;Kanton Zürich;relative Immission;NA
 1997;Feinstaub PM10;Jahresmittel;PM10;Trend;0;2015;Kanton Zürich;relative Immission;NA
 1997;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 1997;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
-1997;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
-1997;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 1998;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;1;2015;Kanton Zürich;relative Immission;NA
 1998;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;1;2015;Kanton Zürich;relative Immission;NA
 1998;Feinstaub PM10;Jahresmittel;PM10;gemessen;0;2015;Kanton Zürich;relative Immission;NA
 1998;Feinstaub PM10;Jahresmittel;PM10;Trend;0;2015;Kanton Zürich;relative Immission;NA
 1998;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 1998;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
-1998;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
-1998;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 1999;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;1;2015;Kanton Zürich;relative Immission;NA
 1999;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;1;2015;Kanton Zürich;relative Immission;NA
 1999;Feinstaub PM10;Jahresmittel;PM10;gemessen;0;2015;Kanton Zürich;relative Immission;NA
 1999;Feinstaub PM10;Jahresmittel;PM10;Trend;0;2015;Kanton Zürich;relative Immission;NA
 1999;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 1999;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
-1999;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
-1999;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2000;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;3;2015;Kanton Zürich;relative Immission;NA
 2000;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;3;2015;Kanton Zürich;relative Immission;NA
 2000;Feinstaub PM10;Jahresmittel;PM10;gemessen;1;2015;Kanton Zürich;relative Immission;NA
@@ -259,7 +248,7 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 2000;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2000;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2001;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;4;2015;Kanton Zürich;relative Immission;1.2093652829721293
-2001;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;4;2015;Kanton Zürich;relative Immission;1.249983154110576
+2001;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;4;2015;Kanton Zürich;relative Immission;1.2473650329543928
 2001;Feinstaub PM10;Jahresmittel;PM10;gemessen;2;2015;Kanton Zürich;relative Immission;NA
 2001;Feinstaub PM10;Jahresmittel;PM10;Trend;2;2015;Kanton Zürich;relative Immission;NA
 2001;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
@@ -267,7 +256,7 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 2001;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2001;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2002;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;4;2015;Kanton Zürich;relative Immission;1.1513462663255396
-2002;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;4;2015;Kanton Zürich;relative Immission;1.2251993704021116
+2002;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;4;2015;Kanton Zürich;relative Immission;1.2200125857229984
 2002;Feinstaub PM10;Jahresmittel;PM10;gemessen;3;2015;Kanton Zürich;relative Immission;NA
 2002;Feinstaub PM10;Jahresmittel;PM10;Trend;3;2015;Kanton Zürich;relative Immission;NA
 2002;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
@@ -275,97 +264,97 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 2002;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2002;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2003;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;4;2015;Kanton Zürich;relative Immission;1.3208021356594037
-2003;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;4;2015;Kanton Zürich;relative Immission;1.2513020691936818
+2003;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;4;2015;Kanton Zürich;relative Immission;1.2322372600213507
 2003;Feinstaub PM10;Jahresmittel;PM10;gemessen;4;2015;Kanton Zürich;relative Immission;1.7259975129550775
-2003;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.516486291368633
+2003;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.5149481800939708
 2003;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2003;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2003;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2003;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2004;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;4;2015;Kanton Zürich;relative Immission;1.1087858693574728
-2004;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;4;2015;Kanton Zürich;relative Immission;1.1766807503779702
+2004;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;4;2015;Kanton Zürich;relative Immission;1.173606205008081
 2004;Feinstaub PM10;Jahresmittel;PM10;gemessen;4;2015;Kanton Zürich;relative Immission;1.450366506824714
-2004;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.5033508122007642
+2004;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.4967432844588986
 2004;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2004;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2004;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2004;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2005;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;5;2015;Kanton Zürich;relative Immission;1.1118313247444407
-2005;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;5;2015;Kanton Zürich;relative Immission;1.1423575468270595
+2005;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;5;2015;Kanton Zürich;relative Immission;1.1437259617099618
 2005;Feinstaub PM10;Jahresmittel;PM10;gemessen;4;2015;Kanton Zürich;relative Immission;1.4389414406691494
-2005;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.441206155611341
+2005;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.4498379458180892
 2005;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2005;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2005;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2005;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2006;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;5;2015;Kanton Zürich;relative Immission;1.178685007224765
-2006;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;5;2015;Kanton Zürich;relative Immission;1.0955476659722034
+2006;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;5;2015;Kanton Zürich;relative Immission;1.0985124117246858
 2006;Feinstaub PM10;Jahresmittel;PM10;gemessen;4;2015;Kanton Zürich;relative Immission;1.5969630294924388
-2006;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.432455038146438
+2006;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.4333887166585946
 2006;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2006;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2006;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2006;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2007;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;5;2015;Kanton Zürich;relative Immission;1.0138561303260607
-2007;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;5;2015;Kanton Zürich;relative Immission;1.1080943871083715
+2007;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;5;2015;Kanton Zürich;relative Immission;1.0998899902595094
 2007;Feinstaub PM10;Jahresmittel;PM10;gemessen;4;2015;Kanton Zürich;relative Immission;1.2836426967392423
-2007;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.3800227636247877
+2007;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.3844279340853984
 2007;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2007;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2007;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2007;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2008;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;5;2015;Kanton Zürich;relative Immission;1.0314486086047772
-2008;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;5;2015;Kanton Zürich;relative Immission;1.0646050705877135
+2008;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;5;2015;Kanton Zürich;relative Immission;1.0712000434482456
 2008;Feinstaub PM10;Jahresmittel;PM10;gemessen;4;2015;Kanton Zürich;relative Immission;1.2165247446254686
-2008;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.3408167774370265
+2008;Feinstaub PM10;Jahresmittel;PM10;Trend;4;2015;Kanton Zürich;relative Immission;1.3474904621286634
 2008;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2008;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2008;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2008;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2009;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;6;2015;Kanton Zürich;relative Immission;1.039648696174234
-2009;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.0573618536183724
+2009;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.0578158887206133
 2009;Feinstaub PM10;Jahresmittel;PM10;gemessen;6;2015;Kanton Zürich;relative Immission;1.2816621058316615
-2009;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.2749510125516939
+2009;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.2742678813247783
 2009;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2009;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2009;Russ im Feinstaub;Jahresmittel;eBC;gemessen;0;2020;Kanton Zürich;relative Immission;NA
 2009;Russ im Feinstaub;Jahresmittel;eBC;Trend;0;2020;Kanton Zürich;relative Immission;NA
 2010;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;6;2015;Kanton Zürich;relative Immission;0.9667545156121783
-2010;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.050240085378374
+2010;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.0501080317695073
 2010;Feinstaub PM10;Jahresmittel;PM10;gemessen;6;2015;Kanton Zürich;relative Immission;1.2449629828136213
-2010;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.2645293626679657
+2010;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.2624969538635624
 2010;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2010;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2010;Russ im Feinstaub;Jahresmittel;eBC;gemessen;1;2020;Kanton Zürich;relative Immission;NA
 2010;Russ im Feinstaub;Jahresmittel;eBC;Trend;1;2020;Kanton Zürich;relative Immission;NA
 2011;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;6;2015;Kanton Zürich;relative Immission;1.0552088616921351
-2011;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.0387879946344492
+2011;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.0423200545531168
 2011;Feinstaub PM10;Jahresmittel;PM10;gemessen;6;2015;Kanton Zürich;relative Immission;1.2596853171765903
-2011;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.2162789862874837
+2011;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.204168674412879
 2011;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2011;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2011;Russ im Feinstaub;Jahresmittel;eBC;gemessen;2;2020;Kanton Zürich;relative Immission;NA
 2011;Russ im Feinstaub;Jahresmittel;eBC;Trend;2;2020;Kanton Zürich;relative Immission;NA
 2012;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;6;2015;Kanton Zürich;relative Immission;0.9531544321716896
-2012;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.0250805516391166
+2012;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.0287446621334917
 2012;Feinstaub PM10;Jahresmittel;PM10;gemessen;6;2015;Kanton Zürich;relative Immission;1.075516645911306
-2012;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.1370356767582397
+2012;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.1230570823086903
 2012;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2012;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2012;Russ im Feinstaub;Jahresmittel;eBC;gemessen;2;2020;Kanton Zürich;relative Immission;NA
 2012;Russ im Feinstaub;Jahresmittel;eBC;Trend;2;2020;Kanton Zürich;relative Immission;NA
 2013;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;6;2015;Kanton Zürich;relative Immission;1.0094138943179538
-2013;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.014550564789113
+2013;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;6;2015;Kanton Zürich;relative Immission;1.0222203417519826
 2013;Feinstaub PM10;Jahresmittel;PM10;gemessen;6;2015;Kanton Zürich;relative Immission;1.1991312110583277
-2013;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.1031005896142463
+2013;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.1000196658389232
 2013;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2013;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2013;Russ im Feinstaub;Jahresmittel;eBC;gemessen;2;2020;Kanton Zürich;relative Immission;NA
 2013;Russ im Feinstaub;Jahresmittel;eBC;Trend;2;2020;Kanton Zürich;relative Immission;NA
 2014;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;7;2015;Kanton Zürich;relative Immission;0.9637830665025844
-2014;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;1.0149959707874996
+2014;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;1.0137082185840496
 2014;Feinstaub PM10;Jahresmittel;PM10;gemessen;6;2015;Kanton Zürich;relative Immission;0.9308000658490696
-2014;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.025299725590143
+2014;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;1.0263953275544857
 2014;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;0;2021;Kanton Zürich;relative Immission;NA
 2014;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;0;2021;Kanton Zürich;relative Immission;NA
 2014;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
@@ -379,77 +368,85 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 2015;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
 2015;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
 2016;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;7;2015;Kanton Zürich;relative Immission;0.9270903738298043
-2016;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.9797112728857632
+2016;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.9873541641288065
 2016;Feinstaub PM10;Jahresmittel;PM10;gemessen;7;2015;Kanton Zürich;relative Immission;0.9016683715471115
-2016;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.9769652675456921
+2016;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.9807581596660601
 2016;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;2;2021;Kanton Zürich;relative Immission;NA
 2016;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;2;2021;Kanton Zürich;relative Immission;NA
 2016;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
 2016;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
 2017;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;7;2015;Kanton Zürich;relative Immission;0.799225956935339
-2017;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.89848555198606594
+2017;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.9106334484972007
 2017;Feinstaub PM10;Jahresmittel;PM10;gemessen;7;2015;Kanton Zürich;relative Immission;0.8911303318598308
-2017;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.9602739644400233
+2017;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.9593495413775897
 2017;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;4;2021;Kanton Zürich;relative Immission;1.1311377317920137
-2017;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;4;2021;Kanton Zürich;relative Immission;1.0976205841661113
-2017;Russ im Feinstaub;Jahresmittel;eBC;gemessen;4;2020;Kanton Zürich;relative Immission;1.5844617455024999
-2017;Russ im Feinstaub;Jahresmittel;eBC;Trend;4;2020;Kanton Zürich;relative Immission;1.52136441461284
+2017;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;4;2021;Kanton Zürich;relative Immission;1.0979272444945427
+2017;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
+2017;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
 2018;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;8;2015;Kanton Zürich;relative Immission;0.7563620085326019
-2018;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;8;2015;Kanton Zürich;relative Immission;0.8441345203353903
+2018;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;8;2015;Kanton Zürich;relative Immission;0.8371688038198555
 2018;Feinstaub PM10;Jahresmittel;PM10;gemessen;7;2015;Kanton Zürich;relative Immission;0.9445984683941633
-2018;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.9543589381745207
+2018;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.9475870569315265
 2018;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;6;2021;Kanton Zürich;relative Immission;1.2389575615194106
-2018;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;6;2021;Kanton Zürich;relative Immission;1.077437036548095
-2018;Russ im Feinstaub;Jahresmittel;eBC;gemessen;4;2020;Kanton Zürich;relative Immission;1.2195426231664612
-2018;Russ im Feinstaub;Jahresmittel;eBC;Trend;4;2020;Kanton Zürich;relative Immission;1.1534932317734947
+2018;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;6;2021;Kanton Zürich;relative Immission;1.0797702556982127
+2018;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
+2018;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
 2019;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;7;2015;Kanton Zürich;relative Immission;0.6900675424562295
-2019;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.7768630298808142
+2019;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.7702627857337548
 2019;Feinstaub PM10;Jahresmittel;PM10;gemessen;7;2015;Kanton Zürich;relative Immission;0.816316069552419
-2019;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.9227598590971612
+2019;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.9202731874726015
 2019;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;6;2021;Kanton Zürich;relative Immission;1.056660605789013
-2019;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;6;2021;Kanton Zürich;relative Immission;1.0397853846716483
-2019;Russ im Feinstaub;Jahresmittel;eBC;gemessen;4;2020;Kanton Zürich;relative Immission;1.1092551404699176
-2019;Russ im Feinstaub;Jahresmittel;eBC;Trend;4;2020;Kanton Zürich;relative Immission;1.0754489404203829
+2019;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;6;2021;Kanton Zürich;relative Immission;1.0374699140908876
+2019;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
+2019;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
 2020;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;7;2015;Kanton Zürich;relative Immission;0.6102774583813362
-2020;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.7070486769639718
+2020;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.6949474052805564
 2020;Feinstaub PM10;Jahresmittel;PM10;gemessen;7;2015;Kanton Zürich;relative Immission;0.7679401552524192
-2020;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.8921987010108715
+2020;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.8873682376004572
 2020;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;7;2021;Kanton Zürich;relative Immission;0.982276691311659
-2020;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;7;2021;Kanton Zürich;relative Immission;1.011038948928074
-2020;Russ im Feinstaub;Jahresmittel;eBC;gemessen;4;2020;Kanton Zürich;relative Immission;1
-2020;Russ im Feinstaub;Jahresmittel;eBC;Trend;4;2020;Kanton Zürich;relative Immission;1
+2020;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;7;2021;Kanton Zürich;relative Immission;1.0157672339952921
+2020;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
+2020;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
 2021;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;8;2015;Kanton Zürich;relative Immission;0.5841939807363009
-2021;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;8;2015;Kanton Zürich;relative Immission;0.6722912841260698
+2021;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;8;2015;Kanton Zürich;relative Immission;0.6652651058676412
 2021;Feinstaub PM10;Jahresmittel;PM10;gemessen;7;2015;Kanton Zürich;relative Immission;0.7994029989458932
-2021;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.8803417940204747
+2021;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.8801285245549322
 2021;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;7;2021;Kanton Zürich;relative Immission;1
 2021;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;7;2021;Kanton Zürich;relative Immission;1
-2021;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
-2021;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
+2021;Russ im Feinstaub;Jahresmittel;eBC;gemessen;2;2020;Kanton Zürich;relative Immission;NA
+2021;Russ im Feinstaub;Jahresmittel;eBC;Trend;2;2020;Kanton Zürich;relative Immission;NA
 2022;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;7;2015;Kanton Zürich;relative Immission;0.5630948627217415
-2022;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.6442094621053192
+2022;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.627022211939143
 2022;Feinstaub PM10;Jahresmittel;PM10;gemessen;6;2015;Kanton Zürich;relative Immission;0.8330335891104663
-2022;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;0.8735683195492077
+2022;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;0.8606763716181907
 2022;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;7;2021;Kanton Zürich;relative Immission;1.001791254781951
-2022;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;7;2021;Kanton Zürich;relative Immission;0.9681621012237068
-2022;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
-2022;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
+2022;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;7;2021;Kanton Zürich;relative Immission;0.967158798559368
+2022;Russ im Feinstaub;Jahresmittel;eBC;gemessen;2;2020;Kanton Zürich;relative Immission;NA
+2022;Russ im Feinstaub;Jahresmittel;eBC;Trend;2;2020;Kanton Zürich;relative Immission;NA
 2023;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;7;2015;Kanton Zürich;relative Immission;0.4613119051097351
-2023;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.6287675815949014
+2023;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.6018472362026431
 2023;Feinstaub PM10;Jahresmittel;PM10;gemessen;7;2015;Kanton Zürich;relative Immission;0.7202720777737904
-2023;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.8615066123724396
+2023;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.861495261441712
 2023;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;7;2021;Kanton Zürich;relative Immission;0.8864746854599813
-2023;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;7;2021;Kanton Zürich;relative Immission;0.9158027315018049
+2023;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;7;2021;Kanton Zürich;relative Immission;0.9204637132230398
 2023;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
 2023;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
 2024;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;8;2015;Kanton Zürich;relative Immission;0.4632292835660676
-2024;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;8;2015;Kanton Zürich;relative Immission;0.6233481618188471
+2024;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;8;2015;Kanton Zürich;relative Immission;0.5955606133868594
 2024;Feinstaub PM10;Jahresmittel;PM10;gemessen;6;2015;Kanton Zürich;relative Immission;0.6735531987111657
-2024;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;0.8404926686825289
+2024;Feinstaub PM10;Jahresmittel;PM10;Trend;6;2015;Kanton Zürich;relative Immission;0.8206104872891904
 2024;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;6;2021;Kanton Zürich;relative Immission;0.7716399102846303
-2024;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;6;2021;Kanton Zürich;relative Immission;0.8952277704204499
+2024;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;6;2021;Kanton Zürich;relative Immission;0.8851559501816674
 2024;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
 2024;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
+2025;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;gemessen;7;2015;Kanton Zürich;relative Immission;0.48793742512197974
+2025;Stickoxide | Stickstoffdioxid;Jahresmittel;NOx;Trend;7;2015;Kanton Zürich;relative Immission;0.5875868992114041
+2025;Feinstaub PM10;Jahresmittel;PM10;gemessen;7;2015;Kanton Zürich;relative Immission;0.7994098647753308
+2025;Feinstaub PM10;Jahresmittel;PM10;Trend;7;2015;Kanton Zürich;relative Immission;0.8700502165214242
+2025;Feinstaub PM2.5;Jahresmittel;PM2.5;gemessen;6;2021;Kanton Zürich;relative Immission;0.9305042919624253
+2025;Feinstaub PM2.5;Jahresmittel;PM2.5;Trend;6;2021;Kanton Zürich;relative Immission;0.898307371041333
+2025;Russ im Feinstaub;Jahresmittel;eBC;gemessen;3;2020;Kanton Zürich;relative Immission;NA
+2025;Russ im Feinstaub;Jahresmittel;eBC;Trend;3;2020;Kanton Zürich;relative Immission;NA
 1990;Kohlenstoffmonoxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;5.009406791328516
 1991;Kohlenstoffmonoxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;4.661733190483937
 1992;Kohlenstoffmonoxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;4.132696182300374
@@ -654,7 +651,7 @@ year;pollutant;metric;parameter;type;n;reference_year;site;class;value
 2011;Schwefeldioxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;1.3911129471064205
 2012;Schwefeldioxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;1.3265213762707257
 2013;Schwefeldioxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;1.3090906733289407
-2014;Schwefeldioxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;0.7966558791710812
+2014;Schwefeldioxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;0.9576368084823168
 2015;Schwefeldioxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;1
 2016;Schwefeldioxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;0.9057840640733663
 2017;Schwefeldioxid;NA;NA;emission;NA;2015;Kanton Zürich;relative Emission;0.8134452367147275

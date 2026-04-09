@@ -2,6 +2,14 @@
 # also compile ecosystem exposition towards nitrogen deposition
 
 
+# to do: 
+# use gdalcubes
+# 1) download missing aq *.tiff extent Kt ZH and save locally
+# 2) download missing bfs and save as raster data locally
+# 3) make a cube out of it
+# 4) ...
+
+
 # => check which year for each parameter is last available and which might be added, always include base_scenario_year for pollutants
 years <- airquality.methods::get_years(read_all_raster, lubridate::year(Sys.Date()) - year_offset, base_scenario_year)
 

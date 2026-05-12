@@ -1,0 +1,925 @@
+year;site;canton;x;y;masl;ecosys;cln;siteclass;emissionclass;pollutant;metric;parameter;deposition;unit;part_est;source_cat;sampling;datasource;source
+2003;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;8.025456324665493;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;6.026886795600537;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.815758344104085;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2009;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.86158716233676;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2012;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;7.430888698683762;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2013;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.140471931079257;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2015;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.9055808894246944;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.831539039395584;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.918995911583225;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;6.635218806008628;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.118962159386787;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.118962159386787;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.451850490441052;kg/ha/a;0.006748431899641694;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;2.667463087396746;kg/ha/a;-1.1200716845882752e-4;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2005;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.589545684848761;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2010;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.136553141522264;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2011;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.275062235974108;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2014;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;7.169736477542538;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2014;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.9835607417805154;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.979291456524138;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2016;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;7.087182947552976;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2017;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.205772663995613;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2018;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.309808046269425;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2018;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;4.201053007288147;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.626990536633877;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;RIH;ZH;2695937;1242440;437;Flachmoor;5;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;7.351415245385977;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.2969432378738937;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.02903282464985;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.02903282464985;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.158410941386427;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2002;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.743830176572504;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2013;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;3.4625905041337295;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;5.529220463683866;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2019;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.941984391956325;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;6.02711324622356;kg/ha/a;0.08333333333333337;aus NH3-Quellen;Bulk Dep PS, GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;3.163749895020761;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Bulk Dep PS, GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;4.665608170469955;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.80816864408354;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.007660985233305;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;5.961340942521275;kg/ha/a;1.306750298685211e-4;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.4117527727714;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.118655171539313;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;4.912038283657274;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.432233811871587;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2002;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;9.522449939880042;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2005;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;8.966944241887171;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2008;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.687149659418826;kg/ha/a;0.08333333333333337;aus NH3-Quellen;Bulk Dep PS, GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2011;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.313777687757903;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.44086592029918;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2011;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;5.138932454420206;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2013;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.80173673065337;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;4.457764213272028;kg/ha/a;0.0015867682198327238;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;5.661875255627604;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;2.9474950421285886;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.7880270598269647;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.8122449848429834;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.3574875408579485;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.4810377738673544;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;4.820359015784607;kg/ha/a;-1.1200716845882752e-4;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;4.897030624655813;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.258119092018286;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2002;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.743830176572504;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2015;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;5.529220463683866;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2016;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;7.692709828979036;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2016;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;3.1018115077938098;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;6.02711324622356;kg/ha/a;0.08333333333333337;aus NH3-Quellen;Bulk Dep PS, GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;3.163749895020761;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Bulk Dep PS, GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.4745756301501873;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.3768073569773764;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.80816864408354;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;5.961340942521275;kg/ha/a;1.306750298685211e-4;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.4117527727714;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.6692488352893036;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.5016864321804766;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.5016864321804766;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_bdep;2.3918361255836293;kg/ha/a;0.007019115890083527;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;2.6564704987688645;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.705784510213286;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;4.912038283657274;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.432233811871587;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2002;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;9.522449939880042;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2005;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;8.966944241887171;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.313777687757903;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.44086592029918;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2018;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;6.634879811715062;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2018;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.5369957762835584;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_bdep;5.27016878020417;kg/ha/a;0.08333333333333337;aus NH3-Quellen;Bulk Dep PS, GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;2.9474950421285886;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.7880270598269647;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.44067636678466;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.3574875408579485;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;5.13016330731757;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;5.583576056929192;kg/ha/a;4.424283154121911e-4;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;4.820359015784607;kg/ha/a;-1.1200716845882752e-4;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.7756205462098857;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2003;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;8.025456324665493;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;6.026886795600537;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.815758344104085;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2009;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.86158716233676;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2013;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.140471931079257;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2014;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.726714674643278;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2017;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;3.180716228223853;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.5834607000454;kg/ha/a;0.0015867682198327238;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2019;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_bdep;3.086915782398077;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Bulk Dep PS, GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.831539039395584;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;4.9110998921586955;kg/ha/a;0.08333333333333337;aus NH3-Quellen;Bulk Dep PS, GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.918995911583225;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.2581916506239903;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.2581916506239903;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.451850490441052;kg/ha/a;0.006748431899641694;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;4.363875875131843;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;2.667463087396746;kg/ha/a;-1.1200716845882752e-4;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.485494090893262;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2005;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.589545684848761;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2010;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.136553141522264;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2013;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;7.689171849459226;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.979291456524138;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2017;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.205772663995613;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2017;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;5.4396935577062395;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;8.142447788802038;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_bdep;2.679217310433979;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.403169776303767;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Bulk Dep PS, GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.291914011066815;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.291914011066815;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;3.5698299626977614;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.3210323283261776;kg/ha/a;4.424283154121911e-4;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;RIH;ZH;2695937;1242440;437;Flachmoor;5;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.9090132096169756;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;3.710829854194509;kg/ha/a;0.006645758661887768;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_bdep;5.773385307439168;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.158410941386427;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2007;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.920019687304523;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2010;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.375232828808485;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2013;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.608127220350789;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2016;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.8972589455527;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2017;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.626437967827989;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.644992958846408;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2018;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.6504347760997917;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.5834607000454;kg/ha/a;0.0015867682198327238;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2019;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.978628377367927;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2020;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;2.4447812641751403;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_bdep;5.807135453433189;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;4.9110998921586955;kg/ha/a;0.08333333333333337;aus NH3-Quellen;Bulk Dep PS, GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;5.922291517938613;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;4.6279067177065905;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;4.6279067177065905;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.506739220571099;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;BUE;ZH;2704475;1234943;494;Hochmoor;5;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.902482484363584;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;8.154664222731014;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;2.421365141281027;kg/ha/a;0.006645758661887768;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;4.363875875131843;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2007;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.512580945290833;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2009;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.2179274254773444;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2010;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.965442224401619;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2012;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.845002872584207;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2012;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.343922658955177;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2015;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;5.125484498614693;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2016;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.793161100193923;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2017;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.502767384822486;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2017;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;8.032744341570563;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.813113259174339;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2019;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;2.6117932079754964;kg/ha/a;0.0015120967741935054;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2020;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;3.568754279738627;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.403169776303767;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Bulk Dep PS, GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.1247837250839283;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2021;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.713520027887057;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.190197928228263;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.452921840367266;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.3210323283261776;kg/ha/a;4.424283154121911e-4;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.557947509252362;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_bdep;2.779988977747555;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.465057675881657;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;8.026201293217788;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2003;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.276327042546877;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2004;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.958620053329743;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.5444045658024335;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2010;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;5.60653876774662;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2014;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.708394451593702;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.4745756301501873;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.7306193784160975;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.3768073569773764;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.7944354490075463;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2022;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_bdep;2.5432649175244317;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.760077411843054;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.2964135321517305;kg/ha/a;1.306750298685211e-4;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.755159880725881;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.705784510213286;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2004;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.058745983090425;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;9.855670097998823;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2012;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;6.065319974051796;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2013;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;6.477379530980929;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2014;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.809875400103682;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2015;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.280487128445081;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2019;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;5.330375472820854;kg/ha/a;0.0015120967741935054;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;4.8889423582315334;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.397680179711643;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;5.13016330731757;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;4.906581981066107;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;5.583576056929192;kg/ha/a;4.424283154121911e-4;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.1568068465314503;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.017828112606917;kg/ha/a;0.006748431899641694;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.654684527190459;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.7756205462098857;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;8.026201293217788;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2003;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.276327042546877;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2004;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.958620053329743;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.5444045658024335;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2014;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.708394451593702;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2014;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;5.337705317438697;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.7306193784160975;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.7944354490075463;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2022;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_bdep;5.4533291539826445;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.760077411843054;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.2964135321517305;kg/ha/a;1.306750298685211e-4;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.699052088953278;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.4499863202199825;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.4499863202199825;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2004;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.058745983090425;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;9.855670097998823;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2014;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.809875400103682;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;4.457764213272028;kg/ha/a;0.0015867682198327238;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;5.661875255627604;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;4.8889423582315334;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2021;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;2.72190003530728;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.397680179711643;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;4.906581981066107;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.1568068465314503;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_bdep;4.163389817218757;kg/ha/a;0.007019115890083527;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.017828112606917;kg/ha/a;0.006748431899641694;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;4.897030624655813;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.654684527190459;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.258119092018286;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2007;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.920019687304523;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2010;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.375232828808485;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2013;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.608127220350789;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2016;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;4.8972589455527;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2016;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;5.549695499667085;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.644992958846408;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2018;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.6504347760997917;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2019;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.978628377367927;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2019;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_bdep;6.949204743899714;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;7.2067016930777035;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2020;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;5.633755190771274;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;5.922291517938613;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.506739220571099;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;BUE;ZH;2704475;1234943;494;Hochmoor;5;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.0218476452412557;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2007;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.512580945290833;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2008;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_bdep;4.376764227212181;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Bulk Dep PS, GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2009;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.2179274254773444;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2012;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.845002872584207;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2012;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;5.343922658955177;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;FUB;Ostluft
+2015;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_bdep;7.178438834844273;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2016;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.793161100193923;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2017;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.502767384822486;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;FUB;Ostluft
+2019;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;6.813113259174339;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;3.1247837250839283;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.714193465255727;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.714193465255727;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_bdep;7.452921840367266;kg/ha/a;0;aus NH3-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2022;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_bdep;5.070940145187104;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_bdep).2026-04-30;Ostluft;Ostluft
+2022;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.370108398048538;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;3.0447449977050325;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2024;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_bdep;2.8404282572295982;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_bdep;2.2969432378738937;kg/ha/a;0;aus NOx-Quellen;Bulk Dep PS;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_bdep;2.465057675881657;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_bdep).2026-04-30;Ostluft;Ostluft
+2003;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9467233344000026;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2004;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;5.186119756509144;kg/ha/a;0.002650836320191252;aus NH3-Quellen;PS;Ostluft;Ostluft
+2005;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.2622977792000034;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2007;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.2622977792000034;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9651753611193123;kg/ha/a;0.0018947879330943884;aus NOx-Quellen;Denuder;FUB;Ostluft
+2008;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.4279318043760019;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.77508066938517;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2013;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;9.289296459845183;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2013;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;6.7406625946778576;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2014;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.8427601263898428;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2015;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.7326978547969774;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2015;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;6.3686858847571886;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2016;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.4927169720407605;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2017;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.0048027395911068;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.6530273567725281;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2019;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.38220977549416063;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2019;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.3713973386707382;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.6852442839779287;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.2568234009806181;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.5977187875327735;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.7984697212028058;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.2802517230880121;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.1195303862173485;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.17804850473096318;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.18990186291919314;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.22909425270317615;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.3694554698625441;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.6308582943394955;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.7250507614186633;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.523668695652174;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.2492851080359045;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.498570216071809;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_adep;0.17537350588114847;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.0578468487355472;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;7.846882972882125;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9563045857785534;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.816802332044733;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.3610315230064897;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2002;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.8364578624859685;kg/ha/a;0.0013440860215053752;aus NOx-Quellen;Denuder;FUB;Ostluft
+2003;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.48639058773246263;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2005;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.3823481404799998;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9467233344000026;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.7333050261890904;kg/ha/a;0.0018947879330943884;aus NOx-Quellen;Denuder;FUB;Ostluft
+2009;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;7.086971994664236;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2011;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9854420424613269;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2011;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;1.1598325848000064;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2013;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.0603273593600027;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2013;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.23553923828400117;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2014;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7358765408494599;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;11.503333142486005;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.41973030324655425;kg/ha/a;0.33333333333333337;aus NH3-Quellen;Denuder, GAM.log(NH4-N_conc).2026-04-30;FUB, Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.664083005102777;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2015;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.9867680000000003;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2016;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.2768379555111934;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2016;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;8.125747126553893;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.760915161994396;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2019;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH3-N_gdep;8.22552101851972;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;7.918609687796915;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.3282661834650644;kg/ha/a;9.333930704902293e-6;aus NH3-Quellen;Denuder;FUB;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.6848749127492829;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;4.3402020206621605;kg/ha/a;-0.6689435234966148;aus NOx-Quellen;PS;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.18950392516754255;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2021;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9047915218201124;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;9.111413740432711;kg/ha/a;0.01190076164874554;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9154525125158389;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.26856701563269636;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.29074192657618464;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.29300610914817926;kg/ha/a;0.003211805555555558;aus NOx-Quellen;Denuder;FUB;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.14031047177720307;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.28062094355440614;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH3-N_gdep;6.152996277548837;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.5644351523448011;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.3125756255257;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7282650463545733;kg/ha/a;1;aus NOx-Quellen;Schätzung: y1 Bachtel Turm / 0.88;FUB;Ostluft
+2003;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.7907992971893052;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2004;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.3823481404799998;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2008;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;11.544874311026993;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2010;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.8908609568604648;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2010;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.7244235475200015;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.8328144665382069;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2012;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.6632191204205826;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2013;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;2.007163565217392;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2013;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.3479348273760012;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2014;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;6.278965364402502;kg/ha/a;-9.333930705013316e-6;aus NOx-Quellen;PS;Ostluft;Ostluft
+2016;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.9619474919422507;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2016;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;2.207945324811539;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2017;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.329780012898589;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.19831752852849874;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2019;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8212438254574654;kg/ha/a;3.5468936678617613e-4;aus NOx-Quellen;Denuder;FUB;Ostluft
+2019;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.3413660103375311;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.699197233273989;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.3741907502057698;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.2631308217933041;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;11.194042779157947;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.43603076439419347;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2022;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;8.72261826754605;kg/ha/a;0.00971662186379929;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.1131712345590754;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;7.122020518206382;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.41172743467348155;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2024;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9175955080568675;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9211424092981102;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;RIH;ZH;2695937;1242440;437;Flachmoor;5;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9351536665844222;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7208729798895208;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;2.7157687916366218;kg/ha/a;0.16705246913580252;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.3509834287842794;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.4236414459727438;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;8.820519449039313;kg/ha/a;0.017295773596176844;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.3585438991271384;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.5876706800323507;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2001;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.8286176638456653;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7995237585068448;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2007;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.3461407393842726;kg/ha/a;0.09633487654320982;aus NH3-Quellen;Denuder, Gapfilling (Abdeckung ≥ 0.7);FUB, Ostluft;Ostluft
+2008;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;7.587204914153921;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2009;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.2223145462400002;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2010;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.203602555604123;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2012;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.272040520654601;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2012;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.3420754070400016;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2013;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7681873747355453;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2014;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0935749922773368;kg/ha/a;0.002845293209876587;aus NOx-Quellen;Denuder;FUB;Ostluft
+2014;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.29912331333036635;kg/ha/a;0.002845293209876587;aus NOx-Quellen;Denuder;FUB;Ostluft
+2015;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0274446968613007;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2015;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.30518280221537947;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2016;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.6156991194947492;kg/ha/a;2.800179211470688e-5;aus NOx-Quellen;Denuder;FUB;Ostluft
+2016;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.6674082063214202;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;3.20114378580048;kg/ha/a;0.0015867682198327238;aus NOx-Quellen;PS;Ostluft;Ostluft
+2019;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.9691326624269546;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2019;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_adep;0.3883359840524465;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;9.98421695720135;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;2.0617270204032763;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;9.80686690680813;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2020;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.2535633279923728;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;HNO3-N_gdep;0.9088166653651009;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2020;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;1.9158129134030062;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.2900693489919353;kg/ha/a;0.5;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.6215801972941731;kg/ha/a;0.08755787037037033;aus NOx-Quellen;Denuder, GAM.log(HNO3N_conc).2026-04-30;FUB, Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.207209954610218;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.4711957755800772;kg/ha/a;0.08755787037037033;aus NOx-Quellen;Denuder, GAM.log(NO3-N_conc).2026-04-30;FUB, Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;3.042938347826087;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.38788641699126786;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;4.2998650434782615;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.26238604178474667;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.9485232420582246;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.2842998043068435;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.44034139117267496;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2022;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.2727799662786673;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0033602593008153;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.3378136790677535;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;7.8118260740566;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;10.415768098742133;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.0557704347826087;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.5514597003032764;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.9690945138574307;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.37837172018244764;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.5165770178265933;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.1948159902876083;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2024;BUE;ZH;2704475;1234943;494;Hochmoor;5;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.32379868730605127;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.5200694782608701;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2024;RIH;ZH;2695937;1242440;437;Flachmoor;5;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.5416647826086958;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2024;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_adep;0.2853836944990868;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;4.449249663663513;kg/ha/a;0.006729764038231778;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.29298863467749603;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.145255146213765;kg/ha/a;2.800179211470688e-5;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9586727378024102;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;7.999656225778337;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;10.666208301037782;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.20178966843659996;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.6992851081606715;kg/ha/a;1;aus NOx-Quellen;Schätzung: y1 Bachtel Turm / 0.88;FUB;Ostluft
+2003;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.8953996485946526;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2004;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.7646962809599996;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2010;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.8103689815116277;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2010;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.36221177376000074;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.41640723326910345;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2012;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7128081944659641;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2014;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.4215180063888002;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2014;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;8.12409550564974;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2014;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.22762133708400104;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2015;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.1758927734276412;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2016;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;6.180592512543262;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2018;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.611249652173913;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.2354472229806794;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2019;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.6159328690930993;kg/ha/a;3.5468936678617613e-4;aus NOx-Quellen;Denuder;FUB;Ostluft
+2019;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.5748711472875134;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2019;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;14.5279322938253;kg/ha/a;0.0015120967741935054;aus NH3-Quellen;PS;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.3495986166369945;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;3.3340750434782613;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2020;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9559443835070776;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.5262616435866082;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.27048153721909696;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.5409630744381939;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.716425667494766;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.0174051169197846;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2022;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.32758471272242057;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0585594769318687;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.5836556521739131;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2022;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;HNO3-N_gdep;0.9324849201493165;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.4842283127454339;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.9606973475714571;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2024;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.8894430469600345;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.682036953075549;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2024;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.2231684430269886;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.9884967072697356;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.6753404437522278;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;5.292311669423586;kg/ha/a;0.017295773596176844;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.21121711692594386;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.44075301002426304;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2001;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.6572353276913305;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.8655554365159714;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2007;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.6730703696921363;kg/ha/a;0.09633487654320982;aus NH3-Quellen;Denuder, Gapfilling (Abdeckung ≥ 0.7);FUB, Ostluft;Ostluft
+2009;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9167359096800003;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2010;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;10.33933759267354;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2012;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;10.453400867757665;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2012;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.6841508140800032;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2012;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;1.1295485640000087;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2013;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.7924372077162722;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2014;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8201812442080025;kg/ha/a;0.002845293209876587;aus NOx-Quellen;Denuder;FUB;Ostluft
+2014;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.5982466266607327;kg/ha/a;0.002845293209876587;aus NOx-Quellen;Denuder;FUB;Ostluft
+2015;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.7705835226459756;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2016;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.3078495597473746;kg/ha/a;2.800179211470688e-5;aus NOx-Quellen;Denuder;FUB;Ostluft
+2017;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.6320849318208579;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2018;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.1012607016567524;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2018;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;5.410023206120317;kg/ha/a;0.16964699074074074;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.2998918802029189;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;5.99053017432081;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;0.8835972944585471;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.9243481122517662;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2020;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.3108680559244731;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO2-N_gdep;1.407294;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;6.973372906801986;kg/ha/a;0.10673225308641976;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.4661851479706299;kg/ha/a;0.08755787037037033;aus NOx-Quellen;Denuder, GAM.log(HNO3N_conc).2026-04-30;FUB, Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;10.34534992435036;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.2355978877900386;kg/ha/a;0.08755787037037033;aus NOx-Quellen;Denuder, GAM.log(NO3-N_conc).2026-04-30;FUB, Ostluft;Ostluft
+2021;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.499673913043478;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9130057038175065;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.217340938423342;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.533266608695652;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;3.5776220869565214;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.3041164347826086;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.7757728339825357;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.8427993043478261;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.5247720835694933;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;6.752666222740263;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;2.9597962404940983;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.22017069558633748;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2022;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.198539391304348;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2022;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO2-N_gdep;1.2993174782608692;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;2.4634643478260867;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.2757298501516382;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.41532622022461313;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.18918586009122382;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2024;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.3896319805752166;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2024;BUE;ZH;2704475;1234943;494;Hochmoor;5;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;8.876360418553412;kg/ha/a;0.0063937425328554065;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;BUE;ZH;2704475;1234943;494;Hochmoor;5;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.4324885217391305;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2024;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.1960789401887912;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;7.4154161061058534;kg/ha/a;0.006729764038231778;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;10.242091910356278;kg/ha/a;2.800179211470688e-5;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.16375016508215254;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.3275003301643051;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0480806230428836;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_adep;0.21301518266160022;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.476285769149175;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;7.192110224274846;kg/ha/a;0.01504629629629628;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2003;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.2622977792000034;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2004;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;8.643532927515238;kg/ha/a;0.002650836320191252;aus NH3-Quellen;PS;Ostluft;Ostluft
+2005;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9467233344000026;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2007;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9467233344000026;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.2869004814924168;kg/ha/a;0.0018947879330943884;aus NOx-Quellen;Denuder;FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7607488583079303;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2011;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;10.675921650869418;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2013;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;5.57357787590711;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2013;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;8.214547000020804;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2014;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.4213800631949214;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2014;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.2890516738392013;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2016;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.985433944081521;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2016;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.7312235652173917;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2017;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.37187310150941194;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2017;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;2.3463846778278867;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.5237304991358989;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;11.216353134527692;kg/ha/a;0.0015867682198327238;aus NH3-Quellen;PS;Ostluft;Ostluft
+2019;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.7644195509883213;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2019;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.4924754782608698;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2019;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.7072287826086956;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.913659045303905;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2019;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.5136468019612362;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.5625462884823487;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.7969583833770314;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2020;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.16669593420009063;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0646262949370746;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2020;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;8.944844424873237;kg/ha/a;0.1039799880525688;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2020;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.4823758731452656;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.2668896804703815;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.8385814482432647;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.4797987369502921;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2021;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.2606650992061298;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.35609700946192635;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.7389109397250881;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;2.0788055186170284;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.31542914716974774;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8588210211766226;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.1450946949021639;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO2-N_gdep;1.1189594418565012;kg/ha/a;0.006991114097968931;aus NOx-Quellen;PS;Ostluft;Ostluft
+2025;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.5524624347826084;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8896931262205063;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.1862575016273418;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0890697760596437;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.7220630460129794;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;4.770162782608697;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2002;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.41822893124298427;kg/ha/a;0.0013440860215053752;aus NOx-Quellen;Denuder;FUB;Ostluft
+2003;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.9727811754649253;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2005;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.7646962809599996;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.2622977792000034;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.3666525130945452;kg/ha/a;0.0018947879330943884;aus NOx-Quellen;Denuder;FUB;Ostluft
+2008;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.27512874428400186;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2009;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;11.811619991107056;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2010;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;6.019091217391303;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2010;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.2592929418840016;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.3139227232817692;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2012;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.36393422277600235;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2013;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.5301636796800013;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2014;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.717045261982073;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2014;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.0689805224000042;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2014;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.8475982608695651;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.901999885491603;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.8394606064931085;kg/ha/a;0.33333333333333337;aus NH3-Quellen;Denuder, GAM.log(NH4-N_conc).2026-04-30;FUB, Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7131784307583331;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2016;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.3382612543516156;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0145535493258617;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2019;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.30096588598012963;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;13.19768281299486;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.6565323669301288;kg/ha/a;9.333930704902293e-6;aus NH3-Quellen;Denuder;FUB;Ostluft
+2020;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;12.099544993896028;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.34243745637464146;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2021;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9629230965100917;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;5.466848244259628;kg/ha/a;0.01190076164874554;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.6865893843868792;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.5371340312653927;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;2.3734211219660963;kg/ha/a;0.00702844982078854;aus NOx-Quellen;PS;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.14650305457408963;kg/ha/a;0.003211805555555558;aus NOx-Quellen;Denuder;FUB;Ostluft
+2024;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;7.392844502149221;kg/ha/a;0.006981780167263918;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.331964417722739;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.28221757617240056;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.28437552894089874;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;7.293692415610729;kg/ha/a;0.015120967741935498;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;4.339056521739131;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.15628781276285;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2002;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.5588061600437076;kg/ha/a;0.0013440860215053752;aus NOx-Quellen;Denuder;FUB;Ostluft
+2002;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.6064730167452357;kg/ha/a;1;aus NOx-Quellen;Schätzung: y1 Bachtel Turm / 0.88;FUB;Ostluft
+2003;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.7690774997114742;kg/ha/a;1;aus NOx-Quellen;Schätzung: y1 Bachtel Turm / 0.88;FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.8588805108253188;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2009;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.7357494751265259;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2010;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.1823313132799973;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2010;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.6378013779878731;kg/ha/a;0.0878945141377937;aus NH3-Quellen;Denuder;FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;12.212103244251479;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2011;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.2850686135806624;kg/ha/a;7.467144563921835e-5;aus NH3-Quellen;Denuder;FUB;Ostluft
+2011;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.37993361817599874;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2013;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.2132336121491838;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2014;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;1.0689805224000042;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2016;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.516857378918597;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2017;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.780790343547404;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2017;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.46601431053777;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2018;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;10.66465768433444;kg/ha/a;0.08333333333333337;aus NH3-Quellen;PS;Ostluft;Ostluft
+2018;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.334203223502572;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;8.412264850895767;kg/ha/a;0.0015867682198327238;aus NH3-Quellen;PS;Ostluft;Ostluft
+2019;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_adep;0.2578627913795842;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.28127314424117433;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;9.3523161254007;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2020;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH3-N_gdep;8.532607732630378;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.118108597657686;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.7048275215005113;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;6.832999887779106;kg/ha/a;0.011975433094384758;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;9.110666517038808;kg/ha/a;0.011975433094384758;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;8.257356476660163;kg/ha/a;0.012078106332138572;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0040562805226116;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.19098707643352017;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;4.432595196084853;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2022;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.281948012615818;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.7966860888640626;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.6663328459657734;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2023;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;11.203574955048397;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;8.589013628200465;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;RIH;ZH;2695937;1242440;437;Flachmoor;5;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;14.356129546930456;kg/ha/a;0.006319071087216188;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.2834223134531512;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.3708906979316525;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;3.4341387381986683;kg/ha/a;0.1733124253285544;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.5923411848964343;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.17279770794324598;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO2-N_gdep;1.3701020869565221;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.5046358044520988;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.2021386086956525;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.22214560705207034;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;2.04435547826087;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.8617045296549588;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2002;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;11.92018368688883;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2002;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.6982827360443302;kg/ha/a;0.0013440860215053752;aus NH3-Quellen;Denuder;FUB;Ostluft
+2005;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.6618132796080111;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.7319101347674528;kg/ha/a;0.0884212589605734;aus NH3-Quellen;Denuder;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.3823481404799998;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2007;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.641133888273745;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2008;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.0987911881402517;kg/ha/a;0.016129032258064502;aus NH3-Quellen;Denuder, Gapfilling (Abdeckung ≥ 0.7);FUB, Ostluft;Ostluft
+2008;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;1.2506846472000088;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2010;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;8.727629844598964;kg/ha/a;0.01500896057347667;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2010;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.39593301357599986;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2011;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;6.8982543397739;kg/ha/a;0.047539575866188843;aus NOx-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2011;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.25137504068400146;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2012;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8267736355200018;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2015;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;9.990648503929632;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2016;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.077342455424751;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2016;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.4313621902882887;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2017;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.6523598363719527;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2019;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;9.220430018411454;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2019;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;10.66940999531357;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2019;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;HNO3-N_gdep;0.947520309446032;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2020;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.22085898278635752;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2020;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_adep;0.3403982984418571;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;6.6936871776026585;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2021;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.6868332173913043;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.19096189481698708;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.49792103306792573;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.6866677656519;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.017180480842613;kg/ha/a;0.00702844982078854;aus NOx-Quellen;PS;Ostluft;Ostluft
+2024;BUE;ZH;2704475;1234943;494;Hochmoor;5;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8930852034289141;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;10.660742991023723;kg/ha/a;0.00714979091995227;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;RIH;ZH;2695937;1242440;437;Flachmoor;5;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.15805598739607846;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;HNO3-N_gdep;0.7741252270517156;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.2210462467203176;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.5776569565217389;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;5.470269311708047;kg/ha/a;0.015120967741935498;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.8595956521739136;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_adep;0.32193755179989525;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2003;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;12.781956754212974;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2004;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.2622977792000034;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2004;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7446293530060092;kg/ha/a;0.08333333333333337;aus NOx-Quellen;PS, Schätzung;FUB, Ostluft;Ostluft
+2005;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;5.286669491545349;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2005;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.7212828331736945;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2006;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;13.017072654167889;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2007;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.3823481404799998;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;5.377985916990493;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2009;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.620223923668329;kg/ha/a;0.09115616732804233;aus NH3-Quellen;Denuder;FUB;Ostluft
+2009;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.7445599142400007;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2010;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;1.1901166056000048;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2012;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.44890158434797534;kg/ha/a;0.08440673536439658;aus NH3-Quellen;Denuder;FUB;Ostluft
+2012;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;6.4166448979900075;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2013;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.4141151093375544;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2013;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;9.241075636301758;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2015;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;8.58659110445819;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2017;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;6.077566153176185;kg/ha/a;-0.6107894016328155;aus NOx-Quellen;PS;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.9265854172355098;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2019;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.29566784555274717;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2019;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO2-N_gdep;1.5378708100847733;kg/ha/a;0.08333333333333337;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.4288893043478264;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.2727823715243634;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.8888566787802238;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.18739929255511623;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.37479858511023245;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8112077144013202;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;6.658164931385909;kg/ha/a;0.009333930704898408;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;8.035540007144418;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.3401086086956522;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;3.126920086956522;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2024;RIH;ZH;2695937;1242440;437;Flachmoor;5;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.28542353852870084;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.3376702218761139;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;HNO3-N_gdep;0.88128805400296;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.623247043478261;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.4224342338518877;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;7.6377465938940325;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2004;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.7420610015999999;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2007;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7620545464629859;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2013;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.0992645432000019;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2013;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.4418353109088015;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2014;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;12.226525364216066;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.2985957767780972;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2016;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.6893289810123189;kg/ha/a;2.800179211470688e-5;aus NOx-Quellen;Denuder;FUB;Ostluft
+2017;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8317953959759775;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2017;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.5197559397841414;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2017;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;8.211063601306767;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;9.868730530370524;kg/ha/a;9.645061728402737e-6;aus NH3-Quellen;PS;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.0670772876792838;kg/ha/a;-2.8001792114595858e-5;aus NH3-Quellen;Denuder;FUB;Ostluft
+2018;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.3460079143610722;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2018;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.4820532175262022;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.5997837604058378;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2019;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.28045084566739176;kg/ha/a;3.5468936678617613e-4;aus NOx-Quellen;Denuder;FUB;Ostluft
+2019;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;9.84894421652514;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.2324641496690214;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.103243350164848;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.22057950807380972;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2020;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.5008736521739132;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.158948;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;9.29783054240265;kg/ha/a;0.10673225308641976;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2021;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;9.40449066612295;kg/ha/a;0.012208781362007204;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.107683586011604;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;9.003554963653688;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.2684841030688991;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;6.027531469744487;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.7384220000000001;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.40188178754805004;kg/ha/a;0.003211805555555558;aus NOx-Quellen;Denuder;FUB;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;6.380688387443793;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;8.507584516591722;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.7824285261874736;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;7.634464645891208;kg/ha/a;0.006645758661887768;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.4736718495377815;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.3974408307238448;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.2854881398612186;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;5.42600635347049;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Hochmoor;5;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.1072143268618815;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;9.58948029903313;kg/ha/a;0.01504629629629628;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2003;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;7.669174052527782;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2004;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9467233344000026;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2004;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.7374684903473552;kg/ha/a;0.08333333333333337;aus NOx-Quellen;PS, Schätzung;FUB, Ostluft;Ostluft
+2005;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;8.811115819242248;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2005;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7376926427887261;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2006;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;7.810243592500732;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2007;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.7646962809599996;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;8.96330986165082;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2009;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.240447847336658;kg/ha/a;0.09115616732804233;aus NH3-Quellen;Denuder;FUB;Ostluft
+2009;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.37227995712000034;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2012;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.8978031686959507;kg/ha/a;0.08440673536439658;aus NH3-Quellen;Denuder;FUB;Ostluft
+2013;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.8282302186751088;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2013;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.2991064543992014;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2014;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.33193543197600006;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2015;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.3719031303638004;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2017;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.2673020510535215;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.3966350570569975;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.1870953751028849;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2021;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;12.501489545933724;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.4384872173913046;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;3.356470173913044;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.0816102858684273;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;11.096941552309849;kg/ha/a;0.009333930704898408;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;5.341515388654786;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;4.82132400428665;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.163900910701409;kg/ha/a;0.16705246913580252;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.1754917143921397;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.30131847012720236;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH3-N_gdep;6.678842363808919;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;3.787576434782609;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;ZUK;ZH;2679889;1253923;439;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.7170877982542768;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;12.729577656490056;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2004;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.4841220031999998;kg/ha/a;1;aus NH3-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2007;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.7781272750803008;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2013;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;1.0992645432000019;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2014;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;7.335915218529639;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2015;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.5971915535561944;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2015;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;2.4760291191354318;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2016;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9191053080164252;kg/ha/a;2.800179211470688e-5;aus NOx-Quellen;Denuder;FUB;Ostluft
+2017;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.10906052796797;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2017;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.0395118795682827;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2017;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;9.453923653554064;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;16.44788421728421;kg/ha/a;9.645061728402737e-6;aus NH3-Quellen;PS;Ostluft;Ostluft
+2018;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.5335386438396419;kg/ha/a;-2.8001792114595858e-5;aus NH3-Quellen;Denuder;FUB;Ostluft
+2018;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.6920158287221444;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2018;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;10.958285604082468;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2018;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;2.4648427187191366;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2018;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.7181134423245048;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2019;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.371918765343063;kg/ha/a;0.0015867682198327238;aus NOx-Quellen;PS;Ostluft;Ostluft
+2019;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.5609016913347835;kg/ha/a;3.5468936678617613e-4;aus NOx-Quellen;Denuder;FUB;Ostluft
+2019;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.062129200168086;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2019;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.5835235658150412;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2020;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;13.07582254241084;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.47281857864207766;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2020;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.44115901614761943;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;2.7042120000000005;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;3.0101618143145163;kg/ha/a;0.5;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2021;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.17442294572203676;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8307626895087029;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;1.2646976560776324;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.568599608613687;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH3-N_gdep;8.27156059649782;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;10.04588578290748;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;4.056318;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.25828850891329663;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.30141134066103753;kg/ha/a;0.003211805555555558;aus NOx-Quellen;Denuder;FUB;Ostluft
+2024;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.25946046512899823;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.28110974541851597;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.5868213946406052;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;1.6036938536251562;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.5859772693549921;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.2566277212826449;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.5132554425652898;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;REC;ZH;2679042;1254381;438;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.4035793368731999;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.9641161048959139;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;9.043343922450816;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2002;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.4191046200327808;kg/ha/a;0.0013440860215053752;aus NOx-Quellen;Denuder;FUB;Ostluft
+2002;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;1.4151037057388833;kg/ha/a;1;aus NOx-Quellen;Schätzung: y1 Bachtel Turm / 0.88;FUB;Ostluft
+2003;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7581760713049176;kg/ha/a;1;aus NOx-Quellen;Schätzung: y1 Bachtel Turm / 0.88;FUB;Ostluft
+2008;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7966630760679938;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2009;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.7438926321970827;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2010;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.8867484849599978;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2010;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.2756027559757461;kg/ha/a;0.0878945141377937;aus NH3-Quellen;Denuder;FUB;Ostluft
+2011;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;7.327261946550887;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2011;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.6425343067903312;kg/ha/a;7.467144563921835e-5;aus NH3-Quellen;Denuder;FUB;Ostluft
+2012;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;8.899388029437317;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2013;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.909925209111888;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2014;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;7.964840719616704;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2016;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.650081733822256;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2016;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;7.67921578007493;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2017;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;11.301317239245673;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2017;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO2-N_gdep;0.62829184737333;kg/ha/a;0;aus NOx-Quellen;PS;Ostluft;Ostluft
+2017;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.6196478260869565;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2019;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;HNO3-N_gdep;2.1827324500371463;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2020;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.3113148695652175;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.5605034461760242;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2021;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.35241376075025566;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.18772115475439596;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2021;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.3754423095087919;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;4.9544138859960976;kg/ha/a;0.012078106332138572;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2021;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.3387417073634824;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2022;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.3798037258383863;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;10.602660683758408;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.26934072659279773;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.5386814531855955;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NH4-N_adep;0.3531223985318383;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH3-N_gdep;8.966185685045582;kg/ha/a;0.009679286140979682;aus NH3-Quellen;Gapfilling (Abdeckung ≥ 0.7), PS;Ostluft;Ostluft
+2022;WIH;ZH;2693935;1261383;516;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.3983430444320313;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2023;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.4997496344743301;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2023;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;6.722144973029039;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.9667343485582182;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2024;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO2-N_gdep;1.4360877391304347;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2024;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.1500010803171843;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.5668446269063024;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;TAB;ZH;2707669;1252229;646;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.18544534896582626;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.7933851365516602;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NH3-N_gdep;5.885162229661592;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;0.4442558886723257;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2025;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;11.371941394104851;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.17398765840348254;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.2523179022260494;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2025;WAB;ZH;2677272;1271915;427;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;2.804990086956522;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;WIH;ZH;2693935;1261383;516;Wald;6;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.4442912141041407;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2001;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.4308522648274794;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2002;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;7.1521102121333;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2002;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.8491413680221651;kg/ha/a;0.0013440860215053752;aus NH3-Quellen;Denuder;FUB;Ostluft
+2005;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.3236265592160221;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;1.4638202695349056;kg/ha/a;0.0884212589605734;aus NH3-Quellen;Denuder;FUB;Ostluft
+2006;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.7646962809599996;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2007;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;11.068556480456241;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2008;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.5493955940701258;kg/ha/a;0.016129032258064502;aus NH3-Quellen;Denuder, Gapfilling (Abdeckung ≥ 0.7);FUB, Ostluft;Ostluft
+2012;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;HNO3-N_gdep;1.1023648473600023;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2012;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO3-N_adep;0.24345713948400136;kg/ha/a;1;aus NOx-Quellen;Schätzwert y1 (Datenstand 2024);FUB;Ostluft
+2015;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NH4-N_adep;0.44653742376299743;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2016;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;10.128904092374581;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2017;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.32617991818597636;kg/ha/a;0;aus NOx-Quellen;Denuder;FUB;Ostluft
+2018;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.2777631521336034;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2019;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;15.367383364019085;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2019;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.24788509665910913;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2019;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.18745672300952781;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2019;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NO2-N_gdep;5.241344188270671;kg/ha/a;0.08975507765830348;aus NOx-Quellen;Kurzeitbelastungskarte, PS;Ostluft;Ostluft
+2020;KAP;ZH;2680066;1230326;527;kein empf. Ökosys.;NA;hoch;hoch;Ndep;Jahressumme;HNO3-N_gdep;0.8733813258672695;kg/ha/a;1;aus NOx-Quellen;GAM.log(HNO3N_conc).2026-04-30;Ostluft;Ostluft
+2020;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_adep;0.23447935036804435;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2020;TAB;ZH;2707669;1252229;646;Wald;6;mittel;mittel;Ndep;Jahressumme;NH3-N_gdep;11.156145296004429;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2021;AEG;ZH;2675521;1232695;447;Wald;6;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.3790078503350851;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2021;WAB;ZH;2677272;1271915;427;Trockenrasen;10;mittel;mittel;Ndep;Jahressumme;NH4-N_adep;0.24896051653396287;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2022;BA;ZH;2710350;1239600;930;Trockenrasen;10;hoch;mittel;Ndep;Jahressumme;NH4-N_adep;0.34333388282595;kg/ha/a;0;aus NH3-Quellen;Denuder;FUB;Ostluft
+2022;ROPF;ZH;2701636;1244049;538;Hochmoor;5;mittel;tief;Ndep;Jahressumme;NO3-N_adep;0.24455252738849192;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2022;WIE;ZH;2681950;1247250;415;Siedlungen;NA;NA;tief;Ndep;Jahressumme;NH4-N_adep;0.5149100565911313;kg/ha/a;1;aus NH3-Quellen;GAM.log(NH4-N_conc).2026-04-30;Ostluft;Ostluft
+2024;AEG;ZH;2675521;1232695;447;Hochmoor;5;hoch;hoch;Ndep;Jahressumme;NO3-N_adep;0.14537096328809232;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;BUE;ZH;2704475;1234943;494;Hochmoor;5;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.18495209458900533;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2024;NET;ZH;2678603;1262147;409;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO3-N_adep;0.14726859067210596;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;BA;ZH;2710350;1239600;930;Wald;6;hoch;mittel;Ndep;Jahressumme;NO3-N_adep;0.4420924934406352;kg/ha/a;1;aus NOx-Quellen;GAM.log(NO3-N_conc).2026-04-30;Ostluft;Ostluft
+2025;OBI;ZH;2672488;1236902;383;Flachmoor;15;hoch;mittel;Ndep;Jahressumme;NH3-N_gdep;14.541934625525233;kg/ha/a;0;aus NH3-Quellen;PS;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Flachmoor;15;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;1.3820994782608693;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft
+2025;OSD;ZH;2694191;1275542;410;Wald;6;mittel;mittel;Ndep;Jahressumme;NO2-N_gdep;3.224898782608695;kg/ha/a;1;aus NOx-Quellen;Kurzeitbelastungskarte;Ostluft;Ostluft

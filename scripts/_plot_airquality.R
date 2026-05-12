@@ -12,6 +12,7 @@ ressources_plotting <-
     ),
     monitoring = list(
       airquality = "inst/extdata/output/data_airquality_monitoring_y1.csv",
+      ndep_pars = "inst/extdata/output/data_ndep_pars_monitoring_y1.csv",
       ndep = "inst/extdata/output/data_ndep_monitoring_y1.csv"
     ),
     trends = list(
@@ -287,23 +288,22 @@ plots$monitoring$timeseries_siteclass <- airquality.methods::plot_pars_monitorin
 
 # read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
 data_monitoring_ndep <- airquality.methods::read_local_csv(ressources_plotting$monitoring$ndep, locale = readr::locale(encoding = "UTF-8"))
-data_monitoring_ndep <- 
-  data_monitoring_ndep |> 
-  dplyr::mutate(
-    component = factor(component, levels = rev(c("N-Deposition", "aus NH3-Quellen", "aus NOx-Quellen"))),
-    ecosystem_category = factor(ecosystem_category, levels = rev(c("Hochmoor", "Flachmoor", "Trockenrasen", "Wald")))
-  )
+# data_monitoring_ndep <- 
+#   data_monitoring_ndep |> 
+#   dplyr::mutate(
+#     component = factor(component, levels = rev(c("N-Deposition", "aus NH3-Quellen", "aus NOx-Quellen"))),
+#     ecosystem_category = factor(ecosystem_category, levels = rev(c("Hochmoor", "Flachmoor", "Trockenrasen", "Wald")))
+#   )
 
 
 # plot relative comparison latest n_years of measurement data vs. LRV Immissionsgrenzwerte + Critical Loads of Nitrogen and WHO-Richtwerte
 data_thrshlds <- dplyr::distinct(immission_threshold_values, source, col, lty, lsz)
 data_temp <-
   data_monitoring_ndep |>
-  dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |>
-  dplyr::filter(component == "N-Deposition") |>
+  dplyr::filter(dplyr::when_all(year %in% seq(max(years) - n_years + 1, max(years), 1), !is.na(ecosys), !is.na(cln))) |>
   dplyr::mutate(
-    value = deposition / critical_load_single,
-    pollutant = factor(component),
+    value = deposition / cln,
+    # pollutant = factor(component),
     reference = factor("value_relative_lrv"),
     siteclass = "empf. Ökosystem"
   ) |>
@@ -322,8 +322,8 @@ plots$monitoring$threshold_comparison$various <-
   dplyr::filter(!is.na(value) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) |>
   dplyr::bind_rows(data_temp) |>
   dplyr::mutate(
-    pollutant = dplyr::recode_factor(pollutant, "N-Deposition" = "Stickstoffeintrag in empfindliche Ökosysteme"),
-    metric = dplyr::recode_factor(metric, "Jahreseintrag" = ""),
+    pollutant = dplyr::recode_factor(pollutant, "Ndep" = "Stickstoffeintrag in empfindliche Ökosysteme"),
+    metric = dplyr::recode_factor(metric, "Jahressumme" = ""),
     x = paste0(pollutant, " ", metric),
     x = factor(x, levels = rev(sort(unique(.data$x)))),
     reference = dplyr::recode(reference, !!!c("value_relative_lrv" = "relativ zu Immissionsgrenzwerten bzw. kritischen Eintragsraten:", 
@@ -337,7 +337,7 @@ plots$monitoring$threshold_comparison$various <-
   ggplot2::coord_flip() +
   ggplot2::guides(color = ggplot2::guide_legend(nrow = 3)) +
   ggplot2::ggtitle(
-    label = openair::quickText("Luftqualitätsmesswerte Schwellenwertvergleich"),
+    label = openair::quickText("Luftqualitätsmesswerte Referenzwertvergleich"),
     subtitle = paste0("Jahre ", max(years) - n_years + 1, " bis ", max(years))
   ) +
   ggplot2::labs(caption = "Daten: Ostluft & NABEL (BAFU & Empa)") +
@@ -352,8 +352,8 @@ plots$monitoring$threshold_comparison$various <-
 
 # plot long-standing timeseries of yearly nitrogen deposition at Bachtel site (since 2001)
 temp <- dplyr::filter(immission_threshold_values, source == "LRV Grenzwert" & pollutant == "NO2")
-plots$monitoring$timeseries_ndep_bachtel$Ndep <-
-  data_monitoring_ndep |>
+# plots$monitoring$timeseries_ndep_bachtel$Ndep <-
+  data_monitoring_ndep_pars |>
   dplyr::filter(site == "BA" & component != "N-Deposition") |>
   dplyr::group_by(year, site, site_long, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, component, unit) |>
   dplyr::summarise(deposition = sum(deposition)) |>

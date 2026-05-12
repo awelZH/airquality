@@ -391,15 +391,15 @@
       ],
       "URL": "https://github.com/awelZH/airquality.data",
       "BugReports": "https://github.com/awelZH/airquality.data/issues",
-      "RoxygenNote": "7.3.2",
+      "Config/roxygen2/version": "8.0.0",
       "Author": "Jörg Sintermann [aut, cre]",
       "Maintainer": "Jörg Sintermann <luft@bd.zh.ch>",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.data",
       "RemoteRef": "main",
-      "RemoteSha": "38b7f5752826697d1c02483e0871a81612fd4a81",
-      "RemoteHost": "api.github.com"
+      "RemoteSha": "25e43373ea850b05263f24c5b52dfc59a6743cc1"
     },
     "airquality.methods": {
       "Package": "airquality.methods",

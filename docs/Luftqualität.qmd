@@ -84,6 +84,11 @@ get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_bachtel'")
 ```
 
 ```{r}
+#| label: fig-ts-ndep-all
+get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_all'")
+```
+
+```{r}
 #| label: fig-ts-ndep-all-cln
 get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_all_vs_CLN'")
 ```

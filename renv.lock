@@ -391,15 +391,15 @@
       ],
       "URL": "https://github.com/awelZH/airquality.data",
       "BugReports": "https://github.com/awelZH/airquality.data/issues",
-      "RoxygenNote": "7.3.2",
+      "Config/roxygen2/version": "8.0.0",
       "Author": "Jörg Sintermann [aut, cre]",
       "Maintainer": "Jörg Sintermann <luft@bd.zh.ch>",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.data",
       "RemoteRef": "main",
-      "RemoteSha": "38b7f5752826697d1c02483e0871a81612fd4a81",
-      "RemoteHost": "api.github.com"
+      "RemoteSha": "e681a29585dab84ad4f971665dea45abec724799"
     },
     "airquality.methods": {
       "Package": "airquality.methods",
@@ -434,11 +434,11 @@
       "Author": "Jörg Sintermann [aut, cre] (ORCID: YOUR-ORCID-ID)",
       "Maintainer": "Jörg Sintermann <luft@bd.zh.ch>",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.methods",
       "RemoteRef": "master",
-      "RemoteSha": "145f89f05853b66ade0a2ac65d65696c2994df89",
-      "RemoteHost": "api.github.com"
+      "RemoteSha": "355055a5a90fa2fd5baaeef622ef9f91a209ae4b"
     },
     "askpass": {
       "Package": "askpass",

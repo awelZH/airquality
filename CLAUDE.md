@@ -22,7 +22,7 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 | Path | Content |
 |---|---|
 | `scripts/analyse_airquality.R` | entry point: sources `_setup.R`, then the `_compile_*.R` scripts in order |
-| `scripts/_setup.R` | packages, `load_all()`, global settings (`year_offset`, `base_scenario_year`, `expo_correct_noloc`, `crs`), municipality map |
+| `scripts/_setup.R` | packages, `load_all()`, **all analysis settings** (see decision 7), municipality map |
 | `scripts/_compile_*.R` | one script per topic: emissions, monitoring, trends, exposition, outcomes |
 | `scripts/_plot_airquality.R` | builds all plots from the output CSVs, saved as `docs/plots_*.rds` for Quarto |
 | `R/` | analysis-specific functions; `R/exposition.R` is the reworked exposition chain |
@@ -123,6 +123,23 @@ distribution classes; PM2.5 up to 0.5 %). To keep this traceable, every run appe
 to `inst/extdata/log/exposition_derivation_coefficients.csv` (`run`, `parameter`, `year`, `term`,
 `value`; not part of the output contract). Open for the methodological revision: a year-specific O3
 slope would decouple the years but is less certain with 7–15 sites per year.
+
+**7. All analysis constants live in `scripts/_setup.R`** (decisions 2026-09-18), in one block
+"analysis settings" grouped by topic, so that the whole setup can be seen in one place:
+* names carry the topic as prefix (`emis_`, `trend_`, `expo_`, `plot_`), general settings without
+  (`year_offset`, `year_last`, `base_scenario_year`, `crs`); this maps 1:1 to `config.yml` in phase 2b
+* the scripts only use them and do not `rm()` them; functions in `R/` get them as arguments, never
+  as globals (`prepare_data_trends()` now takes `cantons`)
+* **every year range ends at `year_last = current year − year_offset`** (trends, exposition, plots;
+  before, trends and plots used a hard-coded "− 1"). Exception with its own meaning:
+  `emis_year_max` = current year (EMIKAT projections beyond it are dropped)
+* `base_scenario_year` (exposition/outcomes) and `plot_reference_year_emissions` (relative emission
+  plot) are **independent** settings, even though both are 2015
+* graphical settings (sizes, colours, line types, `siteclass_levels`) stay in `_plot_airquality.R`:
+  presentation, not analysis
+* method details with documented defaults in `R/` that are not settings: `fit_pm_ratio()`
+  (`source`, `exclude_sites`, `min_year`); the YLL draft in `_compile_outcomes.R` (`year <- 2018`)
+  is unfinished work and is handled in phase 2a (outcomes)
 
 ## Findings about the old pipeline
 

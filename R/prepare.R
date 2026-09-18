@@ -238,9 +238,10 @@ prepare_life_expectancy_data <- function(data) {
 #'
 #' @param data_aq
 #' @param data_met
+#' @param cantons Cantons whose monitoring sites are kept.
 #'
 #' @export
-prepare_data_trends <- function(data_aq, data_met) {
+prepare_data_trends <- function(data_aq, data_met, cantons) {
 
   # aq dataset
   data_trends <-

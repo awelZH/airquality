@@ -69,14 +69,14 @@ data_monitoring_met_d1 <- airquality.data::data_monitoring_met_d1
 # ---
 data_monitoring_aq <- dplyr::filter(data_monitoring_aq, lubridate::year(starttime) %in% !!years & canton %in% !!cantons)
 data_monitoring_met_d1 <- dplyr::filter(data_monitoring_met_d1, parameter %in% !!trend_vars_d1)
-data_trends <- airquality.methods::prepare_data_trends(data_monitoring_aq, data_monitoring_met_d1)
+data_trends <- prepare_data_trends(data_monitoring_aq, data_monitoring_met_d1)
 
 
 # trend analysis and result aggregation (takes a while) for d1 data
 # ---
 fun <- function(x) {
   print(x)
-  trends <- airquality.methods::derive_trends_per_parameter(data_trends, parameter = x, trend_vars = trend_vars_d1, reference_year_fun = reference_year, yearmin_per_site = yearmin_per_site)
+  trends <- derive_trends_per_parameter(data_trends, parameter = x, trend_vars = trend_vars_d1, reference_year_fun = reference_year, yearmin_per_site = yearmin_per_site)
   return(trends)
 }
 pars <- parameters[!(parameters %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "O3_max_98p_m1", "NH3", "NHx", "Ndep"))] # no d1 trend analysis for these ones
@@ -84,7 +84,7 @@ trends <- purrr::map(pars, fun)
 trends <- dplyr::bind_rows(trends)
 
 # wrangle and aggregate relative trend results for plotting
-trends_relative <- airquality.methods::aggregate_trend_results(trends, reference_year_fun = reference_year, nmin_sites_fun = nmin_sites)
+trends_relative <- aggregate_trend_results(trends, reference_year_fun = reference_year, nmin_sites_fun = nmin_sites)
 trends_relative$all <- 
   trends_relative$all |> 
   dplyr::mutate(pollutant = dplyr::recode(pollutant, Stickoxide = "Stickoxide | Stickstoffdioxid", NOx = "Stickoxide | Stickstoffdioxid", NO2 = "Stickoxide | Stickstoffdioxid", NH3 = "Ammoniak | reduzierter Stickstoff", NHx = "Ammoniak | reduzierter Stickstoff")) |> 
@@ -147,7 +147,7 @@ emissions <-
   )
 
 emissions_relative <- 
-  airquality.methods::prepare_emission_trends(emissions, reference_year_fun = reference_year) |> 
+  prepare_emission_trends(emissions, reference_year_fun = reference_year) |> 
   tidyr::gather(class, value, -year, -pollutant, -type, -reference_year) |> 
   dplyr::mutate(site = "Kanton Zürich")
 

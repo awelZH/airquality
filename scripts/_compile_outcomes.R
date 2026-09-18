@@ -190,7 +190,7 @@ estimate_yll <- function(data_expo, data_lifetable, data_pars,
 # ---
 # =>  read input-metadata (crf, lower threshold concentration etc)
 outcomes_meta <- 
-  airquality.methods::filter_ressources(ressources, 24) |> 
+  filter_ressources(ressources, 24) |> 
   airquality.methods::read_local_csv(locale = readr::locale(encoding = "UTF-8")) |> 
   dplyr::select(-lower_conc_threshold_source, -min_conc_threshold, -crf_source, -comment, -threshold_unit, -crf_unit, -min_conc_threshold_source)
 
@@ -200,7 +200,7 @@ outcomes_meta <-
 data_mortality <- airquality.methods::read_local_csv("inst/extdata/tod_nat_gatu.csv", delim = ",", locale = readr::locale(encoding = "UTF-8"))
 
 # => read Swiss life-expectancy data (BFS Kohortensterbetafeln)
-# data_life_exp <- airquality.methods::read_bfs_life_expectancy_data()
+# data_life_exp <- read_bfs_life_expectancy_data()
 
 # => read population per age & gender in the Kanton of Zurich
 data_pop <- airquality.methods::read_opendataswiss("https://ckan.opendata.swiss/api/3/action/package_show?id=bevolkerung-nach-gemeinde-heimat-geschlecht-und-alter", source = "Statistisches Amt Kanton ürich")
@@ -213,10 +213,10 @@ data_expo_weighmean <- airquality.methods::read_local_csv("inst/extdata/output/d
 # prepare datasets ...
 # ---
 # => number of deaths in Canton Zürich
-data_mortality <- airquality.methods::prepare_mortality(data_mortality)  #FIXME once original dataset is adjusted
+data_mortality <- prepare_mortality(data_mortality)  #FIXME once original dataset is adjusted
 
 # # => add life expectancy in Switzerland
-# data_life_exp <- airquality.methods::prepare_life_expectancy_data(data_life_exp)
+# data_life_exp <- prepare_life_expectancy_data(data_life_exp)
 # data_mortality <- 
 #   data_life_exp |> 
 #   dplyr::select(-source) |> 
@@ -262,7 +262,7 @@ results_prelim_deaths <-
   dplyr::ungroup() |> 
   estimate_all_prelim_deaths(data_expo_weighmean, outcomes_meta)
 
-# old manual way: results_prelim_deaths <- airquality.methods::prepare_preliminary_deaths(data_expo_weighmean, data_mortality, outcomes_meta)
+# old manual way: results_prelim_deaths <- prepare_preliminary_deaths(data_expo_weighmean, data_mortality, outcomes_meta)
 
 # # visual check
 # results_prelim_deaths |>

@@ -48,7 +48,7 @@ linewidth <- 1 # width of lines
 
 
 # read LRV legal threshold limit values & WHO air quality guideline values
-immission_threshold_values <- readr::read_delim(airquality.methods::filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8"))
+immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8"))
 
 
 # add plotting parameter to LRV threshold limit values & WHO air quality guideline values
@@ -69,7 +69,7 @@ immission_threshold_values <-
   ) |> 
   dplyr::right_join(immission_threshold_values, by = "source")
 
-threshold_ndep <- airquality.methods::extract_threshold(dplyr::filter(immission_threshold_values, source == "LRV Grenzwert"), "NO2")
+threshold_ndep <- extract_threshold(dplyr::filter(immission_threshold_values, source == "LRV Grenzwert"), "NO2")
 threshold_ndep$value <- 0
 threshold_ndep$labels <- "kritische Eintragsrate CLN"
 
@@ -153,13 +153,13 @@ pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$polluta
 # absolute values
 plots$emissions$inventory_absolute <- 
   lapply(pollutants, function(pollutant) {
-    airquality.methods::ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), theme = theme_ts)
+    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), theme = theme_ts)
   })
 
 # relative values
 plots$emissions$inventory_relative <- 
   lapply(pollutants, function(pollutant) {
-    airquality.methods::ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", theme = theme_ts)
+    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", theme = theme_ts)
   })
 
 # ... for NH3 change level order to better illustrate influence of agriculture over time
@@ -290,7 +290,7 @@ data_monitoring_aq <-
 
 
 # plot timeseries of yearly values for selected pollutants
-plots$monitoring$timeseries_siteclass <- airquality.methods::plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries)
+plots$monitoring$timeseries_siteclass <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries)
 
 
 # read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
@@ -323,7 +323,7 @@ data_temp <-
 
 plots$monitoring$threshold_comparison$various <-
   data_monitoring_aq |>
-  airquality.methods::combine_thresholds(immission_threshold_values) |>
+  combine_thresholds(immission_threshold_values) |>
   dplyr::mutate(
     value_relative_lrv = concentration / `LRV Grenzwert`,
     value_relative_who = concentration / `WHO Richtwert`
@@ -367,7 +367,7 @@ temp <- dplyr::filter(immission_threshold_values, source == "LRV Grenzwert" & po
 plots$monitoring$timeseries_ndep_bachtel$Ndep <-
   data_monitoring_ndep_pars |>
   dplyr::filter(dplyr::when_all(site == "BA", ecosys == "Wald")) |>
-  airquality.methods::plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = temp$lsz, color = temp$col, title = "Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme am Bachtel") +
+  plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = temp$lsz, color = temp$col, title = "Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme am Bachtel") +
   ggplot2::labs(caption = "Daten: Ostluft & FUB") +
   ggplot2::facet_wrap(ecosys~., ncol = 1, scales = "free_y", axes = "all_x")
 
@@ -447,7 +447,7 @@ emissions_relative <-
   dplyr::select(year, pollutant, sum) |>
   dplyr::rename(emission = sum) |>
   dplyr::mutate(emission = ifelse(is.na(emission), 0, emission)) |>  
-  airquality.methods::prepare_emission_trends(reference_year_fun = function(x) reference_year_emissions) |> 
+  prepare_emission_trends(reference_year_fun = function(x) reference_year_emissions) |> 
   tidyr::gather(class, value, -year, -pollutant, -type, -reference_year) |> 
   dplyr::mutate(site = "Kanton Zürich")
 
@@ -474,7 +474,7 @@ plots$trends$relative$timeseries <-
   dplyr::filter(type %in% c("Emission", "Median Trend", "Median Messwerte")) |>
   dplyr::mutate(pollutant = dplyr::case_when(pollutant == "Ozon" ~ paste0(pollutant,", ",airquality.methods::longmetric(parameter)), TRUE ~ pollutant)) |> 
   dplyr::mutate(type = factor(type, levels = c("Emission", "Median Trend", "Median Messwerte"))) |> 
-  airquality.methods::plot_timeseries_trend_relative(
+  plot_timeseries_trend_relative(
     theme = theme_ts, facet_ncol = 2, 
     titlelab =  ggplot2::ggtitle(
       label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
@@ -491,7 +491,7 @@ plots$trends$relative$timeseries_detailed <-
     type = dplyr::recode(type, Trend = "Trend pro Standort"),
     type = factor(type, levels = c("Emission", "Trend pro Standort", "Median Messwerte"))
   ) |> 
-  airquality.methods::plot_timeseries_trend_relative(
+  plot_timeseries_trend_relative(
     detailed = TRUE, theme = theme_ts, facet_ncol = 2, 
     titlelab =  ggplot2::ggtitle(
       label = "Relative Entwicklung Emissionen & Immissionen im Kanton Zürich",
@@ -668,22 +668,22 @@ plots$exposition$population_over_thresh$rel_various <-
 # plotting histograms for air pollutants
 plots$exposition$distribution_histogram <-
   lapply(parameters_exposition, function(parameter) {
-    airquality.methods::plot_all_expo_hist(parameter, data_expo_distr_pollutants)
+    plot_all_expo_hist(parameter, data_expo_distr_pollutants)
   })
 
 # plotting histograms for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$distribution_histogram$Ndep <- airquality.methods::plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep)
+plots$exposition$distribution_histogram$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep)
 
 # plotting cumulative distributions for air pollutants
 plots$exposition$distribution_cumulative <-
   lapply(parameters_exposition, function(parameter) {
     
-    plots_years <- airquality.methods::plot_all_expo_cumul(parameter, data_expo_distr_pollutants)
+    plots_years <- plot_all_expo_cumul(parameter, data_expo_distr_pollutants)
     
     data_plot <- dplyr::filter(data_expo_distr_pollutants, parameter == !!parameter)
     pollutant <- unique(data_plot$pollutant)
     metric <- unique(data_plot$metric)
-    thresh <- airquality.methods::extract_threshold(immission_threshold_values, pollutant, metric)
+    thresh <- extract_threshold(immission_threshold_values, pollutant, metric)
     plot_all <-
       ggplot2::ggplot(data_plot, mapping = ggplot2::aes(x = concentration, y = population_cum_rel, color = factor(year), group = year)) +
       ggplot2::geom_vline(xintercept = thresh$value, color = thresh$color, linetype = thresh$linetype, linewidth = thresh$linesize) +
@@ -712,7 +712,7 @@ plots$exposition$distribution_cumulative <-
 
 
 # plotting cumulative distributions for sensitive ecosystems nitrogen deposition exceedance
-plots$exposition$distribution_cumulative$Ndep <- airquality.methods::plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep)
+plots$exposition$distribution_cumulative$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep)
 plots$exposition$distribution_cumulative$Ndep$alle <-
   ggplot2::ggplot(data_expo_distr_ndep, mapping = ggplot2::aes(x = ndep_exmax, y = n_ecosys_cum_rel, color = factor(year), group = year)) +
   ggplot2::geom_vline(xintercept = threshold_ndep$value, color = threshold_ndep$color, linetype = threshold_ndep$linetype, linewidth = threshold_ndep$linesize) +
@@ -741,12 +741,12 @@ data_expo_weighmean_municip <-
 
 plots$exposition$population_weighted_mean_map <-
   lapply(parameters_exposition, function(parameter) {
-    airquality.methods::plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
+    plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton)
   })
 
 
 # plotting timeseries of population-weighted mean pollutant concentration for Canton Zürich
-plots$exposition$population_weighted_mean <- airquality.methods::plot_pars_popmean_timeseries(data_expo_weighmean_canton, parameters_timeseries)
+plots$exposition$population_weighted_mean <- plot_pars_popmean_timeseries(data_expo_weighmean_canton, parameters_timeseries)
 
 
 
@@ -757,10 +757,10 @@ plots$exposition$population_weighted_mean <- airquality.methods::plot_pars_popme
 data_outcomes <- airquality.methods::read_local_csv(file = ressources_plotting$outcomes$outcomes, locale = readr::locale(encoding = "UTF-8"))
 
 # plotting timeseries of preliminary deaths for Canton Zürich
-plots$outcomes$preliminary_deaths_abs <- airquality.methods::plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"), relative = FALSE)
+plots$outcomes$preliminary_deaths_abs <- plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"), relative = FALSE)
 
 # plotting timeseries of preliminary deaths per 100'000 inhabitants for Canton Zürich
-plots$outcomes$preliminary_deaths_rel <- airquality.methods::plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"), relative = TRUE)
+plots$outcomes$preliminary_deaths_rel <- plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"), relative = TRUE)
 
 # plotting timeseries of years of life lost for Canton Zürich
 # TODO ...
@@ -772,24 +772,24 @@ plots$outcomes$preliminary_deaths_rel <- airquality.methods::plot_pars_prelim_de
 # ---
 plots <-
   plots$emissions$inventory_absolute |> 
-  airquality.methods::plotlist_to_tibble("emission", "inventory_absolute") |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$emissions$inventory_relative, "emission", "inventory_relative")) |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$emissions$rsd_norm, "emission", "rsd_norm")) |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$emissions$rsd_yearmodel, "emission", "rsd_yearmodel")) |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$emissions$rsd_yearmeas, "emission", "rsd_yearmeas")) |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$monitoring$threshold_comparison, "monitoring", "threshold_comparison")) |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$monitoring$timeseries_siteclass, "monitoring", "timeseries_siteclass")) |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$monitoring$timeseries_ndep_bachtel, "monitoring", "timeseries_ndep_bachtel")) |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$monitoring$timeseries_ndep_all, "monitoring", "timeseries_ndep_all")) |>
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$monitoring$timeseries_ndep_all_vs_CLN, "monitoring", "timeseries_ndep_all_vs_CLN")) |>
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$trends$relative, "trends", "relative")) |>
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$exposition$population_over_thresh, "exposition", "population_over_thresh")) |>
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$exposition$distribution_histogram, "exposition", "distribution_histogram")) |>
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$exposition$distribution_cumulative, "exposition", "distribution_cumulative")) |>
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$exposition$population_weighted_mean, "exposition", "population_weighted_mean")) |>
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map")) |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$outcomes$preliminary_deaths_abs, "outcomes", "preliminary_deaths_abs")) |> 
-  dplyr::bind_rows(airquality.methods::plotlist_to_tibble(plots$outcomes$preliminary_deaths_rel, "outcomes", "preliminary_deaths_rel"))
+  plotlist_to_tibble("emission", "inventory_absolute") |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$emissions$inventory_relative, "emission", "inventory_relative")) |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$emissions$rsd_norm, "emission", "rsd_norm")) |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$emissions$rsd_yearmodel, "emission", "rsd_yearmodel")) |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$emissions$rsd_yearmeas, "emission", "rsd_yearmeas")) |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$monitoring$threshold_comparison, "monitoring", "threshold_comparison")) |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$monitoring$timeseries_siteclass, "monitoring", "timeseries_siteclass")) |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$monitoring$timeseries_ndep_bachtel, "monitoring", "timeseries_ndep_bachtel")) |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$monitoring$timeseries_ndep_all, "monitoring", "timeseries_ndep_all")) |>
+  dplyr::bind_rows(plotlist_to_tibble(plots$monitoring$timeseries_ndep_all_vs_CLN, "monitoring", "timeseries_ndep_all_vs_CLN")) |>
+  dplyr::bind_rows(plotlist_to_tibble(plots$trends$relative, "trends", "relative")) |>
+  dplyr::bind_rows(plotlist_to_tibble(plots$exposition$population_over_thresh, "exposition", "population_over_thresh")) |>
+  dplyr::bind_rows(plotlist_to_tibble(plots$exposition$distribution_histogram, "exposition", "distribution_histogram")) |>
+  dplyr::bind_rows(plotlist_to_tibble(plots$exposition$distribution_cumulative, "exposition", "distribution_cumulative")) |>
+  dplyr::bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean, "exposition", "population_weighted_mean")) |>
+  dplyr::bind_rows(plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map")) |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$outcomes$preliminary_deaths_abs, "outcomes", "preliminary_deaths_abs")) |> 
+  dplyr::bind_rows(plotlist_to_tibble(plots$outcomes$preliminary_deaths_rel, "outcomes", "preliminary_deaths_rel"))
 
 
 

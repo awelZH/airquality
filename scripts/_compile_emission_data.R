@@ -4,21 +4,21 @@
 # read dataset ...
 # ---
 # => read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and subgroups, from opendata.swiss. Also new pre-defined subsector groups for aggregation
-data_emikat <- airquality.methods::read_opendataswiss(airquality.methods::filter_ressources(ressources, 1), source = "Ostluft & BAFU")
+data_emikat <- airquality.methods::read_opendataswiss(filter_ressources(ressources, 1), source = "Ostluft & BAFU")
 subsector_new <- 
-  airquality.methods::read_local_csv(airquality.methods::filter_ressources(ressources, 27), locale = readr::locale(encoding = "UTF-8")) |> 
+  airquality.methods::read_local_csv(filter_ressources(ressources, 27), locale = readr::locale(encoding = "UTF-8")) |> 
   dplyr::select(-comment)
 
 # prepare dataset ...
 # ---
 # => filter emission data for municipalities within Canton Zürich and exclude some groups that are redundant due to area distribution methodology; also remove emissions of 0
 # => group minor subsectors per emission sector in order to be able to have a plot with max 3 subsectors per sector (this step is only for convenience in plotting!)
-data_emikat <- airquality.methods::prepare_emmissions(data_emikat)
+data_emikat <- prepare_emmissions(data_emikat)
 
 # aggregate dataset ...
 # ---
 # => aggregate emissions per pollutant, subsector_new and year
-data_emikat <- airquality.methods::aggregate_emmissions(data_emikat, subsector_new)
+data_emikat <- aggregate_emmissions(data_emikat, subsector_new)
 data_emikat <- dplyr::filter(data_emikat, year <= lubridate::year(Sys.Date())) # no uncertain future
   
 
@@ -27,27 +27,27 @@ data_emikat <- dplyr::filter(data_emikat, year <= lubridate::year(Sys.Date())) #
 # read dataset ...
 # ---
 # => read Canton Zürich data (RSD) from opendata.swiss, see also: https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftschadstoffquellen/emissionen-verkehr/abgasmessungen-rsd.html
-data_rsd <- airquality.methods::read_opendataswiss(airquality.methods::filter_ressources(ressources, 2), source = "Kanton Zürich/AWEL")
+data_rsd <- airquality.methods::read_opendataswiss(filter_ressources(ressources, 2), source = "Kanton Zürich/AWEL")
 
 # => read local metadata (e.g. fractions NO:NO2, emission thresholds, etc) and filter criteria 
-rsd_auxiliary <- list(meta = airquality.methods::read_local_csv(airquality.methods::filter_ressources(ressources, 3)))
-rsd_auxiliary$filters <- airquality.methods::read_local_csv(airquality.methods::filter_ressources(ressources, 4))
+rsd_auxiliary <- list(meta = airquality.methods::read_local_csv(filter_ressources(ressources, 3)))
+rsd_auxiliary$filters <- airquality.methods::read_local_csv(filter_ressources(ressources, 4))
 
 # prepare dataset ...
 # ---
 # => several steps like calculating vehicle specific power, filtering, restructuring, calculating NOx emissions
-data_rsd <- airquality.methods::prepare_rsd(data_rsd, rsd_auxiliary)
+data_rsd <- prepare_rsd(data_rsd, rsd_auxiliary)
 
 # aggregate datasets ...
 # ---
 # => aggregate NOx emissions per euronorm, vehicle type and fuel type as mean values
-data_rsd_per_norm <- airquality.methods::aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm"))
+data_rsd_per_norm <- aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm"))
 
 # => aggregate NOx emissions per year of vehicle model, vehicle type and fuel type as mean values
-data_rsd_per_yearmodel <- airquality.methods::aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("vehicle_model_year", "vehicle_type", "vehicle_fuel_type"))
+data_rsd_per_yearmodel <- aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("vehicle_model_year", "vehicle_type", "vehicle_fuel_type"))
 
 # => aggregate NOx emissions per year of measurement and fuel type (including all = gasoline and diesel) as mean values
-data_rsd_per_yearmeas <- airquality.methods::aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("year", "vehicle_fuel_type"))
+data_rsd_per_yearmeas <- aggregate_rsd_nox(data_rsd, rsd_auxiliary, groups = c("year", "vehicle_fuel_type"))
 
 
 # write output datasets & clean up:

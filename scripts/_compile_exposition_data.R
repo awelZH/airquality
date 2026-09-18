@@ -15,15 +15,15 @@
 
 # settings ...
 # ---
-# => years to analyse: STATPOP is available from 2010 on, new raster data usually appear late in the following year
-years_exposition <- 2010:(lubridate::year(Sys.Date()) - year_offset)
+# => see scripts/_setup.R: expo_years, expo_correct_noloc, expo_years_pm25_from_pm10, expo_o3_nmin_sites,
+#    base_scenario_year
 
 
 # read datasets ...
 # ---
 # => inhabitants (STATPOP, collector pixels subtracted if expo_correct_noloc) and pollutant raster data,
 #    pollutants averaged onto the 100 m STATPOP grid of the same year
-data_raster_expo <- read_exposition_rasters(years_exposition, map_municipalities, correct_noloc = expo_correct_noloc)
+data_raster_expo <- read_exposition_rasters(expo_years, map_municipalities, correct_noloc = expo_correct_noloc)
 
 # => critical load exceedance for nitrogen in sensitive ecosystems, all available model years
 data_ndep <- read_ndep_exceedance(map_municipalities)
@@ -44,12 +44,12 @@ data_expo_cells <-
 data_expo_cells <- redistribute_noloc(data_expo_cells, noloc_from_aligned(data_raster_expo), map_municipalities)
 
 # => derive O3 peak-season concentrations from NO2 by the statistical relationship at monitoring sites
-coefs_o3_peakseason <- fit_o3_peakseason_model(data_monitoring_aq)
+coefs_o3_peakseason <- fit_o3_peakseason_model(data_monitoring_aq, nmin_sites = expo_o3_nmin_sites)
 data_expo_cells <- derive_o3_peakseason(data_expo_cells, coefs_o3_peakseason)
 
 # => derive PM2.5 from PM10 before 2015 using measured PM2.5:PM10 ratios at NABEL sites
 ratios_pm <- fit_pm_ratio(data_monitoring_aq)
-data_expo_cells <- derive_pm25_from_pm10(data_expo_cells, ratios_pm, years = min(years_exposition):2014)
+data_expo_cells <- derive_pm25_from_pm10(data_expo_cells, ratios_pm, years = expo_years_pm25_from_pm10)
 
 # => both models are refitted on every run with the current monitoring data (earlier years may shift
 #    slightly); log the coefficients of each run to make such shifts traceable
@@ -84,6 +84,6 @@ airquality.methods::write_local_csv(round_population(data_expo_weighted_mean_mun
 airquality.methods::write_local_csv(round_population(data_expo_population_dist), file = "inst/extdata/output/data_exposition_distribution_pollutants.csv")
 airquality.methods::write_local_csv(data_expo_ecosys_dist, file = "inst/extdata/output/data_exposition_distribution_ndep.csv")
 
-rm(list = c("years_exposition", "data_raster_expo", "data_ndep", "data_monitoring_aq", "data_expo_cells",
+rm(list = c("data_raster_expo", "data_ndep", "data_monitoring_aq", "data_expo_cells",
             "coefs_o3_peakseason", "ratios_pm", "data_expo", "data_expo_weighted_mean_canton",
             "data_expo_weighted_mean_municipalities", "data_expo_population_dist", "data_expo_ecosys_dist"))

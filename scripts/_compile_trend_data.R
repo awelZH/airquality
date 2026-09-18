@@ -3,51 +3,10 @@
 # output: respective trends relative to one pre-defined point in time
 
 
-# parameters for trend analysis
+# settings ...
 # ---
-
-# years to consider for analysis and later plotting
-years <- 1990:(lubridate::year(Sys.Date()) - 1) 
-
-# reference year for relative trends with monitoring data
-reference_year <- function(parameter, base_year = 2015){
-  dplyr::case_when(
-    parameter == "PM2.5" ~ 2021,
-    parameter == "eBC" ~ 2020,
-    parameter == "NHx" ~ 2020,
-    parameter == "NH3" ~ 2020,
-    parameter == "Ndep" ~ 2020,
-    TRUE ~ base_year
-  )
-}
-
-# minimum number of sites per year for which median trend is derived
-nmin_sites <- function(parameter){
-  dplyr::case_when(
-    parameter == "PM10" ~ 3,
-    parameter == "PM2.5" ~ 3,
-    parameter == "eBC" ~ 2, #! simply not a lot high timeres sites available
-    parameter == "NOx" ~ 5,
-    parameter == "NO2" ~ 5,
-    parameter == "O3" ~ 5,
-    parameter == "O3_nb_h1>120" ~ 5,
-    parameter == "O3_max_h1" ~ 5,
-    parameter == "O3_nb_d1_max_h1>120" ~ 5,
-    parameter == "O3_max_98p_m1" ~ 5,
-    parameter == "O3_peakseason_mean_d1_max_mean_h8gl" ~ 5,
-    parameter == "NHx" ~ 4,
-    parameter == "Ndep" ~ 4,
-    TRUE ~ 4
-  )
-}
-
-# minimum number of years available for trend analysis per site
-yearmin_per_site <- 4 
-
-# for analysis
-cantons <- "ZH"
-trend_vars_d1 <- c("T", "T_max_min10", "Hr", "StrGlo", "p", "WVs", "WD", "RainSum")
-parameters <- c("PM2.5", "PM10", "NOx", "eBC", "NHx", "Ndep", "O3_max_98p_m1")
+# => see scripts/_setup.R: trend_years, trend_cantons, trend_parameters, trend_vars_d1, trend_yearmin_per_site,
+#    trend_reference_year(), trend_nmin_sites()
 # TODO: also include NHx on different time-interval than d1
 # TODO: ... remove data_monitoring_ndep from airquality.data when ndep-analysis is online at github. Integrate future github dataset instead
 
@@ -67,28 +26,28 @@ data_monitoring_met_d1 <- airquality.data::data_monitoring_met_d1
 
 # prepare data
 # ---
-data_monitoring_aq <- dplyr::filter(data_monitoring_aq, lubridate::year(starttime) %in% !!years & canton %in% !!cantons)
+data_monitoring_aq <- dplyr::filter(data_monitoring_aq, lubridate::year(starttime) %in% !!trend_years & canton %in% !!trend_cantons)
 data_monitoring_met_d1 <- dplyr::filter(data_monitoring_met_d1, parameter %in% !!trend_vars_d1)
-data_trends <- prepare_data_trends(data_monitoring_aq, data_monitoring_met_d1)
+data_trends <- prepare_data_trends(data_monitoring_aq, data_monitoring_met_d1, cantons = trend_cantons)
 
 
 # trend analysis and result aggregation (takes a while) for d1 data
 # ---
 fun <- function(x) {
   print(x)
-  trends <- derive_trends_per_parameter(data_trends, parameter = x, trend_vars = trend_vars_d1, reference_year_fun = reference_year, yearmin_per_site = yearmin_per_site)
+  trends <- derive_trends_per_parameter(data_trends, parameter = x, trend_vars = trend_vars_d1, reference_year_fun = trend_reference_year, yearmin_per_site = trend_yearmin_per_site)
   return(trends)
 }
-pars <- parameters[!(parameters %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "O3_max_98p_m1", "NH3", "NHx", "Ndep"))] # no d1 trend analysis for these ones
+pars <- trend_parameters[!(trend_parameters %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "O3_max_98p_m1", "NH3", "NHx", "Ndep"))] # no d1 trend analysis for these ones
 trends <- purrr::map(pars, fun)
 trends <- dplyr::bind_rows(trends)
 
 # wrangle and aggregate relative trend results for plotting
-trends_relative <- aggregate_trend_results(trends, reference_year_fun = reference_year, nmin_sites_fun = nmin_sites)
+trends_relative <- aggregate_trend_results(trends, reference_year_fun = trend_reference_year, nmin_sites_fun = trend_nmin_sites)
 trends_relative$all <- 
   trends_relative$all |> 
   dplyr::mutate(pollutant = dplyr::recode(pollutant, Stickoxide = "Stickoxide | Stickstoffdioxid", NOx = "Stickoxide | Stickstoffdioxid", NO2 = "Stickoxide | Stickstoffdioxid", NH3 = "Ammoniak | reduzierter Stickstoff", NHx = "Ammoniak | reduzierter Stickstoff")) |> 
-  dplyr::filter(year %in% !!years)
+  dplyr::filter(year %in% !!trend_years)
 
 
 # trend analysis and result aggregation (takes a while) for m1 data (NHx)
@@ -103,11 +62,11 @@ trends_relative$all <-
 # add pure measurement results
 data_monitoring_median <- 
   data_monitoring_aq_y1 |> 
-  dplyr::filter(parameter %in% unique(c("NO2", !!parameters))) |>
+  dplyr::filter(parameter %in% unique(c("NO2", !!trend_parameters))) |>
   airquality.methods::aggregate_groups(y = "concentration", groups =  c("year", "parameter"), nmin = 1) |>
   dplyr::mutate(
-    nmin = nmin_sites(parameter),
-    reference_year = reference_year(parameter),
+    nmin = trend_nmin_sites(parameter),
+    reference_year = trend_reference_year(parameter),
     middle = ifelse(n < nmin, NA, middle)
   ) |> 
   dplyr::select(year, parameter, n, middle, reference_year) |>
@@ -132,7 +91,7 @@ trends_relative$agg <-
     pollutant = dplyr::recode(pollutant, Stickstoffdioxid = "Stickoxide | Stickstoffdioxid", Stickoxide = "Stickoxide | Stickstoffdioxid", Ammoniak = "Ammoniak | reduzierter Stickstoff"),
     site = "Kanton Zürich"
   ) |> 
-  dplyr::filter(year %in% !!years)
+  dplyr::filter(year %in% !!trend_years)
 
 
 # derive relative emissions
@@ -147,7 +106,7 @@ emissions <-
   )
 
 emissions_relative <- 
-  prepare_emission_trends(emissions, reference_year_fun = reference_year) |> 
+  prepare_emission_trends(emissions, reference_year_fun = trend_reference_year) |> 
   tidyr::gather(class, value, -year, -pollutant, -type, -reference_year) |> 
   dplyr::mutate(site = "Kanton Zürich")
 
@@ -177,6 +136,6 @@ trends_relative$all <-
 # ---
 airquality.methods::write_local_csv(trends_relative$all, file = "inst/extdata/output/data_airquality_trends_relative_y1.csv")
 airquality.methods::write_local_csv(trends_relative$agg, file = "inst/extdata/output/data_airquality_trends_relative_aggregated_y1.csv")
-rm(list = c("years", "reference_year", "nmin_sites", "yearmin_per_site", "parameters", "cantons", "trend_vars_d1", 
+rm(list = c("pars", "emissions", "emissions_relative",
             "data_monitoring_median", "data_emikat", "data_monitoring_aq", "data_monitoring_met_d1", "data_trends", "fun", "trends", "trends_relative"))
 

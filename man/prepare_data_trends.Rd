@@ -4,7 +4,10 @@
 \alias{prepare_data_trends}
 \title{Wrangle data from air quality monitoring and meteoswiss (d1) for statistical meteo-normalisation analysis}
 \usage{
-prepare_data_trends(data_aq, data_met)
+prepare_data_trends(data_aq, data_met, cantons)
+}
+\arguments{
+\item{cantons}{Cantons whose monitoring sites are kept.}
 }
 \description{
 Wrangle data from air quality monitoring and meteoswiss (d1) for statistical meteo-normalisation analysis

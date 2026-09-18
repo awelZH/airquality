@@ -31,14 +31,10 @@ ressources_plotting <-
   )
 
 
-# data subsetting parameters
-years <- 1995:(lubridate::year(Sys.Date()) - 1) # years to consider for plotting 
-n_years <- 3 # consider last 3 years for plotting relative threshold comparison    
-parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98p_m1", "O3_peakseason_mean_d1_max_mean_h8gl", "eBC") # parameters to include for timeseries plotting
-parameters_exposition <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "O3_peakseason_mean_d1_max_mean_h8gl") # parameters to include for exposition plotting
+# data subsetting parameters: see scripts/_setup.R (plot_years, plot_n_years, plot_parameters_timeseries,
+# plot_parameters_exposition, plot_reference_year_emissions)
 siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
                           "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
-reference_year_emissions <- 2015
 
 
 # plotting size parameters
@@ -286,11 +282,11 @@ plots$emissions$rsd_yearmeas$NOx <-
 data_monitoring_aq <- 
   airquality.methods::read_local_csv(ressources_plotting$monitoring$airquality, locale = readr::locale(encoding = "UTF-8")) |> 
   dplyr::mutate(siteclass = factor(siteclass, levels = siteclass_levels)) |> 
-  dplyr::filter(year %in% years & parameter %in% parameters_timeseries & !is.na(siteclass) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) 
+  dplyr::filter(year %in% plot_years & parameter %in% plot_parameters_timeseries & !is.na(siteclass) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) 
 
 
 # plot timeseries of yearly values for selected pollutants
-plots$monitoring$timeseries_siteclass <- plot_pars_monitoring_timeseries(data_monitoring_aq, parameters_timeseries)
+plots$monitoring$timeseries_siteclass <- plot_pars_monitoring_timeseries(data_monitoring_aq, plot_parameters_timeseries)
 
 
 # read pre-compiled Ostluft y1 monitoring data for nitrogen deposition to sensitive ecosystems into separate dataset
@@ -309,11 +305,11 @@ data_monitoring_ndep_pars <-
   )
 
 
-# plot relative comparison latest n_years of measurement data vs. LRV Immissionsgrenzwerte + Critical Loads of Nitrogen and WHO-Richtwerte
+# plot relative comparison latest plot_n_years of measurement data vs. LRV Immissionsgrenzwerte + Critical Loads of Nitrogen and WHO-Richtwerte
 data_thrshlds <- dplyr::distinct(immission_threshold_values, source, col, lty, lsz)
 data_temp <-
   data_monitoring_ndep |>
-  dplyr::filter(dplyr::when_all(year %in% seq(max(years) - n_years + 1, max(years), 1))) |>
+  dplyr::filter(dplyr::when_all(year %in% seq(max(plot_years) - plot_n_years + 1, max(plot_years), 1))) |>
   dplyr::mutate(
     value = deposition / cln,
     reference = factor("value_relative_lrv"),
@@ -328,7 +324,7 @@ plots$monitoring$threshold_comparison$various <-
     value_relative_lrv = concentration / `LRV Grenzwert`,
     value_relative_who = concentration / `WHO Richtwert`
   ) |>
-  dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |>
+  dplyr::filter(year %in% seq(max(plot_years) - plot_n_years + 1, max(plot_years), 1)) |>
   dplyr::select(year, pollutant, metric, value_relative_lrv, value_relative_who, siteclass) |>
   tidyr::gather(reference, value, -year, -pollutant, -metric, -siteclass) |>
   dplyr::filter(!is.na(value) & !(siteclass %in% c("ländlich - verkehrsbelastet", "klein-/vorstädtisch - verkehrsbelastet"))) |>
@@ -350,7 +346,7 @@ plots$monitoring$threshold_comparison$various <-
   ggplot2::guides(color = ggplot2::guide_legend(nrow = 3)) +
   ggplot2::ggtitle(
     label = openair::quickText("Luftqualitätsmesswerte Referenzwertvergleich"),
-    subtitle = paste0("Jahre ", max(years) - n_years + 1, " bis ", max(years))
+    subtitle = paste0("Jahre ", max(plot_years) - plot_n_years + 1, " bis ", max(plot_years))
   ) +
   ggplot2::labs(caption = "Daten: Ostluft & NABEL (BAFU & Empa)") +
   theme_ts +
@@ -418,7 +414,7 @@ plots$monitoring$ndep_mean_sources_fractions$Ndep <-
   dplyr::ungroup() |> 
   ggplot2::ggplot(ggplot2::aes(x = year, y = deposition, fill = component)) +
   geom_bar(stat = "identity", position = "fill") +
-  ggplot2::scale_x_continuous(breaks = seq(2018,max(years),1), expand = c(0.01,0.01)) +
+  ggplot2::scale_x_continuous(breaks = seq(2018,max(plot_years),1), expand = c(0.01,0.01)) +
   ggplot2::scale_y_continuous(expand = c(0.01,0.01), labels = scales::percent_format()) +
   ggplot2::scale_fill_manual(values = c("aus NOx-Quellen" = "#B696D6", "aus NH3-Quellen" = "#2A5676")) +
   ggplot2::ggtitle(
@@ -447,7 +443,7 @@ emissions_relative <-
   dplyr::select(year, pollutant, sum) |>
   dplyr::rename(emission = sum) |>
   dplyr::mutate(emission = ifelse(is.na(emission), 0, emission)) |>  
-  prepare_emission_trends(reference_year_fun = function(x) reference_year_emissions) |> 
+  prepare_emission_trends(reference_year_fun = function(x) plot_reference_year_emissions) |> 
   tidyr::gather(class, value, -year, -pollutant, -type, -reference_year) |> 
   dplyr::mutate(site = "Kanton Zürich")
 
@@ -465,7 +461,7 @@ plots$trends$relative$timeseries_emissions <-
   ggplot2::theme(legend.title = ggplot2::element_blank()) +
   ggplot2::ggtitle(
     label = "Relative Entwicklung Emissionen im Kanton Zürich",
-    subtitle = paste0("Veränderung gegenüber dem Jahr ", reference_year_emissions)) +
+    subtitle = paste0("Veränderung gegenüber dem Jahr ", plot_reference_year_emissions)) +
   ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz")
 
 # plotting relative trends of emissions and immissions vs. reference year
@@ -510,7 +506,7 @@ data_expo_distr_pollutants <- airquality.methods::read_local_csv(ressources_plot
 data_expo_distr_ndep <- airquality.methods::read_local_csv(ressources_plotting$exposition$expo_distr_ndep, locale = readr::locale(encoding = "UTF-8")) 
 data_expo_weighmean_canton <- airquality.methods::read_local_csv(ressources_plotting$exposition$weightedmean_canton, locale = readr::locale(encoding = "UTF-8")) 
 data_expo_weighmean_municip <- airquality.methods::read_local_csv(ressources_plotting$exposition$weightedmean_municip, locale = readr::locale(encoding = "UTF-8")) 
-parameters_exposition <- setNames(parameters_exposition, parameters_exposition)
+parameters_exposition <- setNames(plot_parameters_exposition, plot_parameters_exposition)
 
 
 # plotting time series of population over threshold values for all air pollutants
@@ -589,7 +585,7 @@ plots$exposition$population_over_thresh$timeseries_various <-
 # donought plot of relative population over threshold values for all air pollutants for last x years
 plots$exposition$population_over_thresh$rel_various <-
   plots$exposition$population_over_thresh$timeseries_various$data |> 
-  dplyr::filter(year %in% tail(unique(year), !!n_years)) |> 
+  dplyr::filter(year %in% tail(unique(year), !!plot_n_years)) |> 
   dplyr::group_by(pollutant, reference) |> 
   dplyr::summarise(population = sum(population)) |> 
   dplyr::group_by(pollutant) |> 
@@ -618,7 +614,7 @@ plots$exposition$population_over_thresh$rel_various <-
   ) +
   ggplot2::ggtitle(
     label = "Luftschadstoffbelastete Wohnbevölkerung",
-    subtitle = paste0("Anteil Personen im Kanton Zürich in den Jahren ", max(plots$exposition$population_over_thresh$timeseries_various$data$year) - n_years + 1, " bis ", max(plots$exposition$population_over_thresh$timeseries_various$data$year))
+    subtitle = paste0("Anteil Personen im Kanton Zürich in den Jahren ", max(plots$exposition$population_over_thresh$timeseries_various$data$year) - plot_n_years + 1, " bis ", max(plots$exposition$population_over_thresh$timeseries_various$data$year))
   ) +
   ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
 
@@ -636,7 +632,7 @@ plots$exposition$population_over_thresh$rel_various <-
 # plots$exposition$population_over_thresh$timeseries_various %+% dplyr::filter(plots$exposition$population_over_thresh$timeseries_various$data, pollutant == "Feinstaub PM2.5")
 
 # d |> 
-# dplyr::filter(year %in% seq(max(years) - n_years + 1, max(years), 1)) |> 
+# dplyr::filter(year %in% seq(max(plot_years) - plot_n_years + 1, max(plot_years), 1)) |> 
 # dplyr::group_by(pollutant, reference) |> 
 # dplyr::summarise(population = sum(population)) |> 
 # dplyr::ungroup() |> 
@@ -656,7 +652,7 @@ plots$exposition$population_over_thresh$rel_various <-
 # ) +
 # ggplot2::ggtitle(
 #   label = "Luftschadstoffbelastete Wohnbevölkerung im Kanton Zürich ",
-#   subtitle = paste0("Durchschnittlicher Anteil an Gesamtbevölkerung in den Jahren ", max(years) - n_years + 1, " bis ", max(years))
+#   subtitle = paste0("Durchschnittlicher Anteil an Gesamtbevölkerung in den Jahren ", max(plot_years) - plot_n_years + 1, " bis ", max(plot_years))
 # ) + 
 # ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
 
@@ -746,7 +742,7 @@ plots$exposition$population_weighted_mean_map <-
 
 
 # plotting timeseries of population-weighted mean pollutant concentration for Canton Zürich
-plots$exposition$population_weighted_mean <- plot_pars_popmean_timeseries(data_expo_weighmean_canton, parameters_timeseries)
+plots$exposition$population_weighted_mean <- plot_pars_popmean_timeseries(data_expo_weighmean_canton, plot_parameters_timeseries)
 
 
 
@@ -805,8 +801,8 @@ rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass"
             "data_emikat", "data_expo_distr_ndep", "data_expo_distr_pollutants", "data_expo_weighmean_canton", "thresh",
             "data_monitoring_aq", "data_monitoring_ndep", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "data_temp", "data_thrshlds",
             "data_expo_weighmean_municip", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 
-            "crs", "lbsz", "linewidth", "lsz_lrv", "lsz_who", "lty_lrv", "lty_who", "n_years", "parameters_exposition", "parameters_timeseries",
-            "pointsize", "pollutants", "siteclass_levels", "years", "map_municipalities", "crs", "ressources"))
+            "crs", "lbsz", "linewidth", "lsz_lrv", "lsz_who", "lty_lrv", "lty_who", "parameters_exposition",
+            "pointsize", "pollutants", "siteclass_levels", "map_municipalities", "crs", "ressources"))
 
 
 

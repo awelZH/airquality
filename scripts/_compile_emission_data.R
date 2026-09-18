@@ -19,7 +19,7 @@ data_emikat <- prepare_emmissions(data_emikat)
 # ---
 # => aggregate emissions per pollutant, subsector_new and year
 data_emikat <- aggregate_emmissions(data_emikat, subsector_new)
-data_emikat <- dplyr::filter(data_emikat, year <= lubridate::year(Sys.Date())) # no uncertain future
+data_emikat <- dplyr::filter(data_emikat, year <= emis_year_max) # no uncertain future
   
 
 # compiling average vehicle NOx emissions from real-world vehicle remote sensing (RS) emission measurements using a remote sensing detector (RSD):

@@ -6,11 +6,6 @@
 \usage{
 calc_population_weighted_mean(concentration, population)
 }
-\arguments{
-\item{concentration}{}
-
-\item{population}{}
-}
 \description{
 Calculate population weighted mean concentration for exposition assessment
 }

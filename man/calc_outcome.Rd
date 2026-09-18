@@ -6,13 +6,6 @@
 \usage{
 calc_outcome(conc_increment, crf, crf_conc_increment, cases)
 }
-\arguments{
-\item{conc_increment}{}
-
-\item{deathrate_per_person}{}
-
-\item{population}{}
-}
 \description{
 calculate specific health outcome
 }

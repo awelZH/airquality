@@ -1,0 +1,133 @@
+site;year;ecosys;siteclass;emissionclass;canton;cln;unit;x;y;masl;pollutant;metric;datasource;source;estimated;deposition;estimated_class;frac_estimated_class
+AEG;2019;Hochmoor;hoch;hoch;ZH;5;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;1.4514928495073298;18.250203355523183;<5 kg-N;<33%
+AEG;2019;Wald;hoch;hoch;ZH;6;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;2.2659160582873743;23.690587874089115;<5 kg-N;<33%
+AEG;2020;Hochmoor;hoch;hoch;ZH;5;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;10.958056821721442;20.764923728529574;5-12 kg-N;33-66%
+AEG;2020;Wald;hoch;hoch;ZH;6;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;13.639727117613193;26.71554966002403;>12 kg-N;33-66%
+AEG;2021;Hochmoor;hoch;hoch;ZH;5;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;3.3071780453214314;16.886049020755202;<5 kg-N;<33%
+AEG;2021;Wald;hoch;hoch;ZH;6;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;5.164601676304289;21.679881919348425;5-12 kg-N;<33%
+AEG;2022;Hochmoor;hoch;hoch;ZH;5;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;1.4227249092842613;16.95084589938837;<5 kg-N;<33%
+AEG;2022;Wald;hoch;hoch;ZH;6;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;2.2131009905297057;21.68342285897244;<5 kg-N;<33%
+AEG;2024;Hochmoor;hoch;hoch;ZH;5;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;1.1393566581602217;15.392014488372821;<5 kg-N;<33%
+AEG;2024;Wald;hoch;hoch;ZH;6;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;1.794231986792216;19.174103318388845;<5 kg-N;<33%
+AEG;2025;Hochmoor;hoch;hoch;ZH;5;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;1.4562980065833755;14.971747738990034;<5 kg-N;<33%
+AEG;2025;Wald;hoch;hoch;ZH;6;kg/ha/a;2675521;1232695;447;Ndep;Jahressumme;Ostluft;Ostluft;2.4484834291196713;19.2182784243993;<5 kg-N;<33%
+BA;2001;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;0.7282650463545733;23.524669684035388;<5 kg-N;<33%
+BA;2001;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.6992851081606715;30.99390840711874;<5 kg-N;<33%
+BA;2002;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;0.6087397841098834;24.711338264629013;<5 kg-N;<33%
+BA;2002;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.419261698693956;31.695114267654265;<5 kg-N;<33%
+BA;2003;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.70489940570492;24.057647061772187;<5 kg-N;<33%
+BA;2003;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;3.0313752789114776;31.878695872991052;<5 kg-N;<33%
+BA;2004;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft,FUB, Ostluft;Ostluft;2.1469324771752523;21.019247622415325;<5 kg-N;<33%
+BA;2004;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft,FUB, Ostluft;Ostluft;3.678817695241309;26.909483517642766;<5 kg-N;<33%
+BA;2005;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.3290714748800023;22.571736815558022;<5 kg-N;<33%
+BA;2005;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;2.026994060160003;28.4395091985279;<5 kg-N;<33%
+BA;2006;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.3937878904421435;26.553305854254393;<5 kg-N;<33%
+BA;2006;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;2.156426891284285;34.25599931397813;<5 kg-N;<33%
+BA;2007;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,FUB, Ostluft,Ostluft;Ostluft;1.3939116258491868;21.837930911904227;<5 kg-N;<33%
+BA;2007;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,FUB, Ostluft,Ostluft;Ostluft;2.1566743620983724;28.652419187676173;<5 kg-N;<33%
+BA;2008;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft,FUB, Ostluft;Ostluft;0.011384750644214738;19.416035371248988;<5 kg-N;<33%
+BA;2008;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft,FUB, Ostluft;Ostluft;0.02155029953671688;25.301349978204417;<5 kg-N;<33%
+BA;2009;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;1.3455531025667657;21.819619005143753;<5 kg-N;<33%
+BA;2009;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;2.079948932013531;28.834206361864346;<5 kg-N;<33%
+BA;2010;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.305019500954658;20.412519144154373;<5 kg-N;<33%
+BA;2010;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;2.0188733452693177;26.924342136640497;<5 kg-N;<33%
+BA;2011;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;4.797896556082706e-5;20.88703799543666;<5 kg-N;<33%
+BA;2011;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;9.595793112165412e-5;28.173633325094368;<5 kg-N;<33%
+BA;2012;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.2067393597947214;20.791524873567926;<5 kg-N;<33%
+BA;2012;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.8622962959094413;26.989864349853587;<5 kg-N;<33%
+BA;2013;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;0.5301636796800013;20.944568400202144;<5 kg-N;<33%
+BA;2013;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.0603273593600027;26.932124009175794;<5 kg-N;<33%
+BA;2014;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;0.0031847496573478387;21.130746231809773;<5 kg-N;<33%
+BA;2014;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;0.004813728564686904;27.996422223223433;<5 kg-N;<33%
+BA;2015;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,FUB, Ostluft,Ostluft;Ostluft;0.13991010108218477;18.612599839128567;<5 kg-N;<33%
+BA;2015;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft,FUB, Ostluft;Ostluft;0.27982020216436954;25.14002492470739;<5 kg-N;<33%
+BA;2016;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;2.79227861995997e-5;19.907739747794086;<5 kg-N;<33%
+BA;2016;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;4.2977274515899614e-5;25.856419888632498;<5 kg-N;<33%
+BA;2017;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;0;21.795353493684928;<5 kg-N;<33%
+BA;2017;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;0;28.276803842509747;<5 kg-N;<33%
+BA;2018;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;8.024447695649534e-5;22.45764734228436;<5 kg-N;<33%
+BA;2018;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;FUB,Ostluft;Ostluft;1.2876078219752524e-4;31.040689117093596;<5 kg-N;<33%
+BA;2019;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;3.179377721858389e-4;21.865636292495886;<5 kg-N;<33%
+BA;2019;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;4.902323181573949e-4;29.64705607867945;<5 kg-N;<33%
+BA;2020;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;3.0640138092256545e-6;17.37443014587076;<5 kg-N;<33%
+BA;2020;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;6.128027618451309e-6;24.03201332997461;<5 kg-N;<33%
+BA;2021;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB, Ostluft,FUB;Ostluft;0.06144662807325757;16.788280731093977;<5 kg-N;<33%
+BA;2021;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB, Ostluft,FUB;Ostluft;0.09568113697677894;22.309559047965013;<5 kg-N;<33%
+BA;2022;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;0;19.64990768406294;<5 kg-N;<33%
+BA;2022;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;0;25.50126685479296;<5 kg-N;<33%
+BA;2023;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;0.0012097573424933298;17.39959030966196;<5 kg-N;<33%
+BA;2023;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;0.0012097573424933298;23.10598680406655;<5 kg-N;<33%
+BA;2024;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;0.0014386139430294894;15.444341443785717;<5 kg-N;<33%
+BA;2024;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft,FUB;Ostluft;0.002231844807097266;19.64931685129017;<5 kg-N;<33%
+BA;2025;Trockenrasen;hoch;mittel;ZH;10;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft;Ostluft;0.9468530999704392;15.004238406932906;<5 kg-N;<33%
+BA;2025;Wald;hoch;mittel;ZH;6;kg/ha/a;2710350;1239600;930;Ndep;Jahressumme;Ostluft;Ostluft;1.5983169378586635;20.317279551489236;<5 kg-N;<33%
+BUE;2024;Hochmoor;hoch;mittel;ZH;5;kg/ha/a;2704475;1234943;494;Ndep;Jahressumme;Ostluft;Ostluft;12.815407799813;21.635015055221352;>12 kg-N;33-66%
+KAP;2013;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft,FUB;Ostluft;14.999132227318352;24.24020786362011;>12 kg-N;33-66%
+KAP;2014;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft,FUB;Ostluft;13.780445682820625;21.74528640243733;>12 kg-N;33-66%
+KAP;2015;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft;Ostluft;13.998400723674985;23.989049227604617;>12 kg-N;33-66%
+KAP;2016;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft;Ostluft;14.19589253973197;21.875108319806902;>12 kg-N;33-66%
+KAP;2017;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft;Ostluft;14.477086288035412;23.931009941589476;>12 kg-N;33-66%
+KAP;2018;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft;Ostluft;12.644202311489092;23.602487915571558;>12 kg-N;33-66%
+KAP;2019;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft;Ostluft;14.165322756776034;24.834732752089604;>12 kg-N;33-66%
+KAP;2020;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft;Ostluft;12.550115463854898;21.9024315892556;>12 kg-N;33-66%
+KAP;2022;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft;Ostluft;11.845085998754163;20.4829498829322;5-12 kg-N;33-66%
+KAP;2024;kein empf. Ökosys.;hoch;hoch;ZH;NA;kg/ha/a;2680066;1230326;527;Ndep;Jahressumme;Ostluft;Ostluft;14.104598579562818;21.44582786658727;>12 kg-N;33-66%
+NET;2021;Flachmoor;mittel;mittel;ZH;15;kg/ha/a;2678603;1262147;409;Ndep;Jahressumme;Ostluft;Ostluft;11.75408296333652;21.043756259095737;5-12 kg-N;33-66%
+NET;2022;Flachmoor;mittel;mittel;ZH;15;kg/ha/a;2678603;1262147;409;Ndep;Jahressumme;Ostluft;Ostluft;10.547030715053612;21.14969139881202;5-12 kg-N;33-66%
+NET;2024;Flachmoor;mittel;mittel;ZH;15;kg/ha/a;2678603;1262147;409;Ndep;Jahressumme;Ostluft;Ostluft;11.27240197552533;19.861415603725796;5-12 kg-N;33-66%
+NET;2025;Flachmoor;mittel;mittel;ZH;15;kg/ha/a;2678603;1262147;409;Ndep;Jahressumme;Ostluft;Ostluft;11.036944531353917;22.40888592545877;5-12 kg-N;33-66%
+OBI;2019;Flachmoor;hoch;mittel;ZH;15;kg/ha/a;2672488;1236902;383;Ndep;Jahressumme;Ostluft;Ostluft;3.2864595185385843;25.722583525960708;<5 kg-N;<33%
+OBI;2020;Flachmoor;hoch;mittel;ZH;15;kg/ha/a;2672488;1236902;383;Ndep;Jahressumme;Ostluft;Ostluft;10.955613752819868;23.055158746715897;5-12 kg-N;33-66%
+OBI;2021;Flachmoor;hoch;mittel;ZH;15;kg/ha/a;2672488;1236902;383;Ndep;Jahressumme;Ostluft;Ostluft;11.7516514433273;24.253140989261023;5-12 kg-N;33-66%
+OBI;2024;Flachmoor;hoch;mittel;ZH;15;kg/ha/a;2672488;1236902;383;Ndep;Jahressumme;Ostluft;Ostluft;12.488025142914722;23.07254605050128;>12 kg-N;33-66%
+OBI;2025;Flachmoor;hoch;mittel;ZH;15;kg/ha/a;2672488;1236902;383;Ndep;Jahressumme;Ostluft;Ostluft;11.759198819400025;26.301133444925256;5-12 kg-N;33-66%
+OSD;2021;Flachmoor;mittel;mittel;ZH;15;kg/ha/a;2694191;1275542;410;Ndep;Jahressumme;Ostluft;Ostluft;10.992410613799231;17.7435823685883;5-12 kg-N;33-66%
+OSD;2021;Wald;mittel;mittel;ZH;6;kg/ha/a;2694191;1275542;410;Ndep;Jahressumme;Ostluft;Ostluft;13.826580062969441;22.8281424026882;>12 kg-N;33-66%
+OSD;2022;Flachmoor;mittel;mittel;ZH;15;kg/ha/a;2694191;1275542;410;Ndep;Jahressumme;Ostluft;Ostluft;9.784685864170614;17.596511938227213;5-12 kg-N;33-66%
+OSD;2022;Wald;mittel;mittel;ZH;6;kg/ha/a;2694191;1275542;410;Ndep;Jahressumme;Ostluft;Ostluft;12.493862259607205;22.90963035834934;>12 kg-N;33-66%
+OSD;2024;Flachmoor;mittel;mittel;ZH;15;kg/ha/a;2694191;1275542;410;Ndep;Jahressumme;Ostluft;Ostluft;10.209173801252646;16.58986218869644;5-12 kg-N;33-66%
+OSD;2024;Wald;mittel;mittel;ZH;6;kg/ha/a;2694191;1275542;410;Ndep;Jahressumme;Ostluft;Ostluft;12.671854533052166;21.179439049643886;>12 kg-N;33-66%
+OSD;2025;Flachmoor;mittel;mittel;ZH;15;kg/ha/a;2694191;1275542;410;Ndep;Jahressumme;Ostluft;Ostluft;10.171189635716006;18.170845861494342;5-12 kg-N;33-66%
+OSD;2025;Wald;mittel;mittel;ZH;6;kg/ha/a;2694191;1275542;410;Ndep;Jahressumme;Ostluft;Ostluft;12.730931201835464;23.397139502873245;>12 kg-N;33-66%
+REC;2025;Hochmoor;mittel;mittel;ZH;5;kg/ha/a;2679042;1254381;438;Ndep;Jahressumme;Ostluft;Ostluft;11.132667066200648;16.52022061210666;5-12 kg-N;>66%
+REC;2025;Wald;mittel;mittel;ZH;6;kg/ha/a;2679042;1254381;438;Ndep;Jahressumme;Ostluft;Ostluft;14.528519955693552;21.71192468356823;>12 kg-N;>66%
+RIH;2024;Flachmoor;mittel;mittel;ZH;5;kg/ha/a;2695937;1242440;437;Ndep;Jahressumme;Ostluft;Ostluft;13.271443833265188;27.536855977051307;>12 kg-N;33-66%
+ROPF;2019;Hochmoor;mittel;tief;ZH;5;kg/ha/a;2701636;1244049;538;Ndep;Jahressumme;Ostluft;Ostluft;2.418298699268648;19.714195476084804;<5 kg-N;<33%
+ROPF;2020;Hochmoor;mittel;tief;ZH;5;kg/ha/a;2701636;1244049;538;Ndep;Jahressumme;Ostluft;Ostluft;11.377341078042171;19.90994881067255;5-12 kg-N;33-66%
+ROPF;2022;Hochmoor;mittel;tief;ZH;5;kg/ha/a;2701636;1244049;538;Ndep;Jahressumme;Ostluft;Ostluft;10.826071395837593;19.097631992335412;5-12 kg-N;33-66%
+ROPF;2024;Hochmoor;mittel;tief;ZH;5;kg/ha/a;2701636;1244049;538;Ndep;Jahressumme;Ostluft;Ostluft;1.2887170911391812;15.062064089639676;<5 kg-N;<33%
+ROPF;2025;Hochmoor;mittel;tief;ZH;5;kg/ha/a;2701636;1244049;538;Ndep;Jahressumme;Ostluft;Ostluft;11.3397171606077;18.01855952441662;5-12 kg-N;33-66%
+TAB;2019;Trockenrasen;mittel;mittel;ZH;10;kg/ha/a;2707669;1252229;646;Ndep;Jahressumme;Ostluft;Ostluft;2.1312046712374473;17.35665691161922;<5 kg-N;<33%
+TAB;2019;Wald;mittel;mittel;ZH;6;kg/ha/a;2707669;1252229;646;Ndep;Jahressumme;Ostluft;Ostluft;3.064218927343097;23.363310199388078;<5 kg-N;<33%
+TAB;2020;Trockenrasen;mittel;mittel;ZH;10;kg/ha/a;2707669;1252229;646;Ndep;Jahressumme;Ostluft;Ostluft;11.1825520985933;17.87623927619596;5-12 kg-N;33-66%
+TAB;2020;Wald;mittel;mittel;ZH;6;kg/ha/a;2707669;1252229;646;Ndep;Jahressumme;Ostluft;Ostluft;13.599540950495514;24.755686246499945;>12 kg-N;33-66%
+TAB;2022;Trockenrasen;mittel;mittel;ZH;10;kg/ha/a;2707669;1252229;646;Ndep;Jahressumme;Ostluft;Ostluft;11.142556375216046;17.738574456510612;5-12 kg-N;33-66%
+TAB;2022;Wald;mittel;mittel;ZH;6;kg/ha/a;2707669;1252229;646;Ndep;Jahressumme;Ostluft;Ostluft;13.50726941313504;24.50063288195932;>12 kg-N;33-66%
+TAB;2024;Trockenrasen;mittel;mittel;ZH;10;kg/ha/a;2707669;1252229;646;Ndep;Jahressumme;Ostluft;Ostluft;1.1961128231322269;13.695490303660586;<5 kg-N;<33%
+TAB;2024;Wald;mittel;mittel;ZH;6;kg/ha/a;2707669;1252229;646;Ndep;Jahressumme;Ostluft;Ostluft;1.9606462151193336;18.2872955132548;<5 kg-N;<33%
+WAB;2021;Trockenrasen;mittel;mittel;ZH;10;kg/ha/a;2677272;1271915;427;Ndep;Jahressumme;Ostluft;Ostluft;10.70983500255877;15.60440895082638;5-12 kg-N;>66%
+WAB;2021;Wald;mittel;mittel;ZH;6;kg/ha/a;2677272;1271915;427;Ndep;Jahressumme;Ostluft;Ostluft;13.192480125189064;21.350103372301753;>12 kg-N;33-66%
+WAB;2025;Trockenrasen;mittel;mittel;ZH;10;kg/ha/a;2677272;1271915;427;Ndep;Jahressumme;Ostluft;Ostluft;9.89617723970297;15.096954284691801;5-12 kg-N;33-66%
+WAB;2025;Wald;mittel;mittel;ZH;6;kg/ha/a;2677272;1271915;427;Ndep;Jahressumme;Ostluft;Ostluft;12.240924959924154;20.908886701572207;>12 kg-N;33-66%
+WIE;2008;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft,FUB;Ostluft;2.8757380197459304;32.14973830767193;<5 kg-N;<33%
+WIE;2010;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft,FUB;Ostluft;20.567407422837032;29.164044615198513;>12 kg-N;>66%
+WIE;2011;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft,FUB;Ostluft;13.533076019584268;30.779311924697637;>12 kg-N;33-66%
+WIE;2012;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft,FUB;Ostluft;15.233148598995571;30.549181526422895;>12 kg-N;33-66%
+WIE;2013;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft,FUB;Ostluft;14.961854870494303;29.917064465192965;>12 kg-N;33-66%
+WIE;2014;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft,FUB;Ostluft;13.692898676114371;28.096018153594223;>12 kg-N;33-66%
+WIE;2015;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft;Ostluft;14.986601731355984;29.941878720571363;>12 kg-N;33-66%
+WIE;2016;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft;Ostluft;15.850493232704636;30.15683287180179;>12 kg-N;33-66%
+WIE;2017;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft;Ostluft;11.662268153999229;29.663010902564515;5-12 kg-N;33-66%
+WIE;2018;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft;Ostluft;15.834536068554208;30.102701328558542;>12 kg-N;33-66%
+WIE;2019;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft;Ostluft;15.152472070854119;29.772323220997798;>12 kg-N;33-66%
+WIE;2020;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft;Ostluft;10.701243897583474;25.959555559077337;5-12 kg-N;33-66%
+WIE;2022;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft;Ostluft;12.909323745600828;25.85193541688548;>12 kg-N;33-66%
+WIE;2024;Siedlungen;NA;tief;ZH;NA;kg/ha/a;2681950;1247250;415;Ndep;Jahressumme;Ostluft;Ostluft;2.9872029573787526;19.501332525755338;<5 kg-N;<33%
+WIH;2021;Trockenrasen;mittel;mittel;ZH;10;kg/ha/a;2693935;1261383;516;Ndep;Jahressumme;Ostluft;Ostluft;11.878863792866117;17.280652379200948;5-12 kg-N;>66%
+WIH;2021;Wald;mittel;mittel;ZH;6;kg/ha/a;2693935;1261383;516;Ndep;Jahressumme;Ostluft;Ostluft;15.364260522896636;24.367241500121352;>12 kg-N;33-66%
+WIH;2022;Trockenrasen;mittel;mittel;ZH;10;kg/ha/a;2693935;1261383;516;Ndep;Jahressumme;Ostluft;Ostluft;10.93182449626101;16.959355966005496;5-12 kg-N;33-66%
+WIH;2022;Wald;mittel;mittel;ZH;6;kg/ha/a;2693935;1261383;516;Ndep;Jahressumme;Ostluft;Ostluft;14.287687634512094;24.333573417419576;>12 kg-N;33-66%
+WIH;2025;Trockenrasen;mittel;mittel;ZH;10;kg/ha/a;2693935;1261383;516;Ndep;Jahressumme;Ostluft;Ostluft;10.983635747009622;16.409642100480113;5-12 kg-N;>66%
+WIH;2025;Wald;mittel;mittel;ZH;6;kg/ha/a;2693935;1261383;516;Ndep;Jahressumme;Ostluft;Ostluft;14.052514303337833;23.09585822578865;>12 kg-N;33-66%
+ZUK;2025;Hochmoor;mittel;mittel;ZH;5;kg/ha/a;2679889;1253923;439;Ndep;Jahressumme;Ostluft;Ostluft;11.863285080834066;18.94718068367885;5-12 kg-N;33-66%
+ZUK;2025;Wald;mittel;mittel;ZH;6;kg/ha/a;2679889;1253923;439;Ndep;Jahressumme;Ostluft;Ostluft;15.563996383998957;25.00919052112534;>12 kg-N;33-66%

@@ -31,3 +31,6 @@ scripts/_validate_rasterdata.R
 
 # temp data => later ogd
 inst/extdata/tod_nat_gatu.csv
+
+# regression run results (regenerate with tests/regression/run_exposition_variants.R)
+tests/regression/results/

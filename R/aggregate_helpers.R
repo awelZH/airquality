@@ -165,20 +165,6 @@ simplify_nitrogen_parameters <- function(data) {
 }
 
 
-#' Calculate concentration bins for exposition assessment
-#'
-#' @param data
-#'
-#' @keywords internal
-bin_concentration <- function(data) {
-
-  fun <- bin_fun(unique(data$parameter))
-  data <- dplyr::mutate(data, concentration = fun(concentration))
-
-  return(data)
-}
-
-
 #' Calculate population weighted mean concentration for exposition assessment
 #'
 #' @param concentration
@@ -186,4 +172,3 @@ bin_concentration <- function(data) {
 #'
 #' @keywords internal
 calc_population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
-

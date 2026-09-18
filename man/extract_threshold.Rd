@@ -13,19 +13,6 @@ extract_threshold(
   source = c("LRV Grenzwert", "WHO Richtwert")
 )
 }
-\arguments{
-\item{threshold_values}{}
-
-\item{pollutant}{}
-
-\item{metric}{}
-
-\item{unit}{}
-
-\item{source}{}
-
-\item{aggregation}{}
-}
 \description{
 Extract target threshold values from threshold table for plotting
 }

@@ -6,13 +6,6 @@
 \usage{
 groups_emission_subsector(data, threshold_fraction = 0.05, first = 1:2)
 }
-\arguments{
-\item{data}{}
-
-\item{threshold_fraction}{}
-
-\item{first}{}
-}
 \description{
 Merge groups with small emissions in emission budget datasets
 }

@@ -31,25 +31,20 @@ load_packages("airquality.data")
 renv::update("airquality.data", prompt = FALSE)
 
 # packages required for script functionality
-imports <- c("devtools", "renv", "airquality.methods", "airquality.data", "scales", "openair", "ggplot2",
+packages <- c("devtools", "renv", "tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
+             "readr", "sf", "stars", "withr", "pxR", "healthiar", "airquality.methods", "airquality.data", "scales", "openair", "ggplot2",
              "RColorBrewer", "colorspace", "rmweather", "ranger", "MASS", "rOstluft.plot", "quarto", "kableExtra")
-load_packages(imports)
+load_packages(packages)
 # sapply(imports, function(x) usethis::use_package(x, "Import", min_version = TRUE))
 
-# packages necessary for function functionality
-depends <- c("tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-             "readr", "sf", "stars", "withr", "pxR", "healthiar")
-load_packages(depends)
-# sapply(depends, function(x) usethis::use_package(x, "Suggests", min_version = TRUE))
+# load local functions
+devtools::load_all()
 
 
 # reading input data for several scripts:
 # ---
 # read ressource table for input datasets
-ressources <- airquality.methods::prepare_ressources(airquality.methods::read_local_csv("inst/extdata/meta/ressources.csv"))
-
-# read all available raster data?
-read_all_raster <- FALSE
+ressources <- prepare_ressources(airquality.methods::read_local_csv("inst/extdata/meta/ressources.csv"))
 
 # max year from now - year_offset to be considered for raster data download
 year_offset <- 1
@@ -57,12 +52,18 @@ year_offset <- 1
 # reference year for all pollutants in exposition & outcomes calculation
 base_scenario_year <- 2015
 
+# subtract STATPOP collector pixels (inhabitants that cannot be located) in exposition calculation?
+expo_correct_noloc <- TRUE
+
 # map projection CRS = CH1903+ / LV95 throughout analysis
 crs <- 2056
 
-# map boundaries Canton Zürich and municipalities
-map_municipalities <- airquality.methods::read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs)
-map_canton <- airquality.methods::aggregate_map(map_municipalities)
+# map boundaries Canton Zürich and municipalities (current boundaries, used for all years;
+# without the Kloster Fahr, an enclave of the Canton of Aargau)
+map_municipalities <-
+  airquality.methods::read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs) |>
+  drop_foreign_enclaves()
+map_canton <- aggregate_map(map_municipalities)
 
 # ggplot() +
 #   ggplot2::geom_sf(data = map_municipalities) +
@@ -75,4 +76,4 @@ map_canton <- airquality.methods::aggregate_map(map_municipalities)
 
 # clean up:
 # ---
-rm(list = c("load_packages", "imports", "depends"))
+rm(list = c("load_packages", "packages"))

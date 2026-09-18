@@ -6,25 +6,11 @@
 \usage{
 ggplot_emissions(
   data,
-  cols,
   relative = FALSE,
   pos = "stack",
   width = 0.8,
   theme = ggplot2::theme_minimal()
 )
-}
-\arguments{
-\item{data}{}
-
-\item{cols}{}
-
-\item{relative}{}
-
-\item{pos}{}
-
-\item{width}{}
-
-\item{theme}{}
 }
 \description{
 Plot emission budget data employing structured coloring using ggplot2 ... this is not ideal, but the best I can do

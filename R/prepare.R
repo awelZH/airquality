@@ -83,130 +83,6 @@ prepare_rsd <- function(data, rsd_auxiliary){
 }
 
 
-#' Spatially average base-year (min(year)) scenario pollutant raster data to the grid of statpop data of the respective year
-#'
-#' @param data_raster_bfs
-#' @param data_raster_aq
-#' @param years
-#'
-#' @export
-prepare_rasterdata_aq_base <- function(data_raster_bfs, data_raster_aq, base_year) {
-
-  years <- as.numeric(names(data_raster_aq))
-  other_years <- years[years != base_year]
-  data_raster_aq_base <- data_raster_aq[[as.character(base_year)]]
-  data_raster_aq_base <- setNames(rep(list(data_raster_aq_base), length(other_years)), other_years)
-  data_raster_aq_base <- purrr::map2(data_raster_bfs[as.character(other_years)], data_raster_aq_base, average_to_statpop)
-
-  return(data_raster_aq_base)
-}
-
-
-#' Convert BFS statpop spatial raster rasterdata as well as air quality spatial rasterdata to combined tibble dataset for use in script
-#'
-#' @param data_raster_bfs
-#' @param data_raster_aq
-#' @param years
-#'
-#' @export
-prepare_exposition <- function(data_raster_bfs, data_raster_aq, years) {
-
-  # => convert pollutant and statpop data into a common tibble
-  data_statpop <-
-    years |>
-    as.character() |>
-    purrr::map(function(year) dplyr::mutate(tibble::as_tibble(data_raster_bfs[[year]]), year = as.numeric(year))) |>
-    dplyr::bind_rows() |>
-    dplyr::filter(!is.na(population) & population > 0)
-
-  data_aq <-
-    years |>
-    as.character() |>
-    purrr::map(function(yr) {
-      simplify_aq_rasterdata(data_raster_aq[[yr]]) |>
-        dplyr::mutate(year = as.numeric(yr))
-    }) |>
-    dplyr::bind_rows()
-
-  data <- dplyr::full_join(data_statpop, data_aq, by = c("x","y","year"))
-  data <-
-    data |>
-    dplyr::filter(!is.na(population) & !is.na(concentration)) |>
-    dplyr::mutate(
-      parameter = dplyr::recode(pollutant,
-                                "no2" = "NO2",
-                                "pm25" = "PM2.5",
-                                "pm10" = "PM10",
-                                "bc" = "eBC",
-                                "mp98" = "O3_max_98p_m1"
-      ),
-      pollutant = shortpollutant(parameter),
-      metric = longmetric(parameter),
-      unit = "µg/m3",
-      source = "BAFU & BFS"
-    ) |>
-    dplyr::select(x, y, RELI, year, population, pollutant, metric, parameter, concentration, unit, source)
-
-  return(data)
-}
-
-
-#' Merge municipaity boundaries with BFS statpop spatial rasterdata, convert respective data as well as air quality spatial rasterdata to combined tibble dataset for use in script to calculate population weighted means
-#'
-#' @param data_raster_bfs
-#' @param data_raster_aq
-#' @param years
-#' @param boundaries
-#'
-#' @export
-prepare_weighted_mean <- function(data_raster_bfs, data_raster_aq, years, boundaries, join_by = "bfs", id_subareas = "gemeindename") {
-
-  data_statpop_subareas <-
-    years |>
-    as.character() |>
-    purrr::map(function(yr) {
-      merge_statpop_with_subareas(data_raster_bfs[[yr]], boundaries, join_by, id_subareas) |>
-        dplyr::mutate(year = as.numeric(yr))
-    }) |>
-    dplyr::bind_rows()
-
-  if (join_by == "bfs") {
-    data_statpop_subareas <- dplyr::rename(data_statpop_subareas, bfsnr = bfs)
-    join_by <- "bfsnr"
-  }
-
-  data_aq <-
-    years |>
-    as.character() |>
-    purrr::map(function(yr) {
-      simplify_aq_rasterdata(data_raster_aq[[yr]]) |>
-        dplyr::mutate(year = as.numeric(yr))
-    }) |>
-    dplyr::bind_rows()
-
-  data <- dplyr::right_join(data_statpop_subareas, data_aq, by = c("x", "y", "year"))
-  data <-
-    data |>
-    dplyr::filter(!is.na(population)) |>
-    dplyr::mutate(
-      parameter = dplyr::recode(pollutant,
-                                "no2" = "NO2",
-                                "pm25" = "PM2.5",
-                                "pm10" = "PM10",
-                                "bc" = "eBC",
-                                "mp98" = "O3_max_98p_m1"
-      ),
-      pollutant = shortpollutant(parameter),
-      metric = longmetric(parameter),
-      unit = "µg/m3",
-      source = "BAFU & BFS"
-    ) |>
-    dplyr::select(x, y, RELI, !!join_by, !!id_subareas, year, population, pollutant, metric, parameter, concentration, unit, source)
-
-  return(data)
-}
-
-
 #' Prepare mortality data
 #'
 #' @param data_mortality
@@ -327,32 +203,6 @@ prepare_preliminary_deaths <- function(data_expo_weighmean, data_mortality, outc
 }
 
 
-#' Converts list of stars raster data to tibble data (for BAFU raster data)
-#'
-#' @param rasterlist
-#'
-#' @keywords internal
-bafu_rasterlist_to_tibble <- function(rasterlist) {
-
-  years <- names(rasterlist)
-
-  data <-
-    purrr::map(years, function(yr)
-
-      rasterlist[[yr]]$ndep_exmax |>
-        tibble::as_tibble() |>
-        na.omit() |>
-        dplyr::mutate(
-          year = as.numeric(yr),
-          source = "BAFU"
-        )
-    ) |>
-    dplyr::bind_rows()
-
-  return(data)
-}
-
-
 #' Wrangle life-expectancy data from *.px format into tibble()
 #'
 #' @param data
@@ -468,4 +318,3 @@ prepare_emission_trends <- function(emissions, reference_year_fun) {
 
   return(emissions)
 }
-

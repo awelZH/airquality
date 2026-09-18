@@ -13,19 +13,6 @@ plot_timeseries_ndep_bars(
   title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme"
 )
 }
-\arguments{
-\item{data}{}
-
-\item{xlim}{}
-
-\item{xbreaks}{}
-
-\item{linewidth}{}
-
-\item{color}{}
-
-\item{title}{}
-}
 \description{
 Plot yearly nitrogen deposition timeseries using ggplot2
 }

@@ -4,12 +4,13 @@
 \alias{plot_pars_popmean_timeseries}
 \title{Wrapper to plot timeseries of population-weighted mean concentration data using ggplot2 providing pollutant-specific list}
 \usage{
-plot_pars_popmean_timeseries(data, parameters)
-}
-\arguments{
-\item{data}{}
-
-\item{parameters}{}
+plot_pars_popmean_timeseries(
+  data,
+  parameters,
+  version = "overall",
+  id_subareas = NULL,
+  y = "population_weighted_mean"
+)
 }
 \description{
 Wrapper to plot timeseries of population-weighted mean concentration data using ggplot2 providing pollutant-specific list

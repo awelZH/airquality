@@ -6,9 +6,6 @@
 \usage{
 aggregate_map(map)
 }
-\arguments{
-\item{map}{}
-}
 \description{
 Aggregates sf multipolygon into one bounding polygon
 }

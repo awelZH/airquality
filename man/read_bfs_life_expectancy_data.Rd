@@ -4,10 +4,7 @@
 \alias{read_bfs_life_expectancy_data}
 \title{Reads Swiss BFS life expectancy data ("Kohortensterbetafeln) from official api}
 \usage{
-read_bfs_life_expectancy_data(destination_path = "inst/extdata")
-}
-\arguments{
-\item{destination_path}{}
+read_bfs_life_expectancy_data(destination_path = tempdir())
 }
 \description{
 Reads Swiss BFS life expectancy data ("Kohortensterbetafeln) from official api

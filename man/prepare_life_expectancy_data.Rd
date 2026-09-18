@@ -6,9 +6,6 @@
 \usage{
 prepare_life_expectancy_data(data)
 }
-\arguments{
-\item{data}{}
-}
 \description{
 Wrangle life-expectancy data from *.px format into tibble()
 }

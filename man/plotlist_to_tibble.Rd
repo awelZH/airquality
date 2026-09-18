@@ -6,13 +6,6 @@
 \usage{
 plotlist_to_tibble(plotlist, type, source)
 }
-\arguments{
-\item{plotlist}{}
-
-\item{type}{}
-
-\item{source}{}
-}
 \description{
 Restructures list of plots to a tibble including plots
 }

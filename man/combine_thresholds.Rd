@@ -6,11 +6,6 @@
 \usage{
 combine_thresholds(data, threshold_values)
 }
-\arguments{
-\item{data}{}
-
-\item{threshold_values}{}
-}
 \description{
 Merge air pollution dataset with corresponding threshold limit values dataset
 }

@@ -4,12 +4,11 @@
 \alias{plot_pars_monitoring_timeseries}
 \title{Wrapper to plot timeseries yearly data using ggplot2 providing pollutant-specific list}
 \usage{
-plot_pars_monitoring_timeseries(data, parameters)
-}
-\arguments{
-\item{data}{}
-
-\item{parameters}{}
+plot_pars_monitoring_timeseries(
+  data,
+  parameters,
+  cap = "Datenabdeckung: Kanton Zürich, Daten: Ostluft & NABEL (BAFU & Empa)"
+)
 }
 \description{
 Wrapper to plot timeseries yearly data using ggplot2 providing pollutant-specific list

@@ -1,27 +1,27 @@
 
 
-#' just to bring ist into required structure
+
+#' Get the download url of a BFS asset from the BFS DAM api
 #'
-#' @param years
-#' @param data_raster_pm25
-#' @param data_raster_pm10
-#' @param data_raster_no2
-#' @param data_raster_o3mp98
-#' @param data_raster_ndep
+#' @param bfs_nr BFS order number, e.g. "px-x-0102020300_101".
+#'
+#' @return Url of the master file of the asset.
 #'
 #' @keywords internal
-combine_raster_aq <- function(years, data_raster_pm25, data_raster_pm10, data_raster_no2, data_raster_o3mp98, data_raster_ndep) {
+get_bfs_asset_url <- function(bfs_nr) {
 
-  data_raster_aq <-
-    setNames(years$all, years$all) |>
-    purrr::map(function(year) list(
-      pm25 = data_raster_pm25[[as.character(year)]]$pm25,
-      pm10 = data_raster_pm10[[as.character(year)]]$pm10,
-      no2 = data_raster_no2[[as.character(year)]]$no2,
-      mp98 = data_raster_o3mp98[[as.character(year)]]$mp98
-    )) |>
-    purrr::map(function(x) x[which(!sapply(x, is.null))])
+  data <-
+    httr2::request("https://dam-api.bfs.admin.ch/hub/api/dam/assets") |>
+    httr2::req_url_query(orderNr = bfs_nr) |>
+    httr2::req_headers(accept = "application/json") |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
 
-  return(data_raster_aq )
+  hrefs <- purrr::map_chr(data[["data"]][[1]][["links"]], "href")
+  master <- hrefs[stringr::str_detect(hrefs, "/master$")]
+  if (length(master) != 1) {
+    cli::cli_abort("Expected one master file for BFS asset {.val {bfs_nr}}, found {length(master)}.")
+  }
+
+  return(master)
 }
-

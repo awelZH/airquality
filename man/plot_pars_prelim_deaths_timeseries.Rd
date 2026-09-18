@@ -6,13 +6,6 @@
 \usage{
 plot_pars_prelim_deaths_timeseries(data, parameters, relative = FALSE)
 }
-\arguments{
-\item{data}{}
-
-\item{parameters}{}
-
-\item{relative}{}
-}
 \description{
 Wrapper to plot timeseries of health-outcome preliminary deaths using ggplot2 providing pollutant-specific list
 }

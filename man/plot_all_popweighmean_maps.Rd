@@ -6,13 +6,6 @@
 \usage{
 plot_all_popweighmean_maps(parameter, data, data_canton)
 }
-\arguments{
-\item{parameter}{}
-
-\item{data}{}
-
-\item{data_canton}{}
-}
 \description{
 Wrapper to plot pollutant-specific population weighted mean maps by municipality in a nested list by pollutant & year
 }

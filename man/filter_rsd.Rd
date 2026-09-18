@@ -6,11 +6,6 @@
 \usage{
 filter_rsd(data, filters)
 }
-\arguments{
-\item{data}{}
-
-\item{filters}{}
-}
 \description{
 Filter RSD dataset using filter criteria
 }

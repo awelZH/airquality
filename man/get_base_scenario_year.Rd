@@ -6,9 +6,6 @@
 \usage{
 get_base_scenario_year(base = "min", ...)
 }
-\arguments{
-\item{...}{}
-}
 \description{
 Get year of health-outcome base scenario: either provided year or a provided function
 }

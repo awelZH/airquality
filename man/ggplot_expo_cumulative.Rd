@@ -18,29 +18,6 @@ ggplot_expo_cumulative(
   theme = ggplot2::theme_minimal()
 )
 }
-\arguments{
-\item{data}{}
-
-\item{x}{}
-
-\item{y}{}
-
-\item{linewidth}{}
-
-\item{xlims}{}
-
-\item{xbreaks}{}
-
-\item{titlelab}{}
-
-\item{captionlab}{}
-
-\item{xlabel}{}
-
-\item{threshold}{}
-
-\item{theme}{}
-}
 \description{
 Plot relative cumulative exposition distribution using ggplot2
 }

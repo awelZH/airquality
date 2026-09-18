@@ -6,9 +6,6 @@
 \usage{
 timeseriespars(parameter)
 }
-\arguments{
-\item{parameter}{}
-}
 \description{
 Wrapper to supply pollutant-specific list of parameters for timeseries plotting
 }

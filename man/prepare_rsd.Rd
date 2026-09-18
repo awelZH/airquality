@@ -6,11 +6,6 @@
 \usage{
 prepare_rsd(data, rsd_auxiliary)
 }
-\arguments{
-\item{data}{}
-
-\item{rsd_auxiliary}{}
-}
 \description{
 Merge RSD metadate with dataset, apply filters, calculate vehicle specific power, calculate NOx-emissions and prepare dataset for aggregation
 }

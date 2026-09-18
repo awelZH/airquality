@@ -12,17 +12,6 @@ aggregate_rsd(
   nmin = 50
 )
 }
-\arguments{
-\item{data}{}
-
-\item{meta}{}
-
-\item{y}{}
-
-\item{groups}{}
-
-\item{nmin}{}
-}
 \description{
 Aggregate emissions from RSD dataset using some statistical functions
 }

@@ -6,9 +6,6 @@
 \usage{
 extract_year(string)
 }
-\arguments{
-\item{string}{}
-}
 \description{
 Extract numeric year from string
 }

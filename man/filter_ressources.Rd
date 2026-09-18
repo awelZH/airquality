@@ -6,11 +6,6 @@
 \usage{
 filter_ressources(ressources, internal_id)
 }
-\arguments{
-\item{ressources}{}
-
-\item{internal_id}{}
-}
 \description{
 Get entry from ressources.csv by internal id
 }

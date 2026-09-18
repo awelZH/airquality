@@ -1,89 +1,89 @@
-# compiling available raster data air quality modelling as well as inhabitant population data to derive population exposition
-# also compile ecosystem exposition towards nitrogen deposition
+# compiling inhabitant population exposition towards air pollutants (NO2, PM10, PM2.5, O3) from BAFU raster
+# data and BFS STATPOP inhabitant raster data, as well as sensitive ecosystem exposition towards nitrogen
+# deposition (exceedance of critical loads)
+#
+# all years are recomputed on every run and the output files are overwritten (downloads are cached by
+# airquality.methods, see airquality.methods::geo_admin_cache_dir())
+#
+# aggregation levels: canton (all cells whose centre lies inside the canton) and municipality (one row per
+# bfs number); every cell inside the canton has a municipality (lake cells: nearest municipality), so the
+# municipalities add up to the canton
+#
+# STATPOP collector pixels: the inhabitants BFS cannot locate are subtracted from their collector pixel and
+# spread over the inhabited cells of their municipality in proportion to the cells' inhabitants
 
 
-# to do: 
-# use gdalcubes
-# 1) download missing aq *.tiff extent Kt ZH and save locally
-# 2) download missing bfs and save as raster data locally
-# 3) make a cube out of it
-# 4) ...
+# settings ...
+# ---
+# => years to analyse: STATPOP is available from 2010 on, new raster data usually appear late in the following year
+years_exposition <- 2010:(lubridate::year(Sys.Date()) - year_offset)
 
 
-# => check which year for each parameter is last available and which might be added, always include base_scenario_year for pollutants
-years <- airquality.methods::get_years(read_all_raster, lubridate::year(Sys.Date()) - year_offset, base_scenario_year)
+# read datasets ...
+# ---
+# => inhabitants (STATPOP, collector pixels subtracted if expo_correct_noloc) and pollutant raster data,
+#    pollutants averaged onto the 100 m STATPOP grid of the same year
+data_raster_expo <- read_exposition_rasters(years_exposition, map_municipalities, correct_noloc = expo_correct_noloc)
 
-if ((length(years$all) == 1 & !years$base_analysed) | length(years$all) > 1) {
-  
-  # read datasets ...
-  # ---
-  # => get all available BAFU air pollutant PM2.5, PM10, NO2, O3 raster data as well as nitrogen deposition including pre-compiled ecosystem exposition data from geo.admin.ch for specified years
-  data_raster_aq <- airquality.methods::read_all_raster_data(ressources, years, map_canton)
-  data_raster_ndep <- airquality.methods::read_bafu_raster_data(airquality.methods::filter_ressources(ressources, 19), years_filter = years$ndep_exmax, map_canton) # ndep is already exposition data and exists from 1990 on
-  years$all <- as.numeric(names(data_raster_aq))
-  
-  # => download / read BFS statpop data for same years as pollutant raster data
-  data_raster_bfs <- purrr::map(setNames(years$all, years$all), function(year) airquality.methods::read_statpop_raster_data(year, "inst/extdata", map_canton))
+# => critical load exceedance for nitrogen in sensitive ecosystems, all available model years
+data_ndep <- read_ndep_exceedance(map_municipalities)
 
-  # prepare datasets ...
-  # ---
-  # => spatially average pollutant raster data to the grid of statpop data (100x100m)
-  data_raster_aq <- purrr::map2(data_raster_bfs, data_raster_aq, airquality.methods::average_to_statpop)
-  
-  # => derive & add O3 peak-season rasterdata by statistical relationships
-  source("scripts/_derive_o3_peak-season_rasterdata.R", encoding = "UTF-8")
-  
-  # => derive PM2.5 raster data from PM10 raster data before 2015 using measured PM2.5:PM10 ratios
-  if (any(years$all %in% 2010:2014)) {source("scripts/_derive_pm25_rasterdata.R", encoding = "UTF-8")}
-  
-  # if already analysed: exclude base_scenario_year from analysis
-  if (years$base_analysed) {years$all <- years$all[years$all != base_scenario_year]}
-  
-  # => convert pollutant and statpop data into a common tibble & calculate inhabitant exposition per raster cell (will also later be used to derive health outcomes)
-  data_expo_pop <- airquality.methods::prepare_exposition(data_raster_bfs, data_raster_aq, years$all)
-  
-  # => get base-scenario pollutant raster data and average them to the grid of statpop data for the remaining years
-  data_raster_aq_basescenario <- airquality.methods::prepare_rasterdata_aq_base(data_raster_bfs, data_raster_aq, base_scenario_year)
-  
-  # => also convert base-scenario pollutant and statpop data into a common tibble & calculate inhabitant exposition per raster cell
-  data_expo_pop_basescenario <- airquality.methods::prepare_exposition(data_raster_bfs[as.character(years$all[years$all != base_scenario_year])], data_raster_aq_basescenario, years$all[years$all != base_scenario_year])
-  
-  # => join raster and municipality data 
-  data_expo_municip <- airquality.methods::prepare_weighted_mean(data_raster_bfs, data_raster_aq, years$all, map_municipalities)
-  data_expo_municip_basescenario <- airquality.methods::prepare_weighted_mean(data_raster_bfs[as.character(years$all[years$all != base_scenario_year])], data_raster_aq_basescenario, years$all[years$all != base_scenario_year], map_municipalities)
-  
-  # aggregate datasets ...
-  # ---
-  # => inhabitant population exposition distribution by concentration class
-  data_expo_population_dist <- airquality.methods::aggregate_population_exposition_distrib(data_expo_pop)
-  
-  # => sensitive ecosystem reactive nitrogen deposition exposition: distribution across all sensitive ecosystems
-  if (length(data_raster_ndep) > 0) {
-    data_raster_ndep <- airquality.methods::bafu_rasterlist_to_tibble(data_raster_ndep)
-    data_expo_ecosys_dist <- airquality.methods::aggregate_ndep_exposition_distrib(data_raster_ndep) 
-  }
-  
-  # => population-weighted mean values per year, pollutant and municipality / canton (including base-scenario)
-  data_pop_weighted_mean <- list(canton = 
-                                   airquality.methods::aggregate_population_weighted_mean(data_expo_municip_basescenario) |> 
-                                   dplyr::rename(population_weighted_mean_base = population_weighted_mean) |> 
-                                   dplyr::select(year, pollutant, metric, parameter, population_weighted_mean_base) |> 
-                                   dplyr::mutate(base_year = base_scenario_year) |> 
-                                   dplyr::right_join(airquality.methods::aggregate_population_weighted_mean(data_expo_municip), by = c("year", "pollutant", "metric", "parameter")) |> 
-                                   dplyr::arrange(year, pollutant)
-  )
-  data_pop_weighted_mean$munipalities <- airquality.methods::aggregate_population_weighted_mean(data_expo_municip, groups = c("year", "pollutant", "metric", "parameter", "bfsnr", "gemeindename"))
-  data_pop_weighted_mean$munipalities <- dplyr::filter(data_pop_weighted_mean$munipalities, !is.na(gemeindename)) # lakes = NA
-  
-  
-  # write output datasets & clean up:
-  # ---
-  airquality.methods::write_local_csv(data_pop_weighted_mean$canton, file = "inst/extdata/output/data_exposition_weighted_means_canton.csv", append = !read_all_raster)
-  airquality.methods::write_local_csv(data_pop_weighted_mean$munipalities, file = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv", append = !read_all_raster)
-  airquality.methods::write_local_csv(data_expo_population_dist, file = "inst/extdata/output/data_exposition_distribution_pollutants.csv", append = !read_all_raster)
-  if (length(data_raster_ndep) > 0) {airquality.methods::write_local_csv(data_expo_ecosys_dist, file = "inst/extdata/output/data_exposition_distribution_ndep.csv", append = !read_all_raster)}
-  
-}
+# => air quality monitoring data for deriving O3 peak-season and PM2.5 raster data
+data_monitoring_aq <- airquality.data::data_monitoring_aq_y1
 
-rm(list = c("years", "data_raster_bfs", "data_raster_aq", "data_raster_ndep", "data_expo_municip", 
-            "data_expo_population_dist", "data_expo_ecosys_dist", "data_pop_weighted_mean", "map_canton"))
+
+# prepare datasets ...
+# ---
+# => one row per inhabited cell and year; each cell gets the municipality its centre lies in
+data_expo_cells <-
+  data_raster_expo |>
+  rasters_to_cells() |>
+  assign_municipalities(map_municipalities)
+
+# => give the collector pixel inhabitants back to their municipality (no-op if expo_correct_noloc is FALSE)
+data_expo_cells <- redistribute_noloc(data_expo_cells, noloc_from_aligned(data_raster_expo), map_municipalities)
+
+# => derive O3 peak-season concentrations from NO2 by the statistical relationship at monitoring sites
+coefs_o3_peakseason <- fit_o3_peakseason_model(data_monitoring_aq)
+data_expo_cells <- derive_o3_peakseason(data_expo_cells, coefs_o3_peakseason)
+
+# => derive PM2.5 from PM10 before 2015 using measured PM2.5:PM10 ratios at NABEL sites
+ratios_pm <- fit_pm_ratio(data_monitoring_aq)
+data_expo_cells <- derive_pm25_from_pm10(data_expo_cells, ratios_pm, years = min(years_exposition):2014)
+
+# => both models are refitted on every run with the current monitoring data (earlier years may shift
+#    slightly); log the coefficients of each run to make such shifts traceable
+append_log(tidy_derivation_coefficients(coefs_o3_peakseason, ratios_pm), "inst/extdata/log/exposition_derivation_coefficients.csv")
+
+# => long format: one row per cell, year and parameter, with base-scenario concentrations
+#    (inhabitants of each year exposed to the concentrations of base_scenario_year)
+data_expo <-
+  data_expo_cells |>
+  cells_to_long() |>
+  add_base_scenario(base_scenario_year)
+
+
+# aggregate datasets ...
+# ---
+# => population-weighted mean values per year and pollutant: canton (including base scenario) and municipalities
+data_expo_weighted_mean_canton <- combine_canton_means(data_expo, base_scenario_year)
+data_expo_weighted_mean_municipalities <- aggregate_population_weighted_mean(data_expo, level = "municipality")
+
+# => inhabitant population exposition distribution by concentration class (canton)
+data_expo_population_dist <- aggregate_population_exposition_distrib(data_expo)
+
+# => sensitive ecosystem exposition distribution by class of critical load exceedance (canton)
+data_expo_ecosys_dist <- aggregate_ndep_exposition_distrib(data_ndep)
+
+
+# write output datasets & clean up:
+# ---
+# => inhabitant counts rounded to whole persons (redistributed collector inhabitants are fractional)
+airquality.methods::write_local_csv(round_population(data_expo_weighted_mean_canton), file = "inst/extdata/output/data_exposition_weighted_means_canton.csv")
+airquality.methods::write_local_csv(round_population(data_expo_weighted_mean_municipalities), file = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv")
+airquality.methods::write_local_csv(round_population(data_expo_population_dist), file = "inst/extdata/output/data_exposition_distribution_pollutants.csv")
+airquality.methods::write_local_csv(data_expo_ecosys_dist, file = "inst/extdata/output/data_exposition_distribution_ndep.csv")
+
+rm(list = c("years_exposition", "data_raster_expo", "data_ndep", "data_monitoring_aq", "data_expo_cells",
+            "coefs_o3_peakseason", "ratios_pm", "data_expo", "data_expo_weighted_mean_canton",
+            "data_expo_weighted_mean_municipalities", "data_expo_population_dist", "data_expo_ecosys_dist"))

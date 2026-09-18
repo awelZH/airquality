@@ -6,9 +6,6 @@
 \usage{
 bin_fun(pollutant)
 }
-\arguments{
-\item{pollutant}{}
-}
 \description{
 Return function to bin concentration depending on parameter
 }

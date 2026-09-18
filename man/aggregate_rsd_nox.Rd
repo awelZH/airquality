@@ -10,13 +10,6 @@ aggregate_rsd_nox(
   groups = c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm")
 )
 }
-\arguments{
-\item{data}{}
-
-\item{rsd_auxiliary}{}
-
-\item{groups}{}
-}
 \description{
 Combines measurement data with auxiliary metadata, filters dataset using provided filter criteria
 and calculates mean values of specified vehicle groups.

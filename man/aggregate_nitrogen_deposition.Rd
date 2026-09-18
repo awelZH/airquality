@@ -6,9 +6,6 @@
 \usage{
 aggregate_nitrogen_deposition(data)
 }
-\arguments{
-\item{data}{}
-}
 \description{
 Simplifies nitrogen deposition components to broader source categories and aggregates nitrogen deposition input dataset
 per year, site, ecosystem category and source category.

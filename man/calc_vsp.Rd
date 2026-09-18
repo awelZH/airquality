@@ -14,21 +14,6 @@ calc_vsp(
   vsp.g = 9.81
 )
 }
-\arguments{
-\item{speed}{}
-
-\item{accel}{}
-
-\item{slope}{}
-
-\item{vsp.a}{}
-
-\item{vsp.b}{}
-
-\item{vsp.c}{}
-
-\item{vsp.g}{}
-}
 \description{
 Calculate vehicle specific power following Jiménez
 }

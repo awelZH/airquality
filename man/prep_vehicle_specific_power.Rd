@@ -6,9 +6,6 @@
 \usage{
 prep_vehicle_specific_power(data)
 }
-\arguments{
-\item{data}{}
-}
 \description{
 Add calculated vehicle specific power to RSD dataset
 }

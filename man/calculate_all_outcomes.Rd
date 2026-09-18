@@ -6,11 +6,6 @@
 \usage{
 calculate_all_outcomes(data, conc_threshold = "lower_conc_threshold")
 }
-\arguments{
-\item{data}{}
-
-\item{conc_threshold}{}
-}
 \description{
 Calculate range of health outcomes from input-dataset (most likely value, lower and upper confidence intervals crf)
 }

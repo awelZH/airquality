@@ -1,0 +1,638 @@
+# Population and ecosystem exposition: from geo.admin raster data to the cell
+# table, and from the cell table to the aggregated outputs.
+#
+# The unit of work is the *cell table*: one row per 100 m STATPOP cell and year,
+# with the inhabitants, the municipality the cell centre lies in and one column
+# per pollutant. Canton and municipality are two aggregation levels of the same
+# cell table, so both are always computed from identical cells.
+
+
+# ---- constants -----------------------------------------------------------------
+
+#' geo.admin collections used for the population exposition
+#'
+#' @keywords internal
+exposition_collections <- c(
+  statpop = "ch.bfs.statistik-bevoelkerung_haushalte",
+  no2 = "ch.bafu.luftreinhaltung-stickstoffdioxid",
+  pm10 = "ch.bafu.luftreinhaltung-feinstaub_pm10",
+  pm2_5 = "ch.bafu.luftreinhaltung-feinstaub_pm2_5",
+  o3_max_98p_m1 = "ch.bafu.luftreinhaltung-ozon"
+)
+
+#' Parameter names of the cell-table pollutant columns, as used in all outputs
+#'
+#' @keywords internal
+exposition_parameters <- c(
+  no2 = "NO2",
+  pm10 = "PM10",
+  pm2_5 = "PM2.5",
+  o3_max_98p_m1 = "O3_max_98p_m1",
+  o3_peakseason_mean_d1_max_mean_h8gl = "O3_peakseason_mean_d1_max_mean_h8gl"
+)
+
+#' geo.admin collection of the critical load exceedance for nitrogen
+#'
+#' @keywords internal
+ndep_collection <- "ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag"
+
+
+# ---- read ------------------------------------------------------------------------
+
+#' Read inhabitant and pollutant rasters and align them onto the STATPOP grid
+#'
+#' Pollutants are averaged (GDAL `average`) onto the 100 m grid of the STATPOP
+#' raster of the same year; STATPOP itself is never resampled.
+#'
+#' @param years Years to read.
+#' @param boundary `sf` object; its bounding box limits the download.
+#' @param correct_noloc Subtract the STATPOP collector pixels (inhabitants that
+#'   cannot be located), see [airquality.methods::read_statpop_ha()].
+#'
+#' @return Output of [airquality.methods::align_to_reference()]: one row per
+#'   year with a `stars` object holding `BBTOT` and the pollutants.
+#'
+#' @keywords internal
+read_exposition_rasters <- function(years, boundary, correct_noloc = TRUE) {
+  specs <- airquality.methods::geo_admin_specs()
+  specs[[exposition_collections[["statpop"]]]]$args$correct_noloc <- correct_noloc
+
+  airquality.methods::read_geo_admin(
+    unname(exposition_collections),
+    years = years,
+    bbox = boundary,
+    specs = specs
+  ) |>
+    airquality.methods::align_to_reference(reference = exposition_collections[["statpop"]])
+}
+
+#' Read the critical load exceedance for nitrogen, restricted to the canton
+#'
+#' @param map_municipalities Municipality polygons; cells whose centre lies in
+#'   none of them are dropped.
+#' @param years Years to read (`NULL` = all available).
+#'
+#' @return Tibble with `x`, `y`, `year`, `ndep_exmax` (kgN/ha/a above the
+#'   critical load).
+#'
+#' @keywords internal
+read_ndep_exceedance <- function(map_municipalities, years = NULL) {
+  data <- airquality.methods::read_geo_admin(ndep_collection, years = years, bbox = map_municipalities)
+
+  purrr::map2(data$stars, data$year, \(raster, year) {
+    tibble::as_tibble(raster) |>
+      dplyr::mutate(year = as.numeric(year))
+  }) |>
+    purrr::list_rbind() |>
+    dplyr::rename(ndep_exmax = "n_deposition_exceedance") |>
+    dplyr::filter(!is.na(.data$ndep_exmax)) |>
+    assign_municipalities(map_municipalities) |>
+    dplyr::filter(!is.na(.data$bfsnr)) |>
+    dplyr::select("x", "y", "year", "ndep_exmax")
+}
+
+
+# ---- cell table ------------------------------------------------------------------
+
+#' Convert aligned rasters into the cell table
+#'
+#' @param aligned Output of [read_exposition_rasters()].
+#'
+#' @return Tibble with one row per inhabited cell and year: `x`, `y` (cell
+#'   centres), `year`, `population` and one column per pollutant (`NA` where a
+#'   pollutant is not available for that year).
+#'
+#' @keywords internal
+rasters_to_cells <- function(aligned) {
+  cells <- purrr::map2(aligned$stars, aligned$year, \(raster, year) {
+    tibble::as_tibble(raster) |>
+      dplyr::mutate(year = as.numeric(year))
+  }) |>
+    purrr::list_rbind() |>
+    dplyr::rename(population = "BBTOT") |>
+    dplyr::filter(!is.na(.data$population))
+
+  missing <- setdiff(names(exposition_collections)[-1], names(cells))
+  cells[missing] <- NA_real_
+
+  dplyr::select(cells, "x", "y", "year", "population", dplyr::all_of(names(exposition_collections)[-1]))
+}
+
+#' Remove enclaves of other cantons from the municipality map
+#'
+#' The geolion map contains the Kloster Fahr, an enclave of the Canton of Aargau
+#' (`bfs = 0`, "ausserkantonale Enklave"). It is not part of the canton.
+#'
+#' @param map_municipalities `sf` polygons with `art_text`.
+#'
+#' @return `map_municipalities` without enclaves of other cantons.
+#'
+#' @keywords internal
+drop_foreign_enclaves <- function(map_municipalities) {
+  foreign <- stringr::str_detect(map_municipalities$art_text, "ausserkantonal")
+  dplyr::filter(map_municipalities, !foreign)
+}
+
+#' Assign each cell the municipality its centre lies in
+#'
+#' Exclaves are separate features with the same `bfs` number, so every cell is
+#' matched to at most one feature and counted exactly once. Cells whose centre
+#' lies in a lake belonging to no municipality (`bfs = 0`, no name) are
+#' inhabited shore cells: they get the nearest municipality. Cells outside every
+#' feature are outside the canton. Remove enclaves of other cantons first, see
+#' [drop_foreign_enclaves()].
+#'
+#' @param cells Tibble with cell centre coordinates `x`, `y`.
+#' @param map_municipalities `sf` polygons with `bfs` and `gemeindename`.
+#'
+#' @return `cells` with `bfsnr` and `gemeindename` added (`NA` outside the
+#'   canton).
+#'
+#' @keywords internal
+assign_municipalities <- function(cells, map_municipalities) {
+  lookup <- map_municipalities |>
+    sf::st_drop_geometry() |>
+    dplyr::distinct(.data$bfs, .data$gemeindename)
+  if (anyDuplicated(lookup$bfs) > 0) {
+    cli::cli_abort(c(
+      "x" = "Each {.field bfs} number must map to exactly one {.field gemeindename}.",
+      "i" = "Ambiguous: {.val {unique(lookup$bfs[duplicated(lookup$bfs)])}}."
+    ))
+  }
+
+  centres <- dplyr::distinct(cells, .data$x, .data$y)
+  points <- sf::st_as_sf(centres, coords = c("x", "y"), crs = sf::st_crs(map_municipalities))
+  hits <- sf::st_intersects(points, map_municipalities)
+  feature <- purrr::map_int(hits, \(i) if (length(i) > 0) i[[1]] else NA_integer_)
+
+  # cells in a lake: nearest municipality
+  municipal <- which(!is.na(map_municipalities$gemeindename))
+  in_lake <- which(!is.na(feature) & !feature %in% municipal)
+  if (length(in_lake) > 0) {
+    nearest <- sf::st_nearest_feature(points[in_lake, ], map_municipalities[municipal, ])
+    feature[in_lake] <- municipal[nearest]
+    cli::cli_inform("{length(in_lake)} cell{?s} with the centre in a lake assigned to the nearest municipality.")
+  }
+
+  centres <- centres |>
+    dplyr::mutate(
+      bfsnr = map_municipalities$bfs[feature],
+      gemeindename = map_municipalities$gemeindename[feature]
+    )
+
+  dplyr::left_join(cells, centres, by = dplyr::join_by("x", "y"), relationship = "many-to-one")
+}
+
+
+# ---- STATPOP collector pixels ------------------------------------------------------
+
+#' Inhabitants subtracted from the STATPOP collector pixels
+#'
+#' @param aligned Output of [read_exposition_rasters()]; its `noloc` column holds
+#'   the audit of [airquality.methods::subtract_noloc()] per year (`NULL` if no
+#'   correction was applied).
+#'
+#' @return Tibble with `year`, `x`, `y` (cell centre) and `noloc` (inhabitants
+#'   subtracted from that cell).
+#'
+#' @keywords internal
+noloc_from_aligned <- function(aligned) {
+  empty <- tibble::tibble(year = numeric(), x = numeric(), y = numeric(), noloc = numeric())
+  if (!"noloc" %in% names(aligned)) {
+    return(empty)
+  }
+
+  purrr::pmap(list(aligned$noloc, aligned$year, aligned$res_x), \(audit, year, res) {
+    if (is.null(audit) || nrow(audit) == 0) {
+      return(NULL)
+    }
+    # collector pixel coordinates are lower-left cell corners
+    tibble::tibble(
+      year = as.numeric(year),
+      x = audit$E_KOORD + res / 2,
+      y = audit$N_KOORD + res / 2,
+      noloc = audit$subtracted
+    )
+  }) |>
+    purrr::list_rbind() |>
+    (\(x) if (is.null(x) || nrow(x) == 0) empty else dplyr::filter(x, .data$noloc > 0))()
+}
+
+#' Spread the inhabitants of the collector pixels over their municipality
+#'
+#' The inhabitants BFS cannot locate sit in one collector pixel per
+#' municipality; [airquality.methods::read_statpop_ha()] subtracts them. Here
+#' they are given back to their municipality, spread over its inhabited cells
+#' in proportion to the inhabitants of each cell (factor
+#' `1 + noloc / located`). Assumption: they are exposed like the located
+#' inhabitants of the same municipality; the municipality's population-weighted
+#' mean stays unchanged, its population becomes complete again.
+#'
+#' @param cells Cell table with `year`, `population`, `bfsnr`.
+#' @param noloc Output of [noloc_from_aligned()].
+#' @param map_municipalities Municipality polygons; collector pixels outside
+#'   the canton are ignored.
+#'
+#' @return `cells` with adjusted `population`.
+#'
+#' @keywords internal
+redistribute_noloc <- function(cells, noloc, map_municipalities) {
+  if (nrow(noloc) == 0) {
+    return(cells)
+  }
+
+  noloc_municipal <- noloc |>
+    assign_municipalities(map_municipalities) |>
+    dplyr::filter(!is.na(.data$bfsnr)) |>
+    dplyr::summarise(noloc = sum(.data$noloc), .by = c("year", "bfsnr", "gemeindename"))
+
+  located <- cells |>
+    dplyr::filter(!is.na(.data$bfsnr), .data$population > 0) |>
+    dplyr::summarise(located = sum(.data$population), .by = c("year", "bfsnr"))
+
+  factors <- noloc_municipal |>
+    dplyr::left_join(located, by = dplyr::join_by("year", "bfsnr"), relationship = "one-to-one")
+
+  lost <- dplyr::filter(factors, is.na(.data$located))
+  if (nrow(lost) > 0) {
+    cli::cli_warn(c(
+      "!" = "{sum(lost$noloc)} collector inhabitant{?s} cannot be redistributed: no inhabited cell.",
+      "i" = "Municipalities: {.val {unique(lost$gemeindename)}}."
+    ))
+  }
+
+  factors <- factors |>
+    dplyr::filter(!is.na(.data$located)) |>
+    dplyr::transmute(.data$year, .data$bfsnr, .factor = 1 + .data$noloc / .data$located)
+
+  cells |>
+    dplyr::left_join(factors, by = dplyr::join_by("year", "bfsnr"), relationship = "many-to-one") |>
+    dplyr::mutate(population = .data$population * dplyr::coalesce(.data$.factor, 1)) |>
+    dplyr::select(!".factor")
+}
+
+#' Round inhabitant counts to whole persons for output
+#'
+#' @param data Aggregated output table.
+#'
+#' @return `data` with `population` and `population_cum` rounded.
+#'
+#' @keywords internal
+round_population <- function(data) {
+  dplyr::mutate(data, dplyr::across(dplyr::any_of(c("population", "population_cum")), round))
+}
+
+
+# ---- derived parameters ---------------------------------------------------------
+
+#' Fit the O3 peak-season model from monitoring data
+#'
+#' Robust linear regression of the O3 peak-season metric on NO2 with a common
+#' slope and one offset per year, `O3_peakseason ~ NO2 + factor(year) - 1`,
+#' using only years with at least `nmin_sites` sites measuring both.
+#'
+#' @param monitoring Monitoring data (`airquality.data::data_monitoring_aq_y1`).
+#' @param nmin_sites Minimum number of sites per year.
+#'
+#' @return Tibble with `year`, `offset`, `slope`.
+#'
+#' @keywords internal
+fit_o3_peakseason_model <- function(monitoring, nmin_sites = 7) {
+  data <- monitoring |>
+    dplyr::filter(.data$parameter %in% c("O3_peakseason_mean_d1_max_mean_h8gl", "NO2")) |>
+    dplyr::select("year", "site", "masl", "parameter", "concentration") |>
+    tidyr::pivot_wider(names_from = "parameter", values_from = "concentration") |>
+    tidyr::drop_na() |>
+    dplyr::filter(dplyr::n() >= nmin_sites, .by = "year")
+
+  coefs <- fit_rlm_per_year(data, "O3_peakseason_mean_d1_max_mean_h8gl", covariate = "NO2")
+
+  tibble::tibble(year = extract_year(names(coefs)), offset = unname(coefs)) |>
+    dplyr::filter(!is.na(.data$year)) |>
+    dplyr::mutate(slope = unname(coefs[["NO2"]]))
+}
+
+#' Robust regression with one offset per year and an optional common slope
+#'
+#' Equivalent to `MASS::rlm(y ~ covariate + factor(year) - 1)`, but with an
+#' explicit design matrix so that a single year works as well.
+#'
+#' @param data Data with `year`, `response` and `covariate` columns.
+#' @param response Name of the response column.
+#' @param covariate Name of the covariate column, or `NULL`.
+#'
+#' @return Named coefficient vector: `covariate` and `year<YYYY>`.
+#'
+#' @keywords internal
+fit_rlm_per_year <- function(data, response, covariate = NULL) {
+  years <- sort(unique(data$year))
+  if (length(years) == 0) {
+    cli::cli_abort("No year has enough data to fit {.field {response}}.")
+  }
+
+  offsets <- purrr::map(years, \(yr) as.numeric(data$year == yr))
+  x <- do.call(cbind, c(if (!is.null(covariate)) list(data[[covariate]]), offsets))
+  colnames(x) <- c(covariate, paste0("year", years))
+
+  stats::coefficients(MASS::rlm(x = x, y = data[[response]]))
+}
+
+#' Derive the O3 peak-season concentration from NO2 cell by cell
+#'
+#' @param cells Cell table with `year` and `no2`.
+#' @param coefs Output of [fit_o3_peakseason_model()].
+#'
+#' @return `cells` with `o3_peakseason_mean_d1_max_mean_h8gl` added.
+#'
+#' @keywords internal
+derive_o3_peakseason <- function(cells, coefs) {
+  missing <- setdiff(unique(cells$year[!is.na(cells$no2)]), coefs$year)
+  if (length(missing) > 0) {
+    cli::cli_warn(c(
+      "!" = "No O3 peak-season coefficients for {.val {missing}}.",
+      "i" = "The O3 peak-season concentration is set to NA for these years."
+    ))
+  }
+
+  cells |>
+    dplyr::left_join(coefs, by = dplyr::join_by("year"), relationship = "many-to-one") |>
+    dplyr::mutate(o3_peakseason_mean_d1_max_mean_h8gl = .data$no2 * .data$slope + .data$offset) |>
+    dplyr::select(!c("offset", "slope"))
+}
+
+#' Estimate the yearly PM2.5:PM10 ratio at NABEL sites
+#'
+#' Robust regression `ratio ~ factor(year) - 1`, i.e. a robust mean ratio per
+#' year.
+#'
+#' @param monitoring Monitoring data (`airquality.data::data_monitoring_aq_y1`).
+#' @param source Monitoring network used.
+#' @param exclude_sites Sites not representative for the canton.
+#' @param min_year First year used.
+#'
+#' @return Tibble with `year`, `ratio`.
+#'
+#' @keywords internal
+fit_pm_ratio <- function(monitoring,
+                         source = "NABEL (BAFU & Empa)",
+                         exclude_sites = "Bern-Bollwerk",
+                         min_year = 2000) {
+  data <- monitoring |>
+    dplyr::filter(
+      .data$source == !!source,
+      .data$parameter %in% c("PM2.5", "PM10"),
+      .data$year >= min_year,
+      !.data$site %in% exclude_sites
+    ) |>
+    dplyr::select("year", "site", "parameter", "concentration") |>
+    tidyr::pivot_wider(names_from = "parameter", values_from = "concentration") |>
+    dplyr::mutate(ratio = .data$PM2.5 / .data$PM10) |>
+    dplyr::filter(!is.na(.data$ratio))
+
+  coefs <- fit_rlm_per_year(data, "ratio")
+
+  tibble::tibble(year = extract_year(names(coefs)), ratio = unname(coefs)) |>
+    dplyr::filter(!is.na(.data$year))
+}
+
+#' Derive PM2.5 from PM10 for years without PM2.5 rasters
+#'
+#' @param cells Cell table with `year`, `pm10`, `pm2_5`.
+#' @param ratios Output of [fit_pm_ratio()].
+#' @param years Years in which missing PM2.5 is derived.
+#'
+#' @return `cells` with `pm2_5` filled where it was missing in `years`.
+#'
+#' @keywords internal
+derive_pm25_from_pm10 <- function(cells, ratios, years = 2010:2014) {
+  target <- intersect(unique(cells$year), years)
+  missing <- setdiff(target, ratios$year)
+  if (length(missing) > 0) {
+    cli::cli_warn("No PM2.5:PM10 ratio for {.val {missing}}; PM2.5 stays NA there.")
+  }
+
+  cells |>
+    dplyr::left_join(ratios, by = dplyr::join_by("year"), relationship = "many-to-one") |>
+    dplyr::mutate(
+      pm2_5 = dplyr::if_else(
+        is.na(.data$pm2_5) & .data$year %in% years,
+        .data$pm10 * .data$ratio,
+        .data$pm2_5
+      )
+    ) |>
+    dplyr::select(!"ratio")
+}
+
+
+#' Coefficients of the derived parameters in long format, for the run log
+#'
+#' The derivation models are refitted on every run with the current monitoring
+#' data, so the values of earlier years can shift slightly between runs. The
+#' log makes such shifts traceable.
+#'
+#' @param coefs_o3 Output of [fit_o3_peakseason_model()].
+#' @param ratios_pm Output of [fit_pm_ratio()].
+#' @param run Identifier of the run, by default the current time.
+#'
+#' @return Tibble with `run`, `parameter`, `year`, `term`, `value`.
+#'
+#' @keywords internal
+tidy_derivation_coefficients <- function(coefs_o3, ratios_pm, run = format(Sys.time(), "%Y-%m-%d %H:%M:%S")) {
+  o3 <- coefs_o3 |>
+    tidyr::pivot_longer(c("offset", "slope"), names_to = "term", values_to = "value") |>
+    dplyr::mutate(parameter = "O3_peakseason_mean_d1_max_mean_h8gl")
+  pm <- ratios_pm |>
+    dplyr::transmute(.data$year, term = "ratio_pm25_pm10", value = .data$ratio, parameter = "PM2.5")
+
+  dplyr::bind_rows(o3, pm) |>
+    dplyr::mutate(run = run) |>
+    dplyr::select("run", "parameter", "year", "term", "value") |>
+    dplyr::arrange(.data$parameter, .data$term, .data$year)
+}
+
+#' Append rows to a semicolon-delimited log file
+#'
+#' Writes the header only when the file does not exist yet.
+#'
+#' @param data Rows to append.
+#' @param file Log file.
+#'
+#' @return `data`, invisibly.
+#'
+#' @keywords internal
+append_log <- function(data, file) {
+  dir.create(dirname(file), recursive = TRUE, showWarnings = FALSE)
+  airquality.methods::write_local_csv(data, file = file, append = file.exists(file))
+}
+
+
+# ---- long format and base scenario ----------------------------------------------
+
+#' Pivot the cell table to one row per cell, year and parameter
+#'
+#' @param cells Cell table.
+#'
+#' @return Tibble with `parameter`, `pollutant`, `metric`, `concentration`;
+#'   cells without a value for a parameter are dropped.
+#'
+#' @keywords internal
+cells_to_long <- function(cells) {
+  cells |>
+    tidyr::pivot_longer(
+      dplyr::any_of(names(exposition_parameters)),
+      names_to = "parameter",
+      values_to = "concentration",
+      values_drop_na = TRUE
+    ) |>
+    dplyr::mutate(
+      parameter = unname(exposition_parameters[.data$parameter]),
+      pollutant = airquality.methods::shortpollutant(.data$parameter),
+      metric = airquality.methods::longmetric(.data$parameter),
+      .before = "concentration"
+    )
+}
+
+#' Attach the base-scenario concentration
+#'
+#' The base scenario combines the inhabitants of each year with the
+#' concentrations of `base_year` in the same cell. All STATPOP years share one
+#' grid, so this is a join on the cell coordinates.
+#'
+#' @param long Output of [cells_to_long()].
+#' @param base_year Reference year.
+#'
+#' @return `long` with `concentration_base` (`NA` in the base year itself).
+#'
+#' @keywords internal
+add_base_scenario <- function(long, base_year) {
+  base <- long |>
+    dplyr::filter(.data$year == base_year) |>
+    dplyr::select("x", "y", "parameter", concentration_base = "concentration")
+
+  long |>
+    dplyr::left_join(base, by = dplyr::join_by("x", "y", "parameter"), relationship = "many-to-one") |>
+    dplyr::mutate(concentration_base = dplyr::if_else(.data$year == base_year, NA, .data$concentration_base))
+}
+
+
+# ---- aggregation -----------------------------------------------------------------
+
+#' Population-weighted mean concentration per canton or municipality
+#'
+#' `level = "canton"` uses every cell inside the canton, including lakes that
+#' belong to no municipality; `level = "municipality"` uses cells with a
+#' municipality, one row per `bfsnr`.
+#'
+#' @param data Output of [cells_to_long()] (optionally [add_base_scenario()]).
+#' @param level `"canton"` or `"municipality"`.
+#' @param concentration Concentration column to average (data-masked).
+#'
+#' @return Tibble with the established output columns.
+#'
+#' @keywords internal
+aggregate_population_weighted_mean <- function(data,
+                                               level = c("canton", "municipality"),
+                                               concentration = concentration) {
+  level <- rlang::arg_match(level)
+  by <- c("year", "pollutant", "metric", "parameter")
+  if (level == "municipality") {
+    data <- dplyr::filter(data, !is.na(.data$gemeindename))
+    by <- c(by, "bfsnr", "gemeindename")
+  } else {
+    data <- dplyr::filter(data, !is.na(.data$bfsnr))
+  }
+
+  data |>
+    dplyr::mutate(.conc = {{ concentration }}) |>
+    dplyr::filter(!is.na(.data$.conc), !is.na(.data$population)) |>
+    dplyr::summarise(
+      population_weighted_mean = calc_population_weighted_mean(.data$.conc, .data$population),
+      population = sum(.data$population),
+      concentration_min = min(.data$.conc),
+      concentration_max = max(.data$.conc),
+      concentration_mean = mean(.data$.conc),
+      concentration_median = stats::median(.data$.conc),
+      .by = dplyr::all_of(by)
+    ) |>
+    dplyr::arrange(dplyr::pick(dplyr::all_of(by))) |>
+    dplyr::mutate(unit = "μg/m3", source = "BAFU & BFS")
+}
+
+#' Canton weighted means with the base scenario alongside
+#'
+#' @param long Output of [add_base_scenario()].
+#' @param base_year Reference year.
+#'
+#' @return Tibble in the shape of `data_exposition_weighted_means_canton.csv`.
+#'
+#' @keywords internal
+combine_canton_means <- function(long, base_year) {
+  keys <- c("year", "pollutant", "metric", "parameter")
+
+  base <- long |>
+    dplyr::filter(.data$year != base_year) |>
+    aggregate_population_weighted_mean(level = "canton", concentration = concentration_base) |>
+    dplyr::select(dplyr::all_of(keys), population_weighted_mean_base = "population_weighted_mean") |>
+    dplyr::mutate(base_year = base_year)
+
+  aggregate_population_weighted_mean(long, level = "canton") |>
+    dplyr::left_join(base, by = keys, relationship = "one-to-one") |>
+    dplyr::relocate("population_weighted_mean_base", "base_year", .after = "parameter") |>
+    dplyr::arrange(.data$year, .data$pollutant)
+}
+
+#' Inhabitants per concentration class in the canton
+#'
+#' Class width depends on the parameter, see [bin_fun()]. Cells without
+#' inhabitants are dropped.
+#'
+#' @param data Output of [cells_to_long()].
+#'
+#' @return Tibble in the shape of `data_exposition_distribution_pollutants.csv`.
+#'
+#' @keywords internal
+aggregate_population_exposition_distrib <- function(data) {
+  keys <- c("year", "pollutant", "metric", "parameter")
+
+  data |>
+    dplyr::filter(!is.na(.data$bfsnr), .data$population > 0) |>
+    dplyr::mutate(
+      concentration = bin_fun(dplyr::first(.data$parameter))(.data$concentration),
+      .by = "parameter"
+    ) |>
+    dplyr::summarise(
+      population = sum(.data$population),
+      .by = dplyr::all_of(c(keys, "concentration"))
+    ) |>
+    dplyr::arrange(.data$year, .data$pollutant, .data$metric, .data$concentration) |>
+    dplyr::mutate(
+      population_cum = cumsum(.data$population),
+      population_cum_rel = .data$population_cum / sum(.data$population),
+      .by = dplyr::all_of(keys)
+    ) |>
+    dplyr::mutate(source = "BAFU & BFS")
+}
+
+#' Sensitive ecosystems per class of critical load exceedance
+#'
+#' Classes of 1 kgN/ha/a, labelled by their centre.
+#'
+#' @param data Tibble with `year` and `ndep_exmax`, e.g. from
+#'   [read_ndep_exceedance()].
+#'
+#' @return Tibble in the shape of `data_exposition_distribution_ndep.csv`.
+#'
+#' @keywords internal
+aggregate_ndep_exposition_distrib <- function(data) {
+  data |>
+    dplyr::filter(!is.na(.data$ndep_exmax)) |>
+    dplyr::mutate(ndep_exmax = floor(.data$ndep_exmax) + 0.5) |>
+    dplyr::summarise(n_ecosys = dplyr::n(), .by = c("year", "ndep_exmax")) |>
+    dplyr::arrange(.data$year, .data$ndep_exmax) |>
+    dplyr::mutate(
+      n_ecosys_cum = cumsum(.data$n_ecosys),
+      n_ecosys_cum_rel = .data$n_ecosys_cum / sum(.data$n_ecosys),
+      source = "BAFU",
+      .by = "year"
+    )
+}

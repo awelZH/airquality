@@ -110,90 +110,6 @@ calc_rsd_nox_emission <- function(NO, p, CO2, CO, HC) { # all concentrations in 
 }
 
 
-#' Average stars raster data to another stars grid as mean values
-#'
-#' @param data
-#' @param grid
-#' @param method
-#' @param na_val
-#'
-#' @keywords internal
-average_to_grid <- function(data, grid, method = "average", na_val = -999) {
-
-  parameter <- names(data)
-  data <- stars::st_warp(data, grid, method = method, use_gdal = TRUE, no_data_value = na_val)
-  names(data) <- parameter
-
-  return(data)
-}
-
-
-#' Average stars raster data to the grid of BFS statpop dataset
-#'
-#' @param x
-#' @param y
-#'
-#' @keywords internal
-average_to_statpop <- function(x, y) {
-
-    grid <- dplyr::select(x, RELI)
-    data_avg <- purrr::map(y, function(data) average_to_grid(data, grid))
-
-  return(data_avg)
-}
-
-
-#' Convert rasterdata into long format tibble
-#'
-#' @param data
-#'
-#' @keywords internal
-simplify_aq_rasterdata <- function(data) {
-
-  data <- purrr::map(names(data), function(pollutant) tibble::as_tibble(data[[pollutant]]))
-  data <-
-    data |>
-    dplyr::bind_rows() |>
-    tidyr::gather(pollutant, concentration, -x, -y) |>
-    dplyr::filter(!is.na(concentration))
-
-  return(data)
-}
-
-
-#' Merge air quality and statpop rasterdata with municipilty boundaries and convert to a common tibble
-#'
-#' @param data_raster
-#' @param data_subareas
-#' @param join_by
-#' @param id_subareas
-#'
-#' @keywords internal
-merge_statpop_with_subareas <- function(data_raster, data_subareas, join_by = "bfs", id_subareas = "gemeindename") {
-
-  subareas_raster <-
-    data_subareas |>
-    dplyr::select(!!join_by) |>
-    stars::st_rasterize(data_raster)
-  #TODO: terra::rasterize(..., cover = TRUE, touches = TRUE)
-
-  data <-
-    dplyr::left_join(
-      tibble::as_tibble(subareas_raster),
-      tibble::as_tibble(data_raster),
-      by = c("x","y")) |>
-    dplyr::filter(!is.na(RELI) & RELI != 0 & !is.na(population))
-
-  data <-
-    data_subareas |>
-    sf::st_drop_geometry() |>
-    dplyr::select(!!join_by, !!id_subareas) |>
-    dplyr::right_join(data, by = join_by)
-
-  return(data)
-}
-
-
 #' calculate specific health outcome
 #'
 #' @param conc_increment
@@ -259,5 +175,3 @@ get_base_scenario_year <- function(base = "min", ...) {
 
   return(fun)
 }
-
-

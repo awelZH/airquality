@@ -6,9 +6,6 @@
 \usage{
 prepare_ressources(ressources)
 }
-\arguments{
-\item{ressources}{}
-}
 \description{
 Prepare data from ressources.csv for use in scripts
 }

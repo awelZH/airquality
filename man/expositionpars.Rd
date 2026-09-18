@@ -6,9 +6,6 @@
 \usage{
 expositionpars(parameter)
 }
-\arguments{
-\item{parameter}{}
-}
 \description{
 Wrapper to supply pollutant-specific list of parameters for exposition plotting
 }

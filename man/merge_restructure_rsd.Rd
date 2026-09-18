@@ -6,11 +6,6 @@
 \usage{
 merge_restructure_rsd(data, meta)
 }
-\arguments{
-\item{data}{}
-
-\item{meta}{}
-}
 \description{
 Merge RSD data with corresponding metadata
 }

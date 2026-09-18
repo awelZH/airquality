@@ -6,9 +6,6 @@
 \usage{
 simplify_nitrogen_parameters(data)
 }
-\arguments{
-\item{data}{}
-}
 \description{
 Merge components of nitrogen deposition to broader source categories in nitrogen deposition dataset
 }

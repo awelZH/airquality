@@ -19,31 +19,6 @@ ggplot_expo_hist(
   theme = ggplot2::theme_minimal()
 )
 }
-\arguments{
-\item{data}{}
-
-\item{x}{}
-
-\item{y}{}
-
-\item{barwidth}{}
-
-\item{xlims}{}
-
-\item{xbreaks}{}
-
-\item{titlelab}{}
-
-\item{captionlab}{}
-
-\item{xlabel}{}
-
-\item{threshold}{}
-
-\item{fill_scale}{}
-
-\item{theme}{}
-}
 \description{
 Plot exposition distribution histogram using ggplot2
 }

@@ -11,15 +11,6 @@ prepare_preliminary_deaths(
   conc_threshold = "lower_conc_threshold"
 )
 }
-\arguments{
-\item{data_expo_weighmean}{}
-
-\item{data_mortality}{}
-
-\item{outcomes_meta}{}
-
-\item{conc_threshold}{}
-}
 \description{
 Prepare preliminary deaths from population-weighted mean, mortality cases and outcome metadata and derive health outcomes
 }

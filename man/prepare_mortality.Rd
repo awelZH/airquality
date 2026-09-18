@@ -6,9 +6,6 @@
 \usage{
 prepare_mortality(data_mortality)
 }
-\arguments{
-\item{data_mortality}{}
-}
 \description{
 Prepare mortality data
 }

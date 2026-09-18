@@ -138,11 +138,126 @@ slope would decouple the years but is less certain with 7–15 sites per year.
 
 ## Scope decisions (deliberate, not technical limits)
 
-* Step 1 (done): exposition reworked; all other scripts still use the old functions, only the
-  obsolete `airquality.methods::` prefixes were removed.
-* Step 2 (planned): `targets` pipeline, one `R/pipeline_<topic>.R` per current script, pure functions
-  in `R/fn_<topic>.R`, `config.yml`, outputs as file targets, Quarto via `tarchetypes::tar_quarto()`,
-  `dev/` for interactive work with `tar_load()`.
+* Step 1 (done, commits 889a80b, 696ec49, 39ebaa8 on `dev`): exposition reworked; all other scripts
+  still use the old functions, only the obsolete `airquality.methods::` prefixes were removed.
+* Step 2: see "Step 2 plan" below (phase 2a: improve each topic, phase 2b: targets structure) –
+  **approved 2026-09-18, not started. Do not implement before the
+  user gives the go.**
+
+## Step 2 plan: targets project (approved 2026-09-18, NOT STARTED)
+
+Goal: a `targets` pipeline that is readable step by step, easy to debug, try out and extend, robust
+for the twice-yearly update, with unchanged output file names and schemas.
+
+### User decisions (2026-09-18)
+
+1. **Outputs move to `data/output/`**; the external processes will be adjusted to the new path.
+2. **Option B: pure targets project, no package skeleton.** No NAMESPACE, `man/`, `@export`,
+   `load_all()`. Reasons: targets tracks changes of functions loaded with `tar_source()`
+   automatically (functions in a package namespace need `tar_option_set(imports = ...)`, easy to
+   forget); stale NAMESPACE/`man/` and the DESCRIPTION version prompt of `load_all()` caused trouble in
+   step 1; the functions are analysis-specific, so no internal package (option C) either.
+   Given up: `?function` help pages and the `devtools::test()` shortcut; roxygen comments stay as
+   in-code docs.
+3. **Website stays rendered into `docs/`** (GitHub Pages), Quarto sources move to `report/`.
+4. **`tod_nat_gatu.csv`** (non-public mortality data for the health outcomes, gitignored, read in
+   `scripts/_compile_outcomes.R`) stays in the project, in `data/restricted/`; may become OGD later.
+5. Derived parameters refitted on every run, coefficients logged (already implemented).
+
+### Target layout
+
+```
+_targets.R            options, tar_source("R"), combine pipelines/*
+_targets.yaml         targets project settings
+config.yml            years/year_offset, base_scenario_year, correct_noloc, crs, paths
+run.R                 human entry point: tar_make(), progress summary, quarto render
+DESCRIPTION           dependency manifest only (renv snapshot.type = "explicit")
+R/                    pure functions per topic: emissions, monitoring, trends, exposition,
+                      outcomes, plots, utils (roxygen comments kept as in-code docs)
+pipelines/            one target list per topic = today's _compile_*.R: setup, emissions,
+                      monitoring, trends, exposition, outcomes, report
+data/meta/            from inst/extdata/meta
+data/output/          from inst/extdata/output (contract: names, columns, format unchanged)
+data/log/             from inst/extdata/log
+data/restricted/      non-public inputs (tod_nat_gatu.csv); folder gitignored except README.md
+report/               Quarto sources (*.qmd, _quarto.yml), read via tar_read(); output-dir ../docs
+docs/                 rendered website only
+dev/                  interactive scripts (tar_load(), experiments)
+tests/testthat/       unit tests per R/ file; helper sources R/; dependency test
+tests/regression/     frozen baseline + generalised comparison for all outputs
+```
+
+### Order: first improve each topic, then change the structure (user decision 2026-09-18)
+
+The code of each analysis step is improved first **within the current script structure**, one
+topic at a time, like step 1 did for the exposition – so the user can follow, try out and understand
+the progress before the big restructuring.
+
+**Phase 2a – improve per topic** (each topic its own commit(s), regression against the committed
+outputs before moving on; order to be confirmed with the user, proposal: emissions → monitoring →
+outcomes → trends → plots/report):
+* script `scripts/_compile_<topic>.R`: thin and readable – read → prepare → aggregate → write, no
+  helper functions defined inside scripts (today: `estimate_prelim_deaths()`,
+  `estimate_all_prelim_deaths()`, `estimate_yll()` in `_compile_outcomes.R`; `recode_ecosys()`,
+  `ostluft_siteclass()`, `cut_emissions_1km()`, `derive_source_cat()`, `cut_estimated()`,
+  `cut_frac_estimated()`, `aggregate_ndep()` in `_compile_monitoring_data.R` – they move to `R/`),
+  no hidden globals
+* functions in `R/<topic>.R`: pure (inputs as arguments, no globals, no file paths inside), modern
+  tidyverse (`.by`, `join_by()`, `cli`), roxygen with meaningful `@param`/`@return`
+* tests `tests/testthat/test-<topic>.R` first (TDD), synthetic data, no network
+* documentation: decisions and findings in this file
+* design every function so that it can later become a target 1:1 (this keeps phase 2b mechanical)
+
+**Phase 2b – structural change** (steps 1–6 below), starting only after phase 2a is complete.
+
+### Phase 2b steps (each topic its own commit, regression before moving on)
+
+1. **Skeleton**, no behaviour change: `_targets.R`, `_targets.yaml`, `config.yml` (`config`
+   package), `run.R`, `pipelines/setup.R` (ressources, municipality map with
+   `drop_foreign_enclaves()`, config); `tests/testthat/helper-source.R` sourcing `R/`;
+   `tests/testthat.R` → `testthat::test_dir()`; renv `snapshot.type = "explicit"`; dependency test
+   comparing `renv::dependencies()` with DESCRIPTION; `.gitignore` adds `_targets/`.
+2. **Data move**: `git mv inst/extdata/{meta,output,log}` → `data/…`; `tod_nat_gatu.csv` →
+   `data/restricted/` plus a committed `data/restricted/README.md` (which files, source, who
+   provides them) and gitignore rules `data/restricted/*`, `!data/restricted/README.md`; add a
+   `ressources.csv` entry for the mortality source ("not public, internal"); update paths in
+   `ressources.csv` (`inst/extdata/meta`, GitHub tree links), `R/prepare.R` (`prepare_ressources()`
+   detects `inst/extdata`), `docs/index.qmd` links, schema test paths, this file. Output path from
+   `config.yml`.
+3. **Topic pipelines** from the functions improved in phase 2a, order: exposition (raster metadata target
+   with `tar_cue("always")`; checks as targets before writing, e.g. municipalities add up to the
+   canton, schema = baseline) → emissions → monitoring → outcomes (restricted file as
+   `format = "file"` target, clear `cli` error pointing to the README if missing) → trends (targets'
+   per-target seeds make the random forest reproducible; optional `crew` for the ~30 min) → report
+   (plots as targets, `tarchetypes::tar_quarto()` rendering `report/` into `docs/`).
+   Conventions: target names `<topic>_<stage>_<content>` (e.g. `expo_raw_rasters`, `expo_cells`,
+   `expo_out_weighted_means_canton`), `tarchetypes::tar_plan()` syntax, comments mirroring the old
+   scripts, outputs as `format = "file"` targets. Generalise `tests/regression/compare_exposition.R`
+   to all 14 output files. Old scripts keep running until their topic is migrated.
+4. **Remove the package skeleton** once all topics run in targets: NAMESPACE, `man/`, `@export`
+   tags, `scripts/`, `analyse_airquality.R`; `tar_option_set(workspace_on_error = TRUE)`.
+5. **airquality.methods**: after its 0.4.0 push, pin the GitHub sha in `renv.lock`; consider moving
+   `assign_municipalities()` and `append_log()` there (generic).
+6. **Docs**: this file (structure table, decisions, workflow `tar_make()` / `tar_load()` /
+   `tar_workspace()`, `tar_mermaid()` diagram), README.
+
+### Verification
+
+* `testthat::test_dir("tests/testthat")` green after every step (unit, schema, dependency tests).
+* `tar_validate()`, `tar_manifest()`, `tar_visnetwork()` show the intended graph.
+* Per topic `tar_make(names = starts_with("<topic>_"))`, then regression against the committed
+  outputs: identical for deterministic topics (emissions, monitoring, exposition, outcomes); trends
+  within the documented random-forest spread and reproducible between two runs.
+* A second `tar_make()` without changes skips everything except the metadata cues.
+* Missing `data/restricted/tod_nat_gatu.csv` stops the pipeline with the README hint.
+* Rendering via `tar_make()` updates `docs/` with the same pages as before.
+
+### Open items outside the plan
+
+* airquality.methods: the small `CLAUDE.md` update from step 1 (regression correction, open items)
+  is **not committed** – repo is on `master` with the whole 0.4.0 work uncommitted; the user decides
+  where to commit it.
+* Later methodological question: year-specific O3 peak-season slope (see decision 6).
 
 ## Regression results (step 1)
 

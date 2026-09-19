@@ -255,7 +255,10 @@ monitoring → outcomes → trends → plots/report):
 4. **Remove the package skeleton** once all topics run in targets: NAMESPACE, `man/`, `@export`
    tags, `scripts/`, `analyse_airquality.R`; `tar_option_set(workspace_on_error = TRUE)`.
 5. **airquality.methods**: after its 0.4.0 push, pin the GitHub sha in `renv.lock`; consider moving
-   `assign_municipalities()` and `append_log()` there (generic).
+   `assign_municipalities()` and `append_log()` there (generic). Planned move (user, 2026-09-19): the
+   grouped legend `grouped_key()`, `split_grouped_keys()`, `add_grouped_legend()`,
+   `with_measure_device()` (R/plot.R, tests in test-plot.R); also a candidate: `check_columns()`
+   (R/helpers.R).
 6. **Docs**: this file (structure table, decisions, workflow `tar_make()` / `tar_load()` /
    `tar_workspace()`, `tar_mermaid()` diagram), README.
 
@@ -308,7 +311,7 @@ current year only.
 ### Emissions (2026-09-18)
 
 `scripts/_compile_emission_data.R` is now read → prepare → aggregate → write; all functions in
-`R/emissions.R`, tests in `tests/testthat/test-emissions.R` (80 expectations, synthetic data).
+`R/emissions.R`, tests in `tests/testthat/test-emissions.R` (92 expectations, synthetic data; the plot functions in `tests/testthat/test-plot.R`).
 **Regression of the refactoring (commit `f4d941f`): all 4 outputs byte-identical** to the reference
 (old code, same frozen inputs); the reference itself is byte-identical to the committed outputs
 (online data unchanged). The subsector grouping (below) then changed `data_emissions.csv` on purpose;
@@ -375,6 +378,38 @@ pollutant's canton total, published years 1990–2025, per pollutant (the plots 
 * the old automatic method was per pollutant (top 2 per pollutant and sector, plus < 5 % of the
   pollutant total into "verschiedene"; means over all years); lookup first and automatic second
   (the suspected combination) gives 1–3 per pollutant and sector.
+
+**Input checks** (2026-09-19): `check_columns()` (R/helpers.R) and `check_rsd_filters()` stop with
+a `cli` error of class `airquality_input_error` that names the dataset and what is missing (raw
+inventory and RSD columns, lookup table, RSD metadata, filter criteria exactly once, measured
+parameters NO/CO2/CO/HC/velocity/acceleration). Before, a missing filter criterion yielded an empty
+bound and filtered silently. Outputs byte-identical.
+
+**Grouped legend for the emission plots** (user decisions 2026-09-19: `legendry`, legend on the
+right, blocks in two columns). `ggplot_emissions()` shows one block per sector with the sector as
+title and the subsectors without the pasted sector (was "Sektor / Subsektor"). Generic functions in
+`R/plot.R` (to move to `airquality.methods` later):
+* `grouped_key(group, key, order, group_order)` – unique key `"group::key"` as factor; its levels
+  set the order of stack and legend ("verschiedene" exists in several sectors)
+* `split_grouped_keys(keys, ncol)` – whole groups per column, columns of about equal height
+  (one line per key and per group title)
+* `add_grouped_legend(plot, aesthetic, ncol, position, ...)` – takes keys and colours from the
+  plot's scale (`ggplot2::get_guide_data()`), draws each column with
+  `legendry::guide_legend_group()` and places the columns with `ggplot2::guide_custom()`
+* `with_measure_device()` – temporary `ragg` device for measuring text
+Why not `legendry` alone: its `ncol`/`nrow` arrange the keys *within* a block (and `nrow` fails in
+0.3.0); blocks are always in one row or column. Rewriting its layout would depend on internals.
+**Limitation:** the legend is drawn when `add_grouped_legend()` is called – it must be the last
+step; later `+ theme()` or `%+%` do not update it. Hence the NH3 special case in
+`_plot_airquality.R` (agriculture last) is now the argument `ggplot_emissions(sectors_last = )`
+instead of `%+%` on the finished plot.
+Findings: building grobs without an open device made R open a pdf device (stray `Rplots.pdf`,
+warnings "font family 'Arial' not found", as `theme_ts` uses Arial); the Windows png device does
+not know Arial either, `ragg` does. `longpollutant()` is called without the `airquality.methods::`
+prefix in several functions of `R/plot.R` (works only while the package is attached) – fixed in
+`ggplot_emissions()`, the others belong to the plots topic. Within one pollutant, neighbouring
+subsectors of a sector can get similar shades (the ramp is assigned over all pollutants), e.g.
+PM2.5 Haushalte – possible later improvement.
 
 ## Regression results (step 1)
 

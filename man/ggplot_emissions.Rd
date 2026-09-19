@@ -2,17 +2,44 @@
 % Please edit documentation in R/plot.R
 \name{ggplot_emissions}
 \alias{ggplot_emissions}
-\title{Plot emission budget data employing structured coloring using ggplot2 ... this is not ideal, but the best I can do}
+\title{Plot emission inventory time series as stacked bars, with sectors as legend blocks}
 \usage{
 ggplot_emissions(
   data,
   relative = FALSE,
   pos = "stack",
   width = 0.8,
-  theme = ggplot2::theme_minimal()
+  theme = ggplot2::theme_minimal(),
+  sectors_last = NULL,
+  legend_ncol = 2,
+  legend_position = "right"
 )
 }
+\arguments{
+\item{data}{Emission data of one pollutant (\code{data_emissions.csv}): \code{year}, \code{pollutant},
+\code{metric}, \code{unit}, \code{sector}, \code{subsector_new}, \code{order}, \code{col}, \code{emission}.}
+
+\item{relative}{Plot shares instead of absolute emissions (use with \code{pos = "fill"}).}
+
+\item{pos}{Position of the bars, e.g. \code{"stack"} or \code{"fill"}.}
+
+\item{width}{Width of the bars.}
+
+\item{theme}{ggplot2 theme.}
+
+\item{sectors_last}{Sectors moved to the end of the stack and the legend (e.g. to show
+agriculture for NH3 at the bottom of the legend).}
+
+\item{legend_ncol}{Number of columns of legend blocks.}
+
+\item{legend_position}{Position of the legend.}
+}
+\value{
+A ggplot object; the legend is already drawn, see \code{\link[=add_grouped_legend]{add_grouped_legend()}}.
+}
 \description{
-Plot emission budget data employing structured coloring using ggplot2 ... this is not ideal, but the best I can do
+Every subsector (\code{subsector_new}) is one colour (\code{col}); the legend shows one block per sector
+with the sector as title and its subsectors below (\code{\link[=add_grouped_legend]{add_grouped_legend()}}). Order of the blocks
+and of the subsectors within a block follows \code{order}.
 }
 \keyword{internal}

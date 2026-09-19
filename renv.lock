@@ -3196,6 +3196,11 @@
       "Maintainer": "Deepayan Sarkar <deepayan.sarkar@r-project.org>",
       "Repository": "CRAN"
     },
+    "legendry": {
+      "Package": "legendry",
+      "Version": "0.3.0",
+      "Source": "Repository"
+    },
     "lemon": {
       "Package": "lemon",
       "Version": "0.5.2",

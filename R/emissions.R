@@ -3,9 +3,9 @@
 #
 # EMIKAT: raw inventory -> prepare_emissions() -> aggregate_emissions() -> group_minor_subsectors()
 #         -> add_emission_colours()
-# Input checks (check_columns(), check_rsd_filters()) stop with a clear message if an input changed.
 # RSD:    raw measurements -> prepare_rsd() (one row per vehicle with its NOx emission)
 #         -> aggregate_rsd_nox() per vehicle group
+# Input checks (check_columns(), check_rsd_filters()) stop with a clear message if an input changed.
 
 
 # ---- emission inventory (EMIKAT) -------------------------------------------------

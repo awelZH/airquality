@@ -146,29 +146,22 @@ plots <- list()
 data_emikat <- airquality.methods::read_local_csv(ressources_plotting$emissions$emikat, delim = ";", locale = readr::locale(encoding = "UTF-8"))
 pollutants <- setNames(unique(data_emikat$pollutant), unique(data_emikat$pollutant))
 
+# ... for NH3, agriculture last (bottom of the stack) to better illustrate its influence over time
+sectors_last <- function(pollutant) if (pollutant == "NH3") "Land- und Forstw." else NULL
+
 # absolute values
-plots$emissions$inventory_absolute <- 
+plots$emissions$inventory_absolute <-
   lapply(pollutants, function(pollutant) {
-    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), theme = theme_ts)
+    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), theme = theme_ts,
+                     sectors_last = sectors_last(pollutant))
   })
 
 # relative values
-plots$emissions$inventory_relative <- 
+plots$emissions$inventory_relative <-
   lapply(pollutants, function(pollutant) {
-    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", theme = theme_ts)
+    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", theme = theme_ts,
+                     sectors_last = sectors_last(pollutant))
   })
-
-# ... for NH3 change level order to better illustrate influence of agriculture over time
-levels <- levels(plots$emissions$inventory_absolute$NH3$data$subsector_new2)
-levels <- levels[c(which(!stringr::str_detect(levels, "Land-")), which(stringr::str_detect(levels, "Land-")))]
-
-plots$emissions$inventory_absolute$NH3 <- 
-  plots$emissions$inventory_absolute$NH3 %+% 
-  dplyr::mutate(plots$emissions$inventory_absolute$NH3$data, subsector_new2 = factor(subsector_new2, levels))
-
-plots$emissions$inventory_relative$NH3 <- 
-  plots$emissions$inventory_relative$NH3 %+% 
-  dplyr::mutate(plots$emissions$inventory_relative$NH3$data, subsector_new2 = factor(subsector_new2, levels))
 
 
 # read & plot RSD NOx emissions by vehicle type, fuel type and euronorm
@@ -797,7 +790,7 @@ saveRDS(dplyr::filter(plots, type == "trends"), "docs/plots_trends.rds")
 saveRDS(dplyr::filter(plots, type == "exposition"), "docs/plots_exposition.rds")
 saveRDS(dplyr::filter(plots, type == "outcomes"), "docs/plots_outcomes.rds")
 
-rm(list = c("map_municipalities", "ressources_plotting", "scale_color_siteclass", "scale_fill_siteclass", "temp", "theme_map", "theme_ts", "threshold_ndep",
+rm(list = c("map_municipalities", "sectors_last", "ressources_plotting", "scale_color_siteclass", "scale_fill_siteclass", "temp", "theme_map", "theme_ts", "threshold_ndep",
             "data_emikat", "data_expo_distr_ndep", "data_expo_distr_pollutants", "data_expo_weighmean_canton", "thresh",
             "data_monitoring_aq", "data_monitoring_ndep", "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas", "data_temp", "data_thrshlds",
             "data_expo_weighmean_municip", "immission_threshold_values", "map_canton", "basesize", "col_lrv", "col_who", "cols_emissions", 

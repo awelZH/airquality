@@ -259,3 +259,28 @@ derive_trends_per_parameter <- function(data_trends, parameter, trend_vars, refe
 
   return(results_y1)
 }
+
+
+#' Stop with a clear message if a dataset lacks required columns
+#'
+#' Input data from online sources can change their structure between the twice-yearly updates;
+#' this names the dataset and the missing columns instead of failing somewhere downstream.
+#'
+#' @param data Data frame to check.
+#' @param required Names of the required columns.
+#' @param what Name of the dataset for the message, e.g. "emission inventory (opendata.swiss)".
+#'
+#' @return `data`, invisibly. Errors of class `airquality_input_error`.
+#'
+#' @keywords internal
+check_columns <- function(data, required, what) {
+  missing <- setdiff(required, names(data))
+  if (length(missing) > 0) {
+    cli::cli_abort(
+      c("The {what} lacks {length(missing)} column{?s}: {.val {missing}}.",
+        "i" = "Has the structure of the input changed?"),
+      class = "airquality_input_error"
+    )
+  }
+  invisible(data)
+}

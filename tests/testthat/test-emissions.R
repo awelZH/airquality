@@ -427,3 +427,57 @@ test_that("aggregate_rsd_nox() per year of measurement adds all fuel types toget
   expect_equal(all_2020$n, 3)
   expect_equal(all_2020$emission, 1)
 })
+
+# ---- input checks ----------------------------------------------------------------
+
+test_that("check_columns() names the missing columns and the dataset", {
+  data <- tibble::tibble(a = 1, b = 2)
+
+  expect_no_error(check_columns(data, c("a", "b"), "test data"))
+  expect_error(check_columns(data, c("a", "c", "d"), "test data"), class = "airquality_input_error")
+  expect_error(check_columns(data, c("a", "c", "d"), "test data"), "test data.*c.*d")
+})
+
+test_that("prepare_emissions() stops with a clear message if the inventory columns changed", {
+  data <- dplyr::rename(make_emikat(), year = jahr)
+
+  expect_error(prepare_emissions(data), "jahr", class = "airquality_input_error")
+})
+
+test_that("aggregate_emissions() stops if the lookup table lacks its columns", {
+  lookup <- tibble::tibble(subsector = "Strassenverkehr", new_name = "Strassenverkehr")
+
+  expect_error(aggregate_emissions(make_prepared_emissions(), lookup), "subsector_new", class = "airquality_input_error")
+})
+
+test_that("prepare_rsd() stops if data, metadata or filters lack columns", {
+  data <- make_rsd_vehicle(1)
+
+  expect_error(prepare_rsd(dplyr::select(data, -site_roadgrade), make_rsd_meta(), make_rsd_filters(), 2026),
+               "site_roadgrade", class = "airquality_input_error")
+  expect_error(prepare_rsd(data, dplyr::select(make_rsd_meta(), -value), make_rsd_filters(), 2026),
+               "value", class = "airquality_input_error")
+  expect_error(prepare_rsd(data, make_rsd_meta(), dplyr::select(make_rsd_filters(), -max), 2026),
+               "max", class = "airquality_input_error")
+})
+
+test_that("prepare_rsd() stops if a filter criterion is missing or duplicated", {
+  filters <- dplyr::filter(make_rsd_filters(), parameter != "vsprange")
+  expect_error(prepare_rsd(make_rsd_vehicle(1), make_rsd_meta(), filters, 2026), "vsprange", class = "airquality_input_error")
+
+  filters <- dplyr::bind_rows(make_rsd_filters(), make_rsd_filters()[2, ])
+  expect_error(prepare_rsd(make_rsd_vehicle(1), make_rsd_meta(), filters, 2026), "vehicleyears", class = "airquality_input_error")
+})
+
+test_that("prepare_rsd() stops if a measured parameter is missing", {
+  data <- dplyr::filter(make_rsd_vehicle(1), parameter != "HC")
+
+  expect_error(prepare_rsd(data, make_rsd_meta(), make_rsd_filters(), 2026), "HC", class = "airquality_input_error")
+})
+
+test_that("aggregate_rsd_nox() stops if nmin is missing in the filters", {
+  filters <- dplyr::filter(make_rsd_filters(), parameter != "nmin")
+
+  expect_error(aggregate_rsd_nox(make_prepared_rsd(), make_rsd_meta(), filters, groups = c("year", "vehicle_fuel_type")),
+               "nmin", class = "airquality_input_error")
+})

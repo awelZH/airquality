@@ -1,7 +1,9 @@
 # Air pollutant emissions: the emission inventory of the Canton of Zurich (EMIKAT) and the
 # NOx emissions of vehicles measured with remote sensing (RSD).
 #
-# EMIKAT: raw inventory -> prepare_emissions() -> aggregate_emissions() -> add_emission_colours()
+# EMIKAT: raw inventory -> prepare_emissions() -> aggregate_emissions() -> group_minor_subsectors()
+#         -> add_emission_colours()
+# Input checks (check_columns(), check_rsd_filters()) stop with a clear message if an input changed.
 # RSD:    raw measurements -> prepare_rsd() (one row per vehicle with its NOx emission)
 #         -> aggregate_rsd_nox() per vehicle group
 
@@ -29,6 +31,9 @@ prepare_emissions <- function(data,
                               canton = "ZH",
                               exclude_subsectors = c("Weitere Punktquellen OL", "Rheinschifffahrt", "Flugverkehr Genf"),
                               year_max = Inf) {
+  check_columns(data, c("jahr", "substanz", "hauptgruppe", "untergruppe", "kanton", "gemeinde", "einheit",
+                        "stand", "emission", "source"), "emission inventory (opendata.swiss)")
+
   data |>
     dplyr::rename(
       year = jahr,
@@ -71,6 +76,7 @@ prepare_emissions <- function(data,
 #'
 #' @keywords internal
 aggregate_emissions <- function(data, subsector_new) {
+  check_columns(subsector_new, c("subsector", "subsector_new"), "subsector lookup table (emikat_subsector_new.csv)")
   lookup <- dplyr::select(subsector_new, subsector, subsector_new)
   missing <- setdiff(unique(data$subsector), lookup$subsector)
   if (length(missing) > 0) {
@@ -202,6 +208,18 @@ add_emission_colours <- function(data,
 #'
 #' @keywords internal
 prepare_rsd <- function(data, meta, filters, model_year_max) {
+  check_columns(data, c("id", "date_measured", "site_roadgrade", "vehicle_type", "vehicle_fuel_type",
+                        "vehicle_euronorm", "vehicle_unloaded_weight", "vehicle_model_year", "parameter",
+                        "value", "unit", "source"), "RSD data (opendata.swiss)")
+  check_columns(meta, c("vehicle_type", "vehicle_fuel_type", "vehicle_euronorm", "parameter", "value",
+                        "source", "remark"), "RSD metadata (rsd_auxiliary.csv)")
+  check_rsd_filters(filters, c("vehicleyears", "velocityrange", "accelerationrange", "vsprange", "weightmax"))
+  missing <- setdiff(c("velocity", "acceleration", "NO", "CO2", "CO", "HC"), unique(data$parameter))
+  if (length(missing) > 0) {
+    cli::cli_abort("The RSD data (opendata.swiss) lacks {length(missing)} parameter{?s}: {.val {missing}}.",
+                   class = "airquality_input_error")
+  }
+
   filters$max[filters$parameter == "vehicleyears"] <- model_year_max
 
   data_vsp <- prep_vehicle_specific_power(data)
@@ -346,6 +364,7 @@ calc_rsd_nox_emission <- function(NO, p, CO2, CO, HC) {
 #'
 #' @keywords internal
 aggregate_rsd_nox <- function(data, meta, filters, groups) {
+  check_rsd_filters(filters, "nmin")
   nmin <- filters$min[filters$parameter == "nmin"]
   per_year <- "year" %in% groups
 
@@ -395,6 +414,30 @@ rsd_meta_wide <- function(meta) {
   meta |>
     dplyr::select(-source, -remark) |>
     tidyr::pivot_wider(names_from = parameter, values_from = value)
+}
+
+
+#' Stop if the RSD filter criteria lack a column or a criterion, or list one twice
+#'
+#' Without this check a missing criterion yields an empty bound and silently filters out all or
+#' no vehicles.
+#'
+#' @param filters Filter criteria with columns `parameter`, `min`, `max` (`rsd_filters.csv`).
+#' @param parameters Criteria that must occur exactly once.
+#'
+#' @return `filters`, invisibly. Errors of class `airquality_input_error`.
+#'
+#' @keywords internal
+check_rsd_filters <- function(filters, parameters) {
+  check_columns(filters, c("parameter", "min", "max"), "RSD filter criteria (rsd_filters.csv)")
+  counts <- purrr::map_int(parameters, \(p) sum(filters$parameter == p))
+  if (any(counts != 1)) {
+    cli::cli_abort(
+      "The RSD filter criteria (rsd_filters.csv) need exactly one row for {.val {parameters[counts != 1]}}.",
+      class = "airquality_input_error"
+    )
+  }
+  invisible(filters)
 }
 
 

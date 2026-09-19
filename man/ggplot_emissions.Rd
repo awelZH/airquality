@@ -10,9 +10,7 @@ ggplot_emissions(
   pos = "stack",
   width = 0.8,
   theme = ggplot2::theme_minimal(),
-  sectors_last = NULL,
-  legend_ncol = 2,
-  legend_position = "right"
+  sectors_last = NULL
 )
 }
 \arguments{
@@ -29,13 +27,9 @@ ggplot_emissions(
 
 \item{sectors_last}{Sectors moved to the end of the stack and the legend (e.g. to show
 agriculture for NH3 at the bottom of the legend).}
-
-\item{legend_ncol}{Number of columns of legend blocks.}
-
-\item{legend_position}{Position of the legend.}
 }
 \value{
-A ggplot object; the legend is already drawn, see \code{\link[=add_grouped_legend]{add_grouped_legend()}}.
+A ggplot object.
 }
 \description{
 Every subsector (\code{subsector_new}) is one colour (\code{col}); the legend shows one block per sector

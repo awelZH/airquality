@@ -256,9 +256,8 @@ monitoring → outcomes → trends → plots/report):
    tags, `scripts/`, `analyse_airquality.R`; `tar_option_set(workspace_on_error = TRUE)`.
 5. **airquality.methods**: after its 0.4.0 push, pin the GitHub sha in `renv.lock`; consider moving
    `assign_municipalities()` and `append_log()` there (generic). Planned move (user, 2026-09-19): the
-   grouped legend `grouped_key()`, `split_grouped_keys()`, `add_grouped_legend()`,
-   `with_measure_device()` (R/plot.R, tests in test-plot.R); also a candidate: `check_columns()`
-   (R/helpers.R).
+   grouped legend `grouped_key()`, `add_grouped_legend()` (R/plot.R, tests in test-plot.R;
+   dependency `legendry`); also a candidate: `check_columns()` (R/helpers.R).
 6. **Docs**: this file (structure table, decisions, workflow `tar_make()` / `tar_load()` /
    `tar_workspace()`, `tar_mermaid()` diagram), README.
 
@@ -385,31 +384,31 @@ inventory and RSD columns, lookup table, RSD metadata, filter criteria exactly o
 parameters NO/CO2/CO/HC/velocity/acceleration). Before, a missing filter criterion yielded an empty
 bound and filtered silently. Outputs byte-identical.
 
-**Grouped legend for the emission plots** (user decisions 2026-09-19: `legendry`, legend on the
-right, blocks in two columns). `ggplot_emissions()` shows one block per sector with the sector as
-title and the subsectors without the pasted sector (was "Sektor / Subsektor"). Generic functions in
-`R/plot.R` (to move to `airquality.methods` later):
+**Grouped legend for the emission plots** (user decisions 2026-09-19: `legendry` as intended –
+one legend on the right, no columns; block titles plain and as large as the entries; keys without
+gaps as in a ggplot legend). `ggplot_emissions()` shows one block per sector with the sector as
+title and the subsectors without the pasted sector (was "Sektor / Subsektor"); the subsector names
+in `emikat_subsector_new.csv` were shortened accordingly by the user (e.g. "Private etc",
+"Landw. Nutzflächen"). Generic functions in `R/plot.R` (to move to `airquality.methods` later):
 * `grouped_key(group, key, order, group_order)` – unique key `"group::key"` as factor; its levels
   set the order of stack and legend ("verschiedene" exists in several sectors)
-* `split_grouped_keys(keys, ncol)` – whole groups per column, columns of about equal height
-  (one line per key and per group title)
-* `add_grouped_legend(plot, aesthetic, ncol, position, ...)` – takes keys and colours from the
-  plot's scale (`ggplot2::get_guide_data()`), draws each column with
-  `legendry::guide_legend_group()` and places the columns with `ggplot2::guide_custom()`
-* `with_measure_device()` – temporary `ragg` device for measuring text
-Why not `legendry` alone: its `ncol`/`nrow` arrange the keys *within* a block (and `nrow` fails in
-0.3.0); blocks are always in one row or column. Rewriting its layout would depend on internals.
-**Limitation:** the legend is drawn when `add_grouped_legend()` is called – it must be the last
-step; later `+ theme()` or `%+%` do not update it. Hence the NH3 special case in
-`_plot_airquality.R` (agriculture last) is now the argument `ggplot_emissions(sectors_last = )`
-instead of `%+%` on the finished plot.
-Findings: building grobs without an open device made R open a pdf device (stray `Rplots.pdf`,
-warnings "font family 'Arial' not found", as `theme_ts` uses Arial); the Windows png device does
-not know Arial either, `ragg` does. `longpollutant()` is called without the `airquality.methods::`
-prefix in several functions of `R/plot.R` (works only while the package is attached) – fixed in
-`ggplot_emissions()`, the others belong to the plots topic. Within one pollutant, neighbouring
-subsectors of a sector can get similar shades (the ramp is assigned over all pollutants), e.g.
-PM2.5 Haushalte – possible later improvement.
+* `add_grouped_legend(plot, aesthetic, sep, spacing, subtitle, key_spacing)` – sets
+  `legendry::guide_legend_group(key_group_split(sep))` for the aesthetic plus the theme
+  (`legendry.legend.subtitle` from the plot's `legend.text`, `legendry.group.spacing` 3 mm,
+  `legend.key.spacing.y` 0). The plot stays an ordinary ggplot (later `+ theme()` still applies).
+The NH3 special case in `_plot_airquality.R` (agriculture last) is the argument
+`ggplot_emissions(sectors_last = )` instead of `%+%` on the finished plot.
+Rejected: blocks in two columns (commit `3f759b1`, restore point). `legendry` arranges blocks only
+in one row or column (its `ncol`/`nrow` arrange the keys *within* a block, `nrow` fails in 0.3.0),
+so the columns had to be drawn separately and placed with `ggplot2::guide_custom()`: legend twice
+as wide, fixed when drawn (no later theme changes), and building grobs needed a temporary `ragg`
+device (a pdf device leaves `Rplots.pdf` and does not know Arial from `theme_ts`). With the native
+legend, NMVOC (6 blocks, 11 entries) just fits a 5 in high figure – check when figures get smaller.
+Findings: `longpollutant()` is called without the `airquality.methods::` prefix in several
+functions of `R/plot.R` (works only while the package is attached) – fixed in `ggplot_emissions()`,
+the others belong to the plots topic. Within one pollutant, neighbouring subsectors of a sector can
+get similar shades (the ramp is assigned over all pollutants), e.g. PM2.5 Haushalte – possible
+later improvement.
 
 ## Regression results (step 1)
 

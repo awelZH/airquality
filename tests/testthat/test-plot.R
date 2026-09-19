@@ -55,24 +55,6 @@ test_that("grouped_key() stops if a name contains the separator", {
   expect_error(grouped_key("A::B", "x"), "::")
 })
 
-# ---- split_grouped_keys() ----------------------------------------------------------
-
-test_that("split_grouped_keys() keeps groups whole and balances the column heights", {
-  # heights incl. one title line per group: A 4, B 2, C 2, D 4
-  keys <- c("A::1", "A::2", "A::3", "B::1", "C::1", "D::1", "D::2", "D::3")
-
-  columns <- split_grouped_keys(keys, ncol = 2)
-
-  expect_equal(columns, list(c("A::1", "A::2", "A::3", "B::1"), c("C::1", "D::1", "D::2", "D::3")))
-})
-
-test_that("split_grouped_keys() returns one column for ncol = 1 and never an empty column", {
-  keys <- c("A::1", "B::1")
-
-  expect_equal(split_grouped_keys(keys, ncol = 1), list(keys))
-  expect_equal(split_grouped_keys(keys, ncol = 3), list("A::1", "B::1"))
-})
-
 # ---- add_grouped_legend() ----------------------------------------------------------
 
 make_grouped_plot <- function() {
@@ -86,7 +68,7 @@ make_grouped_plot <- function() {
 }
 
 test_that("add_grouped_legend() shows group titles and the elements without the group", {
-  plot <- add_grouped_legend(make_grouped_plot(), ncol = 2)
+  plot <- add_grouped_legend(make_grouped_plot())
 
   texts <- legend_texts(plot)
   expect_s3_class(plot, "ggplot")
@@ -97,7 +79,7 @@ test_that("add_grouped_legend() shows group titles and the elements without the 
 })
 
 test_that("add_grouped_legend() draws the group titles like the legend labels (not bold, same size)", {
-  plot <- add_grouped_legend(make_grouped_plot() + ggplot2::theme_minimal(base_size = 11), ncol = 2)
+  plot <- add_grouped_legend(make_grouped_plot() + ggplot2::theme_minimal(base_size = 11))
 
   gt <- withr::with_pdf(NULL, ggplot2::ggplotGrob(plot))
   text_grobs <- function(grob) {
@@ -113,34 +95,27 @@ test_that("add_grouped_legend() draws the group titles like the legend labels (n
   expect_equal(style("Haushalte"), style("Feuerungen"))
 })
 
-test_that("add_grouped_legend() draws one legend per column", {
-  plot1 <- add_grouped_legend(make_grouped_plot(), ncol = 1)
-  plot2 <- add_grouped_legend(make_grouped_plot(), ncol = 2)
+test_that("add_grouped_legend() puts the keys of a block without gaps, as in a ggplot legend", {
+  plot <- add_grouped_legend(make_grouped_plot() + ggplot2::theme_minimal())
 
-  count_legends <- function(plot) {
-    gt <- withr::with_pdf(NULL, ggplot2::ggplotGrob(plot))
-    box <- gt$grobs[[which(gt$layout$name == "guide-box-right")]]
-    sum(grepl("^guides", box$layout$name))
-  }
-  expect_equal(count_legends(plot1), 1)
-  expect_equal(count_legends(plot2), 2)
+  spacing <- ggplot2::calc_element("legend.key.spacing.y", ggplot2::complete_theme(plot$theme))
+  expect_equal(as.numeric(spacing), 0)
 })
 
 test_that("add_grouped_legend() keeps the colours of the plot's scale", {
-  plot <- add_grouped_legend(make_grouped_plot(), ncol = 2)
+  plot <- add_grouped_legend(make_grouped_plot())
 
   built <- ggplot2::ggplot_build(plot)
   expect_setequal(unique(built$data[[1]]$fill), c("green", "blue", "lightblue", "black", "gray"))
 })
 
-test_that("add_grouped_legend() leaves no graphics device or Rplots.pdf behind", {
-  withr::local_dir(withr::local_tempdir())
-  grDevices::graphics.off() # devices left open by earlier tests would hide the problem
+test_that("add_grouped_legend() keeps a normal ggplot: later theme changes still apply to the legend", {
+  plot <- add_grouped_legend(make_grouped_plot()) + ggplot2::theme(legend.position = "bottom")
 
-  plot <- add_grouped_legend(make_grouped_plot(), ncol = 2)
-
-  expect_null(grDevices::dev.list())
-  expect_false(file.exists("Rplots.pdf"))
+  gt <- withr::with_pdf(NULL, ggplot2::ggplotGrob(plot))
+  bottom <- gt$grobs[[which(gt$layout$name == "guide-box-bottom")]]
+  expect_s3_class(bottom, "gtable")
+  expect_contains(legend_texts(plot), "Haushalte")
 })
 
 test_that("add_grouped_legend() stops if the aesthetic has no scale", {

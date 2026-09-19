@@ -229,14 +229,12 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
 #' @param theme ggplot2 theme.
 #' @param sectors_last Sectors moved to the end of the stack and the legend (e.g. to show
 #'   agriculture for NH3 at the bottom of the legend).
-#' @param legend_ncol Number of columns of legend blocks.
-#' @param legend_position Position of the legend.
 #'
-#' @return A ggplot object; the legend is already drawn, see [add_grouped_legend()].
+#' @return A ggplot object.
 #'
 #' @keywords internal
 ggplot_emissions <- function(data, relative = FALSE, pos = "stack", width = 0.8, theme = ggplot2::theme_minimal(),
-                             sectors_last = NULL, legend_ncol = 2, legend_position = "right") {
+                             sectors_last = NULL) {
 
   pollutant <- unique(as.character(data$pollutant))
   metric <- unique(as.character(data$metric))
@@ -272,7 +270,7 @@ ggplot_emissions <- function(data, relative = FALSE, pos = "stack", width = 0.8,
 
   # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 3)
 
-  add_grouped_legend(plot, ncol = legend_ncol, position = legend_position)
+  add_grouped_legend(plot)
 }
 
 
@@ -306,85 +304,33 @@ grouped_key <- function(group, key, order = NULL, group_order = NULL, sep = "::"
 }
 
 
-#' Split the keys of a grouped legend into columns of whole groups
-#'
-#' Groups are kept whole and in order; the columns get about the same height, counting one line
-#' per key and one per group title.
-#'
-#' @param keys Keys in legend order, as made by [grouped_key()].
-#' @param ncol Number of columns.
-#' @param sep Separator between group and element.
-#'
-#' @return List of character vectors, one per non-empty column.
-#'
-#' @keywords internal
-split_grouped_keys <- function(keys, ncol, sep = "::") {
-  group <- stringr::str_extract(keys, paste0("^.*?", stringr::str_escape(sep)))
-  groups <- unique(group)
-  lines <- as.numeric(table(factor(group, groups))) + 1
-  column <- pmin(ncol, floor((cumsum(lines) - lines / 2) / sum(lines) * ncol) + 1)
-  unname(split(keys, column[match(group, groups)]))
-}
-
-
-#' Evaluate code on a temporary graphics device, e.g. to measure text when building grobs
-#'
-#' Building grobs needs an open device to measure text. Without one, R opens a pdf device that
-#' writes `Rplots.pdf` and does not know system fonts such as "Arial"; the Windows png device does
-#' not know them either. A temporary [ragg::agg_png()] device finds all system fonts; afterwards
-#' it is closed and the previously active device is active again.
-#'
-#' @param code Code to evaluate.
-#'
-#' @return The value of `code`.
-#'
-#' @keywords internal
-with_measure_device <- function(code) {
-  previous <- grDevices::dev.cur()
-  file <- tempfile(fileext = ".png")
-  ragg::agg_png(file)
-  on.exit({
-    grDevices::dev.off()
-    if (previous > 1) grDevices::dev.set(previous)
-    unlink(file)
-  })
-  code
-}
-
-
-#' Replace a legend by a grouped legend: blocks with a title per group, in columns
+#' Use a grouped legend: one block per group, with the group as title
 #'
 #' Each group of the legend (e.g. a sector) becomes a block with the group as title and its
-#' elements (e.g. the subsectors) without the group name. The blocks are spread over `ncol`
-#' columns of about equal height. Works for any discrete scale of `aesthetic` whose breaks are
-#' keys from [grouped_key()]; keys and colours are taken from the plot's scale.
+#' elements (e.g. the subsectors) without the group name, drawn by
+#' [legendry::guide_legend_group()]. Works for any discrete scale of `aesthetic` whose breaks are
+#' keys from [grouped_key()]. The block titles look like the entries, the keys of a block have no
+#' gaps (as in a ggplot legend), and the blocks are set apart by `spacing`.
 #'
-#' The blocks are drawn with [legendry::guide_legend_group()] and placed with
-#' [ggplot2::guide_custom()]. The legend is drawn when this function is called: apply it as the
-#' **last** step; later `+ theme()` or `%+%` do not change the legend any more.
+#' The result is an ordinary ggplot: position, size etc. of the legend follow the theme, also
+#' when changed later. Only the default style of the block titles is taken from the theme at the
+#' time of the call.
 #'
 #' @param plot A ggplot object.
 #' @param aesthetic Aesthetic with the grouped keys, e.g. `"fill"` or `"colour"`.
-#' @param ncol Number of columns of blocks.
-#' @param position Position of the legend: `"right"`, `"left"`, `"top"` or `"bottom"`.
 #' @param sep Separator used in [grouped_key()].
-#' @param key_ncol Number of key columns within a block (`NULL`: one).
 #' @param spacing Space between the blocks.
-#' @param subtitle Text element of the block titles; `NULL` takes the plot's `legend.text`, so titles
-#'   look like the entries.
-#' @param key_spacing Vertical space between the keys of a block; 0 as in a vertical ggplot legend.
+#' @param subtitle Text element of the block titles; `NULL` takes the plot's `legend.text`.
+#' @param key_spacing Vertical space between the keys of a block.
 #'
 #' @return The ggplot object with the grouped legend.
 #'
 #' @keywords internal
-add_grouped_legend <- function(plot, aesthetic = "fill", ncol = 2, position = "right", sep = "::", key_ncol = NULL,
-                               spacing = grid::unit(3, "mm"), subtitle = NULL, key_spacing = grid::unit(0, "pt")) {
-  guide_data <- ggplot2::get_guide_data(plot, aesthetic)
-  if (is.null(guide_data)) {
+add_grouped_legend <- function(plot, aesthetic = "fill", sep = "::", spacing = grid::unit(3, "mm"), subtitle = NULL,
+                               key_spacing = grid::unit(0, "pt")) {
+  if (is.null(ggplot2::get_guide_data(plot, aesthetic))) {
     cli::cli_abort("The plot has no legend for {.val {aesthetic}}.")
   }
-  keys <- as.character(guide_data$.value)
-  values <- rlang::set_names(guide_data[[aesthetic]], keys)
 
   if (is.null(subtitle)) {
     # style of the entries, but not blank when the legend title is blank (subtitles inherit from it)
@@ -392,30 +338,12 @@ add_grouped_legend <- function(plot, aesthetic = "fill", ncol = 2, position = "r
     subtitle <- ggplot2::element_text(family = text$family, face = text$face, colour = text$colour,
                                       size = text$size, inherit.blank = FALSE)
   }
-  plot <- plot + ggplot2::theme(legendry.group.spacing = spacing, legendry.legend.subtitle = subtitle,
-                                legend.key.spacing.y = key_spacing)
-  legend_column <- function(keys_column) {
-    column_plot <- suppressMessages(
-      plot +
-        ggplot2::scale_discrete_manual(
-          aesthetics = aesthetic, values = values, breaks = keys_column,
-          guide = legendry::guide_legend_group(key = legendry::key_group_split(sep = sep), ncol = key_ncol)
-        ) +
-        ggplot2::theme(legend.position = position)
-    )
-    gt <- with_measure_device(ggplot2::ggplotGrob(column_plot))
-    gt$grobs[[which(gt$layout$name == paste0("guide-box-", position))]]
-  }
-  columns <- purrr::map(split_grouped_keys(keys, ncol, sep), legend_column)
-  custom_guides <- purrr::imap(columns, \(grob, i) ggplot2::guide_custom(grob, position = position, order = i))
-  names(custom_guides) <- paste0("grouped_legend_", seq_along(custom_guides))
+  guide <- legendry::guide_legend_group(key = legendry::key_group_split(sep = sep))
 
-  suppressMessages(
-    plot +
-      ggplot2::scale_discrete_manual(aesthetics = aesthetic, values = values, guide = "none") +
-      do.call(ggplot2::guides, custom_guides) +
-      ggplot2::theme(legend.position = position, legend.box = "horizontal", legend.box.just = "top")
-  )
+  plot +
+    do.call(ggplot2::guides, rlang::set_names(list(guide), aesthetic)) +
+    ggplot2::theme(legendry.group.spacing = spacing, legendry.legend.subtitle = subtitle,
+                   legend.key.spacing.y = key_spacing)
 }
 
 

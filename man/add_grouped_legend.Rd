@@ -2,15 +2,12 @@
 % Please edit documentation in R/plot.R
 \name{add_grouped_legend}
 \alias{add_grouped_legend}
-\title{Replace a legend by a grouped legend: blocks with a title per group, in columns}
+\title{Use a grouped legend: one block per group, with the group as title}
 \usage{
 add_grouped_legend(
   plot,
   aesthetic = "fill",
-  ncol = 2,
-  position = "right",
   sep = "::",
-  key_ncol = NULL,
   spacing = grid::unit(3, "mm"),
   subtitle = NULL,
   key_spacing = grid::unit(0, "pt")
@@ -21,33 +18,27 @@ add_grouped_legend(
 
 \item{aesthetic}{Aesthetic with the grouped keys, e.g. \code{"fill"} or \code{"colour"}.}
 
-\item{ncol}{Number of columns of blocks.}
-
-\item{position}{Position of the legend: \code{"right"}, \code{"left"}, \code{"top"} or \code{"bottom"}.}
-
 \item{sep}{Separator used in \code{\link[=grouped_key]{grouped_key()}}.}
-
-\item{key_ncol}{Number of key columns within a block (\code{NULL}: one).}
 
 \item{spacing}{Space between the blocks.}
 
-\item{subtitle}{Text element of the block titles; \code{NULL} takes the plot's \code{legend.text}, so titles
-look like the entries.}
+\item{subtitle}{Text element of the block titles; \code{NULL} takes the plot's \code{legend.text}.}
 
-\item{key_spacing}{Vertical space between the keys of a block; 0 as in a vertical ggplot legend.}
+\item{key_spacing}{Vertical space between the keys of a block.}
 }
 \value{
 The ggplot object with the grouped legend.
 }
 \description{
 Each group of the legend (e.g. a sector) becomes a block with the group as title and its
-elements (e.g. the subsectors) without the group name. The blocks are spread over \code{ncol}
-columns of about equal height. Works for any discrete scale of \code{aesthetic} whose breaks are
-keys from \code{\link[=grouped_key]{grouped_key()}}; keys and colours are taken from the plot's scale.
+elements (e.g. the subsectors) without the group name, drawn by
+\code{\link[legendry:guide_legend_group]{legendry::guide_legend_group()}}. Works for any discrete scale of \code{aesthetic} whose breaks are
+keys from \code{\link[=grouped_key]{grouped_key()}}. The block titles look like the entries, the keys of a block have no
+gaps (as in a ggplot legend), and the blocks are set apart by \code{spacing}.
 }
 \details{
-The blocks are drawn with \code{\link[legendry:guide_legend_group]{legendry::guide_legend_group()}} and placed with
-\code{\link[ggplot2:guide_custom]{ggplot2::guide_custom()}}. The legend is drawn when this function is called: apply it as the
-\strong{last} step; later \code{+ theme()} or \verb{\%+\%} do not change the legend any more.
+The result is an ordinary ggplot: position, size etc. of the legend follow the theme, also
+when changed later. Only the default style of the block titles is taken from the theme at the
+time of the call.
 }
 \keyword{internal}

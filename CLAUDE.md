@@ -158,8 +158,8 @@ slope would decouple the years but is less certain with 7–15 sites per year.
 * Step 1 (done, commits 889a80b, 696ec49, 39ebaa8 on `dev`): exposition reworked; all other scripts
   still use the old functions, only the obsolete `airquality.methods::` prefixes were removed.
 * Step 2: see "Step 2 plan" below (phase 2a: improve each topic, phase 2b: targets structure) –
-  **started 2026-09-18 with phase 2a.** Done: emissions (see "Phase 2a results"). Each further
-  topic only after the user's go.
+  **started 2026-09-18 with phase 2a.** Done: emissions, monitoring (see "Phase 2a results"). Each
+  further topic only after the user's go.
 
 ## Step 2 plan: targets project (approved 2026-09-18, refined 2026-09-19; IN PROGRESS – phase 2a)
 
@@ -345,8 +345,11 @@ record/replay version (`tests/regression/inputs/*.rds`, keyed by `rlang::hash()`
 `refresh = TRUE` downloads again) and redirects `write_local_csv()` to
 `tests/regression/results/<topic>/<label>/`, so `inst/extdata/output/` is never touched. The settings
 a topic needs are evaluated from `scripts/_setup.R` (only the listed assignments; no package loading,
-no `airquality.data` update). A new topic needs an entry in `topics` (script, settings; add further
-readers to `network_readers` if it uses them). Inputs and results are gitignored.
+no `airquality.data` update). A new topic needs an entry in `topics` (script, settings, `attach` for
+packages an old script expects to be attached; add further readers to `network_readers` if it uses
+them). Inputs and results are gitignored. Topics whose inputs are `airquality.data` datasets
+(monitoring, trends) need no frozen downloads, but both runs must use the same installed version of
+that package (`_setup.R` updates it, `run_topic()` does not).
 `compare_outputs()` works for all 14 files without configuration: byte identity, header (contract),
 rows only in one file (key = non-numeric columns plus integer-valued ones such as `year`), values
 that became `NA`, and the largest relative deviation.
@@ -458,6 +461,34 @@ functions of `R/plot.R` (works only while the package is attached) – fixed in 
 the others belong to the plots topic. Within one pollutant, neighbouring subsectors of a sector can
 get similar shades (the ramp is assigned over all pollutants), e.g. PM2.5 Haushalte – possible
 later improvement.
+
+### Monitoring (2026-09-19)
+
+`scripts/_compile_monitoring_data.R` is 33 lines (was 127, with 7 helper functions defined inside);
+all functions in `R/monitoring.R`, tests in `tests/testthat/test-monitoring.R` (40 expectations,
+synthetic data). Cut along the later targets sub-analyses `mon_aq_` and `mon_ndep_`. Inputs are
+package datasets of `airquality.data` 0.1.3 (no network). **Two bugs were fixed first (own commit
+`c390948`), then the refactoring reproduced the fixed outputs byte-identically.**
+
+| old | new |
+|---|---|
+| `data_monitoring_aq_y1` filtered with `canton == "ZH" \| site %in% c("Zürich-Kaserne", "Dübendorf-EMPA")` | `prepare_monitoring_airquality(data, cantons = mon_cantons)`; the site names were redundant (both NABEL sites carry `canton = "ZH"`), output unchanged |
+| `recode_ecosys()`, `ostluft_siteclass()`, `cut_emissions_1km()`, `derive_source_cat()`, `cut_estimated()`, `cut_frac_estimated()`, `aggregate_ndep()` defined inside the script | `recode_ecosystems()`, `classify_ostluft_siteclass()`, `classify_nh3_emission()`, `derive_source_category()`, `classify_estimated()`, `classify_frac_estimated()` (all on `classify()`), `prepare_ndep_site_meta()`, `prepare_ndep_parameters()`, `aggregate_ndep()` in `R/monitoring.R` |
+| unprefixed `mutate()`/`left_join()` (only work while dplyr is attached), `group_by_at()` | prefixed, `.by` + `arrange()` (same row order as the sorting `group_by()`) |
+| hard-coded canton | setting `mon_cantons` in `_setup.R` |
+| class thresholds inside the script | documented defaults of the classification functions (method constants, like `fit_pm_ratio()`) |
+| – | input checks (`check_columns()`) for the three datasets; `recode_ecosystems()` warns about unknown ecosystem types instead of silently returning `NA` |
+| `aggregate_nitrogen_deposition()`, `simplify_nitrogen_parameters()` (old ndep approach, unused) | removed |
+
+Fixes (commit `c390948`, `data_airquality_monitoring_y1.csv` unchanged):
+* **Site class typo**: `ostluft_siteclass()` had the factor levels `c("hoch", "mittel", "tiel")`, so
+  every "tief" became `NA` – 14 of 132 rows in `data_ndep_monitoring_y1.csv`, 98 of 924 in the
+  parameter file.
+* **Ecosystem "Siedlungen"** (only site WIE, `cln = NA`) became `NA`; user decision 2026-09-19: it
+  counts as "kein empf. Ökosys." (14 / 98 rows). Note: the committed outputs still contained
+  "Siedlungen", i.e. they had been written with an older code version than the current script.
+* Neither fix changes a value (`max_abs_rel` 0), and neither reaches the plots: `_plot_airquality.R`
+  drops ecosystems that are `NA`/"Siedlungen" and rows without `cln`, and overwrites the site class.
 
 ## Regression results (step 1)
 

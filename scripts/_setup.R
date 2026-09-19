@@ -71,6 +71,10 @@ emis_subsector_min_share <- 0.05
 # maximum number of subsectors per pollutant and sector, including "verschiedene"
 emis_subsectors_max <- 4
 
+# => monitoring
+# cantons whose monitoring sites are compiled (the NABEL sites Zürich-Kaserne and Dübendorf-EMPA carry canton "ZH")
+mon_cantons <- "ZH"
+
 # => trends
 # years to consider for analysis and later plotting
 trend_years <- 1990:year_last

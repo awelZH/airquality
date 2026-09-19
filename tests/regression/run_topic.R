@@ -25,8 +25,8 @@ topics <- list(
   ),
   monitoring = list(
     script = "scripts/_compile_monitoring_data.R",
-    setup = "ressources",
-    attach = "dplyr" # the old script calls mutate() and left_join() without prefix
+    setup = c("ressources", "mon_cantons"),
+    attach = "dplyr" # the old script called mutate() and left_join() without prefix
   )
 )
 

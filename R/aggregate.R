@@ -15,40 +15,6 @@ aggregate_map <- function(map) {
 }
 
 
-#' Aggregates monitoring nitrogen deposition data
-#'
-#' @param data
-#'
-#' @description
-#' Simplifies nitrogen deposition components to broader source categories and aggregates nitrogen deposition input dataset
-#' per year, site, ecosystem category and source category.
-#'
-#' @export
-aggregate_nitrogen_deposition <- function(data) {
-
-  data <- simplify_nitrogen_parameters(data)
-
-  estimate <-
-    data |>
-    dplyr::filter(parameter == "N-Deposition") |>
-    dplyr::select(year, site, ecosystem_category, estimate)
-
-  data <-
-    data |>
-    dplyr::group_by(year, site, site_long, source, siteclass, ecosystem_category, critical_load_min, critical_load_single, critical_load_max, component = parameter, unit) |>
-    dplyr::summarise(deposition = sum(value)) |>
-    dplyr::ungroup() |>
-    dplyr::left_join(estimate, by = c("year", "site", "ecosystem_category")) |>
-    dplyr::mutate(
-      metric = "Jahreseintrag",
-      estimate = dplyr::case_when(component == "N-Deposition" ~ estimate, TRUE ~ NA)
-    ) |>
-    dplyr::select(year, site, site_long, siteclass, ecosystem_category, component, metric, deposition, unit, dplyr::everything())
-
-  return(data)
-}
-
-
 #' Wrangle and aggregate results from statistical meteo-normalisation of monitoring data as relative trends
 #'
 #' @param trends

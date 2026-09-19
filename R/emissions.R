@@ -56,9 +56,10 @@ prepare_emissions <- function(data,
 
 #' Sum up emissions per year, pollutant, sector and (regrouped) subsector
 #'
-#' Subsectors are renamed or merged with the lookup table `subsector_new` (e.g. several small
-#' subsectors into "verschiedene"); subsectors missing in the lookup keep their name.
-#' Groups without emission are dropped.
+#' Subsectors are renamed or merged thematically with the lookup table `subsector_new`, which
+#' should list every subsector; missing ones keep their name, with a warning. Small subsectors are
+#' merged afterwards per pollutant, see [group_minor_subsectors()]. Groups without emission are
+#' dropped.
 #'
 #' @param data Output of [prepare_emissions()].
 #' @param subsector_new Lookup table with columns `subsector` and `subsector_new`
@@ -71,6 +72,10 @@ prepare_emissions <- function(data,
 #' @keywords internal
 aggregate_emissions <- function(data, subsector_new) {
   lookup <- dplyr::select(subsector_new, subsector, subsector_new)
+  missing <- setdiff(unique(data$subsector), lookup$subsector)
+  if (length(missing) > 0) {
+    cli::cli_warn("Subsector{?s} missing in the lookup table, kept with {?its/their} name: {.val {missing}}.")
+  }
 
   data |>
     dplyr::left_join(lookup, by = dplyr::join_by(subsector)) |>
@@ -82,6 +87,57 @@ aggregate_emissions <- function(data, subsector_new) {
     dplyr::filter(emission > 0) |>
     dplyr::mutate(metric = "Jahresmenge") |>
     dplyr::select(year, pollutant, metric, unit, sector, subsector_new, emission, source)
+}
+
+
+#' Merge small subsectors into "verschiedene", per pollutant and sector
+#'
+#' Keeps the emission plots of a pollutant readable: per pollutant and sector,
+#' * subsectors whose mean yearly share of the pollutant's total emission is below `min_share` go
+#'   into `other` (years without emission count as share 0), and
+#' * at most `max_per_sector` groups remain, including `other`: if there is an `other` group (or
+#'   more than `max_per_sector` subsectors), only the `max_per_sector - 1` largest keep their name.
+#'
+#' The grouping is decided once per pollutant from the mean over all years in `data`, so the whole
+#' time series of a pollutant shows the same groups. A subsector already called `other` (e.g. from
+#' the lookup table) is part of the collective group.
+#'
+#' @param data Output of [aggregate_emissions()].
+#' @param min_share Smallest mean yearly share (0–1) of a subsector with its own name.
+#' @param max_per_sector Largest number of groups per pollutant and sector, including `other`.
+#' @param other Name of the collective group.
+#'
+#' @return `data` with the same columns, summed per new `subsector_new`.
+#'
+#' @keywords internal
+group_minor_subsectors <- function(data, min_share = 0.05, max_per_sector = 4, other = "verschiedene") {
+  mean_shares <-
+    data |>
+    dplyr::summarise(emission = sum(emission), .by = c(year, pollutant, sector, subsector_new)) |>
+    dplyr::mutate(share = emission / sum(emission), .by = c(year, pollutant)) |>
+    dplyr::mutate(n_years = dplyr::n_distinct(year), .by = pollutant) |>
+    dplyr::summarise(mean_share = sum(share) / dplyr::first(n_years), .by = c(pollutant, sector, subsector_new))
+
+  groups <-
+    mean_shares |>
+    dplyr::mutate(is_other = subsector_new == other | mean_share < min_share) |>
+    dplyr::arrange(pollutant, sector, dplyr::desc(mean_share)) |>
+    dplyr::mutate(
+      rank = cumsum(!is_other),
+      keep_all = !any(is_other) & sum(!is_other) <= max_per_sector,
+      group = dplyr::if_else(!is_other & (keep_all | rank < max_per_sector), subsector_new, other),
+      .by = c(pollutant, sector)
+    ) |>
+    dplyr::select(pollutant, sector, subsector_new, group)
+
+  data |>
+    dplyr::left_join(groups, by = dplyr::join_by(pollutant, sector, subsector_new)) |>
+    dplyr::mutate(subsector_new = group) |>
+    dplyr::summarise(
+      emission = sum(emission),
+      .by = c(year, pollutant, metric, unit, sector, subsector_new, source)
+    ) |>
+    dplyr::select(dplyr::all_of(names(data)))
 }
 
 

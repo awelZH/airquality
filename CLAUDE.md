@@ -308,14 +308,16 @@ current year only.
 ### Emissions (2026-09-18)
 
 `scripts/_compile_emission_data.R` is now read → prepare → aggregate → write; all functions in
-`R/emissions.R`, tests in `tests/testthat/test-emissions.R` (60 expectations, synthetic data).
-**Regression: all 4 outputs byte-identical** to the reference (old code, same frozen inputs); the
-reference itself is byte-identical to the committed outputs (online data unchanged).
+`R/emissions.R`, tests in `tests/testthat/test-emissions.R` (80 expectations, synthetic data).
+**Regression of the refactoring (commit `f4d941f`): all 4 outputs byte-identical** to the reference
+(old code, same frozen inputs); the reference itself is byte-identical to the committed outputs
+(online data unchanged). The subsector grouping (below) then changed `data_emissions.csv` on purpose;
+the three RSD files stay byte-identical.
 
 | old | new |
 |---|---|
 | `prepare_emmissions(data, filter_args = <quoted expression>)` | `prepare_emissions(data, canton, exclude_subsectors, year_max)` |
-| `aggregate_emmissions()` incl. plot colours and an unused automatic regrouping `groups_emission_subsector()` (the script always passes the lookup table) | `aggregate_emissions(data, subsector_new)` + `add_emission_colours(data, sector_colours)`; automatic regrouping removed |
+| `aggregate_emmissions()` incl. plot colours and an unused automatic regrouping `groups_emission_subsector()` (the script always passes the lookup table) | `aggregate_emissions(data, subsector_new)` + `group_minor_subsectors()` (new rule, see below) + `add_emission_colours(data, sector_colours)` |
 | `prepare_rsd(data, rsd_auxiliary)` with hidden `lubridate::year(Sys.Date())` as newest vehicle model year | `prepare_rsd(data, meta, filters, model_year_max)`, script passes `emis_year_max` (same value: current year) |
 | `aggregate_rsd_nox(data, rsd_auxiliary, groups)` + `aggregate_rsd()` | `aggregate_rsd_nox(data, meta, filters, groups)` |
 | `source` hard-coded in the aggregation | taken from the data (`read_opendataswiss(source = )`) |
@@ -335,10 +337,31 @@ Findings:
   `vehicle_fuel_type`) with `n = 0` (`airquality.methods::aggregate_groups()`); in the current
   outputs this only adds two empty rows (light duty vehicles, model year 2024).
 
-**Subsector grouping, analysis 2026-09-19 (open, user to decide).** Intended criteria (user): at most
-4 new subsectors per sector, and all subsectors with a small share in "verschiedene"; the lookup
-table should list all subsectors. Shares = share of the pollutant's canton total, published years
-1990–2025, per pollutant (the plots are per pollutant):
+**Subsector grouping: lookup table + per-pollutant rule** (user decision 2026-09-19). Criteria
+(user): at most 4 subsectors per pollutant and sector **including** "verschiedene"; subsectors with
+a mean yearly share < 5 % of the pollutant's canton total go into "verschiedene" (mean over all
+published years, so a pollutant keeps the same groups over its whole time series); the lookup table
+lists all subsectors. Implementation:
+* `emikat_subsector_new.csv` lists all 35 subsectors and only merges/renames thematically
+  (Feuerungen Holz & Kohle / Öl & Gas, Lösungsmittel, Flugverkehr, Kehrichtverbrennungsanlagen –
+  typo "…anagen" corrected –, Stall-Laufhof & Hofdünger-Lager, Hofdüngerausbringung & Weiden); no
+  entry maps to "verschiedene" any more. `aggregate_emissions()` warns about subsectors missing in
+  the table (e.g. new ones in a future inventory).
+* `group_minor_subsectors(min_share = emis_subsector_min_share, max_per_sector =
+  emis_subsectors_max)` (settings 0.05 and 4 in `_setup.R`): per pollutant and sector, mean yearly
+  share < 5 % → "verschiedene" (years without emission count as 0); if a "verschiedene" group
+  exists or there are more than 4 subsectors, only the 3 largest keep their name.
+* Result 2026-09-19 (frozen inputs): `data_emissions.csv` 3996 → 2772 rows, totals per year,
+  pollutant and sector unchanged (≤ 4e-16), max. 4 groups, no named group < 5 %. Now named, e.g.
+  Zonenverkehr (CO 28 %, NMVOC 15 %), Flächenquellen Industrie (SO2 18 %, PM 9 %), Landwirtschaftliche
+  Nutzflächen (NH3 7 %); now in "verschiedene", e.g. Feuerungen Öl & Gas for PM/eBC/NH3/CO. Some
+  sector/pollutant combinations consist of "verschiedene" only (e.g. NOx Industrie 11 %, made of
+  subsectors each < 5 %).
+* **Restore point:** the lookup-only state is commit `f4d941f`, git tag `emissions-lookup-only`
+  (restore files with `git checkout emissions-lookup-only -- <files>`).
+
+Analysis of the lookup-only state that led to this decision (2026-09-19). Shares = share of the
+pollutant's canton total, published years 1990–2025, per pollutant (the plots are per pollutant):
 * coverage: 35 subsectors in the data, 32 in the lookup; missing (keep their name):
   `Strassenverkehr`, `Baumaschinen` (Industrie), `Wälder` (natürl. Emissionen)
 * max. 4 per sector: **fulfilled** (per pollutant max. 4: NMVOC Haushalte and Industrie; over all

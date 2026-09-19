@@ -20,7 +20,7 @@ regression_dir <- "tests/regression"
 topics <- list(
   emissions = list(
     script = "scripts/_compile_emission_data.R",
-    setup = c("ressources", "year_offset", "year_last", "emis_year_max")
+    setup = c("ressources", "year_offset", "year_last", "emis_year_max", "emis_subsector_min_share", "emis_subsectors_max")
   )
 )
 

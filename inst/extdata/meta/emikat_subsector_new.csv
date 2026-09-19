@@ -1,33 +1,36 @@
 ﻿subsector;subsector_new;comment
-Abfallverbrennung Land- und Forstwirtschaft;verschiedene;
-Deponien;verschiedene;
-Dienstleistungen Landschaftspflege;verschiedene;
+Abfallverbrennung Land- und Forstwirtschaft;Abfallverbrennung Land- und Forstwirtschaft;
+Baumaschinen;Baumaschinen;
+Deponien;Deponien;
+Dienstleistungen Landschaftspflege;Dienstleistungen Landschaftspflege;
 Feuerungen Dienstleistungen Holz und Kohle;Feuerungen Holz & Kohle;
 Feuerungen Dienstleistungen Öl und Gas;Feuerungen Öl & Gas;
 Feuerungen Haushalte Holz und Kohle;Feuerungen Holz & Kohle;
 Feuerungen Haushalte Öl und Gas;Feuerungen Öl & Gas;
-Feuerungen Landwirtschaft Holz;verschiedene;
-Flächenquellen Industrie;verschiedene;
+Feuerungen Landwirtschaft Holz;Feuerungen Landwirtschaft Holz;
+Flächenquellen Industrie;Flächenquellen Industrie;
 Flugverkehr Zürich;Flugverkehr;
-Forstwirtschaftliche Maschinen;verschiedene;
-Haushalte andere Brände etc;verschiedene;
-Haushalte andere Feuerwerk etc;verschiedene;
-Haushalte andere Private etc;verschiedene;
-Industriefahrzeuge;verschiedene;
-Kläranlagen;verschiedene;
-Kompostierung;verschiedene;
-Landwirtschaftliche Maschinen;verschiedene;
-Landwirtschaftliche Nutzflächen;verschiedene;"enthält ""Nutzflaechen Handelsduenger"", ""Nutzflaechen Hofduenger"", ""Nutzflaechen weitere"", d.h. Flächen-Emissionen durch Anwendung verschiedener Arten Mineraldünger, Klärschlammund andere organische Dünger / direkte Boden-Emissionen von Acker-, Grass- und Weideland"
+Forstwirtschaftliche Maschinen;Forstwirtschaftliche Maschinen;
+Haushalte andere Brände etc;Haushalte andere Brände etc;
+Haushalte andere Feuerwerk etc;Haushalte andere Feuerwerk etc;
+Haushalte andere Private etc;Haushalte andere Private etc;
+Industriefahrzeuge;Industriefahrzeuge;
+Kläranlagen;Kläranlagen;
+Kompostierung;Kompostierung;
+Landwirtschaftliche Maschinen;Landwirtschaftliche Maschinen;
+Landwirtschaftliche Nutzflächen;Landwirtschaftliche Nutzflächen;"enthält ""Nutzflaechen Handelsduenger"", ""Nutzflaechen Hofduenger"", ""Nutzflaechen weitere"", d.h. Flächen-Emissionen durch Anwendung verschiedener Arten Mineraldünger, Klärschlammund andere organische Dünger / direkte Boden-Emissionen von Acker-, Grass- und Weideland"
 Lösungsmittel Industrie;Lösungsmittel;
 Lösungsmittel Konsumprodukte;Lösungsmittel;
-Maschinen Garten und Hobby;verschiedene;
-Punktquellen KVA;Kehrichtverbrennungsanagen;
-Schienenverkehr Bau-/Dienstzüge;verschiedene;
-Schienenverkehr Rangieren;verschiedene;
-Schifffahrt Seen;verschiedene;
-Schifffahrt Fährlinien;verschiedene;
+Maschinen Garten und Hobby;Maschinen Garten und Hobby;
+Punktquellen KVA;Kehrichtverbrennungsanlagen;
+Schienenverkehr Bau-/Dienstzüge;Schienenverkehr Bau-/Dienstzüge;
+Schienenverkehr Rangieren;Schienenverkehr Rangieren;
+Schifffahrt Fährlinien;Schifffahrt Fährlinien;
+Schifffahrt Seen;Schifffahrt Seen;
 Ställe;Stall-Laufhof & Hofdünger-Lager;"enthält ""Nutztierhaltung, Geflügel, Rindvieh, Schweine, weitere"", d.h. v.a. Emissionen aus Ställen und Laufhöfen / Hofdünger-Lagerung / Hofdünger-Management / entherische Tier-Emissionen aus Ställen"
-Vergärung;verschiedene;
-Verluste Gasnetz;verschiedene;
+Strassenverkehr;Strassenverkehr;
+Vergärung;Vergärung;
+Verluste Gasnetz;Verluste Gasnetz;
+Wälder;Wälder;
 Weiden;Hofdüngerausbringung & Weiden;"enthält ""Nutzflaechen Hofduenger"", ""Nutzflaechen weitere"", ""Nutztierhaltung Rindvieh"", ""Nutztierhaltung weitere"", d.h. Ausbringung Gülle, Mist, u.ä. / Weide-Ausscheidungs-Emissionen / indirekte Flächen-Emissionen / Pflanzenschutzmittel / entherische Tier-Emissionen von Weiden"
-Zonenverkehr;verschiedene;
+Zonenverkehr;Zonenverkehr;

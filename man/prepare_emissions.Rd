@@ -8,7 +8,8 @@ prepare_emissions(
   data,
   canton = "ZH",
   exclude_subsectors = c("Weitere Punktquellen OL", "Rheinschifffahrt",
-    "Flugverkehr Genf")
+    "Flugverkehr Genf"),
+  year_max = Inf
 )
 }
 \arguments{
@@ -18,14 +19,17 @@ prepare_emissions(
 \item{canton}{Canton to keep.}
 
 \item{exclude_subsectors}{Subsectors to drop.}
+
+\item{year_max}{Last year kept; later years are projections.}
 }
 \value{
 The inventory with English column names \code{year}, \code{pollutant}, \code{sector}, \code{subsector},
 \code{canton}, \code{municipality}, \code{unit}, \code{emission} (other columns unchanged), without \code{stand}.
 }
 \description{
-Keeps the latest inventory version (\code{stand}) of one canton, drops zero emissions and
-subsectors whose emissions are not distributed onto the municipalities in a meaningful way,
-and renames black carbon \code{BC} to \code{eBC} as in the monitoring data.
+Keeps the latest inventory version (\code{stand}) of one canton up to \code{year_max} (the inventory also
+contains projections), drops zero emissions and subsectors whose emissions are not distributed
+onto the municipalities in a meaningful way, and renames black carbon \code{BC} to \code{eBC} as in the
+monitoring data.
 }
 \keyword{internal}

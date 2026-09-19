@@ -65,6 +65,12 @@ crs <- 2056
 # vehicle model year in the RSD data
 emis_year_max <- lubridate::year(Sys.Date())
 
+# subsectors whose mean yearly share of a pollutant's emissions is below this go into "verschiedene"
+emis_subsector_min_share <- 0.05
+
+# maximum number of subsectors per pollutant and sector, including "verschiedene"
+emis_subsectors_max <- 4
+
 # => trends
 # years to consider for analysis and later plotting
 trend_years <- 1990:year_last

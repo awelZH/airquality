@@ -68,21 +68,23 @@ make_prepared_emissions <- function() {
 }
 
 test_that("aggregate_emissions() sums emissions per year, pollutant, sector and new subsector", {
-  subsector_new <- tibble::tibble(subsector = c("Offroad", "Bahn"), subsector_new = c("verschiedene", "verschiedene"))
+  subsector_new <- tibble::tibble(subsector = c("Strassenverkehr", "Offroad", "Bahn", "Feuerungen"),
+                                  subsector_new = c("Strassenverkehr", "Schiene & Offroad", "Schiene & Offroad", "Feuerungen"))
 
   result <- aggregate_emissions(make_prepared_emissions(), subsector_new)
 
   expect_named(result, c("year", "pollutant", "metric", "unit", "sector", "subsector_new", "emission", "source"))
   verkehr_2015 <- dplyr::filter(result, year == 2015, sector == "Verkehr")
-  expect_setequal(verkehr_2015$subsector_new, c("Strassenverkehr", "verschiedene"))
-  expect_equal(verkehr_2015$emission[verkehr_2015$subsector_new == "verschiedene"], 3)
+  expect_setequal(verkehr_2015$subsector_new, c("Strassenverkehr", "Schiene & Offroad"))
+  expect_equal(verkehr_2015$emission[verkehr_2015$subsector_new == "Schiene & Offroad"], 3)
   expect_all_true(result$metric == "Jahresmenge")
   expect_all_true(result$source == "Ostluft & BAFU")
 })
 
 test_that("aggregate_emissions() keeps the total emission and drops empty groups", {
   data <- make_prepared_emissions()
-  subsector_new <- tibble::tibble(subsector = "Offroad", subsector_new = "verschiedene")
+  subsector_new <- tibble::tibble(subsector = c("Strassenverkehr", "Offroad", "Bahn", "Feuerungen"),
+                                  subsector_new = c("Strassenverkehr", "Offroad", "Bahn", "Feuerungen"))
 
   result <- aggregate_emissions(data, subsector_new)
 
@@ -90,6 +92,123 @@ test_that("aggregate_emissions() keeps the total emission and drops empty groups
   # Bahn 2016 has only NA and is dropped, no group without emission is added
   expect_false(any(result$year == 2016 & result$subsector_new == "Bahn"))
   expect_all_true(result$emission > 0)
+})
+
+test_that("aggregate_emissions() warns about subsectors missing in the lookup table and keeps their name", {
+  subsector_new <- tibble::tibble(subsector = c("Offroad", "Bahn", "Feuerungen"),
+                                  subsector_new = c("Offroad", "Bahn", "Feuerungen"))
+
+  expect_warning(result <- aggregate_emissions(make_prepared_emissions(), subsector_new), "Strassenverkehr")
+  expect_contains(result$subsector_new, "Strassenverkehr")
+})
+
+# one pollutant, one sector, subsectors with given yearly emissions
+make_subsector_emissions <- function(emissions, pollutant = "NOx", sector = "Verkehr") {
+  purrr::imap(emissions, \(values, subsector) {
+    tibble::tibble(year = 2000 + seq_along(values) - 1, pollutant = pollutant, metric = "Jahresmenge",
+                   unit = "t/a", sector = sector, subsector_new = subsector, emission = values,
+                   source = "Ostluft & BAFU")
+  }) |>
+    purrr::list_rbind() |>
+    dplyr::filter(!is.na(emission))
+}
+
+group_of <- function(result, pollutant = "NOx") {
+  # subsector names that remain, per pollutant
+  sort(unique(result$subsector_new[result$pollutant == pollutant]))
+}
+
+test_that("group_minor_subsectors() puts subsectors below the mean yearly share into 'verschiedene'", {
+  data <- make_subsector_emissions(list(A = c(60, 600), B = c(36, 380), C = c(4, 20)))
+
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 4)
+
+  # C: 4 % and 2 % -> mean 3 %
+  expect_equal(group_of(result), c("A", "B", "verschiedene"))
+  expect_equal(result$emission[result$subsector_new == "verschiedene"], c(4, 20))
+})
+
+test_that("group_minor_subsectors() averages the yearly shares, not the emissions", {
+  # year 1: total 100, C = 8 %; year 2: total 1000, C = 3 % -> mean share 5.5 % (share of the sum: 3.5 %)
+  data <- make_subsector_emissions(list(A = c(92, 970), C = c(8, 30)))
+
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 4)
+
+  expect_equal(group_of(result), c("A", "C"))
+})
+
+test_that("group_minor_subsectors() counts years without emission as a share of 0", {
+  # C: 8 % in year 1, none in year 2 -> mean share 4 %
+  data <- make_subsector_emissions(list(A = c(92, 1000), C = c(8, NA)))
+
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 4)
+
+  expect_equal(group_of(result), c("A", "verschiedene"))
+})
+
+test_that("group_minor_subsectors() keeps one grouping for the whole time series of a pollutant", {
+  # B is small in year 2 but large on average: named in both years
+  data <- make_subsector_emissions(list(A = c(50, 99), B = c(50, 1)))
+
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 4)
+
+  expect_equal(result$subsector_new[result$year == 2001], c("A", "B"))
+})
+
+test_that("group_minor_subsectors() keeps at most max_per_sector groups including 'verschiedene'", {
+  # five large subsectors: the three largest keep their name, the rest is 'verschiedene'
+  data <- make_subsector_emissions(list(A = 25, B = 24, C = 20, D = 16, E = 15))
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 4)
+  expect_equal(group_of(result), c("A", "B", "C", "verschiedene"))
+  expect_equal(result$emission[result$subsector_new == "verschiedene"], 31)
+
+  # exactly four large subsectors and no small one: all four keep their name
+  data <- make_subsector_emissions(list(A = 25, B = 25, C = 25, D = 25))
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 4)
+  expect_equal(group_of(result), c("A", "B", "C", "D"))
+
+  # four large and one small: the fourth joins the small one in 'verschiedene'
+  data <- make_subsector_emissions(list(A = 30, B = 30, C = 20, D = 18, E = 2))
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 4)
+  expect_equal(group_of(result), c("A", "B", "C", "verschiedene"))
+  expect_equal(result$emission[result$subsector_new == "verschiedene"], 20)
+})
+
+test_that("group_minor_subsectors() groups per pollutant and per sector", {
+  data <- dplyr::bind_rows(
+    make_subsector_emissions(list(A = 90, B = 10), pollutant = "NOx", sector = "Verkehr"),
+    make_subsector_emissions(list(A = 97, B = 3), pollutant = "PM10", sector = "Verkehr"),
+    make_subsector_emissions(list(F = 3), pollutant = "NOx", sector = "Haushalte")
+  )
+
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 4)
+
+  expect_equal(group_of(result, "NOx"), c("A", "B", "verschiedene"))
+  expect_equal(group_of(result, "PM10"), c("A", "verschiedene"))
+  # the small Haushalte subsector becomes 'verschiedene' of Haushalte, not of Verkehr
+  expect_equal(result$sector[result$pollutant == "NOx" & result$subsector_new == "verschiedene"], "Haushalte")
+})
+
+test_that("group_minor_subsectors() keeps the totals and the columns", {
+  data <- make_subsector_emissions(list(A = c(50, 60), B = c(30, 20), C = c(1, 2), D = c(2, 1)))
+
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 4)
+
+  expect_named(result, names(data))
+  expect_equal(
+    dplyr::summarise(result, emission = sum(emission), .by = year)$emission,
+    dplyr::summarise(data, emission = sum(emission), .by = year)$emission
+  )
+  expect_equal(nrow(dplyr::distinct(result, year, subsector_new)), nrow(result))
+})
+
+test_that("group_minor_subsectors() treats 'verschiedene' from the lookup table as the collective group", {
+  data <- make_subsector_emissions(list(A = 60, B = 30, verschiedene = 10))
+
+  result <- group_minor_subsectors(data, min_share = 0.05, max_per_sector = 2)
+
+  expect_equal(group_of(result), c("A", "verschiedene"))
+  expect_equal(result$emission[result$subsector_new == "verschiedene"], 40)
 })
 
 make_aggregated_emissions <- function() {

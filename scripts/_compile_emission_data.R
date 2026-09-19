@@ -4,7 +4,7 @@
 # emission inventory (EMIKAT) ...
 # ---
 # => read emission budget data of air pollutants in the Canton of Zürich, stratified for emission sector groups and
-#    subgroups, from opendata.swiss; and the lookup table grouping minor subsectors (max. 3 subsectors per sector in plots)
+#    subgroups, from opendata.swiss; and the lookup table merging and renaming subsectors thematically
 data_emikat <- airquality.methods::read_opendataswiss(filter_ressources(ressources, 1), source = "Ostluft & BAFU")
 subsector_new <- airquality.methods::read_local_csv(filter_ressources(ressources, 27), locale = readr::locale(encoding = "UTF-8"))
 
@@ -14,6 +14,10 @@ data_emikat <- prepare_emissions(data_emikat, year_max = emis_year_max)
 
 # => sum up emissions per year, pollutant, sector and grouped subsector
 data_emikat <- aggregate_emissions(data_emikat, subsector_new)
+
+# => per pollutant and sector: small subsectors (mean yearly share) into "verschiedene", at most emis_subsectors_max
+#    subsectors incl. "verschiedene" (keeps the plots readable; same groups for the whole time series of a pollutant)
+data_emikat <- group_minor_subsectors(data_emikat, min_share = emis_subsector_min_share, max_per_sector = emis_subsectors_max)
 
 # => plot order and colour per subsector, ranked by the emissions of the published years
 data_emikat <- add_emission_colours(data_emikat)

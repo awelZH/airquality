@@ -18,8 +18,9 @@ columns \code{year}, \code{pollutant}, \code{metric} ("Jahresmenge"), \code{unit
 \code{emission}, \code{source}.
 }
 \description{
-Subsectors are renamed or merged with the lookup table \code{subsector_new} (e.g. several small
-subsectors into "verschiedene"); subsectors missing in the lookup keep their name.
-Groups without emission are dropped.
+Subsectors are renamed or merged thematically with the lookup table \code{subsector_new}, which
+should list every subsector; missing ones keep their name, with a warning. Small subsectors are
+merged afterwards per pollutant, see \code{\link[=group_minor_subsectors]{group_minor_subsectors()}}. Groups without emission are
+dropped.
 }
 \keyword{internal}

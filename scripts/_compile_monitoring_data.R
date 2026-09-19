@@ -22,6 +22,7 @@ recode_ecosys <- function(data, levels = rev(c("kein empf. Ökosys.", "Trockenra
     mutate(
       ecosys = ifelse(stringr::str_detect(ecosys, "wald"), "Wald", ecosys),
       ecosys = ifelse(ecosys == "Feuchtgebiet", "Flachmoor", ecosys),
+      ecosys = ifelse(ecosys == "Siedlungen", "kein empf. Ökosys.", ecosys),
       ecosys = factor(ecosys, levels = !!levels)
     )
 }
@@ -38,7 +39,7 @@ ostluft_siteclass <- function(gve, nfert) {
       when_any(nfert > 100, gve > 10000) ~ "hoch"
     )
   
-  return(factor(siteclass, levels = c("hoch", "mittel", "tiel")))
+  return(factor(siteclass, levels = c("hoch", "mittel", "tief")))
   
 }
 

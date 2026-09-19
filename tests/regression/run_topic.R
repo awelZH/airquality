@@ -9,7 +9,8 @@
 #
 # The script itself runs unchanged: the network readers of airquality.methods are replaced by a
 # record/replay version and write_local_csv() is redirected to tests/regression/results/<topic>/<label>/,
-# so inst/extdata/output/ is never touched. Only the settings the topic needs are taken from
+# so inst/extdata/output/ is never touched. Packages the old script needs attached are listed in `attach`.
+# Only the settings the topic needs are taken from
 # scripts/_setup.R (package loading and the airquality.data update are skipped).
 #
 # run from the project root in a fresh R session, e.g.
@@ -21,6 +22,11 @@ topics <- list(
   emissions = list(
     script = "scripts/_compile_emission_data.R",
     setup = c("ressources", "year_offset", "year_last", "emis_year_max", "emis_subsector_min_share", "emis_subsectors_max")
+  ),
+  monitoring = list(
+    script = "scripts/_compile_monitoring_data.R",
+    setup = "ressources",
+    attach = "dplyr" # the old script calls mutate() and left_join() without prefix
   )
 )
 
@@ -61,6 +67,7 @@ run_topic <- function(topic, label, refresh = FALSE) {
   dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 
   library(airquality.methods) # the old code calls some of its exports without prefix
+  for (package in spec$attach) library(package, character.only = TRUE)
   devtools::load_all(quiet = TRUE)
 
   ns <- asNamespace("airquality.methods")

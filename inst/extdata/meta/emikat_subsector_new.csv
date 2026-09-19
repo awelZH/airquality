@@ -1,27 +1,27 @@
 ﻿subsector;subsector_new;comment
-Abfallverbrennung Land- und Forstwirtschaft;Abfallverbrennung Land- und Forstwirtschaft;
+Abfallverbrennung Land- und Forstwirtschaft;Abfallverbrennung;
 Baumaschinen;Baumaschinen;
 Deponien;Deponien;
-Dienstleistungen Landschaftspflege;Dienstleistungen Landschaftspflege;
+Dienstleistungen Landschaftspflege;Landschaftspflege;
 Feuerungen Dienstleistungen Holz und Kohle;Feuerungen Holz & Kohle;
 Feuerungen Dienstleistungen Öl und Gas;Feuerungen Öl & Gas;
 Feuerungen Haushalte Holz und Kohle;Feuerungen Holz & Kohle;
 Feuerungen Haushalte Öl und Gas;Feuerungen Öl & Gas;
-Feuerungen Landwirtschaft Holz;Feuerungen Landwirtschaft Holz;
-Flächenquellen Industrie;Flächenquellen Industrie;
+Feuerungen Landwirtschaft Holz;Feuerungen Holz;
+Flächenquellen Industrie;Flächenquellen;
 Flugverkehr Zürich;Flugverkehr;
-Forstwirtschaftliche Maschinen;Forstwirtschaftliche Maschinen;
-Haushalte andere Brände etc;Haushalte andere Brände etc;
-Haushalte andere Feuerwerk etc;Haushalte andere Feuerwerk etc;
-Haushalte andere Private etc;Haushalte andere Private etc;
+Forstwirtschaftliche Maschinen;Forstw. Maschinen;
+Haushalte andere Brände etc;Brände etc;
+Haushalte andere Feuerwerk etc;Feuerwerk;
+Haushalte andere Private etc;Private etc;
 Industriefahrzeuge;Industriefahrzeuge;
 Kläranlagen;Kläranlagen;
 Kompostierung;Kompostierung;
-Landwirtschaftliche Maschinen;Landwirtschaftliche Maschinen;
-Landwirtschaftliche Nutzflächen;Landwirtschaftliche Nutzflächen;"enthält ""Nutzflaechen Handelsduenger"", ""Nutzflaechen Hofduenger"", ""Nutzflaechen weitere"", d.h. Flächen-Emissionen durch Anwendung verschiedener Arten Mineraldünger, Klärschlammund andere organische Dünger / direkte Boden-Emissionen von Acker-, Grass- und Weideland"
+Landwirtschaftliche Maschinen;Landw. Maschinen;
+Landwirtschaftliche Nutzflächen;Landw. Nutzflächen;"enthält ""Nutzflaechen Handelsduenger"", ""Nutzflaechen Hofduenger"", ""Nutzflaechen weitere"", d.h. Flächen-Emissionen durch Anwendung verschiedener Arten Mineraldünger, Klärschlammund andere organische Dünger / direkte Boden-Emissionen von Acker-, Grass- und Weideland"
 Lösungsmittel Industrie;Lösungsmittel;
 Lösungsmittel Konsumprodukte;Lösungsmittel;
-Maschinen Garten und Hobby;Maschinen Garten und Hobby;
+Maschinen Garten und Hobby;Maschinen Garten & Hobby;
 Punktquellen KVA;Kehrichtverbrennungsanlagen;
 Schienenverkehr Bau-/Dienstzüge;Schienenverkehr Bau-/Dienstzüge;
 Schienenverkehr Rangieren;Schienenverkehr Rangieren;

@@ -31,7 +31,7 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 | `inst/extdata/log/` | run logs, appended on every run (e.g. coefficients of derived parameters); not part of the contract |
 | `docs/` | Quarto website (`quarto::quarto_render("docs/")`) |
 | `tests/testthat/` | unit tests (`devtools::test()`) and the output schema test |
-| `tests/regression/` | frozen baseline outputs and the regression comparison |
+| `tests/regression/` | frozen baseline outputs, regression runs on frozen inputs (`run_topic.R`) and the generic comparison (`compare_outputs.R`) |
 
 ## Output contract
 
@@ -158,10 +158,10 @@ slope would decouple the years but is less certain with 7–15 sites per year.
 * Step 1 (done, commits 889a80b, 696ec49, 39ebaa8 on `dev`): exposition reworked; all other scripts
   still use the old functions, only the obsolete `airquality.methods::` prefixes were removed.
 * Step 2: see "Step 2 plan" below (phase 2a: improve each topic, phase 2b: targets structure) –
-  **approved 2026-09-18, not started. Do not implement before the
-  user gives the go.**
+  **started 2026-09-18 with phase 2a.** Done: emissions (see "Phase 2a results"). Each further
+  topic only after the user's go.
 
-## Step 2 plan: targets project (approved 2026-09-18, NOT STARTED)
+## Step 2 plan: targets project (approved 2026-09-18, IN PROGRESS – phase 2a)
 
 Goal: a `targets` pipeline that is readable step by step, easy to debug, try out and extend, robust
 for the twice-yearly update, with unchanged output file names and schemas.
@@ -210,9 +210,9 @@ The code of each analysis step is improved first **within the current script str
 topic at a time, like step 1 did for the exposition – so the user can follow, try out and understand
 the progress before the big restructuring.
 
-**Phase 2a – improve per topic** (each topic its own commit(s), regression against the committed
-outputs before moving on; order to be confirmed with the user, proposal: emissions → monitoring →
-outcomes → trends → plots/report):
+**Phase 2a – improve per topic** (each topic its own commit(s), regression on frozen inputs before
+moving on, see "Regression workflow (phase 2a)"; order confirmed by the user 2026-09-18: emissions →
+monitoring → outcomes → trends → plots/report):
 * script `scripts/_compile_<topic>.R`: thin and readable – read → prepare → aggregate → write, no
   helper functions defined inside scripts (today: `estimate_prelim_deaths()`,
   `estimate_all_prelim_deaths()`, `estimate_yll()` in `_compile_outcomes.R`; `recode_ecosys()`,
@@ -249,8 +249,9 @@ outcomes → trends → plots/report):
    (plots as targets, `tarchetypes::tar_quarto()` rendering `report/` into `docs/`).
    Conventions: target names `<topic>_<stage>_<content>` (e.g. `expo_raw_rasters`, `expo_cells`,
    `expo_out_weighted_means_canton`), `tarchetypes::tar_plan()` syntax, comments mirroring the old
-   scripts, outputs as `format = "file"` targets. Generalise `tests/regression/compare_exposition.R`
-   to all 14 output files. Old scripts keep running until their topic is migrated.
+   scripts, outputs as `format = "file"` targets. Regression with `tests/regression/compare_outputs.R`
+   (already generic for all 14 output files, built in phase 2a). Old scripts keep running until their
+   topic is migrated.
 4. **Remove the package skeleton** once all topics run in targets: NAMESPACE, `man/`, `@export`
    tags, `scripts/`, `analyse_airquality.R`; `tar_option_set(workspace_on_error = TRUE)`.
 5. **airquality.methods**: after its 0.4.0 push, pin the GitHub sha in `renv.lock`; consider moving
@@ -275,6 +276,82 @@ outcomes → trends → plots/report):
   is **not committed** – repo is on `master` with the whole 0.4.0 work uncommitted; the user decides
   where to commit it.
 * Later methodological question: year-specific O3 peak-season slope (see decision 6).
+
+## Regression workflow (phase 2a)
+
+Online inputs can change between runs, so a comparison with the committed outputs mixes data and
+code changes. Instead, old and new code run on the **same frozen inputs**:
+
+1. before refactoring a topic, in a fresh R session from the project root:
+   `source("tests/regression/run_topic.R"); run_topic("<topic>", "reference")`
+2. after refactoring: `run_topic("<topic>", "candidate")`
+3. `source("tests/regression/compare_outputs.R")`;
+   `compare_outputs("tests/regression/results/<topic>/reference", "tests/regression/results/<topic>/candidate")`
+
+`run_topic()` sources the unchanged topic script; `testthat::with_mocked_bindings()` replaces the
+network readers of `airquality.methods` (`read_opendataswiss()`, `read_geolion_wfs()`) by a
+record/replay version (`tests/regression/inputs/*.rds`, keyed by `rlang::hash()` of the arguments,
+`refresh = TRUE` downloads again) and redirects `write_local_csv()` to
+`tests/regression/results/<topic>/<label>/`, so `inst/extdata/output/` is never touched. The settings
+a topic needs are evaluated from `scripts/_setup.R` (only the listed assignments; no package loading,
+no `airquality.data` update). A new topic needs an entry in `topics` (script, settings; add further
+readers to `network_readers` if it uses them). Inputs and results are gitignored.
+`compare_outputs()` works for all 14 files without configuration: byte identity, header (contract),
+rows only in one file (key = non-numeric columns plus integer-valued ones such as `year`), values
+that became `NA`, and the largest relative deviation.
+
+Settings that depend on the date (`year_last`, `emis_year_max`) make the reference valid for the
+current year only.
+
+## Phase 2a results
+
+### Emissions (2026-09-18)
+
+`scripts/_compile_emission_data.R` is now read → prepare → aggregate → write; all functions in
+`R/emissions.R`, tests in `tests/testthat/test-emissions.R` (60 expectations, synthetic data).
+**Regression: all 4 outputs byte-identical** to the reference (old code, same frozen inputs); the
+reference itself is byte-identical to the committed outputs (online data unchanged).
+
+| old | new |
+|---|---|
+| `prepare_emmissions(data, filter_args = <quoted expression>)` | `prepare_emissions(data, canton, exclude_subsectors, year_max)` |
+| `aggregate_emmissions()` incl. plot colours and an unused automatic regrouping `groups_emission_subsector()` (the script always passes the lookup table) | `aggregate_emissions(data, subsector_new)` + `add_emission_colours(data, sector_colours)`; automatic regrouping removed |
+| `prepare_rsd(data, rsd_auxiliary)` with hidden `lubridate::year(Sys.Date())` as newest vehicle model year | `prepare_rsd(data, meta, filters, model_year_max)`, script passes `emis_year_max` (same value: current year) |
+| `aggregate_rsd_nox(data, rsd_auxiliary, groups)` + `aggregate_rsd()` | `aggregate_rsd_nox(data, meta, filters, groups)` |
+| `source` hard-coded in the aggregation | taken from the data (`read_opendataswiss(source = )`) |
+| `tidyr::spread()`, `group_by()`/`ungroup()`, `as.numeric()` coercion warnings to detect model years | `pivot_wider()`, `.by`, `is_model_year()` |
+
+Findings:
+* **Plot order and colours are ranked without projections** (user decision 2026-09-19): the inventory
+  contains 2030/2040/2050; `prepare_emissions(year_max = emis_year_max)` now drops them first, so
+  every later step only sees published years. Before, they were ranked over all years and dropped
+  afterwards. With the current data the ranking is identical either way (outputs still
+  byte-identical). A first experiment (2026-09-18) wrongly showed a difference because it read
+  `emikat_subsector_new.csv` without `locale(encoding = "UTF-8")`: then only 19 of 32 lookup
+  entries match (umlauts). The script passes the locale.
+* The automatic regrouping `groups_emission_subsector()` (removed) no longer ran with
+  `airquality.methods` 0.4.0 at all (grouped data frame passed to `aggregate_groups()`).
+* The RSD aggregation completes all combinations of the factor levels (`vehicle_type`,
+  `vehicle_fuel_type`) with `n = 0` (`airquality.methods::aggregate_groups()`); in the current
+  outputs this only adds two empty rows (light duty vehicles, model year 2024).
+
+**Subsector grouping, analysis 2026-09-19 (open, user to decide).** Intended criteria (user): at most
+4 new subsectors per sector, and all subsectors with a small share in "verschiedene"; the lookup
+table should list all subsectors. Shares = share of the pollutant's canton total, published years
+1990–2025, per pollutant (the plots are per pollutant):
+* coverage: 35 subsectors in the data, 32 in the lookup; missing (keep their name):
+  `Strassenverkehr`, `Baumaschinen` (Industrie), `Wälder` (natürl. Emissionen)
+* max. 4 per sector: **fulfilled** (per pollutant max. 4: NMVOC Haushalte and Industrie; over all
+  pollutants Haushalte and Industrie 4, the others ≤ 3)
+* small ones in "verschiedene": **not fulfilled**, and a single table for all pollutants cannot
+  fulfil it. 39 named pollutant/subsector combinations stay below 5 % in every year (e.g.
+  `Feuerungen Öl & Gas` for PM, eBC, NH3, CO), while 14 subsectors in "verschiedene" reach ≥ 5 % in
+  some year (`Zonenverkehr` CO up to 35 %, 2024: 23 %; `Flächenquellen Industrie` SO2 up to 27 %;
+  `Haushalte andere Private etc` PM2.5 12 %; `Schienenverkehr Bau-/Dienstzüge` PM10 11 %;
+  `Landwirtschaftliche Nutzflächen` NH3 10 %)
+* the old automatic method was per pollutant (top 2 per pollutant and sector, plus < 5 % of the
+  pollutant total into "verschiedene"; means over all years); lookup first and automatic second
+  (the suspected combination) gives 1–3 per pollutant and sector.
 
 ## Regression results (step 1)
 
@@ -328,6 +405,7 @@ Derived parameters: refitted on every run, coefficients logged (see architecture
 
 ## Where to look next
 
-* `scripts/_compile_exposition_data.R` and `R/exposition.R` – the reworked chain.
+* `scripts/_compile_exposition_data.R` and `R/exposition.R` – the reworked chain (step 1).
+* `scripts/_compile_emission_data.R` and `R/emissions.R` – the first topic of phase 2a, the pattern for the next topics.
 * `tests/regression/` – how new results are checked against the old ones.
 * `../airquality.methods/CLAUDE.md` – the function library and its migration table.

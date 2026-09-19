@@ -61,7 +61,8 @@ base_scenario_year <- 2015
 crs <- 2056
 
 # => emissions
-# last year of the emission inventory (EMIKAT) kept; projections beyond the current year are dropped
+# last year kept in the emission data: EMIKAT projections beyond the current year are dropped, and it is the newest
+# vehicle model year in the RSD data
 emis_year_max <- lubridate::year(Sys.Date())
 
 # => trends

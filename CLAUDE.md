@@ -161,7 +161,7 @@ slope would decouple the years but is less certain with 7–15 sites per year.
   **started 2026-09-18 with phase 2a.** Done: emissions (see "Phase 2a results"). Each further
   topic only after the user's go.
 
-## Step 2 plan: targets project (approved 2026-09-18, IN PROGRESS – phase 2a)
+## Step 2 plan: targets project (approved 2026-09-18, refined 2026-09-19; IN PROGRESS – phase 2a)
 
 Goal: a `targets` pipeline that is readable step by step, easy to debug, try out and extend, robust
 for the twice-yearly update, with unchanged output file names and schemas.
@@ -181,6 +181,42 @@ for the twice-yearly update, with unchanged output file names and schemas.
    `scripts/_compile_outcomes.R`) stays in the project, in `data/restricted/`; may become OGD later.
 5. Derived parameters refitted on every run, coefficients logged (already implemented).
 
+### User decisions (2026-09-19)
+
+6. **One target list per sub-analysis, not per topic**, so each part can be built and inspected on
+   its own (`tar_make(names = starts_with("emis_rsd_"))`, `tar_visnetwork()`): emissions EMIKAT,
+   emissions RSD, monitoring pollutants, monitoring Ndep, exposition population, exposition
+   ecosystems, report. Mapping of the 14 outputs:
+
+   | sub-analysis (target prefix) | pipeline file | outputs |
+   |---|---|---|
+   | `emis_emikat_` | `pipelines/emissions_emikat.R` | `data_emissions.csv` |
+   | `emis_rsd_` | `pipelines/emissions_rsd.R` | `data_nox_vehicle_emissions_rsd_per_norm.csv`, `data_nox_emissions_rsd_per_yearmodel.csv`, `data_nox_emissions_rsd_per_yearmeas.csv` |
+   | `mon_aq_` | `pipelines/monitoring_airquality.R` | `data_airquality_monitoring_y1.csv` |
+   | `mon_ndep_` | `pipelines/monitoring_ndep.R` | `data_ndep_pars_monitoring_y1.csv`, `data_ndep_monitoring_y1.csv` |
+   | `expo_pop_` | `pipelines/exposition_population.R` | `data_exposition_weighted_means_canton.csv`, `data_exposition_weighted_means_municipalities.csv`, `data_exposition_distribution_pollutants.csv` |
+   | `expo_eco_` | `pipelines/exposition_ecosystems.R` | `data_exposition_distribution_ndep.csv` |
+   | `report_` | `pipelines/report.R` | plots, `docs/` |
+   | – (WIP, see 7) | `wip/outcomes.R` | `data_health_outcomes.csv` |
+   | – (WIP, see 7) | `wip/trends.R` | `data_airquality_trends_relative_y1.csv`, `data_airquality_trends_relative_aggregated_y1.csv` |
+
+7. **Work in progress stays outside targets for now**: health outcomes (deaths, later YLL) and
+   trends remain plain scripts in `wip/` until the user has finished developing them; then they are
+   integrated as sub-analyses (`outcomes_`, `trends_`). Reason: develop freely without pipeline
+   overhead. Consequences, to handle in phase 2b:
+   * the WIP scripts read pipeline outputs from `data/output/` (outcomes ←
+     `data_exposition_weighted_means_canton.csv`; trends ← `data_airquality_monitoring_y1.csv`,
+     `data_emissions.csv`) and write their outputs there; they `source()` the `R/` files (no
+     `load_all()`); `wip/README.md` says how to run them
+   * their 3 outputs are part of the contract and used by the report: the report tracks them as
+     external `format = "file"` targets, and a check target warns (`cli`, file names and dates)
+     when a WIP output is older than the pipeline outputs it is based on (stale results)
+   * full run in `run.R`: `tar_make()` without the report → WIP scripts (optional) → `tar_make()`
+     (the report picks up the changed CSVs); each step can also be run alone
+   * phase 2a still applies to them in full (user decision): tests first, pure functions in
+     `R/outcomes.R` / `R/trends.R`, thin scripts, regression on frozen inputs, a seed for the random
+     forest; the restricted mortality file stays a script input until the integration
+
 ### Target layout
 
 ```
@@ -191,8 +227,10 @@ run.R                 human entry point: tar_make(), progress summary, quarto re
 DESCRIPTION           dependency manifest only (renv snapshot.type = "explicit")
 R/                    pure functions per topic: emissions, monitoring, trends, exposition,
                       outcomes, plots, utils (roxygen comments kept as in-code docs)
-pipelines/            one target list per topic = today's _compile_*.R: setup, emissions,
-                      monitoring, trends, exposition, outcomes, report
+pipelines/            one target list per sub-analysis (decision 6): setup, emissions_emikat,
+                      emissions_rsd, monitoring_airquality, monitoring_ndep,
+                      exposition_population, exposition_ecosystems, report
+wip/                  work in progress outside targets (decision 7): outcomes.R, trends.R, README.md
 data/meta/            from inst/extdata/meta
 data/output/          from inst/extdata/output (contract: names, columns, format unchanged)
 data/log/             from inst/extdata/log
@@ -241,35 +279,46 @@ monitoring → outcomes → trends → plots/report):
    `ressources.csv` (`inst/extdata/meta`, GitHub tree links), `R/prepare.R` (`prepare_ressources()`
    detects `inst/extdata`), `docs/index.qmd` links, schema test paths, this file. Output path from
    `config.yml`.
-3. **Topic pipelines** from the functions improved in phase 2a, order: exposition (raster metadata target
-   with `tar_cue("always")`; checks as targets before writing, e.g. municipalities add up to the
-   canton, schema = baseline) → emissions → monitoring → outcomes (restricted file as
-   `format = "file"` target, clear `cli` error pointing to the README if missing) → trends (targets'
-   per-target seeds make the random forest reproducible; optional `crew` for the ~30 min) → report
-   (plots as targets, `tarchetypes::tar_quarto()` rendering `report/` into `docs/`).
-   Conventions: target names `<topic>_<stage>_<content>` (e.g. `expo_raw_rasters`, `expo_cells`,
-   `expo_out_weighted_means_canton`), `tarchetypes::tar_plan()` syntax, comments mirroring the old
-   scripts, outputs as `format = "file"` targets. Regression with `tests/regression/compare_outputs.R`
-   (already generic for all 14 output files, built in phase 2a). Old scripts keep running until their
-   topic is migrated.
-4. **Remove the package skeleton** once all topics run in targets: NAMESPACE, `man/`, `@export`
-   tags, `scripts/`, `analyse_airquality.R`; `tar_option_set(workspace_on_error = TRUE)`.
+3. **Sub-analysis pipelines** (decision 6) from the functions improved in phase 2a, order:
+   expo_pop (raster metadata target with `tar_cue("always")`; checks as targets before writing,
+   e.g. municipalities add up to the canton, schema = baseline) → expo_eco → emis_emikat →
+   emis_rsd → mon_aq → mon_ndep → report (plots as targets, `tarchetypes::tar_quarto()` rendering
+   `report/` into `docs/`; WIP outputs as external file targets plus the staleness check of
+   decision 7). Outcomes and trends are not migrated here (decision 7): their scripts move to `wip/`.
+   Conventions: target names `<topic>_<subanalysis>_<stage>_<content>` (e.g. `emis_emikat_raw`,
+   `emis_rsd_out_per_norm`, `mon_ndep_out_pars`, `expo_pop_cells`,
+   `expo_pop_out_weighted_means_canton`, `expo_eco_out_distribution`), `tarchetypes::tar_plan()`
+   syntax, comments mirroring the old scripts, outputs as `format = "file"` targets. Regression with
+   `tests/regression/compare_outputs.R` (already generic for all 14 output files, built in phase 2a).
+   Old scripts keep running until their sub-analysis is migrated.
+4. **Remove the package skeleton** once all sub-analyses run in targets: NAMESPACE, `man/`,
+   `@export` tags, `scripts/` (the WIP scripts are in `wip/` by then), `analyse_airquality.R`;
+   `tar_option_set(workspace_on_error = TRUE)`.
 5. **airquality.methods**: after its 0.4.0 push, pin the GitHub sha in `renv.lock`; consider moving
    `assign_municipalities()` and `append_log()` there (generic). Planned move (user, 2026-09-19): the
    grouped legend `grouped_key()`, `add_grouped_legend()` (R/plot.R, tests in test-plot.R;
    dependency `legendry`); also a candidate: `check_columns()` (R/helpers.R).
 6. **Docs**: this file (structure table, decisions, workflow `tar_make()` / `tar_load()` /
-   `tar_workspace()`, `tar_mermaid()` diagram), README.
+   `tar_workspace()`, `tar_mermaid()` diagram), README, `wip/README.md`.
+7. **Later, when the user has finished them: integrate the WIP scripts** as sub-analyses
+   `outcomes_` and `trends_` (from `pipelines/outcomes.R`, `pipelines/trends.R`): restricted mortality
+   file as `format = "file"` target with a clear `cli` error pointing to `data/restricted/README.md`
+   if missing; targets' per-target seeds for the random forest; optional `crew` for the ~30 min of
+   the trends; the report's external file targets and staleness check then become normal
+   dependencies.
 
 ### Verification
 
 * `testthat::test_dir("tests/testthat")` green after every step (unit, schema, dependency tests).
 * `tar_validate()`, `tar_manifest()`, `tar_visnetwork()` show the intended graph.
-* Per topic `tar_make(names = starts_with("<topic>_"))`, then regression against the committed
-  outputs: identical for deterministic topics (emissions, monitoring, exposition, outcomes); trends
-  within the documented random-forest spread and reproducible between two runs.
+* Each sub-analysis builds alone: `tar_make(names = starts_with("<prefix>"))`, then regression
+  on frozen inputs: identical outputs for all sub-analyses (all deterministic).
+* The WIP scripts run from `wip/` against `data/output/`; outcomes identical, trends reproducible
+  with the seed (before the seed: within the documented random-forest spread).
+* The report warns when a WIP output is older than its pipeline inputs (test by touching an input).
 * A second `tar_make()` without changes skips everything except the metadata cues.
-* Missing `data/restricted/tod_nat_gatu.csv` stops the pipeline with the README hint.
+* Missing `data/restricted/tod_nat_gatu.csv` stops the outcomes script (later: the pipeline) with
+  the README hint.
 * Rendering via `tar_make()` updates `docs/` with the same pages as before.
 
 ### Open items outside the plan

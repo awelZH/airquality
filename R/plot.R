@@ -1,6 +1,5 @@
 # Building blocks shared by the report pages: bar time series, plot tibbles for the Quarto pages.
-# Topic plots live in R/plot_emissions.R, R/plot_monitoring.R and R/plot_exposition.R; the plots of the
-# health outcomes and trends below are work in progress and unchanged (see notes/plan_phase2b.md).
+# Topic plots live in R/plot_<topic>.R (emissions, monitoring, exposition, outcomes, trends).
 
 
 #' Plot a yearly time series as bars, e.g. population-weighted means or health outcomes
@@ -76,119 +75,6 @@ plotlist_to_tibble <- function(plotlist, type, source) {
   }
 
   return(plottibble)
-}
-
-
-#' Wrapper to plot timeseries of health-outcome preliminary deaths using ggplot2 providing pollutant-specific list
-#'
-#' @param data
-#' @param parameters
-#' @param relative
-#'
-#' @keywords internal
-plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALSE) {
-
-  plots <-
-    lapply(setNames(parameters, parameters), function(parameter) {
-
-      data <-
-        data |>
-        dplyr::filter(parameter == !!parameter & outcome_type == "vorzeitige Todesfälle") |>
-        dplyr::mutate(
-          covid = ifelse(year %in% 2020:2022, "Covid-19", "normal")
-        )
-
-      if (relative) {
-        mppng <- ggplot2::aes(x = year, y = outcome / population * 10^5, fill = scenario, alpha = covid)
-        sub <- "Anzahl vorzeitige Todesfälle pro 100'000 Einwohner/innen pro Jahr"
-        uncertainty <- ggplot2::geom_linerange(ggplot2::aes(ymin = outcome_lower / population * 10^5, ymax = outcome_upper / population * 10^5 + outcome_delta_min_conc / population * 10^5), color = "gray20")
-      } else {
-        mppng <- ggplot2::aes(x = year, y = outcome, fill = scenario, alpha = covid)
-        sub <- "Anzahl vorzeitige Todesfälle pro Jahr"
-        uncertainty <- ggplot2::geom_linerange(ggplot2::aes(ymin = outcome_lower, ymax = outcome_upper + outcome_delta_min_conc), color = "gray20")
-      }
-
-      plot <-
-        data |>
-        ggplot_timeseries_bars(
-          mapping = mppng,
-          titlelab = ggplot2::ggtitle(
-            label = openair::quickText(paste0("Vorzeitige Todesfälle durch ",longpollutant(parameter))),
-            subtitle = sub
-          ),
-          captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS & Statistisches Amt Kanton Zürich"),
-          theme = theme_ts
-        ) +
-        uncertainty +
-        ggplot2::scale_alpha_manual(name = "Aussergewöhnliches", values = c("normal" = 1, "Covid-19" = 0.25))
-
-      return(plot)
-    })
-
-  return(plots)
-}
-
-
-#' Plot pre-compiled relative trends of emissions and immissions vs. a reference year for various pollutants
-#'
-#' @param data_trends
-#' @param detailed
-#' @param pt_size
-#' @param linewdth
-#' @param facet_ncol
-#' @param facet_scale
-#' @param theme
-#' @param titlelab
-#' @param captionlab
-#'
-#' @keywords internal
-plot_timeseries_trend_relative <- function(data_trends, detailed = FALSE,
-                                           pt_size = 1.5, linewdth = 1, facet_ncol = NULL, facet_scale = "free_y", theme = ggplot2::theme_minimal(),
-                                           titlelab = NULL, captionlab = NULL
-) {
-
-  plot <-
-    data_trends |>
-    ggplot2::ggplot(ggplot2::aes(x = year, y = value - 1, color = type)) +
-    ggplot2::geom_hline(yintercept = 0, color = "gray80", linetype = 2) +
-    ggplot2::geom_vline(data = . %>% dplyr::distinct(pollutant, reference_year), mapping = ggplot2::aes(xintercept = reference_year), color = "gray80", linetype = 2)
-
-  if (detailed) {
-
-    plot <-
-      plot +
-      ggplot2::geom_point(data = . %>% dplyr::filter(type %in% c("Trend pro Standort")), mapping = ggplot2::aes(size = type, shape = type), fill = "white") +
-      ggplot2::geom_line(data = . %>% dplyr::filter(type %in% c("Median Messwerte", "Trend pro Standort", "Median Trend", "Emission")), mapping = ggplot2::aes(linewidth = type, group = site))
-    # geom_point(mapping = aes(size = n), shape = 21, fill = "white") +
-    # scale_size_binned(name = "Anzahl\nMessorte", breaks = c(-Inf,4,6,8,Inf), range = c(0.25,3)) +
-
-  } else {
-
-    plot <-
-      plot +
-      ggplot2::geom_line(mapping = ggplot2::aes(linewidth = type))
-
-  }
-
-  plot <-
-    plot  +
-    ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.02,0.02)) +
-    ggplot2::scale_color_manual(name = "Grundlage", values = c("Emission" = "gray50", "Median Trend" = "dodgerblue", "Median Messwerte" = "gold3", "Trend pro Standort" = "gray80")) +
-    ggplot2::scale_shape_manual(values = c("Median Messwerte" = 21, "Trend pro Standort" = 19)) +
-    ggplot2::scale_size_manual(values = c("Median Messwerte" = pt_size, "Trend pro Standort" = pt_size * 0.75)) +
-    ggplot2::scale_linewidth_manual(values = c("Emission" = linewdth, "Median Trend" = linewdth, "Median Messwerte" = linewdth * 0.5, "Trend pro Standort" = linewdth * 0.5)) +
-    ggplot2::guides(shape = "none", size = "none", linewidth = "none") +
-    ggplot2::facet_wrap(pollutant~., axes = "all", ncol = facet_ncol, scales = facet_scale) +
-    theme +
-    ggplot2::theme(
-      strip.text.x = ggplot2::element_text(hjust = 0),
-      legend.title = ggplot2::element_blank(),
-      legend.position = "bottom"
-    ) +
-    titlelab +
-    captionlab
-
-  return(plot)
 }
 
 

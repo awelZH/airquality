@@ -33,9 +33,8 @@ byte-identical** (`tests/regression/run_plots.R`, see `regression.md`), the cand
 environment, i.e. no function reads a global any more.
 
 * `R/plot.R` (863 lines) split by page: `R/plot.R` keeps the shared building blocks
-  (`ggplot_timeseries_bars()`, `plotlist_to_tibble()`, `get_plot()`, `build_panel()`) and, unchanged,
-  the WIP functions `plot_pars_prelim_deaths_timeseries()` and `plot_timeseries_trend_relative()`
-  (they still read `theme_ts` and use `%>%`); `R/plot_emissions.R`, `R/plot_monitoring.R`,
+  (`ggplot_timeseries_bars()`, `plotlist_to_tibble()`, `get_plot()`, `build_panel()`) and, at first unchanged,
+  the functions of outcomes and trends (reworked afterwards, see below); `R/plot_emissions.R`, `R/plot_monitoring.R`,
   `R/plot_exposition.R` hold the rest.
 * Globals became arguments: `theme`, `pointsize`, `jitter_seed`, `colour_scale`/`fill_scale`/
   `shape_scale`, `threshold_values`, `crs`. Presentation settings stay in `_plot_setup.R` (decision 7);
@@ -75,3 +74,25 @@ without `height` also shifted the points along the value axis, by up to 40 % of 
 2019+) or 0.02 % of the critical load, i.e. invisible, but with few distinct values it is large
 (synthetic test: 10 → 13.3). Now `height = 0` in the threshold comparison, `plot_ndep_sites()` and
 `plot_ndep_sites_vs_cln()` (tested); only these 3 of the 295 figures changed.
+
+## Plots of outcomes and trends (2026-09-21)
+
+The user released the plot part of outcomes and trends for the rework (their data scripts stay WIP).
+Same pattern; the 9 figures **byte-identical**, and all 304 figures of the five topics once more
+together in a fresh session.
+
+* `R/plot_outcomes.R`: `plot_pars_prelim_deaths_timeseries()` with `theme` and `covid_years`
+  (default 2020:2022) as arguments; the parameters are a setting, `plot_parameters_outcomes` in
+  `_settings.R`.
+* `R/plot_trends.R`: `plot_timeseries_trend_relative()` (magrittr lambdas `. %>% …` in
+  `geom_*(data = )` replaced by `\(d) …`; no `%>%` is left in `R/`, `scripts/` or `docs/`), new
+  `plot_emission_trends_relative()` (was written out in the script) and the data functions
+  `emission_trends_relative()`, `trend_data_overview()`, `trend_data_detailed()`,
+  `recode_trend_types()`, `label_ozone_metric()`. `prepare_emission_trends()` (trend data, WIP) is
+  called unchanged.
+* `_plot_setup.R` attaches only `airquality.methods` now (was dplyr, tidyr, ggplot2, scales, sf too),
+  because `prepare_emission_trends()` calls `longpollutant()` without prefix; `viridis_pal()` got its
+  prefix. The R code of all Quarto pages runs without the other packages attached (checked with
+  `knitr::purl()`, no render).
+* Open (content): the detailed trend plot keeps the trends per site up to the current calendar year
+  (`lubridate::year(Sys.Date())`), not `year_last` (decision 7).

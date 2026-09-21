@@ -62,10 +62,10 @@ column order and format must not change (the directory may change; external path
 ## Status (2026-09-21)
 
 * **Step 1 done**: exposition reworked.
-* **Step 2, phase 2a in progress**: emissions, monitoring done; plots/report done for emissions,
-  monitoring and exposition (295 figures byte-identical, `notes/findings_plots.md`; plots are built
-  while rendering, decision 9). Left untouched on the user's decision: outcomes and trends (scripts,
-  functions and their plots), still WIP. **Each topic only after the user's go.**
+* **Step 2, phase 2a in progress**: emissions, monitoring done; plots/report done for all five
+  topics (304 figures byte-identical, `notes/findings_plots.md`; plots are built while rendering,
+  decision 9). The data scripts and functions of outcomes and trends are still WIP, untouched on the
+  user's decision. **Each topic only after the user's go.**
 * **Phase 2b (targets) not started**; plan in `notes/plan_phase2b.md`.
 * All content changes so far (subsector grouping of the emissions, the two monitoring fixes, the ndep
   `datasource` clean-up) are in `inst/extdata/output/` since commit `fc1e744`.

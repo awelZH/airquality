@@ -3,20 +3,14 @@
 plots <- list()
 
 
-# plotting selected health-outcomes due to population exposition by air pollutants
-# ---
+# premature deaths in the Canton of Zurich due to air pollution, absolute and per 100'000 inhabitants
 data_outcomes <- airquality.methods::read_local_csv(file = ressources_plotting$outcomes$outcomes, locale = readr::locale(encoding = "UTF-8"))
 
-# plotting timeseries of preliminary deaths for Canton Zürich
-plots$outcomes$preliminary_deaths_abs <- plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"), relative = FALSE)
+plots$outcomes$preliminary_deaths_abs <- plot_pars_prelim_deaths_timeseries(data_outcomes, plot_parameters_outcomes, relative = FALSE, theme = theme_ts)
+plots$outcomes$preliminary_deaths_rel <- plot_pars_prelim_deaths_timeseries(data_outcomes, plot_parameters_outcomes, relative = TRUE, theme = theme_ts)
 
-# plotting timeseries of preliminary deaths per 100'000 inhabitants for Canton Zürich
-plots$outcomes$preliminary_deaths_rel <- plot_pars_prelim_deaths_timeseries(data_outcomes, c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl"), relative = TRUE)
-
-# plotting timeseries of years of life lost for Canton Zürich
+# years of life lost
 # TODO ...
-
-
 
 
 # collect plots in a tibble for use in *.qmd

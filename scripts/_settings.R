@@ -102,6 +102,9 @@ plot_parameters_timeseries <- c("NO2", "PM10", "PM2.5", "O3_max_98p_m1", "O3_pea
 # parameters to include for exposition plotting
 plot_parameters_exposition <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "O3_peakseason_mean_d1_max_mean_h8gl")
 
+# parameters to include for health outcome plotting
+plot_parameters_outcomes <- c("PM2.5", "NO2", "O3_peakseason_mean_d1_max_mean_h8gl")
+
 # reference year for relative emission trends (independent of base_scenario_year)
 plot_reference_year_emissions <- 2015
 

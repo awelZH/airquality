@@ -15,7 +15,7 @@
 
 source("tests/regression/run_topic.R")
 
-plot_topics <- c("emissions", "monitoring", "exposition")
+plot_topics <- c("emissions", "monitoring", "exposition", "outcomes", "trends")
 
 run_plots <- function(label, topics = plot_topics, global = FALSE, refresh = FALSE, width = 7, height = 5, res = 96) {
   input_dir <- file.path(regression_dir, "inputs")

@@ -6,12 +6,9 @@
 #   get_plot(plots_exposition, "source == 'population_weighted_mean' & pollutant == 'NO2'")
 # ---
 
-# packages used without prefix in this file, the Quarto pages and the plot scripts of the work in progress
-# (outcomes, trends: %>%, longpollutant(), ...); the functions in R/ use prefixes
-for (package in c("dplyr", "tidyr", "ggplot2", "scales", "sf", "airquality.methods")) {
-  suppressPackageStartupMessages(library(package, character.only = TRUE))
-}
-rm(package)
+# the plot code uses prefixes; airquality.methods is attached only for prepare_emission_trends() (trend data,
+# work in progress), which calls longpollutant() without prefix
+suppressPackageStartupMessages(library(airquality.methods))
 
 # local functions
 devtools::load_all(quiet = TRUE)
@@ -100,19 +97,19 @@ threshold_ndep$labels <- "kritische Eintragsrate CLN"
 # colors and color scales
 scale_fill_siteclass <- 
   ggplot2::scale_fill_manual(name = "Standortklasse", values = c(
-    "ländlich - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
-    "klein-/vorstädtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
-    "städtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
-    "städtisch - verkehrsbelastet" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1],
+    "ländlich - Hintergrund" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
+    "klein-/vorstädtisch - Hintergrund" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
+    "städtisch - Hintergrund" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
+    "städtisch - verkehrsbelastet" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1],
     "empf. Ökosystem" = "gray20"
   ))
 
 scale_color_siteclass <- 
   ggplot2::scale_color_manual(name = "Standortklasse", na.value = "gray60", values = c(
-    "ländlich - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
-    "klein-/vorstädtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
-    "städtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
-    "städtisch - verkehrsbelastet" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1],
+    "ländlich - Hintergrund" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
+    "klein-/vorstädtisch - Hintergrund" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
+    "städtisch - Hintergrund" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
+    "städtisch - verkehrsbelastet" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1],
     "empf. Ökosystem" = "gray20"
   ))
 

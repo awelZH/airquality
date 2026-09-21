@@ -1,4 +1,4 @@
-# Building blocks shared by the report pages: bar time series, plot tibbles for the Quarto pages.
+# Building blocks shared by the report pages: bar time series, plot catalog, year slider and tabsets.
 # Topic plots live in R/plot_<topic>.R (emissions, monitoring, exposition, outcomes, trends).
 
 
@@ -122,32 +122,58 @@ abort_plot_match <- function(catalog, plot, parameter, year, n) {
 }
 
 
-#' Build the code chunk of one tabset panel per year for a Quarto page
+#' Print the plots of one parameter per year as a year slider (Quarto page)
 #'
-#' Adapted from Heiss, Andrew. 2024. "Guide to Generating and Rendering Computational Markdown Content
-#' Programmatically with Quarto." https://doi.org/10.59350/pa44j-cc302. The chunk prints
-#' `plots$figure[[id]]`, so the page must hold its plot catalog in `plots`.
+#' For a chunk with `#| output: asis`. Writes a `.year-slider` div with one `.year-panel` div per year and
+#' prints each plot as an ordinary figure into it; `docs/year-slider.html` turns the panels into a slider.
+#' Order: "alle" (all years in one plot) first, then the years ascending. The slider starts at "alle" if
+#' there is one, else at the newest year.
 #'
-#' @param id Row number of the plot in `plots`.
-#' @param year Year (panel title).
-#' @param pollutant,source,type Parts of the chunk label.
+#' @param catalog Plot catalog as built by [plot_catalog()].
+#' @param plot Name of the plot.
+#' @param parameter Parameter; `NULL` if the plot has none.
 #'
-#' @return Character, the markdown of the panel.
+#' @return `NULL`, invisibly; called for its output.
 #'
 #' @keywords internal
-build_panel <- function(id, year, pollutant, source, type = "exposition") {
+print_year_slider <- function(catalog, plot, parameter = NULL) {
 
-  source <- stringr::str_replace(source, "_", "-")
-  chunk_label <- glue::glue("{tolower(type)}-{tolower(pollutant)}-{tolower(source)}-{year}")
+  entries <- catalog_entries(catalog, plot, parameter)
+  if (anyNA(entries$year)) cli::cli_abort("Plot {.val {plot}} has entries without year.", class = "airquality_plot_error")
 
-  output <-
-    glue::glue(
-      "##### <<year>>
-      ```{r}
-      #| label: <<chunk_label>>
-      plots$figure[[<<id>>]]
-      ```", .open = "<<", .close = ">>"
-    )
+  entries <- entries[order(entries$year != "alle", suppressWarnings(as.numeric(entries$year))), ]
+  start <- if ("alle" %in% entries$year) "alle" else entries$year[nrow(entries)]
 
-  return(output)
+  cat("\n\n::: {.year-slider data-start=\"", start, "\"}\n\n", sep = "")
+  purrr::walk2(entries$year, entries$figure, \(year, figure) {
+    cat("::: {.year-panel data-year=\"", year, "\"}\n\n", sep = "")
+    print(figure)
+    cat("\n\n:::\n\n")
+  })
+  cat(":::\n\n")
+
+  invisible(NULL)
+}
+
+
+#' Print plots as a tabset (Quarto page)
+#'
+#' For a chunk with `#| output: asis`.
+#'
+#' @param figures Named list of ggplots; the names are the tab titles.
+#'
+#' @return `NULL`, invisibly; called for its output.
+#'
+#' @keywords internal
+print_tabset <- function(figures) {
+
+  cat("\n\n::: {.panel-tabset}\n\n")
+  purrr::iwalk(figures, \(figure, title) {
+    cat("##### ", title, "\n\n", sep = "")
+    print(figure)
+    cat("\n\n")
+  })
+  cat(":::\n\n")
+
+  invisible(NULL)
 }

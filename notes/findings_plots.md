@@ -117,3 +117,13 @@ content, `compare_plots_content()`, because the file names changed with the cata
 `tests/regression/check_pages.R` runs the code chunks and inline expressions of all pages without
 rendering (7 pages OK, about 4 min while the tabsets are still knitted inline). Pitfall: `knitr::knit()`
 in inline code writes its figures to `docs/figure/` unless `fig.path` points elsewhere.
+
+**P2 (year slider, decision 11).** `build_panel()`, the `id`/`markdown` columns, the `arrange()` per
+page and the 21 inline `knitr::knit(text = )` calls are gone; `print_year_slider()` (17 sliders on
+`Belastungsverteilung.qmd`) and `print_tabset()` (3 on `Gesundheitsfolgen.qmd`). Check: render of both
+pages, all 264 + 6 figures byte-identical to the baseline render, headless Edge DOM: 17 slider
+controls, exactly one visible panel each (241 hidden), start "alle" or newest year. Found on the way:
+the tabset "Ndep / population_weighted_mean_map" was silently empty (there is no ndep map; the old
+filter matched nothing) – removed; `print_year_slider()` would have stopped. Figure file names changed
+(`slider-<parameter>-<plot>-<n>.png`); no contract. Pitfall for `check_pages()`: plots printed to a pdf
+device fail on the Arial font of `theme_ts`; it draws with ragg into a temporary directory.

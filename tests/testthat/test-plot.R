@@ -68,3 +68,39 @@ test_that("get_plot() stops if no plot or several plots match, naming the availa
   expect_error(get_plot(catalog, "timeseries"), class = "airquality_plot_error")
   expect_error(get_plot(catalog, "tiemseries"), class = "airquality_plot_error")
 })
+
+# ---- print_year_slider(), print_tabset() ---------------------------------------------
+
+test_that("print_year_slider() writes one panel per year, 'alle' first, and starts at 'alle'", {
+  catalog <- plot_catalog(
+    list(NO2 = list(`2021` = titled("b"), alle = titled("all"), `2020` = titled("a"))),
+    "distribution_cumulative", names_to = c("parameter", "year")
+  )
+
+  output <- withr::with_pdf(NULL, utils::capture.output(print_year_slider(catalog, "distribution_cumulative", "NO2")))
+  panels <- grep("year-panel", output, value = TRUE)
+
+  expect_match(output[grep("year-slider", output)[1]], 'data-start="alle"', fixed = TRUE)
+  expect_equal(sub('.*data-year="([^"]+)".*', "\\1", panels), c("alle", "2020", "2021"))
+})
+
+test_that("print_year_slider() starts at the newest year without 'alle'", {
+  catalog <- plot_catalog(list(`2019` = titled("a"), `2021` = titled("b")), "ndep_hist", names_to = "year")
+
+  output <- withr::with_pdf(NULL, utils::capture.output(print_year_slider(catalog, "ndep_hist")))
+
+  expect_match(output[grep("year-slider", output)[1]], 'data-start="2021"', fixed = TRUE)
+})
+
+test_that("print_year_slider() stops for plots without years or unknown plots", {
+  catalog <- plot_catalog(list(NO2 = titled("a")), "timeseries", names_to = "parameter")
+
+  expect_error(print_year_slider(catalog, "timeseries", "NO2"), class = "airquality_plot_error")
+  expect_error(print_year_slider(catalog, "unknown"), class = "airquality_plot_error")
+})
+
+test_that("print_tabset() writes one tab per plot, titled by its name", {
+  output <- withr::with_pdf(NULL, utils::capture.output(print_tabset(list(absolut = titled("a"), relativ = titled("b")))))
+
+  expect_contains(output, c("::: {.panel-tabset}", "##### absolut", "##### relativ"))
+})

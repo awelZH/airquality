@@ -42,6 +42,7 @@ format:
       light: flatly
       dark: darkly
     css: styles.css
+    include-after-body: year-slider.html
     toc: true
     toc_float:
       collapsed: false

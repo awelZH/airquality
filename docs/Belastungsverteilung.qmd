@@ -13,16 +13,7 @@ withr::with_dir("..", {
   source("scripts/_plot_setup.R", encoding = "UTF-8")
   source("scripts/_plot_exposition.R", encoding = "UTF-8")
 })
-plots <- 
-  plots_exposition |> 
-  dplyr::arrange(parameter, plot, dplyr::desc(year)) |>
-  dplyr::mutate(
-    id = 1:dplyr::n(),
-    markdown = dplyr::case_when(
-      !is.na(year) ~ build_panel(id, year, parameter, plot, "exposition"),
-      TRUE ~ NA
-    )
-  )
+plots <- plots_exposition
 ```
 
 
@@ -66,78 +57,78 @@ p$data |>
 
 ### Stickstoffdioxid
 
-::: {.panel-tabset}
+```{r}
+#| label: slider-no2-distribution-histogram
+#| output: asis
+print_year_slider(plots, "distribution_histogram", "NO2")
+```
 
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "NO2" & plot == "distribution_histogram")$markdown))`
-
-:::
-
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "NO2" & plot == "distribution_cumulative")$markdown))`
-
-:::
+```{r}
+#| label: slider-no2-distribution-cumulative
+#| output: asis
+print_year_slider(plots, "distribution_cumulative", "NO2")
+```
 
 ```{r}
 #| label: fig-pwmean-no2
 get_plot(plots, "population_weighted_mean", "NO2")
 ```
 
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "NO2" & plot == "population_weighted_mean_map")$markdown))`
-
-:::
+```{r}
+#| label: slider-no2-population-weighted-mean-map
+#| output: asis
+print_year_slider(plots, "population_weighted_mean_map", "NO2")
+```
 
 ### Feinstaub PM2.5
 
-::: {.panel-tabset}
+```{r}
+#| label: slider-pm2-5-distribution-histogram
+#| output: asis
+print_year_slider(plots, "distribution_histogram", "PM2.5")
+```
 
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "PM2.5" & plot == "distribution_histogram")$markdown))`
-
-:::
-
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "PM2.5" & plot == "distribution_cumulative")$markdown))`
-
-:::
+```{r}
+#| label: slider-pm2-5-distribution-cumulative
+#| output: asis
+print_year_slider(plots, "distribution_cumulative", "PM2.5")
+```
 
 ```{r}
 #| label: fig-pwmean-pm25
 get_plot(plots, "population_weighted_mean", "PM2.5")
 ```
 
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "PM2.5" & plot == "population_weighted_mean_map")$markdown))`
-
-:::
+```{r}
+#| label: slider-pm2-5-population-weighted-mean-map
+#| output: asis
+print_year_slider(plots, "population_weighted_mean_map", "PM2.5")
+```
 
 ### Feinstaub PM10
 
-::: {.panel-tabset}
+```{r}
+#| label: slider-pm10-distribution-histogram
+#| output: asis
+print_year_slider(plots, "distribution_histogram", "PM10")
+```
 
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "PM10" & plot == "distribution_histogram")$markdown))`
-
-:::
-
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "PM10" & plot == "distribution_cumulative")$markdown))`
-
-:::
+```{r}
+#| label: slider-pm10-distribution-cumulative
+#| output: asis
+print_year_slider(plots, "distribution_cumulative", "PM10")
+```
 
 ```{r}
 #| label: fig-pwmean-pm10
 get_plot(plots, "population_weighted_mean", "PM10")
 ```
 
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "PM10" & plot == "population_weighted_mean_map")$markdown))`
-
-:::
+```{r}
+#| label: slider-pm10-population-weighted-mean-map
+#| output: asis
+print_year_slider(plots, "population_weighted_mean_map", "PM10")
+```
 
 <!-- ### Russ im Feinstaub -->
 
@@ -154,73 +145,67 @@ get_plot(plots, "population_weighted_mean", "PM10")
 Die "typische Spitzenbelastung" entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.
 
 
-::: {.panel-tabset}
+```{r}
+#| label: slider-o3-max-98p-m1-distribution-histogram
+#| output: asis
+print_year_slider(plots, "distribution_histogram", "O3_max_98p_m1")
+```
 
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "O3_max_98p_m1" & plot == "distribution_histogram")$markdown))`
-
-:::
-
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "O3_max_98p_m1" & plot == "distribution_cumulative")$markdown))`
-
-:::
+```{r}
+#| label: slider-o3-max-98p-m1-distribution-cumulative
+#| output: asis
+print_year_slider(plots, "distribution_cumulative", "O3_max_98p_m1")
+```
 
 ```{r}
 #| label: fig-pwmean-o3p98
 get_plot(plots, "population_weighted_mean", "O3_max_98p_m1")
 ```
 
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "O3_max_98p_m1" & plot == "population_weighted_mean_map")$markdown))`
-
-:::
+```{r}
+#| label: slider-o3-max-98p-m1-population-weighted-mean-map
+#| output: asis
+print_year_slider(plots, "population_weighted_mean_map", "O3_max_98p_m1")
+```
 
 #### mittlere Sommertagbelastung
 
 Die "mittlere Sommertagbelastung" entspricht dem Durchschnitt des maximalen 8-Stunden-Mittelwerts der O3-Konzentration in den sechs aufeinanderfolgenden Monaten mit der höchsten O3-Konzentration im Sechsmonatsdurchschnitt.
 
 
-::: {.panel-tabset}
+```{r}
+#| label: slider-o3-peakseason-mean-d1-max-mean-h8gl-distribution-histogram
+#| output: asis
+print_year_slider(plots, "distribution_histogram", "O3_peakseason_mean_d1_max_mean_h8gl")
+```
 
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "O3_peakseason_mean_d1_max_mean_h8gl" & plot == "distribution_histogram")$markdown))`
-
-:::
-
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "O3_peakseason_mean_d1_max_mean_h8gl" & plot == "distribution_cumulative")$markdown))`
-
-:::
+```{r}
+#| label: slider-o3-peakseason-mean-d1-max-mean-h8gl-distribution-cumulative
+#| output: asis
+print_year_slider(plots, "distribution_cumulative", "O3_peakseason_mean_d1_max_mean_h8gl")
+```
 
 ```{r}
 #| label: fig-pwmean-o3peak
 get_plot(plots, "population_weighted_mean", "O3_peakseason_mean_d1_max_mean_h8gl")
 ```
 
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "O3_peakseason_mean_d1_max_mean_h8gl" & plot == "population_weighted_mean_map")$markdown))`
-
-:::
+```{r}
+#| label: slider-o3-peakseason-mean-d1-max-mean-h8gl-population-weighted-mean-map
+#| output: asis
+print_year_slider(plots, "population_weighted_mean_map", "O3_peakseason_mean_d1_max_mean_h8gl")
+```
 
 ### Stickstoffeintrag in empfindliche Ökosysteme
 
-::: {.panel-tabset}
+```{r}
+#| label: slider-ndep-distribution-histogram
+#| output: asis
+print_year_slider(plots, "distribution_histogram", "Ndep")
+```
 
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "Ndep" & plot == "distribution_histogram")$markdown))`
-
-:::
-
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "Ndep" & plot == "distribution_cumulative")$markdown))`
-
-:::
-
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "Ndep" & plot == "population_weighted_mean_map")$markdown))`
-
-:::
+```{r}
+#| label: slider-ndep-distribution-cumulative
+#| output: asis
+print_year_slider(plots, "distribution_cumulative", "Ndep")
+```

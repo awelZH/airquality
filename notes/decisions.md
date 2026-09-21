@@ -125,3 +125,13 @@ for pipes); `append_log()` is gone, `write_local_csv(append = TRUE)` now creates
 directories and writes the header when the file is new. Stays here: `round_population()` (output
 formatting of this analysis). Regression on frozen inputs: all 11 outputs of emissions, monitoring
 and exposition byte-identical, the 19 emission figures pixel-identical.
+
+**11. Plots per year are shown with a year slider** (user decision 2026-09-21). The year tabsets were a
+workaround to click through the years (16–20 tabs per plot). `print_year_slider(catalog, plot,
+parameter)` in a chunk with `#| output: asis` prints every year as an ordinary knitr figure (files,
+lightbox as before) into a `.year-panel` div; `docs/year-slider.html` (included after the body of every
+page via `_quarto.yml`) puts a range input above them and shows the chosen year only; without
+JavaScript all years stay visible. Order: "alle" (all years in one plot) first, then the years
+ascending; the slider starts at "alle" where it exists, else at the newest year. Rejected: Observable JS
+(images built in the browser, no lightbox), plotly animation (`quickText()` formulas lost, maps as JSON
+of several MB each). The "absolut/relativ" tabs of the outcomes stay tabs (`print_tabset()`).

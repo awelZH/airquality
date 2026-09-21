@@ -1,1 +1,16 @@
 /* css styles */
+
+/* year slider of the plots per year (year-slider.html, R/plot.R: print_year_slider()) */
+.year-slider-control {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin: 0.5em 0;
+}
+.year-slider-control input[type="range"] {
+  flex: 1;
+}
+.year-slider-control output {
+  min-width: 3em;
+  font-weight: bold;
+}

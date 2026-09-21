@@ -1,0 +1,35 @@
+<!-- Year slider for the plots per year (R/plot.R: print_year_slider()), included after the body of every page.
+     Each .year-slider holds one .year-panel per year; the script puts a range input above them and shows only
+     the chosen panel. Without JavaScript all panels stay visible. -->
+<script>
+document.querySelectorAll(".year-slider").forEach(function (slider) {
+  var panels = Array.prototype.slice.call(slider.querySelectorAll(":scope > .year-panel"));
+  if (panels.length < 2) return;
+  var years = panels.map(function (panel) { return panel.dataset.year; });
+  var start = years.indexOf(slider.dataset.start);
+  if (start < 0) start = years.length - 1;
+
+  var control = document.createElement("div");
+  control.className = "year-slider-control";
+  var input = document.createElement("input");
+  input.type = "range";
+  input.min = 0;
+  input.max = panels.length - 1;
+  input.step = 1;
+  input.value = start;
+  input.setAttribute("aria-label", "Jahr");
+  var label = document.createElement("output");
+
+  function show(index) {
+    panels.forEach(function (panel, i) { panel.hidden = i !== index; });
+    label.textContent = years[index];
+    input.setAttribute("aria-valuetext", years[index]);
+  }
+
+  input.addEventListener("input", function () { show(Number(input.value)); });
+  control.appendChild(input);
+  control.appendChild(label);
+  slider.insertBefore(control, slider.firstChild);
+  show(start);
+});
+</script>

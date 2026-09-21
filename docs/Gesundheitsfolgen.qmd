@@ -10,14 +10,7 @@ withr::with_dir("..", {
   source("scripts/_plot_setup.R", encoding = "UTF-8")
   source("scripts/_plot_outcomes.R", encoding = "UTF-8")
 })
-plots <- 
-  plots_outcomes |> 
-  dplyr::arrange(parameter, plot) |>
-  dplyr::mutate(
-    id = 1:dplyr::n(),
-    year = dplyr::case_when(plot == "preliminary_deaths_abs" ~ "absolut", TRUE ~ "relativ"),
-    markdown = build_panel(id, year, parameter, plot, "outcomes")
-  )
+plots <- plots_outcomes
 ```
 
 
@@ -55,28 +48,37 @@ Betrachtet man die Veränderung der Gesundheitswirkungen durch Luftbelastung üb
 
 ### Feinstaub PM2.5
 
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "PM2.5" & stringr::str_detect(plot, "preliminary_deaths"))$markdown))`
-
-:::
+```{r}
+#| label: tabs-pm2-5-preliminary-deaths
+#| output: asis
+print_tabset(list(
+  absolut = get_plot(plots, "preliminary_deaths_abs", "PM2.5"),
+  relativ = get_plot(plots, "preliminary_deaths_rel", "PM2.5")
+))
+```
 
 
 ### Stickstoffdioxid
 
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "NO2" & stringr::str_detect(plot, "preliminary_deaths"))$markdown))`
-
-:::
+```{r}
+#| label: tabs-no2-preliminary-deaths
+#| output: asis
+print_tabset(list(
+  absolut = get_plot(plots, "preliminary_deaths_abs", "NO2"),
+  relativ = get_plot(plots, "preliminary_deaths_rel", "NO2")
+))
+```
 
 
 ### Ozon
 
-::: {.panel-tabset}
-
-`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "O3_peakseason_mean_d1_max_mean_h8gl" & stringr::str_detect(plot, "preliminary_deaths"))$markdown))`
-
-:::
+```{r}
+#| label: tabs-o3-peakseason-mean-d1-max-mean-h8gl-preliminary-deaths
+#| output: asis
+print_tabset(list(
+  absolut = get_plot(plots, "preliminary_deaths_abs", "O3_peakseason_mean_d1_max_mean_h8gl"),
+  relativ = get_plot(plots, "preliminary_deaths_rel", "O3_peakseason_mean_d1_max_mean_h8gl")
+))
+```
 
 

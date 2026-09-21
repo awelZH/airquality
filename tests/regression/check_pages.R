@@ -1,10 +1,10 @@
-# Run the R code of the Quarto pages without rendering: a quick check (about 1 min) that every page finds its
+# Run the R code of the Quarto pages without rendering: a quick check (about 2 min) that every page finds its
 # plots, before the full render (about 7 min).
 #
 # For each page, the code chunks (knitr::purl()) and then the inline expressions (`r ...`) run in their own
-# environment from docs/, with a null graphics device; nothing is written to docs/. A page fails on the first
-# error. Chunks with `eval: false` are skipped by purl(); the markdown of asis chunks goes to a text
-# connection.
+# environment from docs/, drawing into a temporary directory; nothing is written to docs/. A page fails on the first
+# error. Chunks with `eval: false` are skipped by purl(); printed markdown goes to a temporary
+# file.
 #
 # run from the project root in a fresh R session, e.g.
 #   Rscript -e 'source("tests/regression/check_pages.R"); check_pages()'
@@ -24,10 +24,11 @@ check_pages <- function(pages = list.files("docs", pattern = "[.]qmd$")) {
       tryCatch({
         sink(tempfile())
         on.exit(sink(), add = TRUE)
-        withr::with_pdf(NULL, {
-          sys.source(script, envir = env, keep.source = FALSE)
-          for (code in inline) eval(parse(text = sub("^`r (.*)`$", "\\1", code)), envir = env)
-        })
+        # ragg device into the temporary directory (a pdf device does not know Arial of theme_ts)
+        ragg::agg_png(file.path(out, paste0(sub("[.]qmd$", "", page), "-%03d.png")))
+        on.exit(grDevices::dev.off(), add = TRUE)
+        sys.source(script, envir = env, keep.source = FALSE)
+        for (code in inline) eval(parse(text = sub("^`r (.*)`$", "\\1", code)), envir = env)
         "OK"
       }, error = \(e) conditionMessage(e))
     })

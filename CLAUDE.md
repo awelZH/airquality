@@ -93,6 +93,7 @@ appending to own outputs, no work lists derived from earlier results.
    console.
 10. Generic building blocks live in `airquality.methods` (municipality assignment, collector pixel
     redistribution, grouped legend, `check_names()`); only analysis-specific code stays in `R/`.
+11. Plots per year are shown with a year slider (`print_year_slider()`, `docs/year-slider.html`), not tabsets.
 
 ## Read before working on …
 

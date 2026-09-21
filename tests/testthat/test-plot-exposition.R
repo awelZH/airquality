@@ -73,8 +73,9 @@ test_that("plot_all_expo_hist() and plot_all_expo_cumul() give one plot per year
     concentration = rep(c(5, 15, 35), 2), population = 10, population_cum_rel = rep(c(1, 2, 3) / 3, 2)
   )
 
-  hist <- plot_all_expo_hist("NO2", data, make_threshold_values())
-  cumul <- plot_all_expo_cumul("NO2", data, make_threshold_values())
+  axes <- list(NO2 = list(barwidth = 0.9, xbreaks = seq(0, 55, 5)))
+  hist <- plot_all_expo_hist("NO2", data, make_threshold_values(), axes = axes)
+  cumul <- plot_all_expo_cumul("NO2", data, make_threshold_values(), axes = axes)
 
   expect_named(hist, c("2019", "2020"))
   expect_named(cumul, c("alle", "2019", "2020"))
@@ -86,9 +87,10 @@ test_that("the nitrogen distribution plots give one plot per year plus all years
   data <- tibble::tibble(year = rep(2019:2020, each = 2), ndep_exmax = c(1, 5, 1, 5), n_ecosys = 1,
                          n_ecosys_cum_rel = c(0.5, 1, 0.5, 1))
   threshold <- list(value = 0, color = "red3", labels = "kritische Eintragsrate CLN", labelsize = 4, linetype = 1, linesize = 1)
+  axes <- list(Ndep = list(barwidth = 0.9, xbreaks = seq(-5, 45, 5)))
 
-  expect_named(plot_all_expo_hist_ndep(data, threshold), c("2019", "2020"))
-  expect_named(plot_all_expo_cumul_ndep(data, threshold), c("alle", "2019", "2020"))
+  expect_named(plot_all_expo_hist_ndep(data, threshold, axes = axes), c("2019", "2020"))
+  expect_named(plot_all_expo_cumul_ndep(data, threshold, axes = axes), c("alle", "2019", "2020"))
 })
 
 # ---- population-weighted means -------------------------------------------------------

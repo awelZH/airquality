@@ -58,23 +58,28 @@ prepare_plot_ndep_components <- function(data) {
 
 # ---- thresholds -------------------------------------------------------------------------
 
-#' Parameter-specific settings of the monitoring time series
+#' Threshold lines of a parameter in the monitoring time series
+#'
+#' Annual means are compared with the LRV limit and the WHO guideline, the monthly O3 peak with the LRV
+#' limit and the O3 peak season with the WHO guideline; eBC has no threshold.
 #'
 #' @param parameter Parameter, e.g. "NO2".
 #' @param threshold_values Threshold values with line styles (`immission_threshold_values` of
 #'   `scripts/_plot_setup.R`).
 #'
-#' @return List with `ylim`, `ybreaks`, `metric` and `thresh` (see [extract_threshold()]).
+#' @return Threshold lines as returned by [extract_threshold()] (`value = NA` for none). Stops with an
+#'   error of class `airquality_plot_error` for other parameters.
 #'
 #' @keywords internal
-timeseriespars <- function(parameter, threshold_values) {
+timeseries_threshold <- function(parameter, threshold_values) {
   switch(parameter,
-         NO2 = list(ylim = c(0,70), ybreaks = seq(0,70,10), metric = "Jahresmittel", thresh = extract_threshold(threshold_values, pollutant = "NO2")),
-         PM10 = list(ylim = c(0,35), ybreaks = seq(0,35,5), metric = "Jahresmittel", thresh = extract_threshold(threshold_values, pollutant = "PM10")),
-         PM2.5 = list(ylim = c(0,20), ybreaks = seq(0,20,4), metric = "Jahresmittel", thresh = extract_threshold(threshold_values, pollutant = "PM2.5")),
-         eBC = list(ylim = c(0,4), ybreaks = seq(0,4,0.5), metric = "Jahresmittel", thresh = list(value = NA)),
-         `O3_max_98p_m1` = list(ylim = c(0,210), ybreaks = seq(0,210,30), metric = "höchstes 98%-Perzentil der Halbstundenmittel eines Monats", thresh = extract_threshold(threshold_values, pollutant = "O3", metric = "typische Spitzenbelastung", source = "LRV Grenzwert")),
-         O3_peakseason_mean_d1_max_mean_h8gl = list(ylim = c(0,130), ybreaks = seq(0,120,20), metric = "mittlere tägliche max. 8-Stundenmittel während der Sommersaison", thresh = extract_threshold(threshold_values, pollutant = "O3", metric = "mittlere Sommertagbelastung", source = "WHO Richtwert"))
+         NO2 = extract_threshold(threshold_values, pollutant = "NO2"),
+         PM10 = extract_threshold(threshold_values, pollutant = "PM10"),
+         PM2.5 = extract_threshold(threshold_values, pollutant = "PM2.5"),
+         eBC = list(value = NA),
+         `O3_max_98p_m1` = extract_threshold(threshold_values, pollutant = "O3", metric = "typische Spitzenbelastung", source = "LRV Grenzwert"),
+         O3_peakseason_mean_d1_max_mean_h8gl = extract_threshold(threshold_values, pollutant = "O3", metric = "mittlere Sommertagbelastung", source = "WHO Richtwert"),
+         cli::cli_abort("No threshold rule for parameter {.val {parameter}} in the monitoring time series.", class = "airquality_plot_error")
   )
 }
 
@@ -195,6 +200,7 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
 #'
 #' @param data Air quality data as prepared by [prepare_plot_airquality()].
 #' @param parameters Parameters to plot.
+#' @param axes Y limits and breaks per parameter (`plot_axes_timeseries` of `scripts/_plot_setup.R`).
 #' @param threshold_values Threshold values with line styles.
 #' @param colour_scale Colour scale of the site classes.
 #' @param pointsize Size of the points.
@@ -204,7 +210,7 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
 #' @return Named list of ggplot objects, one per parameter.
 #'
 #' @keywords internal
-plot_pars_monitoring_timeseries <- function(data, parameters, threshold_values, colour_scale = NULL, pointsize = 2,
+plot_pars_monitoring_timeseries <- function(data, parameters, axes, threshold_values, colour_scale = NULL, pointsize = 2,
                                             theme = ggplot2::theme_minimal(),
                                             cap = "Datenabdeckung: Kanton Zürich, Daten: Ostluft & NABEL (BAFU & Empa)") {
 
@@ -214,16 +220,16 @@ plot_pars_monitoring_timeseries <- function(data, parameters, threshold_values, 
     pollutant <- unique(data_plot$pollutant)
     unit <- unique(data_plot$unit)
     metric <- unique(data_plot$metric)
-    pars <- timeseriespars(parameter, threshold_values)
+    axis <- parameter_setting(axes, parameter)
 
     ggplot_timeseries(data_plot,
-                      ylims = pars$ylim, ybreaks = pars$ybreaks,
+                      ylims = axis$ylim, ybreaks = axis$ybreaks,
                       titlelab = ggplot2::ggtitle(
                         label = openair::quickText(paste0("Luftqualitätsmesswerte ", airquality.methods::longpollutant(pollutant))),
                         subtitle = openair::quickText(paste0(pollutant, ", ", metric," (", unit, ")"))
                       ),
                       captionlab = ggplot2::labs(caption = cap),
-                      pointsize = pointsize, theme = theme, threshold = pars$thresh
+                      pointsize = pointsize, theme = theme, threshold = timeseries_threshold(parameter, threshold_values)
     ) +
       colour_scale
   })

@@ -8,6 +8,7 @@ plot_all_expo_hist(
   parameter,
   data,
   threshold_values,
+  axes,
   sub = "im Kanton Zürich",
   theme = ggplot2::theme_minimal()
 )
@@ -18,6 +19,9 @@ plot_all_expo_hist(
 \item{data}{\code{data_exposition_distribution_pollutants.csv}.}
 
 \item{threshold_values}{Threshold values with line styles.}
+
+\item{axes}{Bar width and x breaks per parameter (\code{plot_axes_exposition} of \verb{scripts/_plot_setup.R}); the
+range of the breaks is the x range.}
 
 \item{sub}{Area in the subtitle.}
 

@@ -141,3 +141,13 @@ device fail on the Arial font of `theme_ts`; it draws with ragg into a temporary
   table on the real data, including the kable HTML. The page only formats it with kableExtra.
 * `Luftqualität.qmd`: the eBC title is set in `_plot_monitoring.R`; the page no longer sources
   `_plot_trends.R` (3 CSVs read and 3 plots built for nothing).
+
+**Axis settings per parameter (user suggestion, instead of P4).** `timeseriespars()` and
+`expositionpars()` are gone: the y limits/breaks of the monitoring time series and the bar widths/x
+breaks of the exposition plots are presentation settings in `_plot_setup.R` (decision 7: graphical
+settings there, analysis constants in `_settings.R`), `plot_axes_timeseries` and
+`plot_axes_exposition`; the functions get them as argument `axes` and look them up with
+`parameter_setting()`, which stops (`airquality_plot_error`) for a parameter without entry instead of
+the former silent `NULL`. The unused fields `aggregation`, `metric` and `xlim` were dropped. The
+threshold rule per parameter (which metric, LRV or WHO) is logic and stays a function,
+`timeseries_threshold()`. 321 figures byte-identical.

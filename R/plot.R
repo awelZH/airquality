@@ -177,3 +177,24 @@ print_tabset <- function(figures) {
 
   invisible(NULL)
 }
+
+
+#' Setting of one parameter from a list of settings per parameter
+#'
+#' @param settings Named list, one element per parameter (e.g. `plot_axes_timeseries` of
+#'   `scripts/_plot_setup.R`).
+#' @param parameter Parameter.
+#'
+#' @return The element of `parameter`. Stops with an error of class `airquality_plot_error` if there is
+#'   none, naming the parameters with a setting.
+#'
+#' @keywords internal
+parameter_setting <- function(settings, parameter) {
+  if (!parameter %in% names(settings)) {
+    cli::cli_abort(
+      "No plot setting for parameter {.val {parameter}}; settings exist for {.val {names(settings)}}.",
+      class = "airquality_plot_error"
+    )
+  }
+  settings[[parameter]]
+}

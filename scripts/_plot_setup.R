@@ -66,6 +66,27 @@ pointsize <- 2 # size of point markers
 linewidth <- 1 # width of lines
 jitter_seed <- 1 # seed of jittered points, so figures stay the same between renders
 
+# axes per parameter: monitoring time series (y limits and breaks) and exposition plots (bar width, x breaks;
+# their range is the x range); a parameter without entry stops the plot with an error
+plot_axes_timeseries <- list(
+  NO2 = list(ylim = c(0,70), ybreaks = seq(0,70,10)),
+  PM10 = list(ylim = c(0,35), ybreaks = seq(0,35,5)),
+  PM2.5 = list(ylim = c(0,20), ybreaks = seq(0,20,4)),
+  eBC = list(ylim = c(0,4), ybreaks = seq(0,4,0.5)),
+  O3_max_98p_m1 = list(ylim = c(0,210), ybreaks = seq(0,210,30)),
+  O3_peakseason_mean_d1_max_mean_h8gl = list(ylim = c(0,130), ybreaks = seq(0,120,20))
+)
+bar_scale <- 0.9 # share of the class width covered by a bar
+plot_axes_exposition <- list(
+  NO2 = list(barwidth = 1 * bar_scale, xbreaks = seq(0,55,5)),
+  O3_max_98p_m1 = list(barwidth = 2 * bar_scale, xbreaks = seq(0,180,20)),
+  O3_peakseason_mean_d1_max_mean_h8gl = list(barwidth = 2 * bar_scale, xbreaks = seq(0,120,10)),
+  PM10 = list(barwidth = 0.5 * bar_scale, xbreaks = seq(0,24,2)),
+  PM2.5 = list(barwidth = 0.5 * bar_scale, xbreaks = seq(0,18.5,1)),
+  eBC = list(barwidth = 0.05 * bar_scale, xbreaks = seq(0,2.2,0.2)),
+  Ndep = list(barwidth = 1 * bar_scale, xbreaks = seq(-5,45,5))
+)
+
 
 # read LRV legal threshold limit values & WHO air quality guideline values
 immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8"))

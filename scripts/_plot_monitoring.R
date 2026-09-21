@@ -19,7 +19,7 @@ data_monitoring_ndep_pars <-
 
 # time series of the yearly values per site class
 plots$monitoring$timeseries_siteclass <-
-  plot_pars_monitoring_timeseries(data_monitoring_aq, plot_parameters_timeseries, threshold_values = immission_threshold_values,
+  plot_pars_monitoring_timeseries(data_monitoring_aq, plot_parameters_timeseries, axes = plot_axes_timeseries, threshold_values = immission_threshold_values,
                                   colour_scale = scale_color_siteclass, pointsize = pointsize, theme = theme_ts)
 
 # eBC: its own title, the values are yearly means of samples

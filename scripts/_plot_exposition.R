@@ -40,12 +40,12 @@ plots$exposition$population_over_thresh$rel_various <-
 # exposition distributions of the population per pollutant and of the sensitive ecosystems (nitrogen):
 # histograms per year; cumulative distributions of all years, then per year
 plots$exposition$distribution_histogram <-
-  purrr::map(parameters_exposition, \(parameter) plot_all_expo_hist(parameter, data_expo_distr_pollutants, immission_threshold_values, theme = theme_ts))
-plots$exposition$distribution_histogram$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep, theme = theme_ts)
+  purrr::map(parameters_exposition, \(parameter) plot_all_expo_hist(parameter, data_expo_distr_pollutants, immission_threshold_values, axes = plot_axes_exposition, theme = theme_ts))
+plots$exposition$distribution_histogram$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep, axes = plot_axes_exposition, theme = theme_ts)
 
 plots$exposition$distribution_cumulative <-
-  purrr::map(parameters_exposition, \(parameter) plot_all_expo_cumul(parameter, data_expo_distr_pollutants, immission_threshold_values, theme = theme_ts))
-plots$exposition$distribution_cumulative$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep, theme = theme_ts)
+  purrr::map(parameters_exposition, \(parameter) plot_all_expo_cumul(parameter, data_expo_distr_pollutants, immission_threshold_values, axes = plot_axes_exposition, theme = theme_ts))
+plots$exposition$distribution_cumulative$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep, axes = plot_axes_exposition, theme = theme_ts)
 
 
 # maps of the population-weighted means per municipality (canton mean in the subtitle)

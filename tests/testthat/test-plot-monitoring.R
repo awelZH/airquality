@@ -64,16 +64,16 @@ test_that("combine_thresholds() adds the LRV and WHO values of pollutant and met
   expect_equal(result$concentration, c(20, 10, 1))
 })
 
-test_that("timeseriespars() takes the thresholds from the given threshold values", {
+test_that("timeseries_threshold() takes the thresholds of a parameter from the given threshold values", {
   thresholds <- make_threshold_values()
 
-  no2 <- timeseriespars("NO2", thresholds)
-  expect_equal(no2$ylim, c(0, 70))
-  expect_equal(no2$thresh$value, c(30, 10))
-  expect_equal(no2$thresh$labels, c("LRV Grenzwert", "WHO Richtwert"))
+  no2 <- timeseries_threshold("NO2", thresholds)
+  expect_equal(no2$value, c(30, 10))
+  expect_equal(no2$labels, c("LRV Grenzwert", "WHO Richtwert"))
 
-  expect_equal(timeseriespars("O3_max_98p_m1", thresholds)$thresh$value, 100)
-  expect_true(is.na(timeseriespars("eBC", thresholds)$thresh$value))
+  expect_equal(timeseries_threshold("O3_max_98p_m1", thresholds)$value, 100)
+  expect_true(is.na(timeseries_threshold("eBC", thresholds)$value))
+  expect_error(timeseries_threshold("SO2", thresholds), class = "airquality_plot_error")
 })
 
 test_that("threshold_comparison_data() relates concentrations and depositions to their thresholds", {
@@ -104,7 +104,7 @@ test_that("plot_pars_monitoring_timeseries() gives one plot per parameter, with 
     concentration = c(20, 25), siteclass = factor("städtisch - Hintergrund", levels = siteclasses)
   )
 
-  plots <- plot_pars_monitoring_timeseries(data, "NO2", threshold_values = make_threshold_values(),
+  plots <- plot_pars_monitoring_timeseries(data, "NO2", axes = list(NO2 = list(ylim = c(0, 70), ybreaks = seq(0, 70, 10))), threshold_values = make_threshold_values(),
                                            colour_scale = ggplot2::scale_color_discrete())
 
   expect_named(plots, "NO2")

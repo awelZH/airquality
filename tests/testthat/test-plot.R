@@ -104,3 +104,12 @@ test_that("print_tabset() writes one tab per plot, titled by its name", {
 
   expect_contains(output, c("::: {.panel-tabset}", "##### absolut", "##### relativ"))
 })
+
+# ---- parameter_setting() ------------------------------------------------------------
+
+test_that("parameter_setting() returns the setting of a parameter and stops for unknown parameters", {
+  axes <- list(NO2 = list(ylim = c(0, 70)), PM10 = list(ylim = c(0, 35)))
+
+  expect_equal(parameter_setting(axes, "PM10")$ylim, c(0, 35))
+  expect_error(parameter_setting(axes, "SO2"), "NO2", class = "airquality_plot_error")
+})

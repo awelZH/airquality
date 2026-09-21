@@ -7,6 +7,7 @@
 plot_all_expo_cumul_ndep(
   data,
   threshold_ndep,
+  axes,
   sub = "im Kanton Zürich",
   theme = ggplot2::theme_minimal()
 )
@@ -15,6 +16,8 @@ plot_all_expo_cumul_ndep(
 \item{data}{\code{data_exposition_distribution_ndep.csv}.}
 
 \item{threshold_ndep}{Threshold line at 0 (critical load) as a list like \code{\link[=extract_threshold]{extract_threshold()}} returns.}
+
+\item{axes}{Bar width and x breaks per parameter, with an entry "Ndep" (\code{plot_axes_exposition}).}
 
 \item{sub}{Area in the subtitle.}
 

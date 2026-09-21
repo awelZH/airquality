@@ -7,6 +7,7 @@
 plot_pars_monitoring_timeseries(
   data,
   parameters,
+  axes,
   threshold_values,
   colour_scale = NULL,
   pointsize = 2,
@@ -18,6 +19,8 @@ plot_pars_monitoring_timeseries(
 \item{data}{Air quality data as prepared by \code{\link[=prepare_plot_airquality]{prepare_plot_airquality()}}.}
 
 \item{parameters}{Parameters to plot.}
+
+\item{axes}{Y limits and breaks per parameter (\code{plot_axes_timeseries} of \verb{scripts/_plot_setup.R}).}
 
 \item{threshold_values}{Threshold values with line styles.}
 

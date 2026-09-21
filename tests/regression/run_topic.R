@@ -11,7 +11,7 @@
 # record/replay version and write_local_csv() is redirected to tests/regression/results/<topic>/<label>/,
 # so inst/extdata/output/ is never touched. Packages the old script needs attached are listed in `attach`.
 # Only the settings the topic needs are taken from
-# scripts/_setup.R (package loading and the airquality.data update are skipped).
+# scripts/_setup.R and scripts/_settings.R (package loading and the airquality.data update are skipped).
 #
 # run from the project root in a fresh R session, e.g.
 #   Rscript -e 'source("tests/regression/run_topic.R"); run_topic("emissions", "reference")'
@@ -30,17 +30,18 @@ topics <- list(
   )
 )
 
-# evaluate the top-level assignments `name <- ...` of scripts/_setup.R for the given names, in file order
-eval_setup <- function(names, env, file = "scripts/_setup.R") {
+# evaluate the top-level assignments `name <- ...` of the setup files for the given names, in file order
+eval_setup <- function(names, env, files = c("scripts/_setup.R", "scripts/_settings.R")) {
   assigned <- character()
-  for (e in parse(file, encoding = "UTF-8")) {
+  exprs <- unlist(purrr::map(files, \(file) as.list(parse(file, encoding = "UTF-8"))))
+  for (e in exprs) {
     if (rlang::is_call(e, "<-") && rlang::is_symbol(e[[2]]) && as.character(e[[2]]) %in% names) {
       eval(e, env)
       assigned <- c(assigned, as.character(e[[2]]))
     }
   }
   missing <- setdiff(names, assigned)
-  if (length(missing) > 0) cli::cli_abort("Not assigned in {.file {file}}: {.val {missing}}.")
+  if (length(missing) > 0) cli::cli_abort("Not assigned in {.file {files}}:{.val {missing}}.")
   invisible(env)
 }
 

@@ -22,7 +22,8 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 | Path | Content |
 |---|---|
 | `scripts/analyse_airquality.R` | entry point: sources `_setup.R`, then the `_compile_*.R` scripts in order |
-| `scripts/_setup.R` | packages, `load_all()`, **all analysis settings** (see decision 7), municipality map |
+| `scripts/_setup.R` | packages, `load_all()`, sources `_settings.R`, municipality map |
+| `scripts/_settings.R` | **all analysis settings** (see decision 7), pure assignments |
 | `scripts/_compile_*.R` | one script per topic: emissions, monitoring, trends, exposition, outcomes |
 | `scripts/_plot_airquality.R` | builds all plots from the output CSVs, saved as `docs/plots_*.rds` for Quarto |
 | `R/` | analysis-specific functions, one file per topic: `exposition.R`, `emissions.R`, `monitoring.R`, `plot.R`, `helpers.R`, …; the others (`prepare.R`, `aggregate.R`, …) still hold the not yet reworked topics |
@@ -134,8 +135,8 @@ update (O3 peak season up to 0.9 %, PM2.5 up to 0.5 %). Every run appends its co
 `inst/extdata/log/exposition_derivation_coefficients.csv` (not part of the contract). Open: a
 year-specific O3 slope would decouple the years but is less certain with 7–15 sites per year.
 
-**7. All analysis constants live in `scripts/_setup.R`** (2026-09-18), in one block "analysis
-settings" grouped by topic:
+**7. All analysis constants live in `scripts/_settings.R`** (2026-09-18; own file since 2026-09-21,
+sourced by `_setup.R`, the plot scripts and the report), grouped by topic:
 * names carry the topic as prefix (`emis_`, `mon_`, `trend_`, `expo_`, `plot_`), general settings
   without (`year_offset`, `year_last`, `base_scenario_year`, `crs`); maps 1:1 to `config.yml` in 2b
 * scripts only use them and do not `rm()` them; functions in `R/` get them as arguments, never as
@@ -283,8 +284,8 @@ network readers of `airquality.methods` (`read_opendataswiss()`, `read_geolion_w
 record/replay version (`tests/regression/inputs/*.rds`, keyed by `rlang::hash()` of the arguments,
 `refresh = TRUE` downloads again) and redirects `write_local_csv()` to
 `tests/regression/results/<topic>/<label>/`, so `inst/extdata/output/` is never touched. Settings are
-evaluated from `scripts/_setup.R` (only the listed assignments; no package loading, no
-`airquality.data` update). A new topic needs an entry in `topics` (script, settings, `attach` for
+evaluated from `scripts/_setup.R` and `scripts/_settings.R` (only the listed assignments; no package
+loading, no `airquality.data` update). A new topic needs an entry in `topics` (script, settings, `attach` for
 packages an old script expects to be attached; further readers in `network_readers`). Inputs and
 results are gitignored. Topics whose inputs are `airquality.data` datasets (monitoring, trends) need
 no frozen downloads, but both runs must use the same installed version of that package.

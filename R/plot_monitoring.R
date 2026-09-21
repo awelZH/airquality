@@ -205,14 +205,14 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
 #' @param colour_scale Colour scale of the site classes.
 #' @param pointsize Size of the points.
 #' @param theme ggplot2 theme.
-#' @param cap Caption.
+#' @param caption Caption.
 #'
 #' @return Named list of ggplot objects, one per parameter.
 #'
 #' @keywords internal
-plot_pars_monitoring_timeseries <- function(data, parameters, axes, threshold_values, colour_scale = NULL, pointsize = 2,
+plot_monitoring_timeseries <- function(data, parameters, axes, threshold_values, colour_scale = NULL, pointsize = 2,
                                             theme = ggplot2::theme_minimal(),
-                                            cap = "Datenabdeckung: Kanton Zürich, Daten: Ostluft & NABEL (BAFU & Empa)") {
+                                            caption = "Datenabdeckung: Kanton Zürich, Daten: Ostluft & NABEL (BAFU & Empa)") {
 
   purrr::map(rlang::set_names(parameters), function(parameter) {
 
@@ -228,7 +228,7 @@ plot_pars_monitoring_timeseries <- function(data, parameters, axes, threshold_va
                         label = openair::quickText(paste0("Luftqualitätsmesswerte ", airquality.methods::longpollutant(pollutant))),
                         subtitle = openair::quickText(paste0(pollutant, ", ", metric," (", unit, ")"))
                       ),
-                      captionlab = ggplot2::labs(caption = cap),
+                      captionlab = ggplot2::labs(caption = caption),
                       pointsize = pointsize, theme = theme, threshold = timeseries_threshold(parameter, threshold_values)
     ) +
       colour_scale
@@ -279,14 +279,14 @@ plot_threshold_comparison <- function(data, threshold_styles, years, colour_scal
 #'
 #' @param data Nitrogen deposition as prepared by [prepare_plot_ndep_components()].
 #' @param xlim,xbreaks Limits and breaks of the x axis.
-#' @param linewidth,color Width and colour of the critical load line.
+#' @param linewidth,colour Width and colour of the critical load line.
 #' @param title Title.
 #' @param theme ggplot2 theme.
 #'
 #' @return A ggplot object.
 #'
 #' @keywords internal
-plot_timeseries_ndep_bars <- function(data, xlim = NULL, xbreaks = ggplot2::waiver(), linewidth = 1, color = "red3",
+plot_ndep_bars <- function(data, xlim = NULL, xbreaks = ggplot2::waiver(), linewidth = 1, colour = "red3",
                                       title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme",
                                       theme = ggplot2::theme_minimal()) {
 
@@ -296,7 +296,7 @@ plot_timeseries_ndep_bars <- function(data, xlim = NULL, xbreaks = ggplot2::waiv
     data |>
     ggplot2::ggplot(ggplot2::aes(x = year, y = deposition, fill = component)) +
     ggplot2::geom_bar(stat = "identity") +
-    ggplot2::geom_hline(data = cln, mapping = ggplot2::aes(yintercept = cln, group = site), color = color, linewidth = linewidth, show.legend = FALSE) +
+    ggplot2::geom_hline(data = cln, mapping = ggplot2::aes(yintercept = cln, group = site), color = colour, linewidth = linewidth, show.legend = FALSE) +
     ggplot2::scale_x_continuous(limits = xlim, breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(expand = c(0.01,0.01)) +
     ggplot2::scale_fill_manual(values = c("aus NH3-Quellen" = "#2A5676", "aus NOx-Quellen" = "#B696D6")) +
@@ -351,18 +351,18 @@ plot_ndep_sites <- function(data, colour_scale = NULL, fill_scale = NULL, shape_
 #' Plot the yearly nitrogen deposition of all sites since 2019 relative to the critical load
 #'
 #' @inheritParams plot_ndep_sites
-#' @param linewidth,color Width and colour of the line at 100 %.
+#' @param linewidth,colour Width and colour of the line at 100 %.
 #'
 #' @return A ggplot object.
 #'
 #' @keywords internal
-plot_ndep_sites_vs_cln <- function(data, colour_scale = NULL, linewidth = 1, color = "red3", pointsize = 2, jitter_seed = 1,
+plot_ndep_sites_vs_cln <- function(data, colour_scale = NULL, linewidth = 1, colour = "red3", pointsize = 2, jitter_seed = 1,
                                    theme = ggplot2::theme_minimal()) {
 
   data |>
     dplyr::filter(year >= 2019) |>
     ggplot2::ggplot(ggplot2::aes(x = year, y = deposition / cln, color = ecosys)) +
-    ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1), color = color, linewidth = linewidth, show.legend = FALSE) +
+    ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1), color = colour, linewidth = linewidth, show.legend = FALSE) +
     ggplot2::geom_point(size = pointsize * 1.5, position = ggplot2::position_jitter(width = 0.1, height = 0, seed = jitter_seed)) +
     ggplot2::scale_x_continuous(limits = c(2019,NA), expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,NA), expand = ggplot2::expansion(mult = c(0, 0.02)), labels = scales::percent_format()) +

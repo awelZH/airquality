@@ -67,15 +67,15 @@ test_that("the plots of the population over thresholds use the last years for th
 
 # ---- distributions -------------------------------------------------------------------
 
-test_that("plot_all_expo_hist() and plot_all_expo_cumul() give one plot per year, with the thresholds", {
+test_that("plot_exposition_histograms() and plot_exposition_cumulative() give one plot per year, with the thresholds", {
   data <- tibble::tibble(
     year = rep(2019:2020, each = 3), pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2",
     concentration = rep(c(5, 15, 35), 2), population = 10, population_cum_rel = rep(c(1, 2, 3) / 3, 2)
   )
 
   axes <- list(NO2 = list(barwidth = 0.9, xbreaks = seq(0, 55, 5)))
-  hist <- plot_all_expo_hist("NO2", data, make_threshold_values(), axes = axes)
-  cumul <- plot_all_expo_cumul("NO2", data, make_threshold_values(), axes = axes)
+  hist <- plot_exposition_histograms(data, "NO2", make_threshold_values(), axes = axes)
+  cumul <- plot_exposition_cumulative(data, "NO2", make_threshold_values(), axes = axes)
 
   expect_named(hist, c("2019", "2020"))
   expect_named(cumul, c("alle", "2019", "2020"))
@@ -89,26 +89,26 @@ test_that("the nitrogen distribution plots give one plot per year plus all years
   threshold <- list(value = 0, color = "red3", labels = "kritische Eintragsrate CLN", labelsize = 4, linetype = 1, linesize = 1)
   axes <- list(Ndep = list(barwidth = 0.9, xbreaks = seq(-5, 45, 5)))
 
-  expect_named(plot_all_expo_hist_ndep(data, threshold, axes = axes), c("2019", "2020"))
-  expect_named(plot_all_expo_cumul_ndep(data, threshold, axes = axes), c("alle", "2019", "2020"))
+  expect_named(plot_ndep_exposition_histograms(data, threshold, axes = axes), c("2019", "2020"))
+  expect_named(plot_ndep_exposition_cumulative(data, threshold, axes = axes), c("alle", "2019", "2020"))
 })
 
 # ---- population-weighted means -------------------------------------------------------
 
-test_that("plot_pars_popmean_timeseries() shows the actual mean and the reduction vs. the base year", {
+test_that("plot_weighted_mean_timeseries() shows the actual mean and the reduction vs. the base year", {
   data <- tibble::tibble(
     year = 2014:2016, pollutant = "NO2", parameter = "NO2", base_year = 2015,
     population_weighted_mean = c(30, 25, 20), population_weighted_mean_base = 25
   )
 
-  plots <- plot_pars_popmean_timeseries(data, "NO2")
+  plots <- plot_weighted_mean_timeseries(data, "NO2")
 
   expect_named(plots, "NO2")
   expect_setequal(unique(plots$NO2$data$scenario), c("tatsächliche Belastung", "vermindert vs. 2015"))
   expect_equal(plots$NO2$data$population_weighted_mean[plots$NO2$data$scenario == "vermindert vs. 2015"], c(0, 0, -5))
 })
 
-test_that("plot_all_popweighmean_maps() gives one map per year with the canton mean in the subtitle", {
+test_that("plot_weighted_mean_maps() gives one map per year with the canton mean in the subtitle", {
   square <- function(x) sf::st_polygon(list(rbind(c(x, 0), c(x + 1, 0), c(x + 1, 1), c(x, 1), c(x, 0))))
   data <- sf::st_sf(
     year = rep(2019:2020, each = 2), pollutant = "NO2", parameter = "NO2", population_weighted_mean = c(10, 20, 12, 22),
@@ -116,7 +116,7 @@ test_that("plot_all_popweighmean_maps() gives one map per year with the canton m
   )
   canton <- tibble::tibble(year = 2019:2020, parameter = "NO2", population_weighted_mean = c(15.04, 17.06))
 
-  maps <- plot_all_popweighmean_maps("NO2", data, canton, crs = 2056)
+  maps <- plot_weighted_mean_maps(data, canton, "NO2", crs = 2056)
 
   expect_named(maps, c("2019", "2020"))
   expect_match(as.character(maps[["2020"]]$labels$subtitle), "gesamt = 17.1", fixed = TRUE)

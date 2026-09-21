@@ -122,7 +122,7 @@ plot_emission_trends_relative <- function(data, reference_year, linewidth = 1, t
 #'
 #' @param data_trends Data as returned by [trend_data_overview()] or [trend_data_detailed()].
 #' @param detailed Show the trend per site (points and thin lines) instead of the medians.
-#' @param pt_size,linewdth Size of the points and width of the lines.
+#' @param pointsize,linewidth Size of the points and width of the lines.
 #' @param facet_ncol,facet_scale Columns and scales of the panels.
 #' @param theme ggplot2 theme.
 #' @param titlelab,captionlab Title and caption.
@@ -130,8 +130,8 @@ plot_emission_trends_relative <- function(data, reference_year, linewidth = 1, t
 #' @return A ggplot object.
 #'
 #' @keywords internal
-plot_timeseries_trend_relative <- function(data_trends, detailed = FALSE,
-                                           pt_size = 1.5, linewdth = 1, facet_ncol = NULL, facet_scale = "free_y", theme = ggplot2::theme_minimal(),
+plot_trends_relative <- function(data_trends, detailed = FALSE,
+                                           pointsize = 1.5, linewidth = 1, facet_ncol = NULL, facet_scale = "free_y", theme = ggplot2::theme_minimal(),
                                            titlelab = NULL, captionlab = NULL
 ) {
 
@@ -160,8 +160,8 @@ plot_timeseries_trend_relative <- function(data_trends, detailed = FALSE,
     ggplot2::scale_y_continuous(labels = scales::percent_format(), expand = c(0.02,0.02)) +
     ggplot2::scale_color_manual(name = "Grundlage", values = c("Emission" = "gray50", "Median Trend" = "dodgerblue", "Median Messwerte" = "gold3", "Trend pro Standort" = "gray80")) +
     ggplot2::scale_shape_manual(values = c("Median Messwerte" = 21, "Trend pro Standort" = 19)) +
-    ggplot2::scale_size_manual(values = c("Median Messwerte" = pt_size, "Trend pro Standort" = pt_size * 0.75)) +
-    ggplot2::scale_linewidth_manual(values = c("Emission" = linewdth, "Median Trend" = linewdth, "Median Messwerte" = linewdth * 0.5, "Trend pro Standort" = linewdth * 0.5)) +
+    ggplot2::scale_size_manual(values = c("Median Messwerte" = pointsize, "Trend pro Standort" = pointsize * 0.75)) +
+    ggplot2::scale_linewidth_manual(values = c("Emission" = linewidth, "Median Trend" = linewidth, "Median Messwerte" = linewidth * 0.5, "Trend pro Standort" = linewidth * 0.5)) +
     ggplot2::guides(shape = "none", size = "none", linewidth = "none") +
     ggplot2::facet_wrap(pollutant~., axes = "all", ncol = facet_ncol, scales = facet_scale) +
     theme +
@@ -177,7 +177,7 @@ plot_timeseries_trend_relative <- function(data_trends, detailed = FALSE,
 
 #' Split a trend plot into one plot per pollutant, with the legend on the right
 #'
-#' @param plot A plot of [plot_timeseries_trend_relative()] with all pollutants as panels.
+#' @param plot A plot of [plot_trends_relative()] with all pollutants as panels.
 #'
 #' @return Named list of ggplot objects, one per pollutant (German name, as in the panels).
 #'

@@ -98,13 +98,13 @@ test_that("threshold_comparison_data() relates concentrations and depositions to
 
 # ---- plots -------------------------------------------------------------------------
 
-test_that("plot_pars_monitoring_timeseries() gives one plot per parameter, with its thresholds", {
+test_that("plot_monitoring_timeseries() gives one plot per parameter, with its thresholds", {
   data <- tibble::tibble(
     year = 2020:2021, site = "A", pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2", unit = "µg/m3",
     concentration = c(20, 25), siteclass = factor("städtisch - Hintergrund", levels = siteclasses)
   )
 
-  plots <- plot_pars_monitoring_timeseries(data, "NO2", axes = list(NO2 = list(ylim = c(0, 70), ybreaks = seq(0, 70, 10))), threshold_values = make_threshold_values(),
+  plots <- plot_monitoring_timeseries(data, "NO2", axes = list(NO2 = list(ylim = c(0, 70), ybreaks = seq(0, 70, 10))), threshold_values = make_threshold_values(),
                                            colour_scale = ggplot2::scale_color_discrete())
 
   expect_named(plots, "NO2")

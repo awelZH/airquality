@@ -40,12 +40,12 @@ plots$exposition$population_over_thresh$rel_various <-
 # exposition distributions of the population per pollutant and of the sensitive ecosystems (nitrogen):
 # histograms per year; cumulative distributions of all years, then per year
 plots$exposition$distribution_histogram <-
-  purrr::map(parameters_exposition, \(parameter) plot_all_expo_hist(parameter, data_expo_distr_pollutants, immission_threshold_values, axes = plot_axes_exposition, theme = theme_ts))
-plots$exposition$distribution_histogram$Ndep <- plot_all_expo_hist_ndep(data_expo_distr_ndep, threshold_ndep, axes = plot_axes_exposition, theme = theme_ts)
+  purrr::map(parameters_exposition, \(parameter) plot_exposition_histograms(data_expo_distr_pollutants, parameter, immission_threshold_values, axes = plot_axes_exposition, theme = theme_ts))
+plots$exposition$distribution_histogram$Ndep <- plot_ndep_exposition_histograms(data_expo_distr_ndep, threshold_ndep, axes = plot_axes_exposition, theme = theme_ts)
 
 plots$exposition$distribution_cumulative <-
-  purrr::map(parameters_exposition, \(parameter) plot_all_expo_cumul(parameter, data_expo_distr_pollutants, immission_threshold_values, axes = plot_axes_exposition, theme = theme_ts))
-plots$exposition$distribution_cumulative$Ndep <- plot_all_expo_cumul_ndep(data_expo_distr_ndep, threshold_ndep, axes = plot_axes_exposition, theme = theme_ts)
+  purrr::map(parameters_exposition, \(parameter) plot_exposition_cumulative(data_expo_distr_pollutants, parameter, immission_threshold_values, axes = plot_axes_exposition, theme = theme_ts))
+plots$exposition$distribution_cumulative$Ndep <- plot_ndep_exposition_cumulative(data_expo_distr_ndep, threshold_ndep, axes = plot_axes_exposition, theme = theme_ts)
 
 
 # maps of the population-weighted means per municipality (canton mean in the subtitle)
@@ -57,12 +57,12 @@ data_expo_weighmean_municip <-
 
 plots$exposition$population_weighted_mean_map <-
   purrr::map(parameters_exposition, \(parameter) {
-    plot_all_popweighmean_maps(parameter, data_expo_weighmean_municip, data_expo_weighmean_canton, crs = crs, theme = theme_map)
+    plot_weighted_mean_maps(data_expo_weighmean_municip, data_expo_weighmean_canton, parameter, crs = crs, theme = theme_map)
   })
 
 
 # time series of the population-weighted means of the canton
-plots$exposition$population_weighted_mean <- plot_pars_popmean_timeseries(data_expo_weighmean_canton, plot_parameters_timeseries, theme = theme_ts)
+plots$exposition$population_weighted_mean <- plot_weighted_mean_timeseries(data_expo_weighmean_canton, plot_parameters_timeseries, theme = theme_ts)
 
 
 # collect the plots in a catalog for the Quarto pages (get_plot(plots_exposition, "distribution_histogram", "NO2", 2020))

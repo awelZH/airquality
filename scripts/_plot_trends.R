@@ -24,11 +24,11 @@ captionlab_trends <- ggplot2::labs(caption = "Datengrundlage: Ostluft, BAFU, NAB
 
 plots$trends$relative$timeseries <-
   trend_data_overview(data_trends_agg) |>
-  plot_timeseries_trend_relative(theme = theme_ts, facet_ncol = 2, titlelab = titlelab_trends, captionlab = captionlab_trends)
+  plot_trends_relative(theme = theme_ts, facet_ncol = 2, titlelab = titlelab_trends, captionlab = captionlab_trends)
 
 plots$trends$relative$timeseries_detailed <-
   trend_data_detailed(data_trends_agg, data_trends, year_max = lubridate::year(Sys.Date())) |>
-  plot_timeseries_trend_relative(detailed = TRUE, theme = theme_ts, facet_ncol = 2, titlelab = titlelab_trends, captionlab = captionlab_trends)
+  plot_trends_relative(detailed = TRUE, theme = theme_ts, facet_ncol = 2, titlelab = titlelab_trends, captionlab = captionlab_trends)
 
 
 # collect the plots in a catalog for the Quarto pages (get_plot(plots_trends, "timeseries"))

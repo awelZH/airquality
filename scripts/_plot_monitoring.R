@@ -19,7 +19,7 @@ data_monitoring_ndep_pars <-
 
 # time series of the yearly values per site class
 plots$monitoring$timeseries_siteclass <-
-  plot_pars_monitoring_timeseries(data_monitoring_aq, plot_parameters_timeseries, axes = plot_axes_timeseries, threshold_values = immission_threshold_values,
+  plot_monitoring_timeseries(data_monitoring_aq, plot_parameters_timeseries, axes = plot_axes_timeseries, threshold_values = immission_threshold_values,
                                   colour_scale = scale_color_siteclass, pointsize = pointsize, theme = theme_ts)
 
 # eBC: its own title, the values are yearly means of samples
@@ -46,7 +46,7 @@ threshold_lrv_no2 <- dplyr::filter(immission_threshold_values, source == "LRV Gr
 plots$monitoring$timeseries_ndep_bachtel$Ndep <-
   data_monitoring_ndep_pars |>
   dplyr::filter(site == "BA", ecosys == "Wald") |>
-  plot_timeseries_ndep_bars(xlim = c(2000,NA), linewidth = threshold_lrv_no2$lsz, color = threshold_lrv_no2$col,
+  plot_ndep_bars(xlim = c(2000,NA), linewidth = threshold_lrv_no2$lsz, colour = threshold_lrv_no2$col,
                             title = "Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme am Bachtel", theme = theme_ts) +
   ggplot2::labs(caption = "Daten: Ostluft & FUB") +
   ggplot2::facet_wrap(ecosys~., ncol = 1, scales = "free_y", axes = "all_x")
@@ -56,7 +56,7 @@ plots$monitoring$timeseries_ndep_all$Ndep <-
                   pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
 
 plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
-  plot_ndep_sites_vs_cln(data_monitoring_ndep, colour_scale = scale_color_ecosys, linewidth = threshold_lrv_no2$lsz, color = threshold_lrv_no2$col,
+  plot_ndep_sites_vs_cln(data_monitoring_ndep, colour_scale = scale_color_ecosys, linewidth = threshold_lrv_no2$lsz, colour = threshold_lrv_no2$col,
                          pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
 
 

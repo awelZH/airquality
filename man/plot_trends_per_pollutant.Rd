@@ -7,7 +7,7 @@
 plot_trends_per_pollutant(plot)
 }
 \arguments{
-\item{plot}{A plot of \code{\link[=plot_timeseries_trend_relative]{plot_timeseries_trend_relative()}} with all pollutants as panels.}
+\item{plot}{A plot of \code{\link[=plot_trends_relative]{plot_trends_relative()}} with all pollutants as panels.}
 }
 \value{
 Named list of ggplot objects, one per pollutant (German name, as in the panels).

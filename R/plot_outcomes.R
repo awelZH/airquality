@@ -15,8 +15,8 @@
 #' @return Named list of ggplot objects, one per parameter.
 #'
 #' @keywords internal
-plot_pars_prelim_deaths_timeseries <- function(data, parameters, relative = FALSE, covid_years = 2020:2022,
-                                               theme = ggplot2::theme_minimal()) {
+plot_premature_deaths <- function(data, parameters, relative = FALSE, covid_years = 2020:2022,
+                                  theme = ggplot2::theme_minimal()) {
 
   if (relative) {
     mppng <- ggplot2::aes(x = year, y = outcome / population * 10^5, fill = scenario, alpha = covid)

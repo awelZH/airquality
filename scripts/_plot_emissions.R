@@ -9,14 +9,14 @@ pollutants <- rlang::set_names(unique(data_emikat$pollutant))
 
 plots$emissions$inventory_absolute <-
   purrr::map(pollutants, \(pollutant) {
-    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), theme = theme_ts,
-                     sectors_last = plot_emissions_sectors_last[[pollutant]])
+    plot_emission_inventory(data = dplyr::filter(data_emikat, pollutant == !!pollutant), theme = theme_ts,
+                            sectors_last = plot_emissions_sectors_last[[pollutant]])
   })
 
 plots$emissions$inventory_relative <-
   purrr::map(pollutants, \(pollutant) {
-    ggplot_emissions(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, pos = "fill", theme = theme_ts,
-                     sectors_last = plot_emissions_sectors_last[[pollutant]])
+    plot_emission_inventory(data = dplyr::filter(data_emikat, pollutant == !!pollutant), relative = TRUE, position = "fill", theme = theme_ts,
+                            sectors_last = plot_emissions_sectors_last[[pollutant]])
   })
 
 

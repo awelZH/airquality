@@ -162,7 +162,7 @@ plot_population_over_thresholds_share <- function(data, n_years, colours, theme 
 #' @return A ggplot object.
 #'
 #' @keywords internal
-ggplot_expo_hist <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks = ggplot2::waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
+ggplot_exposition_histogram <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks = ggplot2::waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
                              threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
                              fill_scale = NULL, theme = ggplot2::theme_minimal()) {
 
@@ -192,13 +192,13 @@ ggplot_expo_hist <- function(data, x, y, barwidth = 1, xlims = c(0,NA), xbreaks 
 
 #' Plot a relative cumulative exposition distribution
 #'
-#' @inheritParams ggplot_expo_hist
+#' @inheritParams ggplot_exposition_histogram
 #' @param linewidth Width of the line.
 #'
 #' @return A ggplot object.
 #'
 #' @keywords internal
-ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), xbreaks = ggplot2::waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
+ggplot_exposition_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), xbreaks = ggplot2::waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
                                    threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
                                    theme = ggplot2::theme_minimal()) {
 
@@ -219,13 +219,13 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
 
 #' Plot the relative cumulative exposition distributions of all years in one plot, one line per year
 #'
-#' @inheritParams ggplot_expo_hist
+#' @inheritParams ggplot_exposition_histogram
 #' @param title,subtitle,caption Texts of the plot.
 #'
 #' @return A ggplot object.
 #'
 #' @keywords internal
-ggplot_expo_cumulative_years <- function(data, x, y, xbreaks, threshold, xlabel, title, subtitle, caption,
+ggplot_exposition_cumulative_years <- function(data, x, y, xbreaks, threshold, xlabel, title, subtitle, caption,
                                          theme = ggplot2::theme_minimal()) {
 
   ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y), color = factor(year), group = year)) +
@@ -268,8 +268,8 @@ add_threshold_vlines <- function(plot, threshold, xlims) {
 
 #' Plot the population exposition histograms of one parameter, one plot per year
 #'
-#' @param parameter Parameter, e.g. "NO2".
 #' @param data `data_exposition_distribution_pollutants.csv`.
+#' @param parameter Parameter, e.g. "NO2".
 #' @param threshold_values Threshold values with line styles.
 #' @param axes Bar width and x breaks per parameter (`plot_axes_exposition` of `scripts/_plot_setup.R`); the
 #'   range of the breaks is the x range.
@@ -279,7 +279,7 @@ add_threshold_vlines <- function(plot, threshold, xlims) {
 #' @return Named list of ggplot objects, one per year.
 #'
 #' @keywords internal
-plot_all_expo_hist <- function(parameter, data, threshold_values, axes, sub = "im Kanton Zürich", theme = ggplot2::theme_minimal()) {
+plot_exposition_histograms <- function(data, parameter, threshold_values, axes, sub = "im Kanton Zürich", theme = ggplot2::theme_minimal()) {
 
   data <- dplyr::filter(data, parameter == !!parameter)
   pars <- parameter_setting(axes, parameter)
@@ -290,7 +290,7 @@ plot_all_expo_hist <- function(parameter, data, threshold_values, axes, sub = "i
     pollutant <- unique(data_plot$pollutant)
     metric <- unique(data_plot$metric)
 
-    ggplot_expo_hist(
+    ggplot_exposition_histogram(
       data = data_plot, x = "concentration", y = "population", barwidth = pars$barwidth,
       xlims = range(pars$xbreaks), xbreaks = pars$xbreaks, threshold = extract_threshold(threshold_values, pollutant, metric),
       xlabel = ggplot2::xlab(openair::quickText(paste0(pollutant, " ", metric, " (µg/m3)"))),
@@ -308,12 +308,12 @@ plot_all_expo_hist <- function(parameter, data, threshold_values, axes, sub = "i
 
 #' Plot the relative cumulative population exposition of one parameter: all years, then one plot per year
 #'
-#' @inheritParams plot_all_expo_hist
+#' @inheritParams plot_exposition_histograms
 #'
 #' @return Named list of ggplot objects: "alle" (all years in one plot), then one per year.
 #'
 #' @keywords internal
-plot_all_expo_cumul <- function(parameter, data, threshold_values, axes, sub = "im Kanton Zürich", theme = ggplot2::theme_minimal()) {
+plot_exposition_cumulative <- function(data, parameter, threshold_values, axes, sub = "im Kanton Zürich", theme = ggplot2::theme_minimal()) {
 
   data <- dplyr::filter(data, parameter == !!parameter)
   pars <- parameter_setting(axes, parameter)
@@ -323,14 +323,14 @@ plot_all_expo_cumul <- function(parameter, data, threshold_values, axes, sub = "
   xlabel <- ggplot2::xlab(openair::quickText(paste0(pollutant," ",metric," (µg/m3)")))
   title <- openair::quickText(paste0("Bevölkerungsexposition ", airquality.methods::longpollutant(parameter)))
 
-  plot_all <- ggplot_expo_cumulative_years(
+  plot_all <- ggplot_exposition_cumulative_years(
     data, x = "concentration", y = "population_cum_rel", xbreaks = pars$xbreaks, threshold = threshold, xlabel = xlabel,
     title = title, subtitle = paste0("relativer Anteil (kumuliert), Wohnbevölkerung ", sub),
     caption = "Datengrundlage: BAFU & BFS", theme = theme
   )
 
   plots_years <- purrr::map(rlang::set_names(unique(data$year)), function(year) {
-    ggplot_expo_cumulative(
+    ggplot_exposition_cumulative(
       data = dplyr::filter(data, year == !!year), x = "concentration", y = "population_cum_rel", linewidth = 1,
       xlims = range(pars$xbreaks), xbreaks = pars$xbreaks, threshold = threshold,
       xlabel = xlabel,
@@ -358,12 +358,12 @@ plot_all_expo_cumul <- function(parameter, data, threshold_values, axes, sub = "
 #' @return Named list of ggplot objects, one per year.
 #'
 #' @keywords internal
-plot_all_expo_hist_ndep <- function(data, threshold_ndep, axes, sub = "im Kanton Zürich", theme = ggplot2::theme_minimal()) {
+plot_ndep_exposition_histograms <- function(data, threshold_ndep, axes, sub = "im Kanton Zürich", theme = ggplot2::theme_minimal()) {
 
   pars <- parameter_setting(axes, "Ndep")
 
   purrr::map(rlang::set_names(unique(data$year)), function(year) {
-    ggplot_expo_hist(
+    ggplot_exposition_histogram(
       data = dplyr::filter(data, year == !!year), x = "ndep_exmax", y = "n_ecosys", barwidth = pars$barwidth,
       xlims = range(pars$xbreaks), xbreaks = pars$xbreaks, threshold = threshold_ndep,
       xlabel = ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")")),
@@ -380,25 +380,25 @@ plot_all_expo_hist_ndep <- function(data, threshold_ndep, axes, sub = "im Kanton
 
 #' Plot the relative cumulative nitrogen exceedance of the sensitive ecosystems: all years, then one plot per year
 #'
-#' @inheritParams plot_all_expo_hist_ndep
+#' @inheritParams plot_ndep_exposition_histograms
 #'
 #' @return Named list of ggplot objects: "alle" (all years in one plot), then one per year.
 #'
 #' @keywords internal
-plot_all_expo_cumul_ndep <- function(data, threshold_ndep, axes, sub = "im Kanton Zürich", theme = ggplot2::theme_minimal()) {
+plot_ndep_exposition_cumulative <- function(data, threshold_ndep, axes, sub = "im Kanton Zürich", theme = ggplot2::theme_minimal()) {
 
   pars <- parameter_setting(axes, "Ndep")
   xlabel <- ggplot2::xlab(expression("max. Stickstoff-Überschuss im Vergleich zu den kritischen Eintragsraten (kgN " * ha^-1 * Jahr^-1 * ")"))
   title <- openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge")
 
-  plot_all <- ggplot_expo_cumulative_years(
+  plot_all <- ggplot_exposition_cumulative_years(
     data, x = "ndep_exmax", y = "n_ecosys_cum_rel", xbreaks = pars$xbreaks, threshold = threshold_ndep, xlabel = xlabel,
     title = title, subtitle = paste0("relativer Anteil empfindlicher Ökosysteme (kumuliert) ", sub),
     caption = "Daten: BAFU", theme = theme
   )
 
   plots_years <- purrr::map(rlang::set_names(unique(data$year)), function(year) {
-    ggplot_expo_cumulative(
+    ggplot_exposition_cumulative(
       data = dplyr::filter(data, year == !!year), x = "ndep_exmax", y = "n_ecosys_cum_rel", linewidth = 1,
       xlims = range(pars$xbreaks), xbreaks = pars$xbreaks, threshold = threshold_ndep,
       xlabel = xlabel,
@@ -426,7 +426,7 @@ plot_all_expo_cumul_ndep <- function(data, threshold_ndep, axes, sub = "im Kanto
 #' @return Named list of ggplot objects, one per parameter.
 #'
 #' @keywords internal
-plot_pars_popmean_timeseries <- function(data, parameters, theme = ggplot2::theme_minimal()) {
+plot_weighted_mean_timeseries <- function(data, parameters, theme = ggplot2::theme_minimal()) {
 
   data <-
     data |>
@@ -454,17 +454,17 @@ plot_pars_popmean_timeseries <- function(data, parameters, theme = ggplot2::them
 
 #' Map the population-weighted means per municipality of one parameter, one map per year
 #'
-#' @param parameter Parameter, e.g. "NO2".
 #' @param data `data_exposition_weighted_means_municipalities.csv` joined to the municipality boundaries
 #'   (`sf`).
 #' @param data_canton `data_exposition_weighted_means_canton.csv` (canton mean in the subtitle).
+#' @param parameter Parameter, e.g. "NO2".
 #' @param crs Coordinate reference system of the map.
 #' @param theme ggplot2 theme.
 #'
 #' @return Named list of ggplot objects, one per year.
 #'
 #' @keywords internal
-plot_all_popweighmean_maps <- function(parameter, data, data_canton, crs, theme = ggplot2::theme_void()) {
+plot_weighted_mean_maps <- function(data, data_canton, parameter, crs, theme = ggplot2::theme_void()) {
 
   data <- dplyr::filter(data, parameter == !!parameter)
 

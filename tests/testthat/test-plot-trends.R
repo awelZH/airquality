@@ -62,13 +62,13 @@ test_that("plot_emission_trends_relative() shows the change vs. the reference ye
   expect_equal(plot$labels$subtitle, "Veränderung gegenüber dem Jahr 2015")
 })
 
-test_that("plot_timeseries_trend_relative() draws one reference year line per pollutant", {
+test_that("plot_trends_relative() draws one reference year line per pollutant", {
   data <- tibble::tibble(
     year = rep(2014:2016, 2), pollutant = rep(c("A", "B"), each = 3), reference_year = rep(c(2015, 2014), each = 3),
     site = "Kanton Zürich", type = factor("Emission", levels = c("Emission", "Median Trend", "Median Messwerte")), value = 1
   )
 
-  layers <- layer_data_all(plot_timeseries_trend_relative(data))
+  layers <- layer_data_all(plot_trends_relative(data))
 
   expect_equal(sort(layers[[2]]$xintercept), c(2014, 2015))
   expect_equal(unique(layers[[3]]$y), 0)
@@ -80,7 +80,7 @@ test_that("plot_trends_per_pollutant() gives one plot per pollutant with the leg
     site = "Kanton Zürich", type = factor("Emission", levels = c("Emission", "Median Trend", "Median Messwerte")), value = 1:6
   )
 
-  plots <- plot_trends_per_pollutant(plot_timeseries_trend_relative(data))
+  plots <- plot_trends_per_pollutant(plot_trends_relative(data))
 
   expect_named(plots, c("A", "B"))
   expect_equal(unique(plots$B$data$pollutant), "B")

@@ -1,7 +1,7 @@
 # Unit tests for R/plot_emissions.R. All inputs are synthetic; no network. The grouped legend itself is
 # tested in airquality.methods.
 
-# ---- ggplot_emissions() ------------------------------------------------------------
+# ---- plot_emission_inventory() ------------------------------------------------------------
 
 make_emission_plot_data <- function() {
   tibble::tibble(
@@ -15,8 +15,8 @@ make_emission_plot_data <- function() {
   )
 }
 
-test_that("ggplot_emissions() shows sectors as legend blocks without pasting them to the subsectors", {
-  plot <- ggplot_emissions(make_emission_plot_data())
+test_that("plot_emission_inventory() shows sectors as legend blocks without pasting them to the subsectors", {
+  plot <- plot_emission_inventory(make_emission_plot_data())
 
   texts <- legend_texts(plot)
   expect_contains(texts, c("Verkehr", "Land- und Forstw.", "Strassenverkehr"))
@@ -24,8 +24,8 @@ test_that("ggplot_emissions() shows sectors as legend blocks without pasting the
   expect_false(any(grepl(" / ", texts)))
 })
 
-test_that("ggplot_emissions() can move sectors, e.g. agriculture last", {
-  plot <- ggplot_emissions(make_emission_plot_data(), sectors_last = "Land- und Forstw.")
+test_that("plot_emission_inventory() can move sectors, e.g. agriculture last", {
+  plot <- plot_emission_inventory(make_emission_plot_data(), sectors_last = "Land- und Forstw.")
 
   expect_equal(levels(plot$data$key)[3], "Land- und Forstw.::verschiedene")
 })

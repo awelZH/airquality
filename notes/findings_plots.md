@@ -1,5 +1,8 @@
 # Plots: decisions and findings
 
+
+Function names changed on 2026-09-21 (P5, see the table at the end); the sections before it use the old
+names.
 Read before working on plots or the report (see also decision 9 in `decisions.md`).
 
 ## Plots: grouped legend (2026-09-19)
@@ -151,3 +154,23 @@ settings there, analysis constants in `_settings.R`), `plot_axes_timeseries` and
 the former silent `NULL`. The unused fields `aggregation`, `metric` and `xlim` were dropped. The
 threshold rule per parameter (which metric, LRV or WHO) is logic and stays a function,
 `timeseries_threshold()`. 321 figures byte-identical.
+
+**P5 (consistent names).** Page plots are `plot_<content>()`, building blocks `ggplot_<form>()`; data
+first; arguments `caption` (was `cap`), `colour` (was `color`, the argument, not the ggplot2
+aesthetic), `position` (was `pos`), `pointsize`/`linewidth` (were `pt_size`/`linewdth`). Mechanical,
+321 figures byte-identical.
+
+| old | new |
+|---|---|
+| `ggplot_emissions()` | `plot_emission_inventory()` |
+| `plot_pars_monitoring_timeseries()` | `plot_monitoring_timeseries()` |
+| `plot_timeseries_ndep_bars()` | `plot_ndep_bars()` |
+| `plot_all_expo_hist()`, `plot_all_expo_cumul()` | `plot_exposition_histograms()`, `plot_exposition_cumulative()` (data first) |
+| `plot_all_expo_hist_ndep()`, `plot_all_expo_cumul_ndep()` | `plot_ndep_exposition_histograms()`, `plot_ndep_exposition_cumulative()` |
+| `plot_pars_popmean_timeseries()` | `plot_weighted_mean_timeseries()` |
+| `plot_all_popweighmean_maps()` | `plot_weighted_mean_maps()` (data first) |
+| `plot_pars_prelim_deaths_timeseries()` | `plot_premature_deaths()` |
+| `plot_timeseries_trend_relative()` | `plot_trends_relative()` |
+| `ggplot_expo_hist()`, `ggplot_expo_cumulative()`, `ggplot_expo_cumulative_years()` | `ggplot_exposition_histogram()`, `ggplot_exposition_cumulative()`, `ggplot_exposition_cumulative_years()` |
+| `timeseriespars()`, `expositionpars()` | `plot_axes_timeseries`, `plot_axes_exposition` (settings) and `timeseries_threshold()` |
+| `plotlist_to_tibble()`, `build_panel()` | `plot_catalog()`, `print_year_slider()` / `print_tabset()` |

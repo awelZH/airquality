@@ -8,7 +8,7 @@ plot_ndep_sites_vs_cln(
   data,
   colour_scale = NULL,
   linewidth = 1,
-  color = "red3",
+  colour = "red3",
   pointsize = 2,
   jitter_seed = 1,
   theme = ggplot2::theme_minimal()
@@ -17,7 +17,7 @@ plot_ndep_sites_vs_cln(
 \arguments{
 \item{data}{Nitrogen deposition as prepared by \code{\link[=prepare_plot_ndep]{prepare_plot_ndep()}}.}
 
-\item{linewidth, color}{Width and colour of the line at 100 \%.}
+\item{linewidth, colour}{Width and colour of the line at 100 \%.}
 
 \item{pointsize}{Size of the points (drawn 1.5 times larger).}
 

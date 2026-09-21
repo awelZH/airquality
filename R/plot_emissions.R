@@ -9,8 +9,8 @@
 #'
 #' @param data Emission data of one pollutant (`data_emissions.csv`): `year`, `pollutant`,
 #'   `metric`, `unit`, `sector`, `subsector_new`, `order`, `col`, `emission`.
-#' @param relative Plot shares instead of absolute emissions (use with `pos = "fill"`).
-#' @param pos Position of the bars, e.g. `"stack"` or `"fill"`.
+#' @param relative Plot shares instead of absolute emissions (use with `position = "fill"`).
+#' @param position Position of the bars, e.g. `"stack"` or `"fill"`.
 #' @param width Width of the bars.
 #' @param theme ggplot2 theme.
 #' @param sectors_last Sectors moved to the end of the stack and the legend (e.g. to show
@@ -19,7 +19,7 @@
 #' @return A ggplot object.
 #'
 #' @keywords internal
-ggplot_emissions <- function(data, relative = FALSE, pos = "stack", width = 0.8, theme = ggplot2::theme_minimal(),
+plot_emission_inventory <- function(data, relative = FALSE, position = "stack", width = 0.8, theme = ggplot2::theme_minimal(),
                              sectors_last = NULL) {
 
   pollutant <- unique(as.character(data$pollutant))
@@ -42,7 +42,7 @@ ggplot_emissions <- function(data, relative = FALSE, pos = "stack", width = 0.8,
   plot <-
     data |>
     ggplot2::ggplot(ggplot2::aes(x = year, y = emission, fill = key)) +
-    ggplot2::geom_bar(stat = "identity", position = pos, width = width) +
+    ggplot2::geom_bar(stat = "identity", position = position, width = width) +
     # ggiraph::geom_bar_interactive(mapping = ggplot2::aes(data_id = subsector_new, tooltip = round_off(emission, 1)), stat = "identity", position = pos, width = width) +
     yscale +
     ggplot2::scale_fill_manual(values = rlang::set_names(colours$col, colours$key)) +

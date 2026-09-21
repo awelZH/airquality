@@ -128,6 +128,24 @@ test_that("prepare_ndep_parameters() stops if the deposition data or the site me
   expect_error(prepare_ndep_site_meta(dplyr::select(make_site_meta(), -cln)), "cln", class = "airquality_input_error")
 })
 
+test_that("combine_sources() lists every data source once, sorted", {
+  expect_equal(combine_sources(c("Ostluft", "FUB")), "FUB,Ostluft")
+  expect_equal(combine_sources(c("FUB", "Ostluft")), "FUB,Ostluft")
+  expect_equal(combine_sources(c("Ostluft", "Ostluft")), "Ostluft")
+})
+
+test_that("combine_sources() splits entries that already list several sources", {
+  # the input data contains combined entries such as "FUB, Ostluft"
+  expect_equal(combine_sources(c("FUB, Ostluft", "Ostluft")), "FUB,Ostluft")
+  expect_equal(combine_sources(c("FUB, Ostluft", "FUB, Ostluft")), "FUB,Ostluft")
+})
+
+test_that("combine_sources() ignores missing and empty entries", {
+  expect_equal(combine_sources(c(NA, "FUB")), "FUB")
+  expect_equal(combine_sources(c("FUB", "")), "FUB")
+  expect_equal(combine_sources(c(NA_character_, NA_character_)), NA_character_)
+})
+
 test_that("aggregate_ndep() sums the deposition per site and year and the estimated part", {
   pars <- prepare_ndep_parameters(make_ndep(), prepare_ndep_site_meta(make_site_meta()), cantons = "ZH")
 
@@ -141,15 +159,18 @@ test_that("aggregate_ndep() sums the deposition per site and year and the estima
   expect_equal(s1$deposition, 16)
   expect_equal(s1$estimated, 2 * 1 + 4 * 0.5)
   expect_equal(s1$datasource, "FUB,Ostluft")
+  expect_equal(dplyr::filter(result, site == "S2")$datasource, "Ostluft")
   expect_equal(as.character(s1$estimated_class), "<5 kg-N")
   expect_equal(as.character(s1$frac_estimated_class), "<33%")
 })
 
-test_that("aggregate_ndep() sorts the rows by the grouping columns", {
+test_that("aggregate_ndep() does not depend on the row order of the input", {
   pars <- prepare_ndep_parameters(make_ndep(), prepare_ndep_site_meta(make_site_meta()), cantons = "ZH")
-  shuffled <- pars[c(4, 3, 1, 2), ]
+  groups <- c("x", "y", "masl", "pollutant", "metric")
 
-  result <- aggregate_ndep(shuffled, additional_groups = c("x", "y", "masl", "pollutant", "metric"))
+  result <- aggregate_ndep(pars, additional_groups = groups)
+  shuffled <- aggregate_ndep(pars[c(4, 3, 1, 2), ], additional_groups = groups)
 
   expect_equal(result$site, c("S1", "S2"))
+  expect_equal(shuffled, result)
 })

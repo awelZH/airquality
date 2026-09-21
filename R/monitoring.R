@@ -202,11 +202,34 @@ prepare_ndep_parameters <- function(data, site_meta, cantons) {
 }
 
 
+#' List the data sources of a group once, sorted
+#'
+#' Entries may already list several sources ("FUB, Ostluft"), so they are split first. Without
+#' this, the same set of sources appeared in several spellings and with duplicates, depending on
+#' the row order of the input.
+#'
+#' @param datasource Character vector of data sources, comma-separated.
+#'
+#' @return One comma-separated string, or `NA` if there is no source.
+#'
+#' @keywords internal
+combine_sources <- function(datasource) {
+  sources <- unlist(stringr::str_split(datasource, ","))
+  sources <- stringr::str_trim(sources)
+  sources <- unique(sources[!is.na(sources) & sources != ""])
+  if (length(sources) == 0) {
+    return(NA_character_)
+  }
+  paste(sort(sources, method = "radix"), collapse = ",")
+}
+
+
 #' Total nitrogen deposition per site and year, with its estimated part
 #'
 #' Sums the deposition over all parameters; the estimated (modelled instead of measured) part is
-#' the sum of `deposition * part_est`. The data sources of a site and year are listed
-#' comma-separated. Rows are sorted by the grouping columns.
+#' the sum of `deposition * part_est`. The data sources of a site and year are listed once and
+#' sorted ([combine_sources()]). Rows are sorted by the grouping columns, so the result does not
+#' depend on the row order of the input.
 #'
 #' @param data Output of [prepare_ndep_parameters()].
 #' @param additional_groups Further columns to keep (constant per site and year).
@@ -220,7 +243,7 @@ aggregate_ndep <- function(data, additional_groups = NULL) {
   groups_source <- c(groups, "datasource", "source")
 
   data |>
-    dplyr::mutate(datasource = paste(unique(datasource), collapse = ","), .by = dplyr::all_of(groups)) |>
+    dplyr::mutate(datasource = combine_sources(datasource), .by = dplyr::all_of(groups)) |>
     dplyr::summarise(
       estimated = sum(deposition * part_est),
       deposition = sum(deposition),

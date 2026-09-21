@@ -17,7 +17,8 @@ One row per site and year (\code{data_ndep_monitoring_y1.csv}) with \code{estima
 }
 \description{
 Sums the deposition over all parameters; the estimated (modelled instead of measured) part is
-the sum of \code{deposition * part_est}. The data sources of a site and year are listed
-comma-separated. Rows are sorted by the grouping columns.
+the sum of \code{deposition * part_est}. The data sources of a site and year are listed once and
+sorted (\code{\link[=combine_sources]{combine_sources()}}). Rows are sorted by the grouping columns, so the result does not
+depend on the row order of the input.
 }
 \keyword{internal}

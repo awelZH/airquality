@@ -24,3 +24,52 @@ figures get smaller. Findings: `longpollutant()` is called without the `airquali
 in several functions of `R/plot.R` (works only while the package is attached; fixed in
 `ggplot_emissions()`); neighbouring subsectors of a sector can get similar shades because the colour
 ramp is assigned over all pollutants (e.g. PM2.5 Haushalte).
+
+## Rework of the plot code, phase 2a (2026-09-21)
+
+Scope: the plots of emissions, monitoring and exposition (outcomes and trends left untouched on the
+user's decision, colour shades of the subsectors postponed). Regression: all **295 figures
+byte-identical** (`tests/regression/run_plots.R`, see `regression.md`), the candidate run in its own
+environment, i.e. no function reads a global any more.
+
+* `R/plot.R` (863 lines) split by page: `R/plot.R` keeps the shared building blocks
+  (`ggplot_timeseries_bars()`, `plotlist_to_tibble()`, `get_plot()`, `build_panel()`) and, unchanged,
+  the WIP functions `plot_pars_prelim_deaths_timeseries()` and `plot_timeseries_trend_relative()`
+  (they still read `theme_ts` and use `%>%`); `R/plot_emissions.R`, `R/plot_monitoring.R`,
+  `R/plot_exposition.R` hold the rest.
+* Globals became arguments: `theme`, `pointsize`, `jitter_seed`, `colour_scale`/`fill_scale`/
+  `shape_scale`, `threshold_values`, `crs`. Presentation settings stay in `_plot_setup.R` (decision 7);
+  new there: `plot_emissions_sectors_last` (was a helper function inside `_plot_emissions.R`).
+* The ggplot code written out in the scripts became functions: `plot_rsd_per_norm()`,
+  `plot_rsd_per_yearmodel()`, `plot_rsd_per_yearmeas()`, `plot_threshold_comparison()`,
+  `plot_ndep_sites()`, `plot_ndep_sites_vs_cln()`, `plot_population_over_thresholds()`,
+  `plot_population_over_thresholds_share()`, `ggplot_expo_cumulative_years()` (the "alle" plot of
+  pollutants and Ndep, before twice in the script). Data preparation as pure, tested functions:
+  `prepare_plot_airquality()`, `prepare_plot_ndep()`, `prepare_plot_ndep_components()`,
+  `threshold_comparison_data()`, `population_over_thresholds()`. The three scripts shrank from 575 to
+  182 lines.
+* Style: `purrr::map()` instead of `lapply()`, `.by`, `pivot_longer(cols_vary = "slowest")`/
+  `pivot_wider()` instead of `gather()`/`spread()`, `join_by()`, prefixes everywhere
+  (`longpollutant()`, `round_off()`, `immissionscale()`, `waiver()`). To stay byte-identical, row
+  orders were kept where they matter: `combine_thresholds()` still joins from the sorted thresholds
+  (the jitter of the threshold comparison follows the row order), the doughnut slices are sorted like
+  `group_by()` did.
+* Removed as dead code: `ggplot_timeseries_lines()` and the `subareas` branch of
+  `plot_pars_popmean_timeseries()`; the plot `ndep_mean_sources_fractions` (built, never put into
+  `plots_monitoring`); `aggregate_map()` and `map_canton` in `_setup.R` (clipped the rasters in the old exposition readers, unused since the exposition rework `696ec49`, which assigns cells via `map_municipalities`). Moved:
+  `prepare_ressources()` → `R/helpers.R`, `calc_population_weighted_mean()` → `R/exposition.R`;
+  `R/aggregate_helpers.R` deleted. `prepare.R`, `aggregate.R`, `read.R`, `prepare_helpers.R`,
+  `read_helpers.R` now hold outcome/trend code only. Left in place although unused, because it is
+  outcome code: `get_base_scenario_year()`.
+* Tests: `test-plot.R` (shared), `test-plot-emissions.R`, `test-plot-monitoring.R`,
+  `test-plot-exposition.R`, helpers in `helper-plot.R`; 75 expectations.
+
+Findings, not changed (content, for the user to decide):
+* `position_jitter(width = )` without `height` also jitters vertically, by up to 40 % of the data's
+  resolution (smallest gap between distinct values). With the real data that gap is tiny, so the effect
+  is not visible, but with few distinct values it is (synthetic test: 10 → 13.3). Affected: threshold
+  comparison, `plot_ndep_sites()`, `plot_ndep_sites_vs_cln()`. `height = 0` would show the exact values
+  and change the three figures.
+* The doughnut plot `rel_various` is built but commented out in `Belastungsverteilung.qmd`.
+* The commented snippet "für Umweltbericht" in `_plot_exposition.R` that used the intermediate `d`
+  was dropped; the other two snippets now use `data_population_over_thresh`.

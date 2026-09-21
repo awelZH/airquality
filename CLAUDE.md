@@ -38,7 +38,7 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 | `scripts/_compile_*.R` | one script per topic: emissions, monitoring, trends, exposition, outcomes |
 | `scripts/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic (`plots_<topic>`); sourced by the Quarto pages, usable in the console (decision 9) |
 | `scripts/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
-| `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `plot.R`, `helpers.R`, …; `prepare.R`, `aggregate.R`, … still hold the not yet reworked topics) |
+| `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `helpers.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R`, `read.R`, `*_helpers.R` hold only outcome/trend code (WIP) |
 | `inst/extdata/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
 | `inst/extdata/output/` | **output CSVs – the contract with external processes** |
 | `inst/extdata/log/` | run logs, appended on every run; not part of the contract |
@@ -62,12 +62,13 @@ column order and format must not change (the directory may change; external path
 ## Status (2026-09-21)
 
 * **Step 1 done**: exposition reworked.
-* **Step 2, phase 2a in progress**: emissions, monitoring done; plots are built while rendering
-  (decision 9). Next in the agreed order: outcomes → trends → plots/report. **Each topic only after
-  the user's go.**
+* **Step 2, phase 2a in progress**: emissions, monitoring done; plots/report done for emissions,
+  monitoring and exposition (295 figures byte-identical, `notes/findings_plots.md`; plots are built
+  while rendering, decision 9). Left untouched on the user's decision: outcomes and trends (scripts,
+  functions and their plots), still WIP. **Each topic only after the user's go.**
 * **Phase 2b (targets) not started**; plan in `notes/plan_phase2b.md`.
-* Content changes **not yet in `inst/extdata/output/`** unless the user reran the scripts: subsector
-  grouping of the emissions, the two monitoring fixes, the ndep `datasource` clean-up.
+* All content changes so far (subsector grouping of the emissions, the two monitoring fixes, the ndep
+  `datasource` clean-up) are in `inst/extdata/output/` since commit `fc1e744`.
 
 ## Decisions (summary; details, reasons and numbers in `notes/decisions.md`)
 

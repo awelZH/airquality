@@ -1,20 +1,3 @@
-#' Aggregates sf multipolygon into one bounding polygon
-#'
-#' @param map
-#'
-#' @export
-aggregate_map <- function(map) {
-
-  map <-
-    map |>
-    sf::st_union() |>
-    sf::st_boundary() |>
-    sf::st_cast("POLYGON")
-
-  return(map)
-}
-
-
 #' Wrangle and aggregate results from statistical meteo-normalisation of monitoring data as relative trends
 #'
 #' @param trends

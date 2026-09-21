@@ -1,24 +1,3 @@
-#' Prepare data from ressources.csv for use in scripts
-#'
-#' @param ressources
-#'
-#' @export
-prepare_ressources <- function(ressources) {
-
-  ressources <-
-    ressources |>
-    dplyr::mutate(
-      get = dplyr::case_when(
-        stringr::str_detect(DOWNLOAD_URL, "inst/extdata") ~ paste(DOWNLOAD_URL, DATASET_NAME, sep = "/"),
-        DOWNLOAD_SOURCE == "swisstopo" ~ DATASET_NAME,
-        TRUE ~ DOWNLOAD_URL
-      )
-    )
-
-  return(ressources)
-}
-
-
 #' Prepare mortality data
 #'
 #' @param data_mortality

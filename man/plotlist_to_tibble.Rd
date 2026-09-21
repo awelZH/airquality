@@ -2,11 +2,20 @@
 % Please edit documentation in R/plot.R
 \name{plotlist_to_tibble}
 \alias{plotlist_to_tibble}
-\title{Restructures list of plots to a tibble including plots}
+\title{Restructure a list of plots into a tibble of plots for the Quarto pages}
 \usage{
 plotlist_to_tibble(plotlist, type, source)
 }
+\arguments{
+\item{plotlist}{Named list of plots (one per pollutant), or a named list of named lists (one plot per
+pollutant and year, or "alle").}
+
+\item{type, source}{Values of the columns \code{type} and \code{source}.}
+}
+\value{
+Tibble with \code{pollutant}, \code{plot}, \code{type}, \code{source} and \code{year} ("various" for a flat list).
+}
 \description{
-Restructures list of plots to a tibble including plots
+Restructure a list of plots into a tibble of plots for the Quarto pages
 }
 \keyword{internal}

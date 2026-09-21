@@ -1,45 +1,48 @@
-# Unit tests for R/plot.R. All inputs are synthetic; no network. The grouped legend itself is tested in
-# airquality.methods.
+# Unit tests for R/plot.R (building blocks shared by all report pages). All inputs are synthetic; no
+# network.
 
-# all text labels drawn in a grob tree (legend titles, key labels, ...)
-grob_texts <- function(grob) {
-  texts <- if (inherits(grob, "text") || inherits(grob, "titleGrob")) as.character(grob$label) else character()
-  children <- c(if (inherits(grob, "gTree")) grob$children else list(), if (inherits(grob, "gtable")) grob$grobs else list())
-  c(texts, unlist(purrr::map(children, grob_texts)))
-}
+# ---- plotlist_to_tibble() -----------------------------------------------------------
 
-legend_texts <- function(plot) {
-  gt <- withr::with_pdf(NULL, ggplot2::ggplotGrob(plot))
-  boxes <- gt$grobs[grepl("^guide-box", gt$layout$name)]
-  unlist(purrr::map(boxes, grob_texts))
-}
+test_that("plotlist_to_tibble() gives one row per plot of a flat list, with year 'various'", {
+  plots <- list(NO2 = ggplot2::ggplot(), PM10 = ggplot2::ggplot())
 
+  result <- plotlist_to_tibble(plots, "monitoring", "timeseries")
 
-# ---- ggplot_emissions() ------------------------------------------------------------
-
-make_emission_plot_data <- function() {
-  tibble::tibble(
-    year = rep(2000:2001, each = 3),
-    pollutant = "NOx", metric = "Jahresmenge", unit = "t/a",
-    sector = rep(c("Verkehr", "Verkehr", "Land- und Forstw."), 2),
-    subsector_new = rep(c("Strassenverkehr", "verschiedene", "verschiedene"), 2),
-    order = rep(c(2, 3, 1), 2),
-    col = rep(c("#1A1A1A", "#7F7F7F", "#3C096C"), 2),
-    emission = c(10, 2, 3, 9, 2, 3)
-  )
-}
-
-test_that("ggplot_emissions() shows sectors as legend blocks without pasting them to the subsectors", {
-  plot <- ggplot_emissions(make_emission_plot_data())
-
-  texts <- legend_texts(plot)
-  expect_contains(texts, c("Verkehr", "Land- und Forstw.", "Strassenverkehr"))
-  expect_equal(sum(texts == "verschiedene"), 2)
-  expect_false(any(grepl(" / ", texts)))
+  expect_equal(result$pollutant, c("NO2", "PM10"))
+  expect_equal(unique(result$type), "monitoring")
+  expect_equal(unique(result$source), "timeseries")
+  expect_equal(unique(result$year), "various")
+  expect_s3_class(result$plot[[1]], "ggplot")
 })
 
-test_that("ggplot_emissions() can move sectors, e.g. agriculture last", {
-  plot <- ggplot_emissions(make_emission_plot_data(), sectors_last = "Land- und Forstw.")
+test_that("plotlist_to_tibble() gives one row per pollutant and year of a nested list", {
+  plots <- list(
+    NO2 = list(alle = ggplot2::ggplot(), `2020` = ggplot2::ggplot()),
+    PM10 = list(alle = ggplot2::ggplot(), `2020` = ggplot2::ggplot(), `2021` = ggplot2::ggplot())
+  )
 
-  expect_equal(levels(plot$data$key)[3], "Land- und Forstw.::verschiedene")
+  result <- plotlist_to_tibble(plots, "exposition", "distribution_cumulative")
+
+  expect_equal(result$pollutant, c("NO2", "NO2", "PM10", "PM10", "PM10"))
+  expect_equal(result$year, c("alle", "2020", "alle", "2020", "2021"))
+})
+
+# ---- get_plot(), build_panel() -------------------------------------------------------
+
+test_that("get_plot() returns the first plot matching the filter", {
+  first <- ggplot2::ggplot() + ggplot2::ggtitle("first")
+  plots <- tibble::tibble(
+    pollutant = c("NO2", "NO2", "PM10"), source = c("a", "a", "b"),
+    plot = list(first, ggplot2::ggplot(), ggplot2::ggplot())
+  )
+
+  expect_identical(get_plot(plots, "pollutant == 'NO2' & source == 'a'"), first)
+})
+
+test_that("build_panel() writes a year heading and a labelled chunk printing the plot", {
+  result <- build_panel(3, 2020, "PM2.5", "distribution_histogram")
+
+  expect_match(result, "^##### 2020")
+  expect_match(result, "#| label: exposition-pm2.5-distribution-histogram-2020", fixed = TRUE)
+  expect_match(result, "plots$plot[[3]]", fixed = TRUE)
 })

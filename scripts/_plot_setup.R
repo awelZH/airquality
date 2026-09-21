@@ -6,7 +6,8 @@
 #   get_plot(plots_exposition, "source == 'population_weighted_mean' & pollutant == 'NO2'")
 # ---
 
-# packages the plot code uses without prefix (aes(), viridis_pal(), longpollutant(), %>%, ...)
+# packages used without prefix in this file, the Quarto pages and the plot scripts of the work in progress
+# (outcomes, trends: %>%, longpollutant(), ...); the functions in R/ use prefixes
 for (package in c("dplyr", "tidyr", "ggplot2", "scales", "sf", "airquality.methods")) {
   suppressPackageStartupMessages(library(package, character.only = TRUE))
 }
@@ -52,10 +53,14 @@ ressources_plotting <-
   )
 
 
-# data subsetting parameters: see scripts/_setup.R (plot_years, plot_n_years, plot_parameters_timeseries,
+# data subsetting parameters: see scripts/_settings.R (plot_years, plot_n_years, plot_parameters_timeseries,
 # plot_parameters_exposition, plot_reference_year_emissions)
 siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
                           "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
+
+# emissions: sectors moved to the end of the stack and the legend, per pollutant (NH3: agriculture last,
+# to show its influence over time)
+plot_emissions_sectors_last <- list(NH3 = "Land- und Forstw.")
 
 
 # plotting size parameters

@@ -2,19 +2,33 @@
 % Please edit documentation in R/plot.R
 \name{ggplot_timeseries_bars}
 \alias{ggplot_timeseries_bars}
-\title{Plot bar timeseries for yearly population-weighted mean concentration or health-outcome data using ggplot2}
+\title{Plot a yearly time series as bars, e.g. population-weighted means or health outcomes}
 \usage{
 ggplot_timeseries_bars(
   data,
   mapping = ggplot2::aes(x = year, y = population_weighted_mean, fill = scenario),
   ylims = c(NA, NA),
-  ybreaks = waiver(),
+  ybreaks = ggplot2::waiver(),
   titlelab = NULL,
   captionlab = NULL,
   theme = ggplot2::theme_minimal()
 )
 }
+\arguments{
+\item{data}{Data with the columns used in \code{mapping}.}
+
+\item{mapping}{Aesthetic mapping (x = year, y = value, fill = scenario).}
+
+\item{ylims, ybreaks}{Limits and breaks of the y axis.}
+
+\item{titlelab, captionlab}{Title and caption, e.g. \code{ggplot2::ggtitle()} and \code{ggplot2::labs(caption = )}.}
+
+\item{theme}{ggplot2 theme.}
+}
+\value{
+A ggplot object.
+}
 \description{
-Plot bar timeseries for yearly population-weighted mean concentration or health-outcome data using ggplot2
+Plot a yearly time series as bars, e.g. population-weighted means or health outcomes
 }
 \keyword{internal}

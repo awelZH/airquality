@@ -55,20 +55,11 @@ source("scripts/_settings.R", encoding = "UTF-8")
 # map boundaries:
 # ---
 
-# map boundaries Canton Zürich and municipalities (current boundaries, used for all years;
+# map boundaries of the municipalities (current boundaries, used for all years;
 # without the Kloster Fahr, an enclave of the Canton of Aargau)
 map_municipalities <-
   airquality.methods::read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs) |>
   airquality.methods::drop_foreign_enclaves()
-map_canton <- aggregate_map(map_municipalities)
-
-# ggplot() +
-#   ggplot2::geom_sf(data = map_municipalities) +
-#   ggplot2::theme_void()
-#
-# ggplot() +
-#   ggplot2::geom_sf(data = map_canton) +
-#   ggplot2::theme_void()
 
 
 # clean up:

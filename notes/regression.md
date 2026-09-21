@@ -30,3 +30,14 @@ current year only.
 `compare_outputs()` works for all 14 files without configuration: byte identity, header (contract),
 rows only in one file (key = non-numeric columns plus integer-valued ones such as `year`), values
 that became `NA`, and the largest relative deviation.
+
+**Figures** (since 2026-09-21, plots/report rework): `tests/regression/run_plots.R`.
+`run_plots("reference", global = TRUE)` before, `run_plots("candidate")` after, then
+`compare_plots("reference", "candidate")`. It sources `scripts/_plot_setup.R` and the plot scripts of
+emissions, monitoring and exposition on the output CSVs in `inst/extdata/output/` (keep them unchanged
+in between), replays the municipality map like `run_topic()` and saves every row of the plot tibbles as
+a PNG (ragg, 7 × 5 in, 96 dpi) to `tests/regression/results/plots/<label>/`; the comparison reports byte
+identity, then pixel identity. Without `global = TRUE` the scripts run in their own environment, so a
+function that still reads a setting from the global environment fails. Two runs of the same code are
+byte-identical (295 figures, about 2 min per run). Row order matters: jittered points (with seed) and
+overlapping bars or slices are drawn in the row order of the data.

@@ -354,6 +354,16 @@ add_base_scenario <- function(long, base_year) {
 
 # ---- aggregation -----------------------------------------------------------------
 
+#' Population-weighted mean of a concentration
+#'
+#' @param concentration,population Numeric vectors of the same length; missing values are ignored.
+#'
+#' @return Numeric of length 1.
+#'
+#' @keywords internal
+calc_population_weighted_mean <- function(concentration, population) {sum(concentration * population, na.rm = TRUE) / sum(population, na.rm = TRUE)}
+
+
 #' Population-weighted mean concentration per canton or municipality
 #'
 #' `level = "canton"` uses every cell inside the canton, including lakes that

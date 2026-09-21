@@ -91,6 +91,11 @@ and offer to install it (answer "No"). Check with `getNamespaceVersion("airquali
 **2. Exposition is recomputed completely on every run** (2026-09-18). Downloads are cached by
 `airquality.methods` (`geo_admin_cache_dir()`), so a full run is cheap. The four exposition CSVs are
 overwritten, not appended. `get_years()` and `read_all_raster` are gone.
+Exception: **uncompressed GeoTIFFs are never cached** – they are streamed through GDAL `/vsicurl/`
+(only the canton window is transferred), so they are read from the web on every run; csv/parquet
+and compressed assets are cached. Every `Reading "<item>" (<format>, <source>).` message says which
+applies: `streamed from the web`, `from cache` or `downloading` (`inform_reading()` in
+`airquality.methods`, 2026-09-21).
 
 **3. The cell table is the unit of work for exposition.** One row per inhabited 100 m STATPOP cell and
 year (`x`, `y`, `year`, `population`, `bfsnr`, `gemeindename`, one column per pollutant), built by

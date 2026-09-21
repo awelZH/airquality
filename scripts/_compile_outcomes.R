@@ -278,26 +278,26 @@ results_prelim_deaths <-
 
 
 
-year <- 2018
-parameter <- "PM2.5"
-
-data_lifetable <- dplyr::filter(data_mortality, year_of_death == !!year)
-data_expo <- 
-  data_expo_weighmean |> 
-  dplyr::filter(parameter %in% outcomes_meta$parameter & year %in% !!unique(data_lifetable$year_of_death)) |> 
-  dplyr::group_split(year, parameter)
-
-results_yll <- estimate_yll(data_expo[[3]], data_lifetable, dplyr::filter(outcomes_meta, parameter == !!parameter), parameter = parameter, year = year, par_expo = "population_weighted_mean")
-results_yll_base <- estimate_yll(data_expo[[3]], data_lifetable, dplyr::filter(outcomes_meta, parameter == !!parameter), parameter = parameter, year = year, par_expo = "population_weighted_mean_base")
-results_yll_base <- 
-  results_yll_base |> 
-  dplyr::filter(estimate == "central") |> 
-  dplyr::mutate(scenario = "base")
-
-results_yll <- 
-  results_yll |> 
-  dplyr::mutate(scenario = "actual") |> 
-  dplyr::bind_rows(results_yll_base)
+# year <- 2018
+# parameter <- "PM2.5"
+# 
+# data_lifetable <- dplyr::filter(data_mortality, year_of_death == !!year)
+# data_expo <- 
+#   data_expo_weighmean |> 
+#   dplyr::filter(parameter %in% outcomes_meta$parameter & year %in% !!unique(data_lifetable$year_of_death)) |> 
+#   dplyr::group_split(year, parameter)
+# 
+# results_yll <- estimate_yll(data_expo[[3]], data_lifetable, dplyr::filter(outcomes_meta, parameter == !!parameter), parameter = parameter, year = year, par_expo = "population_weighted_mean")
+# results_yll_base <- estimate_yll(data_expo[[3]], data_lifetable, dplyr::filter(outcomes_meta, parameter == !!parameter), parameter = parameter, year = year, par_expo = "population_weighted_mean_base")
+# results_yll_base <- 
+#   results_yll_base |> 
+#   dplyr::filter(estimate == "central") |> 
+#   dplyr::mutate(scenario = "base")
+# 
+# results_yll <- 
+#   results_yll |> 
+#   dplyr::mutate(scenario = "actual") |> 
+#   dplyr::bind_rows(results_yll_base)
 
 # ...
 

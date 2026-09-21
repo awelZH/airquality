@@ -25,7 +25,7 @@ plots <- dplyr::bind_rows(plots_monitoring, plots_trends)
 ```{r}
 #| label: fig-grenzwertvergleich
 #| fig.asp: 0.6
-get_plot(plots, "source == 'threshold_comparison'")
+get_plot(plots, "threshold_comparison")
 ```
 :::
 
@@ -33,28 +33,28 @@ get_plot(plots, "source == 'threshold_comparison'")
 
 ```{r}
 #| label: fig-ts-no2
-get_plot(plots, "type == 'monitoring' & pollutant == 'NO2'")
+get_plot(plots, "timeseries_siteclass", "NO2")
 ```
 
 ### Feinstaub PM2.5
 
 ```{r}
 #| label: fig-ts-pm25
-get_plot(plots, "type == 'monitoring' & pollutant == 'PM2.5'")
+get_plot(plots, "timeseries_siteclass", "PM2.5")
 ```
 
 ### Feinstaub PM10
 
 ```{r}
 #| label: fig-ts-pm10
-get_plot(plots, "type == 'monitoring' & pollutant == 'PM10'")
+get_plot(plots, "timeseries_siteclass", "PM10")
 ```
 
 ### Russ im Feinstaub
 
 ```{r}
 #| label: fig-ts-ebc
-get_plot(plots, "type == 'monitoring' & pollutant == 'eBC'") + 
+get_plot(plots, "timeseries_siteclass", "eBC") + 
   ggplot2::ggtitle(
     label = openair::quickText("Luftqualitätsmesswerte Russ im Feinstaub"),
     subtitle = openair::quickText("eBC, Sichproben-Jahresmittelwert (μg/m3)")
@@ -68,7 +68,7 @@ Die "typische Spitzenbelastung" entspricht dem höchsten monatlichen 98%-Perzent
 
 ```{r}
 #| label: fig-ts-o3p98
-get_plot(plots, "type == 'monitoring' & pollutant == 'O3_max_98p_m1'")
+get_plot(plots, "timeseries_siteclass", "O3_max_98p_m1")
 ```
 
 
@@ -77,22 +77,22 @@ Die "mittlere Sommertagbelastung" entspricht dem Durchschnitt des maximalen 8-St
 
 ```{r}
 #| label: fig-ts-o3peak
-get_plot(plots, "type == 'monitoring' & pollutant == 'O3_peakseason_mean_d1_max_mean_h8gl'")
+get_plot(plots, "timeseries_siteclass", "O3_peakseason_mean_d1_max_mean_h8gl")
 ```
 
 ### Stickstoffeintrag in empfindliche Ökosysteme
 
 ```{r}
 #| label: fig-ts-ndep-bachtel
-get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_bachtel'")
+get_plot(plots, "timeseries_ndep_bachtel")
 ```
 
 ```{r}
 #| label: fig-ts-ndep-all
-get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_all'")
+get_plot(plots, "timeseries_ndep_all")
 ```
 
 ```{r}
 #| label: fig-ts-ndep-all-cln
-get_plot(plots, "type == 'monitoring' & source == 'timeseries_ndep_all_vs_CLN'")
+get_plot(plots, "timeseries_ndep_all_vs_CLN")
 ```

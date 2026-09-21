@@ -31,9 +31,11 @@ plots$trends$relative$timeseries_detailed <-
   plot_timeseries_trend_relative(detailed = TRUE, theme = theme_ts, facet_ncol = 2, titlelab = titlelab_trends, captionlab = captionlab_trends)
 
 
-# collect plots in a tibble for use in *.qmd
+# collect the plots in a catalog for the Quarto pages (get_plot(plots_trends, "timeseries"))
 # ---
 plots_trends <-
   dplyr::bind_rows(
-    plotlist_to_tibble(plots$trends$relative, "trends", "relative")
+    plot_catalog(plots$trends$relative$timeseries_emissions, "timeseries_emissions"),
+    plot_catalog(plots$trends$relative$timeseries, "timeseries"),
+    plot_catalog(plots$trends$relative$timeseries_detailed, "timeseries_detailed")
   )

@@ -64,13 +64,14 @@ plots$exposition$population_weighted_mean_map <-
 plots$exposition$population_weighted_mean <- plot_pars_popmean_timeseries(data_expo_weighmean_canton, plot_parameters_timeseries, theme = theme_ts)
 
 
-# collect plots in a tibble for use in *.qmd
+# collect the plots in a catalog for the Quarto pages (get_plot(plots_exposition, "distribution_histogram", "NO2", 2020))
 # ---
 plots_exposition <-
   dplyr::bind_rows(
-    plotlist_to_tibble(plots$exposition$population_over_thresh, "exposition", "population_over_thresh"),
-    plotlist_to_tibble(plots$exposition$distribution_histogram, "exposition", "distribution_histogram"),
-    plotlist_to_tibble(plots$exposition$distribution_cumulative, "exposition", "distribution_cumulative"),
-    plotlist_to_tibble(plots$exposition$population_weighted_mean, "exposition", "population_weighted_mean"),
-    plotlist_to_tibble(plots$exposition$population_weighted_mean_map, "exposition", "population_weighted_mean_map")
+    plot_catalog(plots$exposition$population_over_thresh$timeseries_various, "population_over_thresh"),
+    plot_catalog(plots$exposition$population_over_thresh$rel_various, "population_over_thresh_share"),
+    plot_catalog(plots$exposition$distribution_histogram, "distribution_histogram", names_to = c("parameter", "year")),
+    plot_catalog(plots$exposition$distribution_cumulative, "distribution_cumulative", names_to = c("parameter", "year")),
+    plot_catalog(plots$exposition$population_weighted_mean, "population_weighted_mean", names_to = "parameter"),
+    plot_catalog(plots$exposition$population_weighted_mean_map, "population_weighted_mean_map", names_to = c("parameter", "year"))
   )

@@ -15,8 +15,8 @@ withr::with_dir("..", {
 library(dplyr)
 library(ggplot2)
 plots <- plots_trends
-plot <- get_plot(plots, "pollutant == 'timeseries' & source == 'relative'")
-plot2 <- get_plot(plots, "pollutant == 'timeseries_detailed' & source == 'relative'")
+plot <- get_plot(plots, "timeseries")
+plot2 <- get_plot(plots, "timeseries_detailed")
 ```
 
 
@@ -25,7 +25,7 @@ plot2 <- get_plot(plots, "pollutant == 'timeseries_detailed' & source == 'relati
 
 ```{r}
 #| label: fig-trends-rel-allemissions
-get_plot(plots, "pollutant == 'timeseries_emissions' & source == 'relative'")
+get_plot(plots, "timeseries_emissions")
 ```
 
 

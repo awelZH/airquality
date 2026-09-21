@@ -30,13 +30,13 @@ plots$emissions$rsd_yearmodel$NOx <- plot_rsd_per_yearmodel(data_rsd_per_yearmod
 plots$emissions$rsd_yearmeas$NOx <- plot_rsd_per_yearmeas(data_rsd_per_yearmeas, theme = theme_ts)
 
 
-# collect plots in a tibble for use in *.qmd
+# collect the plots in a catalog for the Quarto pages (get_plot(plots_emissions, "inventory_absolute", "NOx"))
 # ---
 plots_emissions <-
   dplyr::bind_rows(
-    plotlist_to_tibble(plots$emissions$inventory_absolute, "emission", "inventory_absolute"),
-    plotlist_to_tibble(plots$emissions$inventory_relative, "emission", "inventory_relative"),
-    plotlist_to_tibble(plots$emissions$rsd_norm, "emission", "rsd_norm"),
-    plotlist_to_tibble(plots$emissions$rsd_yearmodel, "emission", "rsd_yearmodel"),
-    plotlist_to_tibble(plots$emissions$rsd_yearmeas, "emission", "rsd_yearmeas")
+    plot_catalog(plots$emissions$inventory_absolute, "inventory_absolute", names_to = "parameter"),
+    plot_catalog(plots$emissions$inventory_relative, "inventory_relative", names_to = "parameter"),
+    plot_catalog(plots$emissions$rsd_norm$NOx, "rsd_norm"),
+    plot_catalog(plots$emissions$rsd_yearmodel$NOx, "rsd_yearmodel"),
+    plot_catalog(plots$emissions$rsd_yearmeas$NOx, "rsd_yearmeas")
   )

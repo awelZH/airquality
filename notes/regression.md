@@ -41,3 +41,7 @@ identity, then pixel identity. Without `global = TRUE` the scripts run in their 
 function that still reads a setting from the global environment fails. Two runs of the same code are
 byte-identical (304 figures, about 2 min per run). Row order matters: jittered points (with seed) and
 overlapping bars or slices are drawn in the row order of the data.
+
+`compare_plots_content()` compares two runs by content (every figure must have a byte-identical one in
+the other run, file names ignored), for changes that rename plots. The page check without rendering is
+`tests/regression/check_pages.R` (`check_pages()`).

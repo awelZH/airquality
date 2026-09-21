@@ -2,22 +2,21 @@
 % Please edit documentation in R/plot.R
 \name{get_plot}
 \alias{get_plot}
-\title{Extract one plot from a plot tibble}
+\title{Get one plot from a plot catalog}
 \usage{
-get_plot(
-  plots_df,
-  filter_expr = "pollutant == 'NOx' & source == 'inventory_absolute'"
-)
+get_plot(catalog, plot, parameter = NULL, year = NULL)
 }
 \arguments{
-\item{plots_df}{Tibble of plots as built by \code{\link[=plotlist_to_tibble]{plotlist_to_tibble()}} (e.g. \code{plots_exposition}).}
+\item{catalog}{Plot catalog as built by \code{\link[=plot_catalog]{plot_catalog()}}.}
 
-\item{filter_expr}{Filter condition as a string, evaluated on \code{plots_df}; the first match is returned.}
+\item{plot}{Name of the plot.}
+
+\item{parameter, year}{Parameter and year of the plot; \code{NULL} if the plot has none.}
 }
 \value{
-A ggplot.
+A ggplot. Stops with an error of class \code{airquality_plot_error} unless exactly one plot matches.
 }
 \description{
-Extract one plot from a plot tibble
+Get one plot from a plot catalog
 }
 \keyword{internal}

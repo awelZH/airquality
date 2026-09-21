@@ -19,6 +19,6 @@ Character, the markdown of the panel.
 \description{
 Adapted from Heiss, Andrew. 2024. "Guide to Generating and Rendering Computational Markdown Content
 Programmatically with Quarto." https://doi.org/10.59350/pa44j-cc302. The chunk prints
-\code{plots$plot[[id]]}, so the page must hold its plot tibble in \code{plots}.
+\code{plots$figure[[id]]}, so the page must hold its plot catalog in \code{plots}.
 }
 \keyword{internal}

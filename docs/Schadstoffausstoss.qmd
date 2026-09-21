@@ -25,13 +25,13 @@ Hier werden vor allem [Daten zu den Luftschadstoffemissionen im Kanton Zürich](
 ##### absolut
 ```{r}
 #| label: fig-nox-emissions-abs
-get_plot(plots, "pollutant == 'NOx' & source == 'inventory_absolute'")
+get_plot(plots, "inventory_absolute", "NOx")
 ```
 
 ##### relativ
 ```{r}
 #| label: fig-nox-emissions-rel
-get_plot(plots, "pollutant == 'NOx' & source == 'inventory_relative'")
+get_plot(plots, "inventory_relative", "NOx")
 ```
 
 :::
@@ -43,13 +43,13 @@ get_plot(plots, "pollutant == 'NOx' & source == 'inventory_relative'")
 ##### nach Abgasnorm
 ```{r}
 #| label: fig-nox-emissions-rsd-norm
-get_plot(plots, "source == 'rsd_norm'")
+get_plot(plots, "rsd_norm")
 ```
 
 ##### nach Modelljahr
 ```{r}
 #| label: fig-nox-emissions-rsd-yearmodel
-get_plot(plots, "source == 'rsd_yearmodel'")
+get_plot(plots, "rsd_yearmodel")
 ```
 
 ##### nach Messjahr
@@ -57,7 +57,7 @@ get_plot(plots, "source == 'rsd_yearmodel'")
 #| label: fig-nox-emissions-rsd-yearmeas
 #| fig.width: 6
 #| fig.asp: 0.75
-get_plot(plots, "source == 'rsd_yearmeas'")
+get_plot(plots, "rsd_yearmeas")
 ```
 
 :::
@@ -69,13 +69,13 @@ get_plot(plots, "source == 'rsd_yearmeas'")
 ##### absolut
 ```{r}
 #| label: fig-pm25-emissions-abs
-get_plot(plots, "pollutant == 'PM2.5' & source == 'inventory_absolute'")
+get_plot(plots, "inventory_absolute", "PM2.5")
 ```
 
 ##### relativ
 ```{r}
 #| label: fig-pm25-emissions-rel
-get_plot(plots, "pollutant == 'PM2.5' & source == 'inventory_relative'")
+get_plot(plots, "inventory_relative", "PM2.5")
 ```
 
 :::
@@ -87,13 +87,13 @@ get_plot(plots, "pollutant == 'PM2.5' & source == 'inventory_relative'")
 ##### absolut
 ```{r}
 #| label: fig-pm10-emissions-abs
-get_plot(plots, "pollutant == 'PM10' & source == 'inventory_absolute'")
+get_plot(plots, "inventory_absolute", "PM10")
 ```
 
 ##### relativ
 ```{r}
 #| label: fig-pm10-emissions-rel
-get_plot(plots, "pollutant == 'PM10' & source == 'inventory_relative'")
+get_plot(plots, "inventory_relative", "PM10")
 ```
 
 :::
@@ -105,13 +105,13 @@ get_plot(plots, "pollutant == 'PM10' & source == 'inventory_relative'")
 ##### absolut
 ```{r}
 #| label: fig-eBC-emissions-abs
-get_plot(plots, "pollutant == 'eBC' & source == 'inventory_absolute'")
+get_plot(plots, "inventory_absolute", "eBC")
 ```
 
 ##### relativ
 ```{r}
 #| label: fig-eBC-emissions-rel
-get_plot(plots, "pollutant == 'eBC' & source == 'inventory_relative'")
+get_plot(plots, "inventory_relative", "eBC")
 ```
 
 :::
@@ -123,13 +123,13 @@ get_plot(plots, "pollutant == 'eBC' & source == 'inventory_relative'")
 ##### absolut
 ```{r}
 #| label: fig-nh3-emissions-abs
-get_plot(plots, "pollutant == 'NH3' & source == 'inventory_absolute'")
+get_plot(plots, "inventory_absolute", "NH3")
 ```
 
 ##### relativ
 ```{r}
 #| label: fig-nh3-emissions-rel
-get_plot(plots, "pollutant == 'NH3' & source == 'inventory_relative'")
+get_plot(plots, "inventory_relative", "NH3")
 ```
 
 :::
@@ -141,13 +141,13 @@ get_plot(plots, "pollutant == 'NH3' & source == 'inventory_relative'")
 ##### absolut
 ```{r}
 #| label: fig-co-emissions-abs
-get_plot(plots, "pollutant == 'CO' & source == 'inventory_absolute'")
+get_plot(plots, "inventory_absolute", "CO")
 ```
 
 ##### relativ
 ```{r}
 #| label: fig-co-emissions-rel
-get_plot(plots, "pollutant == 'CO' & source == 'inventory_relative'")
+get_plot(plots, "inventory_relative", "CO")
 ```
 
 :::
@@ -159,13 +159,13 @@ get_plot(plots, "pollutant == 'CO' & source == 'inventory_relative'")
 ##### absolut
 ```{r}
 #| label: fig-nmvoc-emissions-abs
-get_plot(plots, "pollutant == 'NMVOC' & source == 'inventory_absolute'")
+get_plot(plots, "inventory_absolute", "NMVOC")
 ```
 
 ##### relativ
 ```{r}
 #| label: fig-nmvoc-emissions-rel
-get_plot(plots, "pollutant == 'NMVOC' & source == 'inventory_relative'")
+get_plot(plots, "inventory_relative", "NMVOC")
 ```
 
 :::
@@ -177,13 +177,13 @@ get_plot(plots, "pollutant == 'NMVOC' & source == 'inventory_relative'")
 ##### absolut
 ```{r}
 #| label: fig-so2-emissions-abs
-get_plot(plots, "pollutant == 'SO2' & source == 'inventory_absolute'")
+get_plot(plots, "inventory_absolute", "SO2")
 ```
 
 ##### relativ
 ```{r}
 #| label: fig-so2-emissions-rel
-get_plot(plots, "pollutant == 'SO2' & source == 'inventory_relative'")
+get_plot(plots, "inventory_relative", "SO2")
 ```
 
 :::

@@ -33,67 +33,92 @@ ggplot_timeseries_bars <- function(data, mapping = ggplot2::aes(x = year, y = po
 }
 
 
-#' Restructure a list of plots into a tibble of plots for the Quarto pages
+#' Collect plots in a catalog for the Quarto pages
 #'
-#' @param plotlist Named list of plots (one per pollutant), or a named list of named lists (one plot per
-#'   pollutant and year, or "alle").
-#' @param type,source Values of the columns `type` and `source`.
+#' The caller says what the names of the list mean, so the catalog does not guess its structure.
 #'
-#' @return Tibble with `pollutant`, `plot`, `type`, `source` and `year` ("various" for a flat list).
+#' @param figures A ggplot, a list of ggplots named by parameter or year, or a list of such lists
+#'   (names of the outer list = parameter, of the inner lists = year).
+#' @param plot Name of the plot, e.g. "distribution_histogram".
+#' @param names_to What the names of the list levels are: `character()` for a single plot, `"parameter"`,
+#'   `"year"` or `c("parameter", "year")`.
+#'
+#' @return Tibble with `plot`, `parameter` and `year` (character, `NA` if not applicable) and the list
+#'   column `figure`, one row per plot.
 #'
 #' @keywords internal
-plotlist_to_tibble <- function(plotlist, type, source) {
+plot_catalog <- function(figures, plot, names_to = character()) {
 
-  if (!is.na(extract_year(names(plotlist[[1]][1]))) | names(plotlist[[1]][1]) == "alle") {
-
-    plottibble <-
-      plotlist |>
-      names() |>
-      purrr::map(function(x) {
-        plotlist[[x]] |>
-          tibble::enframe(name = "pollutant", value = "plot") |>
-          dplyr::mutate(
-            pollutant = x,
-            type = !!type,
-            source = !!source,
-            year = names(plotlist[[x]])
-          )
-      }) |>
-      dplyr::bind_rows()
-
-  } else {
-
-    plottibble <-
-      plotlist |>
-      tibble::enframe(name = "pollutant", value = "plot") |>
-      dplyr::mutate(
-        type = !!type,
-        source = !!source,
-        year = "various"
-      )
-
+  if (length(names_to) == 0) {
+    return(tibble::tibble(plot = plot, parameter = NA_character_, year = NA_character_, figure = list(figures)))
+  }
+  if (!rlang::is_named(figures)) {
+    cli::cli_abort("{.arg figures} of {.val {plot}} must be a named list (names = {names_to[1]}).")
   }
 
-  return(plottibble)
+  figures |>
+    purrr::imap(\(figure, name) {
+      plot_catalog(figure, plot, names_to[-1]) |>
+        dplyr::mutate("{names_to[1]}" := name)
+    }) |>
+    purrr::list_rbind()
 }
 
 
-#' Extract one plot from a plot tibble
+#' Rows of a plot catalog matching plot, parameter and year
 #'
-#' @param plots_df Tibble of plots as built by [plotlist_to_tibble()] (e.g. `plots_exposition`).
-#' @param filter_expr Filter condition as a string, evaluated on `plots_df`; the first match is returned.
+#' @param catalog Plot catalog as built by [plot_catalog()].
+#' @param plot Name of the plot.
+#' @param parameter,year Parameter and year; `NULL` to keep all.
 #'
-#' @return A ggplot.
+#' @return The matching rows. Stops with an error of class `airquality_plot_error` if there are none,
+#'   naming the available plots.
 #'
 #' @keywords internal
-get_plot <- function(plots_df, filter_expr = "pollutant == 'NOx' & source == 'inventory_absolute'") {
+catalog_entries <- function(catalog, plot, parameter = NULL, year = NULL) {
 
-  plot <-
-    plots_df |>
-    dplyr::filter(!!rlang::parse_expr(filter_expr)) |>
-    dplyr::pull(plot)
+  match <- catalog$plot == plot
+  if (!is.null(parameter)) match <- match & catalog$parameter %in% parameter
+  if (!is.null(year)) match <- match & catalog$year %in% as.character(year)
 
-  return(plot[[1]])
+  if (!any(match)) abort_plot_match(catalog, plot, parameter, year, 0)
+  catalog[match, ]
+}
+
+
+#' Get one plot from a plot catalog
+#'
+#' @inheritParams catalog_entries
+#' @param parameter,year Parameter and year of the plot; `NULL` if the plot has none.
+#'
+#' @return A ggplot. Stops with an error of class `airquality_plot_error` unless exactly one plot matches.
+#'
+#' @keywords internal
+get_plot <- function(catalog, plot, parameter = NULL, year = NULL) {
+
+  entries <- catalog_entries(catalog, plot, parameter, year)
+  if (nrow(entries) != 1) abort_plot_match(catalog, plot, parameter, year, nrow(entries))
+
+  entries$figure[[1]]
+}
+
+
+# error for get_plot() and catalog_entries(): how many plots match, and which ones exist
+abort_plot_match <- function(catalog, plot, parameter, year, n) {
+  available <- catalog[catalog$plot == plot, ]
+  wanted <- paste(c(plot, parameter, year), collapse = " / ")
+  cli::cli_abort(
+    c(
+      "{n} plot{?s} match {.val {wanted}}, expected exactly one.",
+      i = if (nrow(available) == 0) {
+        "Available plots: {.val {unique(catalog$plot)}}."
+      } else {
+        "Available for {.val {plot}} (parameter / year): {.val {unique(paste(available$parameter, available$year, sep = ' / '))}}."
+      }
+    ),
+    class = "airquality_plot_error",
+    call = rlang::caller_env(2)
+  )
 }
 
 
@@ -101,7 +126,7 @@ get_plot <- function(plots_df, filter_expr = "pollutant == 'NOx' & source == 'in
 #'
 #' Adapted from Heiss, Andrew. 2024. "Guide to Generating and Rendering Computational Markdown Content
 #' Programmatically with Quarto." https://doi.org/10.59350/pa44j-cc302. The chunk prints
-#' `plots$plot[[id]]`, so the page must hold its plot tibble in `plots`.
+#' `plots$figure[[id]]`, so the page must hold its plot catalog in `plots`.
 #'
 #' @param id Row number of the plot in `plots`.
 #' @param year Year (panel title).
@@ -120,7 +145,7 @@ build_panel <- function(id, year, pollutant, source, type = "exposition") {
       "##### <<year>>
       ```{r}
       #| label: <<chunk_label>>
-      plots$plot[[<<id>>]]
+      plots$figure[[<<id>>]]
       ```", .open = "<<", .close = ">>"
     )
 

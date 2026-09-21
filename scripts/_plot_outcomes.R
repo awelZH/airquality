@@ -13,10 +13,10 @@ plots$outcomes$preliminary_deaths_rel <- plot_pars_prelim_deaths_timeseries(data
 # TODO ...
 
 
-# collect plots in a tibble for use in *.qmd
+# collect the plots in a catalog for the Quarto pages (get_plot(plots_outcomes, "preliminary_deaths_abs", "NO2"))
 # ---
 plots_outcomes <-
   dplyr::bind_rows(
-    plotlist_to_tibble(plots$outcomes$preliminary_deaths_abs, "outcomes", "preliminary_deaths_abs"),
-    plotlist_to_tibble(plots$outcomes$preliminary_deaths_rel, "outcomes", "preliminary_deaths_rel")
+    plot_catalog(plots$outcomes$preliminary_deaths_abs, "preliminary_deaths_abs", names_to = "parameter"),
+    plot_catalog(plots$outcomes$preliminary_deaths_rel, "preliminary_deaths_rel", names_to = "parameter")
   )

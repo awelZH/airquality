@@ -52,13 +52,13 @@ plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
                          pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
 
 
-# collect plots in a tibble for use in *.qmd
+# collect the plots in a catalog for the Quarto pages (get_plot(plots_monitoring, "timeseries_siteclass", "NO2"))
 # ---
 plots_monitoring <-
   dplyr::bind_rows(
-    plotlist_to_tibble(plots$monitoring$threshold_comparison, "monitoring", "threshold_comparison"),
-    plotlist_to_tibble(plots$monitoring$timeseries_siteclass, "monitoring", "timeseries_siteclass"),
-    plotlist_to_tibble(plots$monitoring$timeseries_ndep_bachtel, "monitoring", "timeseries_ndep_bachtel"),
-    plotlist_to_tibble(plots$monitoring$timeseries_ndep_all, "monitoring", "timeseries_ndep_all"),
-    plotlist_to_tibble(plots$monitoring$timeseries_ndep_all_vs_CLN, "monitoring", "timeseries_ndep_all_vs_CLN")
+    plot_catalog(plots$monitoring$threshold_comparison$various, "threshold_comparison"),
+    plot_catalog(plots$monitoring$timeseries_siteclass, "timeseries_siteclass", names_to = "parameter"),
+    plot_catalog(plots$monitoring$timeseries_ndep_bachtel$Ndep, "timeseries_ndep_bachtel"),
+    plot_catalog(plots$monitoring$timeseries_ndep_all$Ndep, "timeseries_ndep_all"),
+    plot_catalog(plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep, "timeseries_ndep_all_vs_CLN")
   )

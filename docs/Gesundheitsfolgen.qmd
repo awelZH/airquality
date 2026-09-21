@@ -12,11 +12,11 @@ withr::with_dir("..", {
 })
 plots <- 
   plots_outcomes |> 
-  dplyr::arrange(pollutant, source, type, dplyr::desc(year)) |> 
+  dplyr::arrange(parameter, plot) |>
   dplyr::mutate(
     id = 1:dplyr::n(),
-    year = dplyr::case_when(source == "preliminary_deaths_abs" ~ "absolut", TRUE ~ "relativ"),
-    markdown = build_panel(id, year, pollutant, source, type)
+    year = dplyr::case_when(plot == "preliminary_deaths_abs" ~ "absolut", TRUE ~ "relativ"),
+    markdown = build_panel(id, year, parameter, plot, "outcomes")
   )
 ```
 
@@ -57,7 +57,7 @@ Betrachtet man die Veränderung der Gesundheitswirkungen durch Luftbelastung üb
 
 ::: {.panel-tabset}
 
-`r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "PM2.5" & stringr::str_detect(source, "preliminary_deaths"))$markdown))`
+`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "PM2.5" & stringr::str_detect(plot, "preliminary_deaths"))$markdown))`
 
 :::
 
@@ -66,7 +66,7 @@ Betrachtet man die Veränderung der Gesundheitswirkungen durch Luftbelastung üb
 
 ::: {.panel-tabset}
 
-`r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "NO2" & stringr::str_detect(source, "preliminary_deaths"))$markdown))`
+`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "NO2" & stringr::str_detect(plot, "preliminary_deaths"))$markdown))`
 
 :::
 
@@ -75,7 +75,7 @@ Betrachtet man die Veränderung der Gesundheitswirkungen durch Luftbelastung üb
 
 ::: {.panel-tabset}
 
-`r knitr::knit(text = as.character(dplyr::filter(plots, pollutant == "O3_peakseason_mean_d1_max_mean_h8gl" & stringr::str_detect(source, "preliminary_deaths"))$markdown))`
+`r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "O3_peakseason_mean_d1_max_mean_h8gl" & stringr::str_detect(plot, "preliminary_deaths"))$markdown))`
 
 :::
 

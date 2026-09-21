@@ -96,3 +96,24 @@ together in a fresh session.
   `knitr::purl()`, no render).
 * Open (content): the detailed trend plot keeps the trends per site up to the current calendar year
   (`lubridate::year(Sys.Date())`), not `year_last` (decision 7).
+
+## Plot catalog and page check (2026-09-21, P1 of the second round)
+
+Plan of the second round (user decision 2026-09-21): P1 plot catalog, P2 year slider instead of year
+tabsets, P3 analysis logic out of the pages, P5 consistent names, P6 clean-up; not P4 (parameter
+table), but `timeseriespars()`/`expositionpars()` move into the plot settings.
+
+**P1.** The plot scripts deliver a catalog: `plot_catalog(figures, plot, names_to)` gives one row per
+figure with `plot`, `parameter`, `year` (character, `NA` if not applicable) and `figure`; the caller says
+what the list names mean (`"parameter"`, `"year"`, both), nothing is guessed any more
+(`plotlist_to_tibble()` recognised years by a regex on the first name and misused `pollutant` for plot
+names such as `timeseries_various`). `get_plot(catalog, plot, parameter, year)` replaces the filter
+strings (`parse_expr()`, silently the first match) and stops with class `airquality_plot_error` unless
+exactly one plot matches, listing the available ones. Renamed plot ids: `population_over_thresh`
+(was pollutant `timeseries_various`), `population_over_thresh_share` (`rel_various`). The 32
+`get_plot()` calls of the pages were converted mechanically. 304 figures byte-identical (compared by
+content, `compare_plots_content()`, because the file names changed with the catalog).
+
+`tests/regression/check_pages.R` runs the code chunks and inline expressions of all pages without
+rendering (7 pages OK, about 4 min while the tabsets are still knitted inline). Pitfall: `knitr::knit()`
+in inline code writes its figures to `docs/figure/` unless `fig.path` points elsewhere.

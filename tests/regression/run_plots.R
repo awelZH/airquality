@@ -36,11 +36,14 @@ run_plots <- function(label, topics = plot_topics, global = FALSE, refresh = FAL
     .package = "airquality.methods"
   )
 
-  plots <- dplyr::bind_rows(purrr::map(topics, \(topic) get(paste0("plots_", topic), envir = env)))
-  files <- file.path(output_dir, paste0(gsub("[^A-Za-z0-9.-]+", "-", paste(plots$type, plots$source, plots$pollutant, plots$year, sep = "_")), ".png"))
+  # one row per plot: a plot catalog (plot, parameter, year, figure) or, from before the catalog, a tibble
+  # (type, source, pollutant, year, plot)
+  plots <- purrr::map(rlang::set_names(topics), \(topic) get(paste0("plots_", topic), envir = env)) |> purrr::list_rbind(names_to = "topic")
+  if (!"figure" %in% names(plots)) plots <- dplyr::rename(plots, figure = plot, plot = source, parameter = pollutant)
+  files <- file.path(output_dir, paste0(gsub("[^A-Za-z0-9.-]+", "-", paste(plots$topic, plots$plot, plots$parameter, plots$year, sep = "_")), ".png"))
   if (anyDuplicated(files)) cli::cli_abort("Plot file names are not unique: {.file {unique(files[duplicated(files)])}}")
 
-  purrr::walk2(plots$plot, files, \(plot, file) {
+  purrr::walk2(plots$figure, files, \(plot, file) {
     ragg::agg_png(file, width = width, height = height, units = "in", res = res)
     print(plot)
     grDevices::dev.off()
@@ -48,6 +51,21 @@ run_plots <- function(label, topics = plot_topics, global = FALSE, refresh = FAL
 
   cli::cli_alert_success("{length(files)} plot{?s} written to {.file {output_dir}}")
   invisible(files)
+}
+
+# compare two runs by content, ignoring the file names (for changes that rename plots): every figure of one
+# run must have a byte-identical figure in the other, and the numbers must agree
+compare_plots_content <- function(label_a = "reference", label_b = "candidate") {
+  dirs <- file.path(regression_dir, "results", "plots", c(label_a, label_b))
+  md5 <- purrr::map(dirs, \(dir) tools::md5sum(list.files(dir, pattern = "\\.png$", full.names = TRUE)))
+  only <- list(md5[[1]][!md5[[1]] %in% md5[[2]]], md5[[2]][!md5[[2]] %in% md5[[1]]])
+
+  cli::cli_inform(c(
+    "{length(md5[[1]])} vs. {length(md5[[2]])} plots, {sum(md5[[1]] %in% md5[[2]])} of {label_a} with a byte-identical figure in {label_b}",
+    if (length(only[[1]]) > 0) c(x = "no match in {label_b}: {.file {basename(names(only[[1]]))}}"),
+    if (length(only[[2]]) > 0) c(x = "no match in {label_a}: {.file {basename(names(only[[2]]))}}")
+  ))
+  invisible(list(only_a = basename(names(only[[1]])), only_b = basename(names(only[[2]]))))
 }
 
 # compare two runs file by file: byte identity first, then pixel identity for files that differ

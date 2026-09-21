@@ -124,3 +124,21 @@ test_that("the nitrogen deposition plots are built from the given data", {
   expect_equal(layer_data_all(vs_cln)[[1]]$yintercept[1], 1)
   expect_equal(vs_cln$data$deposition / vs_cln$data$cln, c(2, 2))
 })
+
+test_that("jittered points move only across the value axis, never along it", {
+  data <- prepare_plot_ndep(make_ndep()) |>
+    dplyr::mutate(estimated_class = "<5 kg-N")
+
+  sites <- plot_ndep_sites(data, colour_scale = ggplot2::scale_color_discrete(),
+                           fill_scale = ggplot2::scale_fill_discrete(), shape_scale = ggplot2::scale_shape_discrete())
+  vs_cln <- plot_ndep_sites_vs_cln(data, colour_scale = ggplot2::scale_color_discrete())
+  expect_setequal(layer_data_all(sites)[[1]]$y, c(20, 10))
+  expect_equal(layer_data_all(vs_cln)[[2]]$y, c(2, 2))
+
+  comparison <- tibble::tibble(
+    x = factor(c("NO2 Jahresmittel", "NO2 Jahresmittel", "PM10 Jahresmittel")), value = c(0.5, 1.5, 0.75),
+    siteclass = "städtisch - Hintergrund", reference = "relativ"
+  )
+  plot <- plot_threshold_comparison(comparison, threshold_styles = tibble::tibble(col = "red3", lty = 1, lsz = 1), years = 2020)
+  expect_setequal(layer_data_all(plot)[[2]]$y, c(0.5, 1.5, 0.75))
+})

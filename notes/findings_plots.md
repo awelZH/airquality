@@ -65,11 +65,13 @@ environment, i.e. no function reads a global any more.
   `test-plot-exposition.R`, helpers in `helper-plot.R`; 75 expectations.
 
 Findings, not changed (content, for the user to decide):
-* `position_jitter(width = )` without `height` also jitters vertically, by up to 40 % of the data's
-  resolution (smallest gap between distinct values). With the real data that gap is tiny, so the effect
-  is not visible, but with few distinct values it is (synthetic test: 10 → 13.3). Affected: threshold
-  comparison, `plot_ndep_sites()`, `plot_ndep_sites_vs_cln()`. `height = 0` would show the exact values
-  and change the three figures.
 * The doughnut plot `rel_various` is built but commented out in `Belastungsverteilung.qmd`.
 * The commented snippet "für Umweltbericht" in `_plot_exposition.R` that used the intermediate `d`
   was dropped; the other two snippets now use `data_population_over_thresh`.
+
+**Jittered points keep their values** (user decision 2026-09-21, own commit): `position_jitter(width = )`
+without `height` also shifted the points along the value axis, by up to 40 % of the data's resolution
+(smallest gap between distinct values). With the real data that was at most 0.0002 kg N/ha/a (ndep
+2019+) or 0.02 % of the critical load, i.e. invisible, but with few distinct values it is large
+(synthetic test: 10 → 13.3). Now `height = 0` in the threshold comparison, `plot_ndep_sites()` and
+`plot_ndep_sites_vs_cln()` (tested); only these 3 of the 295 figures changed.

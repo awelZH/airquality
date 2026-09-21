@@ -249,7 +249,7 @@ plot_threshold_comparison <- function(data, threshold_styles, years, colour_scal
   data |>
     ggplot2::ggplot(ggplot2::aes(x = x, y = value, color = siteclass)) +
     ggplot2::geom_hline(yintercept = 1, linetype = threshold_styles$lty, color = threshold_styles$col, linewidth = threshold_styles$lsz, show.legend = FALSE) +
-    ggplot2::geom_point(shape = 21, size = pointsize, position = ggplot2::position_jitter(width = 0.2, seed = jitter_seed)) +
+    ggplot2::geom_point(shape = 21, size = pointsize, position = ggplot2::position_jitter(width = 0.2, height = 0, seed = jitter_seed)) +
     ggplot2::facet_wrap(reference~., scales = "free_y", ncol = 1, axes = "all_x") +
     ggplot2::scale_y_continuous(breaks = seq(0,10,1), limits = c(0,NA), labels = scales::percent_format(), expand = c(0.01,0.01)) +
     ggplot2::coord_flip() +
@@ -327,7 +327,7 @@ plot_ndep_sites <- function(data, colour_scale = NULL, fill_scale = NULL, shape_
   data |>
     dplyr::filter(year >= 2019) |>
     ggplot2::ggplot(ggplot2::aes(x = year, y = deposition, color = ecosys, fill = ecosys, shape = estimated_class)) +
-    ggplot2::geom_point(size = pointsize * 1.5, position = ggplot2::position_jitter(width = 0.1, seed = jitter_seed)) +
+    ggplot2::geom_point(size = pointsize * 1.5, position = ggplot2::position_jitter(width = 0.1, height = 0, seed = jitter_seed)) +
     ggplot2::scale_x_continuous(limits = c(2019,NA), expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,NA), expand = ggplot2::expansion(mult = c(0, 0.02))) +
     colour_scale +
@@ -357,7 +357,7 @@ plot_ndep_sites_vs_cln <- function(data, colour_scale = NULL, linewidth = 1, col
     dplyr::filter(year >= 2019) |>
     ggplot2::ggplot(ggplot2::aes(x = year, y = deposition / cln, color = ecosys)) +
     ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1), color = color, linewidth = linewidth, show.legend = FALSE) +
-    ggplot2::geom_point(size = pointsize * 1.5, position = ggplot2::position_jitter(width = 0.1, seed = jitter_seed)) +
+    ggplot2::geom_point(size = pointsize * 1.5, position = ggplot2::position_jitter(width = 0.1, height = 0, seed = jitter_seed)) +
     ggplot2::scale_x_continuous(limits = c(2019,NA), expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,NA), expand = ggplot2::expansion(mult = c(0, 0.02)), labels = scales::percent_format()) +
     colour_scale +

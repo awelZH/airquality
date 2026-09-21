@@ -885,3 +885,53 @@ plot_timeseries_trend_relative <- function(data_trends, detailed = FALSE,
 
   return(plot)
 }
+
+
+#' Extract one plot from a plot tibble
+#'
+#' @param plots_df Tibble of plots as built by [plotlist_to_tibble()] (e.g. `plots_exposition`).
+#' @param filter_expr Filter condition as a string, evaluated on `plots_df`; the first match is returned.
+#'
+#' @return A ggplot.
+#'
+#' @keywords internal
+get_plot <- function(plots_df, filter_expr = "pollutant == 'NOx' & source == 'inventory_absolute'") {
+
+  plot <-
+    plots_df |>
+    dplyr::filter(!!rlang::parse_expr(filter_expr)) |>
+    dplyr::pull(plot)
+
+  return(plot[[1]])
+}
+
+
+#' Build the code chunk of one tabset panel per year for a Quarto page
+#'
+#' Adapted from Heiss, Andrew. 2024. "Guide to Generating and Rendering Computational Markdown Content
+#' Programmatically with Quarto." https://doi.org/10.59350/pa44j-cc302. The chunk prints
+#' `plots$plot[[id]]`, so the page must hold its plot tibble in `plots`.
+#'
+#' @param id Row number of the plot in `plots`.
+#' @param year Year (panel title).
+#' @param pollutant,source,type Parts of the chunk label.
+#'
+#' @return Character, the markdown of the panel.
+#'
+#' @keywords internal
+build_panel <- function(id, year, pollutant, source, type = "exposition") {
+
+  source <- stringr::str_replace(source, "_", "-")
+  chunk_label <- glue::glue("{tolower(type)}-{tolower(pollutant)}-{tolower(source)}-{year}")
+
+  output <-
+    glue::glue(
+      "##### <<year>>
+      ```{r}
+      #| label: <<chunk_label>>
+      plots$plot[[<<id>>]]
+      ```", .open = "<<", .close = ">>"
+    )
+
+  return(output)
+}

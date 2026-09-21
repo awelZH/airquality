@@ -25,7 +25,8 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 | `scripts/_setup.R` | packages, `load_all()`, sources `_settings.R`, municipality map |
 | `scripts/_settings.R` | **all analysis settings** (see decision 7), pure assignments |
 | `scripts/_compile_*.R` | one script per topic: emissions, monitoring, trends, exposition, outcomes |
-| `scripts/_plot_airquality.R` | builds all plots from the output CSVs, saved as `docs/plots_*.rds` for Quarto |
+| `scripts/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic (`plots_<topic>`); sourced by the Quarto pages and usable in the console (decision 9) |
+| `scripts/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
 | `R/` | analysis-specific functions, one file per topic: `exposition.R`, `emissions.R`, `monitoring.R`, `plot.R`, `helpers.R`, …; the others (`prepare.R`, `aggregate.R`, …) still hold the not yet reworked topics |
 | `inst/extdata/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
 | `inst/extdata/output/` | **output CSVs – the contract with external processes** |
@@ -151,7 +152,7 @@ sourced by `_setup.R`, the plot scripts and the report), grouped by topic:
   newest RSD vehicle model year)
 * `base_scenario_year` (exposition/outcomes) and `plot_reference_year_emissions` are **independent**
   settings, even though both are 2015
-* graphical settings (sizes, colours, line types, `siteclass_levels`) stay in `_plot_airquality.R`:
+* graphical settings (sizes, colours, line types, `siteclass_levels`) stay in `_plot_setup.R`:
   presentation, not analysis
 * method constants with documented defaults in `R/` are not settings: `fit_pm_ratio()`, the
   classification thresholds of the monitoring (`classify_*()`)
@@ -161,6 +162,23 @@ topic-specific checks (`check_rsd_filters()`) stop with a `cli` error of class
 `airquality_input_error` naming the dataset and what is missing. Reason: online sources and
 `airquality.data` change between the twice-yearly updates; before, a missing filter criterion
 silently filtered everything or nothing.
+
+**9. The report builds its plots while rendering; no plot rds files** (2026-09-21). Each Quarto
+page sources `scripts/_plot_setup.R` and its topic script(s) inside `withr::with_dir("..", …)`.
+Not knitr's `root.dir: ".."`: the year tabs are knitted inline (`knitr::knit(text = …)`) and would
+write their figures into the project root, while the HTML points to `docs/`. The same scripts work
+in the console (`source("scripts/_plot_setup.R"); source("scripts/_plot_exposition.R")`, then
+`get_plot(plots_exposition, "...")`), so plots are developed outside Quarto. `_plot_exposition.R`
+reads the municipality map from geolion itself (one WFS call). Reason: `docs/plots_exposition.rds`
+was 2.4 GB, because every ggplot keeps its `plot_env`: each map built in `lapply()` inside
+`plot_all_popweighmean_maps()` dragged along the wrapper frame, i.e. the municipality `sf` of all
+years (132 MB) plus the list of all maps of that parameter (708 MB per map on its own). Timings
+(2026-09-21): building all plots 19 s, but `saveRDS()` made the old plot script take 289 s; render
+of the site 459 s old (without the plot script) vs. 393 s new. Of the 309 figures the pages
+reference, 306 are byte-identical; the other 3 use `geom_jitter()` without a seed and differ on
+every render (grenzwertvergleich, ndep-all, ndep-all-cln). 9 stale PNGs that no page referenced
+were deleted from `docs/*_files/`. Keep this in mind for phase 2b: plots as targets would put the same
+bloat into the store, so the report depends on the output CSVs, not on plot targets.
 
 ## Analysis decisions and findings per topic
 
@@ -329,7 +347,7 @@ names and schemas.
    | `mon_ndep_` | `pipelines/monitoring_ndep.R` | `data_ndep_pars_monitoring_y1.csv`, `data_ndep_monitoring_y1.csv` |
    | `expo_pop_` | `pipelines/exposition_population.R` | the 2 weighted-mean files, `data_exposition_distribution_pollutants.csv` |
    | `expo_eco_` | `pipelines/exposition_ecosystems.R` | `data_exposition_distribution_ndep.csv` |
-   | `report_` | `pipelines/report.R` | plots, `docs/` |
+   | `report_` | `pipelines/report.R` | `docs/` (plots built while rendering, decision 9) |
    | – (WIP, see 7) | `wip/outcomes.R` | `data_health_outcomes.csv` |
    | – (WIP, see 7) | `wip/trends.R` | the 2 trend files |
 
@@ -361,7 +379,7 @@ pipelines/            one target list per sub-analysis (decision 6), plus setup
 wip/                  work in progress outside targets (decision 7): outcomes.R, trends.R, README.md
 data/meta|output|log/ from inst/extdata/… (contract: names, columns, format unchanged)
 data/restricted/      non-public inputs; folder gitignored except README.md
-report/               Quarto sources (*.qmd, _quarto.yml), read via tar_read(); output-dir ../docs
+report/               Quarto sources (*.qmd, _quarto.yml) and plot scripts; output-dir ../docs
 docs/                 rendered website only
 dev/                  interactive scripts (tar_load(), experiments)
 tests/testthat/       unit tests per R/ file; helper sources R/; dependency test
@@ -388,7 +406,9 @@ designed so that it can later become a target 1:1.
 3. **Sub-analysis pipelines** from the functions improved in phase 2a, order: expo_pop (raster
    metadata target with `tar_cue("always")`; checks as targets before writing) → expo_eco →
    emis_emikat → emis_rsd → mon_aq → mon_ndep → report (`tarchetypes::tar_quarto()` renders
-   `report/` into `docs/`; WIP outputs as external file targets plus staleness check).
+   `report/` into `docs/`; it depends on the output CSVs as file targets, no plot targets; the plot
+   scripts move along with the report and stay usable in the console, decision 9; WIP outputs as
+   external file targets plus staleness check).
    Conventions: target names `<topic>_<subanalysis>_<stage>_<content>` (e.g. `emis_emikat_raw`,
    `expo_pop_out_weighted_means_canton`), `tar_plan()` syntax, outputs as `format = "file"` targets.
    Old scripts keep running until their sub-analysis is migrated.

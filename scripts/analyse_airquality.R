@@ -24,10 +24,7 @@ source("scripts/_compile_outcomes.R", encoding = "UTF-8")
 
 # internal process to produce *.html:
 
-# 7) plot results for use in docs/...
-# print("6) plot results...")
-# source("scripts/_plot_airquality.R", encoding = "UTF-8")
-
-# 8) render quarto website for plot display
+# 7) render quarto website; each page builds its plots from the output data with scripts/_plot_*.R
+#    (to inspect or develop the plots without Quarto: source("scripts/_plot_airquality.R", encoding = "UTF-8"))
 # print("7) render *.qmd...")
 # quarto::quarto_render(input = "docs/")

@@ -7,10 +7,14 @@ Eine wichtige Fragestellung der Luftreinhaltung ist die der Wirkungsbeurteilung.
 
 
 ```{r}
-source("read_plots.R")
+# plots are built from the output data by the scripts in ../scripts (usable in the console as well)
+withr::with_dir("..", {
+  source("scripts/_plot_setup.R", encoding = "UTF-8")
+  source("scripts/_plot_trends.R", encoding = "UTF-8")
+})
 library(dplyr)
 library(ggplot2)
-plots <- readRDS("plots_trends.rds")
+plots <- plots_trends
 plot <- get_plot(plots, "pollutant == 'timeseries' & source == 'relative'")
 plot2 <- get_plot(plots, "pollutant == 'timeseries_detailed' & source == 'relative'")
 ```

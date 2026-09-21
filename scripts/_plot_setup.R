@@ -1,0 +1,152 @@
+# Setup for plotting: packages, local functions, analysis settings and presentation settings.
+# Self-contained, so the plots can be built in the console as well as in the Quarto report (docs/*.qmd).
+# Run from the project root, then source one of the topic scripts, e.g.
+#   source("scripts/_plot_setup.R", encoding = "UTF-8")
+#   source("scripts/_plot_exposition.R", encoding = "UTF-8") # -> plots_exposition
+#   get_plot(plots_exposition, "source == 'population_weighted_mean' & pollutant == 'NO2'")
+# ---
+
+# packages the plot code uses without prefix (aes(), viridis_pal(), longpollutant(), %>%, ...)
+for (package in c("dplyr", "tidyr", "ggplot2", "scales", "sf", "airquality.methods")) {
+  suppressPackageStartupMessages(library(package, character.only = TRUE))
+}
+rm(package)
+
+# local functions
+devtools::load_all(quiet = TRUE)
+
+# analysis settings (plot_years, plot_n_years, plot_parameters_*, plot_reference_year_emissions, crs, ...)
+source("scripts/_settings.R", encoding = "UTF-8")
+
+# ressource table for input datasets (LRV & WHO threshold values)
+ressources <- prepare_ressources(airquality.methods::read_local_csv("inst/extdata/meta/ressources.csv", show_col_types = FALSE))
+
+
+# list of output data sources for plotting
+ressources_plotting <-
+  list(
+    emissions = list(
+      emikat = "inst/extdata/output/data_emissions.csv",
+      rsd_norm = "inst/extdata/output/data_nox_vehicle_emissions_rsd_per_norm.csv",
+      rsd_yearmodel = "inst/extdata/output/data_nox_emissions_rsd_per_yearmodel.csv",
+      rsd_yearmeas = "inst/extdata/output/data_nox_emissions_rsd_per_yearmeas.csv"
+    ),
+    monitoring = list(
+      airquality = "inst/extdata/output/data_airquality_monitoring_y1.csv",
+      ndep_pars = "inst/extdata/output/data_ndep_pars_monitoring_y1.csv",
+      ndep = "inst/extdata/output/data_ndep_monitoring_y1.csv"
+    ),
+    trends = list(
+      trends = "inst/extdata/output/data_airquality_trends_relative_y1.csv",
+      trends_agg = "inst/extdata/output/data_airquality_trends_relative_aggregated_y1.csv"
+    ),
+    exposition = list(
+      weightedmean_canton = "inst/extdata/output/data_exposition_weighted_means_canton.csv",
+      weightedmean_municip = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv",
+      expo_distr_pollutants = "inst/extdata/output/data_exposition_distribution_pollutants.csv",
+      expo_distr_ndep ="inst/extdata/output/data_exposition_distribution_ndep.csv"
+    ),
+    outcomes = list(
+      outcomes = "inst/extdata/output/data_health_outcomes.csv"
+    )
+  )
+
+
+# data subsetting parameters: see scripts/_setup.R (plot_years, plot_n_years, plot_parameters_timeseries,
+# plot_parameters_exposition, plot_reference_year_emissions)
+siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
+                          "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))
+
+
+# plotting size parameters
+basesize <- 12 # ggplot theme base_size
+pointsize <- 2 # size of point markers
+linewidth <- 1 # width of lines
+
+
+# read LRV legal threshold limit values & WHO air quality guideline values
+immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8"))
+
+
+# add plotting parameter to LRV threshold limit values & WHO air quality guideline values
+col_lrv <- "red3" # color of LRV threshold value
+col_who <- "gray30" # color of WHO guideline threshold value
+lty_lrv <- 1 # line type of LRV threshold value
+lty_who <- 2 # line type WHO guideline threshold value
+lsz_lrv <- 1 # line width of LRV threshold value
+lsz_who <- 1 # line width of WHO guideline threshold value
+lbsz <- 4 # label size of threshold value line text
+immission_threshold_values <-
+  tibble::tibble(
+    source = c("LRV Grenzwert", "WHO Richtwert"),
+    col = c(col_lrv, col_who),
+    lty = c(lty_lrv, lty_who),
+    lsz = c(lsz_lrv, lsz_who),
+    lbsz = lbsz
+  ) |> 
+  dplyr::right_join(immission_threshold_values, by = "source")
+
+threshold_ndep <- extract_threshold(dplyr::filter(immission_threshold_values, source == "LRV Grenzwert"), "NO2")
+threshold_ndep$value <- 0
+threshold_ndep$labels <- "kritische Eintragsrate CLN"
+
+
+# colors and color scales
+scale_fill_siteclass <- 
+  ggplot2::scale_fill_manual(name = "Standortklasse", values = c(
+    "ländlich - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
+    "klein-/vorstädtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
+    "städtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
+    "städtisch - verkehrsbelastet" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1],
+    "empf. Ökosystem" = "gray20"
+  ))
+
+scale_color_siteclass <- 
+  ggplot2::scale_color_manual(name = "Standortklasse", na.value = "gray60", values = c(
+    "ländlich - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4],
+    "klein-/vorstädtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
+    "städtisch - Hintergrund" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
+    "städtisch - verkehrsbelastet" = viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1],
+    "empf. Ökosystem" = "gray20"
+  ))
+
+cols_ecosys <- setNames(c("steelblue", colorspace::sequential_hcl(n = 3, palette = "ag_GrnYl"), "gray80", "gray10"), c("Hochmoor", "Flachmoor", "Trockenrasen", "Wald", "kein empf. Ökosys.", "Median aller Standorte"))
+scale_color_ecosys <- ggplot2::scale_color_manual(name = "Ökosystem", values = cols_ecosys)
+scale_fill_ecosys <- ggplot2::scale_fill_manual(name = "Ökosystem", values = cols_ecosys, guide = "none")
+
+shapes_estimated <- setNames(c(21,23,25), c("<5 kg-N", "5-12 kg-N", ">12 kg-N"))
+scale_shape_estimated <- ggplot2::scale_shape_manual(name = "geschätzt", values = shapes_estimated)
+
+# ggplot2 custom themes
+theme_ts <-
+  ggplot2::theme_minimal(base_size = basesize, base_family = "Arial") +
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(size = ggplot2::rel(1)),
+    plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
+    plot.caption = ggplot2::element_text(hjust = 1, color = "gray40", size = ggplot2::rel(0.66)),
+    plot.background = ggplot2::element_blank(),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.background = ggplot2::element_blank(),
+    axis.line.x = ggplot2::element_line(color = "gray30"),
+    axis.ticks = ggplot2::element_line(color = "gray30"),
+    axis.title = ggplot2::element_blank()
+  )
+
+theme_map <-
+  ggplot2::theme_void(base_size = basesize, base_family = "Arial") +
+  ggplot2::theme(
+    plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
+    plot.caption = ggplot2::element_text(hjust = 1, color = "gray40", size = ggplot2::rel(0.75)),
+    panel.background = ggplot2::element_blank(),
+    plot.background = ggplot2::element_blank()
+  )
+
+# ggiraph::set_girafe_defaults(
+#   opts_hover = ggiraph::opts_hover(css = ggiraph::girafe_css_bicolor(primary = NA, secondary = "grey30")),
+#   opts_hover_inv(css = "opacity:0.4"), 
+#   opts_zoom = ggiraph::opts_zoom(min = 1, max = 4),
+#   opts_tooltip = ggiraph::opts_tooltip(css = "padding:3px;color:white;", opacity = 0.8, use_fill = TRUE),
+#   opts_sizing = ggiraph::opts_sizing(rescale = TRUE),
+#   opts_toolbar = ggiraph::opts_toolbar(saveaspng = TRUE, position = "bottom", delay_mouseout = 5000)
+# )

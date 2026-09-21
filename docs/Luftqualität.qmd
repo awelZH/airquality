@@ -9,9 +9,13 @@ Hier werden ausgewählte Luftqualitäts-Messdaten aus dem interkantonalen Messne
 
 
 ```{r}
-source("read_plots.R")
-plots <- readRDS("plots_monitoring.rds")
-plots <- dplyr::bind_rows(plots, readRDS("plots_trends.rds"))
+# plots are built from the output data by the scripts in ../scripts (usable in the console as well)
+withr::with_dir("..", {
+  source("scripts/_plot_setup.R", encoding = "UTF-8")
+  source("scripts/_plot_monitoring.R", encoding = "UTF-8")
+  source("scripts/_plot_trends.R", encoding = "UTF-8")
+})
+plots <- dplyr::bind_rows(plots_monitoring, plots_trends)
 ```
 
 

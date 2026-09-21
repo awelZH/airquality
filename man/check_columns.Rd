@@ -18,6 +18,8 @@ check_columns(data, required, what)
 }
 \description{
 Input data from online sources can change their structure between the twice-yearly updates;
-this names the dataset and the missing columns instead of failing somewhere downstream.
+this names the dataset and the missing columns instead of failing somewhere downstream. Wrapper
+around \code{\link[airquality.methods:check_names]{airquality.methods::check_names()}} that sets the error class of this analysis and
+returns the data, so it fits into a pipe.
 }
 \keyword{internal}

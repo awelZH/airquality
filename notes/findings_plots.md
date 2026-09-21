@@ -6,7 +6,8 @@ Read before working on plots or the report (see also decision 9 in `decisions.md
 
 `ggplot_emissions()` shows one legend block per sector, with the sector as title and the subsectors
 without the pasted sector (was "Sektor / Subsektor"); the subsector names in the lookup table were
-shortened accordingly by the user. Generic functions in `R/plot.R` (to move to `airquality.methods`):
+shortened accordingly by the user. Generic functions, since 2026-09-21 in `airquality.methods`
+(decision 10):
 * `grouped_key(group, key, order, group_order)` – unique key `"group::key"` as factor; its levels set
   the order of stack and legend ("verschiedene" exists in several sectors)
 * `add_grouped_legend(plot, aesthetic, sep, spacing, subtitle, key_spacing)` – sets

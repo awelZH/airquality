@@ -264,7 +264,9 @@ derive_trends_per_parameter <- function(data_trends, parameter, trend_vars, refe
 #' Stop with a clear message if a dataset lacks required columns
 #'
 #' Input data from online sources can change their structure between the twice-yearly updates;
-#' this names the dataset and the missing columns instead of failing somewhere downstream.
+#' this names the dataset and the missing columns instead of failing somewhere downstream. Wrapper
+#' around [airquality.methods::check_names()] that sets the error class of this analysis and
+#' returns the data, so it fits into a pipe.
 #'
 #' @param data Data frame to check.
 #' @param required Names of the required columns.
@@ -274,13 +276,7 @@ derive_trends_per_parameter <- function(data_trends, parameter, trend_vars, refe
 #'
 #' @keywords internal
 check_columns <- function(data, required, what) {
-  missing <- setdiff(required, names(data))
-  if (length(missing) > 0) {
-    cli::cli_abort(
-      c("The {what} lacks {length(missing)} column{?s}: {.val {missing}}.",
-        "i" = "Has the structure of the input changed?"),
-      class = "airquality_input_error"
-    )
-  }
+  airquality.methods::check_names(names(data), required, paste("the", what),
+                                  class = "airquality_input_error", call = rlang::caller_env())
   invisible(data)
 }

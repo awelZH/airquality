@@ -38,10 +38,12 @@ data_monitoring_aq <- airquality.data::data_monitoring_aq_y1
 data_expo_cells <-
   data_raster_expo |>
   rasters_to_cells() |>
-  assign_municipalities(map_municipalities)
+  airquality.methods::assign_municipalities(map_municipalities)
 
 # => give the collector pixel inhabitants back to their municipality (no-op if expo_correct_noloc is FALSE)
-data_expo_cells <- redistribute_noloc(data_expo_cells, noloc_from_aligned(data_raster_expo), map_municipalities)
+data_expo_cells <- airquality.methods::redistribute_noloc(
+  data_expo_cells, airquality.methods::noloc_from_aligned(data_raster_expo), map_municipalities
+)
 
 # => derive O3 peak-season concentrations from NO2 by the statistical relationship at monitoring sites
 coefs_o3_peakseason <- fit_o3_peakseason_model(data_monitoring_aq, nmin_sites = expo_o3_nmin_sites)
@@ -53,7 +55,8 @@ data_expo_cells <- derive_pm25_from_pm10(data_expo_cells, ratios_pm, years = exp
 
 # => both models are refitted on every run with the current monitoring data (earlier years may shift
 #    slightly); log the coefficients of each run to make such shifts traceable
-append_log(tidy_derivation_coefficients(coefs_o3_peakseason, ratios_pm), "inst/extdata/log/exposition_derivation_coefficients.csv")
+airquality.methods::write_local_csv(tidy_derivation_coefficients(coefs_o3_peakseason, ratios_pm),
+                                    file = "inst/extdata/log/exposition_derivation_coefficients.csv", append = TRUE)
 
 # => long format: one row per cell, year and parameter, with base-scenario concentrations
 #    (inhabitants of each year exposed to the concentrations of base_scenario_year)

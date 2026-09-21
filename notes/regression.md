@@ -14,12 +14,16 @@ code changes. Instead, old and new code run on the **same frozen inputs**:
 network readers of `airquality.methods` (`read_opendataswiss()`, `read_geolion_wfs()`) by a
 record/replay version (`tests/regression/inputs/*.rds`, keyed by `rlang::hash()` of the arguments,
 `refresh = TRUE` downloads again) and redirects `write_local_csv()` to
-`tests/regression/results/<topic>/<label>/`, so `inst/extdata/output/` is never touched. Settings are
-evaluated from `scripts/_setup.R` and `scripts/_settings.R` (only the listed assignments; no package
-loading, no `airquality.data` update). A new topic needs an entry in `topics` (script, settings, `attach` for
-packages an old script expects to be attached; further readers in `network_readers`). Inputs and
-results are gitignored. Topics whose inputs are `airquality.data` datasets (monitoring, trends) need
-no frozen downloads, but both runs must use the same installed version of that package.
+`tests/regression/results/<topic>/<label>/`, so `inst/extdata/output/` is never touched. Settings
+are evaluated from `scripts/_settings.R` and `scripts/_setup.R`, in this order (only the listed
+assignments; no package loading, no `airquality.data` update). A new topic needs an entry in
+`topics` (script, settings, `attach` for packages an old script expects to be attached; further
+readers in `network_readers`). Inputs and results are gitignored. Topics whose inputs are
+`airquality.data` datasets (monitoring, trends) need no frozen downloads, but both runs must use the
+same installed version of that package. Topic `exposition` (since 2026-09-21): the municipality map
+is frozen, the rasters are not (cached downloads or streamed GeoTIFFs from data.geo.admin.ch), so
+run reference and candidate shortly after each other; its log file
+`exposition_derivation_coefficients.csv` carries the run time and always differs.
 Settings that depend on the date (`year_last`, `emis_year_max`) make a reference valid for the
 current year only.
 

@@ -96,9 +96,9 @@ function designed so that it can later become a target 1:1.
    Old scripts keep running until their sub-analysis is migrated.
 4. **Remove the package skeleton** once all sub-analyses run in targets: NAMESPACE, `man/`,
    `@export` tags, `scripts/`, `analyse_airquality.R`; `tar_option_set(workspace_on_error = TRUE)`.
-5. **airquality.methods**: after its 0.4.0 push, pin the GitHub sha in `renv.lock`; move the generic
-   pieces there: `assign_municipalities()`, `append_log()`, the grouped legend (`grouped_key()`,
-   `add_grouped_legend()`, dependency `legendry`) and `check_columns()`.
+5. **airquality.methods**: after its 0.4.0 push, pin the GitHub sha in `renv.lock`. The generic
+   pieces already moved there on 2026-09-21 (decision 10): municipality assignment, collector pixel
+   redistribution, grouped legend, `check_names()`; `append_log()` replaced by `write_local_csv()`.
 6. **Docs**: `CLAUDE.md` and `notes/` (structure, decisions, workflow `tar_make()` / `tar_load()` /
    `tar_workspace()`, `tar_mermaid()` diagram), README, `wip/README.md`.
 7. **Later, when the user has finished them: integrate the WIP scripts** as sub-analyses `outcomes_`

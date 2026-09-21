@@ -59,7 +59,7 @@ source("scripts/_settings.R", encoding = "UTF-8")
 # without the Kloster Fahr, an enclave of the Canton of Aargau)
 map_municipalities <-
   airquality.methods::read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs) |>
-  drop_foreign_enclaves()
+  airquality.methods::drop_foreign_enclaves()
 map_canton <- aggregate_map(map_municipalities)
 
 # ggplot() +

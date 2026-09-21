@@ -218,8 +218,8 @@ ggplot_expo_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), x
 #' Plot emission inventory time series as stacked bars, with sectors as legend blocks
 #'
 #' Every subsector (`subsector_new`) is one colour (`col`); the legend shows one block per sector
-#' with the sector as title and its subsectors below ([add_grouped_legend()]). Order of the blocks
-#' and of the subsectors within a block follows `order`.
+#' with the sector as title and its subsectors below ([airquality.methods::add_grouped_legend()]).
+#' Order of the blocks and of the subsectors within a block follows `order`.
 #'
 #' @param data Emission data of one pollutant (`data_emissions.csv`): `year`, `pollutant`,
 #'   `metric`, `unit`, `sector`, `subsector_new`, `order`, `col`, `emission`.
@@ -250,7 +250,7 @@ ggplot_emissions <- function(data, relative = FALSE, pos = "stack", width = 0.8,
 
   sectors <- unique(data$sector[order(data$order)])
   group_order <- c(setdiff(sectors, sectors_last), intersect(sectors_last, sectors))
-  data <- dplyr::mutate(data, key = grouped_key(sector, subsector_new, order, group_order = group_order))
+  data <- dplyr::mutate(data, key = airquality.methods::grouped_key(sector, subsector_new, order, group_order = group_order))
   colours <- dplyr::distinct(data, key, col)
 
   plot <-
@@ -270,82 +270,8 @@ ggplot_emissions <- function(data, relative = FALSE, pos = "stack", width = 0.8,
 
   # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 3)
 
-  add_grouped_legend(plot)
+  airquality.methods::add_grouped_legend(plot)
 }
-
-
-# ---- grouped legend (generic; candidate for airquality.methods) ---------------------
-
-#' Unique key per group and element, for a grouped legend
-#'
-#' Elements with the same name in different groups (e.g. "verschiedene" in several sectors) get
-#' different keys. The factor levels define the order of the stack and of the legend: groups in
-#' the order of their first element (or `group_order`), elements within a group by `order`.
-#'
-#' @param group Group of each element, e.g. the sector.
-#' @param key Element, e.g. the subsector.
-#' @param order Sort order of the elements (numeric); `NULL` keeps the order of appearance.
-#' @param group_order Groups in the wanted order; groups not listed follow in their default order.
-#' @param sep Separator between group and element; must not occur in the names.
-#'
-#' @return Factor with values `"<group><sep><key>"`.
-#'
-#' @keywords internal
-grouped_key <- function(group, key, order = NULL, group_order = NULL, sep = "::") {
-  if (any(stringr::str_detect(c(group, key), stringr::fixed(sep)))) {
-    cli::cli_abort("Group and element names must not contain the separator {.val {sep}}.")
-  }
-  order <- order %||% seq_along(group)
-  groups <- unique(c(intersect(group_order, group), group[base::order(order)]))
-
-  id <- paste0(group, sep, key)
-  levels <- unique(id[base::order(match(group, groups), order)])
-  factor(id, levels = levels)
-}
-
-
-#' Use a grouped legend: one block per group, with the group as title
-#'
-#' Each group of the legend (e.g. a sector) becomes a block with the group as title and its
-#' elements (e.g. the subsectors) without the group name, drawn by
-#' [legendry::guide_legend_group()]. Works for any discrete scale of `aesthetic` whose breaks are
-#' keys from [grouped_key()]. The block titles look like the entries, the keys of a block have no
-#' gaps (as in a ggplot legend), and the blocks are set apart by `spacing`.
-#'
-#' The result is an ordinary ggplot: position, size etc. of the legend follow the theme, also
-#' when changed later. Only the default style of the block titles is taken from the theme at the
-#' time of the call.
-#'
-#' @param plot A ggplot object.
-#' @param aesthetic Aesthetic with the grouped keys, e.g. `"fill"` or `"colour"`.
-#' @param sep Separator used in [grouped_key()].
-#' @param spacing Space between the blocks.
-#' @param subtitle Text element of the block titles; `NULL` takes the plot's `legend.text`.
-#' @param key_spacing Vertical space between the keys of a block.
-#'
-#' @return The ggplot object with the grouped legend.
-#'
-#' @keywords internal
-add_grouped_legend <- function(plot, aesthetic = "fill", sep = "::", spacing = grid::unit(3, "mm"), subtitle = NULL,
-                               key_spacing = grid::unit(0, "pt")) {
-  if (is.null(ggplot2::get_guide_data(plot, aesthetic))) {
-    cli::cli_abort("The plot has no legend for {.val {aesthetic}}.")
-  }
-
-  if (is.null(subtitle)) {
-    # style of the entries, but not blank when the legend title is blank (subtitles inherit from it)
-    text <- ggplot2::calc_element("legend.text", ggplot2::complete_theme(plot$theme))
-    subtitle <- ggplot2::element_text(family = text$family, face = text$face, colour = text$colour,
-                                      size = text$size, inherit.blank = FALSE)
-  }
-  guide <- legendry::guide_legend_group(key = legendry::key_group_split(sep = sep))
-
-  plot +
-    do.call(ggplot2::guides, rlang::set_names(list(guide), aesthetic)) +
-    ggplot2::theme(legendry.group.spacing = spacing, legendry.legend.subtitle = subtitle,
-                   legend.key.spacing.y = key_spacing)
-}
-
 
 
 #' Wrapper to supply pollutant-specific list of parameters for timeseries plotting

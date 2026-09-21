@@ -90,6 +90,8 @@ appending to own outputs, no work lists derived from earlier results.
 8. Inputs are checked where they enter (`check_columns()`, error class `airquality_input_error`).
 9. The report builds its plots while rendering (no rds files); the plot scripts stay usable in the
    console.
+10. Generic building blocks live in `airquality.methods` (municipality assignment, collector pixel
+    redistribution, grouped legend, `check_names()`); only analysis-specific code stays in `R/`.
 
 ## Read before working on …
 

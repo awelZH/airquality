@@ -3,7 +3,7 @@
 # map boundaries of the municipalities (current boundaries, without the Kloster Fahr), as in scripts/_setup.R
 map_municipalities <-
   airquality.methods::read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs) |>
-  drop_foreign_enclaves()
+  airquality.methods::drop_foreign_enclaves()
 
 plots <- list()
 

@@ -435,7 +435,9 @@ test_that("check_columns() names the missing columns and the dataset", {
 
   expect_no_error(check_columns(data, c("a", "b"), "test data"))
   expect_error(check_columns(data, c("a", "c", "d"), "test data"), class = "airquality_input_error")
-  expect_error(check_columns(data, c("a", "c", "d"), "test data"), "test data.*c.*d")
+  expect_error(check_columns(data, c("a", "c", "d"), "test data"), "test data")
+  expect_error(check_columns(data, c("a", "c", "d"), "test data"), "c.*d")
+  expect_identical(check_columns(data, "a", "test data"), data)
 })
 
 test_that("prepare_emissions() stops with a clear message if the inventory columns changed", {

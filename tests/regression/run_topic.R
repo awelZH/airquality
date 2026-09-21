@@ -27,11 +27,19 @@ topics <- list(
     script = "scripts/_compile_monitoring_data.R",
     setup = c("ressources", "mon_cantons"),
     attach = "dplyr" # the old script called mutate() and left_join() without prefix
+  ),
+  # rasters come from data.geo.admin.ch (cached downloads or streamed GeoTIFFs, not frozen): run the
+  # reference and the candidate shortly after each other; the log file is not part of the contract
+  exposition = list(
+    script = "scripts/_compile_exposition_data.R",
+    setup = c("ressources", "crs", "map_municipalities", "year_offset", "year_last", "base_scenario_year",
+              "expo_years", "expo_correct_noloc", "expo_years_pm25_from_pm10", "expo_o3_nmin_sites")
   )
 )
 
 # evaluate the top-level assignments `name <- ...` of the setup files for the given names, in file order
-eval_setup <- function(names, env, files = c("scripts/_setup.R", "scripts/_settings.R")) {
+# (settings first: the municipality map in _setup.R needs `crs`)
+eval_setup <- function(names, env, files = c("scripts/_settings.R", "scripts/_setup.R")) {
   assigned <- character()
   exprs <- unlist(purrr::map(files, \(file) as.list(parse(file, encoding = "UTF-8"))))
   for (e in exprs) {
@@ -41,7 +49,7 @@ eval_setup <- function(names, env, files = c("scripts/_setup.R", "scripts/_setti
     }
   }
   missing <- setdiff(names, assigned)
-  if (length(missing) > 0) cli::cli_abort("Not assigned in {.file {files}}:{.val {missing}}.")
+  if (length(missing) > 0) cli::cli_abort("Not assigned in {.file {files}}: {.val {missing}}.")
   invisible(env)
 }
 

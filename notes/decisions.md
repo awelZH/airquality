@@ -88,7 +88,8 @@ sourced by `_setup.R`, the plot scripts and the report), grouped by topic:
 * method constants with documented defaults in `R/` are not settings: `fit_pm_ratio()`, the
   classification thresholds of the monitoring (`classify_*()`)
 
-**8. Inputs are checked where they enter** (2026-09-19). `check_columns()` (R/helpers.R) and the
+**8. Inputs are checked where they enter** (2026-09-19). `check_columns()` (R/helpers.R, a wrapper
+around `airquality.methods::check_names()` since 2026-09-21) and the
 topic-specific checks (`check_rsd_filters()`) stop with a `cli` error of class
 `airquality_input_error` naming the dataset and what is missing. Reason: online sources and
 `airquality.data` change between the twice-yearly updates; before, a missing filter criterion
@@ -112,3 +113,15 @@ every render (grenzwertvergleich, ndep-all, ndep-all-cln). They now use
 `_plot_setup.R`), so they stay the same between renders. 9 stale PNGs that no page referenced were
 deleted from `docs/*_files/`. Keep this in mind for phase 2b: plots as targets would put the same
 bloat into the store, so the report depends on the output CSVs, not on plot targets.
+
+**10. Generic building blocks live in `airquality.methods`** (user decision 2026-09-21). Moved there
+unchanged and exported: `drop_foreign_enclaves()`, `assign_municipalities()` (decisions 3/4),
+`noloc_from_aligned()`, `redistribute_noloc()` (decision 5; subtracting in `read_statpop_ha()` and
+giving back now live in one package, so nobody who reads STATPOP with `correct_noloc = TRUE` loses
+the 0.44 % silently), `grouped_key()`, `add_grouped_legend()` (`legendry` is a Suggests there).
+Replaced instead of moved: `check_columns()` stays here as a one-line wrapper around the now
+exported `airquality.methods::check_names(class = )` (it adds the error class and returns the data
+for pipes); `append_log()` is gone, `write_local_csv(append = TRUE)` now creates missing
+directories and writes the header when the file is new. Stays here: `round_population()` (output
+formatting of this analysis). Regression on frozen inputs: all 11 outputs of emissions, monitoring
+and exposition byte-identical, the 19 emission figures pixel-identical.

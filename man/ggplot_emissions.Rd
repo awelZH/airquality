@@ -33,7 +33,7 @@ A ggplot object.
 }
 \description{
 Every subsector (\code{subsector_new}) is one colour (\code{col}); the legend shows one block per sector
-with the sector as title and its subsectors below (\code{\link[=add_grouped_legend]{add_grouped_legend()}}). Order of the blocks
-and of the subsectors within a block follows \code{order}.
+with the sector as title and its subsectors below (\code{\link[airquality.methods:add_grouped_legend]{airquality.methods::add_grouped_legend()}}).
+Order of the blocks and of the subsectors within a block follows \code{order}.
 }
 \keyword{internal}

@@ -43,17 +43,17 @@ compute_variant <- function(correct_noloc, legacy_double_counting, redistribute 
   assign <- if (legacy_double_counting) {
     \(cells) assign_municipalities_legacy(cells, map_municipalities_legacy)
   } else {
-    \(cells) assign_municipalities(cells, map_municipalities)
+    \(cells) airquality.methods::assign_municipalities(cells, map_municipalities)
   }
 
   rasters <- read_exposition_rasters(years_exposition, map_municipalities, correct_noloc = correct_noloc)
-  noloc <- if (redistribute) noloc_from_aligned(rasters) else noloc_from_aligned(rasters[0, ])
+  noloc <- airquality.methods::noloc_from_aligned(if (redistribute) rasters else rasters[0, ])
 
   data_expo <-
     rasters |>
     rasters_to_cells() |>
     assign() |>
-    redistribute_noloc(noloc, map_municipalities) |>
+    airquality.methods::redistribute_noloc(noloc, map_municipalities) |>
     derive_o3_peakseason(coefs_o3_peakseason) |>
     derive_pm25_from_pm10(ratios_pm, years = min(years_exposition):2014) |>
     cells_to_long() |>

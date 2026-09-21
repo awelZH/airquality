@@ -19,6 +19,7 @@ parameters_exposition <- rlang::set_names(plot_parameters_exposition)
 # inhabitants over thresholds: time series, and share in the last plot_n_years
 colours_population_over_thresh <- c("über LRV-Grenzwert" = col_lrv, "über WHO-Richtwert" = col_who, "unter Grenz-/Richtwert" = ggplot2::alpha("gray60", 0.3))
 data_population_over_thresh <- population_over_thresholds(data_expo_distr_pollutants, data_expo_weighmean_canton, immission_threshold_values)
+table_population_over_thresh <- table_population_over_thresholds(data_population_over_thresh)
 
 plots$exposition$population_over_thresh$timeseries_various <-
   plot_population_over_thresholds(data_population_over_thresh, colours = colours_population_over_thresh, theme = theme_ts)

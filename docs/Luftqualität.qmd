@@ -13,9 +13,8 @@ Hier werden ausgewählte Luftqualitäts-Messdaten aus dem interkantonalen Messne
 withr::with_dir("..", {
   source("scripts/_plot_setup.R", encoding = "UTF-8")
   source("scripts/_plot_monitoring.R", encoding = "UTF-8")
-  source("scripts/_plot_trends.R", encoding = "UTF-8")
 })
-plots <- dplyr::bind_rows(plots_monitoring, plots_trends)
+plots <- plots_monitoring
 ```
 
 
@@ -54,11 +53,7 @@ get_plot(plots, "timeseries_siteclass", "PM10")
 
 ```{r}
 #| label: fig-ts-ebc
-get_plot(plots, "timeseries_siteclass", "eBC") + 
-  ggplot2::ggtitle(
-    label = openair::quickText("Luftqualitätsmesswerte Russ im Feinstaub"),
-    subtitle = openair::quickText("eBC, Sichproben-Jahresmittelwert (μg/m3)")
-  )
+get_plot(plots, "timeseries_siteclass", "eBC")
 ```
 
 ### Ozon

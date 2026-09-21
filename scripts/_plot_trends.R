@@ -37,5 +37,8 @@ plots_trends <-
   dplyr::bind_rows(
     plot_catalog(plots$trends$relative$timeseries_emissions, "timeseries_emissions"),
     plot_catalog(plots$trends$relative$timeseries, "timeseries"),
-    plot_catalog(plots$trends$relative$timeseries_detailed, "timeseries_detailed")
+    plot_catalog(plots$trends$relative$timeseries_detailed, "timeseries_detailed"),
+    # one plot per pollutant (German name as in the panels), legend on the right
+    plot_catalog(plot_trends_per_pollutant(plots$trends$relative$timeseries), "timeseries_pollutant", names_to = "parameter"),
+    plot_catalog(plot_trends_per_pollutant(plots$trends$relative$timeseries_detailed), "timeseries_detailed_pollutant", names_to = "parameter")
   )

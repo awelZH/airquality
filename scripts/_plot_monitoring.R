@@ -22,6 +22,14 @@ plots$monitoring$timeseries_siteclass <-
   plot_pars_monitoring_timeseries(data_monitoring_aq, plot_parameters_timeseries, threshold_values = immission_threshold_values,
                                   colour_scale = scale_color_siteclass, pointsize = pointsize, theme = theme_ts)
 
+# eBC: its own title, the values are yearly means of samples
+plots$monitoring$timeseries_siteclass$eBC <-
+  plots$monitoring$timeseries_siteclass$eBC +
+  ggplot2::ggtitle(
+    label = openair::quickText("Luftqualitätsmesswerte Russ im Feinstaub"),
+    subtitle = openair::quickText("eBC, Sichproben-Jahresmittelwert (μg/m3)")
+  )
+
 
 # the last plot_n_years relative to the LRV limits and critical loads of nitrogen, and to the WHO guidelines
 years_recent <- seq(max(plot_years) - plot_n_years + 1, max(plot_years), 1)

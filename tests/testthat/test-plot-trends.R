@@ -73,3 +73,17 @@ test_that("plot_timeseries_trend_relative() draws one reference year line per po
   expect_equal(sort(layers[[2]]$xintercept), c(2014, 2015))
   expect_equal(unique(layers[[3]]$y), 0)
 })
+
+test_that("plot_trends_per_pollutant() gives one plot per pollutant with the legend on the right", {
+  data <- tibble::tibble(
+    year = rep(2014:2016, 2), pollutant = rep(c("A", "B"), each = 3), reference_year = 2015,
+    site = "Kanton Zürich", type = factor("Emission", levels = c("Emission", "Median Trend", "Median Messwerte")), value = 1:6
+  )
+
+  plots <- plot_trends_per_pollutant(plot_timeseries_trend_relative(data))
+
+  expect_named(plots, c("A", "B"))
+  expect_equal(unique(plots$B$data$pollutant), "B")
+  expect_equal(layer_data_all(plots$B)[[3]]$y, c(3, 4, 5))
+  expect_equal(plots$A$theme$legend.position, "right")
+})

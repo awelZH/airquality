@@ -173,3 +173,18 @@ plot_timeseries_trend_relative <- function(data_trends, detailed = FALSE,
     titlelab +
     captionlab
 }
+
+
+#' Split a trend plot into one plot per pollutant, with the legend on the right
+#'
+#' @param plot A plot of [plot_timeseries_trend_relative()] with all pollutants as panels.
+#'
+#' @return Named list of ggplot objects, one per pollutant (German name, as in the panels).
+#'
+#' @keywords internal
+plot_trends_per_pollutant <- function(plot) {
+  purrr::map(rlang::set_names(unique(plot$data$pollutant)), \(pollutant) {
+    plot + dplyr::filter(plot$data, pollutant == !!pollutant) +
+      ggplot2::theme(legend.position = "right")
+  })
+}

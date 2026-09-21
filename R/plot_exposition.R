@@ -511,3 +511,36 @@ plot_all_popweighmean_maps <- function(parameter, data, data_canton, crs, theme 
       ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
   })
 }
+
+
+#' Table of the inhabitants over thresholds per pollutant and year
+#'
+#' The counts are formatted with thousands separators; "> WHO-Richtwert" counts all inhabitants over the
+#' WHO guideline, including those over the LRV limit.
+#'
+#' @param data Data as returned by [population_over_thresholds()].
+#'
+#' @return Tibble with `Jahr`, `Schadstoff`, `< Grenz-/Richtwert`, `> WHO-Richtwert`, `> LRV-Grenzwert`
+#'   (character), newest year first.
+#'
+#' @keywords internal
+table_population_over_thresholds <- function(data) {
+  big <- function(x) format(x, scientific = FALSE, big.mark = "'")
+
+  data |>
+    dplyr::select(year, pollutant, reference, population) |>
+    tidyr::pivot_wider(names_from = reference, values_from = population, names_sort = TRUE) |>
+    dplyr::arrange(pollutant, dplyr::desc(year)) |>
+    dplyr::mutate(
+      `über WHO-Richtwert` = big(`über LRV-Grenzwert` + `über WHO-Richtwert`),
+      `über LRV-Grenzwert` = big(`über LRV-Grenzwert`),
+      `unter Grenz-/Richtwert` = big(`unter Grenz-/Richtwert`)
+    ) |>
+    dplyr::rename(
+      Jahr = year,
+      Schadstoff = pollutant,
+      "< Grenz-/Richtwert" = `unter Grenz-/Richtwert`,
+      "> LRV-Grenzwert" = `über LRV-Grenzwert`,
+      "> WHO-Richtwert" = `über WHO-Richtwert`
+    )
+}

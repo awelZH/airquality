@@ -119,3 +119,19 @@ test_that("plot_all_popweighmean_maps() gives one map per year with the canton m
   expect_named(maps, c("2019", "2020"))
   expect_match(as.character(maps[["2020"]]$labels$subtitle), "gesamt = 17.1", fixed = TRUE)
 })
+
+test_that("table_population_over_thresholds() gives one row per pollutant and year, cumulated over WHO", {
+  data <- tibble::tibble(
+    year = rep(c(2019, 2020), each = 3), pollutant = "Stickstoffdioxid",
+    reference = factor(rep(c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert"), 2),
+                       levels = c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert")),
+    population = c(1000, 200000, 30, 2000, 100000, 0)
+  )
+
+  result <- table_population_over_thresholds(data)
+
+  expect_named(result, c("Jahr", "Schadstoff", "< Grenz-/Richtwert", "> WHO-Richtwert", "> LRV-Grenzwert"))
+  expect_equal(result$Jahr, c(2020, 2019))
+  expect_equal(trimws(result$`> WHO-Richtwert`), c("100'000", "200'030"))
+  expect_equal(trimws(result$`< Grenz-/Richtwert`), c("2'000", "1'000"))
+})

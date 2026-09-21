@@ -12,11 +12,7 @@ withr::with_dir("..", {
   source("scripts/_plot_setup.R", encoding = "UTF-8")
   source("scripts/_plot_trends.R", encoding = "UTF-8")
 })
-library(dplyr)
-library(ggplot2)
 plots <- plots_trends
-plot <- get_plot(plots, "timeseries")
-plot2 <- get_plot(plots, "timeseries_detailed")
 ```
 
 
@@ -41,14 +37,14 @@ get_plot(plots, "timeseries_emissions")
 ```{r}
 #| label: fig-trends-rel-nox
 # #| fig.asp: 1.25
-plot %+% dplyr::filter(plot$data, pollutant == "Stickoxide | Stickstoffdioxid") + ggplot2::theme(legend.position = "right")
+get_plot(plots, "timeseries_pollutant", "Stickoxide | Stickstoffdioxid")
 ```
 
 #### detailliert
 
 ```{r}
 #| label: fig-trends-rel-detail-nox
-plot2 %+% dplyr::filter(plot2$data, pollutant == "Stickoxide | Stickstoffdioxid") + ggplot2::theme(legend.position = "right")
+get_plot(plots, "timeseries_detailed_pollutant", "Stickoxide | Stickstoffdioxid")
 ```
 
 :::
@@ -63,14 +59,14 @@ beachte: Referenzjahr 2021 statt 2015 aufgrund Verfügbarkeit von Messdaten
 
 ```{r}
 #| label: fig-trends-rel-pm25
-plot %+% dplyr::filter(plot$data, pollutant == "Feinstaub PM2.5") + ggplot2::theme(legend.position = "right")
+get_plot(plots, "timeseries_pollutant", "Feinstaub PM2.5")
 ```
 
 #### detailliert
 
 ```{r}
 #| label: fig-trends-rel-detail-pm25
-plot2 %+% dplyr::filter(plot2$data, pollutant == "Feinstaub PM2.5") + ggplot2::theme(legend.position = "right")
+get_plot(plots, "timeseries_detailed_pollutant", "Feinstaub PM2.5")
 ```
 
 :::
@@ -83,14 +79,14 @@ plot2 %+% dplyr::filter(plot2$data, pollutant == "Feinstaub PM2.5") + ggplot2::t
 
 ```{r}
 #| label: fig-trends-rel-pm10
-plot %+% dplyr::filter(plot$data, pollutant == "Feinstaub PM10") + ggplot2::theme(legend.position = "right")
+get_plot(plots, "timeseries_pollutant", "Feinstaub PM10")
 ```
 
 #### detailliert
 
 ```{r}
 #| label: fig-trends-rel-detail-pm10
-plot2 %+% dplyr::filter(plot2$data, pollutant == "Feinstaub PM10") + ggplot2::theme(legend.position = "right")
+get_plot(plots, "timeseries_detailed_pollutant", "Feinstaub PM10")
 ```
 
 :::
@@ -105,14 +101,14 @@ beachte: Referenzjahr 2020 statt 2015 aufgrund Verfügbarkeit von Messdaten
 
 ```{r}
 #| label: fig-trends-rel-ebc
-plot %+% dplyr::filter(plot$data, pollutant == "Russ im Feinstaub") + ggplot2::theme(legend.position = "right")
+get_plot(plots, "timeseries_pollutant", "Russ im Feinstaub")
 ```
 
 #### detailliert
 
 ```{r}
 #| label: fig-trends-rel-detail-ebc
-plot2 %+% dplyr::filter(plot2$data, pollutant == "Russ im Feinstaub") + ggplot2::theme(legend.position = "right")
+get_plot(plots, "timeseries_detailed_pollutant", "Russ im Feinstaub")
 ```
 
 :::
@@ -125,7 +121,7 @@ plot2 %+% dplyr::filter(plot2$data, pollutant == "Russ im Feinstaub") + ggplot2:
 
 ```{r}
 #| label: fig-trends-rel-o3
-plot %+% dplyr::filter(plot$data, pollutant == "Ozon, typische Spitzenbelastung") + ggplot2::theme(legend.position = "right")
+get_plot(plots, "timeseries_pollutant", "Ozon, typische Spitzenbelastung")
 ```
 
 #### detailliert
@@ -134,7 +130,7 @@ WORK-IN-PROGRESS
 
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-detail-o3 -->
-<!-- plot2 %+% dplyr::filter(plot2$data, pollutant == "Ozon, typische Spitzenbelastung") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_detailed_pollutant", "Ozon, typische Spitzenbelastung") -->
 <!-- ``` -->
 
 :::
@@ -147,7 +143,7 @@ WORK-IN-PROGRESS
 
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-nhx -->
-<!-- plot %+% dplyr::filter(plot$data, pollutant == "Ammoniak | reduzierter Stickstoff") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 
 <!-- #### detailliert -->
@@ -156,7 +152,7 @@ WORK-IN-PROGRESS
 
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-detail-nhx -->
-<!-- plot2 %+% dplyr::filter(plot2$data, pollutant == "Ammoniak | reduzierter Stickstoff") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_detailed_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 
 <!-- ::: -->
@@ -172,7 +168,7 @@ WORK-IN-PROGRESS
 
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-co -->
-<!-- plot %+% dplyr::filter(plot$data, pollutant == "Kohlenstoffmonoxid") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_pollutant", "Kohlenstoffmonoxid") -->
 <!-- ``` -->
 
 
@@ -181,7 +177,7 @@ WORK-IN-PROGRESS
 
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-nmvoc -->
-<!-- plot %+% dplyr::filter(plot$data, pollutant == "nicht-Methan Kohlenwasserstoffe") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_pollutant", "nicht-Methan Kohlenwasserstoffe") -->
 <!-- ``` -->
 
 
@@ -190,7 +186,7 @@ WORK-IN-PROGRESS
 
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-so2 -->
-<!-- plot %+% dplyr::filter(plot$data, pollutant == "Schwefeldioxid") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_pollutant", "Schwefeldioxid") -->
 <!-- ``` -->
 
 

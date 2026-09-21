@@ -127,3 +127,17 @@ the tabset "Ndep / population_weighted_mean_map" was silently empty (there is no
 filter matched nothing) – removed; `print_year_slider()` would have stopped. Figure file names changed
 (`slider-<parameter>-<plot>-<n>.png`); no contract. Pitfall for `check_pages()`: plots printed to a pdf
 device fail on the Arial font of `theme_ts`; it draws with ragg into a temporary directory.
+
+**P3 (logic out of the pages).**
+* `Trends.qmd`: the 9 active (and 8 commented) `plot %+% dplyr::filter(plot$data, pollutant == …) +
+  theme(legend.position = "right")` and `library(dplyr/ggplot2)` are gone; `_plot_trends.R` builds the
+  plots per pollutant with `plot_trends_per_pollutant()` (catalog `timeseries_pollutant`,
+  `timeseries_detailed_pollutant`). Their key is the German pollutant name of the panels, because the
+  `parameter` column of the trend data is no key per panel (`NA` for emissions, NOx and NO2 in one
+  panel). `%+%` is deprecated in ggplot2 4.0; `plot + data` replaces the data.
+* `Belastungsverteilung.qmd`: the table of inhabitants over thresholds is
+  `table_population_over_thresholds()` (tested, `pivot_wider(names_sort = TRUE)` instead of
+  `spread()`), built in `_plot_exposition.R` as `table_population_over_thresh`; identical to the old
+  table on the real data, including the kable HTML. The page only formats it with kableExtra.
+* `Luftqualität.qmd`: the eBC title is set in `_plot_monitoring.R`; the page no longer sources
+  `_plot_trends.R` (3 CSVs read and 3 plots built for nothing).

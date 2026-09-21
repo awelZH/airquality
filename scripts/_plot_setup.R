@@ -62,6 +62,7 @@ siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hin
 basesize <- 12 # ggplot theme base_size
 pointsize <- 2 # size of point markers
 linewidth <- 1 # width of lines
+jitter_seed <- 1 # seed of jittered points, so figures stay the same between renders
 
 
 # read LRV legal threshold limit values & WHO air quality guideline values

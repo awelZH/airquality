@@ -175,9 +175,11 @@ was 2.4 GB, because every ggplot keeps its `plot_env`: each map built in `lapply
 years (132 MB) plus the list of all maps of that parameter (708 MB per map on its own). Timings
 (2026-09-21): building all plots 19 s, but `saveRDS()` made the old plot script take 289 s; render
 of the site 459 s old (without the plot script) vs. 393 s new. Of the 309 figures the pages
-reference, 306 are byte-identical; the other 3 use `geom_jitter()` without a seed and differ on
-every render (grenzwertvergleich, ndep-all, ndep-all-cln). 9 stale PNGs that no page referenced
-were deleted from `docs/*_files/`. Keep this in mind for phase 2b: plots as targets would put the same
+reference, 306 were byte-identical; the other 3 used `geom_jitter()` without a seed and changed on
+every render (grenzwertvergleich, ndep-all, ndep-all-cln). They now use
+`geom_point(position = position_jitter(..., seed = jitter_seed))` (`jitter_seed` in
+`_plot_setup.R`), so they stay the same between renders. 9 stale PNGs that no page referenced were
+deleted from `docs/*_files/`. Keep this in mind for phase 2b: plots as targets would put the same
 bloat into the store, so the report depends on the output CSVs, not on plot targets.
 
 ## Analysis decisions and findings per topic

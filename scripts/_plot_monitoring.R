@@ -32,11 +32,13 @@ plots$monitoring$timeseries_siteclass$eBC <-
 
 
 # the last plot_n_years relative to the LRV limits and critical loads of nitrogen, and to the WHO guidelines
-years_recent <- seq(max(plot_years) - plot_n_years + 1, max(plot_years), 1)
-plots$monitoring$threshold_comparison$various <-
-  threshold_comparison_data(data_monitoring_aq, data_monitoring_ndep, immission_threshold_values, years = years_recent) |>
-  plot_threshold_comparison(threshold_styles = dplyr::distinct(immission_threshold_values, source, col, lty, lsz), years = years_recent,
-                            colour_scale = scale_color_siteclass, pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
+# one plot per moving window of plot_n_years, the newest window last (shown first by the slider)
+plots$monitoring$threshold_comparison <-
+  purrr::map(year_windows(data_monitoring_aq$year, width = plot_n_years), \(years) {
+    threshold_comparison_data(data_monitoring_aq, data_monitoring_ndep, immission_threshold_values, years = years) |>
+      plot_threshold_comparison(threshold_styles = dplyr::distinct(immission_threshold_values, source, col, lty, lsz), years = years,
+                                colour_scale = scale_color_siteclass, pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
+  })
 
 
 # nitrogen deposition: long time series at Bachtel (since 2001), all sites since 2019 (absolute and relative
@@ -64,7 +66,7 @@ plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
 # ---
 plots_monitoring <-
   dplyr::bind_rows(
-    plot_catalog(plots$monitoring$threshold_comparison$various, "threshold_comparison"),
+    plot_catalog(plots$monitoring$threshold_comparison, "threshold_comparison", names_to = "year"),
     plot_catalog(plots$monitoring$timeseries_siteclass, "timeseries_siteclass", names_to = "parameter"),
     plot_catalog(plots$monitoring$timeseries_ndep_bachtel$Ndep, "timeseries_ndep_bachtel"),
     plot_catalog(plots$monitoring$timeseries_ndep_all$Ndep, "timeseries_ndep_all"),

@@ -31,12 +31,16 @@ get_plot(plots, "population_over_thresh")
 ```
 
 
+::: {.callout-note collapse="true"}
+### Tabelle: Anzahl Einwohner/innen pro Schadstoff und Jahr
+
 ```{r}
 table_population_over_thresh |>
   kableExtra::kbl() |>
-  kableExtra::kable_paper(full_width = FALSE) |> 
+  kableExtra::kable_paper(full_width = FALSE) |>
   kableExtra::scroll_box(height = "200px")
 ```
+:::
 
 
 ### Stickstoffdioxid

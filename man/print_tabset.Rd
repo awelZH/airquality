@@ -7,7 +7,8 @@
 print_tabset(figures)
 }
 \arguments{
-\item{figures}{Named list of ggplots; the names are the tab titles.}
+\item{figures}{Named list of ggplots, or of functions printing the content of a tab (e.g. a slider);
+the names are the tab titles.}
 }
 \value{
 \code{NULL}, invisibly; called for its output.

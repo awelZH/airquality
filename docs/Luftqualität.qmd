@@ -22,9 +22,10 @@ plots <- plots_monitoring
 
 :::{.column-body-outset}
 ```{r}
-#| label: fig-grenzwertvergleich
+#| label: slider-grenzwertvergleich
 #| fig.asp: 0.6
-get_plot(plots, "threshold_comparison")
+#| output: asis
+print_year_slider(plots, "threshold_comparison")
 ```
 :::
 

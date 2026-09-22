@@ -142,3 +142,14 @@ test_that("jittered points move only across the value axis, never along it", {
   plot <- plot_threshold_comparison(comparison, threshold_styles = tibble::tibble(col = "red3", lty = 1, lsz = 1), years = 2020)
   expect_setequal(layer_data_all(plot)[[2]]$y, c(0.5, 1.5, 0.75))
 })
+
+test_that("year_windows() gives the moving windows of the given width, labelled by their range", {
+  windows <- year_windows(c(2018, 2019, 2020, 2021), width = 3)
+
+  expect_named(windows, c("2018–2020", "2019–2021"))
+  expect_equal(windows[["2019–2021"]], 2019:2021)
+})
+
+test_that("year_windows() needs at least one full window", {
+  expect_error(year_windows(2019:2020, width = 3), class = "airquality_plot_error")
+})

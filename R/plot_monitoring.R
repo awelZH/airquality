@@ -371,3 +371,23 @@ plot_ndep_sites_vs_cln <- function(data, colour_scale = NULL, linewidth = 1, col
     ggplot2::labs(caption = "Quelle: Ostluft") +
     theme
 }
+
+
+#' Moving windows of years, labelled by their range
+#'
+#' @param years Years available.
+#' @param width Number of years per window.
+#'
+#' @return Named list of year vectors ("2023–2025" = 2023:2025), oldest window first. Stops with an error
+#'   of class `airquality_plot_error` if no full window fits.
+#'
+#' @keywords internal
+year_windows <- function(years, width) {
+  ends <- sort(unique(years))
+  ends <- ends[ends >= min(ends) + width - 1]
+  if (length(ends) == 0) {
+    cli::cli_abort("No window of {width} year{?s} fits into {.val {range(years)}}.", class = "airquality_plot_error")
+  }
+
+  purrr::map(rlang::set_names(ends, paste0(ends - width + 1, "–", ends)), \(end) seq(end - width + 1, end))
+}

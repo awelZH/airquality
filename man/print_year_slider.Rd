@@ -18,8 +18,9 @@ print_year_slider(catalog, plot, parameter = NULL)
 }
 \description{
 For a chunk with \verb{#| output: asis}. Writes a \code{.year-slider} div with one \code{.year-panel} div per year and
-prints each plot as an ordinary figure into it; \code{docs/year-slider.html} turns the panels into a slider.
-Order: "alle" (all years in one plot) first, then the years ascending. The slider starts at "alle" if
-there is one, else at the newest year.
+prints each plot as an ordinary figure into it; \code{docs/year-slider.html} turns the panels into a slider,
+starting at the last year. A plot of all years (\code{year == "alle"}) is not part of the slider: it gets a
+tab of its own, next to a tab with the slider. Years are sorted by their last year, so labels of year
+ranges ("2023–2025") work as well.
 }
 \keyword{internal}

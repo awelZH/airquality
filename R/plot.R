@@ -123,9 +123,10 @@ abort_plot_match <- function(catalog, plot, parameter, year, n) {
 #' Print the plots of one parameter per year as a year slider (Quarto page)
 #'
 #' For a chunk with `#| output: asis`. Writes a `.year-slider` div with one `.year-panel` div per year and
-#' prints each plot as an ordinary figure into it; `docs/year-slider.html` turns the panels into a slider.
-#' Order: "alle" (all years in one plot) first, then the years ascending. The slider starts at "alle" if
-#' there is one, else at the newest year.
+#' prints each plot as an ordinary figure into it; `docs/year-slider.html` turns the panels into a slider,
+#' starting at the last year. A plot of all years (`year == "alle"`) is not part of the slider: it gets a
+#' tab of its own, next to a tab with the slider. Years are sorted by their last year, so labels of year
+#' ranges ("2023–2025") work as well.
 #'
 #' @param catalog Plot catalog as built by [plot_catalog()].
 #' @param plot Name of the plot.
@@ -139,10 +140,23 @@ print_year_slider <- function(catalog, plot, parameter = NULL) {
   entries <- catalog_entries(catalog, plot, parameter)
   if (anyNA(entries$year)) cli::cli_abort("Plot {.val {plot}} has entries without year.", class = "airquality_plot_error")
 
-  entries <- entries[order(entries$year != "alle", suppressWarnings(as.numeric(entries$year))), ]
-  start <- if ("alle" %in% entries$year) "alle" else entries$year[nrow(entries)]
+  all_years <- entries[entries$year == "alle", ]
+  entries <- entries[entries$year != "alle", ]
+  entries <- entries[order(as.numeric(stringr::str_extract(entries$year, "[0-9]{4}$"))), ]
 
-  cat("\n\n::: {.year-slider data-start=\"", start, "\"}\n\n", sep = "")
+  if (nrow(all_years) == 0) return(print_slider_panels(entries))
+
+  print_tabset(list(
+    "alle Jahre" = all_years$figure[[1]],
+    "einzelne Jahre" = \() print_slider_panels(entries)
+  ))
+}
+
+
+# the panels of one slider: one .year-panel per year inside a .year-slider, starting at the last year
+print_slider_panels <- function(entries) {
+
+  cat("\n\n::: {.year-slider data-start=\"", entries$year[nrow(entries)], "\"}\n\n", sep = "")
   purrr::walk2(entries$year, entries$figure, \(year, figure) {
     cat("::: {.year-panel data-year=\"", year, "\"}\n\n", sep = "")
     print(figure)
@@ -158,7 +172,8 @@ print_year_slider <- function(catalog, plot, parameter = NULL) {
 #'
 #' For a chunk with `#| output: asis`.
 #'
-#' @param figures Named list of ggplots; the names are the tab titles.
+#' @param figures Named list of ggplots, or of functions printing the content of a tab (e.g. a slider);
+#'   the names are the tab titles.
 #'
 #' @return `NULL`, invisibly; called for its output.
 #'
@@ -168,7 +183,7 @@ print_tabset <- function(figures) {
   cat("\n\n::: {.panel-tabset}\n\n")
   purrr::iwalk(figures, \(figure, title) {
     cat("##### ", title, "\n\n", sep = "")
-    print(figure)
+    if (is.function(figure)) figure() else print(figure)
     cat("\n\n")
   })
   cat(":::\n\n")

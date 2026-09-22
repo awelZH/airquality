@@ -32,12 +32,18 @@ plots$monitoring$timeseries_siteclass$eBC <-
 
 
 # the last plot_n_years relative to the LRV limits and critical loads of nitrogen, and to the WHO guidelines
-# one plot per moving window of plot_n_years, the newest window last (shown first by the slider)
+# one plot per moving window of plot_n_years, the newest window last (shown first by the slider); the
+# comparison is prepared once over all years, so every window shows the same categories and the same scale
+comparison_all <- threshold_comparison_data(data_monitoring_aq, data_monitoring_ndep, immission_threshold_values, years = plot_years)
+comparison_limits <- threshold_comparison_limits(comparison_all)
+
 plots$monitoring$threshold_comparison <-
   purrr::map(year_windows(data_monitoring_aq$year, width = plot_n_years), \(years) {
-    threshold_comparison_data(data_monitoring_aq, data_monitoring_ndep, immission_threshold_values, years = years) |>
+    comparison_all |>
+      dplyr::filter(year %in% years) |>
       plot_threshold_comparison(threshold_styles = dplyr::distinct(immission_threshold_values, source, col, lty, lsz), years = years,
-                                colour_scale = scale_color_siteclass, pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
+                                limits = comparison_limits, colour_scale = scale_color_siteclass, pointsize = pointsize,
+                                jitter_seed = jitter_seed, theme = theme_ts)
   })
 
 

@@ -187,12 +187,15 @@ about 2 min); for P2/P3 the rendered pages against a baseline render.
 * A plot of all years ("alle") is no longer a slider step: `print_year_slider()` puts it into a tab
   "alle Jahre" next to a tab "einzelne Jahre" with the slider (`print_tabset()` now also takes functions
   as tab content). Affected: the cumulative distributions.
-* The slider shows the first year on the left, the last on the right and the chosen year above the
-  thumb; the range input is grey (`accent-color`). Years are sorted by their last year, so labels of
-  ranges work too.
+* The slider sits below the plots and shows the first year on the left, the last on the right and
+  the chosen year above the thumb; the range input is grey (`accent-color`). Years are sorted by
+  their last year, so labels of ranges work too.
 * The threshold comparison is historised: one plot per moving window of `plot_n_years` (3) years over
   the whole monitoring period (`year_windows()`), labelled "2023–2025"; the slider starts at the newest
-  window. Before, only the newest window existed.
+  window. Before, only the newest window existed. The comparison is prepared once over all years and
+  then filtered per window, so every window keeps all categories (`scale_x_discrete(drop = FALSE)`,
+  e.g. the nitrogen deposition before 2019) and, through `threshold_comparison_limits()` and an
+  invisible `geom_blank()` point, the same maximum per panel (user decisions 2026-09-22).
 * The table of the inhabitants over thresholds sits in a collapsed callout on the page.
 
 Two pitfalls of the slider on a page: a chunk label starting with `fig-` makes Quarto treat the chunk

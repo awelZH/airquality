@@ -8,6 +8,7 @@ plot_threshold_comparison(
   data,
   threshold_styles,
   years,
+  limits,
   colour_scale = NULL,
   pointsize = 2,
   jitter_seed = 1,
@@ -15,11 +16,13 @@ plot_threshold_comparison(
 )
 }
 \arguments{
-\item{data}{Data as returned by \code{\link[=threshold_comparison_data]{threshold_comparison_data()}}.}
+\item{data}{Data as returned by \code{\link[=threshold_comparison_data]{threshold_comparison_data()}}, filtered to the years shown.}
 
 \item{threshold_styles}{Line styles of the thresholds (\code{col}, \code{lty}, \code{lsz}).}
 
 \item{years}{Years shown (subtitle).}
+
+\item{limits}{Maximum per panel, as returned by \code{\link[=threshold_comparison_limits]{threshold_comparison_limits()}}.}
 
 \item{colour_scale}{Colour scale of the site classes.}
 
@@ -33,6 +36,7 @@ plot_threshold_comparison(
 A ggplot object.
 }
 \description{
-Plot monitoring values relative to their thresholds
+Every category of \code{x} is drawn, also without values in these years, and the panels reach at least up
+to \code{limits}, so the plots of the single windows stay comparable.
 }
 \keyword{internal}

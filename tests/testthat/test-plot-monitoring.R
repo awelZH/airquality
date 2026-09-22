@@ -139,7 +139,8 @@ test_that("jittered points move only across the value axis, never along it", {
     x = factor(c("NO2 Jahresmittel", "NO2 Jahresmittel", "PM10 Jahresmittel")), value = c(0.5, 1.5, 0.75),
     siteclass = "städtisch - Hintergrund", reference = "relativ"
   )
-  plot <- plot_threshold_comparison(comparison, threshold_styles = tibble::tibble(col = "red3", lty = 1, lsz = 1), years = 2020)
+  plot <- plot_threshold_comparison(comparison, threshold_styles = tibble::tibble(col = "red3", lty = 1, lsz = 1), years = 2020,
+                                    limits = tibble::tibble(reference = "relativ", value = 2))
   expect_setequal(layer_data_all(plot)[[2]]$y, c(0.5, 1.5, 0.75))
 })
 
@@ -152,4 +153,20 @@ test_that("year_windows() gives the moving windows of the given width, labelled 
 
 test_that("year_windows() needs at least one full window", {
   expect_error(year_windows(2019:2020, width = 3), class = "airquality_plot_error")
+})
+
+test_that("plot_threshold_comparison() keeps all categories and the given maximum per reference", {
+  data <- tibble::tibble(
+    x = factor(c("NO2 Jahresmittel", "PM10 Jahresmittel"), levels = c("Stickstoffeintrag", "PM10 Jahresmittel", "NO2 Jahresmittel")),
+    value = c(0.5, 0.75), siteclass = "städtisch - Hintergrund",
+    reference = c("relativ zu A:", "relativ zu A:")
+  )
+  limits <- tibble::tibble(reference = "relativ zu A:", value = c(4))
+
+  plot <- plot_threshold_comparison(data, threshold_styles = tibble::tibble(col = "red3", lty = 1, lsz = 1),
+                                    years = 2020, limits = limits)
+  panel <- withr::with_pdf(NULL, ggplot2::ggplot_build(plot))$layout$panel_params[[1]]
+
+  expect_contains(panel$y$get_labels(), "Stickstoffeintrag")
+  expect_gte(max(panel$x.range), 4)
 })

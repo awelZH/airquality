@@ -1,5 +1,5 @@
 <!-- Year slider for the plots per year (R/plot.R: print_year_slider()), included after the body of every page.
-     Each .year-slider holds one .year-panel per year; the script puts a range input above them, with the
+     Each .year-slider holds one .year-panel per year; the script puts a range input below them, with the
      first year on the left, the last on the right and the chosen year above the slider thumb, and shows
      only the chosen panel. Without JavaScript all panels stay visible. -->
 <script>
@@ -50,7 +50,7 @@ document.querySelectorAll(".year-slider").forEach(function (slider) {
   control.appendChild(first);
   control.appendChild(track);
   control.appendChild(last);
-  slider.insertBefore(control, slider.firstChild);
+  slider.appendChild(control);
   show(start);
 });
 </script>

@@ -235,9 +235,13 @@ plot_monitoring_timeseries <- function(data, parameters, axes, threshold_values,
 
 #' Plot monitoring values relative to their thresholds
 #'
-#' @param data Data as returned by [threshold_comparison_data()].
+#' Every category of `x` is drawn, also without values in these years, and the panels reach at least up
+#' to `limits`, so the plots of the single windows stay comparable.
+#'
+#' @param data Data as returned by [threshold_comparison_data()], filtered to the years shown.
 #' @param threshold_styles Line styles of the thresholds (`col`, `lty`, `lsz`).
 #' @param years Years shown (subtitle).
+#' @param limits Maximum per panel, as returned by [threshold_comparison_limits()].
 #' @param colour_scale Colour scale of the site classes.
 #' @param pointsize Size of the points.
 #' @param jitter_seed Seed of the jittered points, so the figure stays the same between runs.
@@ -246,14 +250,19 @@ plot_monitoring_timeseries <- function(data, parameters, axes, threshold_values,
 #' @return A ggplot object.
 #'
 #' @keywords internal
-plot_threshold_comparison <- function(data, threshold_styles, years, colour_scale = NULL, pointsize = 2, jitter_seed = 1,
+plot_threshold_comparison <- function(data, threshold_styles, years, limits, colour_scale = NULL, pointsize = 2, jitter_seed = 1,
                                       theme = ggplot2::theme_minimal()) {
+
+  # an invisible point per panel at its maximum, so all windows of the time series share the same scale
+  limits <- dplyr::mutate(limits, x = levels(data$x)[1])
 
   data |>
     ggplot2::ggplot(ggplot2::aes(x = x, y = value, color = siteclass)) +
     ggplot2::geom_hline(yintercept = 1, linetype = threshold_styles$lty, color = threshold_styles$col, linewidth = threshold_styles$lsz, show.legend = FALSE) +
     ggplot2::geom_point(shape = 21, size = pointsize, position = ggplot2::position_jitter(width = 0.2, height = 0, seed = jitter_seed)) +
+    ggplot2::geom_blank(data = limits, mapping = ggplot2::aes(x = x, y = value), inherit.aes = FALSE) +
     ggplot2::facet_wrap(reference~., scales = "free_y", ncol = 1, axes = "all_x") +
+    ggplot2::scale_x_discrete(drop = FALSE) +
     ggplot2::scale_y_continuous(breaks = seq(0,10,1), limits = c(0,NA), labels = scales::percent_format(), expand = c(0.01,0.01)) +
     ggplot2::coord_flip() +
     ggplot2::guides(color = ggplot2::guide_legend(nrow = 3)) +
@@ -390,4 +399,16 @@ year_windows <- function(years, width) {
   }
 
   purrr::map(rlang::set_names(ends, paste0(ends - width + 1, "–", ends)), \(end) seq(end - width + 1, end))
+}
+
+
+#' Largest relative value per reference, over all years
+#'
+#' @param data Data as returned by [threshold_comparison_data()] for all years.
+#'
+#' @return Tibble with `reference` and `value` (the maximum), for [plot_threshold_comparison()].
+#'
+#' @keywords internal
+threshold_comparison_limits <- function(data) {
+  dplyr::summarise(data, value = max(value, na.rm = TRUE), .by = reference)
 }

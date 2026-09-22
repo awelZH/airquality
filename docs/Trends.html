@@ -548,7 +548,7 @@ Figure&nbsp;10
 <p>WORK-IN-PROGRESS</p>
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-detail-o3 -->
-<!-- plot2 %+% dplyr::filter(plot2$data, pollutant == "Ozon, typische Spitzenbelastung") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_detailed_pollutant", "Ozon, typische Spitzenbelastung") -->
 <!-- ``` -->
 </div>
 </div>
@@ -558,13 +558,13 @@ Figure&nbsp;10
 <!-- ::: {.panel-tabset} -->
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-nhx -->
-<!-- plot %+% dplyr::filter(plot$data, pollutant == "Ammoniak | reduzierter Stickstoff") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 <!-- #### detailliert -->
 <!-- WORK-IN-PROGRESS -->
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-detail-nhx -->
-<!-- plot2 %+% dplyr::filter(plot2$data, pollutant == "Ammoniak | reduzierter Stickstoff") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_detailed_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 <!-- ::: -->
 <!-- ### Stickstoffeinträge in empfindliche Ökosysteme -->
@@ -572,23 +572,79 @@ Figure&nbsp;10
 <!-- ### Kohlenmonoxid -->
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-co -->
-<!-- plot %+% dplyr::filter(plot$data, pollutant == "Kohlenstoffmonoxid") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_pollutant", "Kohlenstoffmonoxid") -->
 <!-- ``` -->
 <!-- ### Flüchtige organische Verbindungen -->
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-nmvoc -->
-<!-- plot %+% dplyr::filter(plot$data, pollutant == "nicht-Methan Kohlenwasserstoffe") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_pollutant", "nicht-Methan Kohlenwasserstoffe") -->
 <!-- ``` -->
 <!-- ### Schwefeldioxid -->
 <!-- ```{r} -->
 <!-- #| label: fig-trends-rel-so2 -->
-<!-- plot %+% dplyr::filter(plot$data, pollutant == "Schwefeldioxid") + ggplot2::theme(legend.position = "right") -->
+<!-- get_plot(plots, "timeseries_pollutant", "Schwefeldioxid") -->
 <!-- ``` -->
 
 
 </section>
 
 </main> <!-- /main -->
+<!-- Year slider for the plots per year (R/plot.R: print_year_slider()), included after the body of every page.
+     Each .year-slider holds one .year-panel per year; the script puts a range input below them, with the
+     first year on the left, the last on the right and the chosen year above the slider thumb, and shows
+     only the chosen panel. Without JavaScript all panels stay visible. -->
+<script>
+document.querySelectorAll(".year-slider").forEach(function (slider) {
+  var panels = Array.prototype.slice.call(slider.querySelectorAll(":scope > .year-panel"));
+  if (panels.length < 2) return;
+  var years = panels.map(function (panel) { return panel.dataset.year; });
+  var start = years.indexOf(slider.dataset.start);
+  if (start < 0) start = years.length - 1;
+
+  var control = document.createElement("div");
+  control.className = "year-slider-control";
+  var first = document.createElement("span");
+  first.className = "year-slider-end";
+  first.textContent = years[0];
+  var last = document.createElement("span");
+  last.className = "year-slider-end";
+  last.textContent = years[years.length - 1];
+
+  var track = document.createElement("div");
+  track.className = "year-slider-track";
+  var input = document.createElement("input");
+  input.type = "range";
+  input.min = 0;
+  input.max = panels.length - 1;
+  input.step = 1;
+  input.value = start;
+  input.setAttribute("aria-label", "Jahr");
+  var bubble = document.createElement("output");
+  bubble.className = "year-slider-bubble";
+
+  function show(index) {
+    panels.forEach(function (panel, i) { panel.hidden = i !== index; });
+    bubble.textContent = years[index];
+    input.setAttribute("aria-valuetext", years[index]);
+    // the thumb travels between its own half widths, so the bubble follows it the same way
+    var thumb = 16;
+    var span = input.offsetWidth - thumb;
+    var share = panels.length > 1 ? index / (panels.length - 1) : 0;
+    bubble.style.left = (thumb / 2 + share * span) + "px";
+  }
+
+  input.addEventListener("input", function () { show(Number(input.value)); });
+  window.addEventListener("resize", function () { show(Number(input.value)); });
+
+  track.appendChild(bubble);
+  track.appendChild(input);
+  control.appendChild(first);
+  control.appendChild(track);
+  control.appendChild(last);
+  slider.appendChild(control);
+  show(start);
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

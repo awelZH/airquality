@@ -366,6 +366,62 @@ ul.task-list li input[type="checkbox"] {
 
 
 </main> <!-- /main -->
+<!-- Year slider for the plots per year (R/plot.R: print_year_slider()), included after the body of every page.
+     Each .year-slider holds one .year-panel per year; the script puts a range input below them, with the
+     first year on the left, the last on the right and the chosen year above the slider thumb, and shows
+     only the chosen panel. Without JavaScript all panels stay visible. -->
+<script>
+document.querySelectorAll(".year-slider").forEach(function (slider) {
+  var panels = Array.prototype.slice.call(slider.querySelectorAll(":scope > .year-panel"));
+  if (panels.length < 2) return;
+  var years = panels.map(function (panel) { return panel.dataset.year; });
+  var start = years.indexOf(slider.dataset.start);
+  if (start < 0) start = years.length - 1;
+
+  var control = document.createElement("div");
+  control.className = "year-slider-control";
+  var first = document.createElement("span");
+  first.className = "year-slider-end";
+  first.textContent = years[0];
+  var last = document.createElement("span");
+  last.className = "year-slider-end";
+  last.textContent = years[years.length - 1];
+
+  var track = document.createElement("div");
+  track.className = "year-slider-track";
+  var input = document.createElement("input");
+  input.type = "range";
+  input.min = 0;
+  input.max = panels.length - 1;
+  input.step = 1;
+  input.value = start;
+  input.setAttribute("aria-label", "Jahr");
+  var bubble = document.createElement("output");
+  bubble.className = "year-slider-bubble";
+
+  function show(index) {
+    panels.forEach(function (panel, i) { panel.hidden = i !== index; });
+    bubble.textContent = years[index];
+    input.setAttribute("aria-valuetext", years[index]);
+    // the thumb travels between its own half widths, so the bubble follows it the same way
+    var thumb = 16;
+    var span = input.offsetWidth - thumb;
+    var share = panels.length > 1 ? index / (panels.length - 1) : 0;
+    bubble.style.left = (thumb / 2 + share * span) + "px";
+  }
+
+  input.addEventListener("input", function () { show(Number(input.value)); });
+  window.addEventListener("resize", function () { show(Number(input.value)); });
+
+  track.appendChild(bubble);
+  track.appendChild(input);
+  control.appendChild(first);
+  control.appendChild(track);
+  control.appendChild(last);
+  slider.appendChild(control);
+  show(start);
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

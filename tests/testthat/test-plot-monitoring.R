@@ -140,8 +140,10 @@ test_that("jittered points move only across the value axis, never along it", {
     siteclass = "städtisch - Hintergrund", reference = "relativ"
   )
   plot <- plot_threshold_comparison(comparison, threshold_styles = tibble::tibble(col = "red3", lty = 1, lsz = 1), years = 2020,
-                                    limits = tibble::tibble(reference = "relativ", value = 2))
-  expect_setequal(layer_data_all(plot)[[2]]$y, c(0.5, 1.5, 0.75))
+                                    limits = tibble::tibble(reference = "relativ", value = 2),
+                                    categories = threshold_comparison_categories(comparison))
+  points <- purrr::detect(layer_data_all(plot), \(layer) "shape" %in% names(layer))
+  expect_setequal(points$y, c(0.5, 1.5, 0.75))
 })
 
 test_that("year_windows() gives the moving windows of the given width, labelled by their range", {
@@ -155,18 +157,26 @@ test_that("year_windows() needs at least one full window", {
   expect_error(year_windows(2019:2020, width = 3), class = "airquality_plot_error")
 })
 
-test_that("plot_threshold_comparison() keeps all categories and the given maximum per reference", {
+test_that("plot_threshold_comparison() keeps the categories of each panel and the given maximum", {
+  levels <- c("Stickstoffeintrag", "PM10 Jahresmittel", "NO2 Jahresmittel")
+  # the window holds NO2 only; the nitrogen deposition belongs to panel A, PM10 to both
   data <- tibble::tibble(
-    x = factor(c("NO2 Jahresmittel", "PM10 Jahresmittel"), levels = c("Stickstoffeintrag", "PM10 Jahresmittel", "NO2 Jahresmittel")),
-    value = c(0.5, 0.75), siteclass = "städtisch - Hintergrund",
-    reference = c("relativ zu A:", "relativ zu A:")
+    x = factor("NO2 Jahresmittel", levels = levels), value = 0.5, siteclass = "städtisch - Hintergrund",
+    reference = "A:"
   )
-  limits <- tibble::tibble(reference = "relativ zu A:", value = c(4))
+  categories <- tibble::tibble(
+    reference = c("A:", "A:", "A:", "B:", "B:"),
+    x = factor(c("Stickstoffeintrag", "PM10 Jahresmittel", "NO2 Jahresmittel", "PM10 Jahresmittel", "NO2 Jahresmittel"), levels = levels)
+  )
+  limits <- tibble::tibble(reference = c("A:", "B:"), value = c(4, 2))
 
   plot <- plot_threshold_comparison(data, threshold_styles = tibble::tibble(col = "red3", lty = 1, lsz = 1),
-                                    years = 2020, limits = limits)
-  panel <- withr::with_pdf(NULL, ggplot2::ggplot_build(plot))$layout$panel_params[[1]]
+                                    years = 2020, limits = limits, categories = categories)
+  build <- withr::with_pdf(NULL, ggplot2::ggplot_build(plot))
+  panels <- purrr::map(build$layout$panel_params, \(panel) panel$y$get_labels())
 
-  expect_contains(panel$y$get_labels(), "Stickstoffeintrag")
-  expect_gte(max(panel$x.range), 4)
+  expect_equal(panels[[1]], levels) # all categories of the panel, in the order of the levels
+  expect_false("Stickstoffeintrag" %in% panels[[2]])
+  expect_gte(max(build$layout$panel_params[[1]]$x.range), 4)
+  expect_false("NA" %in% legend_texts(plot)) # the filled categories must not reach the legend
 })

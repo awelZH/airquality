@@ -15,6 +15,9 @@ ggplot_exposition_cumulative(
   captionlab = NULL,
   xlabel = NULL,
   threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
+  background = NULL,
+  background_colour = "gray80",
+  background_alpha = 0.6,
   theme = ggplot2::theme_minimal()
 )
 }
@@ -30,6 +33,11 @@ ggplot_exposition_cumulative(
 \item{titlelab, captionlab, xlabel}{Title, caption and x axis label.}
 
 \item{threshold}{Threshold lines as returned by \code{\link[=extract_threshold]{extract_threshold()}}; \code{value = NA} for none.}
+
+\item{background}{Data of all years, drawn as faint lines behind the year shown (one line per \code{year});
+\code{NULL} for none.}
+
+\item{background_colour, background_alpha}{Colour and opacity of these lines.}
 
 \item{theme}{ggplot2 theme.}
 }

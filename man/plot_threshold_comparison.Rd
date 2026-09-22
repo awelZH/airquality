@@ -9,6 +9,7 @@ plot_threshold_comparison(
   threshold_styles,
   years,
   limits,
+  categories,
   colour_scale = NULL,
   pointsize = 2,
   jitter_seed = 1,
@@ -24,6 +25,8 @@ plot_threshold_comparison(
 
 \item{limits}{Maximum per panel, as returned by \code{\link[=threshold_comparison_limits]{threshold_comparison_limits()}}.}
 
+\item{categories}{Categories per panel (\code{reference}, \code{x}), as returned by \code{\link[=threshold_comparison_categories]{threshold_comparison_categories()}}.}
+
 \item{colour_scale}{Colour scale of the site classes.}
 
 \item{pointsize}{Size of the points.}
@@ -36,7 +39,7 @@ plot_threshold_comparison(
 A ggplot object.
 }
 \description{
-Every category of \code{x} is drawn, also without values in these years, and the panels reach at least up
-to \code{limits}, so the plots of the single windows stay comparable.
+Every category of the panel is drawn, also without values in these years, and the panels reach at
+least up to \code{limits}, so the plots of the single windows stay comparable.
 }
 \keyword{internal}

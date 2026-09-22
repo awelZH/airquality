@@ -194,16 +194,27 @@ ggplot_exposition_histogram <- function(data, x, y, barwidth = 1, xlims = c(0,NA
 #'
 #' @inheritParams ggplot_exposition_histogram
 #' @param linewidth Width of the line.
+#' @param background Data of all years, drawn as faint lines behind the year shown (one line per `year`);
+#'   `NULL` for none.
+#' @param background_colour,background_alpha Colour and opacity of these lines.
 #'
 #' @return A ggplot object.
 #'
 #' @keywords internal
 ggplot_exposition_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,NA), xbreaks = ggplot2::waiver(), titlelab = NULL, captionlab = NULL, xlabel = NULL,
                                    threshold = list(value = NA, label = NULL, labelsize = 4, linetype = 2, linesize = 1),
+                                   background = NULL, background_colour = "gray80", background_alpha = 0.6,
                                    theme = ggplot2::theme_minimal()) {
+
+  # the other years as a faint background, so the year shown is seen in the context of the whole series
+  years <- if (!is.null(background)) {
+    ggplot2::geom_line(data = background, mapping = ggplot2::aes(group = year), linewidth = linewidth,
+                       color = background_colour, alpha = background_alpha)
+  }
 
   plot <-
     ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y))) +
+    years +
     ggplot2::geom_line(linewidth = linewidth, color = "#50586C") +
     ggplot2::scale_x_continuous(limits = xlims, breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
@@ -234,6 +245,7 @@ ggplot_exposition_cumulative_years <- function(data, x, y, xbreaks, threshold, x
     ggplot2::scale_x_continuous(limits = range(xbreaks), breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
     colorspace::scale_color_discrete_diverging(name = "Jahr", palette = "Blue-Yellow") +
+    ggplot2::guides(color = ggplot2::guide_legend(ncol = 2)) +
     xlabel +
     ggplot2::ggtitle(label = title, subtitle = subtitle) +
     ggplot2::labs(caption = caption) +
@@ -332,7 +344,7 @@ plot_exposition_cumulative <- function(data, parameter, threshold_values, axes, 
     ggplot_exposition_cumulative(
       data = dplyr::filter(data, year == !!year), x = "concentration", y = "population_cum_rel", linewidth = 1,
       xlims = range(pars$xbreaks), xbreaks = pars$xbreaks, threshold = threshold,
-      xlabel = xlabel,
+      background = data, xlabel = xlabel,
       titlelab = ggplot2::ggtitle(
         label = title,
         subtitle = openair::quickText(paste0("relativer Anteil (kumuliert), Wohnbevölkerung ",sub," im Jahr ",year))
@@ -400,7 +412,7 @@ plot_ndep_exposition_cumulative <- function(data, threshold_ndep, axes, sub = "i
     ggplot_exposition_cumulative(
       data = dplyr::filter(data, year == !!year), x = "ndep_exmax", y = "n_ecosys_cum_rel", linewidth = 1,
       xlims = range(pars$xbreaks), xbreaks = pars$xbreaks, threshold = threshold_ndep,
-      xlabel = xlabel,
+      background = data, xlabel = xlabel,
       titlelab = ggplot2::ggtitle(
         label = title,
         subtitle = paste0("relativer Anteil empfindlicher Ökosysteme (kumuliert) ",sub," im Jahr ", year)

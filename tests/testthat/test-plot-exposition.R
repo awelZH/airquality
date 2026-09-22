@@ -137,3 +137,30 @@ test_that("table_population_over_thresholds() gives one row per pollutant and ye
   expect_equal(trimws(result$`> WHO-Richtwert`), c("100'000", "200'030"))
   expect_equal(trimws(result$`< Grenz-/Richtwert`), c("2'000", "1'000"))
 })
+
+test_that("the cumulative plot of all years has a two-column legend", {
+  data <- tibble::tibble(year = rep(2019:2020, each = 2), ndep_exmax = c(1, 5, 1, 5), n_ecosys_cum_rel = c(0.5, 1, 0.5, 1))
+  threshold <- list(value = 0, color = "red3", labels = "CLN", labelsize = 4, linetype = 1, linesize = 1)
+
+  plot <- ggplot_exposition_cumulative_years(data, "ndep_exmax", "n_ecosys_cum_rel", xbreaks = seq(0, 5, 1),
+                                             threshold = threshold, xlabel = NULL, title = "t", subtitle = "s", caption = "c")
+
+  expect_equal(plot$guides$guides[[1]]$params$ncol, 2)
+})
+
+test_that("a cumulative plot of one year draws the other years in the background, without a colour legend", {
+  data <- tibble::tibble(year = rep(2019:2021, each = 2), concentration = rep(c(1, 5), 3),
+                         population_cum_rel = rep(c(0.5, 1), 3))
+  threshold <- list(value = NA)
+
+  plot <- ggplot_exposition_cumulative(dplyr::filter(data, year == 2021), "concentration", "population_cum_rel",
+                                       threshold = threshold, background = data)
+  layers <- layer_data_all(plot)
+
+  # first layer: all years in grey, second layer: the year itself in the usual colour
+  expect_equal(length(unique(layers[[1]]$group)), 3)
+  expect_equal(unique(layers[[1]]$colour), "gray80")
+  expect_lt(unique(layers[[1]]$alpha), 1)
+  expect_equal(unique(layers[[2]]$colour), "#50586C")
+  expect_null(plot$labels$colour)
+})

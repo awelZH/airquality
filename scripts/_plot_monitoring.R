@@ -36,13 +36,15 @@ plots$monitoring$timeseries_siteclass$eBC <-
 # comparison is prepared once over all years, so every window shows the same categories and the same scale
 comparison_all <- threshold_comparison_data(data_monitoring_aq, data_monitoring_ndep, immission_threshold_values, years = plot_years)
 comparison_limits <- threshold_comparison_limits(comparison_all)
+comparison_categories <- threshold_comparison_categories(comparison_all)
 
 plots$monitoring$threshold_comparison <-
   purrr::map(year_windows(data_monitoring_aq$year, width = plot_n_years), \(years) {
     comparison_all |>
       dplyr::filter(year %in% years) |>
       plot_threshold_comparison(threshold_styles = dplyr::distinct(immission_threshold_values, source, col, lty, lsz), years = years,
-                                limits = comparison_limits, colour_scale = scale_color_siteclass, pointsize = pointsize,
+                                limits = comparison_limits, categories = comparison_categories,
+                                colour_scale = scale_color_siteclass, pointsize = pointsize,
                                 jitter_seed = jitter_seed, theme = theme_ts)
   })
 

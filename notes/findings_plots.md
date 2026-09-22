@@ -202,3 +202,9 @@ Two pitfalls of the slider on a page: a chunk label starting with `fig-` makes Q
 as one cross-referenced figure and collect all images **after** the panels, which leaves the panels
 empty (label `slider-…` instead); and `[hidden]` is not honoured inside `.column-body-outset`, so
 `styles.css` sets `.year-panel[hidden] { display: none }` explicitly.
+
+**Cumulative exposition distributions (user decisions 2026-09-22).** The plot of all years has a
+two-column legend (`guide_legend(ncol = 2)`, 16 to 20 years). A plot of one year draws all years in
+the background as faint grey lines (`ggplot_exposition_cumulative(background = )`, `gray80`, alpha
+0.6), the year itself in the usual colour; no colour legend, because the background is context, not a
+category.

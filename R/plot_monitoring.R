@@ -174,7 +174,6 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
   plot <-
     ggplot2::ggplot(data, mapping = mapping) +
     ggplot2::geom_point(size = pointsize, shape = pointshape) +
-    # ggiraph::geom_point_interactive(mapping = ggplot2::aes(data_id = site, tooltip = round_off(value, 1)), size = pointsize, shape = pointshape) +
     ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = ylims, breaks = ybreaks, expand = c(0.01,0.01)) +
     titlelab +
@@ -189,8 +188,6 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
       ggplot2::geom_text(data = text, mapping = ggplot2::aes(x = x, y = y, label = label), size = threshold$labelsize,
                          hjust = 0, vjust = 0, nudge_y = pmax(0, 0.01 * max(ylims), na.rm = TRUE), inherit.aes = FALSE)
   }
-
-  # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 4)
 
   return(plot)
 }

@@ -165,12 +165,3 @@ theme_map <-
     panel.background = ggplot2::element_blank(),
     plot.background = ggplot2::element_blank()
   )
-
-# ggiraph::set_girafe_defaults(
-#   opts_hover = ggiraph::opts_hover(css = ggiraph::girafe_css_bicolor(primary = NA, secondary = "grey30")),
-#   opts_hover_inv(css = "opacity:0.4"), 
-#   opts_zoom = ggiraph::opts_zoom(min = 1, max = 4),
-#   opts_tooltip = ggiraph::opts_tooltip(css = "padding:3px;color:white;", opacity = 0.8, use_fill = TRUE),
-#   opts_sizing = ggiraph::opts_sizing(rescale = TRUE),
-#   opts_toolbar = ggiraph::opts_toolbar(saveaspng = TRUE, position = "bottom", delay_mouseout = 5000)
-# )

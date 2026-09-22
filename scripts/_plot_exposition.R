@@ -1,4 +1,4 @@
-# Plots of the population and ecosystem exposition -> plots_exposition (needs scripts/_plot_setup.R)
+# Plots of the population and ecosystem exposition -> plots_exposition, a plot catalog (needs scripts/_plot_setup.R)
 
 # map boundaries of the municipalities (current boundaries, without the Kloster Fahr), as in scripts/_setup.R
 map_municipalities <-
@@ -33,8 +33,8 @@ plots$exposition$population_over_thresh$rel_various <-
 #   write.table("luftschadstoffbelastete_bevoelkerung.csv", sep = ";", quote = F, fileEncoding = "latin1", row.names = F)
 
 # --- für Umweltbericht ---
-# plots$exposition$population_over_thresh$timeseries_various %+% dplyr::filter(data_population_over_thresh, pollutant == "Stickstoffdioxid")
-# plots$exposition$population_over_thresh$timeseries_various %+% dplyr::filter(data_population_over_thresh, pollutant == "Feinstaub PM2.5")
+# plots$exposition$population_over_thresh$timeseries_various + dplyr::filter(data_population_over_thresh, pollutant == "Stickstoffdioxid")
+# plots$exposition$population_over_thresh$timeseries_various + dplyr::filter(data_population_over_thresh, pollutant == "Feinstaub PM2.5")
 
 
 # exposition distributions of the population per pollutant and of the sensitive ecosystems (nitrogen):

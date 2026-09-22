@@ -27,8 +27,6 @@ ggplot_timeseries_bars <- function(data, mapping = ggplot2::aes(x = year, y = po
     captionlab +
     theme
 
-  # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 4)
-
   return(plot)
 }
 

@@ -1,4 +1,4 @@
-# Plots of the air pollutant emissions -> plots_emissions (needs scripts/_plot_setup.R)
+# Plots of the air pollutant emissions -> plots_emissions, a plot catalog (needs scripts/_plot_setup.R)
 
 plots <- list()
 

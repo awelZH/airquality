@@ -231,7 +231,6 @@ ggplot_exposition_cumulative_years <- function(data, x, y, xbreaks, threshold, x
   ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y), color = factor(year), group = year)) +
     ggplot2::geom_vline(xintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
     ggplot2::geom_line(linewidth = 1) +
-    # ggiraph::geom_line_interactive(mapping = ggplot2::aes(data_id = year, tooltip = population_cum), linewidth = 1) +
     ggplot2::scale_x_continuous(limits = range(xbreaks), breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
     colorspace::scale_color_discrete_diverging(name = "Jahr", palette = "Blue-Yellow") +
@@ -477,7 +476,6 @@ plot_weighted_mean_maps <- function(data, data_canton, parameter, crs, theme = g
     data_plot |>
       ggplot2::ggplot(ggplot2::aes(fill = population_weighted_mean)) +
       ggplot2::geom_sf() +
-      # ggiraph::geom_sf_interactive(mapping = ggplot2::aes(data_id = gemeindename, tooltip = paste0(gemeindename, ", ", round_off(population_weighted_mean, 1)))) +
       ggplot2::coord_sf(datum = sf::st_crs(crs)) +
       airquality.methods::immissionscale(parameter) +
       theme +

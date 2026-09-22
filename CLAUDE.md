@@ -36,15 +36,15 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 | `scripts/_setup.R` | packages, `load_all()`, sources `_settings.R`, municipality map |
 | `scripts/_settings.R` | **all analysis settings** (decision 7), pure assignments |
 | `scripts/_compile_*.R` | one script per topic: emissions, monitoring, trends, exposition, outcomes |
-| `scripts/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic (`plots_<topic>`); sourced by the Quarto pages, usable in the console (decision 9) |
+| `scripts/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
 | `scripts/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
 | `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `helpers.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R`, `read.R`, `*_helpers.R` hold only outcome/trend code (WIP) |
 | `inst/extdata/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
 | `inst/extdata/output/` | **output CSVs – the contract with external processes** |
 | `inst/extdata/log/` | run logs, appended on every run; not part of the contract |
-| `docs/` | Quarto website (`quarto::quarto_render("docs/")`) |
+| `docs/` | Quarto website (`quarto::quarto_render("docs/")`); plots per year as year sliders (`year-slider.html`, decision 11) |
 | `tests/testthat/` | unit tests (`devtools::test()`) and the output schema test |
-| `tests/regression/` | frozen baseline outputs, regression runs on frozen inputs, generic comparison |
+| `tests/regression/` | frozen baseline outputs, regression runs on frozen inputs, generic comparison; figures (`run_plots.R`), pages without rendering (`check_pages.R`) |
 | `notes/` | decisions, findings per topic and plans in detail (read on demand) |
 
 ## Output contract
@@ -63,9 +63,10 @@ column order and format must not change (the directory may change; external path
 
 * **Step 1 done**: exposition reworked.
 * **Step 2, phase 2a in progress**: emissions, monitoring done; plots/report done for all five
-  topics (304 figures byte-identical, `notes/findings_plots.md`; plots are built while rendering,
-  decision 9). The data scripts and functions of outcomes and trends are still WIP, untouched on the
-  user's decision. **Each topic only after the user's go.**
+  topics, including a second round (plot catalog, year slider, logic out of the pages, consistent
+  names; figures byte-identical, `notes/findings_plots.md`). The data scripts and functions of
+  outcomes and trends are still WIP, untouched on the user's decision. **Each topic only after the
+  user's go.**
 * **Phase 2b (targets) not started**; plan in `notes/plan_phase2b.md`.
 * All content changes so far (subsector grouping of the emissions, the two monitoring fixes, the ndep
   `datasource` clean-up) are in `inst/extdata/output/` since commit `fc1e744`.

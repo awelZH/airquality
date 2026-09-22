@@ -43,7 +43,6 @@ plot_emission_inventory <- function(data, relative = FALSE, position = "stack", 
     data |>
     ggplot2::ggplot(ggplot2::aes(x = year, y = emission, fill = key)) +
     ggplot2::geom_bar(stat = "identity", position = position, width = width) +
-    # ggiraph::geom_bar_interactive(mapping = ggplot2::aes(data_id = subsector_new, tooltip = round_off(emission, 1)), stat = "identity", position = pos, width = width) +
     yscale +
     ggplot2::scale_fill_manual(values = rlang::set_names(colours$col, colours$key)) +
     theme +
@@ -53,8 +52,6 @@ plot_emission_inventory <- function(data, relative = FALSE, position = "stack", 
       subtitle = sub
     ) +
     ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz")
-
-  # plot <- ggiraph::girafe(ggobj = plot, width_svg = 6, height_svg = 3)
 
   airquality.methods::add_grouped_legend(plot)
 }

@@ -116,11 +116,12 @@ print_year_slider(plots, "population_weighted_mean_map", "PM10")
 
 <!-- ### Russ im Feinstaub -->
 
-<!-- ::: {.panel-tabset} -->
-
-<!-- `r knitr::knit(text = as.character(dplyr::filter(plots, parameter == "NO2" & plot == "distribution_histogram")$markdown))` -->
-
-<!-- ::: -->
+<!-- (needs "eBC" in plot_parameters_exposition, scripts/_settings.R) -->
+<!-- ```{r} -->
+<!-- #| label: slider-ebc-distribution-histogram -->
+<!-- #| output: asis -->
+<!-- print_year_slider(plots, "distribution_histogram", "eBC") -->
+<!-- ``` -->
 
 ### Ozon
 

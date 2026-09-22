@@ -1,9 +1,7 @@
 # Plots: decisions and findings
 
-
-Function names changed on 2026-09-21 (P5, see the table at the end); the sections before it use the old
-names.
-Read before working on plots or the report (see also decision 9 in `decisions.md`).
+Read before working on plots or the report (see also decisions 9 and 11 in `decisions.md`). Function
+names changed on 2026-09-21 (P5, see the table at the end); the sections before it use the old names.
 
 ## Plots: grouped legend (2026-09-19)
 
@@ -174,3 +172,13 @@ aesthetic), `position` (was `pos`), `pointsize`/`linewidth` (were `pt_size`/`lin
 | `ggplot_expo_hist()`, `ggplot_expo_cumulative()`, `ggplot_expo_cumulative_years()` | `ggplot_exposition_histogram()`, `ggplot_exposition_cumulative()`, `ggplot_exposition_cumulative_years()` |
 | `timeseriespars()`, `expositionpars()` | `plot_axes_timeseries`, `plot_axes_exposition` (settings) and `timeseries_threshold()` |
 | `plotlist_to_tibble()`, `build_panel()` | `plot_catalog()`, `print_year_slider()` / `print_tabset()` |
+
+**P6 (clean-up and checks).** The `ggiraph` comments are gone (user decision: no interactive plots
+planned). Commented snippets updated to the current building blocks (`+ data` instead of the
+deprecated `%+%` in `_plot_exposition.R`; the commented eBC block on `Belastungsverteilung.qmd` as a
+commented chunk: knitr evaluates inline `` `r …` `` even inside HTML comments, so the old commented
+tabset still ran on every render). Kept on purpose: the doughnut plot `population_over_thresh_share`
+(in the catalog, commented out on the page) and the commented trend sections (NH3, CO, NMVOC, SO2) of
+`Trends.qmd`, which now use `get_plot()` and can be switched on without changes. Checks after every
+package: unit tests, `run_plots()` (byte identity), `check_pages()` (all pages without rendering,
+about 2 min); for P2/P3 the rendered pages against a baseline render.

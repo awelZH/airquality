@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Trends – Luftqualität im Kanton Zürich</title>
+<title>Wirkungsmonitoring – Luftqualität im Kanton Zürich</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -274,11 +274,11 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./Trends.html" aria-current="page"> 
-<span class="menu-text">Trends</span></a>
+<span class="menu-text">Wirkungsmonitoring</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Belastungsverteilung.html"> 
-<span class="menu-text">Belastungsverteilung</span></a>
+<span class="menu-text">Bevölkerungsbelastung</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Gesundheitsfolgen.html"> 
@@ -318,12 +318,12 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Trends</h1>
+<h1 class="title">Wirkungsmonitoring</h1>
 </div>
 
 
@@ -341,18 +341,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Eine wichtige Fragestellung der Luftreinhaltung ist die der Wirkungsbeurteilung. Das heisst, haben Emissionsminderungsmassnahmen den gewünschten Effekt. Die Grundlage zur Beantwortung dieser Frage ist die Langzeitentwicklung der bilanzierten Emissionen, welche Aufschluss über Verbesserungen (oder Verschlechterungen) des quellspezifischen Schadstoffausstosses gibt. Die Emissionsbilanzierung enthält Annahmen, Verallgemeinerungen und deshalb Unicherheiten. Eine zentrale Art, die Emissionsbilanzierung zu verifizieren ist, den Verlauf der gemessenen Immissionen mit dem der bilanzierten Emissionen zu vergleichen. Der Vergleich ist immissionsseitig ebenfalls mit Unsicherheiten behaftet, denn Messungen finden immer punktuell statt, während die Emissionsbilanzierung ein grösseres Gebiet zusammenfasst. Zudem erwschwert der zeitlich schwankende Einfluss der Witterung und Klimaentwicklung auf die gemessenen Immissionen sowie teils die realen Emissionen den direkten Vergleich. Um diese Unsicherheit zu minimieren, kann man mit Hilfe statistischer Modelle die Messdaten auf einen durchschnittlichen Witterungszustand “normalisieren” und erhält so einen hypothetischen Langzeitverlauf der Immissionen auf der Grundlage von Messungen, welcher besser mit dem Verlauf der Emissionen verglichen werden kann. Stimmt der Verlauf der Emissionen und mit dem der gemessenen und normalisierten Immissionen qualitativ überein, so wird die Emissionsbilanzierung auf Grundlage der Messdaten allgemein bestätigt. Hier nutzen wir die Methodik des R-packages <a href="https://CRAN.R-project.org/package=rmweather">rmweather</a> (siehe auch <a href="https://doi.org/10.5194/acp-18-6223-2018">Grange et al., 2018</a>), um Langzeitmessreihen im Kanton Zürich statistisch zu normalisieren.</p>
-<section id="übersicht-entwicklung-schadstoffausstoss" class="level3 page-columns page-full">
+<section id="übersicht-entwicklung-schadstoffausstoss" class="level3">
 <h3 class="anchored" data-anchor-id="übersicht-entwicklung-schadstoffausstoss">Übersicht Entwicklung Schadstoffausstoss</h3>
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-allemissions" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-allemissions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-allemissions-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: "><img src="Trends_files/figure-html/fig-trends-rel-allemissions-1.png" id="fig-trends-rel-allemissions" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-allemissions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1
-</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-allemissions-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Trends_files/figure-html/trends-rel-allemissions-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -361,38 +356,28 @@ Figure&nbsp;1
 <section id="vergleich-entwicklung-schadstoffausstoss-mit-messdaten-und-normalisierten-trends" class="level3">
 <h3 class="anchored" data-anchor-id="vergleich-entwicklung-schadstoffausstoss-mit-messdaten-und-normalisierten-trends">Vergleich Entwicklung Schadstoffausstoss mit Messdaten und normalisierten Trends</h3>
 </section>
-<section id="stickoxide" class="level3 page-columns page-full">
+<section id="stickoxide" class="level3">
 <h3 class="anchored" data-anchor-id="stickoxide">Stickoxide</h3>
-<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">einfach</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">detailliert</a></li></ul>
-<div class="tab-content page-columns page-full">
-<div id="tabset-1-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-nox" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-nox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-nox-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: "><img src="Trends_files/figure-html/fig-trends-rel-nox-1.png" id="fig-trends-rel-nox" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-nox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2
-</figcaption>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-nox-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="Trends_files/figure-html/trends-rel-nox-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-1-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-detail-nox" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-detail-nox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-detail-nox-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: "><img src="Trends_files/figure-html/fig-trends-rel-detail-nox-1.png" id="fig-trends-rel-detail-nox" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-detail-nox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3
-</figcaption>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-detail-nox-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="Trends_files/figure-html/trends-rel-detail-nox-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -401,39 +386,29 @@ Figure&nbsp;3
 </div>
 </div>
 </section>
-<section id="feinstaub-pm2.5" class="level3 page-columns page-full">
+<section id="feinstaub-pm2.5" class="level3">
 <h3 class="anchored" data-anchor-id="feinstaub-pm2.5">Feinstaub PM2.5</h3>
 <p>beachte: Referenzjahr 2021 statt 2015 aufgrund Verfügbarkeit von Messdaten</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">einfach</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">detailliert</a></li></ul>
-<div class="tab-content page-columns page-full">
-<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-pm25" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-pm25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-pm25-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: "><img src="Trends_files/figure-html/fig-trends-rel-pm25-1.png" id="fig-trends-rel-pm25" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-pm25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4
-</figcaption>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-pm25-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="Trends_files/figure-html/trends-rel-pm25-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-detail-pm25" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-detail-pm25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-detail-pm25-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: "><img src="Trends_files/figure-html/fig-trends-rel-detail-pm25-1.png" id="fig-trends-rel-detail-pm25" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-detail-pm25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5
-</figcaption>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-detail-pm25-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="Trends_files/figure-html/trends-rel-detail-pm25-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -442,38 +417,28 @@ Figure&nbsp;5
 </div>
 </div>
 </section>
-<section id="feinstaub-pm10" class="level3 page-columns page-full">
+<section id="feinstaub-pm10" class="level3">
 <h3 class="anchored" data-anchor-id="feinstaub-pm10">Feinstaub PM10</h3>
-<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">einfach</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">detailliert</a></li></ul>
-<div class="tab-content page-columns page-full">
-<div id="tabset-3-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-pm10" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-pm10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-pm10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: "><img src="Trends_files/figure-html/fig-trends-rel-pm10-1.png" id="fig-trends-rel-pm10" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-pm10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6
-</figcaption>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-pm10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="Trends_files/figure-html/trends-rel-pm10-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-3-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-detail-pm10" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-detail-pm10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-detail-pm10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: "><img src="Trends_files/figure-html/fig-trends-rel-detail-pm10-1.png" id="fig-trends-rel-detail-pm10" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-detail-pm10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7
-</figcaption>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-detail-pm10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="Trends_files/figure-html/trends-rel-detail-pm10-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -482,39 +447,29 @@ Figure&nbsp;7
 </div>
 </div>
 </section>
-<section id="russ-im-feinstaub" class="level3 page-columns page-full">
+<section id="russ-im-feinstaub" class="level3">
 <h3 class="anchored" data-anchor-id="russ-im-feinstaub">Russ im Feinstaub</h3>
 <p>beachte: Referenzjahr 2020 statt 2015 aufgrund Verfügbarkeit von Messdaten</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">einfach</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">detailliert</a></li></ul>
-<div class="tab-content page-columns page-full">
-<div id="tabset-4-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-ebc" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-ebc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-ebc-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: "><img src="Trends_files/figure-html/fig-trends-rel-ebc-1.png" id="fig-trends-rel-ebc" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-ebc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8
-</figcaption>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-ebc-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="Trends_files/figure-html/trends-rel-ebc-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-4-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-detail-ebc" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-detail-ebc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-detail-ebc-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: "><img src="Trends_files/figure-html/fig-trends-rel-detail-ebc-1.png" id="fig-trends-rel-detail-ebc" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-detail-ebc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9
-</figcaption>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-detail-ebc-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="Trends_files/figure-html/trends-rel-detail-ebc-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -523,22 +478,17 @@ Figure&nbsp;9
 </div>
 </div>
 </section>
-<section id="ozon" class="level3 page-columns page-full">
+<section id="ozon" class="level3">
 <h3 class="anchored" data-anchor-id="ozon">Ozon</h3>
-<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">einfach</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">detailliert</a></li></ul>
-<div class="tab-content page-columns page-full">
-<div id="tabset-5-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-trends-rel-o3" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-trends-rel-o3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Trends_files/figure-html/fig-trends-rel-o3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: "><img src="Trends_files/figure-html/fig-trends-rel-o3-1.png" id="fig-trends-rel-o3" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-trends-rel-o3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10
-</figcaption>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Trends_files/figure-html/trends-rel-o3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="Trends_files/figure-html/trends-rel-o3-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -547,7 +497,7 @@ Figure&nbsp;10
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <p>WORK-IN-PROGRESS</p>
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-detail-o3 -->
+<!-- #| label: trends-rel-detail-o3 -->
 <!-- get_plot(plots, "timeseries_detailed_pollutant", "Ozon, typische Spitzenbelastung") -->
 <!-- ``` -->
 </div>
@@ -557,13 +507,13 @@ Figure&nbsp;10
 <!-- beachte: Referenzjahr 2020 statt 2015 aufgrund Verfügbarkeit von Messdaten -->
 <!-- ::: {.panel-tabset} -->
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-nhx -->
+<!-- #| label: trends-rel-nhx -->
 <!-- get_plot(plots, "timeseries_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 <!-- #### detailliert -->
 <!-- WORK-IN-PROGRESS -->
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-detail-nhx -->
+<!-- #| label: trends-rel-detail-nhx -->
 <!-- get_plot(plots, "timeseries_detailed_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 <!-- ::: -->
@@ -571,17 +521,17 @@ Figure&nbsp;10
 <!-- WORK-IN-PROGRESS -->
 <!-- ### Kohlenmonoxid -->
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-co -->
+<!-- #| label: trends-rel-co -->
 <!-- get_plot(plots, "timeseries_pollutant", "Kohlenstoffmonoxid") -->
 <!-- ``` -->
 <!-- ### Flüchtige organische Verbindungen -->
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-nmvoc -->
+<!-- #| label: trends-rel-nmvoc -->
 <!-- get_plot(plots, "timeseries_pollutant", "nicht-Methan Kohlenwasserstoffe") -->
 <!-- ``` -->
 <!-- ### Schwefeldioxid -->
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-so2 -->
+<!-- #| label: trends-rel-so2 -->
 <!-- get_plot(plots, "timeseries_pollutant", "Schwefeldioxid") -->
 <!-- ``` -->
 

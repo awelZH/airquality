@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Belastungsverteilung – Luftqualität im Kanton Zürich</title>
+<title>Bevölkerungsbelastung – Luftqualität im Kanton Zürich</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -278,11 +278,11 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Trends.html"> 
-<span class="menu-text">Trends</span></a>
+<span class="menu-text">Wirkungsmonitoring</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./Belastungsverteilung.html" aria-current="page"> 
-<span class="menu-text">Belastungsverteilung</span></a>
+<span class="menu-text">Bevölkerungsbelastung</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Gesundheitsfolgen.html"> 
@@ -321,12 +321,12 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Belastungsverteilung</h1>
+<h1 class="title">Bevölkerungsbelastung</h1>
 </div>
 
 
@@ -344,22 +344,17 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Hier werden Auswertungen von jahresbezogenen, flächendeckenden Rasterdaten zur Luftbelastung und Verteilung der Wohnbevölkerung im Kanton Zürich sowie zu atmosphärischen Stickstoffenträgen in empfindliche Ökosysteme dargestellt. Die Grundlagendaten stammen aus Erhebungen (<a href="https://www.bfs.admin.ch/bfs/de/home.html">Bundesamt für Statistik BFS</a>) und Modellrechnungen (<a href="https://www.bafu.admin.ch/bafu/de/home.html">Bundesamt für Umwelt BAFU</a>). Die Modellergebnisse zur Luftschadstoffbelastung und den atmosphärischen Stickstoffeinträgen sind an Messwerten “kalibriert”, um eine ausreichend gute Genauigkeit zu erreichen. Die Expositionsverteilung der Bevölkerung wird in einigen Darstellungen immer mit den aktuellen Grenzwerten der <a href="https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de">Luftreinhalteverordnung des Bundes</a> verglichen, auch wenn diese erst ab einem bestimmten Zeitpunkt eingeführt oder angepasst wurden. Das Gleiche gilt für die <a href="https://www.who.int/publications/i/item/9789240034228">Richtwerte der Weltgesundheitsorganisation WHO</a>.</p>
-<section id="einwohnerinnen-mit-belastung-über-grenz-richtwert" class="level3 page-columns page-full">
+<section id="einwohnerinnen-mit-belastung-über-grenz-richtwert" class="level3">
 <h3 class="anchored" data-anchor-id="einwohnerinnen-mit-belastung-über-grenz-richtwert">Einwohner/innen mit Belastung über Grenz-/Richtwert</h3>
 <!-- ```{r} -->
-<!-- #| label: fig-population-over-thresh-rel -->
+<!-- #| label: population-over-thresh-rel -->
 <!-- get_plot(plots, "population_over_thresh_share") -->
 <!-- ``` -->
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-population-over-thresh-ts" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-population-over-thresh-ts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Belastungsverteilung_files/figure-html/fig-population-over-thresh-ts-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: "><img src="Belastungsverteilung_files/figure-html/fig-population-over-thresh-ts-1.png" id="fig-population-over-thresh-ts" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-population-over-thresh-ts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1
-</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Belastungsverteilung_files/figure-html/population-over-thresh-ts-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Belastungsverteilung_files/figure-html/population-over-thresh-ts-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -847,7 +842,7 @@ Figure&nbsp;1
 </div>
 </div>
 </section>
-<section id="stickstoffdioxid" class="level3 page-columns page-full">
+<section id="stickstoffdioxid" class="level3">
 <h3 class="anchored" data-anchor-id="stickstoffdioxid">Stickstoffdioxid</h3>
 <div class="year-slider" data-start="2025">
 <div class="year-panel" data-year="2010">
@@ -959,16 +954,11 @@ Figure&nbsp;1
 </div>
 </div>
 </div>
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-pwmean-no2" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-pwmean-no2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Belastungsverteilung_files/figure-html/fig-pwmean-no2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;2: "><img src="Belastungsverteilung_files/figure-html/fig-pwmean-no2-1.png" id="fig-pwmean-no2" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-pwmean-no2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2
-</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Belastungsverteilung_files/figure-html/pwmean-no2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img src="Belastungsverteilung_files/figure-html/pwmean-no2-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -1024,7 +1014,7 @@ Figure&nbsp;2
 </div>
 </div>
 </section>
-<section id="feinstaub-pm2.5" class="level3 page-columns page-full">
+<section id="feinstaub-pm2.5" class="level3">
 <h3 class="anchored" data-anchor-id="feinstaub-pm2.5">Feinstaub PM2.5</h3>
 <div class="year-slider" data-start="2025">
 <div class="year-panel" data-year="2010">
@@ -1136,16 +1126,11 @@ Figure&nbsp;2
 </div>
 </div>
 </div>
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-pwmean-pm25" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-pwmean-pm25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Belastungsverteilung_files/figure-html/fig-pwmean-pm25-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-85" title="Figure&nbsp;3: "><img src="Belastungsverteilung_files/figure-html/fig-pwmean-pm25-1.png" id="fig-pwmean-pm25" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-pwmean-pm25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3
-</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Belastungsverteilung_files/figure-html/pwmean-pm25-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-85"><img src="Belastungsverteilung_files/figure-html/pwmean-pm25-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -1201,7 +1186,7 @@ Figure&nbsp;3
 </div>
 </div>
 </section>
-<section id="feinstaub-pm10" class="level3 page-columns page-full">
+<section id="feinstaub-pm10" class="level3">
 <h3 class="anchored" data-anchor-id="feinstaub-pm10">Feinstaub PM10</h3>
 <div class="year-slider" data-start="2025">
 <div class="year-panel" data-year="2010">
@@ -1313,16 +1298,11 @@ Figure&nbsp;3
 </div>
 </div>
 </div>
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-pwmean-pm10" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-pwmean-pm10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Belastungsverteilung_files/figure-html/fig-pwmean-pm10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-135" title="Figure&nbsp;4: "><img src="Belastungsverteilung_files/figure-html/fig-pwmean-pm10-1.png" id="fig-pwmean-pm10" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-pwmean-pm10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4
-</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Belastungsverteilung_files/figure-html/pwmean-pm10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-135"><img src="Belastungsverteilung_files/figure-html/pwmean-pm10-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -1385,9 +1365,9 @@ Figure&nbsp;4
 <!-- print_year_slider(plots, "distribution_histogram", "eBC") -->
 <!-- ``` -->
 </section>
-<section id="ozon" class="level3 page-columns page-full">
+<section id="ozon" class="level3">
 <h3 class="anchored" data-anchor-id="ozon">Ozon</h3>
-<section id="typische-spitzenbelastung" class="level4 page-columns page-full">
+<section id="typische-spitzenbelastung" class="level4">
 <h4 class="anchored" data-anchor-id="typische-spitzenbelastung">Typische Spitzenbelastung</h4>
 <p>Die “typische Spitzenbelastung” entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.</p>
 <div class="year-slider" data-start="2025">
@@ -1500,16 +1480,11 @@ Figure&nbsp;4
 </div>
 </div>
 </div>
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-pwmean-o3p98" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-pwmean-o3p98-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Belastungsverteilung_files/figure-html/fig-pwmean-o3p98-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-185" title="Figure&nbsp;5: "><img src="Belastungsverteilung_files/figure-html/fig-pwmean-o3p98-1.png" id="fig-pwmean-o3p98" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-pwmean-o3p98-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5
-</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Belastungsverteilung_files/figure-html/pwmean-o3p98-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-185"><img src="Belastungsverteilung_files/figure-html/pwmean-o3p98-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>
@@ -1565,7 +1540,7 @@ Figure&nbsp;5
 </div>
 </div>
 </section>
-<section id="mittlere-sommertagbelastung" class="level4 page-columns page-full">
+<section id="mittlere-sommertagbelastung" class="level4">
 <h4 class="anchored" data-anchor-id="mittlere-sommertagbelastung">mittlere Sommertagbelastung</h4>
 <p>Die “mittlere Sommertagbelastung” entspricht dem Durchschnitt des maximalen 8-Stunden-Mittelwerts der O3-Konzentration in den sechs aufeinanderfolgenden Monaten mit der höchsten O3-Konzentration im Sechsmonatsdurchschnitt.</p>
 <div class="year-slider" data-start="2025">
@@ -1678,16 +1653,11 @@ Figure&nbsp;5
 </div>
 </div>
 </div>
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div id="fig-pwmean-o3peak" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" width="864">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-pwmean-o3peak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="Belastungsverteilung_files/figure-html/fig-pwmean-o3peak-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-235" title="Figure&nbsp;6: "><img src="Belastungsverteilung_files/figure-html/fig-pwmean-o3peak-1.png" id="fig-pwmean-o3peak" class="img-fluid figure-img" width="864"></a>
-</div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-pwmean-o3peak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6
-</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Belastungsverteilung_files/figure-html/pwmean-o3peak-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-235"><img src="Belastungsverteilung_files/figure-html/pwmean-o3peak-1.png" class="img-fluid figure-img" width="864"></a></p>
 </figure>
 </div>
 </div>

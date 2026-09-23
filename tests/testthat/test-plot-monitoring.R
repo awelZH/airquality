@@ -179,4 +179,5 @@ test_that("plot_threshold_comparison() keeps the categories of each panel and th
   expect_false("Stickstoffeintrag" %in% panels[[2]])
   expect_gte(max(build$layout$panel_params[[1]]$x.range), 4)
   expect_false("NA" %in% legend_texts(plot)) # the filled categories must not reach the legend
+  expect_match(plot$labels$caption, "^Referenzwerte nach heutigem Stand") # the thresholds are the current ones
 })

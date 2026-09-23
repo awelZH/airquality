@@ -273,7 +273,7 @@ plot_threshold_comparison <- function(data, threshold_styles, years, limits, cat
       label = openair::quickText("Luftqualitätsmesswerte Referenzwertvergleich"),
       subtitle = paste0("Jahre ", min(years), " bis ", max(years))
     ) +
-    ggplot2::labs(caption = "Daten: Ostluft & NABEL (BAFU & Empa)") +
+    ggplot2::labs(caption = "Referenzwerte nach heutigem Stand, Daten: Ostluft & NABEL (BAFU & Empa)") +
     theme +
     ggplot2::theme(
       legend.position = "bottom",

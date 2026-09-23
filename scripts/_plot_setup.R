@@ -112,7 +112,7 @@ immission_threshold_values <-
 
 threshold_ndep <- extract_threshold(dplyr::filter(immission_threshold_values, source == "LRV Grenzwert"), "NO2")
 threshold_ndep$value <- 0
-threshold_ndep$labels <- "kritische Eintragsrate CLN"
+threshold_ndep$labels <- "krit. Eintragsrate"
 
 
 # colors and color scales

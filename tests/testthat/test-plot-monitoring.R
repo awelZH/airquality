@@ -195,3 +195,16 @@ test_that("the thresholds of a time series are named in the legend, not written 
   expect_contains(legend_texts(plot), c("LRV Grenzwert", "WHO Richtwert"))
   expect_false(any(purrr::map_lgl(plot$layers, \(layer) inherits(layer$geom, "GeomText"))))
 })
+
+test_that("the threshold legend is titled 'Referenz'", {
+  data <- tibble::tibble(
+    year = 2020:2021, site = "A", pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2", unit = "µg/m3",
+    concentration = c(20, 25), siteclass = factor("städtisch - Hintergrund", levels = siteclasses)
+  )
+
+  plot <- plot_monitoring_timeseries(data, "NO2", axes = list(NO2 = list(ylim = c(0, 70), ybreaks = seq(0, 70, 10))),
+                                     threshold_values = make_threshold_values(),
+                                     colour_scale = ggplot2::scale_color_discrete())[["NO2"]]
+
+  expect_contains(legend_texts(plot), "Referenz")
+})

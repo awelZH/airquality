@@ -268,6 +268,8 @@ plot_threshold_comparison <- function(data, threshold_styles, years, limits, cat
     theme +
     ggplot2::theme(
       legend.position = "bottom",
+      legend.key.spacing.y = ggplot2::unit(0, "pt"), # the many site classes need little space
+      legend.key.height = ggplot2::unit(0.8, "lines"),
       panel.grid.major.x = ggplot2::element_line(),
       strip.text = ggplot2::element_text(hjust = 0)
     ) +

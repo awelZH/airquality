@@ -218,3 +218,7 @@ classes and the years. Affected: monitoring time series, exposition histograms a
 distributions (including the plot of all years and the nitrogen deposition with its critical load). The
 histograms show their legend again (`guides(fill = "none")` instead of hiding the whole legend).
 The captions of these plots say "Referenzwerte nach heutigem Stand", as the threshold comparison does.
+The threshold legend is titled "Referenz" (user decision 2026-09-23); the critical load is called
+"krit. Eintragsrate" there and its plots say "krit. Eintragsraten nach heutigem Stand" in the caption.
+The legend of the threshold comparison uses a tighter line spacing (`legend.key.spacing.y = 0`,
+`legend.key.height = 0.8 lines`), because its site classes take three rows.

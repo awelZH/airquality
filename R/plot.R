@@ -242,6 +242,6 @@ add_threshold_lines <- function(plot, threshold, direction = c("vertical", "hori
 
   plot +
     line +
-    ggplot2::scale_linetype_manual(name = NULL, values = rlang::set_names(threshold$linetype, threshold$labels)) +
+    ggplot2::scale_linetype_manual(name = "Referenz", values = rlang::set_names(threshold$linetype, threshold$labels)) +
     ggplot2::guides(linetype = ggplot2::guide_legend(override.aes = list(color = threshold$color)))
 }

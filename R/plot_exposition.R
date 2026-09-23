@@ -360,7 +360,7 @@ plot_ndep_exposition_histograms <- function(data, threshold_ndep, axes, sub = "i
         label = openair::quickText("Exposition empfindlicher Ökosysteme durch Stickstoffeinträge"),
         subtitle = paste0("Anzahl empfindlicher Ökosysteme ",sub," im Jahr ", year)
       ),
-      captionlab = ggplot2::labs(caption = "Daten: BAFU"),
+      captionlab = ggplot2::labs(caption = "krit. Eintragsraten nach heutigem Stand, Daten: BAFU"),
       theme = theme
     )
   })
@@ -383,7 +383,7 @@ plot_ndep_exposition_cumulative <- function(data, threshold_ndep, axes, sub = "i
   plot_all <- ggplot_exposition_cumulative_years(
     data, x = "ndep_exmax", y = "n_ecosys_cum_rel", xbreaks = pars$xbreaks, threshold = threshold_ndep, xlabel = xlabel,
     title = title, subtitle = paste0("relativer Anteil empfindlicher Ökosysteme (kumuliert) ", sub),
-    caption = "Daten: BAFU", theme = theme
+    caption = "krit. Eintragsraten nach heutigem Stand, Daten: BAFU", theme = theme
   )
 
   plots_years <- purrr::map(rlang::set_names(unique(data$year)), function(year) {
@@ -395,7 +395,7 @@ plot_ndep_exposition_cumulative <- function(data, threshold_ndep, axes, sub = "i
         label = title,
         subtitle = paste0("relativer Anteil empfindlicher Ökosysteme (kumuliert) ",sub," im Jahr ", year)
       ),
-      captionlab = ggplot2::labs(caption = "Daten: BAFU"),
+      captionlab = ggplot2::labs(caption = "krit. Eintragsraten nach heutigem Stand, Daten: BAFU"),
       theme = theme
     )
   })

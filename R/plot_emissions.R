@@ -51,7 +51,7 @@ plot_emission_inventory <- function(data, relative = FALSE, position = "stack", 
       label = openair::quickText(paste0("Luftschadstoff-Emissionen ", airquality.methods::longpollutant(pollutant))),
       subtitle = sub
     ) +
-    ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz")
+    ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz/BAFU")
 
   airquality.methods::add_grouped_legend(plot)
 }

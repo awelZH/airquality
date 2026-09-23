@@ -114,7 +114,7 @@ plot_emission_trends_relative <- function(data, reference_year, linewidth = 1, t
     ggplot2::ggtitle(
       label = "Relative Entwicklung Emissionen im Kanton Zürich",
       subtitle = paste0("Veränderung gegenüber dem Jahr ", reference_year)) +
-    ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz")
+    ggplot2::labs(caption = "Daten: Ostluft, Grundlage: EMIS Schweiz/BAFU")
 }
 
 

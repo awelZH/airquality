@@ -32,64 +32,60 @@ print_year_slider(plots, "threshold_comparison")
 ### Stickstoffdioxid
 
 ```{r}
-#| label: fig-ts-no2
+#| label: ts-no2
 get_plot(plots, "timeseries_siteclass", "NO2")
 ```
 
 ### Feinstaub PM2.5
 
 ```{r}
-#| label: fig-ts-pm25
+#| label: ts-pm25
 get_plot(plots, "timeseries_siteclass", "PM2.5")
 ```
 
 ### Feinstaub PM10
 
 ```{r}
-#| label: fig-ts-pm10
+#| label: ts-pm10
 get_plot(plots, "timeseries_siteclass", "PM10")
 ```
 
 ### Russ im Feinstaub
 
 ```{r}
-#| label: fig-ts-ebc
+#| label: ts-ebc
 get_plot(plots, "timeseries_siteclass", "eBC")
 ```
 
 ### Ozon
 
-Die "typische Spitzenbelastung" entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.
-
-
 ```{r}
-#| label: fig-ts-o3p98
-get_plot(plots, "timeseries_siteclass", "O3_max_98p_m1")
+#| label: tabs-ts-o3
+#| output: asis
+print_tabset(list(
+  "typische Spitzenbelastung" = get_plot(plots, "timeseries_siteclass", "O3_max_98p_m1"),
+  "mittlere Sommertagbelastung" = get_plot(plots, "timeseries_siteclass", "O3_peakseason_mean_d1_max_mean_h8gl")
+))
 ```
 
+Die "typische Spitzenbelastung" entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.
 
 Die "mittlere Sommertagbelastung" entspricht dem Durchschnitt des maximalen 8-Stunden-Mittelwerts der O3-Konzentration in den sechs aufeinanderfolgenden Monaten mit der höchsten O3-Konzentration im Sechsmonatsdurchschnitt.
 
-
-```{r}
-#| label: fig-ts-o3peak
-get_plot(plots, "timeseries_siteclass", "O3_peakseason_mean_d1_max_mean_h8gl")
-```
-
 ### Stickstoffeintrag in empfindliche Ökosysteme
 
-#### Zeitreihen
+#### Zeitreihen absolut
 
 ```{r}
 #| label: tabs-ndep-sites
 #| output: asis
 print_tabset(list(
-  "Bachtel Messreihe" = get_plot(plots, "timeseries_ndep_bachtel"),
+  "Messreihe Bachtel seit 2001" = get_plot(plots, "timeseries_ndep_bachtel"),
   "alle seit 2019" = get_plot(plots, "timeseries_ndep_all")
 ))
 ```
 
-#### Überschreitung der kritischen Eintragsraten
+#### Zeitreihen vs. kritische Eintragsraten
 
 ```{r}
 #| label: tabs-ndep-cln

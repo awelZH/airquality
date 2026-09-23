@@ -1,5 +1,5 @@
 ---
-title: "Belastungsverteilung"
+title: "Bevölkerungsbelastung"
 lightbox: true
 ---
 
@@ -20,12 +20,12 @@ plots <- plots_exposition
 ### Einwohner/innen mit Belastung über Grenz-/Richtwert
 
 <!-- ```{r} -->
-<!-- #| label: fig-population-over-thresh-rel -->
+<!-- #| label: population-over-thresh-rel -->
 <!-- get_plot(plots, "population_over_thresh_share") -->
 <!-- ``` -->
 
 ```{r}
-#| label: fig-population-over-thresh-ts
+#| label: population-over-thresh-ts
 #| fig.asp: 0.6
 get_plot(plots, "population_over_thresh")
 ```
@@ -58,7 +58,7 @@ print_year_slider(plots, "distribution_cumulative", "NO2")
 ```
 
 ```{r}
-#| label: fig-pwmean-no2
+#| label: pwmean-no2
 get_plot(plots, "population_weighted_mean", "NO2")
 ```
 
@@ -83,7 +83,7 @@ print_year_slider(plots, "distribution_cumulative", "PM2.5")
 ```
 
 ```{r}
-#| label: fig-pwmean-pm25
+#| label: pwmean-pm25
 get_plot(plots, "population_weighted_mean", "PM2.5")
 ```
 
@@ -108,7 +108,7 @@ print_year_slider(plots, "distribution_cumulative", "PM10")
 ```
 
 ```{r}
-#| label: fig-pwmean-pm10
+#| label: pwmean-pm10
 get_plot(plots, "population_weighted_mean", "PM10")
 ```
 
@@ -147,7 +147,7 @@ print_year_slider(plots, "distribution_cumulative", "O3_max_98p_m1")
 ```
 
 ```{r}
-#| label: fig-pwmean-o3p98
+#| label: pwmean-o3p98
 get_plot(plots, "population_weighted_mean", "O3_max_98p_m1")
 ```
 
@@ -175,7 +175,7 @@ print_year_slider(plots, "distribution_cumulative", "O3_peakseason_mean_d1_max_m
 ```
 
 ```{r}
-#| label: fig-pwmean-o3peak
+#| label: pwmean-o3peak
 get_plot(plots, "population_weighted_mean", "O3_peakseason_mean_d1_max_mean_h8gl")
 ```
 

@@ -238,4 +238,10 @@ relative comparison) also carry the threshold legend without title and closer to
 (user decision 2026-09-23); as in the point time series, `legend.box.spacing` applies to all legends
 of the plot, so the legend on the right moves closer to the panel too. The four nitrogen plots stand
 in two tabsets (`print_tabset()`, user decision 2026-09-23): "Bachtel Messreihe" / "alle seit 2019" and
-"absolut" (exceedance, default) / "relativ" (share of the critical load).
+"absolut" (exceedance, default) / "relativ" (share of the critical load). The two ozone time series
+stand in a tabset "typische Spitzenbelastung" / "mittlere Sommertagbelastung" as well.
+
+**Page names and figure numbers (user decision 2026-09-23).** The pages "Belastungsverteilung" and
+"Trends" are titled "Bevölkerungsbelastung" and "Wirkungsmonitoring" (page title and navbar); the file
+names and thus the URLs stay. The chunk labels lost their `fig-` prefix, so Quarto no longer numbers
+the plots as "Figure x" (no page cross-references them).

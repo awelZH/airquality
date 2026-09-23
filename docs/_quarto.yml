@@ -27,9 +27,9 @@ website:
       - href: Luftqualität.qmd
         text: Luftqualität
       - href: Trends.qmd
-        text: Trends
+        text: Wirkungsmonitoring
       - href: Belastungsverteilung.qmd
-        text: Belastungsverteilung
+        text: Bevölkerungsbelastung
       - href: Gesundheitsfolgen.qmd
         text: Gesundheitsfolgen
     right: 

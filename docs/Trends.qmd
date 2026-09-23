@@ -1,5 +1,5 @@
 ---
-title: "Trends"
+title: "Wirkungsmonitoring"
 lightbox: true
 ---
 
@@ -20,7 +20,7 @@ plots <- plots_trends
 ### Übersicht Entwicklung Schadstoffausstoss
 
 ```{r}
-#| label: fig-trends-rel-allemissions
+#| label: trends-rel-allemissions
 get_plot(plots, "timeseries_emissions")
 ```
 
@@ -35,7 +35,7 @@ get_plot(plots, "timeseries_emissions")
 #### einfach
 
 ```{r}
-#| label: fig-trends-rel-nox
+#| label: trends-rel-nox
 # #| fig.asp: 1.25
 get_plot(plots, "timeseries_pollutant", "Stickoxide | Stickstoffdioxid")
 ```
@@ -43,7 +43,7 @@ get_plot(plots, "timeseries_pollutant", "Stickoxide | Stickstoffdioxid")
 #### detailliert
 
 ```{r}
-#| label: fig-trends-rel-detail-nox
+#| label: trends-rel-detail-nox
 get_plot(plots, "timeseries_detailed_pollutant", "Stickoxide | Stickstoffdioxid")
 ```
 
@@ -58,14 +58,14 @@ beachte: Referenzjahr 2021 statt 2015 aufgrund Verfügbarkeit von Messdaten
 #### einfach
 
 ```{r}
-#| label: fig-trends-rel-pm25
+#| label: trends-rel-pm25
 get_plot(plots, "timeseries_pollutant", "Feinstaub PM2.5")
 ```
 
 #### detailliert
 
 ```{r}
-#| label: fig-trends-rel-detail-pm25
+#| label: trends-rel-detail-pm25
 get_plot(plots, "timeseries_detailed_pollutant", "Feinstaub PM2.5")
 ```
 
@@ -78,14 +78,14 @@ get_plot(plots, "timeseries_detailed_pollutant", "Feinstaub PM2.5")
 #### einfach
 
 ```{r}
-#| label: fig-trends-rel-pm10
+#| label: trends-rel-pm10
 get_plot(plots, "timeseries_pollutant", "Feinstaub PM10")
 ```
 
 #### detailliert
 
 ```{r}
-#| label: fig-trends-rel-detail-pm10
+#| label: trends-rel-detail-pm10
 get_plot(plots, "timeseries_detailed_pollutant", "Feinstaub PM10")
 ```
 
@@ -100,14 +100,14 @@ beachte: Referenzjahr 2020 statt 2015 aufgrund Verfügbarkeit von Messdaten
 #### einfach
 
 ```{r}
-#| label: fig-trends-rel-ebc
+#| label: trends-rel-ebc
 get_plot(plots, "timeseries_pollutant", "Russ im Feinstaub")
 ```
 
 #### detailliert
 
 ```{r}
-#| label: fig-trends-rel-detail-ebc
+#| label: trends-rel-detail-ebc
 get_plot(plots, "timeseries_detailed_pollutant", "Russ im Feinstaub")
 ```
 
@@ -120,7 +120,7 @@ get_plot(plots, "timeseries_detailed_pollutant", "Russ im Feinstaub")
 #### einfach
 
 ```{r}
-#| label: fig-trends-rel-o3
+#| label: trends-rel-o3
 get_plot(plots, "timeseries_pollutant", "Ozon, typische Spitzenbelastung")
 ```
 
@@ -129,7 +129,7 @@ get_plot(plots, "timeseries_pollutant", "Ozon, typische Spitzenbelastung")
 WORK-IN-PROGRESS
 
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-detail-o3 -->
+<!-- #| label: trends-rel-detail-o3 -->
 <!-- get_plot(plots, "timeseries_detailed_pollutant", "Ozon, typische Spitzenbelastung") -->
 <!-- ``` -->
 
@@ -142,7 +142,7 @@ WORK-IN-PROGRESS
 <!-- ::: {.panel-tabset} -->
 
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-nhx -->
+<!-- #| label: trends-rel-nhx -->
 <!-- get_plot(plots, "timeseries_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 
@@ -151,7 +151,7 @@ WORK-IN-PROGRESS
 <!-- WORK-IN-PROGRESS -->
 
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-detail-nhx -->
+<!-- #| label: trends-rel-detail-nhx -->
 <!-- get_plot(plots, "timeseries_detailed_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 
@@ -167,7 +167,7 @@ WORK-IN-PROGRESS
 
 
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-co -->
+<!-- #| label: trends-rel-co -->
 <!-- get_plot(plots, "timeseries_pollutant", "Kohlenstoffmonoxid") -->
 <!-- ``` -->
 
@@ -176,7 +176,7 @@ WORK-IN-PROGRESS
 <!-- ### Flüchtige organische Verbindungen -->
 
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-nmvoc -->
+<!-- #| label: trends-rel-nmvoc -->
 <!-- get_plot(plots, "timeseries_pollutant", "nicht-Methan Kohlenwasserstoffe") -->
 <!-- ``` -->
 
@@ -185,7 +185,7 @@ WORK-IN-PROGRESS
 <!-- ### Schwefeldioxid -->
 
 <!-- ```{r} -->
-<!-- #| label: fig-trends-rel-so2 -->
+<!-- #| label: trends-rel-so2 -->
 <!-- get_plot(plots, "timeseries_pollutant", "Schwefeldioxid") -->
 <!-- ``` -->
 

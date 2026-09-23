@@ -24,3 +24,9 @@ the uncertainty range over both scenarios, also over the avoided deaths, where i
 `nsim = 500` simulations without a seed, so every run differs slightly. 2025 stays at about 5 deaths
 because the mortality data of the current year are missing – worth deciding whether the report should
 show that year at all (see the year range of the outcomes).
+
+**Completeness check per year** (user decision 2026-09-23): `drop_incomplete_years()` (new `R/outcomes.R`,
+the first reworked piece of this topic) drops years whose deaths do not reach `outcomes_min_year_share`
+(0.8, `_settings.R`) of the median year, measured against the median so that one exceptional year does
+not disqualify the others. The mortality data of the current year arrive piece by piece, so 2025 fell
+out of the outcomes (2010–2024 remain, 90 instead of 96 rows).

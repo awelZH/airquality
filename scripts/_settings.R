@@ -89,6 +89,12 @@ expo_years_pm25_from_pm10 <- min(expo_years):2014
 # minimum number of monitoring sites per year for fitting the O3 peak-season model
 expo_o3_nmin_sites <- 7
 
+# => health outcomes
+# share of the median year a year's deaths need to reach to count as complete; the mortality data of the
+# current year arrive piece by piece and would give far too few premature deaths
+outcomes_min_year_share <- 0.8
+
+
 # => plots
 # years to consider for plotting
 plot_years <- 1995:year_last

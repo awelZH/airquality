@@ -257,9 +257,10 @@ data_mortality <-
 results_prelim_deaths <- 
   data_mortality |> 
   dplyr::filter(age >= 30) |> # just to be sure
-  dplyr::group_by(year = year_of_death) |> 
-  dplyr::summarise(deaths = sum(frequency, na.rm = TRUE)) |> 
-  dplyr::ungroup() |> 
+  dplyr::group_by(year = year_of_death) |>
+  dplyr::summarise(deaths = sum(frequency, na.rm = TRUE)) |>
+  dplyr::ungroup() |>
+  drop_incomplete_years(min_share = outcomes_min_year_share) |> # the current year is still being delivered
   estimate_all_prelim_deaths(data_expo_weighmean, outcomes_meta)
 
 # old manual way: results_prelim_deaths <- prepare_preliminary_deaths(data_expo_weighmean, data_mortality, outcomes_meta)

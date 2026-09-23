@@ -58,7 +58,7 @@ plots$monitoring$timeseries_ndep_bachtel$Ndep <-
   dplyr::filter(site == "BA", ecosys == "Wald") |>
   plot_ndep_bars(xlim = c(2000,NA), linewidth = threshold_lrv_no2$lsz, colour = threshold_lrv_no2$col,
                             title = "Luftqualitätsmesswerte Stickstoffeintrag in empfindliche Ökosysteme am Bachtel", theme = theme_ts) +
-  ggplot2::labs(caption = "Daten: Ostluft & FUB") +
+  ggplot2::labs(caption = "krit. Eintragsraten nach heutigem Stand, Daten: Ostluft & FUB") +
   ggplot2::facet_wrap(ecosys~., ncol = 1, scales = "free_y", axes = "all_x")
 
 plots$monitoring$timeseries_ndep_all$Ndep <-

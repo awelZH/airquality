@@ -11,6 +11,7 @@ plot_ndep_bars(
   linewidth = 1,
   colour = "red3",
   title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme",
+  reference_label = "krit. Eintragsrate",
   theme = ggplot2::theme_minimal()
 )
 }
@@ -22,6 +23,8 @@ plot_ndep_bars(
 \item{linewidth, colour}{Width and colour of the critical load line.}
 
 \item{title}{Title.}
+
+\item{reference_label}{Name of the critical load in the legend.}
 
 \item{theme}{ggplot2 theme.}
 }

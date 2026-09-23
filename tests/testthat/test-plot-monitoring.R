@@ -208,3 +208,15 @@ test_that("the threshold legend is titled 'Referenz'", {
 
   expect_contains(legend_texts(plot), "Referenz")
 })
+
+test_that("the nitrogen plots name the critical load in the legend and in the caption", {
+  data <- prepare_plot_ndep(make_ndep()) |>
+    dplyr::mutate(estimated_class = "<5 kg-N", component = factor("aus NH3-Quellen"))
+
+  bars <- plot_ndep_bars(data)
+  vs_cln <- plot_ndep_sites_vs_cln(data)
+
+  expect_contains(legend_texts(bars), c("Referenz", "krit. Eintragsrate"))
+  expect_contains(legend_texts(vs_cln), c("Referenz", "krit. Eintragsrate"))
+  expect_match(vs_cln$labels$caption, "^krit. Eintragsraten nach heutigem Stand")
+})

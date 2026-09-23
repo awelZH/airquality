@@ -11,6 +11,7 @@ plot_ndep_sites_vs_cln(
   colour = "red3",
   pointsize = 2,
   jitter_seed = 1,
+  reference_label = "krit. Eintragsrate",
   theme = ggplot2::theme_minimal()
 )
 }
@@ -22,6 +23,8 @@ plot_ndep_sites_vs_cln(
 \item{pointsize}{Size of the points (drawn 1.5 times larger).}
 
 \item{jitter_seed}{Seed of the jittered points.}
+
+\item{reference_label}{Name of the critical load in the legend.}
 
 \item{theme}{ggplot2 theme.}
 }

@@ -283,6 +283,7 @@ plot_threshold_comparison <- function(data, threshold_styles, years, limits, cat
 #' @param xlim,xbreaks Limits and breaks of the x axis.
 #' @param linewidth,colour Width and colour of the critical load line.
 #' @param title Title.
+#' @param reference_label Name of the critical load in the legend.
 #' @param theme ggplot2 theme.
 #'
 #' @return A ggplot object.
@@ -290,7 +291,7 @@ plot_threshold_comparison <- function(data, threshold_styles, years, limits, cat
 #' @keywords internal
 plot_ndep_bars <- function(data, xlim = NULL, xbreaks = ggplot2::waiver(), linewidth = 1, colour = "red3",
                                       title = "Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme",
-                                      theme = ggplot2::theme_minimal()) {
+                                      reference_label = "krit. Eintragsrate", theme = ggplot2::theme_minimal()) {
 
   cln <- dplyr::distinct(data, site, ecosys, cln)
 
@@ -298,7 +299,9 @@ plot_ndep_bars <- function(data, xlim = NULL, xbreaks = ggplot2::waiver(), linew
     data |>
     ggplot2::ggplot(ggplot2::aes(x = year, y = deposition, fill = component)) +
     ggplot2::geom_bar(stat = "identity") +
-    ggplot2::geom_hline(data = cln, mapping = ggplot2::aes(yintercept = cln, group = site), color = colour, linewidth = linewidth, show.legend = FALSE) +
+    # the critical load of the site, named in the legend
+    ggplot2::geom_hline(data = cln, mapping = ggplot2::aes(yintercept = cln, group = site, linetype = reference_label), color = colour, linewidth = linewidth) +
+    threshold_legend(reference_label, colour, 1) +
     ggplot2::scale_x_continuous(limits = xlim, breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(expand = c(0.01,0.01)) +
     ggplot2::scale_fill_manual(values = c("aus NH3-Quellen" = "#2A5676", "aus NOx-Quellen" = "#B696D6")) +
@@ -306,7 +309,7 @@ plot_ndep_bars <- function(data, xlim = NULL, xbreaks = ggplot2::waiver(), linew
     ggplot2::theme(
       strip.text = ggplot2::element_text(hjust = 0),
       legend.title = ggplot2::element_blank(),
-      legend.position = "bottom"
+      legend.position = "right" # the source categories; the critical load keeps its legend at the bottom
     ) +
     ggplot2::ggtitle(
       label = openair::quickText(title),
@@ -345,7 +348,7 @@ plot_ndep_sites <- function(data, colour_scale = NULL, fill_scale = NULL, shape_
       label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit 2019"),
       subtitle = expression("Stickstoffeintrag (kg-N " * ha^-1 * Jahr^-1 * ")")
     ) +
-    ggplot2::labs(caption = "geschätzt: je nach Messprogramm versch. Anteile statistisch geschätzt (NH3 immer gemessen)\nQuelle: Ostluft") +
+    ggplot2::labs(caption = "geschätzt: je nach Messprogramm versch. Anteile statistisch geschätzt (NH3 immer gemessen)\nDaten: Ostluft") +
     theme
 }
 
@@ -354,17 +357,19 @@ plot_ndep_sites <- function(data, colour_scale = NULL, fill_scale = NULL, shape_
 #'
 #' @inheritParams plot_ndep_sites
 #' @param linewidth,colour Width and colour of the line at 100 %.
+#' @param reference_label Name of the critical load in the legend.
 #'
 #' @return A ggplot object.
 #'
 #' @keywords internal
 plot_ndep_sites_vs_cln <- function(data, colour_scale = NULL, linewidth = 1, colour = "red3", pointsize = 2, jitter_seed = 1,
-                                   theme = ggplot2::theme_minimal()) {
+                                   reference_label = "krit. Eintragsrate", theme = ggplot2::theme_minimal()) {
 
   data |>
     dplyr::filter(year >= 2019) |>
     ggplot2::ggplot(ggplot2::aes(x = year, y = deposition / cln, color = ecosys)) +
-    ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1), color = colour, linewidth = linewidth, show.legend = FALSE) +
+    ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1, linetype = reference_label), color = colour, linewidth = linewidth) +
+    threshold_legend(reference_label, colour, 1) +
     ggplot2::geom_point(size = pointsize * 1.5, position = ggplot2::position_jitter(width = 0.1, height = 0, seed = jitter_seed)) +
     ggplot2::scale_x_continuous(limits = c(2019,NA), expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,NA), expand = ggplot2::expansion(mult = c(0, 0.02)), labels = scales::percent_format()) +
@@ -373,7 +378,7 @@ plot_ndep_sites_vs_cln <- function(data, colour_scale = NULL, linewidth = 1, col
       label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit 2019"),
       subtitle = expression("Stickstoffeintrag vs. kritische Eintragsrate (relativ)")
     ) +
-    ggplot2::labs(caption = "Quelle: Ostluft") +
+    ggplot2::labs(caption = "krit. Eintragsraten nach heutigem Stand, Daten: Ostluft") +
     theme
 }
 

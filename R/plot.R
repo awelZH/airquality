@@ -222,11 +222,15 @@ parameter_setting <- function(settings, parameter) {
 #' @param threshold Threshold lines as returned by [extract_threshold()] (`value`, `labels`, `color`,
 #'   `linetype`, `linesize`); nothing is added for `value = NA`.
 #' @param direction Whether the lines are vertical (value on the x axis) or horizontal.
+#' @param legend_position Position of this legend; the other legends of the plot keep theirs.
+#' @param legend_title Title of this legend; `NULL` where it is the only legend of the plot and the
+#'   labels speak for themselves.
 #'
 #' @return The plot.
 #'
 #' @keywords internal
-add_threshold_lines <- function(plot, threshold, direction = c("vertical", "horizontal")) {
+add_threshold_lines <- function(plot, threshold, direction = c("vertical", "horizontal"), legend_position = "bottom",
+                                legend_title = "Referenz") {
 
   direction <- rlang::arg_match(direction)
   if (is.na(sum(threshold$value))) return(plot)
@@ -242,6 +246,31 @@ add_threshold_lines <- function(plot, threshold, direction = c("vertical", "hori
 
   plot +
     line +
-    ggplot2::scale_linetype_manual(name = "Referenz", values = rlang::set_names(threshold$linetype, threshold$labels)) +
-    ggplot2::guides(linetype = ggplot2::guide_legend(override.aes = list(color = threshold$color)))
+    threshold_legend(threshold$labels, threshold$color, threshold$linetype, legend_position, legend_title)
+}
+
+
+#' Legend of the threshold lines
+#'
+#' The line type carries the label, so the legend names the thresholds; the colours come back through
+#' `override.aes`, because the colour aesthetic usually belongs to the data of the plot.
+#'
+#' @param labels,colours,linetypes Label, colour and line type per threshold.
+#' @param position Position of this legend; the other legends of the plot keep theirs.
+#' @param title Title of this legend; `NULL` for none, which also moves the legend closer to the axis.
+#'
+#' @return A list of ggplot2 scales and guides, to be added to a plot.
+#'
+#' @keywords internal
+threshold_legend <- function(labels, colours, linetypes, position = "bottom", title = "Referenz") {
+  list(
+    ggplot2::scale_linetype_manual(name = title, values = rlang::set_names(linetypes, labels)),
+    # the title comes with this guide, also in plots whose theme hides the legend titles
+    ggplot2::guides(linetype = ggplot2::guide_legend(
+      position = position,
+      override.aes = list(color = colours),
+      theme = ggplot2::theme(legend.title = if (is.null(title)) ggplot2::element_blank() else ggplot2::element_text())
+    )),
+    if (is.null(title)) ggplot2::theme(legend.box.spacing = ggplot2::unit(4, "pt"))
+  )
 }

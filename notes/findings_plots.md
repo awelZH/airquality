@@ -222,3 +222,10 @@ The threshold legend is titled "Referenz" (user decision 2026-09-23); the critic
 "krit. Eintragsrate" there and its plots say "krit. Eintragsraten nach heutigem Stand" in the caption.
 The legend of the threshold comparison uses a tighter line spacing (`legend.key.spacing.y = 0`,
 `legend.key.height = 0.8 lines`), because its site classes take three rows.
+The threshold legend sits at the bottom while the other legends of the plot keep their place
+(`guide_legend(position = )`, ggplot2 3.5+); where it is the only legend (exposition distributions,
+nitrogen distributions) it carries no title and moves closer to the axis title. The two nitrogen plots
+of the monitoring page carry it as well; at the Bachtel the source categories moved to the right, so
+the two legends do not sit on top of each other. The WHO guideline is drawn solid, like the LRV limit
+(user decision 2026-09-23); the two are told apart by colour and by the legend. Captions are
+left-aligned in `theme_ts`, only the maps keep theirs centred.

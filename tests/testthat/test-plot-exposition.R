@@ -179,3 +179,16 @@ test_that("the thresholds of a distribution are named in the legend, not written
   expect_contains(legend_texts(cumul), c("LRV Grenzwert", "WHO Richtwert"))
   expect_false(any(purrr::map_lgl(hist$layers, \(layer) inherits(layer$geom, "GeomText"))))
 })
+
+test_that("a distribution with only the threshold legend shows no legend title", {
+  data <- tibble::tibble(
+    year = 2020, pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2",
+    concentration = c(5, 15, 35), population = 10, population_cum_rel = c(1, 2, 3) / 3
+  )
+  axes <- list(NO2 = list(barwidth = 0.9, xbreaks = seq(0, 55, 5)))
+
+  hist <- plot_exposition_histograms(data, "NO2", make_threshold_values(), axes = axes)[["2020"]]
+
+  expect_contains(legend_texts(hist), "LRV Grenzwert")
+  expect_false("Referenz" %in% legend_texts(hist))
+})

@@ -4,7 +4,13 @@
 \alias{add_threshold_lines}
 \title{Add threshold lines to a plot, named in the legend}
 \usage{
-add_threshold_lines(plot, threshold, direction = c("vertical", "horizontal"))
+add_threshold_lines(
+  plot,
+  threshold,
+  direction = c("vertical", "horizontal"),
+  legend_position = "bottom",
+  legend_title = "Referenz"
+)
 }
 \arguments{
 \item{plot}{A ggplot object.}
@@ -13,6 +19,11 @@ add_threshold_lines(plot, threshold, direction = c("vertical", "horizontal"))
 \code{linetype}, \code{linesize}); nothing is added for \code{value = NA}.}
 
 \item{direction}{Whether the lines are vertical (value on the x axis) or horizontal.}
+
+\item{legend_position}{Position of this legend; the other legends of the plot keep theirs.}
+
+\item{legend_title}{Title of this legend; \code{NULL} where it is the only legend of the plot and the
+labels speak for themselves.}
 }
 \value{
 The plot.

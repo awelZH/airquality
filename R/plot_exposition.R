@@ -186,7 +186,7 @@ ggplot_exposition_histogram <- function(data, x, y, barwidth = 1, xlims = c(0,NA
     theme +
     ggplot2::theme(axis.title.x = ggplot2::element_text())
 
-  add_threshold_lines(plot, threshold)
+  add_threshold_lines(plot, threshold, legend_title = NULL) # the thresholds are the only legend here
 }
 
 
@@ -224,7 +224,7 @@ ggplot_exposition_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,
     theme +
     ggplot2::theme(axis.title.x = ggplot2::element_text())
 
-  add_threshold_lines(plot, threshold)
+  add_threshold_lines(plot, threshold, legend_title = NULL) # the thresholds are the only legend here
 }
 
 

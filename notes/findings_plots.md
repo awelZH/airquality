@@ -208,3 +208,13 @@ two-column legend (`guide_legend(ncol = 2)`, 16 to 20 years). A plot of one year
 the background as faint grey lines (`ggplot_exposition_cumulative(background = )`, `gray80`, alpha
 0.6), the year itself in the usual colour; no colour legend, because the background is context, not a
 category.
+
+**Thresholds in the legend instead of in the panel (user decision 2026-09-23).** The LRV limit, the WHO
+guideline and the critical load were written into the panel as rotated text next to their line. Now
+`add_threshold_lines()` (R/plot.R) draws them from a small tibble with the label mapped to `linetype`,
+so ggplot2 puts them into the legend; the colours come back through
+`guide_legend(override.aes = list(color = ))`, because the colour aesthetic is already taken by the site
+classes and the years. Affected: monitoring time series, exposition histograms and cumulative
+distributions (including the plot of all years and the nitrogen deposition with its critical load). The
+histograms show their legend again (`guides(fill = "none")` instead of hiding the whole legend).
+The captions of these plots say "Referenzwerte nach heutigem Stand", as the threshold comparison does.

@@ -96,7 +96,7 @@ plot_population_over_thresholds <- function(data, colours, theme = ggplot2::them
     ggplot2::ggtitle(
       label = "Entwicklung luftschadstoffbelasteter Wohnbevölkerung",
       subtitle = "Anzahl Personen, Wohnbevölkerung im Kanton Zürich") +
-    ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+    ggplot2::labs(caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS")
 }
 
 
@@ -142,7 +142,7 @@ plot_population_over_thresholds_share <- function(data, n_years, colours, theme 
       label = "Luftschadstoffbelastete Wohnbevölkerung",
       subtitle = paste0("Anteil Personen im Kanton Zürich in den Jahren ", year_max - n_years + 1, " bis ", year_max)
     ) +
-    ggplot2::labs(caption = "Datengrundlage: BAFU & BFS")
+    ggplot2::labs(caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS")
 }
 
 
@@ -186,7 +186,7 @@ ggplot_exposition_histogram <- function(data, x, y, barwidth = 1, xlims = c(0,NA
     theme +
     ggplot2::theme(axis.title.x = ggplot2::element_text())
 
-  add_threshold_vlines(plot, threshold, xlims)
+  add_threshold_lines(plot, threshold)
 }
 
 
@@ -224,7 +224,7 @@ ggplot_exposition_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,
     theme +
     ggplot2::theme(axis.title.x = ggplot2::element_text())
 
-  add_threshold_vlines(plot, threshold, xlims)
+  add_threshold_lines(plot, threshold)
 }
 
 
@@ -239,8 +239,9 @@ ggplot_exposition_cumulative <- function(data, x, y, linewidth = 1, xlims = c(0,
 ggplot_exposition_cumulative_years <- function(data, x, y, xbreaks, threshold, xlabel, title, subtitle, caption,
                                          theme = ggplot2::theme_minimal()) {
 
-  ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y), color = factor(year), group = year)) +
-    ggplot2::geom_vline(xintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
+  # the threshold lines first, so the years are drawn over them
+  ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y), color = factor(year), group = year)) |>
+    add_threshold_lines(threshold) +
     ggplot2::geom_line(linewidth = 1) +
     ggplot2::scale_x_continuous(limits = range(xbreaks), breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
@@ -250,30 +251,7 @@ ggplot_exposition_cumulative_years <- function(data, x, y, xbreaks, threshold, x
     ggplot2::ggtitle(label = title, subtitle = subtitle) +
     ggplot2::labs(caption = caption) +
     theme +
-    ggplot2::theme(axis.title.x = ggplot2::element_text()) +
-    ggplot2::geom_text(data = tibble::tibble(x = threshold$value, label = threshold$labels), mapping = ggplot2::aes(x = x, y = 0, label = label), size = threshold$labelsize,
-                       hjust = 0, vjust = 0, angle = 90, nudge_x = pmin(0, -0.01 * max(xbreaks), na.rm = TRUE), inherit.aes = FALSE)
-}
-
-
-#' Add vertical threshold lines with labels to an exposition plot
-#'
-#' @param plot A ggplot object.
-#' @param threshold Threshold lines as returned by [extract_threshold()]; nothing is added for `value = NA`.
-#' @param xlims Limits of the x axis (the labels are nudged by 1 % of their maximum).
-#'
-#' @return The plot.
-#'
-#' @keywords internal
-add_threshold_vlines <- function(plot, threshold, xlims) {
-
-  if (is.na(sum(threshold$value))) return(plot)
-
-  text <- tibble::tibble(x = threshold$value, label = threshold$labels)
-  plot +
-    ggplot2::geom_vline(xintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
-    ggplot2::geom_text(data = text, mapping = ggplot2::aes(x = x, y = 0, label = label), size = threshold$labelsize,
-                       hjust = 0, vjust = 0, angle = 90, nudge_x = pmin(0, -0.01 * max(xlims), na.rm = TRUE), inherit.aes = FALSE)
+    ggplot2::theme(axis.title.x = ggplot2::element_text())
 }
 
 
@@ -309,10 +287,10 @@ plot_exposition_histograms <- function(data, parameter, threshold_values, axes, 
         label = openair::quickText(paste0("Bevölkerungsexposition ", airquality.methods::longpollutant(pollutant))),
         subtitle = paste0("Anzahl Personen, Wohnbevölkerung ",sub," im Jahr ",year)
       ),
-      captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
+      captionlab = ggplot2::labs(caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS"),
       theme = theme
     ) +
-      ggplot2::theme(legend.position = "none")
+      ggplot2::guides(fill = "none") # the classes need no legend; the thresholds have one
   })
 }
 
@@ -337,7 +315,7 @@ plot_exposition_cumulative <- function(data, parameter, threshold_values, axes, 
   plot_all <- ggplot_exposition_cumulative_years(
     data, x = "concentration", y = "population_cum_rel", xbreaks = pars$xbreaks, threshold = threshold, xlabel = xlabel,
     title = title, subtitle = paste0("relativer Anteil (kumuliert), Wohnbevölkerung ", sub),
-    caption = "Datengrundlage: BAFU & BFS", theme = theme
+    caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS", theme = theme
   )
 
   plots_years <- purrr::map(rlang::set_names(unique(data$year)), function(year) {
@@ -349,7 +327,7 @@ plot_exposition_cumulative <- function(data, parameter, threshold_values, axes, 
         label = title,
         subtitle = openair::quickText(paste0("relativer Anteil (kumuliert), Wohnbevölkerung ",sub," im Jahr ",year))
       ),
-      captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS"),
+      captionlab = ggplot2::labs(caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS"),
       theme = theme
     )
   })

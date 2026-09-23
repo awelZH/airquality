@@ -211,3 +211,37 @@ parameter_setting <- function(settings, parameter) {
   }
   settings[[parameter]]
 }
+
+
+#' Add threshold lines to a plot, named in the legend
+#'
+#' The lines are drawn from their labels, so ggplot2 puts them into the legend (line type per label,
+#' colours through `override.aes`) instead of writing the labels into the panel.
+#'
+#' @param plot A ggplot object.
+#' @param threshold Threshold lines as returned by [extract_threshold()] (`value`, `labels`, `color`,
+#'   `linetype`, `linesize`); nothing is added for `value = NA`.
+#' @param direction Whether the lines are vertical (value on the x axis) or horizontal.
+#'
+#' @return The plot.
+#'
+#' @keywords internal
+add_threshold_lines <- function(plot, threshold, direction = c("vertical", "horizontal")) {
+
+  direction <- rlang::arg_match(direction)
+  if (is.na(sum(threshold$value))) return(plot)
+
+  lines <- tibble::tibble(label = factor(threshold$labels, levels = threshold$labels), value = threshold$value)
+  line <- if (direction == "vertical") {
+    ggplot2::geom_vline(data = lines, mapping = ggplot2::aes(xintercept = value, linetype = label),
+                        color = threshold$color, linewidth = threshold$linesize)
+  } else {
+    ggplot2::geom_hline(data = lines, mapping = ggplot2::aes(yintercept = value, linetype = label),
+                        color = threshold$color, linewidth = threshold$linesize)
+  }
+
+  plot +
+    line +
+    ggplot2::scale_linetype_manual(name = NULL, values = rlang::set_names(threshold$linetype, threshold$labels)) +
+    ggplot2::guides(linetype = ggplot2::guide_legend(override.aes = list(color = threshold$color)))
+}

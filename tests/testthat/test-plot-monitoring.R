@@ -181,3 +181,17 @@ test_that("plot_threshold_comparison() keeps the categories of each panel and th
   expect_false("NA" %in% legend_texts(plot)) # the filled categories must not reach the legend
   expect_match(plot$labels$caption, "^Referenzwerte nach heutigem Stand") # the thresholds are the current ones
 })
+
+test_that("the thresholds of a time series are named in the legend, not written into the panel", {
+  data <- tibble::tibble(
+    year = 2020:2021, site = "A", pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2", unit = "µg/m3",
+    concentration = c(20, 25), siteclass = factor("städtisch - Hintergrund", levels = siteclasses)
+  )
+
+  plot <- plot_monitoring_timeseries(data, "NO2", axes = list(NO2 = list(ylim = c(0, 70), ybreaks = seq(0, 70, 10))),
+                                     threshold_values = make_threshold_values(),
+                                     colour_scale = ggplot2::scale_color_discrete())[["NO2"]]
+
+  expect_contains(legend_texts(plot), c("LRV Grenzwert", "WHO Richtwert"))
+  expect_false(any(purrr::map_lgl(plot$layers, \(layer) inherits(layer$geom, "GeomText"))))
+})

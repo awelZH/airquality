@@ -180,16 +180,7 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
     captionlab +
     theme
 
-  if (!is.na(sum(threshold$value))){
-    text <- tibble::tibble(x = rep(min(data$year), length(threshold$value)), y = threshold$value, label = threshold$labels)
-    plot <-
-      plot +
-      ggplot2::geom_hline(yintercept = threshold$value, color = threshold$color, linetype = threshold$linetype, linewidth = threshold$linesize) +
-      ggplot2::geom_text(data = text, mapping = ggplot2::aes(x = x, y = y, label = label), size = threshold$labelsize,
-                         hjust = 0, vjust = 0, nudge_y = pmax(0, 0.01 * max(ylims), na.rm = TRUE), inherit.aes = FALSE)
-  }
-
-  return(plot)
+  add_threshold_lines(plot, threshold, "horizontal")
 }
 
 
@@ -209,7 +200,7 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
 #' @keywords internal
 plot_monitoring_timeseries <- function(data, parameters, axes, threshold_values, colour_scale = NULL, pointsize = 2,
                                             theme = ggplot2::theme_minimal(),
-                                            caption = "Datenabdeckung: Kanton Zürich, Daten: Ostluft & NABEL (BAFU & Empa)") {
+                                            caption = "Datenabdeckung: Kanton Zürich, Referenzwerte nach heutigem Stand, Daten: Ostluft & NABEL (BAFU & Empa)") {
 
   purrr::map(rlang::set_names(parameters), function(parameter) {
 

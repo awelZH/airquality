@@ -164,3 +164,18 @@ test_that("a cumulative plot of one year draws the other years in the background
   expect_equal(unique(layers[[2]]$colour), "#50586C")
   expect_null(plot$labels$colour)
 })
+
+test_that("the thresholds of a distribution are named in the legend, not written into the panel", {
+  data <- tibble::tibble(
+    year = 2020, pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2",
+    concentration = c(5, 15, 35), population = 10, population_cum_rel = c(1, 2, 3) / 3
+  )
+  axes <- list(NO2 = list(barwidth = 0.9, xbreaks = seq(0, 55, 5)))
+
+  hist <- plot_exposition_histograms(data, "NO2", make_threshold_values(), axes = axes)[["2020"]]
+  cumul <- plot_exposition_cumulative(data, "NO2", make_threshold_values(), axes = axes)[["2020"]]
+
+  expect_contains(legend_texts(hist), c("LRV Grenzwert", "WHO Richtwert"))
+  expect_contains(legend_texts(cumul), c("LRV Grenzwert", "WHO Richtwert"))
+  expect_false(any(purrr::map_lgl(hist$layers, \(layer) inherits(layer$geom, "GeomText"))))
+})

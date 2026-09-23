@@ -12,7 +12,8 @@ plot_monitoring_timeseries(
   colour_scale = NULL,
   pointsize = 2,
   theme = ggplot2::theme_minimal(),
-  caption = "Datenabdeckung: Kanton Zürich, Daten: Ostluft & NABEL (BAFU & Empa)"
+  caption =
+    "Datenabdeckung: Kanton Zürich, Referenzwerte nach heutigem Stand, Daten: Ostluft & NABEL (BAFU & Empa)"
 )
 }
 \arguments{

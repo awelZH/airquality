@@ -9,6 +9,7 @@ plot_premature_deaths(
   parameters,
   relative = FALSE,
   covid_years = 2020:2022,
+  uncertainty_scenario = "tatsächliche Belastung",
   theme = ggplot2::theme_minimal()
 )
 }
@@ -20,6 +21,8 @@ plot_premature_deaths(
 \item{relative}{Deaths per 100'000 inhabitants instead of absolute numbers.}
 
 \item{covid_years}{Years marked as exceptional (Covid-19).}
+
+\item{uncertainty_scenario}{Scenario the uncertainty ranges belong to; the avoided deaths get none.}
 
 \item{theme}{ggplot2 theme.}
 }

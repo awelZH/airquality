@@ -36,3 +36,11 @@ test_that("plot_premature_deaths() shows deaths per 100'000 inhabitants when rel
   # uncertainty range: lower bound up to upper bound plus the part below the minimum concentration
   expect_equal(unique(relative[[3]]$ymax), (120 + 10) / 200000 * 1e5)
 })
+
+test_that("plot_premature_deaths() draws the uncertainty only for the actual exposure", {
+  plots <- plot_premature_deaths(make_outcomes(), "NO2")
+  uncertainty <- layer_data_all(plots$NO2)[[3]] # bars, zero line, then the uncertainty ranges
+
+  expect_equal(nrow(uncertainty), 3) # three years of the actual exposure, not six rows for both scenarios
+  expect_equal(unique(uncertainty$ymax), 120 + 10)
+})

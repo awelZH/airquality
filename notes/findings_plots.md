@@ -236,4 +236,6 @@ per hectare and year; it stands on the monitoring page between the deposition of
 relative comparison. The three nitrogen plots of the monitoring page (Bachtel bars, exceedance,
 relative comparison) also carry the threshold legend without title and closer to the axis
 (user decision 2026-09-23); as in the point time series, `legend.box.spacing` applies to all legends
-of the plot, so the legend on the right moves closer to the panel too.
+of the plot, so the legend on the right moves closer to the panel too. The four nitrogen plots stand
+in two tabsets (`print_tabset()`, user decision 2026-09-23): "Bachtel Messreihe" / "alle seit 2019" and
+"absolut" (exceedance, default) / "relativ" (share of the critical load).

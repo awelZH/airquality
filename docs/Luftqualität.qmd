@@ -78,22 +78,24 @@ get_plot(plots, "timeseries_siteclass", "O3_peakseason_mean_d1_max_mean_h8gl")
 
 ### Stickstoffeintrag in empfindliche Ökosysteme
 
-```{r}
-#| label: fig-ts-ndep-bachtel
-get_plot(plots, "timeseries_ndep_bachtel")
-```
+#### Zeitreihen
 
 ```{r}
-#| label: fig-ts-ndep-all
-get_plot(plots, "timeseries_ndep_all")
+#| label: tabs-ndep-sites
+#| output: asis
+print_tabset(list(
+  "Bachtel Messreihe" = get_plot(plots, "timeseries_ndep_bachtel"),
+  "alle seit 2019" = get_plot(plots, "timeseries_ndep_all")
+))
 ```
 
-```{r}
-#| label: fig-ts-ndep-all-exceedance
-get_plot(plots, "timeseries_ndep_exceedance")
-```
+#### Überschreitung der kritischen Eintragsraten
 
 ```{r}
-#| label: fig-ts-ndep-all-cln
-get_plot(plots, "timeseries_ndep_all_vs_CLN")
+#| label: tabs-ndep-cln
+#| output: asis
+print_tabset(list(
+  absolut = get_plot(plots, "timeseries_ndep_exceedance"),
+  relativ = get_plot(plots, "timeseries_ndep_all_vs_CLN")
+))
 ```

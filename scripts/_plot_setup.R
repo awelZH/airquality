@@ -96,7 +96,7 @@ immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10
 col_lrv <- "red3" # color of LRV threshold value
 col_who <- "gray30" # color of WHO guideline threshold value
 lty_lrv <- 1 # line type of LRV threshold value
-lty_who <- 2 # line type WHO guideline threshold value
+lty_who <- 1 # line type WHO guideline threshold value (solid, as the LRV limit)
 lsz_lrv <- 1 # line width of LRV threshold value
 lsz_who <- 1 # line width of WHO guideline threshold value
 lbsz <- 4 # label size of threshold value line text
@@ -147,7 +147,7 @@ theme_ts <-
   ggplot2::theme(
     plot.title = ggplot2::element_text(size = ggplot2::rel(1)),
     plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
-    plot.caption = ggplot2::element_text(hjust = 1, color = "gray40", size = ggplot2::rel(0.66)),
+    plot.caption = ggplot2::element_text(hjust = 0, color = "gray40", size = ggplot2::rel(0.66)),
     plot.background = ggplot2::element_blank(),
     panel.grid.major.x = ggplot2::element_blank(),
     panel.grid.minor.x = ggplot2::element_blank(),

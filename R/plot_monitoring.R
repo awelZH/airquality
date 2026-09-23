@@ -305,7 +305,7 @@ plot_ndep_bars <- function(data, xlim = NULL, xbreaks = ggplot2::waiver(), linew
     ggplot2::geom_bar(stat = "identity") +
     # the critical load of the site, named in the legend
     ggplot2::geom_hline(data = cln, mapping = ggplot2::aes(yintercept = cln, group = site, linetype = reference_label), color = colour, linewidth = linewidth) +
-    threshold_legend(reference_label, colour, 1) +
+    threshold_legend(reference_label, colour, 1, title = NULL) +
     ggplot2::scale_x_continuous(limits = xlim, breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(expand = c(0.01,0.01)) +
     ggplot2::scale_fill_manual(values = c("aus NH3-Quellen" = "#2A5676", "aus NOx-Quellen" = "#B696D6")) +
@@ -315,6 +315,7 @@ plot_ndep_bars <- function(data, xlim = NULL, xbreaks = ggplot2::waiver(), linew
       legend.title = ggplot2::element_blank(),
       legend.position = "right" # the source categories; the critical load keeps its legend at the bottom
     ) +
+    threshold_legend_spacing() + # the complete theme above dropped it
     ggplot2::ggtitle(
       label = openair::quickText(title),
       subtitle = expression("Stickstoffeintrag (kg-N " * ha^-1 * Jahr^-1 * ")")
@@ -389,7 +390,7 @@ plot_ndep_sites_vs_cln <- function(data, relative = TRUE, colour_scale = NULL, l
     dplyr::filter(year >= 2019) |>
     ggplot2::ggplot(mapping = mppng) +
     ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = at, linetype = reference_label), color = colour, linewidth = linewidth) +
-    threshold_legend(reference_label, colour, 1) +
+    threshold_legend(reference_label, colour, 1, title = NULL) +
     ggplot2::geom_point(size = pointsize * 1.5, position = ggplot2::position_jitter(width = 0.1, height = 0, seed = jitter_seed)) +
     ggplot2::scale_x_continuous(limits = c(2019,NA), expand = c(0.01,0.01)) +
     yscale +
@@ -399,7 +400,8 @@ plot_ndep_sites_vs_cln <- function(data, relative = TRUE, colour_scale = NULL, l
       subtitle = subtitle
     ) +
     ggplot2::labs(caption = "krit. Eintragsraten nach heutigem Stand, Daten: Ostluft") +
-    theme
+    theme +
+    threshold_legend_spacing() # the complete theme above dropped it
 }
 
 

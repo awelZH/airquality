@@ -233,4 +233,7 @@ In the point time series the threshold lines are drawn first, so the measured va
 (user decision 2026-09-23); the threshold legend carries no title there and in the plot of all years
 either. `plot_ndep_sites_vs_cln(relative = FALSE)` shows the exceedance of the critical load in kg N
 per hectare and year; it stands on the monitoring page between the deposition of all sites and their
-relative comparison.
+relative comparison. The three nitrogen plots of the monitoring page (Bachtel bars, exceedance,
+relative comparison) also carry the threshold legend without title and closer to the axis
+(user decision 2026-09-23); as in the point time series, `legend.box.spacing` applies to all legends
+of the plot, so the legend on the right moves closer to the panel too.

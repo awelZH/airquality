@@ -229,3 +229,8 @@ of the monitoring page carry it as well; at the Bachtel the source categories mo
 the two legends do not sit on top of each other. The WHO guideline is drawn solid, like the LRV limit
 (user decision 2026-09-23); the two are told apart by colour and by the legend. Captions are
 left-aligned in `theme_ts`, only the maps keep theirs centred.
+In the point time series the threshold lines are drawn first, so the measured values lie over them
+(user decision 2026-09-23); the threshold legend carries no title there and in the plot of all years
+either. `plot_ndep_sites_vs_cln(relative = FALSE)` shows the exceedance of the critical load in kg N
+per hectare and year; it stands on the monitoring page between the deposition of all sites and their
+relative comparison.

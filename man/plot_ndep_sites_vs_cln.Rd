@@ -2,10 +2,11 @@
 % Please edit documentation in R/plot_monitoring.R
 \name{plot_ndep_sites_vs_cln}
 \alias{plot_ndep_sites_vs_cln}
-\title{Plot the yearly nitrogen deposition of all sites since 2019 relative to the critical load}
+\title{Plot the yearly nitrogen deposition of all sites since 2019 against the critical load}
 \usage{
 plot_ndep_sites_vs_cln(
   data,
+  relative = TRUE,
   colour_scale = NULL,
   linewidth = 1,
   colour = "red3",
@@ -18,7 +19,9 @@ plot_ndep_sites_vs_cln(
 \arguments{
 \item{data}{Nitrogen deposition as prepared by \code{\link[=prepare_plot_ndep]{prepare_plot_ndep()}}.}
 
-\item{linewidth, colour}{Width and colour of the line at 100 \%.}
+\item{relative}{Share of the critical load instead of the exceedance in absolute values.}
+
+\item{linewidth, colour}{Width and colour of the line at the critical load.}
 
 \item{pointsize}{Size of the points (drawn 1.5 times larger).}
 
@@ -32,6 +35,7 @@ plot_ndep_sites_vs_cln(
 A ggplot object.
 }
 \description{
-Plot the yearly nitrogen deposition of all sites since 2019 relative to the critical load
+\code{relative = TRUE} shows the deposition as a share of the critical load, \code{relative = FALSE} the
+exceedance in kg N per hectare and year; the reference line is the critical load itself.
 }
 \keyword{internal}

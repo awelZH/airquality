@@ -172,7 +172,9 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
                               theme = ggplot2::theme_minimal()) {
 
   plot <-
-    ggplot2::ggplot(data, mapping = mapping) +
+    # the threshold lines first, so the measured values are drawn over them
+    ggplot2::ggplot(data, mapping = mapping) |>
+    add_threshold_lines(threshold, "horizontal", legend_title = NULL) +
     ggplot2::geom_point(size = pointsize, shape = pointshape) +
     ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = ylims, breaks = ybreaks, expand = c(0.01,0.01)) +
@@ -180,7 +182,9 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
     captionlab +
     theme
 
-  add_threshold_lines(plot, threshold, "horizontal")
+  if (is.na(sum(threshold$value))) return(plot)
+
+  plot + threshold_legend_spacing() # the complete theme above dropped it
 }
 
 
@@ -353,30 +357,46 @@ plot_ndep_sites <- function(data, colour_scale = NULL, fill_scale = NULL, shape_
 }
 
 
-#' Plot the yearly nitrogen deposition of all sites since 2019 relative to the critical load
+#' Plot the yearly nitrogen deposition of all sites since 2019 against the critical load
+#'
+#' `relative = TRUE` shows the deposition as a share of the critical load, `relative = FALSE` the
+#' exceedance in kg N per hectare and year; the reference line is the critical load itself.
 #'
 #' @inheritParams plot_ndep_sites
-#' @param linewidth,colour Width and colour of the line at 100 %.
+#' @param relative Share of the critical load instead of the exceedance in absolute values.
+#' @param linewidth,colour Width and colour of the line at the critical load.
 #' @param reference_label Name of the critical load in the legend.
 #'
 #' @return A ggplot object.
 #'
 #' @keywords internal
-plot_ndep_sites_vs_cln <- function(data, colour_scale = NULL, linewidth = 1, colour = "red3", pointsize = 2, jitter_seed = 1,
-                                   reference_label = "krit. Eintragsrate", theme = ggplot2::theme_minimal()) {
+plot_ndep_sites_vs_cln <- function(data, relative = TRUE, colour_scale = NULL, linewidth = 1, colour = "red3", pointsize = 2,
+                                   jitter_seed = 1, reference_label = "krit. Eintragsrate", theme = ggplot2::theme_minimal()) {
+
+  if (relative) {
+    mppng <- ggplot2::aes(x = year, y = deposition / cln, color = ecosys)
+    yscale <- ggplot2::scale_y_continuous(limits = c(0,NA), expand = ggplot2::expansion(mult = c(0, 0.02)), labels = scales::percent_format())
+    subtitle <- expression("Stickstoffeintrag vs. kritische Eintragsrate (relativ)")
+    at <- 1
+  } else {
+    mppng <- ggplot2::aes(x = year, y = deposition - cln, color = ecosys)
+    yscale <- ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0.02, 0.02)))
+    subtitle <- expression("Überschreitung der kritischen Eintragsrate (kg-N " * ha^-1 * Jahr^-1 * ")")
+    at <- 0
+  }
 
   data |>
     dplyr::filter(year >= 2019) |>
-    ggplot2::ggplot(ggplot2::aes(x = year, y = deposition / cln, color = ecosys)) +
-    ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = 1, linetype = reference_label), color = colour, linewidth = linewidth) +
+    ggplot2::ggplot(mapping = mppng) +
+    ggplot2::geom_hline(mapping = ggplot2::aes(yintercept = at, linetype = reference_label), color = colour, linewidth = linewidth) +
     threshold_legend(reference_label, colour, 1) +
     ggplot2::geom_point(size = pointsize * 1.5, position = ggplot2::position_jitter(width = 0.1, height = 0, seed = jitter_seed)) +
     ggplot2::scale_x_continuous(limits = c(2019,NA), expand = c(0.01,0.01)) +
-    ggplot2::scale_y_continuous(limits = c(0,NA), expand = ggplot2::expansion(mult = c(0, 0.02)), labels = scales::percent_format()) +
+    yscale +
     colour_scale +
     ggplot2::ggtitle(
       label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit 2019"),
-      subtitle = expression("Stickstoffeintrag vs. kritische Eintragsrate (relativ)")
+      subtitle = subtitle
     ) +
     ggplot2::labs(caption = "krit. Eintragsraten nach heutigem Stand, Daten: Ostluft") +
     theme

@@ -89,6 +89,11 @@ get_plot(plots, "timeseries_ndep_all")
 ```
 
 ```{r}
+#| label: fig-ts-ndep-all-exceedance
+get_plot(plots, "timeseries_ndep_exceedance")
+```
+
+```{r}
 #| label: fig-ts-ndep-all-cln
 get_plot(plots, "timeseries_ndep_all_vs_CLN")
 ```

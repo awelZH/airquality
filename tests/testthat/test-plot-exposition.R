@@ -192,3 +192,14 @@ test_that("a distribution with only the threshold legend shows no legend title",
   expect_contains(legend_texts(hist), "LRV Grenzwert")
   expect_false("Referenz" %in% legend_texts(hist))
 })
+
+test_that("the plot of all years shows the thresholds without a legend title", {
+  data <- tibble::tibble(year = rep(2019:2020, each = 2), ndep_exmax = c(1, 5, 1, 5), n_ecosys_cum_rel = c(0.5, 1, 0.5, 1))
+  threshold <- list(value = 0, color = "red3", labels = "krit. Eintragsrate", labelsize = 4, linetype = 1, linesize = 1)
+
+  plot <- ggplot_exposition_cumulative_years(data, "ndep_exmax", "n_ecosys_cum_rel", xbreaks = seq(0, 5, 1),
+                                             threshold = threshold, xlabel = NULL, title = "t", subtitle = "s", caption = "c")
+
+  expect_contains(legend_texts(plot), c("krit. Eintragsrate", "Jahr")) # the year legend keeps its title
+  expect_false("Referenz" %in% legend_texts(plot))
+})

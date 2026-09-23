@@ -241,7 +241,7 @@ ggplot_exposition_cumulative_years <- function(data, x, y, xbreaks, threshold, x
 
   # the threshold lines first, so the years are drawn over them
   ggplot2::ggplot(data, mapping = ggplot2::aes(x = !!rlang::sym(x), y = !!rlang::sym(y), color = factor(year), group = year)) |>
-    add_threshold_lines(threshold) +
+    add_threshold_lines(threshold, legend_title = NULL) +
     ggplot2::geom_line(linewidth = 1) +
     ggplot2::scale_x_continuous(limits = range(xbreaks), breaks = xbreaks, expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(limits = c(0,1), expand = c(0.01,0.01), labels = scales::percent_format()) +
@@ -251,7 +251,8 @@ ggplot_exposition_cumulative_years <- function(data, x, y, xbreaks, threshold, x
     ggplot2::ggtitle(label = title, subtitle = subtitle) +
     ggplot2::labs(caption = caption) +
     theme +
-    ggplot2::theme(axis.title.x = ggplot2::element_text())
+    ggplot2::theme(axis.title.x = ggplot2::element_text()) +
+    threshold_legend_spacing() # the complete theme above dropped it
 }
 
 

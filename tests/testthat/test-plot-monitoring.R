@@ -109,7 +109,8 @@ test_that("plot_monitoring_timeseries() gives one plot per parameter, with its t
 
   expect_named(plots, "NO2")
   layers <- layer_data_all(plots$NO2)
-  expect_equal(layers[[2]]$yintercept, c(30, 10))
+  expect_equal(layers[[1]]$yintercept, c(30, 10)) # the thresholds are drawn first, behind the points
+  expect_equal(sort(layers[[2]]$y), c(20, 25))
 })
 
 test_that("the nitrogen deposition plots are built from the given data", {
@@ -196,7 +197,7 @@ test_that("the thresholds of a time series are named in the legend, not written 
   expect_false(any(purrr::map_lgl(plot$layers, \(layer) inherits(layer$geom, "GeomText"))))
 })
 
-test_that("the threshold legend is titled 'Referenz'", {
+test_that("the threshold legend of a time series carries no title", {
   data <- tibble::tibble(
     year = 2020:2021, site = "A", pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2", unit = "µg/m3",
     concentration = c(20, 25), siteclass = factor("städtisch - Hintergrund", levels = siteclasses)
@@ -206,7 +207,8 @@ test_that("the threshold legend is titled 'Referenz'", {
                                      threshold_values = make_threshold_values(),
                                      colour_scale = ggplot2::scale_color_discrete())[["NO2"]]
 
-  expect_contains(legend_texts(plot), "Referenz")
+  expect_contains(legend_texts(plot), c("LRV Grenzwert", "WHO Richtwert"))
+  expect_false("Referenz" %in% legend_texts(plot)) # the labels speak for themselves
 })
 
 test_that("the nitrogen plots name the critical load in the legend and in the caption", {
@@ -219,4 +221,18 @@ test_that("the nitrogen plots name the critical load in the legend and in the ca
   expect_contains(legend_texts(bars), c("Referenz", "krit. Eintragsrate"))
   expect_contains(legend_texts(vs_cln), c("Referenz", "krit. Eintragsrate"))
   expect_match(vs_cln$labels$caption, "^krit. Eintragsraten nach heutigem Stand")
+})
+
+test_that("plot_ndep_sites_vs_cln() shows the exceedance in absolute values as well", {
+  data <- prepare_plot_ndep(make_ndep()) |>
+    dplyr::mutate(year = 2020, estimated_class = "<5 kg-N")
+
+  relative <- plot_ndep_sites_vs_cln(data)
+  absolute <- plot_ndep_sites_vs_cln(data, relative = FALSE)
+
+  # deposition 20 with a critical load of 10, and 10 with 5
+  expect_equal(layer_data_all(relative)[[2]]$y, c(2, 2))
+  expect_equal(layer_data_all(absolute)[[2]]$y, c(10, 5))
+  expect_equal(layer_data_all(relative)[[1]]$yintercept[1], 1)
+  expect_equal(layer_data_all(absolute)[[1]]$yintercept[1], 0)
 })

@@ -65,6 +65,10 @@ plots$monitoring$timeseries_ndep_all$Ndep <-
   plot_ndep_sites(data_monitoring_ndep, colour_scale = scale_color_ecosys, fill_scale = scale_fill_ecosys, shape_scale = scale_shape_estimated,
                   pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
 
+plots$monitoring$timeseries_ndep_exceedance$Ndep <-
+  plot_ndep_sites_vs_cln(data_monitoring_ndep, relative = FALSE, colour_scale = scale_color_ecosys, linewidth = threshold_lrv_no2$lsz,
+                         colour = threshold_lrv_no2$col, pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
+
 plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
   plot_ndep_sites_vs_cln(data_monitoring_ndep, colour_scale = scale_color_ecosys, linewidth = threshold_lrv_no2$lsz, colour = threshold_lrv_no2$col,
                          pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
@@ -78,5 +82,6 @@ plots_monitoring <-
     plot_catalog(plots$monitoring$timeseries_siteclass, "timeseries_siteclass", names_to = "parameter"),
     plot_catalog(plots$monitoring$timeseries_ndep_bachtel$Ndep, "timeseries_ndep_bachtel"),
     plot_catalog(plots$monitoring$timeseries_ndep_all$Ndep, "timeseries_ndep_all"),
+    plot_catalog(plots$monitoring$timeseries_ndep_exceedance$Ndep, "timeseries_ndep_exceedance"),
     plot_catalog(plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep, "timeseries_ndep_all_vs_CLN")
   )

@@ -271,6 +271,18 @@ threshold_legend <- function(labels, colours, linetypes, position = "bottom", ti
       override.aes = list(color = colours),
       theme = ggplot2::theme(legend.title = if (is.null(title)) ggplot2::element_blank() else ggplot2::element_text())
     )),
-    if (is.null(title)) ggplot2::theme(legend.box.spacing = ggplot2::unit(4, "pt"))
+    if (is.null(title)) threshold_legend_spacing()
   )
+}
+
+
+#' Space between the axis title and a threshold legend without title
+#'
+#' Add it after a complete theme, which would drop the setting again.
+#'
+#' @return A ggplot2 theme.
+#'
+#' @keywords internal
+threshold_legend_spacing <- function() {
+  ggplot2::theme(legend.box.spacing = ggplot2::unit(4, "pt"))
 }

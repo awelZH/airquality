@@ -1,97 +1,91 @@
 year;pollutant;metric;parameter;outcome_type;population;scenario;outcome;outcome_lower;outcome_upper;outcome_delta_min_conc
-2010;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1377219;tatsächliche Belastung;605.2721437900276;353.30167898186437;868.3230596616747;0
+2010;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1377219;tatsächliche Belastung;627.7208086188463;378.96241245197547;854.7734876102975;0
 2010;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1377219;vermieden vs. 2015;0;NA;NA;0
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1377219;tatsächliche Belastung;326.39994712004557;64.01505706366363;600.4946023668542;0
-2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1377219;vermieden vs. 2015;-82.53378022856418;-16.47301784832969;-148.99794511765583;0
-2010;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1377219;tatsächliche Belastung;990.0905616814299;532.6730988335576;1444.8708959245466;0
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1377219;tatsächliche Belastung;319.7833834135124;49.13618840495311;583.5632729261158;0
+2010;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1377219;vermieden vs. 2015;-80.89699363204431;-12.656581300621745;-144.96873456833555;0
+2010;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1377219;tatsächliche Belastung;989.779510584636;548.1211103568701;1472.3042846932508;0
 2010;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1377219;vermieden vs. 2015;0;NA;NA;0
-2011;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1396575;tatsächliche Belastung;560.8488724150507;339.9222114676188;803.5705017360635;0
-2011;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1396575;vermieden vs. 2015;-27.648542305197793;-16.973150817846033;-39.044628651239464;0
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1396575;tatsächliche Belastung;363.91148386465755;79.14521089593373;663.2835900607399;0
-2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1396575;vermieden vs. 2015;-38.267014212367656;-8.46410100888508;-68.47509120588484;0
-2011;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1396575;tatsächliche Belastung;999.8957567079707;490.8626244895239;1453.0482584201804;0
+2011;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1396575;tatsächliche Belastung;553.193725408903;325.7472034049231;766.991109743149;0
+2011;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1396575;vermieden vs. 2015;-27.28341933629065;-16.278524328275353;-37.34979539819312;0
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1396575;tatsächliche Belastung;370.09865218752816;68.64124342530627;667.3726035471478;0
+2011;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1396575;vermieden vs. 2015;-38.90309178325856;-7.34535871749469;-68.8796183683254;0
+2011;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1396575;tatsächliche Belastung;986.3920481589324;496.22892778761354;1416.2860428167028;0
 2011;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1396575;vermieden vs. 2015;0;NA;NA;0
-2012;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1412648;tatsächliche Belastung;549.3106922924892;325.65135210081735;797.5056708491593;0
-2012;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1412648;vermieden vs. 2015;-47.63613221402488;-28.612076192188056;-68.13371989583402;0
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1412648;tatsächliche Belastung;346.4536314987817;73.58752541741558;582.7307550946275;0
-2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1412648;vermieden vs. 2015;-83.50874669105434;-18.054972518386137;-138.25387970337317;0
-2012;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1412648;tatsächliche Belastung;776.0348603938544;399.0574577939128;1130.866713841132;0
+2012;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1412648;tatsächliche Belastung;550.0624714065825;359.64741122791713;756.9420506852616;0
+2012;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1412648;vermieden vs. 2015;-47.69920731575917;-31.53698500238704;-64.82867969855602;0
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1412648;tatsächliche Belastung;329.8894626890759;62.64481707947605;610.1205761105284;0
+2012;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1412648;vermieden vs. 2015;-79.6031312288759;-15.380108476459917;-144.48242856323827;0
+2012;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1412648;tatsächliche Belastung;758.8716286497454;409.08626266103397;1099.4091362545282;0
 2012;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1412648;vermieden vs. 2015;0;NA;NA;0
-2013;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1429665;tatsächliche Belastung;610.6286243227541;337.5823938075981;853.9221353199947;0
-2013;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1429665;vermieden vs. 2015;-13.727048526083422;-7.70029776615354;-18.940839839404134;0
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1429665;tatsächliche Belastung;329.2286338579271;84.25043152954686;580.3895202615549;0
-2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1429665;vermieden vs. 2015;-96.0946486525176;-24.98814072426042;-166.55892323740932;0
-2013;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1429665;tatsächliche Belastung;985.6996361322394;570.0151601946252;1410.3004281250198;0
+2013;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1429665;tatsächliche Belastung;601.5946243639966;375.5098057830333;837.496379178122;0
+2013;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1429665;vermieden vs. 2015;-13.53058878752472;-8.548347553063934;-18.593545696103774;0
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1429665;tatsächliche Belastung;325.4953915643006;74.64151346885593;607.0405337488554;0
+2013;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1429665;vermieden vs. 2015;-95.02855924666346;-22.152563969221546;-173.88930011848515;0
+2013;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1429665;tatsächliche Belastung;1025.7251791717022;545.2836922570364;1481.3579934487666;0
 2013;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1429665;vermieden vs. 2015;0;NA;NA;0
-2014;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1450433;tatsächliche Belastung;511.1972061662957;304.28728590718583;719.0955096988453;0
-2014;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1450433;vermieden vs. 2015;-89.09659503376974;-53.72880323468564;-123.66148596678931;0
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1450433;tatsächliche Belastung;309.7297182408833;59.66980174843627;541.4784513196693;0
-2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1450433;vermieden vs. 2015;-128.36522014739234;-25.190529504841408;-220.49724288208859;0
-2014;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1450433;tatsächliche Belastung;492.65743579000457;275.682838200078;713.8402257164962;0
-2014;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1450433;vermieden vs. 2015;-83.22382473794198;-47.205588493766186;-118.89036251776486;0
-2015;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1470623;tatsächliche Belastung;648.2284039665991;388.59697719332183;903.9783060523762;0
+2014;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1450433;tatsächliche Belastung;529.8158468281844;306.3339599372339;717.2680507988338;0
+2014;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1450433;vermieden vs. 2015;-92.23209408208197;-54.083406768578016;-123.36223917788641;0
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1450433;tatsächliche Belastung;291.54700263745724;86.76818885029897;518.0077495644862;0
+2014;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1450433;vermieden vs. 2015;-120.99406201363138;-36.558433675280696;-211.32028169110686;0
+2014;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1450433;tatsächliche Belastung;477.85413152360485;252.7951043847598;690.6068897276954;0
+2014;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1450433;vermieden vs. 2015;-80.79865969872316;-43.34731918630544;-115.19436859320763;0
+2015;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1470623;tatsächliche Belastung;632.1066971703075;368.7157167214722;866.916075050912;0
 2015;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1470623;vermieden vs. 2015;0;NA;NA;0
-2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1470623;tatsächliche Belastung;447.03409126979375;94.98266915341557;804.2662373274632;0
+2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1470623;tatsächliche Belastung;452.5871350378714;38.208659528454675;776.6996950384769;0
 2015;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1470623;vermieden vs. 2015;0;NA;NA;0
-2015;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1470575;tatsächliche Belastung;615.289409565959;316.9077054832213;900.201618322938;0
+2015;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1470575;tatsächliche Belastung;609.4827887905792;291.25577539986114;873.9895080681613;0
 2015;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1470575;vermieden vs. 2015;0;NA;NA;0
-2016;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1492114;tatsächliche Belastung;516.1716931370875;324.05184944984626;705.4615435385048;0
-2016;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1492114;vermieden vs. 2015;-103.24297790349226;-65.60758494224638;-139.38781133479893;0
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1492114;tatsächliche Belastung;310.40524095559243;78.46586617289972;528.6019233534695;0
-2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1492114;vermieden vs. 2015;-132.337147213165;-34.02584411153936;-221.698409966324;0
-2016;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1492070;tatsächliche Belastung;502.1825567068936;268.1190380900562;709.7429424506547;0
-2016;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1492070;vermieden vs. 2015;-85.92077278561442;-46.53747253383614;-119.85520527322774;0
-2017;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1508454;tatsächliche Belastung;490.1581266408642;283.2200154806539;698.7530254630099;0
-2017;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1508454;vermieden vs. 2015;-124.22409580576107;-72.72732657568434;-174.7053302209772;0
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1508454;tatsächliche Belastung;376.12798085818076;63.787744458608756;678.8828029244919;0
-2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1508454;vermieden vs. 2015;-74.43621474453278;-12.86007642058334;-131.8729655899408;0
-2017;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1508411;tatsächliche Belastung;500.05209465076723;246.78254610426947;746.0105946197343;0
-2017;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1508411;vermieden vs. 2015;-83.62625527431146;-41.89116819674385;-122.9117076483958;0
-2018;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1525108;tatsächliche Belastung;430.23897790754154;243.74128190707506;603.1986666951359;0
-2018;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1525108;vermieden vs. 2015;-209.87290504100906;-120.58326949310037;-290.35332382608044;0
-2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1525108;tatsächliche Belastung;524.9596745365054;55.363190095002885;946.6626444636072;0
+2016;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1492114;tatsächliche Belastung;506.4540936664964;284.27240485767186;706.7705512862144;0
+2016;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1492114;vermieden vs. 2015;-101.36220144578078;-57.69673901626902;-139.63448111205605;0
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1492114;tatsächliche Belastung;304.3287465976464;61.36321198316364;536.6333188619474;0
+2016;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1492114;vermieden vs. 2015;-129.80499607516907;-26.641768794879994;-224.93060631162598;0
+2016;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1492070;tatsächliche Belastung;499.9752168871029;264.1113488937008;720.9662874729181;0
+2016;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1492070;vermieden vs. 2015;-85.5548553192267;-45.85307025274176;-121.6632702227962;0
+2017;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1508454;tatsächliche Belastung;498.89287013524824;273.2882830453743;707.0384935342051;0
+2017;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1508454;vermieden vs. 2015;-126.36686650382387;-70.22066377050982;-176.68054301953168;0
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1508454;tatsächliche Belastung;363.77184327711234;51.27883574727056;668.3986434742515;0
+2017;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1508454;vermieden vs. 2015;-72.0446647898869;-10.345334857225623;-129.92140258579104;0
+2017;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1508411;tatsächliche Belastung;516.9151641650016;272.76569963601247;729.476162308606;0
+2017;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1508411;vermieden vs. 2015;-86.35916287065936;-46.231651800407974;-120.30997348191465;0
+2018;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1525108;tatsächliche Belastung;430.5983177984507;260.5196988538379;567.1110231770831;0
+2018;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1525108;vermieden vs. 2015;-210.04244174418432;-128.72125995398005;-273.7471924211168;0
+2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1525108;tatsächliche Belastung;516.4208328022737;83.24954043737205;943.4506978237208;0
 2018;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1525108;vermieden vs. 2015;0;NA;NA;0
-2018;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1525059;tatsächliche Belastung;642.1671718076002;336.44685204378015;901.0428264686773;0
+2018;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1525059;tatsächliche Belastung;623.2891805484918;357.0848239035109;896.8564161567219;0
 2018;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1525059;vermieden vs. 2015;0;NA;NA;0
-2019;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1543433;tatsächliche Belastung;386.6572354523134;230.9585916851048;563.4855768636085;0
-2019;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1543433;vermieden vs. 2015;-261.9068495456925;-158.4694689362512;-376.04763044498065;0
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1543433;tatsächliche Belastung;442.3959340698285;82.09848511078076;794.1066353200863;0
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1543433;vermieden vs. 2015;-5.800200235932493;-1.0956475454853773;-10.22531888932508;0
-2019;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1543384;tatsächliche Belastung;495.1197792184878;241.54371895667367;713.1981276397918;0
-2019;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1543384;vermieden vs. 2015;-120.34573676142509;-59.63170997083847;-170.98605160145905;0
-2020;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1557640;tatsächliche Belastung;228.06003514989652;141.72295078835418;321.3642791494856;0
-2020;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-404.6814190348257;-254.54630867736103;-562.7680674363522;0
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1557640;tatsächliche Belastung;379.21708833105214;66.94753667451951;683.8146947907064;0
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-53.8920346370092;-9.68555657883185;-95.437232330445;0
-2020;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1557640;tatsächliche Belastung;380.8824908302363;216.1346739750894;559.0865715772118;0
-2020;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-219.85373662287452;-126.41956671372049;-318.04488635596124;0
-2021;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1568891;tatsächliche Belastung;221.2210735637401;127.11596257052207;318.1215938784036;0
-2021;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1568891;vermieden vs. 2015;-408.8576046167756;-238.1450217076321;-579.7197734529835;0
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1568891;tatsächliche Belastung;330.4689492106071;44.29344603503452;580.2627998994733;0
-2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1568891;vermieden vs. 2015;-107.74841746659985;-14.71941733909508;-185.97954560656262;0
-2021;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1568891;tatsächliche Belastung;389.92754559925504;211.8883496356937;560.3990941684397;0
-2021;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1568891;vermieden vs. 2015;-199.18174391571222;-109.73164587334284;-282.4535641357925;0
-2022;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1584177;tatsächliche Belastung;209.24045230517436;117.08197072893968;288.91516190549214;0
-2022;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1584177;vermieden vs. 2015;-448.877287887452;-254.71846609784126;-612.2852334904996;0
-2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1584177;tatsächliche Belastung;477.51364593716283;109.3399301768401;808.5495822695048;0
+2019;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1543433;tatsächliche Belastung;388.1399538388594;245.3559922668308;543.696204134181;0
+2019;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1543433;vermieden vs. 2015;-262.8786862656635;-168.14970083291706;-363.450549763078;0
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1543433;tatsächliche Belastung;453.74038939998974;97.38400644380926;789.8175802750256;0
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1543433;vermieden vs. 2015;-5.945543647009345;-1.298683350788579;-10.172370626224051;0
+2019;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1543384;tatsächliche Belastung;488.76242014876414;253.39905984142513;727.8644992043912;0
+2019;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1543384;vermieden vs. 2015;-118.84750957787469;-62.51367506282861;-174.33902766418566;0
+2020;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1557640;tatsächliche Belastung;225.28874739086473;118.51778732521507;324.84201460053407;0
+2020;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-399.92000460213603;-213.55868477060045;-568.5767485900673;0
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1557640;tatsächliche Belastung;381.22469556180044;77.33217319935345;683.037454289333;0
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-54.170969889954335;-11.181890044123932;-95.33319181329512;0
+2020;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1557640;tatsächliche Belastung;381.0259807778399;204.21158702669874;571.3487587215538;0
+2020;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-219.93400303865712;-119.55904071921236;-324.6911506455135;0
+2021;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1568891;tatsächliche Belastung;219.2840220859025;129.6011713597407;310.3700004043958;0
+2021;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1568891;vermieden vs. 2015;-405.3912759426087;-242.71433218272472;-566.2341587955057;0
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1568891;tatsächliche Belastung;334.63306880727953;51.82433402299648;588.5301380901305;0
+2021;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1568891;vermieden vs. 2015;-109.07539305722179;-17.213254847268345;-188.52066803569824;0
+2021;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1568891;tatsächliche Belastung;402.6982022661184;198.78025311398426;594.8569025712088;0
+2021;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1568891;vermieden vs. 2015;-205.50074253218577;-103.04627578951602;-299.0012725575584;0
+2022;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1584177;tatsächliche Belastung;207.31534450910135;121.57612744514549;292.7923469930387;0
+2022;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1584177;vermieden vs. 2015;-444.8781246928538;-264.3157685897563;-620.1305281142476;0
+2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1584177;tatsächliche Belastung;470.35043271034186;91.85988157511537;855.5772265604802;0
 2022;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1584177;vermieden vs. 2015;0;NA;NA;0
-2022;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1584177;tatsächliche Belastung;474.48014224858116;255.48435793723127;687.0382936522076;0
-2022;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1584177;vermieden vs. 2015;-146.43386062220793;-79.96116372114943;-209.09843773533817;0
-2023;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1609642;tatsächliche Belastung;134.8434953450054;84.05260356687782;193.7387091964207;0
-2023;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1609642;vermieden vs. 2015;-525.81851681398;-331.6589374561448;-745.1610709048076;0
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1609642;tatsächliche Belastung;417.5438427420585;98.43629195617257;739.5823268199258;0
-2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1609642;vermieden vs. 2015;-39.115973740262916;-9.375812777941803;-68.09393596933785;0
-2023;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1609642;tatsächliche Belastung;307.3743555940563;165.22844599241628;438.7822865287048;0
-2023;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1609642;vermieden vs. 2015;-322.54289117036535;-175.81720827550387;-454.46152464774724;0
-2024;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1624157;tatsächliche Belastung;116.09594339240073;71.23909135472353;158.30897536974322;0
-2024;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1624157;vermieden vs. 2015;-558.0756779867908;-346.67020251329177;-752.2562200411217;0
-2024;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1624157;tatsächliche Belastung;373.8541774427211;79.78854473820675;668.8473911278695;0
-2024;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1624157;vermieden vs. 2015;-104.60346058761871;-22.72287782825522;-183.74598724612088;0
-2024;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1624157;tatsächliche Belastung;250.2878335637114;125.14836717661501;358.11454659697057;0
-2024;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1624157;vermieden vs. 2015;-380.9613003863308;-193.35014967104394;-538.0539228079451;0
-2025;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1637046;tatsächliche Belastung;1.9418043757941075;1.1056141233645977;2.7875928503541028;0
-2025;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1637046;vermieden vs. 2015;-7.400697391943615;-4.271641281386699;-10.478186098850571;0
-2025;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1637046;tatsächliche Belastung;5.933897076860194;1.0871743784795964;10.258408623544;0
-2025;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1637046;vermieden vs. 2015;-0.5303605994349452;-0.0989221576542243;-0.9018406655704201;0
-2025;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1637046;tatsächliche Belastung;5.641089534501594;2.9720261815053872;8.104703088492936;0
-2025;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1637046;vermieden vs. 2015;-3.309060252851596;-1.7689011626623534;-4.689690575809628;0
+2022;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1584177;tatsächliche Belastung;477.6743477778841;251.01027247118736;655.5639259933685;0
+2022;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1584177;vermieden vs. 2015;-147.38913217121512;-78.58319929487857;-199.93578286335082;0
+2023;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1609642;tatsächliche Belastung;134.77255624678915;76.3449456606244;196.1356103208942;0
+2023;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1609642;vermieden vs. 2015;-525.5505929322989;-301.78777346804566;-753.9571961465016;0
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1609642;tatsächliche Belastung;430.2367764866859;99.75414273750059;746.410683057574;0
+2023;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1609642;vermieden vs. 2015;-40.277999290992625;-9.500704763030711;-68.69689557624383;0
+2023;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1609642;tatsächliche Belastung;308.64775420885735;166.5941175491543;441.86925591498596;0
+2023;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1609642;vermieden vs. 2015;-323.83836870482264;-177.24687189415954;-457.51776407993736;0
+2024;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1624157;tatsächliche Belastung;113.62384265401467;64.41091620801541;158.30050601999005;0
+2024;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1624157;vermieden vs. 2015;-546.5614125239358;-314.02751935755214;-752.2174083113493;0
+2024;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1624157;tatsächliche Belastung;354.40191329822386;102.44514543739182;653.4340877618167;0
+2024;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1624157;vermieden vs. 2015;-99.27857427715008;-29.13639928034401;-179.68560005903396;0
+2024;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1624157;tatsächliche Belastung;249.36362554077994;130.7427771864664;373.5427692941627;0
+2024;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1624157;vermieden vs. 2015;-379.59661792489703;-201.85938263305337;-560.1868153351836;0

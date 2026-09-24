@@ -6,14 +6,14 @@
 # 3. compare:            compare_plots("reference", "candidate")
 #
 # The plot scripts run unchanged on the output CSVs in data/output/ (not touched in between);
-# the municipality map from geolion is replayed from tests/regression/inputs/ like in run_topic.R.
+# the municipality map from geolion is replayed from tests/regression/inputs/ like in run_pipeline.R.
 # Figures go to tests/regression/results/plots/<label>/ (gitignored), one file per row of the plot
 # tibbles, named <type>_<source>_<pollutant>_<year>.png and drawn with ragg at a fixed size.
 #
 # run from the project root in a fresh R session, e.g.
 #   Rscript -e 'source("tests/regression/run_plots.R"); run_plots("reference")'
 
-source("tests/regression/run_topic.R")
+source("tests/regression/run_pipeline.R") # frozen(), regression_dir
 
 plot_topics <- c("emissions", "monitoring", "exposition", "outcomes", "trends")
 

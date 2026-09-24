@@ -12,13 +12,12 @@ to debug and silently carry old errors forward: the double counting of exclave c
 
 ## Architecture decisions and why
 
-**1. `airquality.methods` 0.4.0 is used from a local installation for now.**
-Installed into renv with `renv::install("C:/Users/Public/Git Repos/airquality.methods")`; the lockfile
-records a local source. Switch to `awelZH/airquality.methods@<sha>` once 0.4.0 is pushed. With 0.4.0
-only its exports may carry the `airquality.methods::` prefix.
-**After (re)installing `airquality.methods`, restart the R session** before running `_setup.R`:
-`library()` does not reload an already loaded namespace, so `load_all()` would see the old version
-and offer to install it (answer "No"). Check with `getNamespaceVersion("airquality.methods")`.
+**1. `airquality.methods` 0.4.0 from GitHub.** Until 2026-09-24 installed from the local repo; since then
+from `awelZH/airquality.methods@7252da2` (pinned in `renv.lock`, `renv::install("awelZH/airquality.methods@<sha>")`
+for a newer version). With 0.4.0 only its exports may carry the `airquality.methods::` prefix.
+**After (re)installing `airquality.methods`, restart the R session** before running the pipeline:
+`library()` does not reload an already loaded namespace. Check with
+`getNamespaceVersion("airquality.methods")`.
 
 **2. Exposition is recomputed completely on every run** (2026-09-18). Downloads are cached by
 `airquality.methods` (`geo_admin_cache_dir()`), so a full run is cheap. The four exposition CSVs are
@@ -42,7 +41,7 @@ geolion for all years). Special features of the geolion map:
   to the municipality and are included; each cell matches exactly one feature, so nothing is counted
   twice
 * the Kloster Fahr (`bfs = 0`, "ausserkantonale Enklave") belongs to the Canton of Aargau and is
-  removed from the map in `_setup.R` (`drop_foreign_enclaves()`, 1 cell / 23 inhabitants in 2024)
+  removed from the map in `pipelines/setup.R` (`drop_foreign_enclaves()`, 1 cell / 23 inhabitants in 2024)
 * cells whose centre lies in a lake without municipality (`bfs = 0`) are inhabited shore cells: they
   get the nearest municipality (`sf::st_nearest_feature`, 68 cells / 454 inhabitants in 2024)
 
@@ -68,15 +67,15 @@ PM2.5:PM10 ratio per year at NABEL sites, without Bern-Bollwerk). Years without 
 `NA` with a warning instead of an error. Both models are **refitted on every run** with the current
 monitoring data (2026-09-18): fitting takes < 1 s and all years share one method and one data state –
 consistent with the full recompute (decision 2). Price: earlier years shift slightly with every
-update (O3 peak season up to 0.9 %, PM2.5 up to 0.5 %). Every run appends its coefficients to
-`data/log/exposition_derivation_coefficients.csv` (not part of the contract). A year-specific
+update (O3 peak season up to 0.9 %, PM2.5 up to 0.5 %). Every refit appends its coefficients to
+`data/log/exposition_derivation_coefficients.csv` (not part of the contract; in the pipeline only when the monitoring data change). A year-specific
 O3 slope would decouple the years but is less certain with 7–15 sites per year; the common slope stays
 (user decision 2026-09-24).
 
-**7. All analysis constants live in `settings.R`** (2026-09-18; own file since 2026-09-21,
-sourced by `_setup.R`, the plot scripts and the report), grouped by topic:
+**7. All analysis constants live in `settings.R`** (2026-09-18; own file since 2026-09-21, in the root
+since phase 2b, with the paths; sourced by `_targets.R`, the plot scripts and the report), grouped by topic:
 * names carry the topic as prefix (`emis_`, `mon_`, `trend_`, `expo_`, `plot_`), general settings
-  without (`year_offset`, `year_last`, `base_scenario_year`, `crs`); maps 1:1 to `config.yml` in 2b
+  without (`year_offset`, `year_last`, `base_scenario_year`, `crs`); no `config.yml` (phase 2b decision 8)
 * scripts only use them and do not `rm()` them; functions in `R/` get them as arguments, never as
   globals
 * **every year range ends at `year_last = current year − year_offset`**. Exception with its own

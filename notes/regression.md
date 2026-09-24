@@ -1,32 +1,35 @@
-# Regression workflow (phase 2a)
+# Regression workflow
 
 How refactorings are checked against the old code on frozen inputs.
 
 Online inputs can change between runs, so a comparison with the committed outputs mixes data and
-code changes. Instead, old and new code run on the **same frozen inputs**:
+code changes. Instead, old and new code run on the **same frozen inputs**.
 
-1. before refactoring: `source("tests/regression/run_topic.R"); run_topic("<topic>", "reference")`
-2. after refactoring: `run_topic("<topic>", "candidate")`
+**Pipeline (since phase 2b, 2026-09-24)**:
+
+1. before refactoring: `source("tests/regression/run_pipeline.R"); run_pipeline("reference")`
+2. after refactoring: `run_pipeline("candidate")`
 3. `source("tests/regression/compare_outputs.R")`;
-   `compare_outputs("tests/regression/results/<topic>/reference", ".../candidate")`
+   `compare_outputs("tests/regression/results/pipeline/reference/output", ".../candidate/output")`
 
-`run_topic()` sources the unchanged topic script; `testthat::with_mocked_bindings()` replaces the
-network readers of `airquality.methods` (`read_opendataswiss()`, `read_geolion_wfs()`) by a
-record/replay version (`tests/regression/inputs/*.rds`, keyed by `rlang::hash()` of the arguments,
-`refresh = TRUE` downloads again) and redirects `write_local_csv()` to
-`tests/regression/results/<topic>/<label>/`, so `data/output/` is never touched. Settings
-are evaluated from `settings.R` and `scripts/_setup.R`, in this order (only the listed
-assignments; no package loading, no `airquality.data` update). A new topic needs an entry in
-`topics` (script, settings, `attach` for packages an old script expects to be attached; further
-readers in `network_readers`). Inputs and results are gitignored. Topics whose inputs are
-`airquality.data` datasets (monitoring, trends) need no frozen downloads, but both runs must use the
-same installed version of that package. Topic `exposition` (since 2026-09-21): the municipality map
-is frozen, the rasters are not (cached downloads or streamed GeoTIFFs from data.geo.admin.ch), so
-run reference and candidate shortly after each other; its log file
-`exposition_derivation_coefficients.csv` carries the run time and always differs.
-Settings that depend on the date (`year_last`, `emis_year_max`) make a reference valid for the
-current year only.
+`run_pipeline()` runs `targets::tar_make()` in the current session (`callr_function = NULL`) without the
+report targets; `testthat::with_mocked_bindings()` replaces the network readers of `airquality.methods`
+(`read_opendataswiss()`, `read_geolion_wfs()`) by a record/replay version (`tests/regression/inputs/*.rds`,
+keyed by `rlang::hash()` of the arguments, `refresh = TRUE` downloads again). The outputs and logs go to
+`tests/regression/results/pipeline/<label>/{output,log}/` (environment variables `AIRQUALITY_OUTPUT_DIR`,
+`AIRQUALITY_LOG_DIR` of `settings.R`) and the store to `.../_targets`, so `data/` and `_targets/` are never
+touched; a second run with the same label reuses its store (only the `tar_cue("always")` targets run).
+Inputs and results are gitignored. `airquality.data` datasets need no frozen downloads, but both runs must
+use the same installed version of that package. The rasters of data.geo.admin.ch are not frozen (cached
+downloads or streamed GeoTIFFs), so run reference and candidate shortly after each other. The hash of the
+arguments depends on the string encoding: a call from a pipeline file can miss a recording made by an old
+script with the same arguments and download again (happened for the RSD data on 2026-09-24; same data).
+Settings that depend on the date (`year_last`, `emis_year_max`) make a reference valid for the current
+year only.
 
+**Before phase 2b** the topic scripts were checked the same way with `run_topic()` (removed with the
+scripts in `5220a3e`; the migration to the pipeline was checked against its outputs of the old scripts,
+11 of 12 files byte-identical, the health outcomes within 4.5e-11).
 `compare_outputs()` works for all 14 files without configuration: byte identity, header (contract),
 rows only in one file (key = non-numeric columns plus integer-valued ones such as `year`), values
 that became `NA`, and the largest relative deviation.
@@ -35,7 +38,7 @@ that became `NA`, and the largest relative deviation.
 `run_plots("reference", global = TRUE)` before, `run_plots("candidate")` after, then
 `compare_plots("reference", "candidate")`. It sources `report/plots/_plot_setup.R` and the plot scripts of
 all five topics (`topics =` to restrict) on the output CSVs in `data/output/` (keep them unchanged
-in between), replays the municipality map like `run_topic()` and saves every row of the plot tibbles as
+in between), replays the municipality map like `run_pipeline()` and saves every row of the plot tibbles as
 a PNG (ragg, 7 × 5 in, 96 dpi) to `tests/regression/results/plots/<label>/`; the comparison reports byte
 identity, then pixel identity. Without `global = TRUE` the scripts run in their own environment, so a
 function that still reads a setting from the global environment fails. Two runs of the same code are

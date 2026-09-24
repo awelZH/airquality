@@ -15,38 +15,46 @@ processing by external processes. A Quarto website in `docs/` documents the resu
 * **Never change the output contract** (below) silently.
 * **Deliberate content changes get their own commit**, so refactorings stay byte-identical; check
   refactorings with the regression workflow (`notes/regression.md`). The user says when to commit.
-* Per topic: regression reference → tests first (testthat 3e, synthetic data, no network) → pure
-  functions in `R/<topic>.R` → thin script → regression byte-identical → document in `notes/` → commit.
+* Per sub-analysis: regression reference → tests first (testthat 3e, synthetic data, no network) → pure
+  functions in `R/<topic>.R` → targets in `pipelines/<sub-analysis>.R` → regression byte-identical
+  (`tests/regression/run_pipeline.R`) → document in `notes/` → commit.
 * **Before working on a topic, read its file in `notes/`** (table below). Record new decisions and
   findings there, with numbers; keep this file to a summary.
 * Code, comments, roxygen and messages in English; reports and plots in German.
 * tidyverse style, native pipe, `.by =`, `join_by()`, `purrr::map_*()`, `cli` for messages/errors.
   Only functions exported by `airquality.methods` carry the `airquality.methods::` prefix.
-* Run `devtools::document()` after changing roxygen comments. After (re)installing
+* No package: `R/` is sourced (`tar_source()`, the test helper, the plot setup); roxygen comments are
+  in-code documentation only. Tests: `testthat::test_dir("tests/testthat")`. A package used anywhere must
+  be in DESCRIPTION (`test-dependencies.R`); renv snapshots it explicitly. After (re)installing
   `airquality.methods`, restart the R session (decision 1).
 
 ## Structure
 
-An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/` loaded with
-`devtools::load_all()`), renv-managed. Not an installable package.
+A `targets` project (phase 2b, `notes/plan_phase2b.md`), renv-managed. Not an installable package.
 
 | Path | Content |
 |---|---|
-| `scripts/analyse_airquality.R` | entry point: sources `_setup.R`, then the `_compile_*.R` scripts in order |
-| `scripts/_setup.R` | packages, `load_all()`, sources `_settings.R`, municipality map |
-| `settings.R` | **all analysis settings** (decision 7), pure assignments |
-| `scripts/_compile_*.R` | one script per topic: emissions, monitoring, trends, exposition, outcomes |
+| `run.R` | entry point: `tar_make()` of the outputs, optionally `wip/trends.R`, then `tar_make()` of the report |
+| `_targets.R` | sources `R/`, `settings.R` and `pipelines/`; combines the target lists `pipeline_*` |
+| `settings.R` | **all analysis settings and paths** (decisions 7 and 8), pure assignments; `path_output`/`path_log` from `AIRQUALITY_OUTPUT_DIR`/`AIRQUALITY_LOG_DIR` |
+| `pipelines/` | one target list per sub-analysis: `setup`, `emissions_emikat`, `emissions_rsd`, `monitoring_airquality`, `monitoring_ndep`, `exposition_population`, `exposition_ecosystems`, `outcomes`, `report`; target names `<topic>_<sub-analysis>_<stage>`, outputs as `format = "file"` targets (`*_out*`); downloads and raster asset states with `tar_cue("always")` |
+| `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `outcomes.R`, `helpers.R`, `pipeline.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R` hold only trend code (WIP) |
+| `wip/` | work in progress outside the pipeline: `trends.R` (about 30 min), see `wip/README.md` |
+| `report/` | Quarto sources (`*.qmd`, `_quarto.yml`, `styles.css`, `year-slider.html`); plots per year as year sliders (decision 11); built by the target `report_site` |
 | `report/plots/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
 | `report/plots/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
-| `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `outcomes.R`, `helpers.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R` hold only trend code (WIP) |
+| `docs/` | rendered website only (GitHub Pages, `output-dir: ../docs`) |
 | `data/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
 | `data/output/` | **output CSVs – the contract with external processes** |
-| `data/log/` | run logs, appended on every run; not part of the contract |
-| `report/` | Quarto sources (`*.qmd`, `_quarto.yml`, `styles.css`, `year-slider.html`); plots per year as year sliders (decision 11); render with `quarto::quarto_render("report/")` |
-| `docs/` | rendered website only (GitHub Pages, `output-dir: ../docs`) |
-| `tests/testthat/` | unit tests (`devtools::test()`) and the output schema test |
-| `tests/regression/` | frozen baseline outputs, regression runs on frozen inputs, generic comparison; figures (`run_plots.R`), pages without rendering (`check_pages.R`) |
+| `data/log/` | run logs, appended when the logged values change; not part of the contract |
+| `data/restricted/` | non-public inputs (mortality), gitignored except its README |
+| `tests/testthat/` | unit tests, the output schema test and the dependency test |
+| `tests/regression/` | frozen baseline outputs, the pipeline on frozen inputs (`run_pipeline.R`), generic comparison; figures (`run_plots.R`), pages without rendering (`check_pages.R`) |
 | `notes/` | decisions, findings per topic and plans in detail (read on demand) |
+
+Workflow: `source("run.R")` or `targets::tar_make()` (one sub-analysis: `tar_make(names =
+starts_with("emis_rsd_"))`); inspect with `tar_visnetwork()`, `tar_read()`, `tar_load()`, after an error
+`tar_workspace()`. The store `_targets/` is gitignored.
 
 ## Output contract
 
@@ -63,20 +71,22 @@ column order and format must not change (the directory may change; external path
 ## Status (2026-09-24)
 
 * **Step 1 done**: exposition reworked.
-* **Step 2, phase 2a in progress**: emissions, monitoring done; plots/report done for all five
-  topics, including a second round (plot catalog, year slider, logic out of the pages, consistent
-  names; figures byte-identical, `notes/findings_plots.md`). The data scripts and functions of
-  trends are still WIP, untouched on the user's decision. **Each topic only after the user's go.**
+* **Step 2, phase 2a done** except the trends: emissions, monitoring, outcomes reworked; plots/report
+  done for all five topics (`notes/findings_plots.md`). The trends stay WIP on the user's decision.
+  **Each topic only after the user's go.**
 * **Outcomes reworked** (2026-09-24; plan, decisions E1–E6 and numbers in `notes/plan_outcomes.md` and
-  `notes/findings_trends_outcomes.md`): `R/outcomes.R` + thin script; premature deaths from the deaths
+  `notes/findings_trends_outcomes.md`): `R/outcomes.R` + `pipelines/outcomes.R`; premature deaths from the deaths
   aged ≥ 30 (E1), deterministic estimate and range from the RR bounds (E2); years of life lost with the
   healthiar life table as new rows of `data_health_outcomes.csv` (same columns); page with tabsets for
   deaths and years of life lost (the long-term mean per premature death in the subtitle). Reduction of
   life expectancy not implemented (only with an official life table).
-* **Phase 2b (targets) in progress** (user's go 2026-09-24, outcomes included as a sub-analysis); plan
-  in `notes/plan_phase2b.md`.
+* **Phase 2b (targets) done** (2026-09-24; plan and status in `notes/plan_phase2b.md`): data in `data/`,
+  Quarto sources in `report/`, one pipeline per sub-analysis incl. the outcomes and the report, package
+  skeleton and `scripts/` removed. On frozen inputs 11 of 12 pipeline outputs are byte-identical to the
+  old scripts, the health outcomes within 4.5e-11 (no CSV round trip of the canton means). Left: the
+  trends as sub-analysis once they are finished (plan step 7).
 * All content changes so far are in `data/output/`: emissions, monitoring and ndep since commit
-  `fc1e744`, health outcomes since `b9fe256`.
+  `fc1e744`, health outcomes since `b9fe256` (last digits since the pipeline run of 2026-09-24).
 
 ## Decisions (summary; details, reasons and numbers in `notes/decisions.md`)
 
@@ -97,7 +107,8 @@ appending to own outputs, no work lists derived from earlier results.
    run; coefficients are logged in `data/log/`. The O3 model keeps one common slope for all
    years (user decision 2026-09-24).
 7. All analysis constants live in `settings.R`, prefixed by topic; functions in `R/` get them
-   as arguments; every year range ends at `year_last`.
+   as arguments; every year range ends at `year_last`. The paths live there too (phase 2b decision 8, no
+   `config.yml`).
 8. Inputs are checked where they enter (`check_columns()`, error class `airquality_input_error`).
 9. The report builds its plots while rendering (no rds files); the plot scripts stay usable in the
    console.
@@ -119,8 +130,8 @@ appending to own outputs, no work lists derived from earlier results.
 | phase 2b / targets | `notes/plan_phase2b.md` |
 | functions of `airquality.methods` | `../airquality.methods/CLAUDE.md` |
 
-Pattern for the remaining topics: `R/emissions.R` + `scripts/_compile_emission_data.R`,
-`R/monitoring.R` + `scripts/_compile_monitoring_data.R`.
+Pattern for new or remaining sub-analyses: `R/outcomes.R` + `pipelines/outcomes.R`, `R/emissions.R` +
+`pipelines/emissions_rsd.R`; tests in `tests/testthat/test-<topic>.R`.
 
 ## Open items
 

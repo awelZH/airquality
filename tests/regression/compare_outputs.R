@@ -1,4 +1,4 @@
-# Compare two directories of output CSVs (e.g. reference vs. candidate of run_topic.R, or a run vs.
+# Compare two directories of output CSVs (e.g. reference vs. candidate of run_pipeline.R, or a run vs.
 # data/output). Works for all 14 output files without per-file configuration.
 #
 # Per file common to both directories:

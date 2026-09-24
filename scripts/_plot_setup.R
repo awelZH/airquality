@@ -17,35 +17,35 @@ devtools::load_all(quiet = TRUE)
 source("scripts/_settings.R", encoding = "UTF-8")
 
 # ressource table for input datasets (LRV & WHO threshold values)
-ressources <- prepare_ressources(airquality.methods::read_local_csv("inst/extdata/meta/ressources.csv", show_col_types = FALSE))
+ressources <- prepare_ressources(airquality.methods::read_local_csv("data/meta/ressources.csv", show_col_types = FALSE))
 
 
 # list of output data sources for plotting
 ressources_plotting <-
   list(
     emissions = list(
-      emikat = "inst/extdata/output/data_emissions.csv",
-      rsd_norm = "inst/extdata/output/data_nox_vehicle_emissions_rsd_per_norm.csv",
-      rsd_yearmodel = "inst/extdata/output/data_nox_emissions_rsd_per_yearmodel.csv",
-      rsd_yearmeas = "inst/extdata/output/data_nox_emissions_rsd_per_yearmeas.csv"
+      emikat = "data/output/data_emissions.csv",
+      rsd_norm = "data/output/data_nox_vehicle_emissions_rsd_per_norm.csv",
+      rsd_yearmodel = "data/output/data_nox_emissions_rsd_per_yearmodel.csv",
+      rsd_yearmeas = "data/output/data_nox_emissions_rsd_per_yearmeas.csv"
     ),
     monitoring = list(
-      airquality = "inst/extdata/output/data_airquality_monitoring_y1.csv",
-      ndep_pars = "inst/extdata/output/data_ndep_pars_monitoring_y1.csv",
-      ndep = "inst/extdata/output/data_ndep_monitoring_y1.csv"
+      airquality = "data/output/data_airquality_monitoring_y1.csv",
+      ndep_pars = "data/output/data_ndep_pars_monitoring_y1.csv",
+      ndep = "data/output/data_ndep_monitoring_y1.csv"
     ),
     trends = list(
-      trends = "inst/extdata/output/data_airquality_trends_relative_y1.csv",
-      trends_agg = "inst/extdata/output/data_airquality_trends_relative_aggregated_y1.csv"
+      trends = "data/output/data_airquality_trends_relative_y1.csv",
+      trends_agg = "data/output/data_airquality_trends_relative_aggregated_y1.csv"
     ),
     exposition = list(
-      weightedmean_canton = "inst/extdata/output/data_exposition_weighted_means_canton.csv",
-      weightedmean_municip = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv",
-      expo_distr_pollutants = "inst/extdata/output/data_exposition_distribution_pollutants.csv",
-      expo_distr_ndep ="inst/extdata/output/data_exposition_distribution_ndep.csv"
+      weightedmean_canton = "data/output/data_exposition_weighted_means_canton.csv",
+      weightedmean_municip = "data/output/data_exposition_weighted_means_municipalities.csv",
+      expo_distr_pollutants = "data/output/data_exposition_distribution_pollutants.csv",
+      expo_distr_ndep ="data/output/data_exposition_distribution_ndep.csv"
     ),
     outcomes = list(
-      outcomes = "inst/extdata/output/data_health_outcomes.csv"
+      outcomes = "data/output/data_health_outcomes.csv"
     )
   )
 

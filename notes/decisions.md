@@ -69,7 +69,7 @@ PM2.5:PM10 ratio per year at NABEL sites, without Bern-Bollwerk). Years without 
 monitoring data (2026-09-18): fitting takes < 1 s and all years share one method and one data state –
 consistent with the full recompute (decision 2). Price: earlier years shift slightly with every
 update (O3 peak season up to 0.9 %, PM2.5 up to 0.5 %). Every run appends its coefficients to
-`inst/extdata/log/exposition_derivation_coefficients.csv` (not part of the contract). A year-specific
+`data/log/exposition_derivation_coefficients.csv` (not part of the contract). A year-specific
 O3 slope would decouple the years but is less certain with 7–15 sites per year; the common slope stays
 (user decision 2026-09-24).
 

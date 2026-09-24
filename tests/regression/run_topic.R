@@ -9,7 +9,7 @@
 #
 # The script itself runs unchanged: the network readers of airquality.methods are replaced by a
 # record/replay version and write_local_csv() is redirected to tests/regression/results/<topic>/<label>/,
-# so inst/extdata/output/ is never touched. Packages the old script needs attached are listed in `attach`.
+# so data/output/ is never touched. Packages the old script needs attached are listed in `attach`.
 # Only the settings the topic needs are taken from
 # scripts/_setup.R and scripts/_settings.R (package loading and the airquality.data update are skipped).
 #
@@ -35,7 +35,7 @@ topics <- list(
     setup = c("ressources", "crs", "map_municipalities", "year_offset", "year_last", "base_scenario_year",
               "expo_years", "expo_correct_noloc", "expo_years_pm25_from_pm10", "expo_o3_nmin_sites")
   ),
-  # reads the exposition output in inst/extdata/output/ (keep it unchanged between the runs); the old
+  # reads the exposition output in data/output/ (keep it unchanged between the runs); the old
   # code draws its uncertainty by unseeded Monte Carlo, so two old runs differ slightly
   outcomes = list(
     script = "scripts/_compile_outcomes.R",

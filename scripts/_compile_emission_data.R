@@ -43,9 +43,9 @@ data_rsd_per_yearmeas <- aggregate_rsd_nox(data_rsd, rsd_meta, rsd_filters, grou
 
 # write output datasets & clean up:
 # ---
-airquality.methods::write_local_csv(data_emikat, file = "inst/extdata/output/data_emissions.csv")
-airquality.methods::write_local_csv(data_rsd_per_norm, file = "inst/extdata/output/data_nox_vehicle_emissions_rsd_per_norm.csv")
-airquality.methods::write_local_csv(data_rsd_per_yearmodel, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmodel.csv")
-airquality.methods::write_local_csv(data_rsd_per_yearmeas, file = "inst/extdata/output/data_nox_emissions_rsd_per_yearmeas.csv")
+airquality.methods::write_local_csv(data_emikat, file = "data/output/data_emissions.csv")
+airquality.methods::write_local_csv(data_rsd_per_norm, file = "data/output/data_nox_vehicle_emissions_rsd_per_norm.csv")
+airquality.methods::write_local_csv(data_rsd_per_yearmodel, file = "data/output/data_nox_emissions_rsd_per_yearmodel.csv")
+airquality.methods::write_local_csv(data_rsd_per_yearmeas, file = "data/output/data_nox_emissions_rsd_per_yearmeas.csv")
 rm(list = c("data_emikat", "subsector_new", "data_rsd", "rsd_meta", "rsd_filters",
             "data_rsd_per_norm", "data_rsd_per_yearmodel", "data_rsd_per_yearmeas"))

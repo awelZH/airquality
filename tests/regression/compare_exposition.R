@@ -1,5 +1,5 @@
 # Compare exposition outputs of the regression variants (tests/regression/results/<variant>/) and of the
-# production run (inst/extdata/output/) with the frozen baseline (tests/regression/baseline/).
+# production run (data/output/) with the frozen baseline (tests/regression/baseline/).
 #
 # Writes one summary table per file to tests/regression/results/comparison_<file>.csv and prints it.
 #
@@ -8,7 +8,7 @@
 baseline_dir <- "tests/regression/baseline"
 candidates <- c(
   list.dirs("tests/regression/results", recursive = FALSE) |> rlang::set_names(basename),
-  output = "inst/extdata/output"
+  output = "data/output"
 )
 
 read_output <- function(dir, file) {

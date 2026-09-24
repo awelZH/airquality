@@ -1,7 +1,7 @@
 # airquality
 
 Analysis repository for a systematic compilation, evaluation and documentation of air quality in the
-Canton of Zurich (AWEL), based on public data. It reads input metadata (`inst/extdata/meta/`),
+Canton of Zurich (AWEL), based on public data. It reads input metadata (`data/meta/`),
 monitoring data from the data package `airquality.data` and open government data (opendata.swiss,
 geolion WFS, data.geo.admin.ch rasters, BFS), and writes CSV files for automated downstream
 processing by external processes. A Quarto website in `docs/` documents the results. Updated about
@@ -39,9 +39,9 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 | `scripts/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
 | `scripts/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
 | `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `outcomes.R`, `helpers.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R` hold only trend code (WIP) |
-| `inst/extdata/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
-| `inst/extdata/output/` | **output CSVs – the contract with external processes** |
-| `inst/extdata/log/` | run logs, appended on every run; not part of the contract |
+| `data/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
+| `data/output/` | **output CSVs – the contract with external processes** |
+| `data/log/` | run logs, appended on every run; not part of the contract |
 | `docs/` | Quarto website (`quarto::quarto_render("docs/")`); plots per year as year sliders (`year-slider.html`, decision 11) |
 | `tests/testthat/` | unit tests (`devtools::test()`) and the output schema test |
 | `tests/regression/` | frozen baseline outputs, regression runs on frozen inputs, generic comparison; figures (`run_plots.R`), pages without rendering (`check_pages.R`) |
@@ -49,7 +49,7 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 
 ## Output contract
 
-The 14 CSV files in `inst/extdata/output/` are read by external processes. File names, column names,
+The 14 CSV files in `data/output/` are read by external processes. File names, column names,
 column order and format must not change (the directory may change; external paths can be adjusted):
 
 * delimiter `;`, UTF-8, one header line, `NA` for missing values, full numeric precision
@@ -74,7 +74,7 @@ column order and format must not change (the directory may change; external path
   life expectancy not implemented (only with an official life table).
 * **Phase 2b (targets) in progress** (user's go 2026-09-24, outcomes included as a sub-analysis); plan
   in `notes/plan_phase2b.md`.
-* All content changes so far are in `inst/extdata/output/`: emissions, monitoring and ndep since commit
+* All content changes so far are in `data/output/`: emissions, monitoring and ndep since commit
   `fc1e744`, health outcomes since `b9fe256`.
 
 ## Decisions (summary; details, reasons and numbers in `notes/decisions.md`)
@@ -93,7 +93,7 @@ appending to own outputs, no work lists derived from earlier results.
 5. STATPOP collector pixels are subtracted and spread over their municipality in proportion to the
    located inhabitants.
 6. Derived parameters (O3 peak season from NO2, PM2.5 before 2015 from PM10) are refitted on every
-   run; coefficients are logged in `inst/extdata/log/`. The O3 model keeps one common slope for all
+   run; coefficients are logged in `data/log/`. The O3 model keeps one common slope for all
    years (user decision 2026-09-24).
 7. All analysis constants live in `scripts/_settings.R`, prefixed by topic; functions in `R/` get them
    as arguments; every year range ends at `year_last`.

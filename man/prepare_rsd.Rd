@@ -10,10 +10,10 @@ prepare_rsd(data, meta, filters, model_year_max)
 \item{data}{Raw RSD data from opendata.swiss in long format: one row per vehicle measurement
 (\code{id}) and \code{parameter} (\code{velocity}, \code{acceleration}, \code{NO}, \code{CO2}, \code{CO}, \code{HC}, ...).}
 
-\item{meta}{Vehicle metadata (\code{inst/extdata/meta/rsd_auxiliary.csv}): \code{vehicle_type},
+\item{meta}{Vehicle metadata (\code{data/meta/rsd_auxiliary.csv}): \code{vehicle_type},
 \code{vehicle_fuel_type}, \code{vehicle_euronorm}, \code{parameter}, \code{value}, \code{source}, \code{remark}.}
 
-\item{filters}{Filter criteria (\code{inst/extdata/meta/rsd_filters.csv}): \code{parameter}, \code{min}, \code{max}.}
+\item{filters}{Filter criteria (\code{data/meta/rsd_filters.csv}): \code{parameter}, \code{min}, \code{max}.}
 
 \item{model_year_max}{Newest vehicle model year kept (upper bound of \code{vehicleyears}).}
 }

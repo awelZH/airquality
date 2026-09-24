@@ -18,7 +18,7 @@ not `year_last` (decision 7).
 the uncertainty range over both scenarios, also over the avoided deaths, where it has no meaning;
 `uncertainty_scenario = "tatsächliche Belastung"` now selects the data of that layer.
 
-**Rerun with the updated mortality data** (`inst/extdata/tod_nat_gatu.csv`, 2026-09-22 by the user):
+**Rerun with the updated mortality data** (`data/tod_nat_gatu.csv`, 2026-09-22 by the user):
 2024 was almost empty before and now holds a full year (PM2.5: 3.6 → 250 premature deaths). The years
 2010–2023 move by up to 4 % as well, although their mortality data did not change: the estimate draws
 `nsim = 500` simulations without a seed, so every run differs slightly. 2025 stays at about 5 deaths

@@ -25,7 +25,8 @@ docs/.Ruserdata
 scripts/_validate_rasterdata.R
 
 # temp data => later ogd
-inst/extdata/tod_nat_gatu.csv
+data/restricted/*
+!data/restricted/README.md
 
 # regression run results and frozen inputs (regenerate with tests/regression/run_*.R)
 tests/regression/results/

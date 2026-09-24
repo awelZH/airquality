@@ -14,7 +14,7 @@ code changes. Instead, old and new code run on the **same frozen inputs**:
 network readers of `airquality.methods` (`read_opendataswiss()`, `read_geolion_wfs()`) by a
 record/replay version (`tests/regression/inputs/*.rds`, keyed by `rlang::hash()` of the arguments,
 `refresh = TRUE` downloads again) and redirects `write_local_csv()` to
-`tests/regression/results/<topic>/<label>/`, so `inst/extdata/output/` is never touched. Settings
+`tests/regression/results/<topic>/<label>/`, so `data/output/` is never touched. Settings
 are evaluated from `scripts/_settings.R` and `scripts/_setup.R`, in this order (only the listed
 assignments; no package loading, no `airquality.data` update). A new topic needs an entry in
 `topics` (script, settings, `attach` for packages an old script expects to be attached; further
@@ -34,7 +34,7 @@ that became `NA`, and the largest relative deviation.
 **Figures** (since 2026-09-21, plots/report rework): `tests/regression/run_plots.R`.
 `run_plots("reference", global = TRUE)` before, `run_plots("candidate")` after, then
 `compare_plots("reference", "candidate")`. It sources `scripts/_plot_setup.R` and the plot scripts of
-all five topics (`topics =` to restrict) on the output CSVs in `inst/extdata/output/` (keep them unchanged
+all five topics (`topics =` to restrict) on the output CSVs in `data/output/` (keep them unchanged
 in between), replays the municipality map like `run_topic()` and saves every row of the plot tibbles as
 a PNG (ragg, 7 × 5 in, 96 dpi) to `tests/regression/results/plots/<label>/`; the comparison reports byte
 identity, then pixel identity. Without `global = TRUE` the scripts run in their own environment, so a

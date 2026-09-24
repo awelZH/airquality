@@ -1,5 +1,5 @@
 # Compare two directories of output CSVs (e.g. reference vs. candidate of run_topic.R, or a run vs.
-# inst/extdata/output). Works for all 14 output files without per-file configuration.
+# data/output). Works for all 14 output files without per-file configuration.
 #
 # Per file common to both directories:
 # * identical: byte-identical files

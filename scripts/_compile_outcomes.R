@@ -1,5 +1,5 @@
 # Derive selected health outcomes per year from the population-weighted means of the canton
-# -> inst/extdata/output/data_health_outcomes.csv (functions in R/outcomes.R)
+# -> data/output/data_health_outcomes.csv (functions in R/outcomes.R)
 # TODO: mortality data from opendata.swiss (ressources.csv) once they are published there
 
 
@@ -12,7 +12,7 @@ outcomes_meta <-
 
 # => natural deaths per year, sex and age in the Canton of Zurich (Statistisches Amt Kanton Zürich & BFS)
 data_mortality <-
-  airquality.methods::read_local_csv("inst/extdata/tod_nat_gatu.csv", delim = ",", locale = readr::locale(encoding = "UTF-8")) |>
+  airquality.methods::read_local_csv(filter_ressources(ressources, 29), delim = ",", locale = readr::locale(encoding = "UTF-8")) |>
   prepare_mortality(suppressed = outcomes_suppressed_deaths)
 
 # => year-end population per year, sex and age in the Canton of Zurich (for the life tables)
@@ -21,7 +21,7 @@ data_population <-
   prepare_population_by_age()
 
 # => population-weighted means of the canton
-data_expo_weighmean <- airquality.methods::read_local_csv("inst/extdata/output/data_exposition_weighted_means_canton.csv", locale = readr::locale(encoding = "UTF-8"))
+data_expo_weighmean <- airquality.methods::read_local_csv("data/output/data_exposition_weighted_means_canton.csv", locale = readr::locale(encoding = "UTF-8"))
 
 
 # estimate health outcomes ...
@@ -49,5 +49,5 @@ data_outcomes <-
 
 # write output datasets & clean up:
 # ---
-airquality.methods::write_local_csv(data_outcomes, file = "inst/extdata/output/data_health_outcomes.csv")
+airquality.methods::write_local_csv(data_outcomes, file = "data/output/data_health_outcomes.csv")
 rm(list = c("outcomes_meta", "data_mortality", "data_population", "data_expo_weighmean", "data_deaths", "data_lifetable", "data_outcomes"))

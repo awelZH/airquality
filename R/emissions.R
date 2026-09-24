@@ -68,7 +68,7 @@ prepare_emissions <- function(data,
 #'
 #' @param data Output of [prepare_emissions()].
 #' @param subsector_new Lookup table with columns `subsector` and `subsector_new`
-#'   (`inst/extdata/meta/emikat_subsector_new.csv`).
+#'   (`data/meta/emikat_subsector_new.csv`).
 #'
 #' @return One row per `year`, `pollutant`, `unit`, `sector`, `subsector_new` and `source`, with
 #'   columns `year`, `pollutant`, `metric` ("Jahresmenge"), `unit`, `sector`, `subsector_new`,
@@ -197,9 +197,9 @@ add_emission_colours <- function(data,
 #'
 #' @param data Raw RSD data from opendata.swiss in long format: one row per vehicle measurement
 #'   (`id`) and `parameter` (`velocity`, `acceleration`, `NO`, `CO2`, `CO`, `HC`, ...).
-#' @param meta Vehicle metadata (`inst/extdata/meta/rsd_auxiliary.csv`): `vehicle_type`,
+#' @param meta Vehicle metadata (`data/meta/rsd_auxiliary.csv`): `vehicle_type`,
 #'   `vehicle_fuel_type`, `vehicle_euronorm`, `parameter`, `value`, `source`, `remark`.
-#' @param filters Filter criteria (`inst/extdata/meta/rsd_filters.csv`): `parameter`, `min`, `max`.
+#' @param filters Filter criteria (`data/meta/rsd_filters.csv`): `parameter`, `min`, `max`.
 #' @param model_year_max Newest vehicle model year kept (upper bound of `vehicleyears`).
 #'
 #' @return One row per vehicle measurement with the measured concentrations as columns,

@@ -10,7 +10,7 @@ aggregate_emissions(data, subsector_new)
 \item{data}{Output of \code{\link[=prepare_emissions]{prepare_emissions()}}.}
 
 \item{subsector_new}{Lookup table with columns \code{subsector} and \code{subsector_new}
-(\code{inst/extdata/meta/emikat_subsector_new.csv}).}
+(\code{data/meta/emikat_subsector_new.csv}).}
 }
 \value{
 One row per \code{year}, \code{pollutant}, \code{unit}, \code{sector}, \code{subsector_new} and \code{source}, with

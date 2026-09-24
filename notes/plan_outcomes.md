@@ -72,7 +72,7 @@ ages > 100 (drops the `common_maxage <- 99` hack), fractional deaths allowed (dr
      `population`, output schema incl. `outcome_delta_min_conc = 0`.
    Thin `scripts/_compile_outcomes.R`; settings `outcomes_min_age`, `outcomes_lifetable_max_age`,
    `outcomes_erf_shape` in `_settings.R`; population dataset as new entry in
-   `inst/extdata/meta/ressources.csv`. First commit keeps the old behaviour where possible; content
+   `data/meta/ressources.csv`. First commit keeps the old behaviour where possible; content
    changes as own commits: E1, then E2 (deterministic point estimate and range).
 4. **YLL**: `lifetable_data()` (deaths + population per year, sex, age ≥ 30, 100+ condensed, deaths
    ≥ 0 fractional ok, population ≥ deaths checked), `estimate_life_years_lost()` per parameter and year
@@ -102,8 +102,8 @@ Commits only on the user's word; each content change in its own commit.
 * `scripts/_compile_outcomes.R`, `R/outcomes.R` (existing `drop_incomplete_years()`), `R/prepare.R`,
   `R/prepare_helpers.R`, `R/read.R`, `R/read_helpers.R`
 * `R/plot_outcomes.R`, `scripts/_plot_outcomes.R`, `docs/Gesundheitsfolgen.qmd`
-* `scripts/_settings.R`, `inst/extdata/meta/ressources.csv`, `inst/extdata/meta/outcomes_metadata.csv`
-  (CRF, cutoff), `inst/extdata/tod_nat_gatu.csv` (mortality)
+* `scripts/_settings.R`, `data/meta/ressources.csv`, `data/meta/outcomes_metadata.csv`
+  (CRF, cutoff), `data/tod_nat_gatu.csv` (mortality)
 * `tests/testthat/test-outcomes.R`, `tests/testthat/test-plot-outcomes.R`, `tests/regression/run_topic.R`
 * Reuse: `check_columns()` (`R/helpers.R`), `filter_ressources()`, `airquality.methods::read_opendataswiss()`
   (sets a user agent), `read_local_csv()`/`write_local_csv()`, `ggplot_timeseries_bars()`,

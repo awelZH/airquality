@@ -9,7 +9,7 @@ prepare_ressources <- function(ressources) {
     ressources |>
     dplyr::mutate(
       get = dplyr::case_when(
-        stringr::str_detect(DOWNLOAD_URL, "inst/extdata") ~ paste(DOWNLOAD_URL, DATASET_NAME, sep = "/"),
+        stringr::str_detect(DOWNLOAD_URL, "^data/") ~ paste(DOWNLOAD_URL, DATASET_NAME, sep = "/"),
         DOWNLOAD_SOURCE == "swisstopo" ~ DATASET_NAME,
         TRUE ~ DOWNLOAD_URL
       )

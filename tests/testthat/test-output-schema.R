@@ -6,7 +6,7 @@ baseline_dir <- function() {
 }
 
 output_dir <- function() {
-  testthat::test_path("..", "..", "inst", "extdata", "output")
+  testthat::test_path("..", "..", "data", "output")
 }
 
 read_header <- function(file) {

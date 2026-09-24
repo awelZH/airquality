@@ -44,7 +44,7 @@ devtools::load_all()
 # reading input data for several scripts:
 # ---
 # read ressource table for input datasets
-ressources <- prepare_ressources(airquality.methods::read_local_csv("inst/extdata/meta/ressources.csv"))
+ressources <- prepare_ressources(airquality.methods::read_local_csv("data/meta/ressources.csv"))
 
 
 # analysis settings (all constants of the analysis in one place, grouped by topic):

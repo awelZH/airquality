@@ -5,7 +5,7 @@
 # 2. after refactoring:  run_plots("candidate")
 # 3. compare:            compare_plots("reference", "candidate")
 #
-# The plot scripts run unchanged on the output CSVs in inst/extdata/output/ (not touched in between);
+# The plot scripts run unchanged on the output CSVs in data/output/ (not touched in between);
 # the municipality map from geolion is replayed from tests/regression/inputs/ like in run_topic.R.
 # Figures go to tests/regression/results/plots/<label>/ (gitignored), one file per row of the plot
 # tibbles, named <type>_<source>_<pollutant>_<year>.png and drawn with ragg at a fixed size.

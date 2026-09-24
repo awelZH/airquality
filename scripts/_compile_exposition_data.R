@@ -56,7 +56,7 @@ data_expo_cells <- derive_pm25_from_pm10(data_expo_cells, ratios_pm, years = exp
 # => both models are refitted on every run with the current monitoring data (earlier years may shift
 #    slightly); log the coefficients of each run to make such shifts traceable
 airquality.methods::write_local_csv(tidy_derivation_coefficients(coefs_o3_peakseason, ratios_pm),
-                                    file = "inst/extdata/log/exposition_derivation_coefficients.csv", append = TRUE)
+                                    file = "data/log/exposition_derivation_coefficients.csv", append = TRUE)
 
 # => long format: one row per cell, year and parameter, with base-scenario concentrations
 #    (inhabitants of each year exposed to the concentrations of base_scenario_year)
@@ -82,10 +82,10 @@ data_expo_ecosys_dist <- aggregate_ndep_exposition_distrib(data_ndep)
 # write output datasets & clean up:
 # ---
 # => inhabitant counts rounded to whole persons (redistributed collector inhabitants are fractional)
-airquality.methods::write_local_csv(round_population(data_expo_weighted_mean_canton), file = "inst/extdata/output/data_exposition_weighted_means_canton.csv")
-airquality.methods::write_local_csv(round_population(data_expo_weighted_mean_municipalities), file = "inst/extdata/output/data_exposition_weighted_means_municipalities.csv")
-airquality.methods::write_local_csv(round_population(data_expo_population_dist), file = "inst/extdata/output/data_exposition_distribution_pollutants.csv")
-airquality.methods::write_local_csv(data_expo_ecosys_dist, file = "inst/extdata/output/data_exposition_distribution_ndep.csv")
+airquality.methods::write_local_csv(round_population(data_expo_weighted_mean_canton), file = "data/output/data_exposition_weighted_means_canton.csv")
+airquality.methods::write_local_csv(round_population(data_expo_weighted_mean_municipalities), file = "data/output/data_exposition_weighted_means_municipalities.csv")
+airquality.methods::write_local_csv(round_population(data_expo_population_dist), file = "data/output/data_exposition_distribution_pollutants.csv")
+airquality.methods::write_local_csv(data_expo_ecosys_dist, file = "data/output/data_exposition_distribution_ndep.csv")
 
 rm(list = c("data_raster_expo", "data_ndep", "data_monitoring_aq", "data_expo_cells",
             "coefs_o3_peakseason", "ratios_pm", "data_expo", "data_expo_weighted_mean_canton",

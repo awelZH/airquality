@@ -63,7 +63,7 @@ DESCRIPTION           dependency manifest only (renv snapshot.type = "explicit")
 R/                    pure functions per topic (roxygen comments kept as in-code docs)
 pipelines/            one target list per sub-analysis (decision 6), plus setup
 wip/                  work in progress outside targets (decision 7): trends.R, README.md
-data/meta|output|log/ from inst/extdata/… (contract: names, columns, format unchanged)
+data/meta|output|log/ from data/… (contract: names, columns, format unchanged)
 data/restricted/      non-public inputs; folder gitignored except README.md
 report/               Quarto sources (*.qmd, _quarto.yml) and plot scripts; output-dir ../docs
 docs/                 rendered website only
@@ -86,7 +86,7 @@ function designed so that it can later become a target 1:1.
    `run.R`, `pipelines/setup.R`; `tests/testthat/helper-source.R` sourcing `R/`; `tests/testthat.R` →
    `testthat::test_dir()`; renv `snapshot.type = "explicit"`; dependency test comparing
    `renv::dependencies()` with DESCRIPTION; `.gitignore` adds `_targets/`.
-2. **Data move**: `git mv inst/extdata/{meta,output,log}` → `data/…`; `tod_nat_gatu.csv` →
+2. **Data move**: `git mv data/{meta,output,log}` → `data/…`; `tod_nat_gatu.csv` →
    `data/restricted/` plus a committed README and gitignore rules; `ressources.csv` entry for the
    mortality source; update paths in `ressources.csv`, `prepare_ressources()`, `docs/index.qmd`,
    schema test, `CLAUDE.md` and `notes/`. Output path from `settings.R`.

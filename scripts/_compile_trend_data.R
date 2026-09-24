@@ -15,10 +15,10 @@
 # ---
 # get pre-compiled airquality monitoring data as daily averages and yearly values
 data_monitoring_aq <- airquality.data::data_monitoring_aq_d1
-data_monitoring_aq_y1 <- airquality.methods::read_local_csv("inst/extdata/output/data_airquality_monitoring_y1.csv", locale = readr::locale(encoding = "UTF-8"))
+data_monitoring_aq_y1 <- airquality.methods::read_local_csv("data/output/data_airquality_monitoring_y1.csv", locale = readr::locale(encoding = "UTF-8"))
 
 # get local pre-compiled emission data
-data_emikat <- airquality.methods::read_local_csv("inst/extdata/output/data_emissions.csv", delim = ";", locale = readr::locale(encoding = "UTF-8"))
+data_emikat <- airquality.methods::read_local_csv("data/output/data_emissions.csv", delim = ";", locale = readr::locale(encoding = "UTF-8"))
 
 # get pre-compiled airquality-network meteorological data as daily averages
 data_monitoring_met_d1 <- airquality.data::data_monitoring_met_d1
@@ -134,8 +134,8 @@ trends_relative$all <-
 
 # write output datasets & clean up:
 # ---
-airquality.methods::write_local_csv(trends_relative$all, file = "inst/extdata/output/data_airquality_trends_relative_y1.csv")
-airquality.methods::write_local_csv(trends_relative$agg, file = "inst/extdata/output/data_airquality_trends_relative_aggregated_y1.csv")
+airquality.methods::write_local_csv(trends_relative$all, file = "data/output/data_airquality_trends_relative_y1.csv")
+airquality.methods::write_local_csv(trends_relative$agg, file = "data/output/data_airquality_trends_relative_aggregated_y1.csv")
 rm(list = c("pars", "emissions", "emissions_relative",
             "data_monitoring_median", "data_emikat", "data_monitoring_aq", "data_monitoring_met_d1", "data_trends", "fun", "trends", "trends_relative"))
 

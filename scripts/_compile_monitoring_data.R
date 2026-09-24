@@ -27,7 +27,7 @@ data_monitoring_ndep <- aggregate_ndep(data_monitoring_ndep_pars,
 
 # write output datasets & clean up:
 # ---
-airquality.methods::write_local_csv(data_monitoring_aq, file = "inst/extdata/output/data_airquality_monitoring_y1.csv")
-airquality.methods::write_local_csv(data_monitoring_ndep_pars, file = "inst/extdata/output/data_ndep_pars_monitoring_y1.csv")
-airquality.methods::write_local_csv(data_monitoring_ndep, file = "inst/extdata/output/data_ndep_monitoring_y1.csv")
+airquality.methods::write_local_csv(data_monitoring_aq, file = "data/output/data_airquality_monitoring_y1.csv")
+airquality.methods::write_local_csv(data_monitoring_ndep_pars, file = "data/output/data_ndep_pars_monitoring_y1.csv")
+airquality.methods::write_local_csv(data_monitoring_ndep, file = "data/output/data_ndep_monitoring_y1.csv")
 rm(list = c("data_monitoring_aq", "site_meta_ndep", "data_monitoring_ndep_pars", "data_monitoring_ndep"))

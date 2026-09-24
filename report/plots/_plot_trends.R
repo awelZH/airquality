@@ -1,4 +1,4 @@
-# Plots of the relative trends of emissions and immissions -> plots_trends, a plot catalog (needs scripts/_plot_setup.R)
+# Plots of the relative trends of emissions and immissions -> plots_trends, a plot catalog (needs report/plots/_plot_setup.R)
 
 plots <- list()
 

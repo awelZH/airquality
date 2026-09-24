@@ -82,7 +82,7 @@ ages > 100 (drops the `common_maxage <- 99` hack), fractional deaths allowed (dr
 5. **Plots and page**: `plot_premature_deaths()` → `plot_health_outcomes(data, parameters,
    outcome_type, relative, …)` in `R/plot_outcomes.R` (titles/subtitles per outcome type, e.g.
    "Verlorene Lebensjahre durch …", "pro 100'000 Einwohner/innen"); catalog entries
-   `life_years_lost_abs`/`_rel` in `scripts/_plot_outcomes.R`; `docs/Gesundheitsfolgen.qmd` per
+   `life_years_lost_abs`/`_rel` in `report/plots/_plot_outcomes.R`; `report/Gesundheitsfolgen.qmd` per
    pollutant: `#### vorzeitige Todesfälle` (tabset absolut/relativ) and `#### verlorene Lebensjahre`
    (tabset absolut/relativ/pro Todesfall, catalog entry `life_years_lost_per_death`); "Grundlagen"
    text: YLL method added, the minimum-concentration sentence replaced (E5 b), the range described as
@@ -101,7 +101,7 @@ Commits only on the user's word; each content change in its own commit.
 
 * `scripts/_compile_outcomes.R`, `R/outcomes.R` (existing `drop_incomplete_years()`), `R/prepare.R`,
   `R/prepare_helpers.R`, `R/read.R`, `R/read_helpers.R`
-* `R/plot_outcomes.R`, `scripts/_plot_outcomes.R`, `docs/Gesundheitsfolgen.qmd`
+* `R/plot_outcomes.R`, `report/plots/_plot_outcomes.R`, `report/Gesundheitsfolgen.qmd`
 * `scripts/_settings.R`, `data/meta/ressources.csv`, `data/meta/outcomes_metadata.csv`
   (CRF, cutoff), `data/tod_nat_gatu.csv` (mortality)
 * `tests/testthat/test-outcomes.R`, `tests/testthat/test-plot-outcomes.R`, `tests/regression/run_topic.R`
@@ -115,5 +115,5 @@ Commits only on the user's word; each content change in its own commit.
 * `run_topic("outcomes", "candidate")` + `compare_outputs()` against the reference: same 11 columns
   (schema test `test-output-schema.R`), premature deaths change only by E1/E2 (quantified), YLL rows
   present for 3 parameters × 2010–2024 × scenarios; two candidate runs byte-identical (deterministic).
-* `run_plots()`/`compare_plots()` for the outcomes; `check_pages()`; `quarto::quarto_render("docs/")`
+* `run_plots()`/`compare_plots()` for the outcomes; `check_pages()`; `quarto::quarto_render("report/")`
   and a look at the new figures.

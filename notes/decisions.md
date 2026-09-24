@@ -97,10 +97,10 @@ topic-specific checks (`check_rsd_filters()`) stop with a `cli` error of class
 silently filtered everything or nothing.
 
 **9. The report builds its plots while rendering; no plot rds files** (2026-09-21). Each Quarto
-page sources `scripts/_plot_setup.R` and its topic script(s) inside `withr::with_dir("..", …)`.
+page sources `report/plots/_plot_setup.R` and its topic script(s) inside `withr::with_dir("..", …)`.
 Not knitr's `root.dir: ".."`: the year tabs are knitted inline (`knitr::knit(text = …)`) and would
 write their figures into the project root, while the HTML points to `docs/`. The same scripts work
-in the console (`source("scripts/_plot_setup.R"); source("scripts/_plot_exposition.R")`, then
+in the console (`source("report/plots/_plot_setup.R"); source("report/plots/_plot_exposition.R")`, then
 `get_plot(plots_exposition, "...")`), so plots are developed outside Quarto. `_plot_exposition.R`
 reads the municipality map from geolion itself (one WFS call). Reason: `docs/plots_exposition.rds`
 was 2.4 GB, because every ggplot keeps its `plot_env`: each map built in `lapply()` inside
@@ -130,7 +130,7 @@ and exposition byte-identical, the 19 emission figures pixel-identical.
 **11. Plots per year are shown with a year slider** (user decision 2026-09-21). The year tabsets were a
 workaround to click through the years (16–20 tabs per plot). `print_year_slider(catalog, plot,
 parameter)` in a chunk with `#| output: asis` prints every year as an ordinary knitr figure (files,
-lightbox as before) into a `.year-panel` div; `docs/year-slider.html` (included after the body of every
+lightbox as before) into a `.year-panel` div; `report/year-slider.html` (included after the body of every
 page via `_quarto.yml`) puts a range input above them and shows the chosen year only; without
 JavaScript all years stay visible. Order: "alle" (all years in one plot) first, then the years
 ascending; the slider starts at "alle" where it exists, else at the newest year. Rejected: Observable JS

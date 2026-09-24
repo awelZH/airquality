@@ -8,7 +8,7 @@ project:
     - Bevölkerungsbelastung.qmd
     - Gesundheitsfolgen.qmd
     - about.qmd
-  output-dir: .
+  output-dir: ../docs
   # pre-render: "read_plots.R"
 
 website:

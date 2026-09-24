@@ -29,8 +29,8 @@ run_plots <- function(label, topics = plot_topics, global = FALSE, refresh = FAL
   env <- if (global) globalenv() else new.env(parent = globalenv())
   testthat::with_mocked_bindings(
     {
-      source("scripts/_plot_setup.R", local = env, encoding = "UTF-8")
-      for (topic in topics) source(paste0("scripts/_plot_", topic, ".R"), local = env, encoding = "UTF-8")
+      source("report/plots/_plot_setup.R", local = env, encoding = "UTF-8")
+      for (topic in topics) source(paste0("report/plots/_plot_", topic, ".R"), local = env, encoding = "UTF-8")
     },
     read_geolion_wfs = frozen(ns$read_geolion_wfs, "read_geolion_wfs", input_dir, refresh),
     .package = "airquality.methods"

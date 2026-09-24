@@ -36,13 +36,14 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 | `scripts/_setup.R` | packages, `load_all()`, sources `_settings.R`, municipality map |
 | `scripts/_settings.R` | **all analysis settings** (decision 7), pure assignments |
 | `scripts/_compile_*.R` | one script per topic: emissions, monitoring, trends, exposition, outcomes |
-| `scripts/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
-| `scripts/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
+| `report/plots/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
+| `report/plots/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
 | `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `outcomes.R`, `helpers.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R` hold only trend code (WIP) |
 | `data/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
 | `data/output/` | **output CSVs – the contract with external processes** |
 | `data/log/` | run logs, appended on every run; not part of the contract |
-| `docs/` | Quarto website (`quarto::quarto_render("docs/")`); plots per year as year sliders (`year-slider.html`, decision 11) |
+| `report/` | Quarto sources (`*.qmd`, `_quarto.yml`, `styles.css`, `year-slider.html`); plots per year as year sliders (decision 11); render with `quarto::quarto_render("report/")` |
+| `docs/` | rendered website only (GitHub Pages, `output-dir: ../docs`) |
 | `tests/testthat/` | unit tests (`devtools::test()`) and the output schema test |
 | `tests/regression/` | frozen baseline outputs, regression runs on frozen inputs, generic comparison; figures (`run_plots.R`), pages without rendering (`check_pages.R`) |
 | `notes/` | decisions, findings per topic and plans in detail (read on demand) |
@@ -102,7 +103,7 @@ appending to own outputs, no work lists derived from earlier results.
    console.
 10. Generic building blocks live in `airquality.methods` (municipality assignment, collector pixel
     redistribution, grouped legend, `check_names()`); only analysis-specific code stays in `R/`.
-11. Plots per year are shown with a year slider (`print_year_slider()`, `docs/year-slider.html`), not tabsets.
+11. Plots per year are shown with a year slider (`print_year_slider()`, `report/year-slider.html`), not tabsets.
 
 ## Read before working on …
 

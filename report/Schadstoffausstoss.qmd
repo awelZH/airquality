@@ -7,8 +7,8 @@ lightbox: true
 ```{r}
 # plots are built from the output data by the scripts in ../scripts (usable in the console as well)
 withr::with_dir("..", {
-  source("scripts/_plot_setup.R", encoding = "UTF-8")
-  source("scripts/_plot_emissions.R", encoding = "UTF-8")
+  source("report/plots/_plot_setup.R", encoding = "UTF-8")
+  source("report/plots/_plot_emissions.R", encoding = "UTF-8")
 })
 plots <- plots_emissions
 ```

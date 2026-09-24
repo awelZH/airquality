@@ -18,7 +18,7 @@ layer_data_all <- function(plot) {
   withr::with_pdf(NULL, ggplot2::ggplot_build(plot))$data
 }
 
-# threshold values as scripts/_plot_setup.R prepares them (thresholds plus line styles)
+# threshold values as report/plots/_plot_setup.R prepares them (thresholds plus line styles)
 make_threshold_values <- function() {
   tibble::tibble(
     source = rep(c("LRV Grenzwert", "WHO Richtwert"), each = 4),

@@ -1,4 +1,4 @@
-# Plots of the air quality monitoring data -> plots_monitoring, a plot catalog (needs scripts/_plot_setup.R)
+# Plots of the air quality monitoring data -> plots_monitoring, a plot catalog (needs report/plots/_plot_setup.R)
 
 plots <- list()
 

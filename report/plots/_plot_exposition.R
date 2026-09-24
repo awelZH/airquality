@@ -1,4 +1,4 @@
-# Plots of the population and ecosystem exposition -> plots_exposition, a plot catalog (needs scripts/_plot_setup.R)
+# Plots of the population and ecosystem exposition -> plots_exposition, a plot catalog (needs report/plots/_plot_setup.R)
 
 # map boundaries of the municipalities (current boundaries, without the Kloster Fahr), as in scripts/_setup.R
 map_municipalities <-

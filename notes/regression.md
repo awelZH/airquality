@@ -33,7 +33,7 @@ that became `NA`, and the largest relative deviation.
 
 **Figures** (since 2026-09-21, plots/report rework): `tests/regression/run_plots.R`.
 `run_plots("reference", global = TRUE)` before, `run_plots("candidate")` after, then
-`compare_plots("reference", "candidate")`. It sources `scripts/_plot_setup.R` and the plot scripts of
+`compare_plots("reference", "candidate")`. It sources `report/plots/_plot_setup.R` and the plot scripts of
 all five topics (`topics =` to restrict) on the output CSVs in `data/output/` (keep them unchanged
 in between), replays the municipality map like `run_topic()` and saves every row of the plot tibbles as
 a PNG (ragg, 7 × 5 in, 96 dpi) to `tests/regression/results/plots/<label>/`; the comparison reports byte

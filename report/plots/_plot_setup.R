@@ -1,8 +1,8 @@
 # Setup for plotting: packages, local functions, analysis settings and presentation settings.
-# Self-contained, so the plots can be built in the console as well as in the Quarto report (docs/*.qmd).
+# Self-contained, so the plots can be built in the console as well as in the Quarto report (report/*.qmd).
 # Run from the project root, then source one of the topic scripts, e.g.
-#   source("scripts/_plot_setup.R", encoding = "UTF-8")
-#   source("scripts/_plot_exposition.R", encoding = "UTF-8") # -> plots_exposition
+#   source("report/plots/_plot_setup.R", encoding = "UTF-8")
+#   source("report/plots/_plot_exposition.R", encoding = "UTF-8") # -> plots_exposition
 #   get_plot(plots_exposition, "population_weighted_mean", "NO2")
 # ---
 

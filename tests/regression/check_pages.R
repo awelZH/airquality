@@ -2,21 +2,21 @@
 # plots, before the full render (about 7 min).
 #
 # For each page, the code chunks (knitr::purl()) and then the inline expressions (`r ...`) run in their own
-# environment from docs/, drawing into a temporary directory; nothing is written to docs/. A page fails on the first
+# environment from report/, drawing into a temporary directory; nothing is written to report/ or docs/. A page fails on the first
 # error. Chunks with `eval: false` are skipped by purl(); printed markdown goes to a temporary
 # file.
 #
 # run from the project root in a fresh R session, e.g.
 #   Rscript -e 'source("tests/regression/check_pages.R"); check_pages()'
 
-check_pages <- function(pages = list.files("docs", pattern = "[.]qmd$")) {
+check_pages <- function(pages = list.files("report", pattern = "[.]qmd$")) {
   out <- withr::local_tempdir()
-  # figures of knitr::knit() calls in inline code go to the temporary directory, not to docs/figure/
+  # figures of knitr::knit() calls in inline code go to the temporary directory, not to report/figure/
   old_fig_path <- knitr::opts_chunk$get("fig.path")
   knitr::opts_chunk$set(fig.path = file.path(out, "figure/"))
   on.exit(knitr::opts_chunk$set(fig.path = old_fig_path), add = TRUE)
   results <- purrr::map_chr(rlang::set_names(pages), \(page) {
-    withr::with_dir("docs", {
+    withr::with_dir("report", {
       script <- file.path(out, sub("[.]qmd$", ".R", page))
       knitr::purl(page, output = script, quiet = TRUE, documentation = 0)
       inline <- unlist(regmatches(readLines(page, encoding = "UTF-8"), gregexpr("`r [^`]+`", readLines(page, encoding = "UTF-8"))))

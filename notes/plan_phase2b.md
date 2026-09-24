@@ -88,7 +88,7 @@ function designed so that it can later become a target 1:1.
    `renv::dependencies()` with DESCRIPTION; `.gitignore` adds `_targets/`.
 2. **Data move**: `git mv data/{meta,output,log}` → `data/…`; `tod_nat_gatu.csv` →
    `data/restricted/` plus a committed README and gitignore rules; `ressources.csv` entry for the
-   mortality source; update paths in `ressources.csv`, `prepare_ressources()`, `docs/index.qmd`,
+   mortality source; update paths in `ressources.csv`, `prepare_ressources()`, `report/index.qmd`,
    schema test, `CLAUDE.md` and `notes/`. Output path from `settings.R`.
 3. **Sub-analysis pipelines** from the functions improved in phase 2a, order: expo_pop (raster
    metadata target with `tar_cue("always")`; checks as targets before writing) → expo_eco →

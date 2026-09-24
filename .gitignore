@@ -3,11 +3,11 @@
 .Rhistory
 .RData
 .Ruserdata
-docs/.quarto/
-docs/.Rproj.user
-docs/.Rhistory
-docs/.RData
-docs/.Ruserdata
+report/.quarto/
+report/.Rproj.user
+report/.Rhistory
+report/.RData
+report/.Ruserdata
 
 # internal functions/scripts for creating ggplots and html
 # R/plot.R

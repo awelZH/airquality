@@ -1,0 +1,38 @@
+/* css styles */
+
+/* year slider of the plots per year (year-slider.html, R/plot.R: print_year_slider()) */
+.year-panel > p {
+  margin-bottom: 0.25rem;  /* the slider belongs to the plot above it, not to the next section */
+}
+.year-panel[hidden] {
+  display: none;
+}
+.year-slider {
+  margin-bottom: 2.5rem;
+}
+.year-slider-control {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75em;
+}
+.year-slider-track {
+  position: relative;
+  flex: 1;
+  padding-bottom: 1.5em;
+}
+.year-slider-track input[type="range"] {
+  width: 100%;
+  accent-color: #9a9a9a;
+}
+.year-slider-bubble {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  font-weight: bold;
+  color: #555;
+  white-space: nowrap;
+}
+.year-slider-end {
+  color: #777;
+  padding-top: 0.15em;
+}

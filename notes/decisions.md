@@ -73,7 +73,7 @@ update (O3 peak season up to 0.9 %, PM2.5 up to 0.5 %). Every run appends its co
 O3 slope would decouple the years but is less certain with 7–15 sites per year; the common slope stays
 (user decision 2026-09-24).
 
-**7. All analysis constants live in `scripts/_settings.R`** (2026-09-18; own file since 2026-09-21,
+**7. All analysis constants live in `settings.R`** (2026-09-18; own file since 2026-09-21,
 sourced by `_setup.R`, the plot scripts and the report), grouped by topic:
 * names carry the topic as prefix (`emis_`, `mon_`, `trend_`, `expo_`, `plot_`), general settings
   without (`year_offset`, `year_last`, `base_scenario_year`, `crs`); maps 1:1 to `config.yml` in 2b

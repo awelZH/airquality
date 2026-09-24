@@ -43,7 +43,7 @@ print_exposition_parameter(plots, "PM10")
 
 <!-- ### Russ im Feinstaub -->
 
-<!-- (needs "eBC" in plot_parameters_exposition, scripts/_settings.R) -->
+<!-- (needs "eBC" in plot_parameters_exposition, settings.R) -->
 <!-- ```{r} -->
 <!-- #| label: slider-ebc-distribution-histogram -->
 <!-- #| output: asis -->

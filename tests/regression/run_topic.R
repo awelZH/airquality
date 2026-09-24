@@ -11,7 +11,7 @@
 # record/replay version and write_local_csv() is redirected to tests/regression/results/<topic>/<label>/,
 # so data/output/ is never touched. Packages the old script needs attached are listed in `attach`.
 # Only the settings the topic needs are taken from
-# scripts/_setup.R and scripts/_settings.R (package loading and the airquality.data update are skipped).
+# scripts/_setup.R and settings.R (package loading and the airquality.data update are skipped).
 #
 # run from the project root in a fresh R session, e.g.
 #   Rscript -e 'source("tests/regression/run_topic.R"); run_topic("emissions", "reference")'
@@ -47,7 +47,7 @@ topics <- list(
 
 # evaluate the top-level assignments `name <- ...` of the setup files for the given names, in file order
 # (settings first: the municipality map in _setup.R needs `crs`)
-eval_setup <- function(names, env, files = c("scripts/_settings.R", "scripts/_setup.R")) {
+eval_setup <- function(names, env, files = c("settings.R", "scripts/_setup.R")) {
   assigned <- character()
   exprs <- unlist(purrr::map(files, \(file) as.list(parse(file, encoding = "UTF-8"))))
   for (e in exprs) {

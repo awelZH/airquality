@@ -14,7 +14,7 @@ suppressPackageStartupMessages(library(airquality.methods))
 devtools::load_all(quiet = TRUE)
 
 # analysis settings (plot_years, plot_n_years, plot_parameters_*, plot_reference_year_emissions, crs, ...)
-source("scripts/_settings.R", encoding = "UTF-8")
+source("settings.R", encoding = "UTF-8")
 
 # ressource table for input datasets (LRV & WHO threshold values)
 ressources <- prepare_ressources(airquality.methods::read_local_csv("data/meta/ressources.csv", show_col_types = FALSE))
@@ -24,33 +24,33 @@ ressources <- prepare_ressources(airquality.methods::read_local_csv("data/meta/r
 ressources_plotting <-
   list(
     emissions = list(
-      emikat = "data/output/data_emissions.csv",
-      rsd_norm = "data/output/data_nox_vehicle_emissions_rsd_per_norm.csv",
-      rsd_yearmodel = "data/output/data_nox_emissions_rsd_per_yearmodel.csv",
-      rsd_yearmeas = "data/output/data_nox_emissions_rsd_per_yearmeas.csv"
+      emikat = file.path(path_output, "data_emissions.csv"),
+      rsd_norm = file.path(path_output, "data_nox_vehicle_emissions_rsd_per_norm.csv"),
+      rsd_yearmodel = file.path(path_output, "data_nox_emissions_rsd_per_yearmodel.csv"),
+      rsd_yearmeas = file.path(path_output, "data_nox_emissions_rsd_per_yearmeas.csv")
     ),
     monitoring = list(
-      airquality = "data/output/data_airquality_monitoring_y1.csv",
-      ndep_pars = "data/output/data_ndep_pars_monitoring_y1.csv",
-      ndep = "data/output/data_ndep_monitoring_y1.csv"
+      airquality = file.path(path_output, "data_airquality_monitoring_y1.csv"),
+      ndep_pars = file.path(path_output, "data_ndep_pars_monitoring_y1.csv"),
+      ndep = file.path(path_output, "data_ndep_monitoring_y1.csv")
     ),
     trends = list(
-      trends = "data/output/data_airquality_trends_relative_y1.csv",
-      trends_agg = "data/output/data_airquality_trends_relative_aggregated_y1.csv"
+      trends = file.path(path_output, "data_airquality_trends_relative_y1.csv"),
+      trends_agg = file.path(path_output, "data_airquality_trends_relative_aggregated_y1.csv")
     ),
     exposition = list(
-      weightedmean_canton = "data/output/data_exposition_weighted_means_canton.csv",
-      weightedmean_municip = "data/output/data_exposition_weighted_means_municipalities.csv",
-      expo_distr_pollutants = "data/output/data_exposition_distribution_pollutants.csv",
-      expo_distr_ndep ="data/output/data_exposition_distribution_ndep.csv"
+      weightedmean_canton = file.path(path_output, "data_exposition_weighted_means_canton.csv"),
+      weightedmean_municip = file.path(path_output, "data_exposition_weighted_means_municipalities.csv"),
+      expo_distr_pollutants = file.path(path_output, "data_exposition_distribution_pollutants.csv"),
+      expo_distr_ndep = file.path(path_output, "data_exposition_distribution_ndep.csv")
     ),
     outcomes = list(
-      outcomes = "data/output/data_health_outcomes.csv"
+      outcomes = file.path(path_output, "data_health_outcomes.csv")
     )
   )
 
 
-# data subsetting parameters: see scripts/_settings.R (plot_years, plot_n_years, plot_parameters_timeseries,
+# data subsetting parameters: see settings.R (plot_years, plot_n_years, plot_parameters_timeseries,
 # plot_parameters_exposition, plot_reference_year_emissions)
 siteclass_levels <- rev(c("ländlich - Hintergrund", "klein-/vorstädtisch - Hintergrund",
                           "städtisch - Hintergrund", "städtisch - verkehrsbelastet"))

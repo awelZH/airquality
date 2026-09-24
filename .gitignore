@@ -38,3 +38,5 @@ tests/regression/inputs/
 /contexts
 /rules
 /.claude
+# targets store
+_targets/

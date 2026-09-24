@@ -1,6 +1,13 @@
-# Analysis settings: all constants of the analysis in one place, grouped by topic (see CLAUDE.md, decision 7).
-# Pure assignments, no packages attached: sourced by scripts/_setup.R, the plot scripts and the report.
+# Analysis settings: all constants of the analysis and its paths in one place, grouped by topic (see CLAUDE.md,
+# decisions 7 and 8). Pure assignments, no packages attached: sourced by _targets.R, the plot scripts and the
+# report; targets tracks them as globals, so a changed setting reruns the targets that use it.
 # Settings that depend on the date (year_last, emis_year_max) change with the calendar year.
+
+# => paths
+# output CSVs (the contract with external processes) and run logs; the environment variables let the
+# regression redirect them (tests/regression/run_pipeline.R)
+path_output <- Sys.getenv("AIRQUALITY_OUTPUT_DIR", "data/output")
+path_log <- Sys.getenv("AIRQUALITY_LOG_DIR", "data/log")
 
 # => general
 # last year analysed = current year - year_offset (data of a year usually appear in the following year)

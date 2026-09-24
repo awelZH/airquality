@@ -102,7 +102,7 @@ Commits only on the user's word; each content change in its own commit.
 * `scripts/_compile_outcomes.R`, `R/outcomes.R` (existing `drop_incomplete_years()`), `R/prepare.R`,
   `R/prepare_helpers.R`, `R/read.R`, `R/read_helpers.R`
 * `R/plot_outcomes.R`, `report/plots/_plot_outcomes.R`, `report/Gesundheitsfolgen.qmd`
-* `scripts/_settings.R`, `data/meta/ressources.csv`, `data/meta/outcomes_metadata.csv`
+* `settings.R`, `data/meta/ressources.csv`, `data/meta/outcomes_metadata.csv`
   (CRF, cutoff), `data/tod_nat_gatu.csv` (mortality)
 * `tests/testthat/test-outcomes.R`, `tests/testthat/test-plot-outcomes.R`, `tests/regression/run_topic.R`
 * Reuse: `check_columns()` (`R/helpers.R`), `filter_ressources()`, `airquality.methods::read_opendataswiss()`

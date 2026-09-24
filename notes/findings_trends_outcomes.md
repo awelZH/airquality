@@ -101,3 +101,9 @@ thousands separator (`label_big_mark()` in `R/plot.R`, argument `ylabels` of `gg
 default unchanged for the other pages). "! WORK-IN-PROGRESS !" removed from the page. Figures: 354 of the
 other pages byte-identical; changed only the 6 life-years plots and the premature deaths PM2.5 absolute
 (the only one with values ≥ 1'000).
+
+**Outcomes in the pipeline** (phase 2b, 2026-09-24): `pipelines/outcomes.R` takes the population-weighted
+means of the canton from the target `expo_pop_means_canton` instead of reading
+`data_exposition_weighted_means_canton.csv` back. On frozen inputs `data_health_outcomes.csv` differs from
+the old script by at most 4.5e-11 (relative): the CSV round trip lost the last digits. `recode_sex()` uses
+`dplyr::case_when()` (`case_match()` is deprecated in dplyr 1.2).

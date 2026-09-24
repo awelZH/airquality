@@ -15,7 +15,7 @@ network readers of `airquality.methods` (`read_opendataswiss()`, `read_geolion_w
 record/replay version (`tests/regression/inputs/*.rds`, keyed by `rlang::hash()` of the arguments,
 `refresh = TRUE` downloads again) and redirects `write_local_csv()` to
 `tests/regression/results/<topic>/<label>/`, so `data/output/` is never touched. Settings
-are evaluated from `scripts/_settings.R` and `scripts/_setup.R`, in this order (only the listed
+are evaluated from `settings.R` and `scripts/_setup.R`, in this order (only the listed
 assignments; no package loading, no `airquality.data` update). A new topic needs an entry in
 `topics` (script, settings, `attach` for packages an old script expects to be attached; further
 readers in `network_readers`). Inputs and results are gitignored. Topics whose inputs are

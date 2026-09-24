@@ -49,7 +49,7 @@ ressources <- prepare_ressources(airquality.methods::read_local_csv("data/meta/r
 
 # analysis settings (all constants of the analysis in one place, grouped by topic):
 # ---
-source("scripts/_settings.R", encoding = "UTF-8")
+source("settings.R", encoding = "UTF-8")
 
 
 # map boundaries:

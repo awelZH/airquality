@@ -86,7 +86,7 @@ prepare_population_by_age <- function(data) {
 
 # German sex labels of the input data to "male" / "female"
 recode_sex <- function(sex) {
-  dplyr::case_match(sex, c("männlich", "Mann") ~ "male", c("weiblich", "Frau") ~ "female")
+  dplyr::case_when(sex %in% c("männlich", "Mann") ~ "male", sex %in% c("weiblich", "Frau") ~ "female")
 }
 
 

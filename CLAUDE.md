@@ -34,7 +34,7 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 |---|---|
 | `scripts/analyse_airquality.R` | entry point: sources `_setup.R`, then the `_compile_*.R` scripts in order |
 | `scripts/_setup.R` | packages, `load_all()`, sources `_settings.R`, municipality map |
-| `scripts/_settings.R` | **all analysis settings** (decision 7), pure assignments |
+| `settings.R` | **all analysis settings** (decision 7), pure assignments |
 | `scripts/_compile_*.R` | one script per topic: emissions, monitoring, trends, exposition, outcomes |
 | `report/plots/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
 | `report/plots/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
@@ -96,7 +96,7 @@ appending to own outputs, no work lists derived from earlier results.
 6. Derived parameters (O3 peak season from NO2, PM2.5 before 2015 from PM10) are refitted on every
    run; coefficients are logged in `data/log/`. The O3 model keeps one common slope for all
    years (user decision 2026-09-24).
-7. All analysis constants live in `scripts/_settings.R`, prefixed by topic; functions in `R/` get them
+7. All analysis constants live in `settings.R`, prefixed by topic; functions in `R/` get them
    as arguments; every year range ends at `year_last`.
 8. Inputs are checked where they enter (`check_columns()`, error class `airquality_input_error`).
 9. The report builds its plots while rendering (no rds files); the plot scripts stay usable in the

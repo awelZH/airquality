@@ -1,11 +1,18 @@
 # compiling trends of air pollutants based on emission data and monitoring data for the Canton of Zürich.
 # for monitoring data, meteo-normalised trends (using package 'rmweather') are also derived.
 # output: respective trends relative to one pre-defined point in time
+#
+# WORK IN PROGRESS, outside the targets pipeline (notes/plan_phase2b.md, decision 7; see wip/README.md): reads the
+# pipeline outputs in path_output, so run it after the pipeline; about 30 min (random forests, no seed yet)
+#   source("wip/trends.R", encoding = "UTF-8")   # from the project root
 
 
-# settings ...
+# functions and settings ...
 # ---
-# => see scripts/_setup.R: trend_years, trend_cantons, trend_parameters, trend_vars_d1, trend_yearmin_per_site,
+suppressPackageStartupMessages(library(airquality.methods)) # prepare_emission_trends() calls longpollutant() without prefix
+for (file in list.files("R", pattern = "[.]R$", full.names = TRUE)) source(file, encoding = "UTF-8")
+source("settings.R", encoding = "UTF-8")
+# => see settings.R: trend_years, trend_cantons, trend_parameters, trend_vars_d1, trend_yearmin_per_site,
 #    trend_reference_year(), trend_nmin_sites()
 # TODO: also include NHx on different time-interval than d1
 # TODO: ... remove data_monitoring_ndep from airquality.data when ndep-analysis is online at github. Integrate future github dataset instead
@@ -15,10 +22,10 @@
 # ---
 # get pre-compiled airquality monitoring data as daily averages and yearly values
 data_monitoring_aq <- airquality.data::data_monitoring_aq_d1
-data_monitoring_aq_y1 <- airquality.methods::read_local_csv("data/output/data_airquality_monitoring_y1.csv", locale = readr::locale(encoding = "UTF-8"))
+data_monitoring_aq_y1 <- airquality.methods::read_local_csv(file.path(path_output, "data_airquality_monitoring_y1.csv"), locale = readr::locale(encoding = "UTF-8"))
 
 # get local pre-compiled emission data
-data_emikat <- airquality.methods::read_local_csv("data/output/data_emissions.csv", delim = ";", locale = readr::locale(encoding = "UTF-8"))
+data_emikat <- airquality.methods::read_local_csv(file.path(path_output, "data_emissions.csv"), delim = ";", locale = readr::locale(encoding = "UTF-8"))
 
 # get pre-compiled airquality-network meteorological data as daily averages
 data_monitoring_met_d1 <- airquality.data::data_monitoring_met_d1
@@ -134,8 +141,8 @@ trends_relative$all <-
 
 # write output datasets & clean up:
 # ---
-airquality.methods::write_local_csv(trends_relative$all, file = "data/output/data_airquality_trends_relative_y1.csv")
-airquality.methods::write_local_csv(trends_relative$agg, file = "data/output/data_airquality_trends_relative_aggregated_y1.csv")
+airquality.methods::write_local_csv(trends_relative$all, file = file.path(path_output, "data_airquality_trends_relative_y1.csv"))
+airquality.methods::write_local_csv(trends_relative$agg, file = file.path(path_output, "data_airquality_trends_relative_aggregated_y1.csv"))
 rm(list = c("pars", "emissions", "emissions_relative",
             "data_monitoring_median", "data_emikat", "data_monitoring_aq", "data_monitoring_met_d1", "data_trends", "fun", "trends", "trends_relative"))
 

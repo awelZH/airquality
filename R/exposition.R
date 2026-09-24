@@ -66,6 +66,32 @@ read_exposition_rasters <- function(years, boundary, correct_noloc = TRUE) {
     airquality.methods::align_to_reference(reference = exposition_collections[["statpop"]])
 }
 
+#' Build the cell table of the exposition from the rasters
+#'
+#' Reads the rasters ([read_exposition_rasters()]), turns them into one row per inhabited cell and year,
+#' assigns each cell its municipality and gives the STATPOP collector pixel inhabitants back to their
+#' municipality (decisions 3–5). One step, because the aligned rasters are partly streamed from the web
+#' (GDAL `/vsicurl/`) and cannot be stored in between.
+#'
+#' @inheritParams read_exposition_rasters
+#' @param map_municipalities Municipality polygons (without foreign enclaves).
+#'
+#' @return The cell table: `x`, `y`, `year`, `population`, `bfsnr`, `gemeindename` and one column per
+#'   pollutant.
+#'
+#' @keywords internal
+build_exposition_cells <- function(years, map_municipalities, correct_noloc = TRUE) {
+  rasters <- read_exposition_rasters(years, map_municipalities, correct_noloc = correct_noloc)
+
+  cells <-
+    rasters |>
+    rasters_to_cells() |>
+    airquality.methods::assign_municipalities(map_municipalities)
+
+  airquality.methods::redistribute_noloc(cells, airquality.methods::noloc_from_aligned(rasters), map_municipalities)
+}
+
+
 #' Read the critical load exceedance for nitrogen, restricted to the canton
 #'
 #' @param map_municipalities Municipality polygons; cells whose centre lies in

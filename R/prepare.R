@@ -4,7 +4,6 @@
 #' @param data_met
 #' @param cantons Cantons whose monitoring sites are kept.
 #'
-#' @export
 prepare_data_trends <- function(data_aq, data_met, cantons) {
 
   # aq dataset
@@ -64,7 +63,6 @@ prepare_data_trends <- function(data_aq, data_met, cantons) {
 #' @param emissions
 #' @param reference_year_fun
 #'
-#' @export
 prepare_emission_trends <- function(emissions, reference_year_fun) {
 
   emissions <-

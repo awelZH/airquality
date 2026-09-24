@@ -2,7 +2,6 @@
 #'
 #' @param ressources
 #'
-#' @export
 prepare_ressources <- function(ressources) {
 
   ressources <-
@@ -113,7 +112,6 @@ bin_fun <- function(pollutant) {
 #' @param minimal
 #' @param coverage
 #'
-#' @export
 rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 300, nsamples = 300, verbose = TRUE, minimal = TRUE, coverage = 0.8) {
 
   # see example at https://github.com/skgrange/rmweather
@@ -217,7 +215,6 @@ rf_meteo_normalisation <- function(data, trend_vars, frac_train = 0.8, ntrees = 
 #' @param minimal
 #' @param coverage
 #'
-#' @export
 derive_trends_per_parameter <- function(data_trends, parameter, trend_vars, reference_year_fun, yearmin_per_site = 4, frac_train = 0.8, ntrees = 300, nsamples = 300, verbose = TRUE, minimal = TRUE, coverage = 0.8) {
 
   # TODO: better function...

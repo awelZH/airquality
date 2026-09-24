@@ -65,7 +65,7 @@ prepare_plot_ndep_components <- function(data) {
 #'
 #' @param parameter Parameter, e.g. "NO2".
 #' @param threshold_values Threshold values with line styles (`immission_threshold_values` of
-#'   `scripts/_plot_setup.R`).
+#'   `report/plots/_plot_setup.R`).
 #'
 #' @return Threshold lines as returned by [extract_threshold()] (`value = NA` for none). Stops with an
 #'   error of class `airquality_plot_error` for other parameters.
@@ -192,7 +192,7 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
 #'
 #' @param data Air quality data as prepared by [prepare_plot_airquality()].
 #' @param parameters Parameters to plot.
-#' @param axes Y limits and breaks per parameter (`plot_axes_timeseries` of `scripts/_plot_setup.R`).
+#' @param axes Y limits and breaks per parameter (`plot_axes_timeseries` of `report/plots/_plot_setup.R`).
 #' @param threshold_values Threshold values with line styles.
 #' @param colour_scale Colour scale of the site classes.
 #' @param pointsize Size of the points.

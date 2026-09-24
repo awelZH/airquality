@@ -14,6 +14,9 @@
 #
 # The steps below mirror scripts/_compile_exposition_data.R.
 #
+# HISTORICAL (step 1, 2026-09-18): needs scripts/_setup.R, removed in phase 2b; run it on a checkout of
+# commit 3582e45 or earlier. The pipeline is checked with run_pipeline.R.
+#
 # run from the project root: source("tests/regression/run_exposition_variants.R")
 
 source("scripts/_setup.R", encoding = "UTF-8")

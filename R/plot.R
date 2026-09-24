@@ -136,7 +136,7 @@ abort_plot_match <- function(catalog, plot, parameter, year, n) {
 #' Print the plots of one parameter per year as a year slider (Quarto page)
 #'
 #' For a chunk with `#| output: asis`. Writes a `.year-slider` div with one `.year-panel` div per year and
-#' prints each plot as an ordinary figure into it; `docs/year-slider.html` turns the panels into a slider,
+#' prints each plot as an ordinary figure into it; `report/year-slider.html` turns the panels into a slider,
 #' starting at the last year. A plot of all years (`year == "alle"`) is not part of the slider: it gets a
 #' tab of its own, next to a tab with the slider. Years are sorted by their last year, so labels of year
 #' ranges ("2023–2025") work as well.
@@ -208,7 +208,7 @@ print_tabset <- function(figures) {
 #' Setting of one parameter from a list of settings per parameter
 #'
 #' @param settings Named list, one element per parameter (e.g. `plot_axes_timeseries` of
-#'   `scripts/_plot_setup.R`).
+#'   `report/plots/_plot_setup.R`).
 #' @param parameter Parameter.
 #'
 #' @return The element of `parameter`. Stops with an error of class `airquality_plot_error` if there is

@@ -1,5 +1,5 @@
 # Plots of the trends page: relative development of emissions and immissions vs. a reference year.
-# The trend data themselves come from scripts/_compile_trend_data.R (work in progress).
+# The trend data themselves come from wip/trends.R (work in progress).
 
 
 # ---- data ----------------------------------------------------------------------------

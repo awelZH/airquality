@@ -370,7 +370,7 @@ ggplot_exposition_cumulative_years <- function(data, x, y, xbreaks, threshold, x
 #' @param data `data_exposition_distribution_pollutants.csv`.
 #' @param parameter Parameter, e.g. "NO2".
 #' @param threshold_values Threshold values with line styles.
-#' @param axes Bar width and x breaks per parameter (`plot_axes_exposition` of `scripts/_plot_setup.R`); the
+#' @param axes Bar width and x breaks per parameter (`plot_axes_exposition` of `report/plots/_plot_setup.R`); the
 #'   range of the breaks is the x range.
 #' @param sub Area in the subtitle.
 #' @param theme ggplot2 theme.

@@ -1,7 +1,8 @@
-# Run the targets pipeline on frozen inputs and write its outputs to a separate directory (phase 2b).
+# Run the targets pipeline on frozen inputs and write its outputs to a separate directory (phase 2b; before,
+# run_topic.R ran the topic scripts the same way).
 #
-# Like run_topic.R, but for the pipeline: the network readers of airquality.methods replay the inputs of
-# tests/regression/inputs/ (recorded on first use), the outputs and logs go to
+# The network readers of airquality.methods replay the inputs of tests/regression/inputs/ (recorded on
+# first use, gitignored; refresh = TRUE downloads again), the outputs and logs go to
 # tests/regression/results/pipeline/<label>/{output,log}/ (environment variables of settings.R) and the targets
 # store to .../_targets, so data/output/, data/log/ and _targets/ are never touched. The report is not built.
 # tar_make() runs in this session (callr_function = NULL), so the mocked readers apply.
@@ -13,7 +14,20 @@
 # run from the project root in a fresh R session, e.g.
 #   Rscript -e 'source("tests/regression/run_pipeline.R"); run_pipeline("candidate")'
 
-source("tests/regression/run_topic.R") # frozen(), regression_dir
+regression_dir <- "tests/regression"
+
+# wrap a reader so that its result is stored on first use and replayed afterwards (key: hash of the arguments)
+frozen <- function(fun, name, input_dir, refresh) {
+  force(fun)
+  function(...) {
+    file <- file.path(input_dir, paste0(name, "_", rlang::hash(list(...)), ".rds"))
+    if (file.exists(file) && !refresh) return(readRDS(file))
+    cli::cli_inform("Downloading input for {.fn {name}} -> {.file {file}}")
+    result <- fun(...)
+    saveRDS(result, file)
+    result
+  }
+}
 
 run_pipeline <- function(label, refresh = FALSE) {
   result_dir <- file.path(regression_dir, "results", "pipeline", label)

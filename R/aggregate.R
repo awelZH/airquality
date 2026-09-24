@@ -4,7 +4,6 @@
 #' @param reference_year_fun
 #' @param nmin_sites_fun
 #'
-#' @export
 aggregate_trend_results <- function(trends, reference_year_fun, nmin_sites_fun) {
 
   trends <-

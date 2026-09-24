@@ -1,6 +1,6 @@
 # Plots of the population and ecosystem exposition -> plots_exposition, a plot catalog (needs report/plots/_plot_setup.R)
 
-# map boundaries of the municipalities (current boundaries, without the Kloster Fahr), as in scripts/_setup.R
+# map boundaries of the municipalities (current boundaries, without the Kloster Fahr), as in pipelines/setup.R
 map_municipalities <-
   airquality.methods::read_geolion_wfs(filter_ressources(ressources, 11), version =  "2.0.0", crs = crs) |>
   airquality.methods::drop_foreign_enclaves()

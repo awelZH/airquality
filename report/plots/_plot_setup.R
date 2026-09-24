@@ -10,8 +10,8 @@
 # work in progress), which calls longpollutant() without prefix
 suppressPackageStartupMessages(library(airquality.methods))
 
-# local functions
-devtools::load_all(quiet = TRUE)
+# local functions (R/), sourced like tar_source() does in _targets.R
+for (file in list.files("R", pattern = "[.]R$", full.names = TRUE)) source(file, encoding = "UTF-8")
 
 # analysis settings (plot_years, plot_n_years, plot_parameters_*, plot_reference_year_emissions, crs, ...)
 source("settings.R", encoding = "UTF-8")

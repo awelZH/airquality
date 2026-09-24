@@ -1,5 +1,5 @@
 # Health outcomes attributable to air pollution: input preparation (deaths, population by age), estimates
-# with healthiar and the output of scripts/_compile_outcomes.R.
+# with healthiar and the output of the pipeline (pipelines/outcomes.R).
 
 
 #' Drop years whose mortality data are not complete yet

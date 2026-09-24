@@ -16,7 +16,8 @@ plot_population_over_thresholds_share(
 
 \item{n_years}{Number of the last years summed up.}
 
-\item{colours}{Named fill colours of the three \code{reference} levels.}
+\item{colours}{Named fill colours of the three \code{reference} levels; the legend shows only the levels
+of the parameter.}
 
 \item{theme}{ggplot2 theme.}
 }

@@ -6,7 +6,8 @@ make_distribution <- function() {
   tibble::tibble(
     year = 2020,
     pollutant = c("NO2", "NO2", "NO2", "O3", "O3", "O3", "O3"),
-    metric = "Jahresmittel",
+    metric = c("Jahresmittel", "Jahresmittel", "Jahresmittel", "typische Spitzenbelastung", "typische Spitzenbelastung",
+               "mittlere Sommertagbelastung", "mittlere Sommertagbelastung"),
     parameter = c("NO2", "NO2", "NO2", "O3_max_98p_m1", "O3_max_98p_m1", "O3_peakseason_mean_d1_max_mean_h8gl",
                   "O3_peakseason_mean_d1_max_mean_h8gl"),
     concentration = c(5, 20, 40, 90, 110, 50, 70),
@@ -32,13 +33,25 @@ test_that("population_over_thresholds() counts inhabitants over LRV, additionall
   expect_equal(levels(result$reference), c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert"))
 })
 
-test_that("population_over_thresholds() uses the LRV of the O3 peak and the WHO value of the peak season", {
+test_that("population_over_thresholds() counts each O3 metric against its own threshold only", {
   result <- population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values())
 
-  o3 <- dplyr::filter(result, pollutant == airquality.methods::longpollutant("O3"))
-  expect_equal(o3$population[o3$reference == "über LRV-Grenzwert"], 20)
-  expect_equal(o3$population[o3$reference == "über WHO-Richtwert"], 70 - 20)
-  expect_equal(o3$population[o3$reference == "unter Grenz-/Richtwert"], 320 - 70)
+  peak <- dplyr::filter(result, parameter == "O3_max_98p_m1")
+  expect_equal(as.character(peak$reference), c("über LRV-Grenzwert", "unter Grenz-/Richtwert"))
+  expect_equal(peak$population, c(20, 320 - 20))
+
+  season <- dplyr::filter(result, parameter == "O3_peakseason_mean_d1_max_mean_h8gl")
+  expect_equal(as.character(season$reference), c("über WHO-Richtwert", "unter Grenz-/Richtwert"))
+  expect_equal(season$population, c(70, 320 - 70))
+})
+
+test_that("population_over_thresholds() names the metric only for pollutants with several metrics", {
+  result <- population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values())
+
+  labels <- dplyr::distinct(result, parameter, pollutant)
+  expect_equal(labels$pollutant[labels$parameter == "NO2"], airquality.methods::longpollutant("NO2"))
+  expect_equal(labels$pollutant[labels$parameter == "O3_max_98p_m1"],
+               paste0(airquality.methods::longpollutant("O3"), " (typische Spitzenbelastung)"))
 })
 
 test_that("population_over_thresholds() sets small negative remainders to 0", {
@@ -49,7 +62,7 @@ test_that("population_over_thresholds() sets small negative remainders to 0", {
   expect_true(all(result$population >= 0))
 })
 
-test_that("the plots of the population over thresholds use the last years for the shares", {
+test_that("the doughnut plot of the population over thresholds uses the last years for the shares", {
   data <- dplyr::bind_rows(
     population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values()),
     population_over_thresholds(dplyr::mutate(make_distribution(), year = 2019), dplyr::mutate(make_weighted_means(), year = 2019),
@@ -57,12 +70,109 @@ test_that("the plots of the population over thresholds use the last years for th
   )
   colours <- c("über LRV-Grenzwert" = "red3", "über WHO-Richtwert" = "gray30", "unter Grenz-/Richtwert" = "gray60")
 
-  timeseries <- plot_population_over_thresholds(data, colours)
   share <- plot_population_over_thresholds_share(data, n_years = 1, colours = colours)
 
-  expect_s3_class(timeseries, "ggplot")
   expect_equal(sum(share$data$population), sum(data$population[data$year == 2020]))
   expect_equal(share$labels$subtitle, "Anteil Personen im Kanton Zürich in den Jahren 2020 bis 2020")
+})
+
+test_that("the doughnut plot works with a theme whose caption is a ggtext textbox", {
+  data <- population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values())
+  colours <- c("über LRV-Grenzwert" = "red3", "über WHO-Richtwert" = "gray30", "unter Grenz-/Richtwert" = "gray60")
+  theme <- ggplot2::theme_minimal() + ggplot2::theme(plot.caption = ggtext::element_textbox_simple())
+
+  expect_no_error(withr::with_pdf(NULL, ggplot2::ggplotGrob(
+    plot_population_over_thresholds_share(data, n_years = 1, colours = colours, theme = theme)
+  )))
+})
+
+test_that("plot_population_over_thresholds() gives one plot per parameter, without panels, named in the title", {
+  data <- dplyr::bind_rows(
+    population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values()),
+    population_over_thresholds(dplyr::mutate(make_distribution(), year = 2019), dplyr::mutate(make_weighted_means(), year = 2019),
+                               make_threshold_values())
+  )
+  colours <- c("über LRV-Grenzwert" = "red3", "über WHO-Richtwert" = "gray30", "unter Grenz-/Richtwert" = "gray60")
+
+  plots <- plot_population_over_thresholds(data, c("NO2", "O3_max_98p_m1"), colours)
+
+  expect_named(plots, c("NO2", "O3_max_98p_m1"))
+  expect_equal(unique(plots$O3_max_98p_m1$data$parameter), "O3_max_98p_m1")
+  expect_equal(sum(plots$NO2$data$population), sum(data$population[data$parameter == "NO2"]))
+  expect_s3_class(plots$NO2$facet, "FacetNull")
+  expect_match(as.character(plots$NO2$labels$title), airquality.methods::longpollutant("NO2"), fixed = TRUE)
+  expect_match(as.character(plots$O3_max_98p_m1$labels$title), "typische Spitzenbelastung", fixed = TRUE)
+  expect_equal(plots$NO2$labels$subtitle, "Anzahl Personen, Wohnbevölkerung im Kanton Zürich")
+  expect_equal(plots$NO2$theme$legend.position, "right")
+  expect_setequal(legend_texts(plots$NO2), names(colours))
+  expect_setequal(legend_texts(plots$O3_max_98p_m1), c("über LRV-Grenzwert", "unter Grenz-/Richtwert")) # no WHO guideline
+})
+
+# ---- page section per parameter ------------------------------------------------------
+
+test_that("print_exposition_parameter() prints the text, the distributions and a tabset canton / municipalities", {
+  plot <- ggplot2::ggplot()
+  catalog <- dplyr::bind_rows(
+    plot_catalog(list(NO2 = list(`2020` = plot)), "distribution_histogram", names_to = c("parameter", "year")),
+    plot_catalog(list(NO2 = list(alle = plot, `2020` = plot)), "distribution_cumulative", names_to = c("parameter", "year")),
+    plot_catalog(list(NO2 = plot), "population_over_thresh", names_to = "parameter"),
+    plot_catalog(list(NO2 = plot), "population_weighted_mean", names_to = "parameter"),
+    plot_catalog(list(NO2 = list(`2020` = plot)), "population_weighted_mean_map", names_to = c("parameter", "year"))
+  )
+
+  output <- withr::with_pdf(NULL, utils::capture.output(print_exposition_parameter(catalog, "NO2", text = "Erläuterung")))
+
+  headings <- c("#### Belastungsverteilung", "#### Entwicklung luftschadstoffbelastete Bevölkerung", "#### mittlere Bevölkerungsbelastung")
+  expect_contains(output, c("Erläuterung", headings, "##### alle Jahre", "##### Kanton", "##### Gemeinden"))
+  expect_lt(which(output == "Erläuterung"), which(output == headings[1]))
+  expect_lt(which(output == headings[1]), grep("year-slider", output)[1])
+  expect_lt(which(output == "##### alle Jahre"), which(output == headings[2]))
+  expect_lt(which(output == headings[2]), which(output == headings[3]))
+  expect_lt(which(output == headings[3]), which(output == "##### Kanton"))
+  expect_lt(which(output == "##### Kanton"), which(output == "##### Gemeinden"))
+})
+
+# ---- ecosystems over the critical load -----------------------------------------------
+
+test_that("ecosystems_over_critical_load() counts the ecosystems with and without exceedance per year", {
+  distribution <- tibble::tibble(
+    year = rep(c(2015, 2020), each = 3), ndep_exmax = c(-0.5, 0.5, 10.5, -1.5, 0.5, 20.5), n_ecosys = c(2, 5, 7, 1, 6, 8)
+  )
+
+  result <- ecosystems_over_critical_load(distribution)
+
+  expect_named(result, c("year", "reference", "n_ecosys"))
+  expect_equal(levels(result$reference), c("unter krit. Eintragsrate", "über krit. Eintragsrate"))
+  over <- dplyr::filter(result, reference == "über krit. Eintragsrate")
+  below <- dplyr::filter(result, reference == "unter krit. Eintragsrate")
+  expect_equal(over$n_ecosys[over$year == 2015], 12)
+  expect_equal(below$n_ecosys[below$year == 2020], 1)
+  expect_equal(sum(result$n_ecosys), sum(distribution$n_ecosys))
+})
+
+test_that("ecosystems_over_critical_load() keeps a year without ecosystems below the critical load", {
+  distribution <- tibble::tibble(year = 2020, ndep_exmax = c(0.5, 3.5), n_ecosys = c(4, 6))
+
+  result <- ecosystems_over_critical_load(distribution)
+
+  expect_equal(result$n_ecosys[result$reference == "unter krit. Eintragsrate"], 0)
+  expect_equal(result$n_ecosys[result$reference == "über krit. Eintragsrate"], 10)
+})
+
+test_that("plot_ecosystems_over_critical_load() stacks the ecosystems like the population plots", {
+  data <- ecosystems_over_critical_load(
+    tibble::tibble(year = rep(c(2015, 2020), each = 2), ndep_exmax = c(-0.5, 2.5, -0.5, 2.5), n_ecosys = c(1, 9, 2, 8))
+  )
+  colours <- c("über krit. Eintragsrate" = "red3", "unter krit. Eintragsrate" = "gray60")
+
+  plot <- plot_ecosystems_over_critical_load(data, colours)
+
+  expect_s3_class(plot, "ggplot")
+  expect_s3_class(plot$facet, "FacetNull")
+  expect_equal(plot$labels$subtitle, "Anzahl empfindlicher Ökosysteme im Kanton Zürich")
+  expect_setequal(legend_texts(plot), names(colours))
+  bars <- layer_data_all(plot)[[1]]
+  expect_equal(as.vector(tapply(bars$ymax, bars$x, max)), c(10, 10)) # stacked: the top of the bars is the total per year
 })
 
 # ---- distributions -------------------------------------------------------------------
@@ -136,6 +246,19 @@ test_that("table_population_over_thresholds() gives one row per pollutant and ye
   expect_equal(result$Jahr, c(2020, 2019))
   expect_equal(trimws(result$`> WHO-Richtwert`), c("100'000", "200'030"))
   expect_equal(trimws(result$`< Grenz-/Richtwert`), c("2'000", "1'000"))
+})
+
+test_that("table_population_over_thresholds() gives one row per O3 metric, with a dash where it has no threshold", {
+  data <- population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values())
+
+  result <- table_population_over_thresholds(data)
+
+  o3 <- airquality.methods::longpollutant("O3")
+  peak <- dplyr::filter(result, Schadstoff == paste0(o3, " (typische Spitzenbelastung)"))
+  season <- dplyr::filter(result, Schadstoff == paste0(o3, " (mittlere Sommertagbelastung)"))
+  expect_equal(nrow(result), 3)
+  expect_equal(trimws(c(peak$`> LRV-Grenzwert`, peak$`> WHO-Richtwert`, peak$`< Grenz-/Richtwert`)), c("20", "–", "300"))
+  expect_equal(trimws(c(season$`> LRV-Grenzwert`, season$`> WHO-Richtwert`, season$`< Grenz-/Richtwert`)), c("–", "70", "250"))
 })
 
 test_that("the cumulative plot of all years has a two-column legend", {

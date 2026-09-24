@@ -17,105 +17,28 @@ plots <- plots_exposition
 ```
 
 
-### Einwohner/innen mit Belastung über Grenz-/Richtwert
-
-<!-- ```{r} -->
-<!-- #| label: population-over-thresh-rel -->
-<!-- get_plot(plots, "population_over_thresh_share") -->
-<!-- ``` -->
-
-```{r}
-#| label: population-over-thresh-ts
-#| fig.asp: 0.6
-get_plot(plots, "population_over_thresh")
-```
-
-
-::: {.callout-note collapse="true"}
-### Tabelle: Anzahl Einwohner/innen pro Schadstoff und Jahr
-
-```{r}
-table_population_over_thresh |>
-  kableExtra::kbl() |>
-  kableExtra::kable_paper(full_width = FALSE) |>
-  kableExtra::scroll_box(height = "200px")
-```
-:::
-
-
 ### Stickstoffdioxid
 
 ```{r}
-#| label: slider-no2-distribution-histogram
+#| label: no2
 #| output: asis
-print_year_slider(plots, "distribution_histogram", "NO2")
-```
-
-```{r}
-#| label: slider-no2-distribution-cumulative
-#| output: asis
-print_year_slider(plots, "distribution_cumulative", "NO2")
-```
-
-```{r}
-#| label: pwmean-no2
-get_plot(plots, "population_weighted_mean", "NO2")
-```
-
-```{r}
-#| label: slider-no2-population-weighted-mean-map
-#| output: asis
-print_year_slider(plots, "population_weighted_mean_map", "NO2")
+print_exposition_parameter(plots, "NO2")
 ```
 
 ### Feinstaub PM2.5
 
 ```{r}
-#| label: slider-pm2-5-distribution-histogram
+#| label: pm2-5
 #| output: asis
-print_year_slider(plots, "distribution_histogram", "PM2.5")
-```
-
-```{r}
-#| label: slider-pm2-5-distribution-cumulative
-#| output: asis
-print_year_slider(plots, "distribution_cumulative", "PM2.5")
-```
-
-```{r}
-#| label: pwmean-pm25
-get_plot(plots, "population_weighted_mean", "PM2.5")
-```
-
-```{r}
-#| label: slider-pm2-5-population-weighted-mean-map
-#| output: asis
-print_year_slider(plots, "population_weighted_mean_map", "PM2.5")
+print_exposition_parameter(plots, "PM2.5")
 ```
 
 ### Feinstaub PM10
 
 ```{r}
-#| label: slider-pm10-distribution-histogram
+#| label: pm10
 #| output: asis
-print_year_slider(plots, "distribution_histogram", "PM10")
-```
-
-```{r}
-#| label: slider-pm10-distribution-cumulative
-#| output: asis
-print_year_slider(plots, "distribution_cumulative", "PM10")
-```
-
-```{r}
-#| label: pwmean-pm10
-get_plot(plots, "population_weighted_mean", "PM10")
-```
-
-```{r}
-#| label: slider-pm10-population-weighted-mean-map
-#| output: asis
-print_year_slider(plots, "population_weighted_mean_map", "PM10")
+print_exposition_parameter(plots, "PM10")
 ```
 
 <!-- ### Russ im Feinstaub -->
@@ -129,63 +52,24 @@ print_year_slider(plots, "population_weighted_mean_map", "PM10")
 
 ### Ozon
 
-#### Typische Spitzenbelastung
-
-Die "typische Spitzenbelastung" entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.
-
-
 ```{r}
-#| label: slider-o3-max-98p-m1-distribution-histogram
+#| label: o3
 #| output: asis
-print_year_slider(plots, "distribution_histogram", "O3_max_98p_m1")
-```
-
-```{r}
-#| label: slider-o3-max-98p-m1-distribution-cumulative
-#| output: asis
-print_year_slider(plots, "distribution_cumulative", "O3_max_98p_m1")
-```
-
-```{r}
-#| label: pwmean-o3p98
-get_plot(plots, "population_weighted_mean", "O3_max_98p_m1")
-```
-
-```{r}
-#| label: slider-o3-max-98p-m1-population-weighted-mean-map
-#| output: asis
-print_year_slider(plots, "population_weighted_mean_map", "O3_max_98p_m1")
-```
-
-#### mittlere Sommertagbelastung
-
-Die "mittlere Sommertagbelastung" entspricht dem Durchschnitt des maximalen 8-Stunden-Mittelwerts der O3-Konzentration in den sechs aufeinanderfolgenden Monaten mit der höchsten O3-Konzentration im Sechsmonatsdurchschnitt.
-
-
-```{r}
-#| label: slider-o3-peakseason-mean-d1-max-mean-h8gl-distribution-histogram
-#| output: asis
-print_year_slider(plots, "distribution_histogram", "O3_peakseason_mean_d1_max_mean_h8gl")
-```
-
-```{r}
-#| label: slider-o3-peakseason-mean-d1-max-mean-h8gl-distribution-cumulative
-#| output: asis
-print_year_slider(plots, "distribution_cumulative", "O3_peakseason_mean_d1_max_mean_h8gl")
-```
-
-```{r}
-#| label: pwmean-o3peak
-get_plot(plots, "population_weighted_mean", "O3_peakseason_mean_d1_max_mean_h8gl")
-```
-
-```{r}
-#| label: slider-o3-peakseason-mean-d1-max-mean-h8gl-population-weighted-mean-map
-#| output: asis
-print_year_slider(plots, "population_weighted_mean_map", "O3_peakseason_mean_d1_max_mean_h8gl")
+print_tabset(list(
+  "typische Spitzenbelastung" = \() print_exposition_parameter(
+    plots, "O3_max_98p_m1",
+    text = 'Die "typische Spitzenbelastung" entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.'
+  ),
+  "mittlere Sommertagbelastung" = \() print_exposition_parameter(
+    plots, "O3_peakseason_mean_d1_max_mean_h8gl",
+    text = 'Die "mittlere Sommertagbelastung" entspricht dem Durchschnitt des maximalen 8-Stunden-Mittelwerts der O3-Konzentration in den sechs aufeinanderfolgenden Monaten mit der höchsten O3-Konzentration im Sechsmonatsdurchschnitt.'
+  )
+))
 ```
 
 ### Stickstoffeintrag in empfindliche Ökosysteme
+
+#### Belastungsverteilung
 
 ```{r}
 #| label: slider-ndep-distribution-histogram
@@ -198,3 +82,23 @@ print_year_slider(plots, "distribution_histogram", "Ndep")
 #| output: asis
 print_year_slider(plots, "distribution_cumulative", "Ndep")
 ```
+
+#### Entwicklung stickstoffbelastete Ökosysteme
+
+```{r}
+#| label: population-over-thresh-ndep
+get_plot(plots, "population_over_thresh", "Ndep")
+```
+
+### Tabelle luftschadstoffbelastete Bevölkerung
+
+::: {.callout-note collapse="true"}
+### Tabelle: Anzahl Einwohner/innen pro Schadstoff und Jahr
+
+```{r}
+table_population_over_thresh |>
+  kableExtra::kbl() |>
+  kableExtra::kable_paper(full_width = FALSE) |>
+  kableExtra::scroll_box(height = "200px")
+```
+:::

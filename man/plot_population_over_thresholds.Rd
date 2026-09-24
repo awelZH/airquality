@@ -2,10 +2,11 @@
 % Please edit documentation in R/plot_exposition.R
 \name{plot_population_over_thresholds}
 \alias{plot_population_over_thresholds}
-\title{Plot the time series of the inhabitants over thresholds, one panel per pollutant}
+\title{Plot the time series of the inhabitants over thresholds, one plot per parameter}
 \usage{
 plot_population_over_thresholds(
   data,
+  parameters,
   colours,
   theme = ggplot2::theme_minimal()
 )
@@ -13,14 +14,17 @@ plot_population_over_thresholds(
 \arguments{
 \item{data}{Data as returned by \code{\link[=population_over_thresholds]{population_over_thresholds()}}.}
 
-\item{colours}{Named fill colours of the three \code{reference} levels.}
+\item{parameters}{Parameters, e.g. "NO2", "O3_max_98p_m1".}
+
+\item{colours}{Named fill colours of the three \code{reference} levels; the legend shows only the levels
+of the parameter.}
 
 \item{theme}{ggplot2 theme.}
 }
 \value{
-A ggplot object.
+Named list of ggplot objects, one per parameter.
 }
 \description{
-Plot the time series of the inhabitants over thresholds, one panel per pollutant
+Plot the time series of the inhabitants over thresholds, one plot per parameter
 }
 \keyword{internal}

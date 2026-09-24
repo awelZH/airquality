@@ -18,14 +18,15 @@ population_over_thresholds(
 \item{threshold_values}{Threshold values (\code{source}, \code{parameter}, \code{threshold}).}
 }
 \value{
-Tibble with \code{pollutant} (German name), \code{year}, \code{reference} (factor, "unter Grenz-/Richtwert"
-first) and \code{population}.
+Tibble with \code{pollutant} (German name, with the metric in brackets for pollutants with several
+parameters), \code{parameter}, \code{year}, \code{reference} (factor, "unter Grenz-/Richtwert" first) and
+\code{population}; a reference without threshold for the parameter has no row.
 }
 \description{
-Per pollutant and year, from the exposition distribution. For O3 the LRV limit refers to the monthly
-peak (\code{O3_max_98p_m1}) and the WHO guideline to the peak season (\code{O3_peakseason_mean_d1_max_mean_h8gl}).
-"über WHO-Richtwert" counts those over the WHO guideline but not over the LRV limit; "unter
-Grenz-/Richtwert" is the rest of the population of the canton (small negative remainders, possible
-because the O3 metrics come from different data, are set to 0).
+Per parameter and year, from the exposition distribution; each parameter against the thresholds it
+has (O3: the typical peak \code{O3_max_98p_m1} only against the LRV limit, the peak season
+\code{O3_peakseason_mean_d1_max_mean_h8gl} only against the WHO guideline). "über WHO-Richtwert" counts
+those over the WHO guideline but not over the LRV limit; "unter Grenz-/Richtwert" is the rest of the
+population of the canton (small negative remainders are set to 0).
 }
 \keyword{internal}

@@ -6,54 +6,58 @@
 
 #' Count the inhabitants over the LRV limit, additionally over the WHO guideline, and below both
 #'
-#' Per pollutant and year, from the exposition distribution. For O3 the LRV limit refers to the monthly
-#' peak (`O3_max_98p_m1`) and the WHO guideline to the peak season (`O3_peakseason_mean_d1_max_mean_h8gl`).
-#' "über WHO-Richtwert" counts those over the WHO guideline but not over the LRV limit; "unter
-#' Grenz-/Richtwert" is the rest of the population of the canton (small negative remainders, possible
-#' because the O3 metrics come from different data, are set to 0).
+#' Per parameter and year, from the exposition distribution; each parameter against the thresholds it
+#' has (O3: the typical peak `O3_max_98p_m1` only against the LRV limit, the peak season
+#' `O3_peakseason_mean_d1_max_mean_h8gl` only against the WHO guideline). "über WHO-Richtwert" counts
+#' those over the WHO guideline but not over the LRV limit; "unter Grenz-/Richtwert" is the rest of the
+#' population of the canton (small negative remainders are set to 0).
 #'
 #' @param distribution `data_exposition_distribution_pollutants.csv`.
 #' @param weighted_means_canton `data_exposition_weighted_means_canton.csv` (population per year).
 #' @param threshold_values Threshold values (`source`, `parameter`, `threshold`).
 #'
-#' @return Tibble with `pollutant` (German name), `year`, `reference` (factor, "unter Grenz-/Richtwert"
-#'   first) and `population`.
+#' @return Tibble with `pollutant` (German name, with the metric in brackets for pollutants with several
+#'   parameters), `parameter`, `year`, `reference` (factor, "unter Grenz-/Richtwert" first) and
+#'   `population`; a reference without threshold for the parameter has no row.
 #'
 #' @keywords internal
 population_over_thresholds <- function(distribution, weighted_means_canton, threshold_values) {
 
-  over <-
+  thresholds <-
     threshold_values |>
     dplyr::select(source, parameter, threshold) |>
-    tidyr::pivot_wider(names_from = source, values_from = threshold) |>
-    dplyr::right_join(distribution, by = dplyr::join_by(parameter)) |>
+    tidyr::pivot_wider(names_from = source, values_from = threshold)
+  # over a threshold; NA if the parameter has none
+  count_over <- function(concentration, population, threshold) {
+    if (all(is.na(threshold))) NA_real_ else sum(population[concentration > threshold])
+  }
+
+  over <-
+    distribution |>
     dplyr::mutate(
-      "über LRV-Grenzwert" = ifelse(concentration <= `LRV Grenzwert`, NA, population),
-      "über WHO-Richtwert" = ifelse(concentration <= `WHO Richtwert`, NA, population),
-      `über LRV-Grenzwert` = ifelse(parameter == "O3_peakseason_mean_d1_max_mean_h8gl", NA, `über LRV-Grenzwert`),
-      `über WHO-Richtwert` = ifelse(parameter == "O3_max_98p_m1", NA, `über WHO-Richtwert`)
+      pollutant = airquality.methods::longpollutant(pollutant),
+      pollutant = if (dplyr::n_distinct(parameter) > 1) paste0(pollutant, " (", metric, ")") else pollutant,
+      .by = pollutant
     ) |>
+    dplyr::left_join(thresholds, by = dplyr::join_by(parameter)) |>
     dplyr::summarise(
-      `über LRV-Grenzwert` = sum(`über LRV-Grenzwert`, na.rm = TRUE),
-      `über WHO-Richtwert` = sum(`über WHO-Richtwert`, na.rm = TRUE),
-      .by = c(pollutant, year)
+      `über LRV-Grenzwert` = count_over(concentration, population, `LRV Grenzwert`),
+      `über WHO-Richtwert` = count_over(concentration, population, `WHO Richtwert`),
+      .by = c(pollutant, parameter, year)
     ) |>
-    dplyr::mutate(`über WHO-Richtwert` = `über WHO-Richtwert` - `über LRV-Grenzwert`) |>
+    dplyr::mutate(`über WHO-Richtwert` = `über WHO-Richtwert` - dplyr::coalesce(`über LRV-Grenzwert`, 0)) |>
     tidyr::pivot_longer(c(`über LRV-Grenzwert`, `über WHO-Richtwert`), names_to = "reference", values_to = "population", cols_vary = "slowest") |>
-    dplyr::filter(!is.na(population)) |>
-    dplyr::mutate(pollutant = airquality.methods::longpollutant(pollutant))
+    dplyr::filter(!is.na(population))
 
   population_total <-
     weighted_means_canton |>
-    dplyr::filter(parameter != "O3_peakseason_mean_d1_max_mean_h8gl") |>
-    dplyr::distinct(year, population, pollutant) |>
-    dplyr::summarise(population_total = sum(population), .by = c(year, pollutant)) |>
-    dplyr::mutate(pollutant = airquality.methods::longpollutant(pollutant))
+    dplyr::distinct(year, parameter, population) |>
+    dplyr::summarise(population_total = sum(population), .by = c(year, parameter))
 
   below <-
     over |>
-    dplyr::summarise(population = sum(population), .by = c(year, pollutant)) |>
-    dplyr::left_join(population_total, by = dplyr::join_by(year, pollutant)) |>
+    dplyr::summarise(population = sum(population), .by = c(pollutant, parameter, year)) |>
+    dplyr::left_join(population_total, by = dplyr::join_by(year, parameter)) |>
     dplyr::mutate(
       population = population_total - population,
       reference = "unter Grenz-/Richtwert"
@@ -64,39 +68,63 @@ population_over_thresholds <- function(distribution, weighted_means_canton, thre
     dplyr::bind_rows(below) |>
     dplyr::mutate(
       reference = factor(reference, levels = c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert")),
-      population = pmax(0, population) # small negative numbers possible due to different O3 metrics and fundamental data
+      population = pmax(0, population) # small negative numbers possible due to rounding in the fundamental data
     )
 }
 
 
-#' Plot the time series of the inhabitants over thresholds, one panel per pollutant
+#' Plot a time series of counts over thresholds as stacked bars
 #'
-#' @param data Data as returned by [population_over_thresholds()].
-#' @param colours Named fill colours of the three `reference` levels.
+#' @param data Data with `year`, `reference` (fill) and the count column `y`.
+#' @param y Name of the count column.
+#' @param colours Named fill colours of the `reference` levels.
+#' @param title,subtitle,caption Title, subtitle and caption.
 #' @param theme ggplot2 theme.
 #'
 #' @return A ggplot object.
 #'
 #' @keywords internal
-plot_population_over_thresholds <- function(data, colours, theme = ggplot2::theme_minimal()) {
+ggplot_over_thresholds <- function(data, y, colours, title, subtitle, caption, theme = ggplot2::theme_minimal()) {
 
   data |>
-    ggplot2::ggplot(ggplot2::aes(x = year, y = population)) +
+    ggplot2::ggplot(ggplot2::aes(x = year, y = .data[[y]])) +
     ggplot2::geom_bar(mapping = ggplot2::aes(fill = reference), stat = "identity", position = "stack", width = 0.8) +
     ggplot2::scale_x_continuous(breaks = seq(1990,2100,5), expand = c(0.01,0.01)) +
     ggplot2::scale_y_continuous(labels = function(x) format(x, scientific = FALSE, big.mark = "'"), expand = c(0.01, 0.01)) +
     ggplot2::scale_fill_manual(values = colours) +
-    ggplot2::facet_wrap(pollutant~., axes = "all_x") +
     theme +
     ggplot2::theme(
-      strip.text.x = ggplot2::element_text(hjust = 0),
       legend.title = ggplot2::element_blank(),
-      legend.position = "bottom"
+      legend.position = "right"
     ) +
-    ggplot2::ggtitle(
-      label = "Entwicklung luftschadstoffbelasteter Wohnbevölkerung",
-      subtitle = "Anzahl Personen, Wohnbevölkerung im Kanton Zürich") +
-    ggplot2::labs(caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS")
+    ggplot2::ggtitle(label = title, subtitle = subtitle) +
+    ggplot2::labs(caption = caption)
+}
+
+
+#' Plot the time series of the inhabitants over thresholds, one plot per parameter
+#'
+#' @param data Data as returned by [population_over_thresholds()].
+#' @param parameters Parameters, e.g. "NO2", "O3_max_98p_m1".
+#' @param colours Named fill colours of the three `reference` levels; the legend shows only the levels
+#'   of the parameter.
+#' @param theme ggplot2 theme.
+#'
+#' @return Named list of ggplot objects, one per parameter.
+#'
+#' @keywords internal
+plot_population_over_thresholds <- function(data, parameters, colours, theme = ggplot2::theme_minimal()) {
+
+  purrr::map(rlang::set_names(parameters), function(parameter) {
+    data_plot <- dplyr::filter(data, parameter == !!parameter)
+    ggplot_over_thresholds(
+      data_plot, y = "population", colours = colours,
+      title = openair::quickText(paste0("Entwicklung luftschadstoffbelasteter Wohnbevölkerung ", unique(data_plot$pollutant))),
+      subtitle = "Anzahl Personen, Wohnbevölkerung im Kanton Zürich",
+      caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS",
+      theme = theme
+    )
+  })
 }
 
 
@@ -124,7 +152,8 @@ plot_population_over_thresholds_share <- function(data, n_years, colours, theme 
     ggplot2::scale_fill_manual(values = colours) +
     ggplot2::coord_polar(theta = "y") +
     ggplot2::facet_wrap(pollutant~., nrow = 1) +
-    theme +
+    # the caption is replaced, not merged: a ggtext textbox in the theme does not merge with element_text()
+    ggplot2::`%+replace%`(theme, ggplot2::theme(plot.caption = ggplot2::element_text(hjust = 0.5, color = "gray40", size = ggplot2::rel(0.66)))) +
     ggplot2::theme(
       legend.position = "bottom",
       legend.title = ggplot2::element_blank(),
@@ -135,14 +164,94 @@ plot_population_over_thresholds_share <- function(data, n_years, colours, theme 
       axis.line.x = ggplot2::element_blank(),
       axis.ticks = ggplot2::element_blank(),
       plot.title = ggplot2::element_text(size = ggplot2::rel(1), hjust = 0.5),
-      plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8), hjust = 0.5),
-      plot.caption = ggplot2::element_text(hjust = 0.5, color = "gray40", size = ggplot2::rel(0.66))
+      plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8), hjust = 0.5)
     ) +
     ggplot2::ggtitle(
       label = "Luftschadstoffbelastete Wohnbevölkerung",
       subtitle = paste0("Anteil Personen im Kanton Zürich in den Jahren ", year_max - n_years + 1, " bis ", year_max)
     ) +
     ggplot2::labs(caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS")
+}
+
+
+# ---- page section per parameter --------------------------------------------------------------
+
+#' Print the plots of one parameter on the exposition page
+#'
+#' An optional explanation, then three subsections: the histograms and the cumulative distributions
+#' (year sliders), the inhabitants over thresholds, and the population-weighted mean as a tabset "Kanton"
+#' (time series) / "Gemeinden" (maps, year slider). For a chunk with `#| output: asis`, or as the content
+#' of a tab.
+#'
+#' @param catalog Plot catalog of the exposition (`plots_exposition`).
+#' @param parameter Parameter, e.g. "NO2".
+#' @param text Explanation printed first (Markdown), or `NULL`.
+#'
+#' @return `NULL`, invisibly; called for its output.
+#'
+#' @keywords internal
+print_exposition_parameter <- function(catalog, parameter, text = NULL) {
+  heading <- function(title) cat("\n\n#### ", title, "\n\n", sep = "")
+
+  if (!is.null(text)) cat("\n\n", text, "\n\n", sep = "")
+  heading("Belastungsverteilung")
+  print_year_slider(catalog, "distribution_histogram", parameter)
+  print_year_slider(catalog, "distribution_cumulative", parameter)
+  heading("Entwicklung luftschadstoffbelastete Bevölkerung")
+  print(get_plot(catalog, "population_over_thresh", parameter))
+  heading("mittlere Bevölkerungsbelastung")
+  print_tabset(list(
+    Kanton = get_plot(catalog, "population_weighted_mean", parameter),
+    Gemeinden = \() print_year_slider(catalog, "population_weighted_mean_map", parameter)
+  ))
+
+  invisible(NULL)
+}
+
+
+# ---- ecosystems over the critical load -------------------------------------------------------
+
+#' Count the sensitive ecosystems over and below the critical load of nitrogen, per year
+#'
+#' An ecosystem is over the critical load if its maximum exceedance (`ndep_exmax`, class centre) is above
+#' 0, as in the distribution plots.
+#'
+#' @param distribution `data_exposition_distribution_ndep.csv`.
+#'
+#' @return Tibble with `year`, `reference` (factor, "unter krit. Eintragsrate" first) and `n_ecosys`, both
+#'   levels for every year.
+#'
+#' @keywords internal
+ecosystems_over_critical_load <- function(distribution) {
+  levels <- c("unter krit. Eintragsrate", "über krit. Eintragsrate")
+
+  distribution |>
+    dplyr::mutate(reference = factor(ifelse(ndep_exmax > 0, levels[2], levels[1]), levels = levels)) |>
+    dplyr::summarise(n_ecosys = sum(n_ecosys), .by = c(year, reference)) |>
+    tidyr::complete(year, reference, fill = list(n_ecosys = 0)) |>
+    dplyr::arrange(year, reference)
+}
+
+
+#' Plot the time series of the sensitive ecosystems over the critical load of nitrogen
+#'
+#' Like [plot_population_over_thresholds()], with the ecosystems instead of the inhabitants.
+#'
+#' @param data Data as returned by [ecosystems_over_critical_load()].
+#' @param colours Named fill colours of the two `reference` levels.
+#' @param theme ggplot2 theme.
+#'
+#' @return A ggplot object.
+#'
+#' @keywords internal
+plot_ecosystems_over_critical_load <- function(data, colours, theme = ggplot2::theme_minimal()) {
+  ggplot_over_thresholds(
+    data, y = "n_ecosys", colours = colours,
+    title = openair::quickText("Entwicklung stickstoffbelasteter empfindlicher Ökosysteme"),
+    subtitle = "Anzahl empfindlicher Ökosysteme im Kanton Zürich",
+    caption = "krit. Eintragsraten nach heutigem Stand, Daten: BAFU",
+    theme = theme
+  )
 }
 
 
@@ -487,7 +596,7 @@ plot_weighted_mean_maps <- function(data, data_canton, parameter, crs, theme = g
 #' Table of the inhabitants over thresholds per pollutant and year
 #'
 #' The counts are formatted with thousands separators; "> WHO-Richtwert" counts all inhabitants over the
-#' WHO guideline, including those over the LRV limit.
+#' WHO guideline, including those over the LRV limit; "–" where the parameter has no such threshold.
 #'
 #' @param data Data as returned by [population_over_thresholds()].
 #'
@@ -496,14 +605,14 @@ plot_weighted_mean_maps <- function(data, data_canton, parameter, crs, theme = g
 #'
 #' @keywords internal
 table_population_over_thresholds <- function(data) {
-  big <- function(x) format(x, scientific = FALSE, big.mark = "'")
+  big <- function(x) ifelse(is.na(x), "–", format(x, scientific = FALSE, big.mark = "'"))
 
   data |>
     dplyr::select(year, pollutant, reference, population) |>
-    tidyr::pivot_wider(names_from = reference, values_from = population, names_sort = TRUE) |>
+    tidyr::pivot_wider(names_from = reference, values_from = population, names_sort = TRUE, names_expand = TRUE) |>
     dplyr::arrange(pollutant, dplyr::desc(year)) |>
     dplyr::mutate(
-      `über WHO-Richtwert` = big(`über LRV-Grenzwert` + `über WHO-Richtwert`),
+      `über WHO-Richtwert` = big(dplyr::coalesce(`über LRV-Grenzwert`, 0) + `über WHO-Richtwert`),
       `über LRV-Grenzwert` = big(`über LRV-Grenzwert`),
       `unter Grenz-/Richtwert` = big(`unter Grenz-/Richtwert`)
     ) |>

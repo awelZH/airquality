@@ -15,6 +15,6 @@ Tibble with \code{Jahr}, \code{Schadstoff}, \verb{< Grenz-/Richtwert}, \verb{> W
 }
 \description{
 The counts are formatted with thousands separators; "> WHO-Richtwert" counts all inhabitants over the
-WHO guideline, including those over the LRV limit.
+WHO guideline, including those over the LRV limit; "–" where the parameter has no such threshold.
 }
 \keyword{internal}

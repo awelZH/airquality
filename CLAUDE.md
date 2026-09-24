@@ -70,18 +70,20 @@ column order and format must not change (the directory may change; external path
   `notes/findings_trends_outcomes.md`): `R/outcomes.R` + thin script; premature deaths from the deaths
   aged ≥ 30 (E1), deterministic estimate and range from the RR bounds (E2); years of life lost with the
   healthiar life table as new rows of `data_health_outcomes.csv` (same columns); page with tabsets for
-  deaths and years of life lost (incl. per death). Reduction of life expectancy not implemented (only
-  with an official life table).
-* **Phase 2b (targets) not started**; plan in `notes/plan_phase2b.md`.
-* All content changes so far (subsector grouping of the emissions, the two monitoring fixes, the ndep
-  `datasource` clean-up) are in `inst/extdata/output/` since commit `fc1e744`.
+  deaths and years of life lost (the long-term mean per premature death in the subtitle). Reduction of
+  life expectancy not implemented (only with an official life table).
+* **Phase 2b (targets) in progress** (user's go 2026-09-24, outcomes included as a sub-analysis); plan
+  in `notes/plan_phase2b.md`.
+* All content changes so far are in `inst/extdata/output/`: emissions, monitoring and ndep since commit
+  `fc1e744`, health outcomes since `b9fe256`.
 
 ## Decisions (summary; details, reasons and numbers in `notes/decisions.md`)
 
 Guiding lesson: **make every step visible and recomputable** – no communication through globals, no
 appending to own outputs, no work lists derived from earlier results.
 
-1. `airquality.methods` 0.4.0 is installed into renv from the local repo; restart R after reinstalling.
+1. `airquality.methods` 0.4.0 is installed into renv from GitHub (`awelZH/airquality.methods`, pinned
+   sha in `renv.lock`); restart R after reinstalling.
 2. Exposition is recomputed completely on every run; downloads are cached, uncompressed GeoTIFFs are
    streamed from the web every time.
 3. The cell table (one row per inhabited 100 m STATPOP cell and year) is the unit of work for
@@ -91,7 +93,8 @@ appending to own outputs, no work lists derived from earlier results.
 5. STATPOP collector pixels are subtracted and spread over their municipality in proportion to the
    located inhabitants.
 6. Derived parameters (O3 peak season from NO2, PM2.5 before 2015 from PM10) are refitted on every
-   run; coefficients are logged in `inst/extdata/log/`.
+   run; coefficients are logged in `inst/extdata/log/`. The O3 model keeps one common slope for all
+   years (user decision 2026-09-24).
 7. All analysis constants live in `scripts/_settings.R`, prefixed by topic; functions in `R/` get them
    as arguments; every year range ends at `year_last`.
 8. Inputs are checked where they enter (`check_columns()`, error class `airquality_input_error`).
@@ -120,6 +123,5 @@ Pattern for the remaining topics: `R/emissions.R` + `scripts/_compile_emission_d
 
 ## Open items
 
-* `airquality.methods`: its `CLAUDE.md` note from step 1 (double counting, not a data-vintage effect)
-  is still uncommitted there; the user decides.
-* Methodological question: year-specific O3 peak-season slope (decision 6).
+* Trends (Wirkungsmonitoring): data scripts and functions still WIP on the user's decision (unseeded
+  random forest; the detailed trend plot runs up to the current calendar year, not `year_last`).

@@ -16,7 +16,7 @@ plots <- plots_outcomes
 
 ! WORK-IN-PROGRESS !
 
-Hier werden die Gesundheitsauswirkungen in der Wohnbevölkerung im Kanton Zürich durch Langzeitbelastung ausgewählter Luftschadstoffe statistisch abgeschätzt. Die Abschätzung behandelt vorzeitige Todesfälle als Fallbeispiel für ausgewählte Gesundheitsfolgen. Der Nutzen der Verminderung von Luftverschutzung für die Bevölkerung kann auch als vermiedene Gesundheitsfolgen ausgedrückt werden (vergleiche z.B. [Projekt GeLuft](https://www.swisstph.ch/fileadmin/user_upload/SwissTPH/Institute/Ludok/Aktuelle_Berichte/SwissTPH2023_Gesundheitsnutzen_AQG_WHO_2021.pdf)).
+Hier werden die Gesundheitsauswirkungen in der Wohnbevölkerung im Kanton Zürich durch Langzeitbelastung ausgewählter Luftschadstoffe statistisch abgeschätzt. Die Abschätzung behandelt vorzeitige Todesfälle und verlorene Lebensjahre als Fallbeispiele für ausgewählte Gesundheitsfolgen. Der Nutzen der Verminderung von Luftverschutzung für die Bevölkerung kann auch als vermiedene Gesundheitsfolgen ausgedrückt werden (vergleiche z.B. [Projekt GeLuft](https://www.swisstph.ch/fileadmin/user_upload/SwissTPH/Institute/Ludok/Aktuelle_Berichte/SwissTPH2023_Gesundheitsnutzen_AQG_WHO_2021.pdf)).
 
 ::: {.callout-note collapse="true"}
 ### weitere Gesundheitsfolgen
@@ -35,7 +35,10 @@ In Gesundheitsstudien wird meist Feinstaub PM2.5 als Leitschadstoff berücksicht
 In der vorliegenden Berechnung richten wir uns nach dem etablierten epidemiologischen Vorgehen (vergleiche z.B. [Castro et al., 2023](https://edoc.unibas.ch/96059/)). Die Ergebnisse sind somit methodisch grundsätzlich vergleichbar mit anderen Studien in der Schweiz und international (methodische Abweichungen ergeben sich im Detail, so sind z.B. aufgrund unterschiedlicher verwendeter Grundlagen die Ergebnisse hier nicht 1:1 konsistent mit denen des [Bundesamtes für Raumentwicklung ARE](https://www.are.admin.ch/are/de/home.html) in Bezug auf die [Auswirkungen durch den Verkehr](https://www.are.admin.ch/are/de/home/mobilitaet/grundlagen-und-daten/kosten-und-nutzen-des-verkehrs.html)). Wir nutzen Dosis-Wirkungsbeziehungen und Schwellenwerte, die dem aktuellen Stand der Wissenschaft entsprechen und möglichst repräsentativ für die Schweizer Bevölkerung sind. Dafür richten wir uns nach den Empfehlungen von Expert/innen der Schweizer [Dokumentationsstelle Luftverschmutzung und Gesundheit (LUDOK)](https://www.swisstph.ch/de/projects/ludok).
 
 
-In den Grafiken wird der wissenschaftlich und statistisch am sichersten abgestützte Wert als Balken dargestellt. Die Unsicherheitsbereiche (vertikale Linien) enthalten zwei Unsicherheitsbeträge: 1) die statistische Unsicherheit der verwendeten Dosis-Wirkungsbeziehungen (95% Vertrauensbereich) sowie 2) die Verwendung alternativer Schwellenwerte, nämlich der minimal auftretenden Luftbelastung als unterste Wirkschwelle, da gemäss dem aktuellen [wissenschaftlichen Synthesebericht der Weltgesundheitsorganisation](https://www.who.int/publications/i/item/9789240034228) auch unterhalb der WHO-Richtwerte Gesundheitsauswirkungen durch Luftverschmutzung wahrscheinlich sind. 
+In den Grafiken wird der wissenschaftlich und statistisch am sichersten abgestützte Wert als Balken dargestellt. Die Unsicherheitsbereiche (vertikale Linien) zeigen die statistische Unsicherheit der verwendeten Dosis-Wirkungsbeziehungen (95% Vertrauensbereich). Gemäss dem aktuellen [wissenschaftlichen Synthesebericht der Weltgesundheitsorganisation](https://www.who.int/publications/i/item/9789240034228) sind auch unterhalb der WHO-Richtwerte Gesundheitsauswirkungen durch Luftverschmutzung wahrscheinlich. Diese sind hier nicht eingerechnet; die Ergebnisse sind in dieser Hinsicht eher als untere Grenze zu verstehen.
+
+
+Die vorzeitigen Todesfälle beziehen sich auf die krankheitsbedingten Todesfälle der Wohnbevölkerung ab 30 Jahren. Die verlorenen Lebensjahre werden mit einer Sterbetafel nach Alter und Geschlecht berechnet (Methode wie im Instrument AirQ+ der Weltgesundheitsorganisation, umgesetzt mit dem R-Paket [healthiar](https://swisstph.github.io/healthiar/)): Sie geben an, wie viele Lebensjahre die Wohnbevölkerung ab 30 Jahren durch die Luftbelastung eines Jahres über ihre verbleibende Lebenszeit insgesamt verliert. Das Verhältnis der verlorenen Lebensjahre zu den vorzeitigen Todesfällen desselben Jahres gibt einen Anhaltspunkt, wie viele Lebensjahre ein vorzeitiger Todesfall im Mittel kostet.
 
 
 Vor allem in den Jahren 2020 bis 2022 hat die Schweiz eine [Übersterblichkeit durch die Covid-19 Pandemie](https://www.bfs.admin.ch/bfs/de/home/statistiken/gesundheit/gesundheitszustand/sterblichkeit-todesursachen.html) erlebt. Da jährliche Daten zu Todesfällen eine Grundlage der Gesundheitsfolgenabschätzung durch Luftbelastung sind, werden die Ergebnisse dieser Jahre geringfügig überschätzt. Die entsprechenden Jahre sind in den Abbildungen gekennzeichnet.
@@ -48,6 +51,8 @@ Betrachtet man die Veränderung der Gesundheitswirkungen durch Luftbelastung üb
 
 ### Feinstaub PM2.5
 
+#### vorzeitige Todesfälle
+
 ```{r}
 #| label: tabs-pm2-5-preliminary-deaths
 #| output: asis
@@ -57,8 +62,22 @@ print_tabset(list(
 ))
 ```
 
+#### verlorene Lebensjahre
+
+```{r}
+#| label: tabs-pm2-5-life-years-lost
+#| output: asis
+print_tabset(list(
+  absolut = get_plot(plots, "life_years_lost_abs", "PM2.5"),
+  relativ = get_plot(plots, "life_years_lost_rel", "PM2.5"),
+  "pro Todesfall" = get_plot(plots, "life_years_lost_per_death", "PM2.5")
+))
+```
+
 
 ### Stickstoffdioxid
+
+#### vorzeitige Todesfälle
 
 ```{r}
 #| label: tabs-no2-preliminary-deaths
@@ -69,8 +88,22 @@ print_tabset(list(
 ))
 ```
 
+#### verlorene Lebensjahre
+
+```{r}
+#| label: tabs-no2-life-years-lost
+#| output: asis
+print_tabset(list(
+  absolut = get_plot(plots, "life_years_lost_abs", "NO2"),
+  relativ = get_plot(plots, "life_years_lost_rel", "NO2"),
+  "pro Todesfall" = get_plot(plots, "life_years_lost_per_death", "NO2")
+))
+```
+
 
 ### Ozon
+
+#### vorzeitige Todesfälle
 
 ```{r}
 #| label: tabs-o3-peakseason-mean-d1-max-mean-h8gl-preliminary-deaths
@@ -81,4 +114,14 @@ print_tabset(list(
 ))
 ```
 
+#### verlorene Lebensjahre
 
+```{r}
+#| label: tabs-o3-peakseason-mean-d1-max-mean-h8gl-life-years-lost
+#| output: asis
+print_tabset(list(
+  absolut = get_plot(plots, "life_years_lost_abs", "O3_peakseason_mean_d1_max_mean_h8gl"),
+  relativ = get_plot(plots, "life_years_lost_rel", "O3_peakseason_mean_d1_max_mean_h8gl"),
+  "pro Todesfall" = get_plot(plots, "life_years_lost_per_death", "O3_peakseason_mean_d1_max_mean_h8gl")
+))
+```

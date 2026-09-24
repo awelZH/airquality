@@ -74,3 +74,13 @@ Run time about 1 minute (90 life-table calls of 0.75 s). Results (actual exposur
 slowly falling (PM2.5 2011 11.35, 2024 10.40). Reduction of life expectancy not implemented (only with an
 official life table); a period life table built from the same data gave for PM2.5 2019 e30 −4.5 months
 (women) and −5.0 months (men).
+
+**Plots and page** (2026-09-24, step 5): `plot_premature_deaths()` became `plot_health_outcomes(outcome_type = )`
+(labels per outcome type in `outcome_labels`, error class `airquality_plot_error` for others); the six
+premature-death figures stay byte-identical (`run_plots()`). New `plot_life_years_per_death()` (years of
+life lost / premature deaths of the same year and parameter, actual exposure, central values, no range,
+no scenario legend). Catalog entries `life_years_lost_abs`, `_rel`, `_per_death`. `Gesundheitsfolgen.qmd`:
+per pollutant "vorzeitige Todesfälle" (tabset absolut/relativ) and "verlorene Lebensjahre" (tabset
+absolut/relativ/pro Todesfall); "Grundlagen": the range is the CRF 95 % CI only (the minimum-concentration
+threshold, E5 b, is mentioned as not included, results a lower bound), the life-table method and the
+ratio per death explained.

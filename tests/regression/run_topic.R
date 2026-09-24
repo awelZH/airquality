@@ -39,7 +39,8 @@ topics <- list(
   # code draws its uncertainty by unseeded Monte Carlo, so two old runs differ slightly
   outcomes = list(
     script = "scripts/_compile_outcomes.R",
-    setup = c("ressources", "outcomes_min_year_share", "outcomes_min_age", "outcomes_erf_shape"),
+    setup = c("ressources", "outcomes_min_year_share", "outcomes_min_age", "outcomes_suppressed_deaths",
+              "outcomes_erf_shape"),
     attach = "dplyr" # the old prepare_mortality() called left_join() without prefix
   )
 )

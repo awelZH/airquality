@@ -44,3 +44,11 @@ without a death record counted 1 death each (1–6 per year, ages 30–38 or > 1
 for `attribute_lifetable()`), and deaths at ages missing in the population table fell out (0–25 per
 year). Together well below 1 % of about 10'000 deaths per year. Note when checking by hand: the mortality
 file must be read as UTF-8, otherwise "männlich" does not match and the men drop out.
+
+**E1: deaths from age 30 only** (user decision 2026-09-24, own commit): `prepare_mortality(suppressed =
+outcomes_suppressed_deaths)` drops category 290 (deaths aged 0–29) and fills the suppressed cells with
+2 deaths (midpoint of 1–3); `deaths_per_year()` sums the deaths from `outcomes_min_age` directly, without
+the population table. Effect on the deaths per year 2010–2024: −46 to −86 (−0.43 % to −0.87 %), of which
+dropping category 290 −50 to −101 and summing without the population join −4 to +21 (the fictitious
+deaths and the dropped high ages). The premature deaths are proportional to the deaths, so they drop by
+the same share. The population by age is no longer read for the deaths; it returns with the life table.

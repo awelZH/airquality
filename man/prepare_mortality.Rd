@@ -4,18 +4,20 @@
 \alias{prepare_mortality}
 \title{Prepare the natural deaths per year, sex and age}
 \usage{
-prepare_mortality(data)
+prepare_mortality(data, suppressed)
 }
 \arguments{
 \item{data}{Deaths per year (\code{jahr}), sex (\code{geschlecht}), age (\code{alterkat}), cause (\code{tukat}) and number
 (\code{anzahl}).}
+
+\item{suppressed}{Deaths assumed in a suppressed cell (1 to 3 deaths).}
 }
 \value{
 Tibble with \code{year}, \code{sex} ("male", "female"), \code{age} and \code{deaths}.
 }
 \description{
-Keeps the deaths by disease (\code{tukat == "krankheitsbedingt"}). Cells with fewer than 4 deaths are
-suppressed (\code{NA}); category 290 is renamed to 291 and its deaths are spread evenly over the suppressed
-cells of the same year and sex (behaviour of the former \code{prepare_mortality()}).
+Keeps the deaths by disease (\code{tukat == "krankheitsbedingt"}) of the single ages; category 290 (the
+deaths aged 0-29, summed) is dropped. Cells with fewer than 4 deaths are suppressed (\code{NA}) and get
+\code{suppressed} deaths.
 }
 \keyword{internal}

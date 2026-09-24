@@ -49,7 +49,7 @@ make_population_raw <- function() {
 }
 
 test_that("prepare_mortality() keeps the natural deaths per year, sex and age", {
-  result <- prepare_mortality(make_mortality_raw())
+  result <- prepare_mortality(make_mortality_raw(), suppressed = 2)
 
   expect_named(result, c("year", "sex", "age", "deaths"))
   expect_setequal(unique(result$sex), c("male", "female"))
@@ -75,23 +75,21 @@ test_that("prepare_population_by_age() stops for missing columns", {
   expect_error(prepare_population_by_age(dplyr::select(make_population_raw(), -anzahl)), class = "airquality_input_error")
 })
 
-test_that("prepare_mortality() spreads the deaths of category 290 over the suppressed cells (old behaviour)", {
-  result <- prepare_mortality(make_mortality_raw())
+test_that("prepare_mortality() drops the deaths aged 0-29 and fills the suppressed cells", {
+  result <- prepare_mortality(make_mortality_raw(), suppressed = 2)
 
   male <- dplyr::filter(result, sex == "male")
-  expect_equal(male$deaths[male$age %in% c(30, 32)], c(3, 3))
-  expect_false(290 %in% result$age)
+  expect_equal(male$deaths[male$age %in% c(30, 32)], c(2, 2)) # suppressed (1 to 3 deaths)
+  expect_false(290 %in% result$age) # category 290 = deaths aged 0-29
+  expect_equal(sum(result$deaths), (2 + 10 + 2 + 4) + (5 + 20 + 7 + 3))
 })
 
-test_that("deaths_per_year() sums the deaths from min_age over the ages of the population (old behaviour)", {
-  mortality <- prepare_mortality(make_mortality_raw())
-  population <- dplyr::filter(prepare_population_by_age(make_population_raw()), year == 2020)
+test_that("deaths_per_year() sums the deaths from min_age", {
+  mortality <- prepare_mortality(make_mortality_raw(), suppressed = 2)
 
-  result <- deaths_per_year(mortality, population, min_age = 30)
-
-  # ages 30-33 of the population; age 33 without deaths counts 1, age 101 (no population) is dropped
-  expect_equal(result$deaths, (3 + 10 + 3 + 1) + (5 + 20 + 7 + 1))
-  expect_equal(result$year, 2020)
+  expect_equal(deaths_per_year(mortality, min_age = 30)$deaths, (2 + 10 + 2 + 4) + (5 + 20 + 7 + 3))
+  expect_equal(deaths_per_year(mortality, min_age = 31)$deaths, (10 + 2 + 4) + (20 + 7 + 3))
+  expect_equal(deaths_per_year(mortality, min_age = 30)$year, 2020)
 })
 
 # ---- estimates -----------------------------------------------------------------------

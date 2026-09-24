@@ -97,6 +97,9 @@ outcomes_min_year_share <- 0.8
 # youngest age affected by the long-term exposure (the exposure-response functions refer to adults >= 30)
 outcomes_min_age <- 30
 
+# deaths assumed in a cell of the mortality data suppressed for privacy (1 to 3 deaths)
+outcomes_suppressed_deaths <- 2
+
 # shape of the exposure-response functions (relative risks per concentration increment)
 outcomes_erf_shape <- "log_linear"
 

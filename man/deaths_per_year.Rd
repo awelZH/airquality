@@ -4,12 +4,10 @@
 \alias{deaths_per_year}
 \title{Sum the deaths per year from a minimum age}
 \usage{
-deaths_per_year(mortality, population, min_age)
+deaths_per_year(mortality, min_age)
 }
 \arguments{
 \item{mortality}{Deaths as returned by \code{\link[=prepare_mortality]{prepare_mortality()}}.}
-
-\item{population}{Population as returned by \code{\link[=prepare_population_by_age]{prepare_population_by_age()}}.}
 
 \item{min_age}{Youngest age counted.}
 }
@@ -17,7 +15,6 @@ deaths_per_year(mortality, population, min_age)
 Tibble with \code{year} and \code{deaths}.
 }
 \description{
-Over the ages of the population: ages without deaths count 1 death, ages without population are
-dropped (behaviour of the former script).
+Sum the deaths per year from a minimum age
 }
 \keyword{internal}

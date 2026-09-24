@@ -34,37 +34,24 @@ drop_incomplete_years <- function(data, min_share, year = year, count = deaths) 
 
 #' Prepare the natural deaths per year, sex and age
 #'
-#' Keeps the deaths by disease (`tukat == "krankheitsbedingt"`). Cells with fewer than 4 deaths are
-#' suppressed (`NA`); category 290 is renamed to 291 and its deaths are spread evenly over the suppressed
-#' cells of the same year and sex (behaviour of the former `prepare_mortality()`).
+#' Keeps the deaths by disease (`tukat == "krankheitsbedingt"`) of the single ages; category 290 (the
+#' deaths aged 0-29, summed) is dropped. Cells with fewer than 4 deaths are suppressed (`NA`) and get
+#' `suppressed` deaths.
 #'
 #' @param data Deaths per year (`jahr`), sex (`geschlecht`), age (`alterkat`), cause (`tukat`) and number
 #'   (`anzahl`).
+#' @param suppressed Deaths assumed in a suppressed cell (1 to 3 deaths).
 #'
 #' @return Tibble with `year`, `sex` ("male", "female"), `age` and `deaths`.
 #'
 #' @keywords internal
-prepare_mortality <- function(data) {
+prepare_mortality <- function(data, suppressed) {
 
   check_columns(data, c("jahr", "geschlecht", "alterkat", "tukat", "anzahl"), "mortality data")
 
-  data <-
-    data |>
-    dplyr::filter(tukat == "krankheitsbedingt") |>
-    dplyr::mutate(alterkat = ifelse(alterkat == 290, 291, alterkat))
-
-  spread <-
-    data |>
-    dplyr::summarise(
-      suppressed = sum(is.na(anzahl) & alterkat != 291),
-      remainder = sum(anzahl[alterkat == 291]),
-      .by = c(jahr, geschlecht)
-    )
-
   data |>
-    dplyr::filter(alterkat != 291) |>
-    dplyr::left_join(spread, by = dplyr::join_by(jahr, geschlecht)) |>
-    dplyr::mutate(anzahl = ifelse(is.na(anzahl), remainder / suppressed, anzahl)) |>
+    dplyr::filter(tukat == "krankheitsbedingt", alterkat != 290) |>
+    dplyr::mutate(anzahl = dplyr::coalesce(anzahl, suppressed)) |>
     dplyr::transmute(
       year = jahr,
       sex = recode_sex(geschlecht),
@@ -105,22 +92,16 @@ recode_sex <- function(sex) {
 
 #' Sum the deaths per year from a minimum age
 #'
-#' Over the ages of the population: ages without deaths count 1 death, ages without population are
-#' dropped (behaviour of the former script).
-#'
 #' @param mortality Deaths as returned by [prepare_mortality()].
-#' @param population Population as returned by [prepare_population_by_age()].
 #' @param min_age Youngest age counted.
 #'
 #' @return Tibble with `year` and `deaths`.
 #'
 #' @keywords internal
-deaths_per_year <- function(mortality, population, min_age) {
+deaths_per_year <- function(mortality, min_age) {
 
   mortality |>
-    dplyr::right_join(population, by = dplyr::join_by(year, sex, age)) |>
     dplyr::filter(age >= min_age) |>
-    dplyr::mutate(deaths = dplyr::coalesce(deaths, 1)) |>
     dplyr::summarise(deaths = sum(deaths), .by = year)
 }
 

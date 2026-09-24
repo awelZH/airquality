@@ -6,7 +6,7 @@
 #'
 #' @param data Data with the columns used in `mapping`.
 #' @param mapping Aesthetic mapping (x = year, y = value, fill = scenario).
-#' @param ylims,ybreaks Limits and breaks of the y axis.
+#' @param ylims,ybreaks,ylabels Limits, breaks and labels of the y axis.
 #' @param titlelab,captionlab Title and caption, e.g. `ggplot2::ggtitle()` and `ggplot2::labs(caption = )`.
 #' @param theme ggplot2 theme.
 #'
@@ -14,20 +14,33 @@
 #'
 #' @keywords internal
 ggplot_timeseries_bars <- function(data, mapping = ggplot2::aes(x = year, y = population_weighted_mean, fill = scenario), ylims = c(NA,NA),
-                                   ybreaks = ggplot2::waiver(), titlelab = NULL, captionlab = NULL, theme = ggplot2::theme_minimal()) {
+                                   ybreaks = ggplot2::waiver(), ylabels = ggplot2::waiver(), titlelab = NULL, captionlab = NULL,
+                                   theme = ggplot2::theme_minimal()) {
 
   plot <-
     ggplot2::ggplot(data, mapping = mapping) +
     ggplot2::geom_bar(stat = "identity") +
     ggplot2::geom_hline(yintercept = 0, color = "gray30", linetype = 2) +
     ggplot2::scale_x_continuous(breaks = seq(1990,2100,5), expand = c(0.01,0.01)) +
-    ggplot2::scale_y_continuous(limits = ylims, breaks = ybreaks, expand = c(0.01,0.01)) +
+    ggplot2::scale_y_continuous(limits = ylims, breaks = ybreaks, labels = ylabels, expand = c(0.01,0.01)) +
     ggplot2::scale_fill_manual(name = "Szenario", values = c("#50586C", "#DCE2F0")) +
     titlelab +
     captionlab +
     theme
 
   return(plot)
+}
+
+
+#' Axis labels with an apostrophe as thousands separator
+#'
+#' @param x Numbers.
+#'
+#' @return Character vector, e.g. "25'000".
+#'
+#' @keywords internal
+label_big_mark <- function(x) {
+  format(x, big.mark = "'", scientific = FALSE, trim = TRUE)
 }
 
 

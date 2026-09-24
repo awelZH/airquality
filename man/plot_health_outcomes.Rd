@@ -11,6 +11,7 @@ plot_health_outcomes(
   relative = FALSE,
   covid_years = 2020:2022,
   uncertainty_scenario = "tatsächliche Belastung",
+  ylabels = ggplot2::waiver(),
   theme = ggplot2::theme_minimal()
 )
 }
@@ -27,6 +28,8 @@ plot_health_outcomes(
 
 \item{uncertainty_scenario}{Scenario the uncertainty ranges belong to; the avoided outcome gets none.}
 
+\item{ylabels}{Labels of the y axis, e.g. \code{\link[=label_big_mark]{label_big_mark()}}.}
+
 \item{theme}{ggplot2 theme.}
 }
 \value{
@@ -36,5 +39,7 @@ Named list of ggplot objects, one per parameter. Stops with an error of class
 \description{
 Bars per scenario, with the uncertainty range from the lower bound up to the upper bound plus the
 outcome below the minimum concentration (\code{outcome_delta_min_conc}). Covid years are drawn transparent.
+The years of life lost give in a second subtitle line the long-term mean of the years lost per
+premature death (\code{\link[=mean_life_years_per_death]{mean_life_years_per_death()}}, rounded to whole years).
 }
 \keyword{internal}

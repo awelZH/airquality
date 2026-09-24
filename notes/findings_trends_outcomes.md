@@ -90,3 +90,14 @@ ratio per death explained.
 `read_bfs_life_expectancy_data()`, `get_bfs_asset_url()` (files `prepare_helpers.R`, `read.R`,
 `read_helpers.R` deleted) and `pxR` from DESCRIPTION and `_setup.R` (still in `renv.lock`; a
 `renv::snapshot()` would drop it). `prepare.R` and `aggregate.R` now hold trend code only.
+
+**Page follow-ups** (user decisions 2026-09-24): the minimum-concentration threshold scenario stays out
+(E5 b confirmed after quantifying it: O3 never, PM2.5 only 2014/2023/2024 slightly, NO2 strongly affected,
+e.g. 2024 +282 on 114 deaths). The separate plots of the years lost per premature death are gone; instead
+the subtitle of the years-of-life-lost plots gives in a second line the long-term mean of the yearly ratio
+(`mean_life_years_per_death()`, rounded to whole years: PM2.5 10.72, NO2 10.64, O3 10.62 → 11), and their title reads
+"Verlorene Lebensjahre in der Bevölkerung durch …". All outcome plots label the y axis with `'` as
+thousands separator (`label_big_mark()` in `R/plot.R`, argument `ylabels` of `ggplot_timeseries_bars()`,
+default unchanged for the other pages). "! WORK-IN-PROGRESS !" removed from the page. Figures: 354 of the
+other pages byte-identical; changed only the 6 life-years plots and the premature deaths PM2.5 absolute
+(the only one with values ≥ 1'000).

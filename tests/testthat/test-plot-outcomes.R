@@ -45,19 +45,39 @@ test_that("plot_health_outcomes() draws the uncertainty only for the actual expo
   expect_equal(unique(uncertainty$ymax), 120 + 10)
 })
 
+make_outcomes_with_life_years <- function() {
+  make_outcomes() |>
+    tibble::add_row(year = 2021, parameter = "NO2", scenario = "tatsächliche Belastung", pollutant = "NO2",
+                    outcome_type = "verlorene Lebensjahre", population = 200000, outcome = 1200)
+}
+
 test_that("plot_health_outcomes() plots the years of life lost with their own labels", {
   plots <- plot_health_outcomes(make_outcomes(), "NO2", outcome_type = "verlorene Lebensjahre")
   relative <- plot_health_outcomes(make_outcomes(), "NO2", outcome_type = "verlorene Lebensjahre", relative = TRUE)
 
   expect_equal(plots$NO2$data$outcome, 999)
-  expect_match(as.character(plots$NO2$labels$title), "Verlorene Lebensjahre durch", fixed = TRUE)
-  expect_equal(plots$NO2$labels$subtitle, "Anzahl verlorene Lebensjahre pro Jahr")
-  expect_equal(relative$NO2$labels$subtitle, "Anzahl verlorene Lebensjahre pro 100'000 Einwohner/innen pro Jahr")
+  expect_match(as.character(plots$NO2$labels$title), "Verlorene Lebensjahre in der Bevölkerung durch", fixed = TRUE)
+  expect_match(plots$NO2$labels$subtitle, "^Anzahl verlorene Lebensjahre pro Jahr\n")
+  expect_match(relative$NO2$labels$subtitle, "^Anzahl verlorene Lebensjahre pro 100'000 Einwohner/innen pro Jahr\n")
+})
+
+test_that("the plots of the years of life lost give the long-term mean of the years lost per premature death", {
+  # 2020: 999 / 100, 2021: 1200 / 100 -> mean 10.995
+  plots <- plot_health_outcomes(make_outcomes_with_life_years(), "NO2", outcome_type = "verlorene Lebensjahre")
+
+  expect_equal(plots$NO2$labels$subtitle,
+               "Anzahl verlorene Lebensjahre pro Jahr\n(Langzeit-Mittel: 11 verlorene Lebensjahre pro vorzeitigem Todesfall)")
+})
+
+test_that("mean_life_years_per_death() averages the yearly ratios of the actual exposure per parameter", {
+  result <- mean_life_years_per_death(make_outcomes_with_life_years())
+
+  expect_equal(result, c(NO2 = (999 / 100 + 1200 / 100) / 2))
 })
 
 test_that("plot_health_outcomes() keeps the labels of the premature deaths", {
-  plots <- plot_health_outcomes(make_outcomes(), "NO2")
-  relative <- plot_health_outcomes(make_outcomes(), "NO2", relative = TRUE)
+  plots <- plot_health_outcomes(make_outcomes_with_life_years(), "NO2")
+  relative <- plot_health_outcomes(make_outcomes_with_life_years(), "NO2", relative = TRUE)
 
   expect_match(as.character(plots$NO2$labels$title), "Vorzeitige Todesfälle durch", fixed = TRUE)
   expect_equal(plots$NO2$labels$subtitle, "Anzahl vorzeitige Todesfälle pro Jahr")
@@ -68,14 +88,10 @@ test_that("plot_health_outcomes() stops for an unknown outcome type", {
   expect_error(plot_health_outcomes(make_outcomes(), "NO2", outcome_type = "Spitaleintritte"), class = "airquality_plot_error")
 })
 
-test_that("plot_life_years_per_death() divides the years of life lost by the premature deaths of the actual exposure", {
-  plots <- plot_life_years_per_death(make_outcomes(), c("NO2", "PM2.5"), covid_years = 2020)
+test_that("the plots of the years of life lost pass the labels of the y axis on", {
+  plot <- plot_health_outcomes(make_outcomes(), "NO2", outcome_type = "verlorene Lebensjahre", ylabels = label_big_mark)$NO2
 
-  expect_named(plots, c("NO2", "PM2.5"))
-  expect_equal(plots$NO2$data$year, 2020) # only years with both outcomes
-  expect_equal(plots$NO2$data$life_years_per_death, 999 / 100)
-  expect_equal(plots$NO2$data$covid, "Covid-19")
-  expect_equal(nrow(plots$PM2.5$data), 0)
-  expect_equal(plots$NO2$labels$subtitle, "verlorene Lebensjahre pro vorzeitigen Todesfall")
-  expect_false("Szenario" %in% legend_texts(plots$NO2)) # one scenario only, no legend for it
+  axis <- withr::with_pdf(NULL, ggplot2::ggplot_build(plot))$layout$panel_params[[1]]$y
+  breaks <- stats::na.omit(axis$get_breaks())
+  expect_equal(axis$get_labels()[!is.na(axis$get_breaks())], label_big_mark(breaks))
 })

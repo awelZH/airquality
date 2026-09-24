@@ -1,10 +1,11 @@
 # Plots of the health outcomes page: premature deaths and years of life lost attributable to air pollution.
 
 
-# labels per outcome type: start of the title and the counted unit in the subtitle
+# labels per outcome type: start of the title, the counted unit in the subtitle and whether the subtitle
+# gives the long-term mean of the years of life lost per premature death
 outcome_labels <- list(
-  "vorzeitige Todesfälle" = list(title = "Vorzeitige Todesfälle durch ", unit = "vorzeitige Todesfälle"),
-  "verlorene Lebensjahre" = list(title = "Verlorene Lebensjahre durch ", unit = "verlorene Lebensjahre")
+  "vorzeitige Todesfälle" = list(title = "Vorzeitige Todesfälle durch ", unit = "vorzeitige Todesfälle", per_death = FALSE),
+  "verlorene Lebensjahre" = list(title = "Verlorene Lebensjahre in der Bevölkerung durch ", unit = "verlorene Lebensjahre", per_death = TRUE)
 )
 
 
@@ -12,6 +13,8 @@ outcome_labels <- list(
 #'
 #' Bars per scenario, with the uncertainty range from the lower bound up to the upper bound plus the
 #' outcome below the minimum concentration (`outcome_delta_min_conc`). Covid years are drawn transparent.
+#' The years of life lost give in a second subtitle line the long-term mean of the years lost per
+#' premature death ([mean_life_years_per_death()], rounded to whole years).
 #'
 #' @param data `data_health_outcomes.csv`.
 #' @param parameters Parameters to plot.
@@ -19,6 +22,7 @@ outcome_labels <- list(
 #' @param relative Outcome per 100'000 inhabitants instead of absolute numbers.
 #' @param covid_years Years marked as exceptional (Covid-19).
 #' @param uncertainty_scenario Scenario the uncertainty ranges belong to; the avoided outcome gets none.
+#' @param ylabels Labels of the y axis, e.g. [label_big_mark()].
 #' @param theme ggplot2 theme.
 #'
 #' @return Named list of ggplot objects, one per parameter. Stops with an error of class
@@ -27,7 +31,7 @@ outcome_labels <- list(
 #' @keywords internal
 plot_health_outcomes <- function(data, parameters, outcome_type = "vorzeitige Todesfälle", relative = FALSE,
                                  covid_years = 2020:2022, uncertainty_scenario = "tatsächliche Belastung",
-                                 theme = ggplot2::theme_minimal()) {
+                                 ylabels = ggplot2::waiver(), theme = ggplot2::theme_minimal()) {
 
   labels <- outcome_labels[[outcome_type]]
   if (is.null(labels)) {
@@ -46,7 +50,13 @@ plot_health_outcomes <- function(data, parameters, outcome_type = "vorzeitige To
     uncertainty <- ggplot2::geom_linerange(data = actual, ggplot2::aes(ymin = outcome_lower, ymax = outcome_upper + outcome_delta_min_conc), color = "gray20")
   }
 
+  per_death <- if (labels$per_death) mean_life_years_per_death(data, scenario = uncertainty_scenario)
+
   purrr::map(rlang::set_names(parameters), function(parameter) {
+
+    if (labels$per_death && !is.na(per_death[parameter])) {
+      sub <- paste0(sub, "\n(Langzeit-Mittel: ", round(per_death[[parameter]]), " verlorene Lebensjahre pro vorzeitigem Todesfall)")
+    }
 
     data |>
       dplyr::filter(parameter == !!parameter & outcome_type == !!outcome_type) |>
@@ -58,6 +68,7 @@ plot_health_outcomes <- function(data, parameters, outcome_type = "vorzeitige To
           subtitle = sub
         ),
         captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS & Statistisches Amt Kanton Zürich"),
+        ylabels = ylabels,
         theme = theme
       ) +
       uncertainty +
@@ -66,44 +77,26 @@ plot_health_outcomes <- function(data, parameters, outcome_type = "vorzeitige To
 }
 
 
-#' Plot the years of life lost per premature death, one plot per parameter
+#' Long-term mean of the years of life lost per premature death, per parameter
 #'
-#' For the actual exposure: the years of life lost divided by the premature deaths of the same year
-#' (central estimates; the ratio hardly depends on the bound of the relative risk, so no range).
+#' The mean over the years of the yearly ratio years of life lost / premature deaths, for one scenario
+#' (central estimates).
 #'
-#' @inheritParams plot_health_outcomes
+#' @param data `data_health_outcomes.csv`.
 #' @param scenario Scenario of the ratio.
 #'
-#' @return Named list of ggplot objects, one per parameter.
+#' @return Named numeric vector, one mean per parameter with both outcomes.
 #'
 #' @keywords internal
-plot_life_years_per_death <- function(data, parameters, covid_years = 2020:2022, scenario = "tatsächliche Belastung",
-                                      theme = ggplot2::theme_minimal()) {
+mean_life_years_per_death <- function(data, scenario = "tatsächliche Belastung") {
 
   ratio <-
     data |>
-    dplyr::filter(scenario == !!scenario, outcome_type %in% names(outcome_labels)) |>
-    dplyr::select(year, parameter, scenario, outcome_type, outcome) |>
+    dplyr::filter(scenario == !!scenario, outcome_type %in% c("verlorene Lebensjahre", "vorzeitige Todesfälle")) |>
+    dplyr::select(year, parameter, outcome_type, outcome) |>
     tidyr::pivot_wider(names_from = outcome_type, values_from = outcome) |>
     dplyr::filter(!is.na(`verlorene Lebensjahre`), !is.na(`vorzeitige Todesfälle`)) |>
-    dplyr::mutate(
-      life_years_per_death = `verlorene Lebensjahre` / `vorzeitige Todesfälle`,
-      covid = ifelse(year %in% covid_years, "Covid-19", "normal")
-    )
+    dplyr::summarise(ratio = mean(`verlorene Lebensjahre` / `vorzeitige Todesfälle`), .by = parameter)
 
-  purrr::map(rlang::set_names(parameters), function(parameter) {
-
-    dplyr::filter(ratio, parameter == !!parameter) |>
-      ggplot_timeseries_bars(
-        mapping = ggplot2::aes(x = year, y = life_years_per_death, fill = scenario, alpha = covid),
-        titlelab = ggplot2::ggtitle(
-          label = openair::quickText(paste0("Verlorene Lebensjahre pro Todesfall durch ", airquality.methods::longpollutant(parameter))),
-          subtitle = "verlorene Lebensjahre pro vorzeitigen Todesfall"
-        ),
-        captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS & Statistisches Amt Kanton Zürich"),
-        theme = theme
-      ) +
-      ggplot2::scale_alpha_manual(name = "Aussergewöhnliches", values = c("normal" = 1, "Covid-19" = 0.25)) +
-      ggplot2::guides(fill = "none") # one scenario only
-  })
+  rlang::set_names(ratio$ratio, ratio$parameter)
 }

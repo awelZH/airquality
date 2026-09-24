@@ -9,6 +9,7 @@ ggplot_timeseries_bars(
   mapping = ggplot2::aes(x = year, y = population_weighted_mean, fill = scenario),
   ylims = c(NA, NA),
   ybreaks = ggplot2::waiver(),
+  ylabels = ggplot2::waiver(),
   titlelab = NULL,
   captionlab = NULL,
   theme = ggplot2::theme_minimal()
@@ -19,7 +20,7 @@ ggplot_timeseries_bars(
 
 \item{mapping}{Aesthetic mapping (x = year, y = value, fill = scenario).}
 
-\item{ylims, ybreaks}{Limits and breaks of the y axis.}
+\item{ylims, ybreaks, ylabels}{Limits, breaks and labels of the y axis.}
 
 \item{titlelab, captionlab}{Title and caption, e.g. \code{ggplot2::ggtitle()} and \code{ggplot2::labs(caption = )}.}
 

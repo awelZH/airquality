@@ -127,3 +127,18 @@ test_that("print_year_slider() sorts labels of year ranges by their last year", 
   expect_equal(sub('.*data-year="([^"]+)".*', "\\1", panels), c("2018–2020", "2019–2021", "2020–2022"))
   expect_match(output[grep("year-slider", output)[1]], 'data-start="2020–2022"', fixed = TRUE)
 })
+
+# ---- axis labels ---------------------------------------------------------------------
+
+test_that("label_big_mark() writes thousands with an apostrophe", {
+  expect_equal(label_big_mark(c(5, 1000, 25000)), c("5", "1'000", "25'000"))
+})
+
+test_that("ggplot_timeseries_bars() takes the labels of the y axis", {
+  data <- tibble::tibble(year = 2020:2021, value = c(1500, 2500), scenario = "a")
+
+  plot <- ggplot_timeseries_bars(data, mapping = ggplot2::aes(x = year, y = value, fill = scenario), ylabels = label_big_mark)
+  labels <- withr::with_pdf(NULL, ggplot2::ggplot_build(plot))$layout$panel_params[[1]]$y$get_labels()
+
+  expect_contains(labels, "2'000")
+})

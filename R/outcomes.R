@@ -203,3 +203,105 @@ outcome_scenarios <- function(estimates, expo, outcome_type) {
     dplyr::select(year, pollutant, metric, parameter, outcome_type, population, scenario, outcome, outcome_lower,
                   outcome_upper, outcome_delta_min_conc)
 }
+
+
+# ---- years of life lost --------------------------------------------------------------
+
+#' Prepare the life tables: deaths and mid-year population per year, sex and single age
+#'
+#' The mid-year population is the mean of the year-end populations of the previous and the same year;
+#' the first year, without previous year, takes its year-end population. Ages from `max_age` are
+#' condensed into the last age group, as the life table is closed there. Ages without deaths get 0.
+#'
+#' @param mortality Deaths as returned by [prepare_mortality()].
+#' @param population Year-end population as returned by [prepare_population_by_age()].
+#' @param min_age Youngest age of the life table.
+#' @param max_age Last age group (this age and older).
+#'
+#' @return Tibble with `year`, `sex`, `age`, `deaths` and `population`, for the years of the population.
+#'   Stops with an error of class `airquality_input_error` if an age has more deaths than inhabitants.
+#'
+#' @keywords internal
+lifetable_data <- function(mortality, population, min_age, max_age) {
+
+  condense <- function(data, value) {
+    data |>
+      dplyr::filter(age >= min_age) |>
+      dplyr::mutate(age = pmin(age, max_age)) |>
+      dplyr::summarise("{value}" := sum(.data[[value]]), .by = c(year, sex, age))
+  }
+
+  population <- condense(population, "population")
+  midyear <-
+    population |>
+    dplyr::left_join(dplyr::mutate(population, year = year + 1), by = dplyr::join_by(year, sex, age), suffix = c("", "_previous")) |>
+    dplyr::mutate(population = ifelse(is.na(population_previous), population, (population + population_previous) / 2)) |>
+    dplyr::select(-population_previous)
+
+  result <-
+    midyear |>
+    dplyr::left_join(condense(mortality, "deaths"), by = dplyr::join_by(year, sex, age)) |>
+    dplyr::mutate(deaths = dplyr::coalesce(deaths, 0)) |>
+    dplyr::select(year, sex, age, deaths, population) |>
+    dplyr::arrange(year, sex, age)
+
+  implausible <- dplyr::filter(result, deaths > population)
+  if (nrow(implausible) > 0) {
+    cli::cli_abort("{nrow(implausible)} age group{?s} of the life tables {?has/have} more deaths than inhabitants, e.g. {implausible$year[1]} {implausible$sex[1]} {implausible$age[1]}.",
+                   class = "airquality_input_error")
+  }
+  result
+}
+
+
+#' Estimate the years of life lost per year and parameter, for the actual exposure and the base year
+#'
+#' With the life table of [healthiar::attribute_lifetable()]: the years of life lost by the exposure of
+#' one year (`approach_exposure = "single_year"`, without newborns) from `min_age`, summed over the
+#' sexes. Deterministic like [estimate_premature_deaths()]: the range from the 95 % bounds of the
+#' relative risk.
+#'
+#' @inheritParams estimate_premature_deaths
+#' @param lifetable Life tables as returned by [lifetable_data()].
+#' @param min_age Youngest age affected by the exposure.
+#' @param max_age Last age group of the life tables.
+#'
+#' @return Tibble with `year`, `parameter`, `scenario` ("actual", "base"), `outcome`, `outcome_lower` and
+#'   `outcome_upper`, for the years and parameters in all three inputs.
+#'
+#' @keywords internal
+estimate_life_years_lost <- function(expo, lifetable, meta, min_age, max_age, erf_shape = "log_linear") {
+
+  cases <-
+    expo |>
+    dplyr::select(year, parameter, exp_actual = population_weighted_mean, exp_base = population_weighted_mean_base) |>
+    dplyr::semi_join(lifetable, by = dplyr::join_by(year)) |>
+    dplyr::inner_join(meta, by = dplyr::join_by(parameter)) |>
+    dplyr::mutate(exp_base = dplyr::coalesce(exp_base, exp_actual))
+
+  purrr::map(seq_len(nrow(cases)), function(i) {
+    case <- cases[i, ]
+    table <- dplyr::filter(lifetable, year == case$year)
+    yll <- function(exposure) {
+      # zero deaths occur at single young ages; healthiar warns but computes them correctly
+      withCallingHandlers(
+        healthiar::attribute_lifetable(
+          health_outcome = "yll", approach_exposure = "single_year", approach_newborns = "without_newborns",
+          age_group = table$age, sex = table$sex, bhd_central = table$deaths, population = table$population,
+          year_of_analysis = case$year, min_age = min_age, max_age = max_age,
+          exp_central = exposure, cutoff_central = case$lower_conc_threshold, erf_shape = erf_shape,
+          rr_central = case$crf, rr_lower = case$crf_lower, rr_upper = case$crf_upper,
+          rr_increment = case$crf_conc_increment
+        )$health_main,
+        warning = function(w) if (grepl("Zeros in bhd_", conditionMessage(w))) invokeRestart("muffleWarning")
+      )
+    }
+    dplyr::bind_rows(
+      dplyr::mutate(yll(case$exp_actual), geo_id_micro = "actual"),
+      dplyr::mutate(yll(case$exp_base), geo_id_micro = "base")
+    ) |>
+      impact_by_scenario() |>
+      dplyr::mutate(year = case$year, parameter = case$parameter, .before = 1)
+  }) |>
+    purrr::list_rbind()
+}

@@ -40,7 +40,7 @@ topics <- list(
   outcomes = list(
     script = "scripts/_compile_outcomes.R",
     setup = c("ressources", "outcomes_min_year_share", "outcomes_min_age", "outcomes_suppressed_deaths",
-              "outcomes_erf_shape"),
+              "outcomes_lifetable_max_age", "outcomes_erf_shape"),
     attach = "dplyr" # the old prepare_mortality() called left_join() without prefix
   )
 )

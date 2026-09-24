@@ -60,3 +60,17 @@ the range with its lower and upper 95 % bound – instead of the Monte-Carlo med
 the Monte Carlo only approximated this range. Two runs are now byte-identical. Difference to the
 Monte-Carlo run after E1: central values up to 4.3 % (e.g. O3 2024: 350 → 365), upper bounds up to 6 %,
 lower bounds up to 83 % where they are small (O3, lower relative risk 1.002: 2024 31 → 57; 2019 120 → 70).
+
+**Years of life lost** (2026-09-24, step 4): `lifetable_data()` builds the life tables per year, sex and
+single age from 30 (deaths from `prepare_mortality()`, mid-year population = mean of the year-ends of the
+previous and the same year, 2010 its year-end; ages from `outcomes_lifetable_max_age` = 100 condensed;
+ages without deaths get 0, healthiar warns about it and the warning is muffled). `estimate_life_years_lost()`
+calls `healthiar::attribute_lifetable(health_outcome = "yll", approach_exposure = "single_year",
+approach_newborns = "without_newborns")` for the actual and the base-year exposure, deterministic like the
+deaths (range from the RR bounds), sexes summed. New rows `outcome_type = "verlorene Lebensjahre"` in
+`data_health_outcomes.csv` (180 instead of 90 rows, same 11 columns); the premature deaths unchanged.
+Run time about 1 minute (90 life-table calls of 0.75 s). Results (actual exposure): PM2.5 2010 11'179,
+2019 5'186, 2024 2'615 years; NO2 2024 1'182; O3 2024 3'813. Years per premature death 10.3–11.4,
+slowly falling (PM2.5 2011 11.35, 2024 10.40). Reduction of life expectancy not implemented (only with an
+official life table); a period life table built from the same data gave for PM2.5 2019 e30 −4.5 months
+(women) and −5.0 months (men).

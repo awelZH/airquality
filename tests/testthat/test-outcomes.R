@@ -157,3 +157,58 @@ test_that("estimate_premature_deaths() is the deterministic log-linear estimate,
   expect_equal(result$outcome[result$scenario == "base"], attributable(1.118, 12))
   expect_identical(result, estimate_premature_deaths(make_expo(), deaths, make_outcomes_meta())) # reproducible
 })
+
+# ---- years of life lost --------------------------------------------------------------
+
+test_that("lifetable_data() gives the mid-year population, the deaths per age and the condensed last age", {
+  mortality <- tibble::tibble(year = 2020, sex = "male", age = c(30, 31, 33, 34), deaths = c(2, 3, 5, 7))
+  population <- tidyr::expand_grid(year = 2019:2020, sex = "male", age = 29:35) |>
+    dplyr::mutate(population = ifelse(year == 2019, 100, 120))
+
+  result <- lifetable_data(mortality, population, min_age = 30, max_age = 33)
+
+  expect_named(result, c("year", "sex", "age", "deaths", "population"))
+  r2020 <- dplyr::filter(result, year == 2020)
+  expect_equal(r2020$age, 30:33)
+  expect_equal(r2020$population, c(110, 110, 110, 3 * 110)) # mean of the year-ends 2019 and 2020; 33+ condensed
+  expect_equal(r2020$deaths, c(2, 3, 0, 5 + 7)) # age 32 without deaths
+  expect_equal(unique(result$population[result$year == 2019]), c(100, 300)) # first year: its year-end
+})
+
+test_that("lifetable_data() stops if an age has more deaths than inhabitants", {
+  mortality <- tibble::tibble(year = 2020, sex = "male", age = 30, deaths = 200)
+  population <- tibble::tibble(year = 2020, sex = "male", age = 30, population = 100)
+
+  expect_error(lifetable_data(mortality, population, min_age = 30, max_age = 30), class = "airquality_input_error")
+})
+
+make_lifetable <- function(years = 2020) {
+  tidyr::expand_grid(year = years, sex = c("female", "male"), age = 30:100) |>
+    dplyr::mutate(
+      population = 1000 * exp(-0.05 * (age - 30)),
+      deaths = population * pmin(0.9, 0.001 * exp(0.09 * (age - 30))),
+      deaths = ifelse(age == 100, population, deaths) # everybody dies in the last age group
+    )
+}
+
+test_that("estimate_life_years_lost() gives no years lost at the cut-off and more with more exposure", {
+  expo <- dplyr::mutate(make_expo(), year = c(2019, 2020), population_weighted_mean = c(5, 9), population_weighted_mean_base = 12)
+
+  result <- estimate_life_years_lost(expo, make_lifetable(2019:2020), make_outcomes_meta(), min_age = 30, max_age = 100)
+
+  expect_named(result, c("year", "parameter", "scenario", "outcome", "outcome_lower", "outcome_upper"))
+  expect_equal(nrow(result), 4)
+  expect_equal(result$outcome[result$year == 2019 & result$scenario == "actual"], 0) # exposure = cut-off
+  r2020 <- dplyr::filter(result, year == 2020)
+  expect_gt(r2020$outcome[r2020$scenario == "actual"], 0)
+  expect_lt(r2020$outcome[r2020$scenario == "actual"], r2020$outcome[r2020$scenario == "base"]) # 9 < 12 µg/m3
+  expect_true(all(r2020$outcome_lower <= r2020$outcome & r2020$outcome <= r2020$outcome_upper))
+})
+
+test_that("estimate_life_years_lost() sums the sexes", {
+  expo <- dplyr::filter(make_expo(), year == 2020)
+  both <- estimate_life_years_lost(expo, make_lifetable(), make_outcomes_meta(), min_age = 30, max_age = 100)
+  one <- function(s) estimate_life_years_lost(expo, dplyr::filter(make_lifetable(), sex == s), make_outcomes_meta(), min_age = 30, max_age = 100)
+
+  expect_equal(both$outcome, one("female")$outcome + one("male")$outcome)
+})

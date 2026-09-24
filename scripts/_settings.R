@@ -100,6 +100,9 @@ outcomes_min_age <- 30
 # deaths assumed in a cell of the mortality data suppressed for privacy (1 to 3 deaths)
 outcomes_suppressed_deaths <- 2
 
+# last age group of the life tables for the years of life lost (this age and older, condensed)
+outcomes_lifetable_max_age <- 100
+
 # shape of the exposure-response functions (relative risks per concentration increment)
 outcomes_erf_shape <- "log_linear"
 

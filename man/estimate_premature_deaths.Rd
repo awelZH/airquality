@@ -4,13 +4,7 @@
 \alias{estimate_premature_deaths}
 \title{Estimate the premature deaths per year and parameter, for the actual exposure and the base year}
 \usage{
-estimate_premature_deaths(
-  expo,
-  deaths,
-  meta,
-  erf_shape = "log_linear",
-  n_sim = 500
-)
+estimate_premature_deaths(expo, deaths, meta, erf_shape = "log_linear")
 }
 \arguments{
 \item{expo}{Population-weighted means of the canton (\code{data_exposition_weighted_means_canton.csv}),
@@ -22,8 +16,6 @@ one row per year and parameter; a missing base-year mean counts as the actual on
 \code{crf_conc_increment}, \code{lower_conc_threshold}).}
 
 \item{erf_shape}{Shape of the exposure-response function.}
-
-\item{n_sim}{Number of Monte Carlo simulations.}
 }
 \value{
 Tibble with \code{year}, \code{parameter}, \code{scenario} ("actual", "base"), \code{outcome}, \code{outcome_lower} and
@@ -31,6 +23,7 @@ Tibble with \code{year}, \code{parameter}, \code{scenario} ("actual", "base"), \
 }
 \description{
 With \code{\link[healthiar:attribute_health]{healthiar::attribute_health()}} (relative risk, cut-off at the lower concentration threshold of
-the metadata) and the range from \code{\link[healthiar:summarize_uncertainty]{healthiar::summarize_uncertainty()}} (Monte Carlo).
+the metadata). Deterministic: the estimate with the central relative risk, the range with its lower
+and upper 95 \% bound (the only uncertain input).
 }
 \keyword{internal}

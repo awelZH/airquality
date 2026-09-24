@@ -353,7 +353,7 @@ plot_ndep_sites <- function(data, colour_scale = NULL, fill_scale = NULL, shape_
       label = openair::quickText("Luftqualitätsmesswerte - Stickstoffeintrag in empfindliche Ökosysteme seit 2019"),
       subtitle = expression("Stickstoffeintrag (kg-N " * ha^-1 * Jahr^-1 * ")")
     ) +
-    ggplot2::labs(caption = "geschätzt: je nach Messprogramm versch. Anteile statistisch geschätzt (NH3 immer gemessen)\nDaten: Ostluft") +
+    ggplot2::labs(caption = "geschätzt: je nach Messprogramm versch. Anteile statistisch geschätzt (NH3 immer gemessen)<br>Daten: Ostluft") +
     theme
 }
 

@@ -62,6 +62,7 @@ plot_emissions_sectors_last <- list(NH3 = "Land- und Forstw.")
 
 # plotting size parameters
 basesize <- 12 # ggplot theme base_size
+caption_width <- 0.55 # width of the caption of theme_ts before it breaks, as a share of the plot width
 pointsize <- 2 # size of point markers
 linewidth <- 1 # width of lines
 jitter_seed <- 1 # seed of jittered points, so figures stay the same between renders
@@ -147,7 +148,11 @@ theme_ts <-
   ggplot2::theme(
     plot.title = ggplot2::element_text(size = ggplot2::rel(1)),
     plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
-    plot.caption = ggplot2::element_text(hjust = 0, color = "gray40", size = ggplot2::rel(0.66)),
+    # the caption breaks between words after about half the width of the plot (Markdown: <br> for a line break)
+    plot.caption = ggtext::element_textbox_simple(
+      width = ggplot2::unit(caption_width, "npc"), hjust = 0, halign = 0, color = "gray40", size = ggplot2::rel(0.66),
+      lineheight = 1.1, margin = ggplot2::margin(t = 5.5)
+    ),
     plot.background = ggplot2::element_blank(),
     panel.grid.major.x = ggplot2::element_blank(),
     panel.grid.minor.x = ggplot2::element_blank(),

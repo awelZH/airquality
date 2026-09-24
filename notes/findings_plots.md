@@ -65,7 +65,7 @@ environment, i.e. no function reads a global any more.
   `test-plot-exposition.R`, helpers in `helper-plot.R`; 75 expectations.
 
 Findings, not changed (content, for the user to decide):
-* The doughnut plot `rel_various` is built but commented out in `Belastungsverteilung.qmd`.
+* The doughnut plot `rel_various` is built but commented out in `Bevölkerungsbelastung.qmd` (since 2026-09-24 not on the page at all).
 * The commented snippet "für Umweltbericht" in `_plot_exposition.R` that used the intermediate `d`
   was dropped; the other two snippets now use `data_population_over_thresh`.
 
@@ -121,7 +121,7 @@ in inline code writes its figures to `docs/figure/` unless `fig.path` points els
 
 **P2 (year slider, decision 11).** `build_panel()`, the `id`/`markdown` columns, the `arrange()` per
 page and the 21 inline `knitr::knit(text = )` calls are gone; `print_year_slider()` (17 sliders on
-`Belastungsverteilung.qmd`) and `print_tabset()` (3 on `Gesundheitsfolgen.qmd`). Check: render of both
+`Bevölkerungsbelastung.qmd`) and `print_tabset()` (3 on `Gesundheitsfolgen.qmd`). Check: render of both
 pages, all 264 + 6 figures byte-identical to the baseline render, headless Edge DOM: 17 slider
 controls, exactly one visible panel each (241 hidden), start "alle" or newest year. Found on the way:
 the tabset "Ndep / population_weighted_mean_map" was silently empty (there is no ndep map; the old
@@ -130,13 +130,13 @@ filter matched nothing) – removed; `print_year_slider()` would have stopped. F
 device fail on the Arial font of `theme_ts`; it draws with ragg into a temporary directory.
 
 **P3 (logic out of the pages).**
-* `Trends.qmd`: the 9 active (and 8 commented) `plot %+% dplyr::filter(plot$data, pollutant == …) +
+* `Wirkungsmonitoring.qmd`: the 9 active (and 8 commented) `plot %+% dplyr::filter(plot$data, pollutant == …) +
   theme(legend.position = "right")` and `library(dplyr/ggplot2)` are gone; `_plot_trends.R` builds the
   plots per pollutant with `plot_trends_per_pollutant()` (catalog `timeseries_pollutant`,
   `timeseries_detailed_pollutant`). Their key is the German pollutant name of the panels, because the
   `parameter` column of the trend data is no key per panel (`NA` for emissions, NOx and NO2 in one
   panel). `%+%` is deprecated in ggplot2 4.0; `plot + data` replaces the data.
-* `Belastungsverteilung.qmd`: the table of inhabitants over thresholds is
+* `Bevölkerungsbelastung.qmd`: the table of inhabitants over thresholds is
   `table_population_over_thresholds()` (tested, `pivot_wider(names_sort = TRUE)` instead of
   `spread()`), built in `_plot_exposition.R` as `table_population_over_thresh`; identical to the old
   table on the real data, including the kable HTML. The page only formats it with kableExtra.
@@ -175,11 +175,11 @@ aesthetic), `position` (was `pos`), `pointsize`/`linewidth` (were `pt_size`/`lin
 
 **P6 (clean-up and checks).** The `ggiraph` comments are gone (user decision: no interactive plots
 planned). Commented snippets updated to the current building blocks (`+ data` instead of the
-deprecated `%+%` in `_plot_exposition.R`; the commented eBC block on `Belastungsverteilung.qmd` as a
+deprecated `%+%` in `_plot_exposition.R`; the commented eBC block on `Bevölkerungsbelastung.qmd` as a
 commented chunk: knitr evaluates inline `` `r …` `` even inside HTML comments, so the old commented
 tabset still ran on every render). Kept on purpose: the doughnut plot `population_over_thresh_share`
 (in the catalog, commented out on the page) and the commented trend sections (NH3, CO, NMVOC, SO2) of
-`Trends.qmd`, which now use `get_plot()` and can be switched on without changes. Checks after every
+`Wirkungsmonitoring.qmd`, which now use `get_plot()` and can be switched on without changes. Checks after every
 package: unit tests, `run_plots()` (byte identity), `check_pages()` (all pages without rendering,
 about 2 min); for P2/P3 the rendered pages against a baseline render.
 
@@ -242,6 +242,55 @@ in two tabsets (`print_tabset()`, user decision 2026-09-23): "Bachtel Messreihe"
 stand in a tabset "typische Spitzenbelastung" / "mittlere Sommertagbelastung" as well.
 
 **Page names and figure numbers (user decision 2026-09-23).** The pages "Belastungsverteilung" and
-"Trends" are titled "Bevölkerungsbelastung" and "Wirkungsmonitoring" (page title and navbar); the file
-names and thus the URLs stay. The chunk labels lost their `fig-` prefix, so Quarto no longer numbers
+"Trends" are titled "Bevölkerungsbelastung" and "Wirkungsmonitoring" (page title and navbar); their
+files followed (`Bevölkerungsbelastung.qmd`, `Wirkungsmonitoring.qmd`, user decision 2026-09-24), so the
+old URLs `Belastungsverteilung.html` and `Trends.html` no longer exist. The topic names in `scripts/`
+and `R/` (exposition, trends) stay. The chunk labels lost their `fig-` prefix, so Quarto no longer numbers
 the plots as "Figure x" (no page cross-references them).
+
+**Over thresholds per pollutant (user decision 2026-09-24).** The faceted plot "Entwicklung
+luftschadstoffbelasteter Wohnbevölkerung" and its section "Einwohner/innen mit Belastung über
+Grenz-/Richtwert" are gone. `plot_population_over_thresholds(data, pollutants, ...)` gives one plot per
+pollutant (same bars, colours, subtitle and caption; the pollutant moved from the panel strip into the
+title), in the catalog as `population_over_thresh` with the parameter NO2, PM2.5, PM10, O3 or Ndep. Each
+stands after the cumulative distributions of its pollutant; O3 combines the LRV limit of the typical peak
+and the WHO guideline of the peak season, so it has its own subsection at the end of the ozone section.
+New for nitrogen: `ecosystems_over_critical_load()` counts the sensitive ecosystems with a maximum
+exceedance (class centre) above 0, `plot_ecosystems_over_critical_load()` draws them like the
+inhabitants ("über/unter krit. Eintragsrate"); the data have only the years 1990, 2000, 2005, 2010, 2015,
+2020 (about 784 ecosystems, at most 4 below the critical load), hence narrow bars. Both population and
+ecosystem plots share `ggplot_over_thresholds()`. The collapsed table of the inhabitants moved to the end
+of the page. The commented "für Umweltbericht" snippets (the faceted plot filtered to one pollutant) were
+dropped, the per-pollutant plots replace them. The doughnut `population_over_thresh_share` is still built
+but no page refers to it any more. Regression: the other 265 exposition figures byte-identical, the one
+faceted figure replaced by five.
+
+**O3 per metric, tabsets on the exposition page, wrapped captions (user decisions 2026-09-24).**
+* `population_over_thresholds()` counts per parameter, each O3 metric only against its own threshold
+  (typical peak: LRV 100 µg/m3; peak season: WHO 60 µg/m3); before, one O3 series mixed both (over WHO
+  of the peak season minus over LRV of the peak). The label names the metric for pollutants with several
+  parameters ("Ozon (typische Spitzenbelastung)"). NO2, PM2.5 and PM10 unchanged (data and table
+  identical on the real output data). O3 difference: the population totals of the two metrics differ by
+  up to 93 inhabitants (2025), which the mixed series showed as "unter Grenz-/Richtwert"; now every
+  inhabitant is over the respective threshold in all years. The table has one row per O3 metric, "–"
+  where the metric has no threshold (option a).
+* The plots over thresholds (population and ecosystems) have their legend on the right; the legend of an
+  O3 metric shows only its own threshold.
+* `print_exposition_parameter()` prints one parameter's section: optional text, histograms, cumulative
+  distributions, the plot over thresholds, and a tabset "Kanton" (time series of the population-weighted
+  mean) / "Gemeinden" (maps). The page calls it per pollutant; O3 is a tabset "typische
+  Spitzenbelastung" / "mittlere Sommertagbelastung", with the sections nested inside (tabsets in tabs
+  render fine). The subsections of the two metrics left the table of contents.
+* Captions of `theme_ts` are `ggtext::element_textbox_simple()` with `width = caption_width` (0.55 of the
+  panel width, `_plot_setup.R`): they break between words, no hyphenation (no R package does that inside
+  grid). Markdown: a manual line break is `<br>` (was `\n`, in the ndep sites caption). A textbox does not
+  merge with an `element_text()` caption, so plots overriding the caption on top of `theme_ts` replace it
+  with `%+replace%` (doughnut); the maps use `theme_map` and keep `element_text()`. ggtext 0.2.0 with
+  gridtext, litedown, markdown recorded in `renv.lock` and in DESCRIPTION.
+* Subsections per pollutant (user decision 2026-09-24), printed by `print_exposition_parameter()` as
+  level-4 headings, also inside the O3 tabs (the tabsets stay intact): "Belastungsverteilung"
+  (histograms, cumulative distributions), "Entwicklung luftschadstoffbelastete Bevölkerung",
+  "mittlere Bevölkerungsbelastung" (Kanton / Gemeinden); nitrogen: "Belastungsverteilung", "Entwicklung
+  stickstoffbelastete Ökosysteme". The collapsed table has its own section "Tabelle
+  luftschadstoffbelastete Bevölkerung" at the end of the page. `caption_width` set to 0.55, so the
+  common caption "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS" stays on one line.

@@ -32,7 +32,7 @@ renv::update("airquality.data", prompt = FALSE)
 
 # packages required for script functionality
 packages <- c("devtools", "renv", "tibble", "tidyr", "dplyr", "purrr", "stringr", "rlang", "rjson", "httr2", "lubridate",
-             "readr", "sf", "stars", "withr", "pxR", "healthiar", "airquality.methods", "airquality.data", "scales", "openair", "ggplot2",
+             "readr", "sf", "stars", "withr", "healthiar", "airquality.methods", "airquality.data", "scales", "openair", "ggplot2",
              "RColorBrewer", "colorspace", "rmweather", "ranger", "MASS", "rOstluft.plot", "quarto", "kableExtra")
 load_packages(packages)
 # sapply(imports, function(x) usethis::use_package(x, "Import", min_version = TRUE))

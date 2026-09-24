@@ -1,6 +1,7 @@
 # Plan: health outcomes (premature deaths, years of life lost)
 
-Read before working on the health outcomes. Approved 2026-09-24 (revised after the spike); findings go to
+Read before working on the health outcomes. Approved 2026-09-24 (revised after the spike), **all steps done
+2026-09-24** (commits 5b7e43e … the clean-up); findings go to
 `findings_trends_outcomes.md`.
 
 ## Context

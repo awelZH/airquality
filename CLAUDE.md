@@ -38,7 +38,7 @@ An RStudio project with a package-like layout (DESCRIPTION for dependencies, `R/
 | `scripts/_compile_*.R` | one script per topic: emissions, monitoring, trends, exposition, outcomes |
 | `scripts/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
 | `scripts/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
-| `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `helpers.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R`, `read.R`, `*_helpers.R` hold only outcome/trend code (WIP) |
+| `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `outcomes.R`, `helpers.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R` hold only trend code (WIP) |
 | `inst/extdata/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
 | `inst/extdata/output/` | **output CSVs – the contract with external processes** |
 | `inst/extdata/log/` | run logs, appended on every run; not part of the contract |
@@ -66,11 +66,12 @@ column order and format must not change (the directory may change; external path
   topics, including a second round (plot catalog, year slider, logic out of the pages, consistent
   names; figures byte-identical, `notes/findings_plots.md`). The data scripts and functions of
   trends are still WIP, untouched on the user's decision. **Each topic only after the user's go.**
-* **Outcomes rework in progress** (user's go 2026-09-24; plan and decisions in `notes/plan_outcomes.md`):
-  step 3a done – premature deaths refactored into `R/outcomes.R` + thin script with the old behaviour
-  (deaths per year identical to the old code; the old Monte-Carlo range is unseeded). Next: E1 (deaths
-  from age 30 only, suppressed cells = 2, summed without the population join), E2 (deterministic
-  range), years of life lost (healthiar life table), plots/page.
+* **Outcomes reworked** (2026-09-24; plan, decisions E1–E6 and numbers in `notes/plan_outcomes.md` and
+  `notes/findings_trends_outcomes.md`): `R/outcomes.R` + thin script; premature deaths from the deaths
+  aged ≥ 30 (E1), deterministic estimate and range from the RR bounds (E2); years of life lost with the
+  healthiar life table as new rows of `data_health_outcomes.csv` (same columns); page with tabsets for
+  deaths and years of life lost (incl. per death). Reduction of life expectancy not implemented (only
+  with an official life table).
 * **Phase 2b (targets) not started**; plan in `notes/plan_phase2b.md`.
 * All content changes so far (subsector grouping of the emissions, the two monitoring fixes, the ndep
   `datasource` clean-up) are in `inst/extdata/output/` since commit `fc1e744`.

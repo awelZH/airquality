@@ -30,7 +30,6 @@ Suggests:
     httr2 (>= 1.2.1),
     lubridate (>= 1.9.4),
     purrr (>= 1.1.0),
-    pxR (>= 0.42.8),
     readr (>= 2.1.5),
     rjson (>= 0.2.23),
     rlang (>= 1.1.6),

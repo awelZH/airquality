@@ -84,3 +84,9 @@ per pollutant "vorzeitige Todesfälle" (tabset absolut/relativ) and "verlorene L
 absolut/relativ/pro Todesfall); "Grundlagen": the range is the CRF 95 % CI only (the minimum-concentration
 threshold, E5 b, is mentioned as not included, results a lower bound), the life-table method and the
 ratio per death explained.
+
+**Clean-up** (step 6): removed the dead outcome code `prepare_preliminary_deaths()`, `calc_outcome()`,
+`calculate_all_outcomes()`, `get_base_scenario_year()`, `prepare_life_expectancy_data()`,
+`read_bfs_life_expectancy_data()`, `get_bfs_asset_url()` (files `prepare_helpers.R`, `read.R`,
+`read_helpers.R` deleted) and `pxR` from DESCRIPTION and `_setup.R` (still in `renv.lock`; a
+`renv::snapshot()` would drop it). `prepare.R` and `aggregate.R` now hold trend code only.

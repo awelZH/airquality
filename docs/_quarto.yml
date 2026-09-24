@@ -4,8 +4,8 @@ project:
     - index.qmd
     - Schadstoffausstoss.qmd
     - Luftqualität.qmd
-    - Trends.qmd
-    - Belastungsverteilung.qmd
+    - Wirkungsmonitoring.qmd
+    - Bevölkerungsbelastung.qmd
     - Gesundheitsfolgen.qmd
     - about.qmd
   output-dir: .
@@ -26,9 +26,9 @@ website:
         text: Schadstoffausstoss
       - href: Luftqualität.qmd
         text: Luftqualität
-      - href: Trends.qmd
+      - href: Wirkungsmonitoring.qmd
         text: Wirkungsmonitoring
-      - href: Belastungsverteilung.qmd
+      - href: Bevölkerungsbelastung.qmd
         text: Bevölkerungsbelastung
       - href: Gesundheitsfolgen.qmd
         text: Gesundheitsfolgen

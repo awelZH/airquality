@@ -111,7 +111,8 @@ deaths_per_year <- function(mortality, min_age) {
 #' Estimate the premature deaths per year and parameter, for the actual exposure and the base year
 #'
 #' With [healthiar::attribute_health()] (relative risk, cut-off at the lower concentration threshold of
-#' the metadata) and the range from [healthiar::summarize_uncertainty()] (Monte Carlo).
+#' the metadata). Deterministic: the estimate with the central relative risk, the range with its lower
+#' and upper 95 % bound (the only uncertain input).
 #'
 #' @param expo Population-weighted means of the canton (`data_exposition_weighted_means_canton.csv`),
 #'   one row per year and parameter; a missing base-year mean counts as the actual one.
@@ -119,13 +120,12 @@ deaths_per_year <- function(mortality, min_age) {
 #' @param meta Outcome metadata, one row per parameter (`crf`, `crf_lower`, `crf_upper`,
 #'   `crf_conc_increment`, `lower_conc_threshold`).
 #' @param erf_shape Shape of the exposure-response function.
-#' @param n_sim Number of Monte Carlo simulations.
 #'
 #' @return Tibble with `year`, `parameter`, `scenario` ("actual", "base"), `outcome`, `outcome_lower` and
 #'   `outcome_upper`, for the years and parameters in all three inputs.
 #'
 #' @keywords internal
-estimate_premature_deaths <- function(expo, deaths, meta, erf_shape = "log_linear", n_sim = 500) {
+estimate_premature_deaths <- function(expo, deaths, meta, erf_shape = "log_linear") {
 
   cases <-
     expo |>
@@ -146,15 +146,19 @@ estimate_premature_deaths <- function(expo, deaths, meta, erf_shape = "log_linea
       cutoff_central = case$lower_conc_threshold,
       bhd_central = case$deaths
     )
-    healthiar::summarize_uncertainty(impact, n_sim = n_sim)$uncertainty_main |>
-      dplyr::select(scenario = geo_id_micro, estimate = impact_ci, impact) |>
-      tidyr::pivot_wider(names_from = estimate, values_from = impact) |>
-      dplyr::transmute(
-        year = case$year, parameter = case$parameter, scenario,
-        outcome = central_estimate, outcome_lower = lower_estimate, outcome_upper = upper_estimate
-      )
+    impact_by_scenario(impact$health_main) |>
+      dplyr::mutate(year = case$year, parameter = case$parameter, .before = 1)
   }) |>
     purrr::list_rbind()
+}
+
+
+# the central impact and its range per scenario (geo_id_micro) from the main results of healthiar
+impact_by_scenario <- function(health_main) {
+  health_main |>
+    dplyr::select(scenario = geo_id_micro, erf_ci, impact) |>
+    tidyr::pivot_wider(names_from = erf_ci, values_from = impact) |>
+    dplyr::select(scenario, outcome = central, outcome_lower = lower, outcome_upper = upper)
 }
 
 

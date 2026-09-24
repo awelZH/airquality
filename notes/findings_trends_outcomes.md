@@ -52,3 +52,11 @@ the population table. Effect on the deaths per year 2010–2024: −46 to −86 
 dropping category 290 −50 to −101 and summing without the population join −4 to +21 (the fictitious
 deaths and the dropped high ages). The premature deaths are proportional to the deaths, so they drop by
 the same share. The population by age is no longer read for the deaths; it returns with the life table.
+
+**E2: deterministic estimate and range** (user decision 2026-09-24, own commit): `estimate_premature_deaths()`
+takes `health_main` of `healthiar::attribute_health()` – the estimate with the central relative risk,
+the range with its lower and upper 95 % bound – instead of the Monte-Carlo median and quantiles of
+`summarize_uncertainty()` (500 simulations, no seed). The relative risk is the only uncertain input, so
+the Monte Carlo only approximated this range. Two runs are now byte-identical. Difference to the
+Monte-Carlo run after E1: central values up to 4.3 % (e.g. O3 2024: 350 → 365), upper bounds up to 6 %,
+lower bounds up to 83 % where they are small (O3, lower relative risk 1.002: 2024 31 → 57; 2019 120 → 70).

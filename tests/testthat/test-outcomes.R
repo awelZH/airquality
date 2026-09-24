@@ -132,14 +132,28 @@ test_that("outcome_scenarios() gives the actual burden and the avoided burden vs
 })
 
 test_that("estimate_premature_deaths() gives both scenarios with a range per year and parameter", {
-  withr::local_seed(1)
   deaths <- tibble::tibble(year = c(2015, 2020), deaths = c(10000, 11000))
 
-  result <- estimate_premature_deaths(make_expo(), deaths, make_outcomes_meta(), n_sim = 50)
+  result <- estimate_premature_deaths(make_expo(), deaths, make_outcomes_meta())
 
   expect_named(result, c("year", "parameter", "scenario", "outcome", "outcome_lower", "outcome_upper"))
   expect_equal(nrow(result), 4)
   expect_true(all(result$outcome_lower <= result$outcome & result$outcome <= result$outcome_upper))
   r2020 <- dplyr::filter(result, year == 2020)
   expect_lt(r2020$outcome[r2020$scenario == "actual"], r2020$outcome[r2020$scenario == "base"]) # 9 < 12 µg/m3
+})
+
+test_that("estimate_premature_deaths() is the deterministic log-linear estimate, the range from the RR bounds", {
+  deaths <- tibble::tibble(year = 2020, deaths = 11000)
+  # log-linear: RR = crf^((exposure - cutoff) / increment), attributable = deaths * (1 - 1 / RR)
+  attributable <- function(crf, exposure) 11000 * (1 - 1 / crf^((exposure - 5) / 10))
+
+  result <- estimate_premature_deaths(make_expo(), deaths, make_outcomes_meta())
+
+  actual <- dplyr::filter(result, scenario == "actual")
+  expect_equal(actual$outcome, attributable(1.118, 9))
+  expect_equal(actual$outcome_lower, attributable(1.06, 9))
+  expect_equal(actual$outcome_upper, attributable(1.179, 9))
+  expect_equal(result$outcome[result$scenario == "base"], attributable(1.118, 12))
+  expect_identical(result, estimate_premature_deaths(make_expo(), deaths, make_outcomes_meta())) # reproducible
 })

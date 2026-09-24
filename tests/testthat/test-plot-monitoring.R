@@ -218,8 +218,9 @@ test_that("the nitrogen plots name the critical load in the legend and in the ca
   bars <- plot_ndep_bars(data)
   vs_cln <- plot_ndep_sites_vs_cln(data)
 
-  expect_contains(legend_texts(bars), c("Referenz", "krit. Eintragsrate"))
-  expect_contains(legend_texts(vs_cln), c("Referenz", "krit. Eintragsrate"))
+  expect_contains(legend_texts(bars), "krit. Eintragsrate")
+  expect_contains(legend_texts(vs_cln), "krit. Eintragsrate")
+  expect_false("Referenz" %in% c(legend_texts(bars), legend_texts(vs_cln))) # the label speaks for itself
   expect_match(vs_cln$labels$caption, "^krit. Eintragsraten nach heutigem Stand")
 })
 

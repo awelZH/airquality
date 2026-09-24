@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Bevölkerungsbelastung – Luftqualität im Kanton Zürich</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a54a7b48e3bc148cd70fa1402b6a6b8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-f4262be089d09bdc6ea6de7d7e7e1f0b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a54a7b48e3bc148cd70fa1402b6a6b8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="https://www.zh.ch/de/baudirektion/amt-fuer-abfall-wasser-energie-luft.html">
+    <span class="navbar-title">Luftqualität im Kanton Zürich</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Allgemeines</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Schadstoffausstoss.html"> 
+<span class="menu-text">Schadstoffausstoss</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Luftqualität.html"> 
+<span class="menu-text">Luftqualität</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Wirkungsmonitoring.html"> 
+<span class="menu-text">Wirkungsmonitoring</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Bevölkerungsbelastung.html" aria-current="page"> 
+<span class="menu-text">Bevölkerungsbelastung</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Gesundheitsfolgen.html"> 
+<span class="menu-text">Gesundheitsfolgen</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#stickstoffdioxid" id="toc-stickstoffdioxid" class="nav-link active" data-scroll-target="#stickstoffdioxid">Stickstoffdioxid</a></li>
+  <li><a href="#feinstaub-pm2.5" id="toc-feinstaub-pm2.5" class="nav-link" data-scroll-target="#feinstaub-pm2.5">Feinstaub PM2.5</a></li>
+  <li><a href="#feinstaub-pm10" id="toc-feinstaub-pm10" class="nav-link" data-scroll-target="#feinstaub-pm10">Feinstaub PM10</a></li>
+  <li><a href="#ozon" id="toc-ozon" class="nav-link" data-scroll-target="#ozon">Ozon</a></li>
+  <li><a href="#stickstoffeintrag-in-empfindliche-ökosysteme" id="toc-stickstoffeintrag-in-empfindliche-ökosysteme" class="nav-link" data-scroll-target="#stickstoffeintrag-in-empfindliche-ökosysteme">Stickstoffeintrag in empfindliche Ökosysteme</a></li>
+  <li><a href="#tabelle-luftschadstoffbelastete-bevölkerung" id="toc-tabelle-luftschadstoffbelastete-bevölkerung" class="nav-link" data-scroll-target="#tabelle-luftschadstoffbelastete-bevölkerung">Tabelle luftschadstoffbelastete Bevölkerung</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bevölkerungsbelastung</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Hier werden Auswertungen von jahresbezogenen, flächendeckenden Rasterdaten zur Luftbelastung und Verteilung der Wohnbevölkerung im Kanton Zürich sowie zu atmosphärischen Stickstoffenträgen in empfindliche Ökosysteme dargestellt. Die Grundlagendaten stammen aus Erhebungen (<a href="https://www.bfs.admin.ch/bfs/de/home.html">Bundesamt für Statistik BFS</a>) und Modellrechnungen (<a href="https://www.bafu.admin.ch/bafu/de/home.html">Bundesamt für Umwelt BAFU</a>). Die Modellergebnisse zur Luftschadstoffbelastung und den atmosphärischen Stickstoffeinträgen sind an Messwerten “kalibriert”, um eine ausreichend gute Genauigkeit zu erreichen. Die Expositionsverteilung der Bevölkerung wird in einigen Darstellungen immer mit den aktuellen Grenzwerten der <a href="https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de">Luftreinhalteverordnung des Bundes</a> verglichen, auch wenn diese erst ab einem bestimmten Zeitpunkt eingeführt oder angepasst wurden. Das Gleiche gilt für die <a href="https://www.who.int/publications/i/item/9789240034228">Richtwerte der Weltgesundheitsorganisation WHO</a>.</p>
+<section id="stickstoffdioxid" class="level3">
+<h3 class="anchored" data-anchor-id="stickstoffdioxid">Stickstoffdioxid</h3>
+<section id="belastungsverteilung" class="level4">
+<h4 class="anchored" data-anchor-id="belastungsverteilung">Belastungsverteilung</h4>
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Bevölkerungsbelastung_files/figure-html/no2-1.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="Bevölkerungsbelastung_files/figure-html/no2-2.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="Bevölkerungsbelastung_files/figure-html/no2-3.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="Bevölkerungsbelastung_files/figure-html/no2-4.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="Bevölkerungsbelastung_files/figure-html/no2-5.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="Bevölkerungsbelastung_files/figure-html/no2-6.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="Bevölkerungsbelastung_files/figure-html/no2-7.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="Bevölkerungsbelastung_files/figure-html/no2-8.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="Bevölkerungsbelastung_files/figure-html/no2-9.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="Bevölkerungsbelastung_files/figure-html/no2-10.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="Bevölkerungsbelastung_files/figure-html/no2-11.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="Bevölkerungsbelastung_files/figure-html/no2-12.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="Bevölkerungsbelastung_files/figure-html/no2-13.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="Bevölkerungsbelastung_files/figure-html/no2-14.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="Bevölkerungsbelastung_files/figure-html/no2-15.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="Bevölkerungsbelastung_files/figure-html/no2-16.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">alle Jahre</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">einzelne Jahre</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="Bevölkerungsbelastung_files/figure-html/no2-17.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="Bevölkerungsbelastung_files/figure-html/no2-18.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="Bevölkerungsbelastung_files/figure-html/no2-19.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="Bevölkerungsbelastung_files/figure-html/no2-20.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="Bevölkerungsbelastung_files/figure-html/no2-21.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="Bevölkerungsbelastung_files/figure-html/no2-22.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-23.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="Bevölkerungsbelastung_files/figure-html/no2-23.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-24.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="Bevölkerungsbelastung_files/figure-html/no2-24.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-25.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="Bevölkerungsbelastung_files/figure-html/no2-25.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-26.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="Bevölkerungsbelastung_files/figure-html/no2-26.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-27.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="Bevölkerungsbelastung_files/figure-html/no2-27.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-28.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="Bevölkerungsbelastung_files/figure-html/no2-28.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-29.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="Bevölkerungsbelastung_files/figure-html/no2-29.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-30.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="Bevölkerungsbelastung_files/figure-html/no2-30.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-31.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img src="Bevölkerungsbelastung_files/figure-html/no2-31.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-32.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img src="Bevölkerungsbelastung_files/figure-html/no2-32.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-33.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img src="Bevölkerungsbelastung_files/figure-html/no2-33.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="entwicklung-luftschadstoffbelastete-bevölkerung" class="level4">
+<h4 class="anchored" data-anchor-id="entwicklung-luftschadstoffbelastete-bevölkerung">Entwicklung luftschadstoffbelastete Bevölkerung</h4>
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-34.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img src="Bevölkerungsbelastung_files/figure-html/no2-34.png" class="img-fluid" width="864"></a></p>
+</section>
+<section id="mittlere-bevölkerungsbelastung" class="level4">
+<h4 class="anchored" data-anchor-id="mittlere-bevölkerungsbelastung">mittlere Bevölkerungsbelastung</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Kanton</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Gemeinden</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-35.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img src="Bevölkerungsbelastung_files/figure-html/no2-35.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-36.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img src="Bevölkerungsbelastung_files/figure-html/no2-36.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-37.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img src="Bevölkerungsbelastung_files/figure-html/no2-37.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-38.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38"><img src="Bevölkerungsbelastung_files/figure-html/no2-38.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-39.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39"><img src="Bevölkerungsbelastung_files/figure-html/no2-39.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-40.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40"><img src="Bevölkerungsbelastung_files/figure-html/no2-40.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-41.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41"><img src="Bevölkerungsbelastung_files/figure-html/no2-41.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-42.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42"><img src="Bevölkerungsbelastung_files/figure-html/no2-42.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-43.png" class="lightbox" data-gallery="quarto-lightbox-gallery-43"><img src="Bevölkerungsbelastung_files/figure-html/no2-43.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-44.png" class="lightbox" data-gallery="quarto-lightbox-gallery-44"><img src="Bevölkerungsbelastung_files/figure-html/no2-44.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-45.png" class="lightbox" data-gallery="quarto-lightbox-gallery-45"><img src="Bevölkerungsbelastung_files/figure-html/no2-45.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-46.png" class="lightbox" data-gallery="quarto-lightbox-gallery-46"><img src="Bevölkerungsbelastung_files/figure-html/no2-46.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-47.png" class="lightbox" data-gallery="quarto-lightbox-gallery-47"><img src="Bevölkerungsbelastung_files/figure-html/no2-47.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-48.png" class="lightbox" data-gallery="quarto-lightbox-gallery-48"><img src="Bevölkerungsbelastung_files/figure-html/no2-48.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-49.png" class="lightbox" data-gallery="quarto-lightbox-gallery-49"><img src="Bevölkerungsbelastung_files/figure-html/no2-49.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-50.png" class="lightbox" data-gallery="quarto-lightbox-gallery-50"><img src="Bevölkerungsbelastung_files/figure-html/no2-50.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/no2-51.png" class="lightbox" data-gallery="quarto-lightbox-gallery-51"><img src="Bevölkerungsbelastung_files/figure-html/no2-51.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="feinstaub-pm2.5" class="level3">
+<h3 class="anchored" data-anchor-id="feinstaub-pm2.5">Feinstaub PM2.5</h3>
+<section id="belastungsverteilung-1" class="level4">
+<h4 class="anchored" data-anchor-id="belastungsverteilung-1">Belastungsverteilung</h4>
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-52"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-1.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-53"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-2.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-54"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-3.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-55"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-4.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-56"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-5.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-57"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-6.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-58"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-7.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-59"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-8.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-60"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-9.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-61"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-10.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-62"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-11.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-63"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-12.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-64"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-13.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-65"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-14.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-66"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-15.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-67"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-16.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">alle Jahre</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">einzelne Jahre</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-68"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-17.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-69"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-18.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-70"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-19.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-71"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-20.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-72"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-21.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-73"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-22.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-23.png" class="lightbox" data-gallery="quarto-lightbox-gallery-74"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-23.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-24.png" class="lightbox" data-gallery="quarto-lightbox-gallery-75"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-24.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-25.png" class="lightbox" data-gallery="quarto-lightbox-gallery-76"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-25.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-26.png" class="lightbox" data-gallery="quarto-lightbox-gallery-77"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-26.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-27.png" class="lightbox" data-gallery="quarto-lightbox-gallery-78"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-27.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-28.png" class="lightbox" data-gallery="quarto-lightbox-gallery-79"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-28.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-29.png" class="lightbox" data-gallery="quarto-lightbox-gallery-80"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-29.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-30.png" class="lightbox" data-gallery="quarto-lightbox-gallery-81"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-30.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-31.png" class="lightbox" data-gallery="quarto-lightbox-gallery-82"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-31.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-32.png" class="lightbox" data-gallery="quarto-lightbox-gallery-83"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-32.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-33.png" class="lightbox" data-gallery="quarto-lightbox-gallery-84"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-33.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="entwicklung-luftschadstoffbelastete-bevölkerung-1" class="level4">
+<h4 class="anchored" data-anchor-id="entwicklung-luftschadstoffbelastete-bevölkerung-1">Entwicklung luftschadstoffbelastete Bevölkerung</h4>
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-34.png" class="lightbox" data-gallery="quarto-lightbox-gallery-85"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-34.png" class="img-fluid" width="864"></a></p>
+</section>
+<section id="mittlere-bevölkerungsbelastung-1" class="level4">
+<h4 class="anchored" data-anchor-id="mittlere-bevölkerungsbelastung-1">mittlere Bevölkerungsbelastung</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Kanton</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Gemeinden</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-35.png" class="lightbox" data-gallery="quarto-lightbox-gallery-86"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-35.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-36.png" class="lightbox" data-gallery="quarto-lightbox-gallery-87"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-36.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-37.png" class="lightbox" data-gallery="quarto-lightbox-gallery-88"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-37.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-38.png" class="lightbox" data-gallery="quarto-lightbox-gallery-89"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-38.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-39.png" class="lightbox" data-gallery="quarto-lightbox-gallery-90"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-39.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-40.png" class="lightbox" data-gallery="quarto-lightbox-gallery-91"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-40.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-41.png" class="lightbox" data-gallery="quarto-lightbox-gallery-92"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-41.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-42.png" class="lightbox" data-gallery="quarto-lightbox-gallery-93"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-42.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-43.png" class="lightbox" data-gallery="quarto-lightbox-gallery-94"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-43.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-44.png" class="lightbox" data-gallery="quarto-lightbox-gallery-95"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-44.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-45.png" class="lightbox" data-gallery="quarto-lightbox-gallery-96"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-45.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-46.png" class="lightbox" data-gallery="quarto-lightbox-gallery-97"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-46.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-47.png" class="lightbox" data-gallery="quarto-lightbox-gallery-98"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-47.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-48.png" class="lightbox" data-gallery="quarto-lightbox-gallery-99"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-48.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-49.png" class="lightbox" data-gallery="quarto-lightbox-gallery-100"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-49.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-50.png" class="lightbox" data-gallery="quarto-lightbox-gallery-101"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-50.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm2-5-51.png" class="lightbox" data-gallery="quarto-lightbox-gallery-102"><img src="Bevölkerungsbelastung_files/figure-html/pm2-5-51.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="feinstaub-pm10" class="level3">
+<h3 class="anchored" data-anchor-id="feinstaub-pm10">Feinstaub PM10</h3>
+<section id="belastungsverteilung-2" class="level4">
+<h4 class="anchored" data-anchor-id="belastungsverteilung-2">Belastungsverteilung</h4>
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-103"><img src="Bevölkerungsbelastung_files/figure-html/pm10-1.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-104"><img src="Bevölkerungsbelastung_files/figure-html/pm10-2.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-105"><img src="Bevölkerungsbelastung_files/figure-html/pm10-3.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-106"><img src="Bevölkerungsbelastung_files/figure-html/pm10-4.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-107"><img src="Bevölkerungsbelastung_files/figure-html/pm10-5.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-108"><img src="Bevölkerungsbelastung_files/figure-html/pm10-6.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-109"><img src="Bevölkerungsbelastung_files/figure-html/pm10-7.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-110"><img src="Bevölkerungsbelastung_files/figure-html/pm10-8.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-111"><img src="Bevölkerungsbelastung_files/figure-html/pm10-9.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-112"><img src="Bevölkerungsbelastung_files/figure-html/pm10-10.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-113"><img src="Bevölkerungsbelastung_files/figure-html/pm10-11.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-114"><img src="Bevölkerungsbelastung_files/figure-html/pm10-12.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-115"><img src="Bevölkerungsbelastung_files/figure-html/pm10-13.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-116"><img src="Bevölkerungsbelastung_files/figure-html/pm10-14.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-117"><img src="Bevölkerungsbelastung_files/figure-html/pm10-15.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-118"><img src="Bevölkerungsbelastung_files/figure-html/pm10-16.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">alle Jahre</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">einzelne Jahre</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-119"><img src="Bevölkerungsbelastung_files/figure-html/pm10-17.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-120"><img src="Bevölkerungsbelastung_files/figure-html/pm10-18.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-121"><img src="Bevölkerungsbelastung_files/figure-html/pm10-19.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-122"><img src="Bevölkerungsbelastung_files/figure-html/pm10-20.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-123"><img src="Bevölkerungsbelastung_files/figure-html/pm10-21.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-124"><img src="Bevölkerungsbelastung_files/figure-html/pm10-22.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-23.png" class="lightbox" data-gallery="quarto-lightbox-gallery-125"><img src="Bevölkerungsbelastung_files/figure-html/pm10-23.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-24.png" class="lightbox" data-gallery="quarto-lightbox-gallery-126"><img src="Bevölkerungsbelastung_files/figure-html/pm10-24.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-25.png" class="lightbox" data-gallery="quarto-lightbox-gallery-127"><img src="Bevölkerungsbelastung_files/figure-html/pm10-25.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-26.png" class="lightbox" data-gallery="quarto-lightbox-gallery-128"><img src="Bevölkerungsbelastung_files/figure-html/pm10-26.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-27.png" class="lightbox" data-gallery="quarto-lightbox-gallery-129"><img src="Bevölkerungsbelastung_files/figure-html/pm10-27.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-28.png" class="lightbox" data-gallery="quarto-lightbox-gallery-130"><img src="Bevölkerungsbelastung_files/figure-html/pm10-28.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-29.png" class="lightbox" data-gallery="quarto-lightbox-gallery-131"><img src="Bevölkerungsbelastung_files/figure-html/pm10-29.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-30.png" class="lightbox" data-gallery="quarto-lightbox-gallery-132"><img src="Bevölkerungsbelastung_files/figure-html/pm10-30.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-31.png" class="lightbox" data-gallery="quarto-lightbox-gallery-133"><img src="Bevölkerungsbelastung_files/figure-html/pm10-31.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-32.png" class="lightbox" data-gallery="quarto-lightbox-gallery-134"><img src="Bevölkerungsbelastung_files/figure-html/pm10-32.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-33.png" class="lightbox" data-gallery="quarto-lightbox-gallery-135"><img src="Bevölkerungsbelastung_files/figure-html/pm10-33.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="entwicklung-luftschadstoffbelastete-bevölkerung-2" class="level4">
+<h4 class="anchored" data-anchor-id="entwicklung-luftschadstoffbelastete-bevölkerung-2">Entwicklung luftschadstoffbelastete Bevölkerung</h4>
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-34.png" class="lightbox" data-gallery="quarto-lightbox-gallery-136"><img src="Bevölkerungsbelastung_files/figure-html/pm10-34.png" class="img-fluid" width="864"></a></p>
+</section>
+<section id="mittlere-bevölkerungsbelastung-2" class="level4">
+<h4 class="anchored" data-anchor-id="mittlere-bevölkerungsbelastung-2">mittlere Bevölkerungsbelastung</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Kanton</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Gemeinden</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-35.png" class="lightbox" data-gallery="quarto-lightbox-gallery-137"><img src="Bevölkerungsbelastung_files/figure-html/pm10-35.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-36.png" class="lightbox" data-gallery="quarto-lightbox-gallery-138"><img src="Bevölkerungsbelastung_files/figure-html/pm10-36.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-37.png" class="lightbox" data-gallery="quarto-lightbox-gallery-139"><img src="Bevölkerungsbelastung_files/figure-html/pm10-37.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-38.png" class="lightbox" data-gallery="quarto-lightbox-gallery-140"><img src="Bevölkerungsbelastung_files/figure-html/pm10-38.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-39.png" class="lightbox" data-gallery="quarto-lightbox-gallery-141"><img src="Bevölkerungsbelastung_files/figure-html/pm10-39.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-40.png" class="lightbox" data-gallery="quarto-lightbox-gallery-142"><img src="Bevölkerungsbelastung_files/figure-html/pm10-40.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-41.png" class="lightbox" data-gallery="quarto-lightbox-gallery-143"><img src="Bevölkerungsbelastung_files/figure-html/pm10-41.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-42.png" class="lightbox" data-gallery="quarto-lightbox-gallery-144"><img src="Bevölkerungsbelastung_files/figure-html/pm10-42.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-43.png" class="lightbox" data-gallery="quarto-lightbox-gallery-145"><img src="Bevölkerungsbelastung_files/figure-html/pm10-43.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-44.png" class="lightbox" data-gallery="quarto-lightbox-gallery-146"><img src="Bevölkerungsbelastung_files/figure-html/pm10-44.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-45.png" class="lightbox" data-gallery="quarto-lightbox-gallery-147"><img src="Bevölkerungsbelastung_files/figure-html/pm10-45.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-46.png" class="lightbox" data-gallery="quarto-lightbox-gallery-148"><img src="Bevölkerungsbelastung_files/figure-html/pm10-46.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-47.png" class="lightbox" data-gallery="quarto-lightbox-gallery-149"><img src="Bevölkerungsbelastung_files/figure-html/pm10-47.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-48.png" class="lightbox" data-gallery="quarto-lightbox-gallery-150"><img src="Bevölkerungsbelastung_files/figure-html/pm10-48.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-49.png" class="lightbox" data-gallery="quarto-lightbox-gallery-151"><img src="Bevölkerungsbelastung_files/figure-html/pm10-49.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-50.png" class="lightbox" data-gallery="quarto-lightbox-gallery-152"><img src="Bevölkerungsbelastung_files/figure-html/pm10-50.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/pm10-51.png" class="lightbox" data-gallery="quarto-lightbox-gallery-153"><img src="Bevölkerungsbelastung_files/figure-html/pm10-51.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ### Russ im Feinstaub -->
+<!-- (needs "eBC" in plot_parameters_exposition, scripts/_settings.R) -->
+<!-- ```{r} -->
+<!-- #| label: slider-ebc-distribution-histogram -->
+<!-- #| output: asis -->
+<!-- print_year_slider(plots, "distribution_histogram", "eBC") -->
+<!-- ``` -->
+</section>
+</section>
+<section id="ozon" class="level3">
+<h3 class="anchored" data-anchor-id="ozon">Ozon</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">typische Spitzenbelastung</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href="">mittlere Sommertagbelastung</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<p>Die “typische Spitzenbelastung” entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.</p>
+<section id="belastungsverteilung-3" class="level4">
+<h4 class="anchored" data-anchor-id="belastungsverteilung-3">Belastungsverteilung</h4>
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-154"><img src="Bevölkerungsbelastung_files/figure-html/o3-1.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-155"><img src="Bevölkerungsbelastung_files/figure-html/o3-2.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-156"><img src="Bevölkerungsbelastung_files/figure-html/o3-3.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-157"><img src="Bevölkerungsbelastung_files/figure-html/o3-4.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-158"><img src="Bevölkerungsbelastung_files/figure-html/o3-5.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-159"><img src="Bevölkerungsbelastung_files/figure-html/o3-6.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-160"><img src="Bevölkerungsbelastung_files/figure-html/o3-7.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-161"><img src="Bevölkerungsbelastung_files/figure-html/o3-8.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-162"><img src="Bevölkerungsbelastung_files/figure-html/o3-9.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-163"><img src="Bevölkerungsbelastung_files/figure-html/o3-10.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-164"><img src="Bevölkerungsbelastung_files/figure-html/o3-11.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-165"><img src="Bevölkerungsbelastung_files/figure-html/o3-12.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-166"><img src="Bevölkerungsbelastung_files/figure-html/o3-13.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-167"><img src="Bevölkerungsbelastung_files/figure-html/o3-14.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-168"><img src="Bevölkerungsbelastung_files/figure-html/o3-15.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-169"><img src="Bevölkerungsbelastung_files/figure-html/o3-16.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">alle Jahre</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">einzelne Jahre</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-170"><img src="Bevölkerungsbelastung_files/figure-html/o3-17.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-171"><img src="Bevölkerungsbelastung_files/figure-html/o3-18.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-172"><img src="Bevölkerungsbelastung_files/figure-html/o3-19.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-173"><img src="Bevölkerungsbelastung_files/figure-html/o3-20.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-174"><img src="Bevölkerungsbelastung_files/figure-html/o3-21.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-175"><img src="Bevölkerungsbelastung_files/figure-html/o3-22.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-23.png" class="lightbox" data-gallery="quarto-lightbox-gallery-176"><img src="Bevölkerungsbelastung_files/figure-html/o3-23.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-24.png" class="lightbox" data-gallery="quarto-lightbox-gallery-177"><img src="Bevölkerungsbelastung_files/figure-html/o3-24.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-25.png" class="lightbox" data-gallery="quarto-lightbox-gallery-178"><img src="Bevölkerungsbelastung_files/figure-html/o3-25.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-26.png" class="lightbox" data-gallery="quarto-lightbox-gallery-179"><img src="Bevölkerungsbelastung_files/figure-html/o3-26.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-27.png" class="lightbox" data-gallery="quarto-lightbox-gallery-180"><img src="Bevölkerungsbelastung_files/figure-html/o3-27.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-28.png" class="lightbox" data-gallery="quarto-lightbox-gallery-181"><img src="Bevölkerungsbelastung_files/figure-html/o3-28.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-29.png" class="lightbox" data-gallery="quarto-lightbox-gallery-182"><img src="Bevölkerungsbelastung_files/figure-html/o3-29.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-30.png" class="lightbox" data-gallery="quarto-lightbox-gallery-183"><img src="Bevölkerungsbelastung_files/figure-html/o3-30.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-31.png" class="lightbox" data-gallery="quarto-lightbox-gallery-184"><img src="Bevölkerungsbelastung_files/figure-html/o3-31.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-32.png" class="lightbox" data-gallery="quarto-lightbox-gallery-185"><img src="Bevölkerungsbelastung_files/figure-html/o3-32.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-33.png" class="lightbox" data-gallery="quarto-lightbox-gallery-186"><img src="Bevölkerungsbelastung_files/figure-html/o3-33.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="entwicklung-luftschadstoffbelastete-bevölkerung-3" class="level4">
+<h4 class="anchored" data-anchor-id="entwicklung-luftschadstoffbelastete-bevölkerung-3">Entwicklung luftschadstoffbelastete Bevölkerung</h4>
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-34.png" class="lightbox" data-gallery="quarto-lightbox-gallery-187"><img src="Bevölkerungsbelastung_files/figure-html/o3-34.png" class="img-fluid" width="864"></a></p>
+</section>
+<section id="mittlere-bevölkerungsbelastung-3" class="level4">
+<h4 class="anchored" data-anchor-id="mittlere-bevölkerungsbelastung-3">mittlere Bevölkerungsbelastung</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Kanton</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Gemeinden</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-35.png" class="lightbox" data-gallery="quarto-lightbox-gallery-188"><img src="Bevölkerungsbelastung_files/figure-html/o3-35.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-36.png" class="lightbox" data-gallery="quarto-lightbox-gallery-189"><img src="Bevölkerungsbelastung_files/figure-html/o3-36.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-37.png" class="lightbox" data-gallery="quarto-lightbox-gallery-190"><img src="Bevölkerungsbelastung_files/figure-html/o3-37.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-38.png" class="lightbox" data-gallery="quarto-lightbox-gallery-191"><img src="Bevölkerungsbelastung_files/figure-html/o3-38.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-39.png" class="lightbox" data-gallery="quarto-lightbox-gallery-192"><img src="Bevölkerungsbelastung_files/figure-html/o3-39.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-40.png" class="lightbox" data-gallery="quarto-lightbox-gallery-193"><img src="Bevölkerungsbelastung_files/figure-html/o3-40.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-41.png" class="lightbox" data-gallery="quarto-lightbox-gallery-194"><img src="Bevölkerungsbelastung_files/figure-html/o3-41.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-42.png" class="lightbox" data-gallery="quarto-lightbox-gallery-195"><img src="Bevölkerungsbelastung_files/figure-html/o3-42.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-43.png" class="lightbox" data-gallery="quarto-lightbox-gallery-196"><img src="Bevölkerungsbelastung_files/figure-html/o3-43.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-44.png" class="lightbox" data-gallery="quarto-lightbox-gallery-197"><img src="Bevölkerungsbelastung_files/figure-html/o3-44.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-45.png" class="lightbox" data-gallery="quarto-lightbox-gallery-198"><img src="Bevölkerungsbelastung_files/figure-html/o3-45.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-46.png" class="lightbox" data-gallery="quarto-lightbox-gallery-199"><img src="Bevölkerungsbelastung_files/figure-html/o3-46.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-47.png" class="lightbox" data-gallery="quarto-lightbox-gallery-200"><img src="Bevölkerungsbelastung_files/figure-html/o3-47.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-48.png" class="lightbox" data-gallery="quarto-lightbox-gallery-201"><img src="Bevölkerungsbelastung_files/figure-html/o3-48.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-49.png" class="lightbox" data-gallery="quarto-lightbox-gallery-202"><img src="Bevölkerungsbelastung_files/figure-html/o3-49.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-50.png" class="lightbox" data-gallery="quarto-lightbox-gallery-203"><img src="Bevölkerungsbelastung_files/figure-html/o3-50.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-51.png" class="lightbox" data-gallery="quarto-lightbox-gallery-204"><img src="Bevölkerungsbelastung_files/figure-html/o3-51.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<p>Die “mittlere Sommertagbelastung” entspricht dem Durchschnitt des maximalen 8-Stunden-Mittelwerts der O3-Konzentration in den sechs aufeinanderfolgenden Monaten mit der höchsten O3-Konzentration im Sechsmonatsdurchschnitt.</p>
+<section id="belastungsverteilung-4" class="level4">
+<h4 class="anchored" data-anchor-id="belastungsverteilung-4">Belastungsverteilung</h4>
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-52.png" class="lightbox" data-gallery="quarto-lightbox-gallery-205"><img src="Bevölkerungsbelastung_files/figure-html/o3-52.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-53.png" class="lightbox" data-gallery="quarto-lightbox-gallery-206"><img src="Bevölkerungsbelastung_files/figure-html/o3-53.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-54.png" class="lightbox" data-gallery="quarto-lightbox-gallery-207"><img src="Bevölkerungsbelastung_files/figure-html/o3-54.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-55.png" class="lightbox" data-gallery="quarto-lightbox-gallery-208"><img src="Bevölkerungsbelastung_files/figure-html/o3-55.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-56.png" class="lightbox" data-gallery="quarto-lightbox-gallery-209"><img src="Bevölkerungsbelastung_files/figure-html/o3-56.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-57.png" class="lightbox" data-gallery="quarto-lightbox-gallery-210"><img src="Bevölkerungsbelastung_files/figure-html/o3-57.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-58.png" class="lightbox" data-gallery="quarto-lightbox-gallery-211"><img src="Bevölkerungsbelastung_files/figure-html/o3-58.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-59.png" class="lightbox" data-gallery="quarto-lightbox-gallery-212"><img src="Bevölkerungsbelastung_files/figure-html/o3-59.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-60.png" class="lightbox" data-gallery="quarto-lightbox-gallery-213"><img src="Bevölkerungsbelastung_files/figure-html/o3-60.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-61.png" class="lightbox" data-gallery="quarto-lightbox-gallery-214"><img src="Bevölkerungsbelastung_files/figure-html/o3-61.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-62.png" class="lightbox" data-gallery="quarto-lightbox-gallery-215"><img src="Bevölkerungsbelastung_files/figure-html/o3-62.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-63.png" class="lightbox" data-gallery="quarto-lightbox-gallery-216"><img src="Bevölkerungsbelastung_files/figure-html/o3-63.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-64.png" class="lightbox" data-gallery="quarto-lightbox-gallery-217"><img src="Bevölkerungsbelastung_files/figure-html/o3-64.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-65.png" class="lightbox" data-gallery="quarto-lightbox-gallery-218"><img src="Bevölkerungsbelastung_files/figure-html/o3-65.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-66.png" class="lightbox" data-gallery="quarto-lightbox-gallery-219"><img src="Bevölkerungsbelastung_files/figure-html/o3-66.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-67.png" class="lightbox" data-gallery="quarto-lightbox-gallery-220"><img src="Bevölkerungsbelastung_files/figure-html/o3-67.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">alle Jahre</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">einzelne Jahre</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-68.png" class="lightbox" data-gallery="quarto-lightbox-gallery-221"><img src="Bevölkerungsbelastung_files/figure-html/o3-68.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-69.png" class="lightbox" data-gallery="quarto-lightbox-gallery-222"><img src="Bevölkerungsbelastung_files/figure-html/o3-69.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-70.png" class="lightbox" data-gallery="quarto-lightbox-gallery-223"><img src="Bevölkerungsbelastung_files/figure-html/o3-70.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-71.png" class="lightbox" data-gallery="quarto-lightbox-gallery-224"><img src="Bevölkerungsbelastung_files/figure-html/o3-71.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-72.png" class="lightbox" data-gallery="quarto-lightbox-gallery-225"><img src="Bevölkerungsbelastung_files/figure-html/o3-72.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-73.png" class="lightbox" data-gallery="quarto-lightbox-gallery-226"><img src="Bevölkerungsbelastung_files/figure-html/o3-73.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-74.png" class="lightbox" data-gallery="quarto-lightbox-gallery-227"><img src="Bevölkerungsbelastung_files/figure-html/o3-74.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-75.png" class="lightbox" data-gallery="quarto-lightbox-gallery-228"><img src="Bevölkerungsbelastung_files/figure-html/o3-75.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-76.png" class="lightbox" data-gallery="quarto-lightbox-gallery-229"><img src="Bevölkerungsbelastung_files/figure-html/o3-76.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-77.png" class="lightbox" data-gallery="quarto-lightbox-gallery-230"><img src="Bevölkerungsbelastung_files/figure-html/o3-77.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-78.png" class="lightbox" data-gallery="quarto-lightbox-gallery-231"><img src="Bevölkerungsbelastung_files/figure-html/o3-78.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-79.png" class="lightbox" data-gallery="quarto-lightbox-gallery-232"><img src="Bevölkerungsbelastung_files/figure-html/o3-79.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-80.png" class="lightbox" data-gallery="quarto-lightbox-gallery-233"><img src="Bevölkerungsbelastung_files/figure-html/o3-80.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-81.png" class="lightbox" data-gallery="quarto-lightbox-gallery-234"><img src="Bevölkerungsbelastung_files/figure-html/o3-81.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-82.png" class="lightbox" data-gallery="quarto-lightbox-gallery-235"><img src="Bevölkerungsbelastung_files/figure-html/o3-82.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-83.png" class="lightbox" data-gallery="quarto-lightbox-gallery-236"><img src="Bevölkerungsbelastung_files/figure-html/o3-83.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-84.png" class="lightbox" data-gallery="quarto-lightbox-gallery-237"><img src="Bevölkerungsbelastung_files/figure-html/o3-84.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="entwicklung-luftschadstoffbelastete-bevölkerung-4" class="level4">
+<h4 class="anchored" data-anchor-id="entwicklung-luftschadstoffbelastete-bevölkerung-4">Entwicklung luftschadstoffbelastete Bevölkerung</h4>
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-85.png" class="lightbox" data-gallery="quarto-lightbox-gallery-238"><img src="Bevölkerungsbelastung_files/figure-html/o3-85.png" class="img-fluid" width="864"></a></p>
+</section>
+<section id="mittlere-bevölkerungsbelastung-4" class="level4">
+<h4 class="anchored" data-anchor-id="mittlere-bevölkerungsbelastung-4">mittlere Bevölkerungsbelastung</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Kanton</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Gemeinden</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-86.png" class="lightbox" data-gallery="quarto-lightbox-gallery-239"><img src="Bevölkerungsbelastung_files/figure-html/o3-86.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<div class="year-slider" data-start="2025">
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-87.png" class="lightbox" data-gallery="quarto-lightbox-gallery-240"><img src="Bevölkerungsbelastung_files/figure-html/o3-87.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2011">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-88.png" class="lightbox" data-gallery="quarto-lightbox-gallery-241"><img src="Bevölkerungsbelastung_files/figure-html/o3-88.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2012">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-89.png" class="lightbox" data-gallery="quarto-lightbox-gallery-242"><img src="Bevölkerungsbelastung_files/figure-html/o3-89.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2013">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-90.png" class="lightbox" data-gallery="quarto-lightbox-gallery-243"><img src="Bevölkerungsbelastung_files/figure-html/o3-90.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2014">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-91.png" class="lightbox" data-gallery="quarto-lightbox-gallery-244"><img src="Bevölkerungsbelastung_files/figure-html/o3-91.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-92.png" class="lightbox" data-gallery="quarto-lightbox-gallery-245"><img src="Bevölkerungsbelastung_files/figure-html/o3-92.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2016">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-93.png" class="lightbox" data-gallery="quarto-lightbox-gallery-246"><img src="Bevölkerungsbelastung_files/figure-html/o3-93.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2017">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-94.png" class="lightbox" data-gallery="quarto-lightbox-gallery-247"><img src="Bevölkerungsbelastung_files/figure-html/o3-94.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2018">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-95.png" class="lightbox" data-gallery="quarto-lightbox-gallery-248"><img src="Bevölkerungsbelastung_files/figure-html/o3-95.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2019">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-96.png" class="lightbox" data-gallery="quarto-lightbox-gallery-249"><img src="Bevölkerungsbelastung_files/figure-html/o3-96.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-97.png" class="lightbox" data-gallery="quarto-lightbox-gallery-250"><img src="Bevölkerungsbelastung_files/figure-html/o3-97.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2021">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-98.png" class="lightbox" data-gallery="quarto-lightbox-gallery-251"><img src="Bevölkerungsbelastung_files/figure-html/o3-98.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2022">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-99.png" class="lightbox" data-gallery="quarto-lightbox-gallery-252"><img src="Bevölkerungsbelastung_files/figure-html/o3-99.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2023">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-100.png" class="lightbox" data-gallery="quarto-lightbox-gallery-253"><img src="Bevölkerungsbelastung_files/figure-html/o3-100.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2024">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-101.png" class="lightbox" data-gallery="quarto-lightbox-gallery-254"><img src="Bevölkerungsbelastung_files/figure-html/o3-101.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2025">
+<p><a href="Bevölkerungsbelastung_files/figure-html/o3-102.png" class="lightbox" data-gallery="quarto-lightbox-gallery-255"><img src="Bevölkerungsbelastung_files/figure-html/o3-102.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section id="stickstoffeintrag-in-empfindliche-ökosysteme" class="level3">
+<h3 class="anchored" data-anchor-id="stickstoffeintrag-in-empfindliche-ökosysteme">Stickstoffeintrag in empfindliche Ökosysteme</h3>
+<section id="belastungsverteilung-5" class="level4">
+<h4 class="anchored" data-anchor-id="belastungsverteilung-5">Belastungsverteilung</h4>
+<div class="year-slider" data-start="2020">
+<div class="year-panel" data-year="1990">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-256"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-1.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2000">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-257"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-2.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2005">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-258"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-3.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-259"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-4.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-260"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-5.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-261"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-histogram-6.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true" href="">alle Jahre</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false" href="">einzelne Jahre</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-262"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-1.png" class="img-fluid" width="864"></a></p>
+</div>
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<div class="year-slider" data-start="2020">
+<div class="year-panel" data-year="1990">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-263"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-2.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2000">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-264"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-3.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2005">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-265"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-4.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2010">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-266"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-5.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2015">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-267"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-6.png" class="img-fluid" width="864"></a></p>
+</div>
+<div class="year-panel" data-year="2020">
+<p><a href="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-268"><img src="Bevölkerungsbelastung_files/figure-html/slider-ndep-distribution-cumulative-7.png" class="img-fluid" width="864"></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="entwicklung-stickstoffbelastete-ökosysteme" class="level4">
+<h4 class="anchored" data-anchor-id="entwicklung-stickstoffbelastete-ökosysteme">Entwicklung stickstoffbelastete Ökosysteme</h4>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="Bevölkerungsbelastung_files/figure-html/population-over-thresh-ndep-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-269"><img src="Bevölkerungsbelastung_files/figure-html/population-over-thresh-ndep-1.png" class="img-fluid figure-img" width="864"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="tabelle-luftschadstoffbelastete-bevölkerung" class="level3">
+<h3 class="anchored" data-anchor-id="tabelle-luftschadstoffbelastete-bevölkerung">Tabelle luftschadstoffbelastete Bevölkerung</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Tabelle: Anzahl Einwohner/innen pro Schadstoff und Jahr
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
+<table class="lightable-paper caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Jahr</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Schadstoff</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">&lt; Grenz-/Richtwert</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">&gt; WHO-Richtwert</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">&gt; LRV-Grenzwert</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">1'626'336</td>
+<td style="text-align: left;">10'710</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">1'624'063</td>
+<td style="text-align: left;">94</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">1'606'939</td>
+<td style="text-align: left;">2'703</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">1'507'336</td>
+<td style="text-align: left;">76'841</td>
+<td style="text-align: left;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">1'562'265</td>
+<td style="text-align: left;">6'626</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">1'553'314</td>
+<td style="text-align: left;">4'326</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">1'539'237</td>
+<td style="text-align: left;">4'196</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2018</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">848'115</td>
+<td style="text-align: left;">676'993</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2017</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">1'322'735</td>
+<td style="text-align: left;">185'719</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">1'322'775</td>
+<td style="text-align: left;">169'339</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">261'726</td>
+<td style="text-align: left;">1'208'897</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">924'756</td>
+<td style="text-align: left;">525'677</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">18'653</td>
+<td style="text-align: left;">1'411'012</td>
+<td style="text-align: left;">43'423</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">52'359</td>
+<td style="text-align: left;">1'360'289</td>
+<td style="text-align: left;">771</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2011</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">5'730</td>
+<td style="text-align: left;">1'390'845</td>
+<td style="text-align: left;">617'086</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2010</td>
+<td style="text-align: left;">Feinstaub PM10</td>
+<td style="text-align: left;">6'155</td>
+<td style="text-align: left;">1'371'064</td>
+<td style="text-align: left;">606'267</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'637'046</td>
+<td style="text-align: left;">14'973</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">52</td>
+<td style="text-align: left;">1'624'105</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">1'609'638</td>
+<td style="text-align: left;">68</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'584'176</td>
+<td style="text-align: left;">84'371</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'568'890</td>
+<td style="text-align: left;">8'770</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'557'640</td>
+<td style="text-align: left;">6'117</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'543'384</td>
+<td style="text-align: left;">151'584</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2018</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'525'058</td>
+<td style="text-align: left;">1'346'622</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2017</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'508'410</td>
+<td style="text-align: left;">352'007</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'492'069</td>
+<td style="text-align: left;">394'914</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'470'576</td>
+<td style="text-align: left;">1'092'136</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">1'450'406</td>
+<td style="text-align: left;">319'348</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'429'665</td>
+<td style="text-align: left;">1'426'694</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'412'648</td>
+<td style="text-align: left;">1'397'017</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2011</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1'396'573</td>
+<td style="text-align: left;">1'395'210</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2010</td>
+<td style="text-align: left;">Feinstaub PM2.5</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'377'218</td>
+<td style="text-align: left;">1'375'688</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'637'047</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'624'157</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'609'641</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'584'176</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'568'890</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'557'639</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'543'433</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2018</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'525'109</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2017</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'508'454</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'492'114</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'470'623</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'450'434</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'429'665</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'412'648</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2011</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1'396'574</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2010</td>
+<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1'377'219</td>
+<td style="text-align: left;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'637'140</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'624'239</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'609'718</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'584'236</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'568'947</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'557'637</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'543'396</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2018</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'525'070</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2017</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'508'419</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'492'077</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'470'586</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'450'398</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'429'632</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'412'608</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2011</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'396'534</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2010</td>
+<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">1'377'164</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2025</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">157'835</td>
+<td style="text-align: left;">1'479'211</td>
+<td style="text-align: left;">405</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">186'669</td>
+<td style="text-align: left;">1'437'488</td>
+<td style="text-align: left;">203</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2023</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">144'915</td>
+<td style="text-align: left;">1'464'727</td>
+<td style="text-align: left;">370</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">47'486</td>
+<td style="text-align: left;">1'536'691</td>
+<td style="text-align: left;">1'948</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2021</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">25'343</td>
+<td style="text-align: left;">1'543'548</td>
+<td style="text-align: left;">2'386</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">21'958</td>
+<td style="text-align: left;">1'535'682</td>
+<td style="text-align: left;">2'429</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">9'295</td>
+<td style="text-align: left;">1'534'138</td>
+<td style="text-align: left;">6'080</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2018</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">4'923</td>
+<td style="text-align: left;">1'520'185</td>
+<td style="text-align: left;">16'462</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2017</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">4'046</td>
+<td style="text-align: left;">1'504'408</td>
+<td style="text-align: left;">78'062</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">4'925</td>
+<td style="text-align: left;">1'487'189</td>
+<td style="text-align: left;">115'919</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">2'613</td>
+<td style="text-align: left;">1'468'010</td>
+<td style="text-align: left;">274'716</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">4'286</td>
+<td style="text-align: left;">1'446'147</td>
+<td style="text-align: left;">129'609</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">1'931</td>
+<td style="text-align: left;">1'427'734</td>
+<td style="text-align: left;">236'091</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">2'535</td>
+<td style="text-align: left;">1'410'113</td>
+<td style="text-align: left;">177'570</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2011</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">2'214</td>
+<td style="text-align: left;">1'394'361</td>
+<td style="text-align: left;">211'933</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2010</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: left;">1'222</td>
+<td style="text-align: left;">1'375'997</td>
+<td style="text-align: left;">308'652</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<!-- Year slider for the plots per year (R/plot.R: print_year_slider()), included after the body of every page.
+     Each .year-slider holds one .year-panel per year; the script puts a range input below them, with the
+     first year on the left, the last on the right and the chosen year above the slider thumb, and shows
+     only the chosen panel. Without JavaScript all panels stay visible. -->
+<script>
+document.querySelectorAll(".year-slider").forEach(function (slider) {
+  var panels = Array.prototype.slice.call(slider.querySelectorAll(":scope > .year-panel"));
+  if (panels.length < 2) return;
+  var years = panels.map(function (panel) { return panel.dataset.year; });
+  var start = years.indexOf(slider.dataset.start);
+  if (start < 0) start = years.length - 1;
+
+  var control = document.createElement("div");
+  control.className = "year-slider-control";
+  var first = document.createElement("span");
+  first.className = "year-slider-end";
+  first.textContent = years[0];
+  var last = document.createElement("span");
+  last.className = "year-slider-end";
+  last.textContent = years[years.length - 1];
+
+  var track = document.createElement("div");
+  track.className = "year-slider-track";
+  var input = document.createElement("input");
+  input.type = "range";
+  input.min = 0;
+  input.max = panels.length - 1;
+  input.step = 1;
+  input.value = start;
+  input.setAttribute("aria-label", "Jahr");
+  var bubble = document.createElement("output");
+  bubble.className = "year-slider-bubble";
+
+  function show(index) {
+    panels.forEach(function (panel, i) { panel.hidden = i !== index; });
+    bubble.textContent = years[index];
+    input.setAttribute("aria-valuetext", years[index]);
+    // the thumb travels between its own half widths, so the bubble follows it the same way
+    var thumb = 16;
+    var span = input.offsetWidth - thumb;
+    var share = panels.length > 1 ? index / (panels.length - 1) : 0;
+    bubble.style.left = (thumb / 2 + share * span) + "px";
+  }
+
+  input.addEventListener("input", function () { show(Number(input.value)); });
+  window.addEventListener("resize", function () { show(Number(input.value)); });
+
+  track.appendChild(bubble);
+  track.appendChild(input);
+  control.appendChild(first);
+  control.appendChild(track);
+  control.appendChild(last);
+  slider.appendChild(control);
+  show(start);
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

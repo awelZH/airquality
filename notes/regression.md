@@ -28,7 +28,7 @@ Settings that depend on the date (`year_last`, `emis_year_max`) make a reference
 year only.
 
 **Before phase 2b** the topic scripts were checked the same way with `run_topic()` (removed with the
-scripts in `5220a3e`; the migration to the pipeline was checked against its outputs of the old scripts,
+scripts in `775c35c`; the migration to the pipeline was checked against its outputs of the old scripts,
 11 of 12 files byte-identical, the health outcomes within 4.5e-11).
 `compare_outputs()` works for all 14 files without configuration: byte identity, header (contract),
 rows only in one file (key = non-numeric columns plus integer-valued ones such as `year`), values

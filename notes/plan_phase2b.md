@@ -2,9 +2,9 @@
 
 Read before working on phase 2b. Status of the plan in `CLAUDE.md`.
 
-**Status 2026-09-24: steps 1–5 done** (commits `a5469c5` … `5220a3e`): data in `data/` (`d576e4f`), Quarto
+**Status 2026-09-24: steps 1–5 done** (commits `a5469c5` … `775c35c`): data in `data/` (`d576e4f`), Quarto
 sources in `report/` (`3582e45`), pipelines incl. outcomes and report (`57a08fc`), package skeleton removed
-(`5220a3e`), `airquality.methods` pinned (`809fc94`). Not done from step 1/6: no `_targets.yaml` (the
+(`775c35c`), `airquality.methods` pinned (`809fc94`). Not done from step 1/6: no `_targets.yaml` (the
 defaults suffice), no `dev/` folder, no `tar_mermaid()` diagram in the docs, README not yet rewritten for the
 pipeline. Step 7 (trends into the pipeline) waits for the user. Verification: on frozen inputs 11 of 12
 outputs byte-identical to the old scripts, the health outcomes within 4.5e-11 (no CSV round trip); a second

@@ -56,13 +56,13 @@ year;pollutant;metric;parameter;outcome_type;population;scenario;outcome;outcome
 2019;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1543433;tatsächliche Belastung;383.888186614571;225.58828391002143;544.8877563645726;0
 2019;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1543433;vermieden vs. 2015;-260.0430480171679;-154.8367850570169;-364.1129411900281;0
 2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1543433;tatsächliche Belastung;446.3498376065862;70.31508569446738;773.1125187745749;0
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1543433;vermieden vs. 2015;-5.850116428597346;-0.9389078331301164;-9.96359271545225;0
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1543433;vermieden vs. 2015;-5.850116428597346;-0.9389078331301164;-9.963592715450204;0
 2019;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1543384;tatsächliche Belastung;494.1757319461381;261.11636174730427;721.3264656303496;0
 2019;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1543384;vermieden vs. 2015;-120.1019352828551;-64.38150895577633;-172.79910927209994;0
 2020;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1557640;tatsächliche Belastung;223.9617093089841;131.20512892993125;318.89615618412836;0
 2020;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-397.5519910381726;-235.97272011283715;-558.4670007138698;0
 2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1557640;tatsächliche Belastung;382.4924366181323;60.1298153948363;663.7376364133996;0
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-54.33874177007124;-8.70273498675823;-92.72193672138337;0
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-54.33874177007124;-8.702734986755999;-92.72193672138337;0
 2020;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1557640;tatsächliche Belastung;376.08249015300044;198.23067608666673;550.2857091253087;0
 2020;PM2.5;Jahresmittel;PM2.5;vorzeitige Todesfälle;1557640;vermieden vs. 2015;-217.12180731180604;-116.10003488951475;-313.1678176591397;0
 2021;NO2;Jahresmittel;NO2;vorzeitige Todesfälle;1568891;tatsächliche Belastung;217.47705052557208;127.39034025526365;309.70237650242444;0
@@ -146,13 +146,13 @@ year;pollutant;metric;parameter;outcome_type;population;scenario;outcome;outcome
 2019;NO2;Jahresmittel;NO2;verlorene Lebensjahre;1543433;tatsächliche Belastung;4011.1152257066133;2342.3203887175678;5730.269600118529;0
 2019;NO2;Jahresmittel;NO2;verlorene Lebensjahre;1543433;vermieden vs. 2015;-2787.9652598812627;-1632.0603113767875;-3972.5551819529646;0
 2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;verlorene Lebensjahre;1543433;tatsächliche Belastung;4675.427684672488;725.6515125841597;8206.243269716195;0
-2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;verlorene Lebensjahre;1543433;vermieden vs. 2015;-62.39047876393488;-9.716519788371784;-109.15805593077312;0
+2019;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;verlorene Lebensjahre;1543433;vermieden vs. 2015;-62.39047876393488;-9.716519788371784;-109.15805593567165;0
 2019;PM2.5;Jahresmittel;PM2.5;verlorene Lebensjahre;1543384;tatsächliche Belastung;5186.3488492810875;2715.026938982385;7640.339730310733;0
 2019;PM2.5;Jahresmittel;PM2.5;verlorene Lebensjahre;1543384;vermieden vs. 2015;-1291.8221581103217;-678.0827830848248;-1897.8313522415347;0
 2020;NO2;Jahresmittel;NO2;verlorene Lebensjahre;1557640;tatsächliche Belastung;2363.9662859249606;1379.8341164544554;3378.751900727599;0
 2020;NO2;Jahresmittel;NO2;verlorene Lebensjahre;1557640;vermieden vs. 2015;-4301.91714160883;-2517.983473495485;-6130.7415640763375;0
 2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;verlorene Lebensjahre;1557640;tatsächliche Belastung;4062.882831740081;630.5991926334011;7131.026531941213;0
-2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;verlorene Lebensjahre;1557640;vermieden vs. 2015;-587.3281769802506;-91.51444481816668;-1027.1516431163554;0
+2020;O3;mittlere Sommertagbelastung;O3_peakseason_mean_d1_max_mean_h8gl;verlorene Lebensjahre;1557640;vermieden vs. 2015;-587.3281769802506;-91.51444481836677;-1027.1516431163554;0
 2020;PM2.5;Jahresmittel;PM2.5;verlorene Lebensjahre;1557640;tatsächliche Belastung;3993.7697143227783;2090.2386057346757;5884.878754340065;0
 2020;PM2.5;Jahresmittel;PM2.5;verlorene Lebensjahre;1557640;vermieden vs. 2015;-2361.1585619029224;-1239.5352456417027;-3468.4517394424347;0
 2021;NO2;Jahresmittel;NO2;verlorene Lebensjahre;1568891;tatsächliche Belastung;2342.56598301337;1367.3537649106252;3348.1353809750535;0

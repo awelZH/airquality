@@ -59,14 +59,18 @@ column order and format must not change (the directory may change; external path
 * `tests/testthat/test-output-schema.R` checks names and column order against
   `tests/regression/baseline/` (outputs as of commit `c0cb59c`).
 
-## Status (2026-09-21)
+## Status (2026-09-24)
 
 * **Step 1 done**: exposition reworked.
 * **Step 2, phase 2a in progress**: emissions, monitoring done; plots/report done for all five
   topics, including a second round (plot catalog, year slider, logic out of the pages, consistent
   names; figures byte-identical, `notes/findings_plots.md`). The data scripts and functions of
-  outcomes and trends are still WIP, untouched on the user's decision. **Each topic only after the
-  user's go.**
+  trends are still WIP, untouched on the user's decision. **Each topic only after the user's go.**
+* **Outcomes rework in progress** (user's go 2026-09-24; plan and decisions in `notes/plan_outcomes.md`):
+  step 3a done – premature deaths refactored into `R/outcomes.R` + thin script with the old behaviour
+  (deaths per year identical to the old code; the old Monte-Carlo range is unseeded). Next: E1 (deaths
+  from age 30 only, suppressed cells = 2, summed without the population join), E2 (deterministic
+  range), years of life lost (healthiar life table), plots/page.
 * **Phase 2b (targets) not started**; plan in `notes/plan_phase2b.md`.
 * All content changes so far (subsector grouping of the emissions, the two monitoring fixes, the ndep
   `datasource` clean-up) are in `inst/extdata/output/` since commit `fc1e744`.
@@ -105,7 +109,7 @@ appending to own outputs, no work lists derived from earlier results.
 | emissions (incl. RSD, subsector grouping) | `notes/findings_emissions.md` |
 | monitoring (air quality, nitrogen deposition) | `notes/findings_monitoring.md` |
 | plots, legends, report | `notes/findings_plots.md`, decision 9 |
-| trends, health outcomes | `notes/findings_trends_outcomes.md` |
+| trends, health outcomes | `notes/findings_trends_outcomes.md`; plan of the outcomes rework `notes/plan_outcomes.md` |
 | refactoring checks | `notes/regression.md` |
 | phase 2b / targets | `notes/plan_phase2b.md` |
 | functions of `airquality.methods` | `../airquality.methods/CLAUDE.md` |

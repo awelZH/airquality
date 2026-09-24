@@ -34,6 +34,13 @@ topics <- list(
     script = "scripts/_compile_exposition_data.R",
     setup = c("ressources", "crs", "map_municipalities", "year_offset", "year_last", "base_scenario_year",
               "expo_years", "expo_correct_noloc", "expo_years_pm25_from_pm10", "expo_o3_nmin_sites")
+  ),
+  # reads the exposition output in inst/extdata/output/ (keep it unchanged between the runs); the old
+  # code draws its uncertainty by unseeded Monte Carlo, so two old runs differ slightly
+  outcomes = list(
+    script = "scripts/_compile_outcomes.R",
+    setup = c("ressources", "outcomes_min_year_share", "outcomes_min_age", "outcomes_erf_shape"),
+    attach = "dplyr" # the old prepare_mortality() called left_join() without prefix
   )
 )
 

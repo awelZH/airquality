@@ -30,3 +30,17 @@ the first reworked piece of this topic) drops years whose deaths do not reach `o
 (0.8, `_settings.R`) of the median year, measured against the median so that one exceptional year does
 not disqualify the others. The mortality data of the current year arrive piece by piece, so 2025 fell
 out of the outcomes (2010–2024 remain, 90 instead of 96 rows).
+
+**Refactoring of the premature deaths** (2026-09-24, step 3a of `plan_outcomes.md`): functions in
+`R/outcomes.R` (`prepare_mortality()`, `prepare_population_by_age()`, `deaths_per_year()`,
+`estimate_premature_deaths()`, `outcome_scenarios()`), 44-line script, population by age as resource 28.
+Old behaviour kept on purpose; the deaths per year (input of healthiar) are identical to the old code
+for 2010–2025 (e.g. 2019: 10'597). No byte identity: the old code draws the range by Monte Carlo without
+seed; two old runs differ by up to 8 % (central), 129 % (lower bound, small values) and 6 % (upper), the
+refactored run vs. the old one by 4.7 %, 73 % and 9.5 %. Findings in the old behaviour, corrected in E1:
+category 290 (deaths aged 0–29, 94–137 per year) spread over the suppressed cells aged ≥ 30 (which can
+hold at most 45–72); the deaths were summed over the population table, so ages with population but
+without a death record counted 1 death each (1–6 per year, ages 30–38 or > 100; a former work-around
+for `attribute_lifetable()`), and deaths at ages missing in the population table fell out (0–25 per
+year). Together well below 1 % of about 10'000 deaths per year. Note when checking by hand: the mortality
+file must be read as UTF-8, otherwise "männlich" does not match and the men drop out.

@@ -94,6 +94,12 @@ expo_o3_nmin_sites <- 7
 # current year arrive piece by piece and would give far too few premature deaths
 outcomes_min_year_share <- 0.8
 
+# youngest age affected by the long-term exposure (the exposure-response functions refer to adults >= 30)
+outcomes_min_age <- 30
+
+# shape of the exposure-response functions (relative risks per concentration increment)
+outcomes_erf_shape <- "log_linear"
+
 
 # => plots
 # years to consider for plotting

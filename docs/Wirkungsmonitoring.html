@@ -250,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="https://www.zh.ch/de/baudirektion/amt-fuer-abfall-wasser-energie-luft.html">
+    <a class="navbar-brand" href="https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet.html">
     <span class="navbar-title">Luftqualität im Kanton Zürich</span>
     </a>
   </div>
@@ -278,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Bevölkerungsbelastung.html"> 
-<span class="menu-text">Bevölkerungsbelastung</span></a>
+<span class="menu-text">Bevölkerungs- &amp; Umweltbelastung</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Gesundheitsfolgen.html"> 
@@ -340,6 +340,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>! WORK-IN-PROGRESS !</p>
 <p>Eine wichtige Fragestellung der Luftreinhaltung ist die der Wirkungsbeurteilung. Das heisst, haben Emissionsminderungsmassnahmen den gewünschten Effekt. Die Grundlage zur Beantwortung dieser Frage ist die Langzeitentwicklung der bilanzierten Emissionen, welche Aufschluss über Verbesserungen (oder Verschlechterungen) des quellspezifischen Schadstoffausstosses gibt. Die Emissionsbilanzierung enthält Annahmen, Verallgemeinerungen und deshalb Unicherheiten. Eine zentrale Art, die Emissionsbilanzierung zu verifizieren ist, den Verlauf der gemessenen Immissionen mit dem der bilanzierten Emissionen zu vergleichen. Der Vergleich ist immissionsseitig ebenfalls mit Unsicherheiten behaftet, denn Messungen finden immer punktuell statt, während die Emissionsbilanzierung ein grösseres Gebiet zusammenfasst. Zudem erwschwert der zeitlich schwankende Einfluss der Witterung und Klimaentwicklung auf die gemessenen Immissionen sowie teils die realen Emissionen den direkten Vergleich. Um diese Unsicherheit zu minimieren, kann man mit Hilfe statistischer Modelle die Messdaten auf einen durchschnittlichen Witterungszustand “normalisieren” und erhält so einen hypothetischen Langzeitverlauf der Immissionen auf der Grundlage von Messungen, welcher besser mit dem Verlauf der Emissionen verglichen werden kann. Stimmt der Verlauf der Emissionen und mit dem der gemessenen und normalisierten Immissionen qualitativ überein, so wird die Emissionsbilanzierung auf Grundlage der Messdaten allgemein bestätigt. Hier nutzen wir die Methodik des R-packages <a href="https://CRAN.R-project.org/package=rmweather">rmweather</a> (siehe auch <a href="https://doi.org/10.5194/acp-18-6223-2018">Grange et al., 2018</a>), um Langzeitmessreihen im Kanton Zürich statistisch zu normalisieren.</p>
 <section id="übersicht-entwicklung-schadstoffausstoss" class="level3">
 <h3 class="anchored" data-anchor-id="übersicht-entwicklung-schadstoffausstoss">Übersicht Entwicklung Schadstoffausstoss</h3>
@@ -498,7 +499,7 @@ ul.task-list li input[type="checkbox"] {
 <p>WORK-IN-PROGRESS</p>
 <!-- ```{r} -->
 <!-- #| label: trends-rel-detail-o3 -->
-<!-- get_plot(plots, "timeseries_detailed_pollutant", "Ozon, typische Spitzenbelastung") -->
+<!-- airquality.methods::get_plot(plots, "timeseries_detailed_pollutant", "Ozon, typische Spitzenbelastung") -->
 <!-- ``` -->
 </div>
 </div>
@@ -508,13 +509,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- ::: {.panel-tabset} -->
 <!-- ```{r} -->
 <!-- #| label: trends-rel-nhx -->
-<!-- get_plot(plots, "timeseries_pollutant", "Ammoniak | reduzierter Stickstoff") -->
+<!-- airquality.methods::get_plot(plots, "timeseries_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 <!-- #### detailliert -->
 <!-- WORK-IN-PROGRESS -->
 <!-- ```{r} -->
 <!-- #| label: trends-rel-detail-nhx -->
-<!-- get_plot(plots, "timeseries_detailed_pollutant", "Ammoniak | reduzierter Stickstoff") -->
+<!-- airquality.methods::get_plot(plots, "timeseries_detailed_pollutant", "Ammoniak | reduzierter Stickstoff") -->
 <!-- ``` -->
 <!-- ::: -->
 <!-- ### Stickstoffeinträge in empfindliche Ökosysteme -->
@@ -522,17 +523,17 @@ ul.task-list li input[type="checkbox"] {
 <!-- ### Kohlenmonoxid -->
 <!-- ```{r} -->
 <!-- #| label: trends-rel-co -->
-<!-- get_plot(plots, "timeseries_pollutant", "Kohlenstoffmonoxid") -->
+<!-- airquality.methods::get_plot(plots, "timeseries_pollutant", "Kohlenstoffmonoxid") -->
 <!-- ``` -->
 <!-- ### Flüchtige organische Verbindungen -->
 <!-- ```{r} -->
 <!-- #| label: trends-rel-nmvoc -->
-<!-- get_plot(plots, "timeseries_pollutant", "nicht-Methan Kohlenwasserstoffe") -->
+<!-- airquality.methods::get_plot(plots, "timeseries_pollutant", "nicht-Methan Kohlenwasserstoffe") -->
 <!-- ``` -->
 <!-- ### Schwefeldioxid -->
 <!-- ```{r} -->
 <!-- #| label: trends-rel-so2 -->
-<!-- get_plot(plots, "timeseries_pollutant", "Schwefeldioxid") -->
+<!-- airquality.methods::get_plot(plots, "timeseries_pollutant", "Schwefeldioxid") -->
 <!-- ``` -->
 
 

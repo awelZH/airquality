@@ -1,3 +1,10 @@
 /.quarto/
 
 **/*.quarto_ipynb
+
+# leftovers of rendering a single page inside report/ (the site renders into ../docs)
+/*.html
+!/year-slider.html
+/*_files/
+/site_libs/
+/*.rmarkdown

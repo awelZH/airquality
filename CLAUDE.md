@@ -54,7 +54,8 @@ A `targets` project (phase 2b, `notes/plan_phase2b.md`), renv-managed. Not an in
 
 Workflow: `source("run.R")` or `targets::tar_make()` (one sub-analysis: `tar_make(names =
 starts_with("emis_rsd_"))`); inspect with `tar_visnetwork()`, `tar_read()`, `tar_load()`, after an error
-`tar_workspace()`. The store `_targets/` is gitignored.
+`tar_workspace()`. The store `_targets/` is gitignored. Rendering the report alone with `shortcut = TRUE` needs
+`names = c("report_sources", "report_site")`, otherwise it is skipped (see `run.R`).
 
 ## Output contract
 

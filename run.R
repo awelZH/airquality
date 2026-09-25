@@ -3,6 +3,11 @@
 #
 # Inspect the pipeline with targets::tar_visnetwork() or targets::tar_manifest(); read a result with
 # targets::tar_read(<target>); after an error, targets::tar_workspace(<target>) restores its inputs.
+#
+# Rendering the report alone without checking the outputs: name report_sources as well, it lists the report
+# sources on every run. With shortcut = TRUE it is skipped otherwise, so changed pages go unnoticed and the
+# report is not rendered:
+#   targets::tar_make(names = c("report_sources", "report_site"), shortcut = TRUE)
 
 # 1) outputs in data/output/ (the contract): downloads are checked on every run, everything else is rebuilt
 #    only if its inputs, functions or settings changed

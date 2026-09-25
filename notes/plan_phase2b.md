@@ -52,8 +52,13 @@ names and schemas.
    * its 2 outputs are part of the contract and used by the report: the report tracks them as
      external `format = "file"` targets, and a check target warns when a WIP output is older than the
      pipeline outputs it is based on
-   * full run in `run.R`: `tar_make()` without the report → WIP script (optional) → `tar_make()`;
-     each step can also be run alone
+   * full run in `run.R`: `tar_make()` without the report → WIP script (optional) →
+     `tar_make(names = starts_with("report_"), shortcut = TRUE)`; each step can also be run alone.
+     The split exists only because the WIP script must run after the outputs and before the report.
+     The report step uses `shortcut = TRUE` (2026-09-25) so that the always-cued targets (3 opendata.swiss
+     version checks, 2 raster asset checks, the geolion map, the `airquality.data` reads) do not run a
+     second time; `starts_with("report_")` includes `report_sources` and `report_wip_trends`, so changed
+     pages and new trend files are noticed. Run alone without step 1, it does not notice outdated outputs
    * phase 2a still applies to the trends in full: tests first, pure functions in `R/trends.R`, thin
      script, regression on frozen inputs, a seed for the random forest
 8. **No `config.yml`** (2026-09-24): all constants stay in one R file of assignments (decision 7),
@@ -120,6 +125,10 @@ function designed so that it can later become a target 1:1.
    outcomes joined the pipeline in phase 2b already, decision 7):
    targets' per-target seeds for the random forest; optional `crew` for the ~30 min of the
    trends; the report's external file targets then become normal dependencies.
+   Target state of `run.R` (user decision 2026-09-25): a single `targets::tar_make()` that builds the
+   outputs, the trends and the report in one run; steps 2 and 3 and the `shortcut` are removed,
+   `report_wip_trends` and `report_wip_check` are replaced by the `trends_` output targets as
+   dependencies of `report_site`. Update CLAUDE.md (structure table, workflow) accordingly.
 
 ## Verification of phase 2b
 

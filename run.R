@@ -17,5 +17,9 @@ targets::tar_make(names = !tidyselect::starts_with("report_"))
 # 2) work in progress outside the pipeline (about 30 min); only when the trends are to be updated
 # source("wip/trends.R", encoding = "UTF-8")
 
-# 3) report: renders report/ into docs/ (about 7 min) when an output or a report source changed
-targets::tar_make()
+# 3) report: renders report/ into docs/ (about 7 min) when an output, a trend file or a report source changed.
+#    shortcut = TRUE skips checking the upstream targets again (step 1 just built them; the always-cued version
+#    checks and the geolion map would otherwise run a second time); run alone, it does not notice outdated
+#    outputs, so run step 1 first. The split exists only for step 2; once the trends are in the pipeline,
+#    run.R becomes a single targets::tar_make() (notes/plan_phase2b.md, step 7)
+targets::tar_make(names = tidyselect::starts_with("report_"), shortcut = TRUE)

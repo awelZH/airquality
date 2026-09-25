@@ -36,7 +36,8 @@ run_pipeline <- function(label, refresh = FALSE) {
   dir.create(input_dir, showWarnings = FALSE, recursive = TRUE)
   withr::local_envvar(
     AIRQUALITY_OUTPUT_DIR = file.path(result_dir, "output"),
-    AIRQUALITY_LOG_DIR = file.path(result_dir, "log")
+    AIRQUALITY_LOG_DIR = file.path(result_dir, "log"),
+    AIRQUALITY_STORE_DIR = file.path(result_dir, "_targets")
   )
 
   ns <- asNamespace("airquality.methods")

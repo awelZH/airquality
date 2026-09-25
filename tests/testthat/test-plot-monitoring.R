@@ -238,3 +238,126 @@ test_that("plot_ndep_sites_vs_cln() shows the exceedance in absolute values as w
   expect_equal(layer_data_all(relative)[[1]]$yintercept[1], 1)
   expect_equal(layer_data_all(absolute)[[1]]$yintercept[1], 0)
 })
+
+# ---- pollutant maps and model verification ------------------------------------------------
+
+make_pollutant_maps <- function() {
+  map <- stars::st_as_stars(sf::st_bbox(c(xmin = 0, ymin = 0, xmax = 400, ymax = 400), crs = sf::st_crs(2056)),
+                            dx = 100, values = 0)
+  map[[1]][] <- 1:16
+  names(map) <- "concentration"
+  tibble::tibble(parameter = c("NO2", "NO2", "PM10"), year = c(2019, 2020, 2020), derived = c(TRUE, FALSE, FALSE),
+                 stars = list(map, map * 2, map))
+}
+
+make_square <- function() {
+  sf::st_sf(geometry = sf::st_sfc(sf::st_polygon(list(rbind(c(0, 0), c(400, 0), c(400, 400), c(0, 400), c(0, 0)))),
+                                  crs = 2056))
+}
+
+test_that("plot_pollutant_maps() gives one centred map per year with the raster and the boundary", {
+  maps <- plot_pollutant_maps(make_pollutant_maps(), "NO2", boundary = make_square(), crs = 2056,
+                              caption = "BAFU", caption_derived = "abgeleitet")
+
+  expect_named(maps, c("2019", "2020"))
+  expect_s3_class(maps[["2020"]], "ggplot")
+  expect_match(as.character(maps[["2020"]]$labels$subtitle), "2020", fixed = TRUE)
+  expect_equal(nrow(layer_data_all(maps[["2020"]])[[1]]), 16)
+  expect_s3_class(maps[["2020"]]$layers[[2]]$geom, "GeomSf")
+  expect_equal(maps[["2020"]]$theme$plot.title$hjust, 0.5)
+  expect_equal(maps[["2020"]]$theme$plot.caption$hjust, 0.5)
+  # the caption of the derived year
+  expect_equal(maps[["2019"]]$labels$caption, "abgeleitet")
+  expect_equal(maps[["2020"]]$labels$caption, "BAFU")
+})
+
+test_that("plot_ndep_exceedance_maps() gives one map per model year in the wanted years", {
+  data <- tidyr::expand_grid(year = c(1990, 2000, 2020), x = c(500, 1500), y = c(500, 1500)) |>
+    dplyr::mutate(ndep_exmax = seq_along(x))
+
+  maps <- plot_ndep_exceedance_maps(data, years = 1995:2025, boundary = make_square(), crs = 2056)
+
+  expect_named(maps, c("2000", "2020"))
+  expect_equal(nrow(layer_data_all(maps[["2020"]])[[1]]), 4)
+  expect_match(as.character(maps[["2020"]]$labels$subtitle), "2020", fixed = TRUE)
+  expect_equal(maps[["2020"]]$theme$plot.title$hjust, 0.5)
+})
+
+make_validation <- function() {
+  tibble::tibble(
+    year = rep(c(2019, 2020), each = 5), site = rep(letters[1:5], 2),
+    siteclass = rep(c("städtisch - verkehrsbelastet", "ländlich - Hintergrund"), 5),
+    traffic = rep(c("verkehrsbelastet", "Hintergrund"), 5),
+    pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2",
+    concentration = c(10, 20, 30, 40, 50, 12, 22, 32, 42, 52),
+    concentration_map = c(12, 19, 31, 38, 52, 13, 21, 33, 40, 50)
+  )
+}
+
+test_that("plot_map_validation() draws one panel per traffic influence with its own robust line", {
+  data <- make_validation()
+  fit <- fit_map_validation(data)
+
+  plot <- plot_map_validation(data, fit, "NO2")
+
+  geoms <- purrr::map_chr(unname(plot$layers), \(layer) class(layer$geom)[1])
+  expect_equal(geoms, c("GeomAbline", "GeomPoint", "GeomSegment"))
+  expect_contains(legend_texts(plot), c("1:1-Linie", "robuste Regression", "Jahr"))
+  expect_null(plot$mapping$shape)
+  expect_null(plot$layers[[2]]$mapping$shape)
+  expect_match(as.character(plot$labels$title), "Stickstoffdioxid")
+  expect_match(as.character(plot$labels$subtitle), "2019–2020", fixed = TRUE)
+  expect_false(grepl("1:1|in-sample", plot$labels$caption))
+
+  built <- withr::with_pdf(NULL, ggplot2::ggplot_build(plot))
+  # two panels, "verkehrsbelastet" first, each regression line over the measured range of its sites
+  expect_equal(as.character(built$layout$layout$traffic), c("verkehrsbelastet", "Hintergrund"))
+  segments <- built$data[[3]]
+  expect_equal(nrow(segments), 2)
+  expect_equal(segments$x[order(segments$PANEL)], c(10, 12))
+  expect_equal(segments$xend[order(segments$PANEL)], c(50, 52))
+  # the year as a continuous colour scale
+  expect_s3_class(plot$scales$get_scales("colour"), "ScaleContinuous")
+  # the same range on both axes and in both panels
+  expect_equal(built$layout$panel_params[[1]]$x.range, built$layout$panel_params[[1]]$y.range)
+  expect_equal(built$layout$panel_params[[1]]$x.range, built$layout$panel_params[[2]]$x.range)
+})
+
+test_that("print_map_tabset() puts the map slider and the verification into two tabs", {
+  plot <- ggplot2::ggplot() + ggplot2::ggtitle("x")
+  catalog <- dplyr::bind_rows(
+    airquality.methods::plot_catalog(list(NO2 = list(`2019` = plot, `2020` = plot)), "map", names_to = c("parameter", "year")),
+    airquality.methods::plot_catalog(list(NO2 = plot), "map_validation", names_to = "parameter")
+  )
+
+  output <- withr::with_pdf(NULL, utils::capture.output(print_map_tabset(catalog, "NO2")))
+
+  expect_contains(output, c("::: {.panel-tabset}", "##### Karte", "##### Modellverifikation"))
+  expect_match(output[grep("year-slider", output)[1]], 'data-start="2020"', fixed = TRUE)
+  expect_lt(grep("##### Karte", output), grep("year-slider", output)[1])
+  expect_lt(grep("year-slider", output)[1], grep("##### Modellverifikation", output))
+})
+
+test_that("print_timeseries_map() prints the time series, a heading and the map tabset one level deeper", {
+  plot <- ggplot2::ggplot() + ggplot2::ggtitle("x")
+  catalog <- dplyr::bind_rows(
+    airquality.methods::plot_catalog(list(O3 = plot), "timeseries_siteclass", names_to = "parameter"),
+    airquality.methods::plot_catalog(list(O3 = list(`2020` = plot)), "map", names_to = c("parameter", "year")),
+    airquality.methods::plot_catalog(list(O3 = plot), "map_validation", names_to = "parameter")
+  )
+
+  output <- withr::with_pdf(NULL, utils::capture.output(print_timeseries_map(catalog, "O3")))
+
+  expect_contains(output, c("###### Belastungskarte", "::: {.panel-tabset}", "###### Karte", "###### Modellverifikation"))
+  expect_false(any(grepl("^##### ", output))) # no heading of the level of the surrounding tabs
+  expect_lt(grep("###### Belastungskarte", output), grep("panel-tabset", output)[1])
+})
+
+test_that("plot_map_validation() flags a derived map as in-sample", {
+  data <- make_validation() |> dplyr::mutate(parameter = "O3_peakseason_mean_d1_max_mean_h8gl", pollutant = "O3")
+  fit <- fit_map_validation(data)
+
+  plot <- plot_map_validation(data, fit, "O3_peakseason_mean_d1_max_mean_h8gl", in_sample = TRUE)
+
+  expect_match(plot$labels$caption, "^in-sample")
+})

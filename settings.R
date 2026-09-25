@@ -8,6 +8,8 @@
 # regression redirect them (tests/regression/run_pipeline.R)
 path_output <- Sys.getenv("AIRQUALITY_OUTPUT_DIR", "data/output")
 path_log <- Sys.getenv("AIRQUALITY_LOG_DIR", "data/log")
+# targets store, read by the plot scripts for the data outside the contract (pollutant maps)
+path_store <- Sys.getenv("AIRQUALITY_STORE_DIR", "_targets")
 
 # => general
 # last year analysed = current year - year_offset (data of a year usually appear in the following year)
@@ -34,6 +36,13 @@ emis_subsectors_max <- 4
 # => monitoring
 # cantons whose monitoring sites are compiled (the NABEL sites Zürich-Kaserne and Dübendorf-EMPA carry canton "ZH")
 mon_cantons <- "ZH"
+
+# parameters of the pollutant maps of the canton and of their verification against the measured values (BAFU
+# rasters of the years in plot_years; the O3 peak season is derived from NO2 as in the exposition)
+mon_maps_parameters <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "O3_peakseason_mean_d1_max_mean_h8gl")
+
+# cell size of the maps in metres; the values at the sites come from the native raster cells (20 or 200 m)
+mon_maps_cellsize <- 100
 
 # => trends
 # years to consider for analysis and later plotting

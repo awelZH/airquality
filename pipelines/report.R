@@ -29,7 +29,9 @@ pipeline_report <- tar_plan(
            emis_emikat_out, emis_rsd_out_per_norm, emis_rsd_out_per_yearmodel, emis_rsd_out_per_yearmeas,
            mon_aq_out, mon_ndep_out_parameters, mon_ndep_out_total,
            expo_pop_out_means_canton, expo_pop_out_means_municipalities, expo_pop_out_distribution,
-           expo_eco_out_distribution, outcomes_out)
+           expo_eco_out_distribution, outcomes_out,
+           # read from the store by the plot script (no output file)
+           mon_maps_raster, mon_maps_o3, mon_maps_pm25, mon_maps_boundary, mon_maps_validation, mon_maps_fit, expo_eco_ndep)
       render_report("report", output_dir = "docs")
     },
     format = "file"

@@ -74,6 +74,40 @@ plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
                          pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
 
 
+# pollutant maps of the canton per year and their verification against the measured values; the data are not
+# part of the contract and come from the targets store (pipelines/monitoring_maps.R), so the pipeline has to
+# have run
+maps_raster <- targets::tar_read(mon_maps_raster, store = path_store)
+maps <- dplyr::bind_rows(maps_raster$maps, targets::tar_read(mon_maps_o3, store = path_store),
+                         targets::tar_read(mon_maps_pm25, store = path_store))
+maps_boundary <- targets::tar_read(mon_maps_boundary, store = path_store)
+maps_validation <- targets::tar_read(mon_maps_validation, store = path_store)
+maps_fit <- targets::tar_read(mon_maps_fit, store = path_store)
+rm(maps_raster)
+
+# captions of the derived maps (O3 peak season: all years; PM2.5: before 2015)
+captions_derived <- c(
+  O3_peakseason_mean_d1_max_mean_h8gl = "Datengrundlage: BAFU (NO2), abgeleitet mit Messwerten von Ostluft & NABEL",
+  PM2.5 = "Datengrundlage: BAFU (PM10), abgeleitet mit dem PM2.5:PM10-Verhältnis der NABEL-Messwerte"
+)
+plots$monitoring$map <-
+  purrr::map(rlang::set_names(mon_maps_parameters), \(parameter) {
+    plot_pollutant_maps(maps, parameter, boundary = maps_boundary, crs = crs, caption_derived = captions_derived[parameter],
+                        theme = theme_map)
+  })
+
+# exceedance of the critical loads for nitrogen, the raster of the exposition (no verification)
+plots$monitoring$map$Ndep <-
+  plot_ndep_exceedance_maps(targets::tar_read(expo_eco_ndep, store = path_store), years = plot_years, boundary = maps_boundary,
+                            crs = crs, theme = theme_map)
+
+plots$monitoring$map_validation <-
+  purrr::map(rlang::set_names(mon_maps_parameters), \(parameter) {
+    plot_map_validation(maps_validation, maps_fit, parameter, in_sample = parameter == "O3_peakseason_mean_d1_max_mean_h8gl",
+                        pointsize = pointsize, theme = theme_scatter)
+  })
+
+
 # collect the plots in a catalog for the Quarto pages (airquality.methods::get_plot(plots_monitoring, "timeseries_siteclass", "NO2"))
 # ---
 plots_monitoring <-
@@ -83,5 +117,7 @@ plots_monitoring <-
     airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_bachtel$Ndep, "timeseries_ndep_bachtel"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_all$Ndep, "timeseries_ndep_all"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_exceedance$Ndep, "timeseries_ndep_exceedance"),
-    airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep, "timeseries_ndep_all_vs_CLN")
+    airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep, "timeseries_ndep_all_vs_CLN"),
+    airquality.methods::plot_catalog(plots$monitoring$map, "map", names_to = c("parameter", "year")),
+    airquality.methods::plot_catalog(plots$monitoring$map_validation, "map_validation", names_to = "parameter")
   )

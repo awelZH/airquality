@@ -4,7 +4,7 @@ lightbox: true
 ---
 
 
-Hier werden ausgewählte Luftqualitäts-Messdaten aus dem interkantonalen Messnetz zur  [Luftqualitätsüberwachung der Ostschweizer Kantone und des Fürstentums Liechtenstein Ostluft](https://www.ostluft.ch/) sowie aus dem [nationalen Beobachtungsnetz für Luftfremdstoffe NABEL](https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/nationales-beobachtungsnetz-fuer-luftfremdstoffe--nabel-.html) im Kanton Zürich dargestellt. Belastungskarten mit flächendeckenden Informationen zur Luftqualität finden sich im [GIS-Browser des Kantons Zürich](https://geo.zh.ch/maps). In Darstellungen der Langzeitverläufe der Schadstoffkonzentrationen (Immissionsverläufe) werden die aktuellen Grenzwerte über den Gesamtzeitraum konstant dargestellt, auch wenn sie erst ab einem bestimmten Zeitpunkt in der [Luftreinhalteverordnung des Bundes](https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de) eingeführt oder angepasst wurden. Das Gleiche gilt für die [Richtwerte der Weltgesundheitsorganisation WHO](https://www.who.int/publications/i/item/9789240034228).
+Hier werden ausgewählte Luftqualitäts-Messdaten aus dem interkantonalen Messnetz zur  [Luftqualitätsüberwachung der Ostschweizer Kantone und des Fürstentums Liechtenstein Ostluft](https://www.ostluft.ch/) sowie aus dem [nationalen Beobachtungsnetz für Luftfremdstoffe NABEL](https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/nationales-beobachtungsnetz-fuer-luftfremdstoffe--nabel-.html) im Kanton Zürich dargestellt. Belastungskarten mit flächendeckenden Informationen zur Luftqualität finden sich im [GIS-Browser des Kantons Zürich](https://geo.zh.ch/maps). Bei den einzelnen Schadstoffen sind die modellierten Belastungskarten des Bundesamts für Umwelt (BAFU) für den Kanton Zürich dargestellt, zusammen mit einem Vergleich der Kartenwerte an den Messorten mit den Messwerten als allgemeine Modellverifikation. In Darstellungen der Langzeitverläufe der Schadstoffkonzentrationen (Immissionsverläufe) werden die aktuellen Grenzwerte über den Gesamtzeitraum konstant dargestellt, auch wenn sie erst ab einem bestimmten Zeitpunkt in der [Luftreinhalteverordnung des Bundes](https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de) eingeführt oder angepasst wurden. Das Gleiche gilt für die [Richtwerte der Weltgesundheitsorganisation WHO](https://www.who.int/publications/i/item/9789240034228).
 <!-- bzw. dem [GIS-Browser des Bundes](https://map.geo.admin.ch/). -->
 
 
@@ -36,6 +36,14 @@ print_year_slider(plots, "threshold_comparison")
 airquality.methods::get_plot(plots, "timeseries_siteclass", "NO2")
 ```
 
+#### Belastungskarte
+
+```{r}
+#| label: slider-map-no2
+#| output: asis
+print_map_tabset(plots, "NO2")
+```
+
 ### Feinstaub PM2.5
 
 ```{r}
@@ -43,11 +51,27 @@ airquality.methods::get_plot(plots, "timeseries_siteclass", "NO2")
 airquality.methods::get_plot(plots, "timeseries_siteclass", "PM2.5")
 ```
 
+#### Belastungskarte
+
+```{r}
+#| label: slider-map-pm25
+#| output: asis
+print_map_tabset(plots, "PM2.5")
+```
+
 ### Feinstaub PM10
 
 ```{r}
 #| label: ts-pm10
 airquality.methods::get_plot(plots, "timeseries_siteclass", "PM10")
+```
+
+#### Belastungskarte
+
+```{r}
+#| label: slider-map-pm10
+#| output: asis
+print_map_tabset(plots, "PM10")
 ```
 
 ### Russ im Feinstaub
@@ -63,8 +87,8 @@ airquality.methods::get_plot(plots, "timeseries_siteclass", "eBC")
 #| label: tabs-ts-o3
 #| output: asis
 airquality.methods::print_tabset(list(
-  "typische Spitzenbelastung" = airquality.methods::get_plot(plots, "timeseries_siteclass", "O3_max_98p_m1"),
-  "mittlere Sommertagbelastung" = airquality.methods::get_plot(plots, "timeseries_siteclass", "O3_peakseason_mean_d1_max_mean_h8gl")
+  "typische Spitzenbelastung" = \() print_timeseries_map(plots, "O3_max_98p_m1"),
+  "mittlere Sommertagbelastung" = \() print_timeseries_map(plots, "O3_peakseason_mean_d1_max_mean_h8gl")
 ))
 ```
 
@@ -94,4 +118,12 @@ airquality.methods::print_tabset(list(
   absolut = airquality.methods::get_plot(plots, "timeseries_ndep_exceedance"),
   relativ = airquality.methods::get_plot(plots, "timeseries_ndep_all_vs_CLN")
 ))
+```
+
+#### Karte der Überschreitung der kritischen Eintragsraten
+
+```{r}
+#| label: slider-map-ndep
+#| output: asis
+print_year_slider(plots, "map", "Ndep")
 ```

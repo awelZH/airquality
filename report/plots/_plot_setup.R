@@ -162,6 +162,14 @@ theme_ts <-
     axis.title = ggplot2::element_blank()
   )
 
+# scatter plots (model verification of the pollutant maps): airquality.methods::theme_custom("scatter"), which builds on
+# the active theme; the base (font, size) as theme_ts, set only while the theme is built
+theme_scatter <- local({
+  old <- ggplot2::theme_set(ggplot2::theme_minimal(base_size = basesize, base_family = "Arial"))
+  on.exit(ggplot2::theme_set(old))
+  airquality.methods::theme_custom("scatter")
+})
+
 theme_map <-
   ggplot2::theme_void(base_size = basesize, base_family = "Arial") +
   ggplot2::theme(

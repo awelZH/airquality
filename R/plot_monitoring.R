@@ -452,3 +452,188 @@ threshold_comparison_categories <- function(data) {
     dplyr::distinct(reference, x) |>
     dplyr::arrange(reference, x) # the order of the axis
 }
+
+
+# ---- pollutant maps and model verification -------------------------------------------------
+
+# title, subtitle and caption of the maps centred, as in the municipality maps of the exposition
+theme_map_centred <- function() {
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(hjust = 0.5),
+    plot.subtitle = ggplot2::element_text(hjust = 0.5),
+    plot.caption = ggplot2::element_text(hjust = 0.5)
+  )
+}
+
+#' Plot the pollutant maps of the canton, one map per year
+#'
+#' Every year of a parameter uses the same colour scale ([airquality.methods::immissionscale()]).
+#'
+#' @param maps Maps as built by [aggregate_map()], [derive_o3_peakseason_map()] and [derive_pm25_map()]
+#'   (`parameter`, `year`, `derived`, `stars` with the attribute `concentration`).
+#' @param parameter Parameter to plot.
+#' @param boundary `sf` polygon of the canton, drawn as outline.
+#' @param crs Coordinate reference system of the map.
+#' @param caption Caption of the BAFU maps.
+#' @param caption_derived Caption of the derived maps; `caption` if `NULL`.
+#' @param theme ggplot2 theme.
+#'
+#' @return Named list of ggplot objects, one per year.
+#'
+#' @keywords internal
+plot_pollutant_maps <- function(maps, parameter, boundary, crs, caption = "Datengrundlage: BAFU", caption_derived = NULL,
+                                theme = ggplot2::theme_void()) {
+
+  maps <- dplyr::filter(maps, parameter == !!parameter) |> dplyr::arrange(year)
+  pollutant <- airquality.methods::shortpollutant(parameter)
+  metric <- airquality.methods::longmetric(parameter)
+
+  purrr::pmap(list(rlang::set_names(maps$stars, maps$year), maps$year, maps$derived), function(map, year, derived) {
+    ggplot2::ggplot() +
+      ggplot2::geom_raster(data = as.data.frame(map), mapping = ggplot2::aes(x = x, y = y, fill = concentration), na.rm = TRUE) +
+      ggplot2::geom_sf(data = boundary, fill = NA, colour = "gray30", linewidth = 0.3) +
+      ggplot2::coord_sf(datum = sf::st_crs(crs)) +
+      airquality.methods::immissionscale(parameter) +
+      theme +
+      theme_map_centred() +
+      ggplot2::ggtitle(
+        label = openair::quickText(paste0("Belastungskarte ", airquality.methods::longpollutant(pollutant))),
+        subtitle = openair::quickText(paste0(pollutant, ", ", metric, " ", year))
+      ) +
+      ggplot2::labs(caption = if (derived) caption_derived %||% caption else caption)
+  })
+}
+
+
+#' Plot the exceedance of the critical loads for nitrogen, one map per model year
+#'
+#' The same BAFU raster as the exposition of the sensitive ecosystems (1 km cells with a sensitive
+#' ecosystem, `expo_eco_ndep`).
+#'
+#' @param data Exceedance per cell as returned by [read_ndep_exceedance()] (`x`, `y`, `year`,
+#'   `ndep_exmax`).
+#' @param years Years to plot; the raster exists for model years only.
+#' @inheritParams plot_pollutant_maps
+#'
+#' @return Named list of ggplot objects, one per year.
+#'
+#' @keywords internal
+plot_ndep_exceedance_maps <- function(data, years, boundary, crs, caption = "Datengrundlage: BAFU", theme = ggplot2::theme_void()) {
+
+  data <- dplyr::filter(data, year %in% years)
+
+  purrr::map(rlang::set_names(sort(unique(data$year))), function(year) {
+    ggplot2::ggplot() +
+      ggplot2::geom_raster(data = dplyr::filter(data, year == !!year), mapping = ggplot2::aes(x = x, y = y, fill = ndep_exmax)) +
+      ggplot2::geom_sf(data = boundary, fill = NA, colour = "gray30", linewidth = 0.3) +
+      ggplot2::coord_sf(datum = sf::st_crs(crs)) +
+      airquality.methods::immissionscale("Ndep") +
+      theme +
+      theme_map_centred() +
+      ggplot2::ggtitle(
+        label = "Stickstoffeintrag in empfindliche Ökosysteme",
+        subtitle = paste0("Überschreitung der kritischen Eintragsraten ", year)
+      ) +
+      ggplot2::labs(caption = caption)
+  })
+}
+
+
+#' Print the pollutant map of a parameter as a tabset "Karte" (year slider) / "Modellverifikation"
+#'
+#' For a chunk with `#| output: asis`.
+#'
+#' @param catalog Plot catalog of the monitoring (`plots_monitoring`) with the plots "map" and
+#'   "map_validation".
+#' @param parameter Parameter, e.g. "NO2".
+#' @param level Heading level of the tab titles (see [airquality.methods::print_tabset()]).
+#'
+#' @return `NULL`, invisibly; called for its output.
+#'
+#' @keywords internal
+print_map_tabset <- function(catalog, parameter, level = 5) {
+  airquality.methods::print_tabset(list(
+    Karte = \() print_year_slider(catalog, "map", parameter),
+    Modellverifikation = airquality.methods::get_plot(catalog, "map_validation", parameter)
+  ), level = level)
+}
+
+
+#' Print the time series of a parameter with its map tabset below, as the content of a tab
+#'
+#' For the O3 metrics, which are tabs themselves: the time series, the heading "Belastungskarte" and the
+#' tabset of [print_map_tabset()], both one level below the surrounding tab titles (level 5).
+#'
+#' @inheritParams print_map_tabset
+#'
+#' @return `NULL`, invisibly; called for its output.
+#'
+#' @keywords internal
+print_timeseries_map <- function(catalog, parameter, level = 6) {
+  print(airquality.methods::get_plot(catalog, "timeseries_siteclass", parameter))
+  cat("\n\n", strrep("#", level), " Belastungskarte\n\n", sep = "")
+  print_map_tabset(catalog, parameter, level = level)
+
+  invisible(NULL)
+}
+
+
+#' Plot the map values at the monitoring sites against the measured values
+#'
+#' One panel per traffic influence of the site class ("verkehrsbelastet", "Hintergrund") with the points
+#' coloured by year, the 1:1 line and the robust regression line of the panel over its measured range
+#' ([fit_map_validation()]), both named in the legend; both axes of both panels cover the same range.
+#'
+#' @param data Data as returned by [map_validation_data()].
+#' @param fit Fits as returned by [fit_map_validation()].
+#' @param parameter Parameter to plot.
+#' @param in_sample Is the map derived from the same monitoring data (O3 peak season)? Noted at the
+#'   start of the caption.
+#' @param pointsize Size of the points.
+#' @param theme ggplot2 theme.
+#' @param caption Caption.
+#'
+#' @return A ggplot object.
+#'
+#' @keywords internal
+plot_map_validation <- function(data, fit, parameter, in_sample = FALSE, pointsize = 2, theme = ggplot2::theme_minimal(),
+                                caption = "Daten: BAFU, Ostluft & NABEL (BAFU & Empa)") {
+
+  traffic_levels <- c("verkehrsbelastet", "Hintergrund")
+  data <- data |>
+    dplyr::filter(parameter == !!parameter) |>
+    dplyr::mutate(traffic = factor(traffic, levels = traffic_levels))
+  fit <- fit |>
+    dplyr::filter(parameter == !!parameter) |>
+    dplyr::mutate(traffic = factor(traffic, levels = traffic_levels))
+  pollutant <- airquality.methods::shortpollutant(parameter)
+  metric <- airquality.methods::longmetric(parameter)
+  limits <- range(data$concentration, data$concentration_map)
+  lines <- c("1:1-Linie" = "dashed", "robuste Regression" = "solid")
+  if (in_sample) caption <- paste0("in-sample: Karte aus NO2 mit denselben Messwerten abgeleitet, keine unabhängige Verifikation; ", caption)
+
+  ggplot2::ggplot(data, ggplot2::aes(x = concentration, y = concentration_map)) +
+    ggplot2::geom_abline(data = tibble::tibble(line = names(lines)[1]),
+                         mapping = ggplot2::aes(intercept = 0, slope = 1, linetype = line), colour = "gray40") +
+    ggplot2::geom_point(mapping = ggplot2::aes(colour = year), size = pointsize) +
+    # the regression line over the points, so it stays visible in the dense traffic panel
+    ggplot2::geom_segment(data = fit,
+                          mapping = ggplot2::aes(x = from, xend = to, y = intercept + slope * from, yend = intercept + slope * to,
+                                                 linetype = names(lines)[2]),
+                          inherit.aes = FALSE, colour = "gray10", linewidth = 1) +
+    ggplot2::facet_wrap(ggplot2::vars(traffic)) +
+    ggplot2::coord_equal(xlim = limits, ylim = limits) +
+    ggplot2::scale_colour_viridis_c(name = "Jahr", option = "D", direction = -1, breaks = scales::breaks_pretty(),
+                                    guide = ggplot2::guide_colourbar(order = 2)) +
+    ggplot2::scale_linetype_manual(name = NULL, values = lines, breaks = names(lines), guide = ggplot2::guide_legend(order = 1)) +
+    ggplot2::labs(x = "Messwert (µg/m3)", y = "Kartenwert am Messort (µg/m3)", caption = caption) +
+    ggplot2::ggtitle(
+      label = openair::quickText(paste0("Modellverifikation Belastungskarte ", airquality.methods::longpollutant(pollutant))),
+      subtitle = openair::quickText(paste0(pollutant, ", ", metric, ", ", paste(range(data$year), collapse = "–")))
+    ) +
+    theme +
+    ggplot2::theme(
+      axis.title = ggplot2::element_text(size = ggplot2::rel(0.8)),
+      axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 4, b = 8))
+    )
+}

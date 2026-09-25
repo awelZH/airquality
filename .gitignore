@@ -21,9 +21,6 @@ report/.Ruserdata
 # docs/Gesundheitsfolgen.qmd
 # docs/about.qmd
 
-# internal side-analysis for validating maps
-scripts/_validate_rasterdata.R
-
 # temp data => later ogd
 data/restricted/*
 !data/restricted/README.md

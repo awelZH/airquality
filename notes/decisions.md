@@ -12,8 +12,8 @@ to debug and silently carry old errors forward: the double counting of exclave c
 
 ## Architecture decisions and why
 
-**1. `airquality.methods` from GitHub** (0.5.1 since 2026-09-25). Until 2026-09-24 installed from the local repo;
-since then from GitHub, now `awelZH/airquality.methods@92af633` (pinned in `renv.lock`, `renv::install("awelZH/airquality.methods@<sha>")`
+**1. `airquality.methods` from GitHub** (0.5.3 since 2026-09-25; 0.5.2: GeoTIFFs without EPSG code accepted when the STAC metadata agree; 0.5.3: markdown legend titles of `immissionscale()` via ggtext). Until 2026-09-24 installed from the local repo;
+since then from GitHub, now `awelZH/airquality.methods@7062c5a` (pinned in `renv.lock`, `renv::install("awelZH/airquality.methods@<sha>")`
 for a newer version). Since 0.4.0 only its exports may carry the `airquality.methods::` prefix.
 **After (re)installing `airquality.methods`, restart the R session** before running the pipeline:
 `library()` does not reload an already loaded namespace. Check with
@@ -123,6 +123,12 @@ every render (grenzwertvergleich, ndep-all, ndep-all-cln). They now use
 `_plot_setup.R`), so they stay the same between renders. 9 stale PNGs that no page referenced were
 deleted from `docs/*_files/`. Keep this in mind for phase 2b: plots as targets would put the same
 bloat into the store, so the report depends on the output CSVs, not on plot targets.
+*Extension (user decision 2026-09-25):* data outside the output contract that the report needs (the
+pollutant maps of the canton and their verification, `pipelines/monitoring_maps.R`) are **data targets**
+in the store, read by the plot script with `targets::tar_read(<target>, store = path_store)`; still no
+plot targets. `path_store` (`settings.R`, `AIRQUALITY_STORE_DIR`) lets the regression point the plot
+scripts to its own store. `report_site` lists these targets as dependencies. Consequence: the plot
+script `_plot_monitoring.R` needs a built store, in the console as well.
 
 **10. Generic building blocks live in `airquality.methods`** (user decision 2026-09-21). Moved there
 unchanged and exported: `drop_foreign_enclaves()`, `assign_municipalities()` (decisions 3/4),

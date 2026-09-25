@@ -36,12 +36,12 @@ A `targets` project (phase 2b, `notes/plan_phase2b.md`), renv-managed. Not an in
 |---|---|
 | `run.R` | entry point: `tar_make()` of the outputs, optionally `wip/trends.R`, then `tar_make()` of the `report_*` targets with `shortcut = TRUE`; becomes a single `tar_make()` once the trends are in the pipeline (plan step 7) |
 | `_targets.R` | sources `R/`, `settings.R` and `pipelines/`; combines the target lists `pipeline_*` |
-| `settings.R` | **all analysis settings and paths** (decisions 7 and 8), pure assignments; `path_output`/`path_log` from `AIRQUALITY_OUTPUT_DIR`/`AIRQUALITY_LOG_DIR` |
-| `pipelines/` | one target list per sub-analysis: `setup`, `emissions_emikat`, `emissions_rsd`, `monitoring_airquality`, `monitoring_ndep`, `exposition_population`, `exposition_ecosystems`, `outcomes`, `report`; target names `<topic>_<sub-analysis>_<stage>`, outputs as `format = "file"` targets (`*_out*`); only the version states of the downloads (`*_state`, opendata.swiss) and of the raster assets (`*_assets`) run with `tar_cue("always")`, the downloads and raster reads only when the state changed; the geolion municipality map (no metadata) is read on every run |
+| `settings.R` | **all analysis settings and paths** (decisions 7 and 8), pure assignments; `path_output`/`path_log`/`path_store` from `AIRQUALITY_OUTPUT_DIR`/`AIRQUALITY_LOG_DIR`/`AIRQUALITY_STORE_DIR` |
+| `pipelines/` | one target list per sub-analysis: `setup`, `emissions_emikat`, `emissions_rsd`, `monitoring_airquality`, `monitoring_ndep`, `monitoring_maps`, `exposition_population`, `exposition_ecosystems`, `outcomes`, `report`; target names `<topic>_<sub-analysis>_<stage>`, outputs as `format = "file"` targets (`*_out*`); only the version states of the downloads (`*_state`, opendata.swiss) and of the raster assets (`*_assets`) run with `tar_cue("always")`, the downloads and raster reads only when the state changed; the geolion municipality map (no metadata) is read on every run |
 | `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `outcomes.R`, `helpers.R`, `pipeline.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R` hold only trend code (WIP) |
 | `wip/` | work in progress outside the pipeline: `trends.R` (about 30 min), see `wip/README.md` |
 | `report/` | Quarto sources (`*.qmd`, `_quarto.yml`, `styles.css`, `year-slider.html`); plots per year as year sliders (decision 11); built by the target `report_site` |
-| `report/plots/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs, one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
+| `report/plots/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs (the pollutant maps from the targets store), one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
 | `report/plots/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
 | `docs/` | rendered website only (GitHub Pages, `output-dir: ../docs`) |
 | `data/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
@@ -86,6 +86,10 @@ column order and format must not change (the directory may change; external path
   skeleton and `scripts/` removed. On frozen inputs 11 of 12 pipeline outputs are byte-identical to the
   old scripts, the health outcomes within 4.5e-11 (no CSV round trip of the canton means). Left: the
   trends as sub-analysis once they are finished (plan step 7).
+* **Pollutant maps and model verification** (2026-09-25; `notes/findings_monitoring.md`): `pipelines/monitoring_maps.R`,
+  BAFU maps of the canton per year (slider; PM2.5 before 2015 and the O3 peak season derived) and map vs.
+  measured values with `MASS::rlm` on the page "Luftqualität", plus the map of the nitrogen critical load
+  exceedance (`expo_eco_ndep`); no output file, the report reads the store; replaces `wip/_validate_rasterdata.R`.
 * All content changes so far are in `data/output/`: emissions, monitoring and ndep since commit
   `fc1e744`, health outcomes since `b9fe256` (last digits since the pipeline run of 2026-09-24).
 
@@ -94,7 +98,7 @@ column order and format must not change (the directory may change; external path
 Guiding lesson: **make every step visible and recomputable** – no communication through globals, no
 appending to own outputs, no work lists derived from earlier results.
 
-1. `airquality.methods` 0.5.1 is installed into renv from GitHub (`awelZH/airquality.methods`, pinned
+1. `airquality.methods` 0.5.3 is installed into renv from GitHub (`awelZH/airquality.methods`, pinned
    sha in `renv.lock`); restart R after reinstalling.
 2. Exposition is recomputed completely on every run; downloads are cached, uncompressed GeoTIFFs are
    streamed from the web every time.
@@ -111,7 +115,7 @@ appending to own outputs, no work lists derived from earlier results.
    as arguments; every year range ends at `year_last`. The paths live there too (phase 2b decision 8, no
    `config.yml`).
 8. Inputs are checked where they enter (`check_columns()`, error class `airquality_input_error`).
-9. The report builds its plots while rendering (no rds files); the plot scripts stay usable in the
+9. The report builds its plots while rendering (no rds files); data outside the contract (pollutant maps) are data targets read with `tar_read(store = path_store)`; the plot scripts stay usable in the
    console.
 10. Generic building blocks live in `airquality.methods` (municipality assignment, collector pixel
     redistribution, grouped legend, `check_names()`; since 0.5.0 the nitrogen deposition classes and the plot
@@ -125,7 +129,7 @@ appending to own outputs, no work lists derived from earlier results.
 | any decision above | `notes/decisions.md` |
 | exposition | `notes/findings_exposition.md` |
 | emissions (incl. RSD, subsector grouping) | `notes/findings_emissions.md` |
-| monitoring (air quality, nitrogen deposition) | `notes/findings_monitoring.md` |
+| monitoring (air quality, nitrogen deposition, pollutant maps and their verification) | `notes/findings_monitoring.md` |
 | plots, legends, report | `notes/findings_plots.md`, decision 9 |
 | trends, health outcomes | `notes/findings_trends_outcomes.md`; plan of the outcomes rework `notes/plan_outcomes.md` |
 | refactoring checks | `notes/regression.md` |
@@ -139,3 +143,5 @@ Pattern for new or remaining sub-analyses: `R/outcomes.R` + `pipelines/outcomes.
 
 * Trends (Wirkungsmonitoring): data scripts and functions still WIP on the user's decision (unseeded
   random forest; the detailed trend plot runs up to the current calendar year, not `year_last`).
+* `airquality.data` 0.1.3 has x/y swapped for Dübendorf-EMPA and Zürich-Kaserne, also in
+  `data_airquality_monitoring_y1.csv` (not changed; the map extraction swaps them for the lookup).

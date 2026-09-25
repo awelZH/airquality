@@ -55,7 +55,7 @@ print_exposition_parameter(plots, "PM10")
 ```{r}
 #| label: o3
 #| output: asis
-print_tabset(list(
+airquality.methods::print_tabset(list(
   "typische Spitzenbelastung" = \() print_exposition_parameter(
     plots, "O3_max_98p_m1",
     text = 'Die "typische Spitzenbelastung" entspricht dem höchsten monatlichen 98%-Perzentil der Halbstundenmittelwerte.'
@@ -87,7 +87,7 @@ print_year_slider(plots, "distribution_cumulative", "Ndep")
 
 ```{r}
 #| label: population-over-thresh-ndep
-get_plot(plots, "population_over_thresh", "Ndep")
+airquality.methods::get_plot(plots, "population_over_thresh", "Ndep")
 ```
 
 ### Tabelle luftschadstoffbelastete Bevölkerung

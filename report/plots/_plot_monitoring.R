@@ -74,14 +74,14 @@ plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep <-
                          pointsize = pointsize, jitter_seed = jitter_seed, theme = theme_ts)
 
 
-# collect the plots in a catalog for the Quarto pages (get_plot(plots_monitoring, "timeseries_siteclass", "NO2"))
+# collect the plots in a catalog for the Quarto pages (airquality.methods::get_plot(plots_monitoring, "timeseries_siteclass", "NO2"))
 # ---
 plots_monitoring <-
   dplyr::bind_rows(
-    plot_catalog(plots$monitoring$threshold_comparison, "threshold_comparison", names_to = "year"),
-    plot_catalog(plots$monitoring$timeseries_siteclass, "timeseries_siteclass", names_to = "parameter"),
-    plot_catalog(plots$monitoring$timeseries_ndep_bachtel$Ndep, "timeseries_ndep_bachtel"),
-    plot_catalog(plots$monitoring$timeseries_ndep_all$Ndep, "timeseries_ndep_all"),
-    plot_catalog(plots$monitoring$timeseries_ndep_exceedance$Ndep, "timeseries_ndep_exceedance"),
-    plot_catalog(plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep, "timeseries_ndep_all_vs_CLN")
+    airquality.methods::plot_catalog(plots$monitoring$threshold_comparison, "threshold_comparison", names_to = "year"),
+    airquality.methods::plot_catalog(plots$monitoring$timeseries_siteclass, "timeseries_siteclass", names_to = "parameter"),
+    airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_bachtel$Ndep, "timeseries_ndep_bachtel"),
+    airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_all$Ndep, "timeseries_ndep_all"),
+    airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_exceedance$Ndep, "timeseries_ndep_exceedance"),
+    airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep, "timeseries_ndep_all_vs_CLN")
   )

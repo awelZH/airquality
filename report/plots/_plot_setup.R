@@ -3,7 +3,7 @@
 # Run from the project root, then source one of the topic scripts, e.g.
 #   source("report/plots/_plot_setup.R", encoding = "UTF-8")
 #   source("report/plots/_plot_exposition.R", encoding = "UTF-8") # -> plots_exposition
-#   get_plot(plots_exposition, "population_weighted_mean", "NO2")
+#   airquality.methods::get_plot(plots_exposition, "population_weighted_mean", "NO2")
 # ---
 
 # the plot code uses prefixes; airquality.methods is attached only for prepare_emission_trends() (trend data,

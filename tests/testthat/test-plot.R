@@ -3,76 +3,13 @@
 
 titled <- function(title) ggplot2::ggplot() + ggplot2::ggtitle(title)
 
-# ---- plot_catalog() -----------------------------------------------------------------
+# plot_catalog(), get_plot(), catalog_entries() and print_tabset() are tested in airquality.methods; the
+# catalogs here are built with them.
 
-test_that("plot_catalog() gives one row for a single plot, without parameter and year", {
-  result <- plot_catalog(titled("a"), "rsd_norm")
-
-  expect_named(result, c("plot", "parameter", "year", "figure"))
-  expect_equal(result$plot, "rsd_norm")
-  expect_true(is.na(result$parameter))
-  expect_true(is.na(result$year))
-  expect_s3_class(result$figure[[1]], "ggplot")
-})
-
-test_that("plot_catalog() takes the names of a list as parameter or year", {
-  per_parameter <- plot_catalog(list(NO2 = titled("a"), PM10 = titled("b")), "timeseries", names_to = "parameter")
-  per_year <- plot_catalog(list(`2020` = titled("a"), `2021` = titled("b")), "ndep_hist", names_to = "year")
-
-  expect_equal(per_parameter$parameter, c("NO2", "PM10"))
-  expect_true(all(is.na(per_parameter$year)))
-  expect_equal(per_year$year, c("2020", "2021"))
-  expect_true(all(is.na(per_year$parameter)))
-})
-
-test_that("plot_catalog() takes the names of a nested list as parameter and year", {
-  plots <- list(
-    NO2 = list(alle = titled("a"), `2020` = titled("b")),
-    PM10 = list(`2020` = titled("c"))
-  )
-
-  result <- plot_catalog(plots, "distribution_cumulative", names_to = c("parameter", "year"))
-
-  expect_equal(result$parameter, c("NO2", "NO2", "PM10"))
-  expect_equal(result$year, c("alle", "2020", "2020"))
-  expect_equal(result$figure[[3]]$labels$title, "c")
-})
-
-test_that("plot_catalog() stops on unnamed lists", {
-  expect_error(plot_catalog(list(titled("a")), "x", names_to = "parameter"), "named")
-})
-
-# ---- get_plot() ---------------------------------------------------------------------
-
-make_catalog <- function() {
-  dplyr::bind_rows(
-    plot_catalog(titled("single"), "rsd_norm"),
-    plot_catalog(list(NO2 = titled("no2"), PM10 = titled("pm10")), "timeseries", names_to = "parameter"),
-    plot_catalog(list(NO2 = list(`2020` = titled("no2 2020"), `2021` = titled("no2 2021"))), "map", names_to = c("parameter", "year"))
-  )
-}
-
-test_that("get_plot() returns the one plot matching plot, parameter and year", {
-  catalog <- make_catalog()
-
-  expect_equal(get_plot(catalog, "rsd_norm")$labels$title, "single")
-  expect_equal(get_plot(catalog, "timeseries", "PM10")$labels$title, "pm10")
-  expect_equal(get_plot(catalog, "map", "NO2", 2021)$labels$title, "no2 2021")
-})
-
-test_that("get_plot() stops if no plot or several plots match, naming the available ones", {
-  catalog <- make_catalog()
-
-  expect_error(get_plot(catalog, "timeseries", "O3"), class = "airquality_plot_error")
-  expect_error(get_plot(catalog, "timeseries", "O3"), "PM10")
-  expect_error(get_plot(catalog, "timeseries"), class = "airquality_plot_error")
-  expect_error(get_plot(catalog, "tiemseries"), class = "airquality_plot_error")
-})
-
-# ---- print_year_slider(), print_tabset() ---------------------------------------------
+# ---- print_year_slider() ---------------------------------------------------------------
 
 test_that("print_year_slider() starts at the newest year", {
-  catalog <- plot_catalog(list(`2019` = titled("a"), `2021` = titled("b")), "ndep_hist", names_to = "year")
+  catalog <- airquality.methods::plot_catalog(list(`2019` = titled("a"), `2021` = titled("b")), "ndep_hist", names_to = "year")
 
   output <- withr::with_pdf(NULL, utils::capture.output(print_year_slider(catalog, "ndep_hist")))
 
@@ -80,16 +17,10 @@ test_that("print_year_slider() starts at the newest year", {
 })
 
 test_that("print_year_slider() stops for plots without years or unknown plots", {
-  catalog <- plot_catalog(list(NO2 = titled("a")), "timeseries", names_to = "parameter")
+  catalog <- airquality.methods::plot_catalog(list(NO2 = titled("a")), "timeseries", names_to = "parameter")
 
   expect_error(print_year_slider(catalog, "timeseries", "NO2"), class = "airquality_plot_error")
-  expect_error(print_year_slider(catalog, "unknown"), class = "airquality_plot_error")
-})
-
-test_that("print_tabset() writes one tab per plot, titled by its name", {
-  output <- withr::with_pdf(NULL, utils::capture.output(print_tabset(list(absolut = titled("a"), relativ = titled("b")))))
-
-  expect_contains(output, c("::: {.panel-tabset}", "##### absolut", "##### relativ"))
+  expect_error(print_year_slider(catalog, "unknown"), class = "plot_catalog_error")
 })
 
 # ---- parameter_setting() ------------------------------------------------------------
@@ -102,7 +33,7 @@ test_that("parameter_setting() returns the setting of a parameter and stops for 
 })
 
 test_that("print_year_slider() puts an 'alle' plot into its own tab, next to the slider of the years", {
-  catalog <- plot_catalog(
+  catalog <- airquality.methods::plot_catalog(
     list(NO2 = list(`2021` = titled("b"), alle = titled("all"), `2020` = titled("a"))),
     "distribution_cumulative", names_to = c("parameter", "year")
   )
@@ -116,7 +47,7 @@ test_that("print_year_slider() puts an 'alle' plot into its own tab, next to the
 })
 
 test_that("print_year_slider() sorts labels of year ranges by their last year", {
-  catalog <- plot_catalog(
+  catalog <- airquality.methods::plot_catalog(
     rlang::set_names(list(titled("a"), titled("b"), titled("c")), c("2020–2022", "2018–2020", "2019–2021")),
     "threshold_comparison", names_to = "year"
   )

@@ -113,11 +113,11 @@ test_that("plot_population_over_thresholds() gives one plot per parameter, witho
 test_that("print_exposition_parameter() prints the text, the distributions and a tabset canton / municipalities", {
   plot <- ggplot2::ggplot()
   catalog <- dplyr::bind_rows(
-    plot_catalog(list(NO2 = list(`2020` = plot)), "distribution_histogram", names_to = c("parameter", "year")),
-    plot_catalog(list(NO2 = list(alle = plot, `2020` = plot)), "distribution_cumulative", names_to = c("parameter", "year")),
-    plot_catalog(list(NO2 = plot), "population_over_thresh", names_to = "parameter"),
-    plot_catalog(list(NO2 = plot), "population_weighted_mean", names_to = "parameter"),
-    plot_catalog(list(NO2 = list(`2020` = plot)), "population_weighted_mean_map", names_to = c("parameter", "year"))
+    airquality.methods::plot_catalog(list(NO2 = list(`2020` = plot)), "distribution_histogram", names_to = c("parameter", "year")),
+    airquality.methods::plot_catalog(list(NO2 = list(alle = plot, `2020` = plot)), "distribution_cumulative", names_to = c("parameter", "year")),
+    airquality.methods::plot_catalog(list(NO2 = plot), "population_over_thresh", names_to = "parameter"),
+    airquality.methods::plot_catalog(list(NO2 = plot), "population_weighted_mean", names_to = "parameter"),
+    airquality.methods::plot_catalog(list(NO2 = list(`2020` = plot)), "population_weighted_mean_map", names_to = c("parameter", "year"))
   )
 
   output <- withr::with_pdf(NULL, utils::capture.output(print_exposition_parameter(catalog, "NO2", text = "Erläuterung")))

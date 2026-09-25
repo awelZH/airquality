@@ -113,7 +113,9 @@ strings (`parse_expr()`, silently the first match) and stops with class `airqual
 exactly one plot matches, listing the available ones. Renamed plot ids: `population_over_thresh`
 (was pollutant `timeseries_various`), `population_over_thresh_share` (`rel_various`). The 32
 `get_plot()` calls of the pages were converted mechanically. 304 figures byte-identical (compared by
-content, `compare_plots_content()`, because the file names changed with the catalog).
+content, `compare_plots_content()`, because the file names changed with the catalog). Since 2026-09-25
+`plot_catalog()`, `catalog_entries()`, `get_plot()` and `print_tabset()` live in `airquality.methods` 0.5.0
+(decision 10); their errors are of class `plot_catalog_error`, the calls carry the `airquality.methods::` prefix.
 
 `tests/regression/check_pages.R` runs the code chunks and inline expressions of all pages without
 rendering (7 pages OK, about 4 min while the tabsets are still knitted inline). Pitfall: `knitr::knit()`

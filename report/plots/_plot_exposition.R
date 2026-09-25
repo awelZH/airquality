@@ -66,14 +66,14 @@ plots$exposition$population_weighted_mean_map <-
 plots$exposition$population_weighted_mean <- plot_weighted_mean_timeseries(data_expo_weighmean_canton, plot_parameters_timeseries, theme = theme_ts)
 
 
-# collect the plots in a catalog for the Quarto pages (get_plot(plots_exposition, "distribution_histogram", "NO2", 2020))
+# collect the plots in a catalog for the Quarto pages (airquality.methods::get_plot(plots_exposition, "distribution_histogram", "NO2", 2020))
 # ---
 plots_exposition <-
   dplyr::bind_rows(
-    plot_catalog(plots$exposition$population_over_thresh, "population_over_thresh", names_to = "parameter"),
-    plot_catalog(plots$exposition$population_over_thresh_share, "population_over_thresh_share"),
-    plot_catalog(plots$exposition$distribution_histogram, "distribution_histogram", names_to = c("parameter", "year")),
-    plot_catalog(plots$exposition$distribution_cumulative, "distribution_cumulative", names_to = c("parameter", "year")),
-    plot_catalog(plots$exposition$population_weighted_mean, "population_weighted_mean", names_to = "parameter"),
-    plot_catalog(plots$exposition$population_weighted_mean_map, "population_weighted_mean_map", names_to = c("parameter", "year"))
+    airquality.methods::plot_catalog(plots$exposition$population_over_thresh, "population_over_thresh", names_to = "parameter"),
+    airquality.methods::plot_catalog(plots$exposition$population_over_thresh_share, "population_over_thresh_share"),
+    airquality.methods::plot_catalog(plots$exposition$distribution_histogram, "distribution_histogram", names_to = c("parameter", "year")),
+    airquality.methods::plot_catalog(plots$exposition$distribution_cumulative, "distribution_cumulative", names_to = c("parameter", "year")),
+    airquality.methods::plot_catalog(plots$exposition$population_weighted_mean, "population_weighted_mean", names_to = "parameter"),
+    airquality.methods::plot_catalog(plots$exposition$population_weighted_mean_map, "population_weighted_mean_map", names_to = c("parameter", "year"))
   )

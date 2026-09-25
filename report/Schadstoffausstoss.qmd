@@ -25,13 +25,13 @@ Hier werden vor allem [Daten zu den Luftschadstoffemissionen im Kanton Zürich](
 ##### absolut
 ```{r}
 #| label: nox-emissions-abs
-get_plot(plots, "inventory_absolute", "NOx")
+airquality.methods::get_plot(plots, "inventory_absolute", "NOx")
 ```
 
 ##### relativ
 ```{r}
 #| label: nox-emissions-rel
-get_plot(plots, "inventory_relative", "NOx")
+airquality.methods::get_plot(plots, "inventory_relative", "NOx")
 ```
 
 :::
@@ -43,13 +43,13 @@ get_plot(plots, "inventory_relative", "NOx")
 ##### nach Abgasnorm
 ```{r}
 #| label: nox-emissions-rsd-norm
-get_plot(plots, "rsd_norm")
+airquality.methods::get_plot(plots, "rsd_norm")
 ```
 
 ##### nach Modelljahr
 ```{r}
 #| label: nox-emissions-rsd-yearmodel
-get_plot(plots, "rsd_yearmodel")
+airquality.methods::get_plot(plots, "rsd_yearmodel")
 ```
 
 ##### nach Messjahr
@@ -57,7 +57,7 @@ get_plot(plots, "rsd_yearmodel")
 #| label: nox-emissions-rsd-yearmeas
 #| fig.width: 6
 #| fig.asp: 0.75
-get_plot(plots, "rsd_yearmeas")
+airquality.methods::get_plot(plots, "rsd_yearmeas")
 ```
 
 :::
@@ -69,13 +69,13 @@ get_plot(plots, "rsd_yearmeas")
 ##### absolut
 ```{r}
 #| label: pm25-emissions-abs
-get_plot(plots, "inventory_absolute", "PM2.5")
+airquality.methods::get_plot(plots, "inventory_absolute", "PM2.5")
 ```
 
 ##### relativ
 ```{r}
 #| label: pm25-emissions-rel
-get_plot(plots, "inventory_relative", "PM2.5")
+airquality.methods::get_plot(plots, "inventory_relative", "PM2.5")
 ```
 
 :::
@@ -87,13 +87,13 @@ get_plot(plots, "inventory_relative", "PM2.5")
 ##### absolut
 ```{r}
 #| label: pm10-emissions-abs
-get_plot(plots, "inventory_absolute", "PM10")
+airquality.methods::get_plot(plots, "inventory_absolute", "PM10")
 ```
 
 ##### relativ
 ```{r}
 #| label: pm10-emissions-rel
-get_plot(plots, "inventory_relative", "PM10")
+airquality.methods::get_plot(plots, "inventory_relative", "PM10")
 ```
 
 :::
@@ -105,13 +105,13 @@ get_plot(plots, "inventory_relative", "PM10")
 ##### absolut
 ```{r}
 #| label: eBC-emissions-abs
-get_plot(plots, "inventory_absolute", "eBC")
+airquality.methods::get_plot(plots, "inventory_absolute", "eBC")
 ```
 
 ##### relativ
 ```{r}
 #| label: eBC-emissions-rel
-get_plot(plots, "inventory_relative", "eBC")
+airquality.methods::get_plot(plots, "inventory_relative", "eBC")
 ```
 
 :::
@@ -123,13 +123,13 @@ get_plot(plots, "inventory_relative", "eBC")
 ##### absolut
 ```{r}
 #| label: nh3-emissions-abs
-get_plot(plots, "inventory_absolute", "NH3")
+airquality.methods::get_plot(plots, "inventory_absolute", "NH3")
 ```
 
 ##### relativ
 ```{r}
 #| label: nh3-emissions-rel
-get_plot(plots, "inventory_relative", "NH3")
+airquality.methods::get_plot(plots, "inventory_relative", "NH3")
 ```
 
 :::
@@ -141,13 +141,13 @@ get_plot(plots, "inventory_relative", "NH3")
 ##### absolut
 ```{r}
 #| label: co-emissions-abs
-get_plot(plots, "inventory_absolute", "CO")
+airquality.methods::get_plot(plots, "inventory_absolute", "CO")
 ```
 
 ##### relativ
 ```{r}
 #| label: co-emissions-rel
-get_plot(plots, "inventory_relative", "CO")
+airquality.methods::get_plot(plots, "inventory_relative", "CO")
 ```
 
 :::
@@ -159,13 +159,13 @@ get_plot(plots, "inventory_relative", "CO")
 ##### absolut
 ```{r}
 #| label: nmvoc-emissions-abs
-get_plot(plots, "inventory_absolute", "NMVOC")
+airquality.methods::get_plot(plots, "inventory_absolute", "NMVOC")
 ```
 
 ##### relativ
 ```{r}
 #| label: nmvoc-emissions-rel
-get_plot(plots, "inventory_relative", "NMVOC")
+airquality.methods::get_plot(plots, "inventory_relative", "NMVOC")
 ```
 
 :::
@@ -177,13 +177,13 @@ get_plot(plots, "inventory_relative", "NMVOC")
 ##### absolut
 ```{r}
 #| label: so2-emissions-abs
-get_plot(plots, "inventory_absolute", "SO2")
+airquality.methods::get_plot(plots, "inventory_absolute", "SO2")
 ```
 
 ##### relativ
 ```{r}
 #| label: so2-emissions-rel
-get_plot(plots, "inventory_relative", "SO2")
+airquality.methods::get_plot(plots, "inventory_relative", "SO2")
 ```
 
 :::

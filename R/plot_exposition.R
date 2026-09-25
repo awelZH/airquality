@@ -198,10 +198,10 @@ print_exposition_parameter <- function(catalog, parameter, text = NULL) {
   print_year_slider(catalog, "distribution_histogram", parameter)
   print_year_slider(catalog, "distribution_cumulative", parameter)
   heading("Entwicklung luftschadstoffbelastete Bevölkerung")
-  print(get_plot(catalog, "population_over_thresh", parameter))
+  print(airquality.methods::get_plot(catalog, "population_over_thresh", parameter))
   heading("mittlere Bevölkerungsbelastung")
-  print_tabset(list(
-    Kanton = get_plot(catalog, "population_weighted_mean", parameter),
+  airquality.methods::print_tabset(list(
+    Kanton = airquality.methods::get_plot(catalog, "population_weighted_mean", parameter),
     Gemeinden = \() print_year_slider(catalog, "population_weighted_mean_map", parameter)
   ))
 

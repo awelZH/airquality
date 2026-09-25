@@ -33,28 +33,28 @@ print_year_slider(plots, "threshold_comparison")
 
 ```{r}
 #| label: ts-no2
-get_plot(plots, "timeseries_siteclass", "NO2")
+airquality.methods::get_plot(plots, "timeseries_siteclass", "NO2")
 ```
 
 ### Feinstaub PM2.5
 
 ```{r}
 #| label: ts-pm25
-get_plot(plots, "timeseries_siteclass", "PM2.5")
+airquality.methods::get_plot(plots, "timeseries_siteclass", "PM2.5")
 ```
 
 ### Feinstaub PM10
 
 ```{r}
 #| label: ts-pm10
-get_plot(plots, "timeseries_siteclass", "PM10")
+airquality.methods::get_plot(plots, "timeseries_siteclass", "PM10")
 ```
 
 ### Russ im Feinstaub
 
 ```{r}
 #| label: ts-ebc
-get_plot(plots, "timeseries_siteclass", "eBC")
+airquality.methods::get_plot(plots, "timeseries_siteclass", "eBC")
 ```
 
 ### Ozon
@@ -62,9 +62,9 @@ get_plot(plots, "timeseries_siteclass", "eBC")
 ```{r}
 #| label: tabs-ts-o3
 #| output: asis
-print_tabset(list(
-  "typische Spitzenbelastung" = get_plot(plots, "timeseries_siteclass", "O3_max_98p_m1"),
-  "mittlere Sommertagbelastung" = get_plot(plots, "timeseries_siteclass", "O3_peakseason_mean_d1_max_mean_h8gl")
+airquality.methods::print_tabset(list(
+  "typische Spitzenbelastung" = airquality.methods::get_plot(plots, "timeseries_siteclass", "O3_max_98p_m1"),
+  "mittlere Sommertagbelastung" = airquality.methods::get_plot(plots, "timeseries_siteclass", "O3_peakseason_mean_d1_max_mean_h8gl")
 ))
 ```
 
@@ -79,9 +79,9 @@ Die "mittlere Sommertagbelastung" entspricht dem Durchschnitt des maximalen 8-St
 ```{r}
 #| label: tabs-ndep-sites
 #| output: asis
-print_tabset(list(
-  "Messreihe Bachtel seit 2001" = get_plot(plots, "timeseries_ndep_bachtel"),
-  "alle seit 2019" = get_plot(plots, "timeseries_ndep_all")
+airquality.methods::print_tabset(list(
+  "Messreihe Bachtel seit 2001" = airquality.methods::get_plot(plots, "timeseries_ndep_bachtel"),
+  "alle seit 2019" = airquality.methods::get_plot(plots, "timeseries_ndep_all")
 ))
 ```
 
@@ -90,8 +90,8 @@ print_tabset(list(
 ```{r}
 #| label: tabs-ndep-cln
 #| output: asis
-print_tabset(list(
-  absolut = get_plot(plots, "timeseries_ndep_exceedance"),
-  relativ = get_plot(plots, "timeseries_ndep_all_vs_CLN")
+airquality.methods::print_tabset(list(
+  absolut = airquality.methods::get_plot(plots, "timeseries_ndep_exceedance"),
+  relativ = airquality.methods::get_plot(plots, "timeseries_ndep_all_vs_CLN")
 ))
 ```

@@ -1,4 +1,5 @@
-# Building blocks shared by the report pages: bar time series, plot catalog, year slider and tabsets.
+# Building blocks shared by the report pages: bar time series, year slider, threshold lines. The plot catalog
+# (airquality.methods::plot_catalog(), airquality.methods::get_plot(), airquality.methods::catalog_entries()) and airquality.methods::print_tabset() come from airquality.methods.
 # Topic plots live in R/plot_<topic>.R (emissions, monitoring, exposition, outcomes, trends).
 
 
@@ -44,95 +45,6 @@ label_big_mark <- function(x) {
 }
 
 
-#' Collect plots in a catalog for the Quarto pages
-#'
-#' The caller says what the names of the list mean, so the catalog does not guess its structure.
-#'
-#' @param figures A ggplot, a list of ggplots named by parameter or year, or a list of such lists
-#'   (names of the outer list = parameter, of the inner lists = year).
-#' @param plot Name of the plot, e.g. "distribution_histogram".
-#' @param names_to What the names of the list levels are: `character()` for a single plot, `"parameter"`,
-#'   `"year"` or `c("parameter", "year")`.
-#'
-#' @return Tibble with `plot`, `parameter` and `year` (character, `NA` if not applicable) and the list
-#'   column `figure`, one row per plot.
-#'
-#' @keywords internal
-plot_catalog <- function(figures, plot, names_to = character()) {
-
-  if (length(names_to) == 0) {
-    return(tibble::tibble(plot = plot, parameter = NA_character_, year = NA_character_, figure = list(figures)))
-  }
-  if (!rlang::is_named(figures)) {
-    cli::cli_abort("{.arg figures} of {.val {plot}} must be a named list (names = {names_to[1]}).")
-  }
-
-  figures |>
-    purrr::imap(\(figure, name) {
-      plot_catalog(figure, plot, names_to[-1]) |>
-        dplyr::mutate("{names_to[1]}" := name)
-    }) |>
-    purrr::list_rbind()
-}
-
-
-#' Rows of a plot catalog matching plot, parameter and year
-#'
-#' @param catalog Plot catalog as built by [plot_catalog()].
-#' @param plot Name of the plot.
-#' @param parameter,year Parameter and year; `NULL` to keep all.
-#'
-#' @return The matching rows. Stops with an error of class `airquality_plot_error` if there are none,
-#'   naming the available plots.
-#'
-#' @keywords internal
-catalog_entries <- function(catalog, plot, parameter = NULL, year = NULL) {
-
-  match <- catalog$plot == plot
-  if (!is.null(parameter)) match <- match & catalog$parameter %in% parameter
-  if (!is.null(year)) match <- match & catalog$year %in% as.character(year)
-
-  if (!any(match)) abort_plot_match(catalog, plot, parameter, year, 0)
-  catalog[match, ]
-}
-
-
-#' Get one plot from a plot catalog
-#'
-#' @inheritParams catalog_entries
-#' @param parameter,year Parameter and year of the plot; `NULL` if the plot has none.
-#'
-#' @return A ggplot. Stops with an error of class `airquality_plot_error` unless exactly one plot matches.
-#'
-#' @keywords internal
-get_plot <- function(catalog, plot, parameter = NULL, year = NULL) {
-
-  entries <- catalog_entries(catalog, plot, parameter, year)
-  if (nrow(entries) != 1) abort_plot_match(catalog, plot, parameter, year, nrow(entries))
-
-  entries$figure[[1]]
-}
-
-
-# error for get_plot() and catalog_entries(): how many plots match, and which ones exist
-abort_plot_match <- function(catalog, plot, parameter, year, n) {
-  available <- catalog[catalog$plot == plot, ]
-  wanted <- paste(c(plot, parameter, year), collapse = " / ")
-  cli::cli_abort(
-    c(
-      "{n} plot{?s} match {.val {wanted}}, expected exactly one.",
-      i = if (nrow(available) == 0) {
-        "Available plots: {.val {unique(catalog$plot)}}."
-      } else {
-        "Available for {.val {plot}} (parameter / year): {.val {unique(paste(available$parameter, available$year, sep = ' / '))}}."
-      }
-    ),
-    class = "airquality_plot_error",
-    call = rlang::caller_env(2)
-  )
-}
-
-
 #' Print the plots of one parameter per year as a year slider (Quarto page)
 #'
 #' For a chunk with `#| output: asis`. Writes a `.year-slider` div with one `.year-panel` div per year and
@@ -141,7 +53,7 @@ abort_plot_match <- function(catalog, plot, parameter, year, n) {
 #' tab of its own, next to a tab with the slider. Years are sorted by their last year, so labels of year
 #' ranges ("2023–2025") work as well.
 #'
-#' @param catalog Plot catalog as built by [plot_catalog()].
+#' @param catalog Plot catalog as built by [airquality.methods::plot_catalog()].
 #' @param plot Name of the plot.
 #' @param parameter Parameter; `NULL` if the plot has none.
 #'
@@ -150,7 +62,7 @@ abort_plot_match <- function(catalog, plot, parameter, year, n) {
 #' @keywords internal
 print_year_slider <- function(catalog, plot, parameter = NULL) {
 
-  entries <- catalog_entries(catalog, plot, parameter)
+  entries <- airquality.methods::catalog_entries(catalog, plot, parameter)
   if (anyNA(entries$year)) cli::cli_abort("Plot {.val {plot}} has entries without year.", class = "airquality_plot_error")
 
   all_years <- entries[entries$year == "alle", ]
@@ -159,7 +71,7 @@ print_year_slider <- function(catalog, plot, parameter = NULL) {
 
   if (nrow(all_years) == 0) return(print_slider_panels(entries))
 
-  print_tabset(list(
+  airquality.methods::print_tabset(list(
     "alle Jahre" = all_years$figure[[1]],
     "einzelne Jahre" = \() print_slider_panels(entries)
   ))
@@ -174,30 +86,6 @@ print_slider_panels <- function(entries) {
     cat("::: {.year-panel data-year=\"", year, "\"}\n\n", sep = "")
     print(figure)
     cat("\n\n:::\n\n")
-  })
-  cat(":::\n\n")
-
-  invisible(NULL)
-}
-
-
-#' Print plots as a tabset (Quarto page)
-#'
-#' For a chunk with `#| output: asis`.
-#'
-#' @param figures Named list of ggplots, or of functions printing the content of a tab (e.g. a slider);
-#'   the names are the tab titles.
-#'
-#' @return `NULL`, invisibly; called for its output.
-#'
-#' @keywords internal
-print_tabset <- function(figures) {
-
-  cat("\n\n::: {.panel-tabset}\n\n")
-  purrr::iwalk(figures, \(figure, title) {
-    cat("##### ", title, "\n\n", sep = "")
-    if (is.function(figure)) figure() else print(figure)
-    cat("\n\n")
   })
   cat(":::\n\n")
 

@@ -12,9 +12,9 @@ to debug and silently carry old errors forward: the double counting of exclave c
 
 ## Architecture decisions and why
 
-**1. `airquality.methods` 0.4.0 from GitHub.** Until 2026-09-24 installed from the local repo; since then
-from `awelZH/airquality.methods@7252da2` (pinned in `renv.lock`, `renv::install("awelZH/airquality.methods@<sha>")`
-for a newer version). With 0.4.0 only its exports may carry the `airquality.methods::` prefix.
+**1. `airquality.methods` from GitHub** (0.5.0 since 2026-09-25). Until 2026-09-24 installed from the local repo;
+since then from GitHub, now `awelZH/airquality.methods@43aba1a` (pinned in `renv.lock`, `renv::install("awelZH/airquality.methods@<sha>")`
+for a newer version). Since 0.4.0 only its exports may carry the `airquality.methods::` prefix.
 **After (re)installing `airquality.methods`, restart the R session** before running the pipeline:
 `library()` does not reload an already loaded namespace. Check with
 `getNamespaceVersion("airquality.methods")`.
@@ -125,6 +125,14 @@ for pipes); `append_log()` is gone, `write_local_csv(append = TRUE)` now creates
 directories and writes the header when the file is new. Stays here: `round_population()` (output
 formatting of this analysis). Regression on frozen inputs: all 11 outputs of emissions, monitoring
 and exposition byte-identical, the 19 emission figures pixel-identical.
+Moved as well with 0.5.0 (user decision 2026-09-25), because other analyses and reports use them: the
+classes of the nitrogen deposition (`recode_ecosystems()`, `classify_ostluft_siteclass()`,
+`classify_nh3_emission()`, `classify_estimated()`, `classify_frac_estimated()`,
+`derive_source_category()`; `ndep.ostluft` had older copies of them with two bugs) and the plot catalog of
+the report (`plot_catalog()`, `catalog_entries()`, `get_plot()`, `print_tabset(level = 5)`). Unchanged except
+the error class of the catalog (`plot_catalog_error`, was `airquality_plot_error`). Stays here:
+`print_year_slider()` (needs `report/year-slider.html` and German tab titles), `aggregate_ndep()` and
+`prepare_ndep_*()` (column schema of this analysis).
 
 **11. Plots per year are shown with a year slider** (user decision 2026-09-21). The year tabsets were a
 workaround to click through the years (16–20 tabs per plot). `print_year_slider(catalog, plot,

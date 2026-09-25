@@ -30,13 +30,13 @@ plots$emissions$rsd_yearmodel$NOx <- plot_rsd_per_yearmodel(data_rsd_per_yearmod
 plots$emissions$rsd_yearmeas$NOx <- plot_rsd_per_yearmeas(data_rsd_per_yearmeas, theme = theme_ts)
 
 
-# collect the plots in a catalog for the Quarto pages (get_plot(plots_emissions, "inventory_absolute", "NOx"))
+# collect the plots in a catalog for the Quarto pages (airquality.methods::get_plot(plots_emissions, "inventory_absolute", "NOx"))
 # ---
 plots_emissions <-
   dplyr::bind_rows(
-    plot_catalog(plots$emissions$inventory_absolute, "inventory_absolute", names_to = "parameter"),
-    plot_catalog(plots$emissions$inventory_relative, "inventory_relative", names_to = "parameter"),
-    plot_catalog(plots$emissions$rsd_norm$NOx, "rsd_norm"),
-    plot_catalog(plots$emissions$rsd_yearmodel$NOx, "rsd_yearmodel"),
-    plot_catalog(plots$emissions$rsd_yearmeas$NOx, "rsd_yearmeas")
+    airquality.methods::plot_catalog(plots$emissions$inventory_absolute, "inventory_absolute", names_to = "parameter"),
+    airquality.methods::plot_catalog(plots$emissions$inventory_relative, "inventory_relative", names_to = "parameter"),
+    airquality.methods::plot_catalog(plots$emissions$rsd_norm$NOx, "rsd_norm"),
+    airquality.methods::plot_catalog(plots$emissions$rsd_yearmodel$NOx, "rsd_yearmodel"),
+    airquality.methods::plot_catalog(plots$emissions$rsd_yearmeas$NOx, "rsd_yearmeas")
   )

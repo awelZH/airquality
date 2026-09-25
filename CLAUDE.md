@@ -93,7 +93,7 @@ column order and format must not change (the directory may change; external path
 Guiding lesson: **make every step visible and recomputable** – no communication through globals, no
 appending to own outputs, no work lists derived from earlier results.
 
-1. `airquality.methods` 0.4.0 is installed into renv from GitHub (`awelZH/airquality.methods`, pinned
+1. `airquality.methods` 0.5.0 is installed into renv from GitHub (`awelZH/airquality.methods`, pinned
    sha in `renv.lock`); restart R after reinstalling.
 2. Exposition is recomputed completely on every run; downloads are cached, uncompressed GeoTIFFs are
    streamed from the web every time.
@@ -113,7 +113,8 @@ appending to own outputs, no work lists derived from earlier results.
 9. The report builds its plots while rendering (no rds files); the plot scripts stay usable in the
    console.
 10. Generic building blocks live in `airquality.methods` (municipality assignment, collector pixel
-    redistribution, grouped legend, `check_names()`); only analysis-specific code stays in `R/`.
+    redistribution, grouped legend, `check_names()`; since 0.5.0 the nitrogen deposition classes and the plot
+    catalog with `get_plot()` and `print_tabset()`); only analysis-specific code stays in `R/`.
 11. Plots per year are shown with a year slider (`print_year_slider()`, `report/year-slider.html`), not tabsets.
 
 ## Read before working on …

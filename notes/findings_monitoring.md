@@ -12,7 +12,8 @@ reproduced the fixed outputs byte-identically.**
   redundant (both carry `canton = "ZH"`).
 * ndep: `prepare_ndep_site_meta()` → `prepare_ndep_parameters()` → `aggregate_ndep()`, plus
   `recode_ecosystems()`, `derive_source_category()` and the `classify_*()` functions (thresholds as
-  documented defaults).
+  documented defaults). Since 2026-09-25 (0.5.0) these classes live in `airquality.methods`
+  (decision 10), called with the `airquality.methods::` prefix.
 * Fixes: the factor levels `c("hoch", "mittel", "tiel")` turned every "tief" into `NA` (14 of 132
   rows, 98 of 924); ecosystem "Siedlungen" (only site WIE, `cln = NA`) now counts as
   "kein empf. Ökosys." (user decision). No value changed, and the plots are unaffected (they drop

@@ -29,7 +29,7 @@ website:
       - href: Wirkungsmonitoring.qmd
         text: Wirkungsmonitoring
       - href: Bevölkerungsbelastung.qmd
-        text: Bevölkerungsbelastung
+        text: "Bevölkerungs- & Umweltbelastung"
       - href: Gesundheitsfolgen.qmd
         text: Gesundheitsfolgen
     right: 

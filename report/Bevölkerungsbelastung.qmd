@@ -1,5 +1,5 @@
 ---
-title: "Bevölkerungsbelastung"
+title: "Bevölkerungs- & Umweltbelastung"
 lightbox: true
 ---
 

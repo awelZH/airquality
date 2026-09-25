@@ -115,7 +115,7 @@ outcomes_erf_shape <- "log_linear"
 
 
 # => plots
-# years to consider for plotting
+# years to consider for plotting in airquality monitoring data
 plot_years <- 1995:year_last
 
 # number of latest years for plotting relative threshold comparison

@@ -62,7 +62,7 @@ plot_emissions_sectors_last <- list(NH3 = "Land- und Forstw.")
 
 # plotting size parameters
 basesize <- 12 # ggplot theme base_size
-caption_width <- 0.6 # width of the caption of theme_ts before it breaks, as a share of the plot width
+caption_width <- 0.475 # width of the caption of theme_ts before it breaks, as a share of the plot width
 pointsize <- 2 # size of point markers
 linewidth <- 1 # width of lines
 jitter_seed <- 1 # seed of jittered points, so figures stay the same between renders

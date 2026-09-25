@@ -244,7 +244,7 @@ stand in a tabset "typische Spitzenbelastung" / "mittlere Sommertagbelastung" as
 **Page names and figure numbers (user decision 2026-09-23).** The pages "Belastungsverteilung" and
 "Trends" are titled "Bevölkerungsbelastung" and "Wirkungsmonitoring" (page title and navbar); their
 files followed (`Bevölkerungsbelastung.qmd`, `Wirkungsmonitoring.qmd`, user decision 2026-09-24), so the
-old URLs `Belastungsverteilung.html` and `Trends.html` no longer exist. The topic names in `scripts/`
+old URLs `Belastungsverteilung.html` and `Trends.html` no longer exist. Since 2026-09-25 the exposition page is titled "Bevölkerungs- & Umweltbelastung" (page title and navbar, user decision); the file name and URL stay. The topic names in `scripts/`
 and `R/` (exposition, trends) stay. The chunk labels lost their `fig-` prefix, so Quarto no longer numbers
 the plots as "Figure x" (no page cross-references them).
 

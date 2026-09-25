@@ -12,8 +12,8 @@ to debug and silently carry old errors forward: the double counting of exclave c
 
 ## Architecture decisions and why
 
-**1. `airquality.methods` from GitHub** (0.5.0 since 2026-09-25). Until 2026-09-24 installed from the local repo;
-since then from GitHub, now `awelZH/airquality.methods@43aba1a` (pinned in `renv.lock`, `renv::install("awelZH/airquality.methods@<sha>")`
+**1. `airquality.methods` from GitHub** (0.5.1 since 2026-09-25). Until 2026-09-24 installed from the local repo;
+since then from GitHub, now `awelZH/airquality.methods@92af633` (pinned in `renv.lock`, `renv::install("awelZH/airquality.methods@<sha>")`
 for a newer version). Since 0.4.0 only its exports may carry the `airquality.methods::` prefix.
 **After (re)installing `airquality.methods`, restart the R session** before running the pipeline:
 `library()` does not reload an already loaded namespace. Check with
@@ -27,6 +27,16 @@ Exception: **uncompressed GeoTIFFs are never cached** – they are streamed thro
 and compressed assets are cached. Every `Reading "<item>" (<format>, <source>).` message says which
 applies: `streamed from the web`, `from cache` or `downloading` (`inform_reading()` in
 `airquality.methods`, 2026-09-21).
+**Downloads only when the version changed** (user decision 2026-09-25). The tables of opendata.swiss (emission
+inventory 241 MB, RSD 22 files of together 905 MB, population by age 71 MB) were downloaded on every run
+(about 30 s here, about 1.2 GB). Now a state target per dataset (`emis_emikat_state`, `emis_rsd_state`,
+`outcomes_population_state`, `opendataswiss_state()` on `airquality.methods::get_opendataswiss_resources()`,
+0.5.1) returns `download_url`, `modified` and `byte_size` of the resources that are read, with
+`tar_cue("always")`; the download targets depend on it and rerun only when it changed, like the rasters
+behind `geo_admin_asset_state()`. opendata.swiss publishes no checksum (`hash` is empty), so a file replaced
+without new `modified` or size goes unnoticed. The geolion WFS map (5 MB) has no such metadata and is still
+read on every run. Measured 2026-09-25: a run of the outputs without changes takes 21 s; the three
+downloads it skips took 28 s (21.3 + 4.7 + 2.2 s) in the run before.
 
 **3. The cell table is the unit of work for exposition.** One row per inhabited 100 m STATPOP cell and
 year (`x`, `y`, `year`, `population`, `bfsnr`, `gemeindename`, one column per pollutant), built by

@@ -2,12 +2,13 @@
 # (functions in R/emissions.R) -> data_emissions.csv
 
 pipeline_emissions_emikat <- tar_plan(
-  # emission budgets per sector group and subgroup from opendata.swiss, checked on every run
-  tar_target(
-    emis_emikat_raw,
-    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, 1), source = "Ostluft & BAFU"),
-    cue = tar_cue("always")
-  ),
+  # emission budgets per sector group and subgroup from opendata.swiss (about 240 MB): the version of the
+  # resources is checked on every run, the download only runs when it changed
+  tar_target(emis_emikat_state, opendataswiss_state(filter_ressources(setup_ressources, 1)), cue = tar_cue("always")),
+  emis_emikat_raw = {
+    emis_emikat_state
+    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, 1), source = "Ostluft & BAFU")
+  },
   # lookup table merging and renaming subsectors thematically
   tar_target(emis_emikat_file_subsectors, filter_ressources(setup_ressources, 27), format = "file"),
   emis_emikat_subsectors = airquality.methods::read_local_csv(emis_emikat_file_subsectors, locale = readr::locale(encoding = "UTF-8")),

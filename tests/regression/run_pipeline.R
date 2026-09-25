@@ -1,10 +1,11 @@
 # Run the targets pipeline on frozen inputs and write its outputs to a separate directory (phase 2b; before,
 # run_topic.R ran the topic scripts the same way).
 #
-# The network readers of airquality.methods replay the inputs of tests/regression/inputs/ (recorded on
-# first use, gitignored; refresh = TRUE downloads again), the outputs and logs go to
-# tests/regression/results/pipeline/<label>/{output,log}/ (environment variables of settings.R) and the targets
-# store to .../_targets, so data/output/, data/log/ and _targets/ are never touched. The report is not built.
+# The network readers of airquality.methods (incl. the opendata.swiss metadata) replay the inputs of
+# tests/regression/inputs/ (recorded on first use, gitignored; refresh = TRUE downloads again), the outputs and
+# logs go to tests/regression/results/pipeline/<label>/{output,log}/ (environment variables of settings.R)
+# and the targets store to .../_targets, so data/output/, data/log/ and _targets/ are never touched. The report
+# is not built.
 # tar_make() runs in this session (callr_function = NULL), so the mocked readers apply.
 #
 # compare with the outputs of the old scripts, e.g.
@@ -39,7 +40,7 @@ run_pipeline <- function(label, refresh = FALSE) {
   )
 
   ns <- asNamespace("airquality.methods")
-  network_readers <- c("read_opendataswiss", "read_geolion_wfs")
+  network_readers <- c("read_opendataswiss", "get_opendataswiss_resources", "read_geolion_wfs")
 
   testthat::with_mocked_bindings(
     targets::tar_make(

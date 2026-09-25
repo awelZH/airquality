@@ -12,12 +12,13 @@ pipeline_outcomes <- tar_plan(
     airquality.methods::read_local_csv(outcomes_file_mortality, delim = ",", locale = readr::locale(encoding = "UTF-8")) |>
     prepare_mortality(suppressed = outcomes_suppressed_deaths),
 
-  # year-end population per year, sex and age (for the life tables), checked on every run
-  tar_target(
-    outcomes_population_raw,
-    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, 28), source = "Statistisches Amt Kanton Zürich"),
-    cue = tar_cue("always")
-  ),
+  # year-end population per year, sex and age (for the life tables; about 70 MB): the version of the resource
+  # is checked on every run, the download only runs when it changed
+  tar_target(outcomes_population_state, opendataswiss_state(filter_ressources(setup_ressources, 28)), cue = tar_cue("always")),
+  outcomes_population_raw = {
+    outcomes_population_state
+    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, 28), source = "Statistisches Amt Kanton Zürich")
+  },
   outcomes_population = prepare_population_by_age(outcomes_population_raw),
 
   # deaths per year from outcomes_min_age; the mortality data of the current year arrive piece by piece

@@ -37,6 +37,30 @@ test_that("geo_admin_asset_state() keeps what shows a change of the assets, sort
   expect_equal(result$checksum[1], "ca")
 })
 
+test_that("opendataswiss_state() keeps the version of the resources that are read, sorted", {
+  fake <- function(url) {
+    tibble::tibble(
+      download_url = c("https://x/b.csv", "https://x/readme.txt", "https://x/a.csv"), format = c("CSV", "TXT", "CSV"),
+      modified = c("2026-02-06", "2025-12-15", "2026-01-19"), byte_size = c(20, 1, 10)
+    )
+  }
+
+  result <- opendataswiss_state("https://ckan/api?id=x", get_resources = fake)
+
+  expect_named(result, c("download_url", "modified", "byte_size"))
+  expect_equal(result$download_url, c("https://x/a.csv", "https://x/b.csv"))
+  expect_equal(result$modified, c("2026-01-19", "2026-02-06"))
+})
+
+test_that("opendataswiss_state() stops if no resource matches, like the reader would", {
+  fake <- function(url) {
+    tibble::tibble(download_url = "https://x/readme.txt", format = "TXT", modified = "2025-12-15", byte_size = 1)
+  }
+
+  expect_error(opendataswiss_state("https://ckan/api?id=x", get_resources = fake), "readme.txt",
+               class = "airquality_input_error")
+})
+
 test_that("restricted_file() returns an existing path and stops with a hint otherwise", {
   file <- withr::local_tempfile(lines = "x")
 

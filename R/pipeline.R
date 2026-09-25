@@ -1,5 +1,6 @@
 # Building blocks of the targets pipeline (pipelines/*.R): writing the outputs as file targets, the state
-# of online raster assets, restricted inputs, the work-in-progress outputs and the report.
+# of online raster assets and opendata.swiss tables, restricted inputs, the work-in-progress outputs and the
+# report.
 
 
 #' Write an output CSV and return its path
@@ -56,6 +57,41 @@ geo_admin_asset_state <- function(collections, get_assets = airquality.methods::
     purrr::list_rbind() |>
     dplyr::select("collection", "year", "asset", "href", "updated", checksum = "file:checksum") |>
     dplyr::arrange(.data$collection, .data$year, .data$asset)
+}
+
+
+#' State of the resources of an opendata.swiss dataset
+#'
+#' The same for the tables of opendata.swiss: the metadata (under 1 s) behind a download of up to several
+#' hundred MB. A target with `tar_cue("always")` returns it on every run, and the download target that
+#' depends on it only reruns when a resource was added, removed, modified or changed its size. There is no
+#' checksum on opendata.swiss, so a file replaced without new metadata goes unnoticed.
+#'
+#' @param url Package-show url of the CKAN API (`DOWNLOAD_URL` of `ressources.csv`).
+#' @param file_filter Substring the download url must contain; the same as in
+#'   [airquality.methods::read_opendataswiss()], so the state covers exactly the files that are read.
+#' @param get_resources Function returning the resources of a dataset
+#'   ([airquality.methods::get_opendataswiss_resources()]).
+#'
+#' @return Tibble with `download_url`, `modified` and `byte_size` of the matching resources, sorted. Stops
+#'   with an error of class `airquality_input_error` if none matches.
+#'
+#' @keywords internal
+opendataswiss_state <- function(url, file_filter = ".csv",
+                                get_resources = airquality.methods::get_opendataswiss_resources) {
+  resources <- get_resources(url)
+  matching <- dplyr::filter(resources, stringr::str_detect(.data$download_url, stringr::fixed(file_filter)))
+
+  if (nrow(matching) == 0) {
+    cli::cli_abort(c(
+      "No resource of {.url {url}} matches {.val {file_filter}}.",
+      "i" = "Available: {.val {resources$download_url}}"
+    ), class = "airquality_input_error")
+  }
+
+  matching |>
+    dplyr::select("download_url", "modified", "byte_size") |>
+    dplyr::arrange(.data$download_url)
 }
 
 

@@ -9,7 +9,8 @@
 # report is not rendered:
 #   targets::tar_make(names = c("report_sources", "report_site"), shortcut = TRUE)
 
-# 1) outputs in data/output/ (the contract): downloads are checked on every run, everything else is rebuilt
+# 1) outputs in data/output/ (the contract): the versions of the downloads (opendata.swiss, data.geo.admin.ch)
+#    are checked on every run and the data read only when they changed; everything else is rebuilt
 #    only if its inputs, functions or settings changed
 targets::tar_make(names = !tidyselect::starts_with("report_"))
 

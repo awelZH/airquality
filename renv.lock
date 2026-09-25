@@ -402,7 +402,7 @@
     },
     "airquality.methods": {
       "Package": "airquality.methods",
-      "Version": "0.5.0",
+      "Version": "0.5.1",
       "Source": "GitHub",
       "Title": "Methods for analysing air quality in the Canton of Zurich",
       "Authors@R": "person(\"Jörg\", \"Sintermann\", , \"luft@bd.zh.ch\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"YOUR-ORCID-ID\"))",
@@ -459,8 +459,8 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "awelZH",
       "RemoteRepo": "airquality.methods",
-      "RemoteRef": "43aba1a604dc5681157ea4bc1b4a22e91a44d2f0",
-      "RemoteSha": "43aba1a604dc5681157ea4bc1b4a22e91a44d2f0"
+      "RemoteRef": "92af6339e4ac8c1378f7f1ede31e2e485ca90849",
+      "RemoteSha": "92af6339e4ac8c1378f7f1ede31e2e485ca90849"
     },
     "askpass": {
       "Package": "askpass",

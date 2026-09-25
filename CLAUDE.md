@@ -37,7 +37,7 @@ A `targets` project (phase 2b, `notes/plan_phase2b.md`), renv-managed. Not an in
 | `run.R` | entry point: `tar_make()` of the outputs, optionally `wip/trends.R`, then `tar_make()` of the report |
 | `_targets.R` | sources `R/`, `settings.R` and `pipelines/`; combines the target lists `pipeline_*` |
 | `settings.R` | **all analysis settings and paths** (decisions 7 and 8), pure assignments; `path_output`/`path_log` from `AIRQUALITY_OUTPUT_DIR`/`AIRQUALITY_LOG_DIR` |
-| `pipelines/` | one target list per sub-analysis: `setup`, `emissions_emikat`, `emissions_rsd`, `monitoring_airquality`, `monitoring_ndep`, `exposition_population`, `exposition_ecosystems`, `outcomes`, `report`; target names `<topic>_<sub-analysis>_<stage>`, outputs as `format = "file"` targets (`*_out*`); downloads and raster asset states with `tar_cue("always")` |
+| `pipelines/` | one target list per sub-analysis: `setup`, `emissions_emikat`, `emissions_rsd`, `monitoring_airquality`, `monitoring_ndep`, `exposition_population`, `exposition_ecosystems`, `outcomes`, `report`; target names `<topic>_<sub-analysis>_<stage>`, outputs as `format = "file"` targets (`*_out*`); only the version states of the downloads (`*_state`, opendata.swiss) and of the raster assets (`*_assets`) run with `tar_cue("always")`, the downloads and raster reads only when the state changed; the geolion municipality map (no metadata) is read on every run |
 | `R/` | analysis-specific functions, one file per topic (`exposition.R`, `emissions.R`, `monitoring.R`, `outcomes.R`, `helpers.R`, `pipeline.R`; plots: `plot.R` shared, `plot_<topic>.R`); `prepare.R`, `aggregate.R` hold only trend code (WIP) |
 | `wip/` | work in progress outside the pipeline: `trends.R` (about 30 min), see `wip/README.md` |
 | `report/` | Quarto sources (`*.qmd`, `_quarto.yml`, `styles.css`, `year-slider.html`); plots per year as year sliders (decision 11); built by the target `report_site` |
@@ -94,7 +94,7 @@ column order and format must not change (the directory may change; external path
 Guiding lesson: **make every step visible and recomputable** – no communication through globals, no
 appending to own outputs, no work lists derived from earlier results.
 
-1. `airquality.methods` 0.5.0 is installed into renv from GitHub (`awelZH/airquality.methods`, pinned
+1. `airquality.methods` 0.5.1 is installed into renv from GitHub (`awelZH/airquality.methods`, pinned
    sha in `renv.lock`); restart R after reinstalling.
 2. Exposition is recomputed completely on every run; downloads are cached, uncompressed GeoTIFFs are
    streamed from the web every time.

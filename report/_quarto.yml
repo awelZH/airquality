@@ -18,7 +18,7 @@ website:
     search: true
     pinned: true
     # logo: "logo/logo.png"
-    logo-href: "https://www.zh.ch/de/baudirektion/amt-fuer-abfall-wasser-energie-luft.html"
+    logo-href: "https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet.html"
     left:
       - href: index.qmd
         text: Allgemeines

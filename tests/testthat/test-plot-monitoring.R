@@ -111,6 +111,7 @@ test_that("plot_monitoring_timeseries() gives one plot per parameter, with its t
   layers <- layer_data_all(plots$NO2)
   expect_equal(layers[[1]]$yintercept, c(30, 10)) # the thresholds are drawn first, behind the points
   expect_equal(sort(layers[[2]]$y), c(20, 25))
+  expect_equal(plots$NO2$labels$caption, "Referenzwerte nach heutigem Stand, Daten: Ostluft & NABEL (BAFU & Empa)")
 })
 
 test_that("the nitrogen deposition plots are built from the given data", {

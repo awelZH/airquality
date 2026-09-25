@@ -33,10 +33,11 @@ tests/regression/results/
 tests/regression/inputs/
 
 # claude skills
-/agents
-/commands
-/contexts
-/rules
-/.claude
+agents/
+commands/
+contexts/
+rules/
+.claude/
+
 # targets store
 _targets/

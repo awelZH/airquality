@@ -20,9 +20,45 @@
   flex: 1;
   padding-bottom: 1.5em;
 }
+/* own track and thumb instead of the native control, so the line can be thin (2px); the thumb stays 16px
+   wide, the width year-slider.html uses to place the year above it */
 .year-slider-track input[type="range"] {
   width: 100%;
-  accent-color: #9a9a9a;
+  height: 16px;
+  margin: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.year-slider-track input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #9a9a9a;
+  border-radius: 1px;
+}
+.year-slider-track input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -7px;  /* centred on the 2px track */
+  border-radius: 50%;
+  background: #9a9a9a;
+  border: none;
+}
+.year-slider-track input[type="range"]::-moz-range-track {
+  height: 2px;
+  background: #9a9a9a;
+  border-radius: 1px;
+}
+.year-slider-track input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9a9a9a;
+  border: none;
+}
+.year-slider-track input[type="range"]:focus-visible {
+  outline: 2px solid #555;
+  outline-offset: 2px;
 }
 .year-slider-bubble {
   position: absolute;

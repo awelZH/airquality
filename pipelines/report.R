@@ -2,9 +2,14 @@
 # while rendering (decision 9), so the report depends on the output files, not on plot targets
 
 pipeline_report <- tar_plan(
-  # sources of the report (pages, plot scripts, styles), listed on every run so that new files count too
-  tar_target(report_sources, list.files("report", recursive = TRUE, full.names = TRUE), format = "file",
-             cue = tar_cue("always")),
+  # sources of the report (pages, plot scripts, styles) and what the plot scripts source themselves (the
+  # functions in R/, settings.R), listed on every run so that new files count too
+  tar_target(
+    report_sources,
+    c(list.files(c("report", "R"), recursive = TRUE, full.names = TRUE), "settings.R"),
+    format = "file",
+    cue = tar_cue("always")
+  ),
   # threshold values of the plots
   tar_target(report_file_thresholds, filter_ressources(setup_ressources, 10), format = "file"),
 

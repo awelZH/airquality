@@ -204,7 +204,7 @@ ggplot_timeseries <- function(data, mapping = ggplot2::aes(x = year, y = concent
 #' @keywords internal
 plot_monitoring_timeseries <- function(data, parameters, axes, threshold_values, colour_scale = NULL, pointsize = 2,
                                             theme = ggplot2::theme_minimal(),
-                                            caption = "Datenabdeckung: Kanton Zürich, Referenzwerte nach heutigem Stand, Daten: Ostluft & NABEL (BAFU & Empa)") {
+                                            caption = "Referenzwerte nach heutigem Stand, Daten: Ostluft & NABEL (BAFU & Empa)") {
 
   purrr::map(rlang::set_names(parameters), function(parameter) {
 

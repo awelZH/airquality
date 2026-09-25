@@ -621,7 +621,7 @@ plot_map_validation <- function(data, fit, parameter, in_sample = FALSE, pointsi
                           mapping = ggplot2::aes(x = from, xend = to, y = intercept + slope * from, yend = intercept + slope * to,
                                                  linetype = names(lines)[2]),
                           inherit.aes = FALSE, colour = "gray10", linewidth = 1) +
-    ggplot2::facet_wrap(ggplot2::vars(traffic)) +
+    ggplot2::facet_wrap(ggplot2::vars(traffic), axes = "all_y") +
     ggplot2::coord_equal(xlim = limits, ylim = limits) +
     ggplot2::scale_colour_viridis_c(name = "Jahr", option = "D", direction = -1, breaks = scales::breaks_pretty(),
                                     guide = ggplot2::guide_colourbar(order = 2)) +

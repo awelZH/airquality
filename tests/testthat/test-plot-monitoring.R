@@ -312,6 +312,8 @@ test_that("plot_map_validation() draws one panel per traffic influence with its 
   built <- withr::with_pdf(NULL, ggplot2::ggplot_build(plot))
   # two panels, "verkehrsbelastet" first, each regression line over the measured range of its sites
   expect_equal(as.character(built$layout$layout$traffic), c("verkehrsbelastet", "Hintergrund"))
+  # a y axis in both panels
+  expect_equal(plot$facet$params$draw_axes$y, TRUE)
   segments <- built$data[[3]]
   expect_equal(nrow(segments), 2)
   expect_equal(segments$x[order(segments$PANEL)], c(10, 12))

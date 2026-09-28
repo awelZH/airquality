@@ -539,7 +539,8 @@ plot_ndep_exceedance_maps <- function(data, years, boundary, crs, caption = "Dat
 }
 
 
-#' Print the pollutant map of a parameter as a tabset "Karte" (year slider) / "Modellverifikation"
+#' Print the pollutant map of a parameter as a tabset "Karte" (year slider) / "Modellverifikation" /
+#' "Modellverifikation pro Jahr" (year slider)
 #'
 #' For a chunk with `#| output: asis`.
 #'
@@ -554,7 +555,8 @@ plot_ndep_exceedance_maps <- function(data, years, boundary, crs, caption = "Dat
 print_map_tabset <- function(catalog, parameter, level = 5) {
   airquality.methods::print_tabset(list(
     Karte = \() print_year_slider(catalog, "map", parameter),
-    Modellverifikation = airquality.methods::get_plot(catalog, "map_validation", parameter)
+    Modellverifikation = airquality.methods::get_plot(catalog, "map_validation", parameter),
+    "Modellverifikation pro Jahr" = \() print_year_slider(catalog, "map_validation_year", parameter)
   ), level = level)
 }
 
@@ -583,12 +585,18 @@ print_timeseries_map <- function(catalog, parameter, level = 6) {
 #' One panel per traffic influence of the site class ("verkehrsbelastet", "Hintergrund") with the points
 #' coloured by year, the 1:1 line and the robust regression line of the panel over its measured range
 #' ([fit_map_validation()]), both named in the legend; both axes of both panels cover the same range.
+#' Fits with a prediction band (yearly fits) draw it below the points.
 #'
 #' @param data Data as returned by [map_validation_data()].
 #' @param fit Fits as returned by [fit_map_validation()].
 #' @param parameter Parameter to plot.
 #' @param in_sample Is the map derived from the same monitoring data (O3 peak season)? Noted at the
 #'   start of the caption.
+#' @param limits Range of both axes; `NULL` for the range of the data.
+#' @param colour_years Colour the points by year, with a colour scale? `FALSE` draws them in one colour
+#'   (plots of a single year).
+#' @param legend_band Show the prediction interval in the legend also when no fit carries a band, so all
+#'   yearly plots have the same legend. The robust regression is always in the legend.
 #' @param pointsize Size of the points.
 #' @param theme ggplot2 theme.
 #' @param caption Caption.
@@ -596,7 +604,8 @@ print_timeseries_map <- function(catalog, parameter, level = 6) {
 #' @return A ggplot object.
 #'
 #' @keywords internal
-plot_map_validation <- function(data, fit, parameter, in_sample = FALSE, pointsize = 2, theme = ggplot2::theme_minimal(),
+plot_map_validation <- function(data, fit, parameter, in_sample = FALSE, limits = NULL, colour_years = TRUE, legend_band = FALSE,
+                                pointsize = 2, theme = ggplot2::theme_minimal(),
                                 caption = "Daten: BAFU, Ostluft & NABEL (BAFU & Empa)") {
 
   traffic_levels <- c("verkehrsbelastet", "Hintergrund")
@@ -608,32 +617,89 @@ plot_map_validation <- function(data, fit, parameter, in_sample = FALSE, pointsi
     dplyr::mutate(traffic = factor(traffic, levels = traffic_levels))
   pollutant <- airquality.methods::shortpollutant(parameter)
   metric <- airquality.methods::longmetric(parameter)
-  limits <- range(data$concentration, data$concentration_map)
+  limits <- limits %||% range(data$concentration, data$concentration_map)
   lines <- c("1:1-Linie" = "dashed", "robuste Regression" = "solid")
   if (in_sample) caption <- paste0("in-sample: Karte aus NO2 mit denselben Messwerten abgeleitet, keine unabhängige Verifikation; ", caption)
 
-  ggplot2::ggplot(data, ggplot2::aes(x = concentration, y = concentration_map)) +
+  # a layer without data drops its legend key; an empty placeholder row (in the first panel, removed when
+  # drawing) keeps the legend the same in years without a fit
+  placeholder <- tibble::tibble(traffic = factor(traffic_levels[1], levels = traffic_levels))
+  if (nrow(fit) == 0) fit <- dplyr::mutate(placeholder, from = NA_real_, to = NA_real_, intercept = NA_real_, slope = NA_real_)
+
+  # the prediction band of fits that carry one (yearly fits), below everything else
+  band <- if ("band" %in% names(fit) && any(lengths(fit$band) > 0)) {
+    fit |>
+      dplyr::select(traffic, band) |>
+      tidyr::unnest(band)
+  } else if (legend_band) {
+    dplyr::mutate(placeholder, concentration = NA_real_, lower = NA_real_, upper = NA_real_)
+  }
+
+  plot <- ggplot2::ggplot(data, ggplot2::aes(x = concentration, y = concentration_map))
+  if (!is.null(band)) {
+    plot <- plot +
+      ggplot2::geom_ribbon(data = dplyr::mutate(band, interval = "95%-Prognoseintervall"),
+                           mapping = ggplot2::aes(x = concentration, ymin = lower, ymax = upper, fill = interval),
+                           inherit.aes = FALSE, na.rm = TRUE) +
+      ggplot2::scale_fill_manual(name = NULL, values = c("95%-Prognoseintervall" = "gray85"), guide = ggplot2::guide_legend(order = 2))
+  }
+  points <- if (colour_years) {
+    list(
+      ggplot2::geom_point(mapping = ggplot2::aes(colour = year), size = pointsize),
+      ggplot2::scale_colour_viridis_c(name = "Jahr", option = "D", direction = -1, breaks = scales::breaks_pretty(),
+                                      guide = ggplot2::guide_colourbar(order = 3))
+    )
+  } else {
+    ggplot2::geom_point(colour = "#31688E", size = pointsize)
+  }
+
+  plot +
     ggplot2::geom_abline(data = tibble::tibble(line = names(lines)[1]),
                          mapping = ggplot2::aes(intercept = 0, slope = 1, linetype = line), colour = "gray40") +
-    ggplot2::geom_point(mapping = ggplot2::aes(colour = year), size = pointsize) +
+    points +
     # the regression line over the points, so it stays visible in the dense traffic panel
     ggplot2::geom_segment(data = fit,
                           mapping = ggplot2::aes(x = from, xend = to, y = intercept + slope * from, yend = intercept + slope * to,
                                                  linetype = names(lines)[2]),
-                          inherit.aes = FALSE, colour = "gray10", linewidth = 1) +
+                          inherit.aes = FALSE, colour = "gray10", linewidth = 1, na.rm = TRUE) +
     ggplot2::facet_wrap(ggplot2::vars(traffic), axes = "all_y") +
     ggplot2::coord_equal(xlim = limits, ylim = limits) +
-    ggplot2::scale_colour_viridis_c(name = "Jahr", option = "D", direction = -1, breaks = scales::breaks_pretty(),
-                                    guide = ggplot2::guide_colourbar(order = 2)) +
     ggplot2::scale_linetype_manual(name = NULL, values = lines, breaks = names(lines), guide = ggplot2::guide_legend(order = 1)) +
     ggplot2::labs(x = "Messwert (µg/m3)", y = "Kartenwert am Messort (µg/m3)", caption = caption) +
     ggplot2::ggtitle(
       label = openair::quickText(paste0("Modellverifikation Belastungskarte ", airquality.methods::longpollutant(pollutant))),
-      subtitle = openair::quickText(paste0(pollutant, ", ", metric, ", ", paste(range(data$year), collapse = "–")))
+      subtitle = openair::quickText(paste0(pollutant, ", ", metric, ", ", paste(unique(range(data$year)), collapse = "–")))
     ) +
     theme +
     ggplot2::theme(
       axis.title = ggplot2::element_text(size = ggplot2::rel(0.8)),
       axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 4, b = 8))
     )
+}
+
+
+#' Plot the map values against the measured values, one plot per year
+#'
+#' As [plot_map_validation()], with the yearly fits and their prediction band and the points in one colour
+#' (no colour scale of the years); all years of a parameter share the axes, so they can be compared on the
+#' slider.
+#'
+#' @inheritParams plot_map_validation
+#' @param data Data as returned by [map_validation_data()], restricted to the years to plot
+#'   ([keep_years_with_pairs()]).
+#' @param fit Yearly fits as returned by [fit_map_validation()] with `by = c("parameter", "traffic", "year")`
+#'   and `band = TRUE`; a panel without fit shows its points only.
+#' @param ... Further arguments passed to [plot_map_validation()].
+#'
+#' @return Named list of ggplot objects, one per year.
+#'
+#' @keywords internal
+plot_map_validation_years <- function(data, fit, parameter, ...) {
+  data <- dplyr::filter(data, parameter == !!parameter)
+  limits <- range(data$concentration, data$concentration_map)
+
+  purrr::map(rlang::set_names(sort(unique(data$year))), \(year) {
+    plot_map_validation(dplyr::filter(data, year == !!year), dplyr::filter(fit, year == !!year), parameter,
+                        limits = limits, colour_years = FALSE, legend_band = TRUE, ...)
+  })
 }

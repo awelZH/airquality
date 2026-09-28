@@ -299,6 +299,54 @@ test_that("fit_map_validation() fits a robust line per parameter and traffic inf
   expect_equal(result$to, c(10, 10, 12))
 })
 
+test_that("fit_map_validation() fits per year with a prediction band, only groups with enough pairs", {
+  data <- tibble::tibble(
+    parameter = "NO2", traffic = "Hintergrund",
+    year = rep(c(2019, 2020), times = c(6, 4)),
+    concentration = c(1:6, 1:4),
+    concentration_map = c(2 + 1:6, 1:4) + rep(c(0.1, -0.1), 5)
+  )
+
+  result <- fit_map_validation(data, by = c("parameter", "traffic", "year"), min_n = 5, band = TRUE)
+
+  expect_named(result, c("parameter", "traffic", "year", "n", "intercept", "slope", "scale", "from", "to", "band"))
+  expect_equal(result$year, 2019) # 2020 has only 4 pairs
+  band <- result$band[[1]]
+  expect_named(band, c("concentration", "fit", "lower", "upper"))
+  expect_equal(range(band$concentration), c(1, 6))
+  expect_true(all(band$lower < band$fit & band$fit < band$upper))
+})
+
+test_that("the prediction band of fit_map_validation() covers about 95 % of new observations", {
+  withr::local_seed(1)
+  simulate <- function(n) {
+    x <- stats::runif(n, 0, 40)
+    tibble::tibble(parameter = "NO2", traffic = "Hintergrund", concentration = x,
+                   concentration_map = 3 + 0.8 * x + stats::rnorm(n, sd = 2))
+  }
+  band <- fit_map_validation(simulate(500), band = TRUE, n_grid = 401)$band[[1]]
+  new <- simulate(5000)
+
+  lower <- stats::approx(band$concentration, band$lower, new$concentration)$y
+  upper <- stats::approx(band$concentration, band$upper, new$concentration)$y
+  coverage <- mean(new$concentration_map >= lower & new$concentration_map <= upper, na.rm = TRUE)
+
+  expect_gt(coverage, 0.93)
+  expect_lt(coverage, 0.97)
+})
+
+test_that("keep_years_with_pairs() keeps the years of a parameter with enough pairs", {
+  data <- tibble::tibble(
+    parameter = rep(c("NO2", "PM10"), times = c(9, 5)),
+    year = c(rep(2019, 5), rep(2020, 4), rep(2020, 5))
+  )
+
+  result <- keep_years_with_pairs(data, min_n = 5)
+
+  # NO2 2020 has only 4 pairs
+  expect_equal(dplyr::distinct(result, parameter, year), tibble::tibble(parameter = c("NO2", "PM10"), year = c(2019, 2020)))
+})
+
 test_that("derive_pm25_map() derives PM2.5 from the PM10 maps of the given years without a PM2.5 map", {
   grid <- airquality.methods::make_reference_grid(c(xmin = 0, ymin = 0, xmax = 400, ymax = 400), cellsize = 100)
   pm10 <- \(year) aggregate_map(make_raster_row(year, "pm10", "ch.bafu.luftreinhaltung-feinstaub_pm10"), grid, make_boundary())

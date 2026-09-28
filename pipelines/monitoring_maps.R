@@ -30,5 +30,10 @@ pipeline_monitoring_maps <- tar_plan(
     mon_maps_raster$sites |>
     add_o3_peakseason_sites(expo_pop_coefs_o3) |>
     map_validation_data(mon_aq_data, parameters = mon_maps_parameters),
-  mon_maps_fit = fit_map_validation(mon_maps_validation)
+  mon_maps_fit = fit_map_validation(mon_maps_validation),
+
+  # the same per year, for the years with at least mon_maps_min_pairs pairs, with the prediction band
+  mon_maps_validation_years = keep_years_with_pairs(mon_maps_validation, min_n = mon_maps_min_pairs),
+  mon_maps_fit_years = fit_map_validation(mon_maps_validation_years, by = c("parameter", "traffic", "year"),
+                                          min_n = mon_maps_min_pairs, band = TRUE)
 )

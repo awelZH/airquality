@@ -325,19 +325,71 @@ test_that("plot_map_validation() draws one panel per traffic influence with its 
   expect_equal(built$layout$panel_params[[1]]$x.range, built$layout$panel_params[[2]]$x.range)
 })
 
-test_that("print_map_tabset() puts the map slider and the verification into two tabs", {
+test_that("plot_map_validation() draws the prediction band of yearly fits with a legend entry", {
+  data <- make_validation() |> dplyr::filter(year == 2019)
+  fit <- fit_map_validation(dplyr::bind_rows(data, data), min_n = 5, band = TRUE)
+
+  plot <- plot_map_validation(data, fit, "NO2")
+
+  geoms <- purrr::map_chr(unname(plot$layers), \(layer) class(layer$geom)[1])
+  expect_equal(geoms, c("GeomRibbon", "GeomAbline", "GeomPoint", "GeomSegment"))
+  expect_contains(legend_texts(plot), "95%-Prognoseintervall")
+  expect_match(as.character(plot$labels$subtitle), "Jahresmittel, 2019", fixed = TRUE)
+  expect_false(grepl("2019–", as.character(plot$labels$subtitle))) # one year, no range
+})
+
+test_that("plot_map_validation() draws a year without any fit as points only", {
+  data <- make_validation() |> dplyr::filter(year == 2019)
+  fit <- fit_map_validation(data, by = c("parameter", "traffic", "year"), min_n = 5, band = TRUE) # no group has 5 pairs
+
+  plot <- plot_map_validation(data, fit, "NO2")
+
+  expect_equal(nrow(fit), 0)
+  expect_no_warning(withr::with_pdf(NULL, ggplot2::ggplotGrob(plot)))
+})
+
+test_that("the legend of the yearly plots is the same with and without a fit", {
+  data <- make_validation()
+  fit <- fit_map_validation(data, by = c("parameter", "traffic", "year"), min_n = 5, band = TRUE) # no fit at all
+  fit_2019 <- fit_map_validation(dplyr::bind_rows(data, data), by = c("parameter", "traffic", "year"), min_n = 5, band = TRUE)
+
+  without <- plot_map_validation_years(data, fit, "NO2")[["2019"]]
+  with <- plot_map_validation_years(data, fit_2019, "NO2")[["2019"]]
+
+  expected <- c("1:1-Linie", "robuste Regression", "95%-Prognoseintervall")
+  expect_setequal(legend_texts(without), expected)
+  expect_setequal(legend_texts(with), expected)
+})
+
+test_that("plot_map_validation_years() gives one plot per year on the same axes, without a colour scale of the years", {
+  data <- make_validation()
+  fit <- fit_map_validation(data, by = c("parameter", "traffic", "year"), min_n = 2, band = TRUE)
+
+  plots <- plot_map_validation_years(data, fit, "NO2")
+
+  expect_named(plots, c("2019", "2020"))
+  built <- purrr::map(plots, \(plot) withr::with_pdf(NULL, ggplot2::ggplot_build(plot)))
+  expect_equal(built[["2019"]]$layout$panel_params[[1]]$x.range, built[["2020"]]$layout$panel_params[[1]]$x.range)
+  expect_null(plots[["2019"]]$scales$get_scales("colour"))
+  expect_false("Jahr" %in% legend_texts(plots[["2019"]]))
+  expect_length(unique(built[["2019"]]$data[[3]]$colour), 1) # the points in one colour
+})
+
+test_that("print_map_tabset() puts the map slider, the verification and the verification per year into three tabs", {
   plot <- ggplot2::ggplot() + ggplot2::ggtitle("x")
   catalog <- dplyr::bind_rows(
     airquality.methods::plot_catalog(list(NO2 = list(`2019` = plot, `2020` = plot)), "map", names_to = c("parameter", "year")),
-    airquality.methods::plot_catalog(list(NO2 = plot), "map_validation", names_to = "parameter")
+    airquality.methods::plot_catalog(list(NO2 = plot), "map_validation", names_to = "parameter"),
+    airquality.methods::plot_catalog(list(NO2 = list(`2018` = plot, `2019` = plot)), "map_validation_year", names_to = c("parameter", "year"))
   )
 
   output <- withr::with_pdf(NULL, utils::capture.output(print_map_tabset(catalog, "NO2")))
 
-  expect_contains(output, c("::: {.panel-tabset}", "##### Karte", "##### Modellverifikation"))
-  expect_match(output[grep("year-slider", output)[1]], 'data-start="2020"', fixed = TRUE)
-  expect_lt(grep("##### Karte", output), grep("year-slider", output)[1])
-  expect_lt(grep("year-slider", output)[1], grep("##### Modellverifikation", output))
+  expect_contains(output, c("::: {.panel-tabset}", "##### Karte", "##### Modellverifikation", "##### Modellverifikation pro Jahr"))
+  sliders <- grep("year-slider", output, value = TRUE)
+  expect_match(sliders[1], 'data-start="2020"', fixed = TRUE)
+  expect_match(sliders[2], 'data-start="2019"', fixed = TRUE)
+  expect_lt(grep("##### Modellverifikation$", output), grep("##### Modellverifikation pro Jahr", output))
 })
 
 test_that("print_timeseries_map() prints the time series, a heading and the map tabset one level deeper", {
@@ -345,7 +397,8 @@ test_that("print_timeseries_map() prints the time series, a heading and the map 
   catalog <- dplyr::bind_rows(
     airquality.methods::plot_catalog(list(O3 = plot), "timeseries_siteclass", names_to = "parameter"),
     airquality.methods::plot_catalog(list(O3 = list(`2020` = plot)), "map", names_to = c("parameter", "year")),
-    airquality.methods::plot_catalog(list(O3 = plot), "map_validation", names_to = "parameter")
+    airquality.methods::plot_catalog(list(O3 = plot), "map_validation", names_to = "parameter"),
+    airquality.methods::plot_catalog(list(O3 = list(`2020` = plot)), "map_validation_year", names_to = c("parameter", "year"))
   )
 
   output <- withr::with_pdf(NULL, utils::capture.output(print_timeseries_map(catalog, "O3")))

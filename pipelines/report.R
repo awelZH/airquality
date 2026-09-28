@@ -31,7 +31,8 @@ pipeline_report <- tar_plan(
            expo_pop_out_means_canton, expo_pop_out_means_municipalities, expo_pop_out_distribution,
            expo_eco_out_distribution, outcomes_out,
            # read from the store by the plot script (no output file)
-           mon_maps_raster, mon_maps_o3, mon_maps_pm25, mon_maps_boundary, mon_maps_validation, mon_maps_fit, expo_eco_ndep)
+           mon_maps_raster, mon_maps_o3, mon_maps_pm25, mon_maps_boundary, mon_maps_validation, mon_maps_fit,
+           mon_maps_validation_years, mon_maps_fit_years, expo_eco_ndep)
       render_report("report", output_dir = "docs")
     },
     format = "file"

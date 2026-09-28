@@ -44,6 +44,10 @@ mon_maps_parameters <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "O3_peakseason
 # cell size of the maps in metres; the values at the sites come from the native raster cells (20 or 200 m)
 mon_maps_cellsize <- 100
 
+# verification per year: only years (and per site class only panels) with at least this many pairs of measured
+# and map values get a plot (and a regression line with prediction interval)
+mon_maps_min_pairs <- 5
+
 # => trends
 # years to consider for analysis and later plotting
 trend_years <- 1990:year_last

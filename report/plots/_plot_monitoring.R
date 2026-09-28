@@ -83,6 +83,8 @@ maps <- dplyr::bind_rows(maps_raster$maps, targets::tar_read(mon_maps_o3, store 
 maps_boundary <- targets::tar_read(mon_maps_boundary, store = path_store)
 maps_validation <- targets::tar_read(mon_maps_validation, store = path_store)
 maps_fit <- targets::tar_read(mon_maps_fit, store = path_store)
+maps_validation_years <- targets::tar_read(mon_maps_validation_years, store = path_store)
+maps_fit_years <- targets::tar_read(mon_maps_fit_years, store = path_store)
 rm(maps_raster)
 
 # captions of the derived maps (O3 peak season: all years; PM2.5: before 2015)
@@ -107,6 +109,13 @@ plots$monitoring$map_validation <-
                         pointsize = pointsize, theme = theme_scatter)
   })
 
+# per year (years with enough pairs), with the prediction band of the yearly fits
+plots$monitoring$map_validation_year <-
+  purrr::map(rlang::set_names(mon_maps_parameters), \(parameter) {
+    plot_map_validation_years(maps_validation_years, maps_fit_years, parameter,
+                              in_sample = parameter == "O3_peakseason_mean_d1_max_mean_h8gl", pointsize = pointsize, theme = theme_scatter)
+  })
+
 
 # collect the plots in a catalog for the Quarto pages (airquality.methods::get_plot(plots_monitoring, "timeseries_siteclass", "NO2"))
 # ---
@@ -119,5 +128,6 @@ plots_monitoring <-
     airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_exceedance$Ndep, "timeseries_ndep_exceedance"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_all_vs_CLN$Ndep, "timeseries_ndep_all_vs_CLN"),
     airquality.methods::plot_catalog(plots$monitoring$map, "map", names_to = c("parameter", "year")),
-    airquality.methods::plot_catalog(plots$monitoring$map_validation, "map_validation", names_to = "parameter")
+    airquality.methods::plot_catalog(plots$monitoring$map_validation, "map_validation", names_to = "parameter"),
+    airquality.methods::plot_catalog(plots$monitoring$map_validation_year, "map_validation_year", names_to = c("parameter", "year"))
   )

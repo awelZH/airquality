@@ -91,6 +91,13 @@ exceedance of the critical loads for nitrogen (no verification).
   underestimate high traffic values. The single line over all sites (first version: NO2 7.33, 0.655)
   mixed both groups. A prediction band was shown first and dropped (user); it assumed a constant
   spread and was too wide at low and too narrow at high NO2 values.
+* **Verification per year** (user 2026-09-28): a third tab "Modellverifikation pro Jahr" with a year slider
+  (a nested tabset would exceed the six heading levels inside the O3 tabs). Same plot as over all years,
+  with the fit of the year and its 95 % prediction band (fit ± t · sqrt(s² + se²), robust scale s); axes
+  and colour scale shared by all years of a parameter. Only years with at least `mon_maps_min_pairs` = 5
+  pairs ("more than 4"), and a line and band only in panels with at least 5 pairs: NO2 31 years (lines:
+  Hintergrund 31, verkehrsbelastet 27), O3_max_98p_m1 31 (31 / 1), O3 peak season 31 (30 / 1), PM10 26
+  from 1998 (19 / 1), PM2.5 8 from 2018 (7 / 0). Targets `mon_maps_validation_years`, `mon_maps_fit_years`.
 * **Cost**: `mon_maps_raster` 189 s (97 rasters streamed), the whole sub-analysis 3.6 min on the first
   run; store 7.5 MB (maps) + 3.7 MB (O3 maps). Rerun only when an asset changes or a site is added
   (`mon_maps_sites` depends on `mon_aq_data`).

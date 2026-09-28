@@ -337,26 +337,58 @@ map_validation_data <- function(sites_map, monitoring, parameters) {
     dplyr::select(!c(x, y))
 }
 
-#' Robust regression of the map values on the measured values, per parameter and traffic influence
+#' Robust regression of the map values on the measured values, per group
 #'
-#' `MASS::rlm(concentration_map ~ concentration)` over all years.
+#' `MASS::rlm(concentration_map ~ concentration)` per parameter and traffic influence, over all years by
+#' default. The optional prediction band uses the robust scale `s` of the fit and the covariance of the
+#' coefficients: fit +/- t(n - 2) * sqrt(s^2 + se^2); it assumes a constant spread over the range.
 #'
 #' @param data Output of [map_validation_data()].
+#' @param by Grouping columns, e.g. with `"year"` for one fit per year.
+#' @param min_n Groups with fewer pairs get no fit.
+#' @param band Add the prediction band?
+#' @param level Level of the prediction band.
+#' @param n_grid Number of points of the band, spread evenly over the measured range of the group.
 #'
-#' @return Tibble with one row per parameter and traffic influence: `parameter`, `traffic`, `n`,
-#'   `intercept`, `slope`, `scale` (robust scale of the residuals) and the measured range `from`, `to`.
+#' @return Tibble with one row per group: the `by` columns, `n`, `intercept`, `slope`, `scale` (robust
+#'   scale of the residuals), the measured range `from`, `to` and, with `band`, the list column `band`
+#'   (tibble with `concentration`, `fit`, `lower`, `upper`).
 #'
 #' @keywords internal
-fit_map_validation <- function(data) {
+fit_map_validation <- function(data, by = c("parameter", "traffic"), min_n = 3, band = FALSE, level = 0.95, n_grid = 50) {
+  # the shape of the result, also when no group has enough pairs
+  empty <- tibble::tibble(dplyr::slice(dplyr::distinct(data, dplyr::pick(dplyr::all_of(by))), 0), n = integer(),
+                          intercept = double(), slope = double(), scale = double(), from = double(), to = double())
+  if (band) empty$band <- list()
+
   data |>
-    dplyr::arrange(parameter, traffic) |>
-    dplyr::group_split(parameter, traffic) |>
+    dplyr::arrange(dplyr::pick(dplyr::all_of(by))) |>
+    dplyr::filter(dplyr::n() >= min_n, .by = dplyr::all_of(by)) |>
+    dplyr::group_split(dplyr::pick(dplyr::all_of(by))) |>
     purrr::map(\(data) {
       fit <- MASS::rlm(concentration_map ~ concentration, data = data, maxit = 50)
       coefs <- stats::coef(fit)
+      result <- tibble::tibble(dplyr::distinct(data, dplyr::pick(dplyr::all_of(by))), n = nrow(data), intercept = unname(coefs[1]),
+                               slope = unname(coefs[2]), scale = fit$s, from = min(data$concentration), to = max(data$concentration))
+      if (!band) return(result)
 
-      tibble::tibble(parameter = data$parameter[1], traffic = data$traffic[1], n = nrow(data), intercept = unname(coefs[1]),
-                     slope = unname(coefs[2]), scale = fit$s, from = min(data$concentration), to = max(data$concentration))
+      grid <- tibble::tibble(concentration = seq(result$from, result$to, length.out = n_grid))
+      x <- cbind(1, grid$concentration)
+      se <- sqrt(rowSums((x %*% stats::vcov(fit)) * x))
+      half <- stats::qt((1 + level) / 2, df = nrow(data) - 2) * sqrt(fit$s^2 + se^2)
+      dplyr::mutate(result, band = list(dplyr::mutate(grid, fit = drop(x %*% coefs), lower = fit - half, upper = fit + half)))
     }) |>
-    purrr::list_rbind()
+    purrr::list_rbind(ptype = empty)
+}
+
+#' Keep the years of a parameter with enough pairs of measured and map values
+#'
+#' @param data Output of [map_validation_data()].
+#' @param min_n Minimum number of pairs of a parameter in a year.
+#'
+#' @return `data` without the years of a parameter with fewer than `min_n` pairs.
+#'
+#' @keywords internal
+keep_years_with_pairs <- function(data, min_n) {
+  dplyr::filter(data, dplyr::n() >= min_n, .by = c(parameter, year))
 }

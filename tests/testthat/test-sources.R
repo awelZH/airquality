@@ -64,6 +64,29 @@ test_that("log_sources_inventory() appends a run and names the sources that chan
   expect_named(log, c("run", "KEY", "years", "resolution", "version"))
 })
 
+test_that("log_sources_inventory() names the sources removed from the register", {
+  dir <- withr::local_tempdir()
+  first <- tibble::tibble(KEY = c("a", "b"), years = "2020", resolution = NA_character_, version = NA_character_)
+
+  log_sources_inventory(first, "inventory.csv", dir, run = "2026-10-23 10:00:00")
+  messages <- paste(testthat::capture_messages(
+    log_sources_inventory(first[1, ], "inventory.csv", dir, run = "2026-10-24 10:00:00")
+  ), collapse = "")
+
+  expect_match(messages, "\"b\"", fixed = TRUE)
+  expect_no_match(messages, "\"a\"", fixed = TRUE)
+})
+
+test_that("log_sources_inventory() appends nothing when the inventory is unchanged", {
+  dir <- withr::local_tempdir()
+  inventory <- tibble::tibble(KEY = c("a", "b"), years = c("2020", NA), resolution = NA_character_, version = NA_character_)
+
+  log_sources_inventory(inventory, "inventory.csv", dir, run = "2026-10-23 10:00:00")
+  expect_no_message(path <- log_sources_inventory(inventory, "inventory.csv", dir, run = "2026-10-24 10:00:00"))
+
+  expect_equal(nrow(readr::read_delim(path, delim = ";", show_col_types = FALSE)), 2)
+})
+
 test_that("sources_table() joins register and inventory into the German table of the website, without references", {
   ressources <- tibble::tibble(
     KEY = c("map_no2", "mortality", "old"), TITLE = c("NO2-Karten", "Todesfälle", "Alt"),

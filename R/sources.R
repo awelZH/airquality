@@ -134,7 +134,8 @@ sources_inventory <- function(ressources, assets = NULL, years = list(), grids =
 
 #' Append the inventory of the data sources to its log and name the sources that changed
 #'
-#' Called by a target that only reruns when the inventory changed, so every run in the log is a change.
+#' Appends only when the inventory differs from the last run in the log (sources added, changed or removed), so
+#' every run in the log is a change, also when the target reruns for another reason.
 #'
 #' @param inventory Output of [sources_inventory()].
 #' @inheritParams append_output
@@ -148,8 +149,10 @@ log_sources_inventory <- function(inventory, file, dir, run = format(Sys.time(),
   if (file.exists(path)) {
     log <- readr::read_delim(path, delim = ";", show_col_types = FALSE, col_types = readr::cols(.default = "c"))
     last <- dplyr::filter(log, .data$run == max(.data$run)) |> dplyr::select(!"run")
-    changed <- dplyr::anti_join(inventory, last, by = names(inventory))$KEY
-    if (length(changed) > 0) cli::cli_inform("Data sources changed since the last run: {.val {changed}}.")
+    # added or changed, and removed from the register
+    changed <- union(dplyr::anti_join(inventory, last, by = names(inventory))$KEY, setdiff(last$KEY, inventory$KEY))
+    if (length(changed) == 0) return(path)
+    cli::cli_inform("Data sources changed since the last run: {.val {changed}}.")
   }
 
   append_output(dplyr::mutate(inventory, run = run, .before = 1), file, dir = dir)

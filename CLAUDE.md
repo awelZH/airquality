@@ -98,7 +98,7 @@ column order and format must not change (the directory may change; external path
 Guiding lesson: **make every step visible and recomputable** – no communication through globals, no
 appending to own outputs, no work lists derived from earlier results.
 
-1. `airquality.methods` 0.5.3 is installed into renv from GitHub (`awelZH/airquality.methods`, pinned
+1. `airquality.methods` 0.11.0 is installed into renv from GitHub (`awelZH/airquality.methods`, pinned
    sha in `renv.lock`); restart R after reinstalling.
 2. Exposition is recomputed completely on every run; downloads are cached, uncompressed GeoTIFFs are
    streamed from the web every time.

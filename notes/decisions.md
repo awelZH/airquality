@@ -12,8 +12,8 @@ to debug and silently carry old errors forward: the double counting of exclave c
 
 ## Architecture decisions and why
 
-**1. `airquality.methods` from GitHub** (0.5.3 since 2026-09-25; 0.5.2: GeoTIFFs without EPSG code accepted when the STAC metadata agree; 0.5.3: markdown legend titles of `immissionscale()` via ggtext). Until 2026-09-24 installed from the local repo;
-since then from GitHub, now `awelZH/airquality.methods@7062c5a` (pinned in `renv.lock`, `renv::install("awelZH/airquality.methods@<sha>")`
+**1. `airquality.methods` from GitHub** (0.11.0 since 2026-10-23; 0.11.0: the censuses 1990 and 2000 read by `read_statpop_ha()`, upgrade from 0.5.3 byte-identical on frozen inputs (12 outputs, 645 figures); 0.5.2: GeoTIFFs without EPSG code accepted when the STAC metadata agree; 0.5.3: markdown legend titles of `immissionscale()` via ggtext). Until 2026-09-24 installed from the local repo;
+since then from GitHub, now `awelZH/airquality.methods@bc41d8e` (pinned in `renv.lock`, `renv::install("awelZH/airquality.methods@<sha>")`
 for a newer version). Since 0.4.0 only its exports may carry the `airquality.methods::` prefix.
 **After (re)installing `airquality.methods`, restart the R session** before running the pipeline:
 `library()` does not reload an already loaded namespace. Check with

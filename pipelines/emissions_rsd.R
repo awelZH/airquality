@@ -5,14 +5,14 @@ pipeline_emissions_rsd <- tar_plan(
   # RSD measurements from opendata.swiss (all campaigns, about 900 MB): the version of the resources is
   # checked on every run, the download only runs when it changed; see also
   # https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftschadstoffquellen/emissionen-verkehr/abgasmessungen-rsd.html
-  tar_target(emis_rsd_state, opendataswiss_state(filter_ressources(setup_ressources, 2)), cue = tar_cue("always")),
+  tar_target(emis_rsd_state, opendataswiss_state(filter_ressources(setup_ressources, "rsd")), cue = tar_cue("always")),
   emis_rsd_raw = {
     emis_rsd_state
-    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, 2), source = "Kanton Zürich/AWEL")
+    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, "rsd"), source = "Kanton Zürich/AWEL")
   },
   # vehicle metadata (NO2 fractions, NOx thresholds per Euronorm and model year) and filter criteria
-  tar_target(emis_rsd_file_meta, filter_ressources(setup_ressources, 3), format = "file"),
-  tar_target(emis_rsd_file_filters, filter_ressources(setup_ressources, 4), format = "file"),
+  tar_target(emis_rsd_file_meta, filter_ressources(setup_ressources, "rsd_meta"), format = "file"),
+  tar_target(emis_rsd_file_filters, filter_ressources(setup_ressources, "rsd_filters"), format = "file"),
   emis_rsd_meta = airquality.methods::read_local_csv(emis_rsd_file_meta),
   emis_rsd_filters = airquality.methods::read_local_csv(emis_rsd_file_filters),
 

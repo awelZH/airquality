@@ -11,7 +11,7 @@ pipeline_report <- tar_plan(
     cue = tar_cue("always")
   ),
   # threshold values of the plots
-  tar_target(report_file_thresholds, filter_ressources(setup_ressources, 10), format = "file"),
+  tar_target(report_file_thresholds, filter_ressources(setup_ressources, "thresholds"), format = "file"),
 
   # outputs of the work-in-progress trends (wip/trends.R, outside the pipeline) and a warning when they are
   # older than the pipeline outputs they are computed from

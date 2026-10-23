@@ -90,7 +90,7 @@ plot_axes_exposition <- list(
 
 
 # read LRV legal threshold limit values & WHO air quality guideline values
-immission_threshold_values <- readr::read_delim(filter_ressources(ressources, 10), delim = ";",locale = readr::locale(encoding = "UTF-8"))
+immission_threshold_values <- readr::read_delim(filter_ressources(ressources, "thresholds"), delim = ";",locale = readr::locale(encoding = "UTF-8"))
 
 
 # add plotting parameter to LRV threshold limit values & WHO air quality guideline values

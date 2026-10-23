@@ -67,7 +67,7 @@ geo_admin_asset_state <- function(collections, get_assets = airquality.methods::
 #' depends on it only reruns when a resource was added, removed, modified or changed its size. There is no
 #' checksum on opendata.swiss, so a file replaced without new metadata goes unnoticed.
 #'
-#' @param url Package-show url of the CKAN API (`DOWNLOAD_URL` of `ressources.csv`).
+#' @param url Package-show url of the CKAN API (`ENDPOINT` of `ressources.csv`).
 #' @param file_filter Substring the download url must contain; the same as in
 #'   [airquality.methods::read_opendataswiss()], so the state covers exactly the files that are read.
 #' @param get_resources Function returning the resources of a dataset

@@ -178,3 +178,19 @@ health outcomes of O3). PM2.5 2000
 derived from PM10 (`expo_years_pm25_from_pm10 <- intersect(expo_years, 2000:2014)`, ratios from 2000 on).
 Health outcomes 2000 included (mortality from 1996); premature deaths only, because the population by age
 (life tables) starts in 2010. Prototype, numbers and checks: `notes/findings_exposition.md`.
+
+**13. The register of the data sources: a CSV with a clear schema, read by key** (user decisions 2026-10-23).
+`data/meta/ressources.csv` documents every source and gives the code its endpoints. It had grown two columns
+for the description, two for the provider, a `DOWNLOAD_URL` that was sometimes a folder completed by
+`DATASET_NAME` (itself a file name, an R object, a collection id or an R expression), and the code asked for
+numbers (`filter_ressources(r, 27)`) without checking that one row matched. Now one column per meaning
+(schema in `data/meta/README.md`: `ID`, `KEY`, `TITLE`, `DESCRIPTION`, `PROVIDER`, `ACCESS`, `SOURCE_TYPE`,
+`ENDPOINT`, `LANDING_PAGE`, `FORMAT`, `LICENSE`, `UNIT`, `TEMPORAL`, `USED_BY`); `ENDPOINT` is exactly what the
+code uses, so `prepare_ressources()` only checks the columns; `filter_ressources(r, "emikat")` stops unless
+exactly one row has the key. The geo.admin collection ids stay constants in `R/exposition.R`;
+`tests/testthat/test-ressources.R` checks that code and register agree (keys, collections, files in
+`data/meta/`, `airquality.data` objects, `USED_BY`; `USED_BY` is empty exactly for `reference` rows). Only
+stable facts are written by hand: years, resolution per year and version change with every data release and
+are derived by the pipeline (step 1b), never written back into the input. Rejected: a YAML register (more
+expressive, but not a table on GitHub); later possibly a Frictionless Data Package for the 14 output files.
+Migration 2026-10-23 byte-identical on frozen inputs (12 outputs, 720 figures); content completion follows.

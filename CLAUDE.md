@@ -44,7 +44,7 @@ A `targets` project (phase 2b, `notes/plan_phase2b.md`), renv-managed. Not an in
 | `report/plots/_plot_setup.R`, `_plot_<topic>.R` | plots from the output CSVs (the pollutant maps from the targets store), one script per report topic, each delivering a plot catalog `plots_<topic>` (`get_plot()`); presentation settings in `_plot_setup.R`; sourced by the Quarto pages, usable in the console (decision 9) |
 | `report/plots/_plot_airquality.R` | sources `_plot_setup.R` and all topic plot scripts (interactive use) |
 | `docs/` | rendered website only (GitHub Pages, `output-dir: ../docs`) |
-| `data/meta/` | input metadata (resources, thresholds, RSD filters, subsector lookup, …) |
+| `data/meta/` | input metadata; `ressources.csv` is the register of all data sources (documentation and the endpoints the code reads with `filter_ressources(r, "<key>")`; schema in `data/meta/README.md`), plus thresholds, RSD filters, subsector lookup, … |
 | `data/output/` | **output CSVs – the contract with external processes** |
 | `data/log/` | run logs, appended when the logged values change; not part of the contract |
 | `data/restricted/` | non-public inputs (mortality), gitignored except its README |
@@ -131,6 +131,9 @@ appending to own outputs, no work lists derived from earlier results.
 12. The exposition starts in 1990: the censuses 1990 and 2000 (read by `read_statpop_ha()` onto the STATPOP grid,
     no collector pixels) and STATPOP from 2010; no population interpolation in between; the O3 peak-season
     model needs 4 sites per year (`expo_o3_nmin_sites`, was 7), so it covers 1990 (user decisions 2026-10-23).
+13. `data/meta/ressources.csv` has one column per meaning and a `KEY` the code uses (`ENDPOINT` is what it reads);
+    only stable facts by hand, years/resolution/version are derived by the pipeline; `test-ressources.R` keeps
+    code and register consistent (user decisions 2026-10-23).
 
 ## Read before working on …
 

@@ -28,7 +28,7 @@ ratios_pm <- fit_pm_ratio(data_monitoring_aq)
 
 # the old pipeline used the full geolion map (incl. the Kloster Fahr enclave of the Canton of Aargau) and
 # left cells with their centre in a lake without municipality (bfs 0)
-map_municipalities_legacy <- airquality.methods::read_geolion_wfs(filter_ressources(ressources, 11), version = "2.0.0", crs = crs)
+map_municipalities_legacy <- airquality.methods::read_geolion_wfs(filter_ressources(ressources, "municipalities"), version = "2.0.0", crs = crs)
 
 assign_municipalities_legacy <- function(cells, map) {
   centres <- dplyr::distinct(cells, x, y)

@@ -3,21 +3,21 @@
 
 pipeline_outcomes <- tar_plan(
   # concentration-response functions and cut-off concentrations
-  tar_target(outcomes_file_meta, filter_ressources(setup_ressources, 24), format = "file"),
+  tar_target(outcomes_file_meta, filter_ressources(setup_ressources, "outcomes_meta"), format = "file"),
   outcomes_meta = airquality.methods::read_local_csv(outcomes_file_meta, locale = readr::locale(encoding = "UTF-8")),
 
   # natural deaths per year, sex and age (non-public, data/restricted/; stops with a hint if missing)
-  tar_target(outcomes_file_mortality, restricted_file(filter_ressources(setup_ressources, 29)), format = "file"),
+  tar_target(outcomes_file_mortality, restricted_file(filter_ressources(setup_ressources, "mortality")), format = "file"),
   outcomes_mortality =
     airquality.methods::read_local_csv(outcomes_file_mortality, delim = ",", locale = readr::locale(encoding = "UTF-8")) |>
     prepare_mortality(suppressed = outcomes_suppressed_deaths),
 
   # year-end population per year, sex and age (for the life tables; about 70 MB): the version of the resource
   # is checked on every run, the download only runs when it changed
-  tar_target(outcomes_population_state, opendataswiss_state(filter_ressources(setup_ressources, 28)), cue = tar_cue("always")),
+  tar_target(outcomes_population_state, opendataswiss_state(filter_ressources(setup_ressources, "population_age")), cue = tar_cue("always")),
   outcomes_population_raw = {
     outcomes_population_state
-    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, 28), source = "Statistisches Amt Kanton Zürich")
+    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, "population_age"), source = "Statistisches Amt Kanton Zürich")
   },
   outcomes_population = prepare_population_by_age(outcomes_population_raw),
 

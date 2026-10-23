@@ -4,13 +4,13 @@
 pipeline_emissions_emikat <- tar_plan(
   # emission budgets per sector group and subgroup from opendata.swiss (about 240 MB): the version of the
   # resources is checked on every run, the download only runs when it changed
-  tar_target(emis_emikat_state, opendataswiss_state(filter_ressources(setup_ressources, 1)), cue = tar_cue("always")),
+  tar_target(emis_emikat_state, opendataswiss_state(filter_ressources(setup_ressources, "emikat")), cue = tar_cue("always")),
   emis_emikat_raw = {
     emis_emikat_state
-    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, 1), source = "Ostluft & BAFU")
+    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, "emikat"), source = "Ostluft & BAFU")
   },
   # lookup table merging and renaming subsectors thematically
-  tar_target(emis_emikat_file_subsectors, filter_ressources(setup_ressources, 27), format = "file"),
+  tar_target(emis_emikat_file_subsectors, filter_ressources(setup_ressources, "subsectors"), format = "file"),
   emis_emikat_subsectors = airquality.methods::read_local_csv(emis_emikat_file_subsectors, locale = readr::locale(encoding = "UTF-8")),
 
   # latest inventory version without projections beyond emis_year_max, zero emissions and redundant subsectors

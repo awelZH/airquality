@@ -1,37 +1,39 @@
-#' Prepare data from ressources.csv for use in scripts
+#' Columns of the register of the data sources (`data/meta/ressources.csv`, described in `data/meta/README.md`)
 #'
-#' @param ressources
+#' @keywords internal
+ressource_columns <- c("ID", "KEY", "TITLE", "DESCRIPTION", "PROVIDER", "ACCESS", "SOURCE_TYPE", "ENDPOINT",
+                       "LANDING_PAGE", "FORMAT", "LICENSE", "UNIT", "TEMPORAL", "USED_BY")
+
+#' Check the register of the data sources as read from `data/meta/ressources.csv`
 #'
+#' @param ressources The register.
+#'
+#' @return `ressources`, invisibly. Errors of class `airquality_input_error` if a column is missing.
+#'
+#' @keywords internal
 prepare_ressources <- function(ressources) {
-
-  ressources <-
-    ressources |>
-    dplyr::mutate(
-      get = dplyr::case_when(
-        stringr::str_detect(DOWNLOAD_URL, "^data/") ~ paste(DOWNLOAD_URL, DATASET_NAME, sep = "/"),
-        DOWNLOAD_SOURCE == "swisstopo" ~ DATASET_NAME,
-        TRUE ~ DOWNLOAD_URL
-      )
-    )
-
-  return(ressources)
+  check_columns(ressources, ressource_columns, "register of the data sources (data/meta/ressources.csv)")
 }
 
 
-
-#' Get entry from ressources.csv by internal id
+#' Endpoint of a data source of the register, by its key
 #'
-#' @param ressources
-#' @param internal_id
+#' @param ressources The register ([prepare_ressources()]).
+#' @param key Key of the source (`KEY`), e.g. `"emikat"`.
+#'
+#' @return The `ENDPOINT` of the source: url, collection id or repository path. Errors of class
+#'   `airquality_input_error` unless exactly one row has the key.
 #'
 #' @keywords internal
-filter_ressources <- function(ressources, internal_id) {
-
-  filters <- paste0("INTERNAL_ID == ", internal_id)
-  ressource <- dplyr::filter(ressources, eval(rlang::parse_expr(filters)))
-  ressource <- dplyr::pull(ressource, get)
-
-  return(ressource)
+filter_ressources <- function(ressources, key) {
+  ressource <- dplyr::filter(ressources, .data$KEY == key)
+  if (nrow(ressource) != 1) {
+    cli::cli_abort(c(
+      "{nrow(ressource)} rows of the register of the data sources have the key {.val {key}}, expected 1.",
+      "i" = "Keys: {.val {ressources$KEY}}"
+    ), class = "airquality_input_error")
+  }
+  ressource$ENDPOINT
 }
 
 

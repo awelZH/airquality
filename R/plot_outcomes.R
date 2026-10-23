@@ -67,7 +67,7 @@ plot_health_outcomes <- function(data, parameters, outcome_type = "vorzeitige To
           label = openair::quickText(paste0(labels$title, airquality.methods::longpollutant(parameter))),
           subtitle = sub
         ),
-        captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS & Statistisches Amt Kanton Zürich"),
+        captionlab = ggplot2::labs(caption = "Datengrundlage: BAFU & BFS & Amt für Statistik und Daten Kanton Zürich"),
         ylabels = ylabels,
         theme = theme
       ) +

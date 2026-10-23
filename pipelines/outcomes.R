@@ -17,7 +17,7 @@ pipeline_outcomes <- tar_plan(
   tar_target(outcomes_population_state, opendataswiss_state(filter_ressources(setup_ressources, "population_age")), cue = tar_cue("always")),
   outcomes_population_raw = {
     outcomes_population_state
-    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, "population_age"), source = "Statistisches Amt Kanton Zürich")
+    airquality.methods::read_opendataswiss(filter_ressources(setup_ressources, "population_age"), source = "Amt für Statistik und Daten Kanton Zürich")
   },
   outcomes_population = prepare_population_by_age(outcomes_population_raw),
 

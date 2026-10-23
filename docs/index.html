@@ -326,9 +326,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <!-- ![foto](https://www.flickr.com/photos/labskaus/28962357157/sizes/k/) -->
-<p>Die hier präsentierten Darstellungen sind das Ergebnis <a href="https://github.com/awelZH/airquality">systematischer Auswertungen zu Luftschadstoffen im Kanton Zürich</a> durch das kantonale <a href="https://www.zh.ch/de/baudirektion/amt-fuer-abfall-wasser-energie-luft.html">Amt für Abfall, Wasser, Energie und Luft</a>. Diese stellen eine Grundlage zur Beurteilung der <a href="https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html">Luftqualität im Kanton Zürich</a> dar sowie für entsprechende Darstellungen auf dem <a href="https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet.html">Internetauftritt des Kantons Zürch</a>. Die Auswertungen behandeln die Langzeitbelastung durch Luftschadstoffe, in der Regel Jahreswerte. Sie ergänzen die Veröffentlichung <a href="https://www.zh.ch/de/politik-staat/opendata.html">offener Behördendaten</a>, indem die entsprechenden Grundlagendaten skriptbasiert verarbeitet werden. Somit wird die fundierte Auswertung zur Luftqualität im Kanton Zürich für Fachpersonen und die interessierte Öffentlichkeit transparent sowie reproduzierbar dokumentiert und zur Verfügung gestellt.</p>
+<p>Die hier präsentierten Darstellungen sind das Ergebnis <a href="https://github.com/awelZH/airquality">systematischer Auswertungen zu Luftschadstoffen im Kanton Zürich</a> durch das kantonale <a href="https://www.zh.ch/de/baudirektion/amt-fuer-abfall-wasser-energie-luft.html">Amt für Abfall, Wasser, Energie und Luft</a>. Diese stellen eine Grundlage zur Beurteilung der <a href="https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet-auswirkungen.html">Luftqualität im Kanton Zürich</a> dar sowie für entsprechende Darstellungen auf dem <a href="https://www.zh.ch/de/umwelt-tiere/luft-strahlung/luftqualitaet.html">Internetauftritt des Kantons Zürich</a>. Die Auswertungen behandeln die Langzeitbelastung durch Luftschadstoffe, in der Regel Jahreswerte. Sie ergänzen die Veröffentlichung <a href="https://www.zh.ch/de/politik-staat/opendata.html">offener Behördendaten</a>, indem die entsprechenden Grundlagendaten skriptbasiert verarbeitet werden. Somit wird die fundierte Auswertung zur Luftqualität im Kanton Zürich für Fachpersonen und die interessierte Öffentlichkeit transparent sowie reproduzierbar dokumentiert und zur Verfügung gestellt.</p>
 <p>Es werden öffentlich verfügbare Grundlagendaten aus Messungen, Erhebungen und Berechnungen verwendet. Die Quellen dafür sind der <a href="https://www.zh.ch/de.html">Kanton Zürich</a>, <a href="https://www.ostluft.ch/">Ostluft - die Luftqualitätsüberwachung der Ostschweizer Kantone und des Fürstentums Liechtenstein</a>, das <a href="https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/nationales-beobachtungsnetz-fuer-luftfremdstoffe--nabel-.html">nationale Beobachtungsnetz für Luftfremdstoffe NABEL</a>, das <a href="https://www.bafu.admin.ch/bafu/de/home.html">Bundesamt für Umwelt BAFU</a> und das <a href="https://www.bfs.admin.ch/bfs/de/home.html">Bundesamt für Statistik BFS</a>. Räumlicher Bezugsrahmen ist das Gebiet des Kantons Zürich. Die verwendeten Grundlagendaten sind unten unter “Datengrundlagen” aufgeführt; die im Repository abgelegte Datei <a href="https://github.com/awelZH/airquality/blob/main/data/meta/ressources.csv">“ressources.csv”</a> enthält dazu alle Verweise und Beschreibungen.</p>
-<p>Ergebnis der entsprechenden <a href="https://github.com/awelZH/airquality/tree/main/scripts">R-Skripte</a> ist ein Portfolio an <a href="https://github.com/awelZH/airquality/tree/main/data/output">Datensätzen</a> zum Schadstoffausstoss (“Emissionen”) ausgewählter Luftschadstoffe, Luftqualitätsmesswerten (“Immissionen”), der Belastungsverteilung (“Exposition”) der Wohnbevölkerung durch Luftschadstoffe sowie von empfindlichen Ökosystemen durch atmosphärische Einträge von reaktiven Stickstoffverbindungen. Zudem werden die statistisch abgeleiteten Gesundheitsfolgen der Bevölkerung durch Luftbelastung im Kanton Zürich am Beispiel vorzeitiger Todesfälle aufgezeigt.</p>
+<p>Ergebnis der entsprechenden <a href="https://github.com/awelZH/airquality/tree/main/pipelines">R-Auswertungen</a> ist ein Portfolio an <a href="https://github.com/awelZH/airquality/tree/main/data/output">Datensätzen</a> zum Schadstoffausstoss (“Emissionen”) ausgewählter Luftschadstoffe, Luftqualitätsmesswerten (“Immissionen”), der Belastungsverteilung (“Exposition”) der Wohnbevölkerung durch Luftschadstoffe sowie von empfindlichen Ökosystemen durch atmosphärische Einträge von reaktiven Stickstoffverbindungen. Zudem werden die statistisch abgeleiteten Gesundheitsfolgen der Bevölkerung durch Luftbelastung im Kanton Zürich am Beispiel vorzeitiger Todesfälle aufgezeigt.</p>
 <p>Auf vertiefende fachliche Erläuterungen der Ergebnisse wird an dieser Stelle verzichtet.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -342,7 +342,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Teilweise wird die Luftqualität mit den <a href="https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de">aktuell gültigen Immissionsgrenzwerten der Luftreinhalteverordnung</a> oder <a href="https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/uebermaessigkeit-von-stickstoff-eintraegen-und-ammoniak-immissionen.html">gleichwertigen Referenzwerten</a> verglichen. Zusätzlich wird die Luftqualität auch mit den <a href="https://www.who.int/publications/i/item/9789240034228">Richtwerten der Weltgesundheitsorganisation WHO</a> verglichen. Die WHO-Richtwerte wurden im Jahr 2021 aufdatiert und drücken den gegenwärtigen Stand des Wissens zu gesundheitsschädlichen Auswirkungen durch Luftschadstoffe aus. Gemäss <a href="https://www.fedlex.admin.ch/eli/cc/1984/1122_1122_1122/de">Umweltschutzgesetzt</a> sollten die Immissionsgrenzwerte vor jeglichen schädlichen Auswirkungen schützen, weshalb die <a href="https://www.ekl.admin.ch/de/eidgenoessische-kommission-fuer-lufthygiene-ekl">Eidgenössische Kommission für Lufthygiene EKL</a> in einem <a href="https://www.ekl.admin.ch/inhalte/dateien/pdf/EKL-231120_de_orig.pdf">Bericht im Jahr 2023</a> dem Bundesrat eine entsprechende Anpassung der Immissionsgrenzwerte empfohlen hat. Solange es massgebliche Unterschiede zwischen Richt- und Grenzwerten gibt, werden sich die rechtliche Beurteilung der “Übermässigkeit der Immissionen” gemäss Luftreinhalteverordnung von der wissenschaftlichen Beurteilung zur Gesundheitsschädlichkeit der Immissionen voneineander unterscheiden.</p>
+<p>Teilweise wird die Luftqualität mit den <a href="https://www.fedlex.admin.ch/eli/cc/1986/208_208_208/de">aktuell gültigen Immissionsgrenzwerten der Luftreinhalteverordnung</a> oder <a href="https://www.bafu.admin.ch/bafu/de/home/themen/luft/publikationen-studien/publikationen/uebermaessigkeit-von-stickstoff-eintraegen-und-ammoniak-immissionen.html">gleichwertigen Referenzwerten</a> verglichen. Zusätzlich wird die Luftqualität auch mit den <a href="https://www.who.int/publications/i/item/9789240034228">Richtwerten der Weltgesundheitsorganisation WHO</a> verglichen. Die WHO-Richtwerte wurden im Jahr 2021 aufdatiert und drücken den gegenwärtigen Stand des Wissens zu gesundheitsschädlichen Auswirkungen durch Luftschadstoffe aus. Gemäss <a href="https://www.fedlex.admin.ch/eli/cc/1984/1122_1122_1122/de">Umweltschutzgesetz</a> sollten die Immissionsgrenzwerte vor jeglichen schädlichen Auswirkungen schützen, weshalb die <a href="https://www.ekl.admin.ch/de/eidgenoessische-kommission-fuer-lufthygiene-ekl">Eidgenössische Kommission für Lufthygiene EKL</a> in einem <a href="https://www.ekl.admin.ch/inhalte/dateien/pdf/EKL-231120_de_orig.pdf">Bericht im Jahr 2023</a> dem Bundesrat eine entsprechende Anpassung der Immissionsgrenzwerte empfohlen hat. Solange es massgebliche Unterschiede zwischen Richt- und Grenzwerten gibt, werden sich die rechtliche Beurteilung der “Übermässigkeit der Immissionen” gemäss Luftreinhalteverordnung von der wissenschaftlichen Beurteilung zur Gesundheitsschädlichkeit der Immissionen voneinander unterscheiden.</p>
 </div>
 </div>
 </div>
@@ -374,172 +374,172 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://daten.statistik.zh.ch/ogd/daten/ressourcen/">Estimated emissions of air pollutants in the Canton of Zurich</a></td>
-<td style="text-align: left;">Ostluft &amp; Amt für Abfall, Wasser, Energie und Luft (AWEL) / Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://opendata.swiss/de/dataset/luftschadstoffemissionen-im-kanton-zurich">Luftschadstoffemissionen im Kanton Zürich</a></td>
+<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL), Kanton Zürich</td>
 <td style="text-align: left;">1990–2025, 2030, 2040, 2050</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">2026-01-19</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung (opendata.swiss OPEN)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://www.web.statistik.zh.ch/ogd/daten/ressourcen/">Monitoring data vehicle remote emission sensing (RSD)</a></td>
-<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL) / Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://opendata.swiss/de/dataset/messdaten-langjahriger-abgasmessungen-im-realen-fahrbetrieb-mittels-remote-sensing-rsd">Abgasmessungen im realen Fahrbetrieb (Remote Sensing, RSD)</a></td>
+<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL), Kanton Zürich</td>
 <td style="text-align: left;">2002–2021, 2023, 2025</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">2026-02-23</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung (opendata.swiss OPEN)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/tree/main/data/meta">Metadata for vehicle type, fuel and euronorm required for RSD NOx-Emission analysis, compiled from various sources</a></td>
-<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL) / Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/blob/main/data/meta/rsd_auxiliary.csv">Zusatzangaben zu den RSD-Fahrzeugen</a></td>
+<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL), Kanton Zürich</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (Repository)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/tree/main/data/meta">Filter criteria applied to RSD dataset</a></td>
-<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL) / Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/blob/main/data/meta/rsd_filters.csv">Filterkriterien der RSD-Messungen</a></td>
+<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL), Kanton Zürich</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (Repository)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Selected air quality monitoring data Kanton Zürich from intercantonal monitoring network Ostluft and national monitoring network NABEL (yearly values)</a></td>
-<td style="text-align: left;">Ostluft &amp; BAFU/NABEL</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Luftqualitätsmessungen (Jahreswerte)</a></td>
+<td style="text-align: left;">Ostluft sowie Bundesamt für Umwelt (BAFU) und Empa (NABEL)</td>
 <td style="text-align: left;">1984–2025</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">0.1.3</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (R-Paket airquality.data)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Selected nitrogen deposition monitoring data Kanton Zürich from intercantonal monitoring network Ostluft (yearly values)</a></td>
-<td style="text-align: left;">Ostluft &amp; Amt für Abfall, Wasser, Energie und Luft (AWEL) / Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Messungen der Stickstoffeinträge</a></td>
+<td style="text-align: left;">Ostluft sowie Bundesamt für Umwelt (BAFU) und Empa (NABEL)</td>
 <td style="text-align: left;">2000–2025</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">0.1.3</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (R-Paket airquality.data)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/tree/main/data/meta">Selected air quality threshold values (LRV legal limits WHO air quality guideline)</a></td>
-<td style="text-align: left;">Luftreinhalteverordnung, WHO airquality guidelines, compiled by Amt für Abfall, Wasser, Energie und Luft (AWEL) / Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/blob/main/data/meta/airquality_threshold_values.csv">Immissionsgrenzwerte und WHO-Richtwerte</a></td>
+<td style="text-align: left;">LRV und WHO, zusammengestellt vom AWEL, Kanton Zürich</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (Repository)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://geolion.zh.ch/geodatenservice/1054">Vector data administrative Canton and municipality boundaries Canton Zürich</a></td>
-<td style="text-align: left;">Amt für Raumentwicklung (ARE) / Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://geolion.zh.ch/geodatenservice/1054">Gemeindegrenzen Kanton Zürich</a></td>
+<td style="text-align: left;">Amt für Raumentwicklung (ARE), Kanton Zürich</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung (opendata.swiss OPEN)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoffdioxid">Raster data yearly concentrations of mean nitrogen dioxide (NO2)</a></td>
-<td style="text-align: left;">BAFU, https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/luftbelastung–historische-daten/karten-jahreswerte.html</td>
+<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoffdioxid">Karten der NO2-Belastung (Jahresmittel)</a></td>
+<td style="text-align: left;">Bundesamt für Umwelt (BAFU)</td>
 <td style="text-align: left;">1990–2025</td>
 <td style="text-align: left;">200 m 1990–2019, 20 m 2020–2025</td>
 <td style="text-align: left;">2026-08-21</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung, Quellenangabe Pflicht (geo.admin.ch)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-feinstaub_pm10">Raster data yearly concentrations of mean particulate matter PM10</a></td>
-<td style="text-align: left;">BAFU, https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/luftbelastung–historische-daten/karten-jahreswerte.html</td>
+<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-feinstaub_pm10">Karten der PM10-Belastung (Jahresmittel)</a></td>
+<td style="text-align: left;">Bundesamt für Umwelt (BAFU)</td>
 <td style="text-align: left;">1998–2025</td>
 <td style="text-align: left;">200 m 1998–2019, 100 m 2020–2025</td>
 <td style="text-align: left;">2026-08-21</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung, Quellenangabe Pflicht (geo.admin.ch)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-feinstaub_pm2_5">Raster data yearly concentrations of mean particulate matter PM2.5</a></td>
-<td style="text-align: left;">BAFU, https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/luftbelastung–historische-daten/karten-jahreswerte.html</td>
+<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-feinstaub_pm2_5">Karten der PM2.5-Belastung (Jahresmittel)</a></td>
+<td style="text-align: left;">Bundesamt für Umwelt (BAFU)</td>
 <td style="text-align: left;">2015–2025</td>
 <td style="text-align: left;">100 m 2015–2025</td>
 <td style="text-align: left;">2026-08-21</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung, Quellenangabe Pflicht (geo.admin.ch)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-ozon">Raster data yearly concentrations maximum monthly 98th-percentile of half hourly mean ozone (O3)</a></td>
-<td style="text-align: left;">BAFU, https://www.bafu.admin.ch/bafu/de/home/themen/luft/zustand/daten/luftbelastung–historische-daten/karten-jahreswerte.html</td>
+<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-ozon">Karten der Ozon-Belastung (maximales 98%-Perzentil)</a></td>
+<td style="text-align: left;">Bundesamt für Umwelt (BAFU)</td>
 <td style="text-align: left;">1990–2025</td>
 <td style="text-align: left;">200 m 1990–2019, 100 m 2020–2025</td>
 <td style="text-align: left;">2026-08-21</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung, Quellenangabe Pflicht (geo.admin.ch)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag?.language=en">Modelled raster data exceedance of critical loads for nitrogen (CLN)</a></td>
-<td style="text-align: left;">BAFU</td>
+<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bafu.luftreinhaltung-stickstoff_kritischer_eintrag">Karten der Überschreitung der kritischen Stickstoffeinträge</a></td>
+<td style="text-align: left;">Bundesamt für Umwelt (BAFU)</td>
 <td style="text-align: left;">1990, 2000, 2005, 2010, 2015, 2020</td>
 <td style="text-align: left;">1 km 1990, 2000, 2005, 2010, 2015, 2020</td>
 <td style="text-align: left;">2025-01-28</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung, Quellenangabe Pflicht (geo.admin.ch)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bfs.statistik-bevoelkerung_haushalte">… Inhabitant population</a></td>
-<td style="text-align: left;">BFS</td>
+<td style="text-align: left;"><a href="https://data.geo.admin.ch/browser/index.html#/collections/ch.bfs.statistik-bevoelkerung_haushalte">Bevölkerung im Hektarraster (Volkszählungen, STATPOP)</a></td>
+<td style="text-align: left;">Bundesamt für Statistik (BFS)</td>
 <td style="text-align: left;">1990, 2000, 2010–2025</td>
 <td style="text-align: left;">100 m 1990, 2000, 2010–2025</td>
 <td style="text-align: left;">2026-09-17</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung, Quellenangabe Pflicht (geo.admin.ch)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/tree/main/data/meta">…</a></td>
-<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL) / Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/blob/main/data/meta/outcomes_metadata.csv">Expositions-Wirkungs-Beziehungen der Gesundheitsfolgen</a></td>
+<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL), Kanton Zürich</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (Repository)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/tree/main/data/meta">Metadata for grouping some selected emission cataster subsectors</a></td>
-<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL) / Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality/blob/main/data/meta/emikat_subsector_new.csv">Gruppierung der Emissions-Subsektoren</a></td>
+<td style="text-align: left;">Amt für Abfall, Wasser, Energie und Luft (AWEL), Kanton Zürich</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (Repository)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://opendata.swiss/de/dataset/bevolkerung-nach-gemeinde-heimat-geschlecht-und-alter">Population by municipality, place of origin, sex and one-year age class</a></td>
-<td style="text-align: left;">Statistisches Amt Kanton Zürich</td>
+<td style="text-align: left;"><a href="https://opendata.swiss/de/dataset/bevolkerung-nach-gemeinde-heimat-geschlecht-und-alter">Bevölkerung nach Gemeinde, Geschlecht und Alter</a></td>
+<td style="text-align: left;">Amt für Statistik und Daten, Kanton Zürich</td>
 <td style="text-align: left;">2010–2025</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">2026-02-10</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; Freie Nutzung (opendata.swiss OPEN)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Natural deaths per year, sex and age in the Canton of Zurich (not public)</td>
-<td style="text-align: left;">Statistisches Amt Kanton Zürich &amp; BFS</td>
+<td style="text-align: left;">Todesfälle nach Jahr, Geschlecht und Alter</td>
+<td style="text-align: left;">Amt für Statistik und Daten, Kanton Zürich, und Bundesamt für Statistik (BFS)</td>
 <td style="text-align: left;">1996–2024</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">nicht öffentlich</td>
+<td style="text-align: left;">nicht öffentlich; keine Weitergabe (Datenlieferung)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Site metadata of the nitrogen deposition monitoring (Ostluft)</a></td>
-<td style="text-align: left;">Ostluft &amp; BAFU/NABEL</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Standortangaben der Stickstoff-Messungen</a></td>
+<td style="text-align: left;">Ostluft sowie Bundesamt für Umwelt (BAFU) und Empa (NABEL)</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">0.1.3</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (R-Paket airquality.data)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Daily air quality monitoring data Kanton Zürich (Ostluft &amp; NABEL)</a></td>
-<td style="text-align: left;">Ostluft &amp; BAFU/NABEL</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Luftqualitätsmessungen (Tageswerte)</a></td>
+<td style="text-align: left;">Ostluft sowie Bundesamt für Umwelt (BAFU) und Empa (NABEL)</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">0.1.3</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (R-Paket airquality.data)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Daily meteorological data at the monitoring sites</a></td>
-<td style="text-align: left;">Ostluft &amp; BAFU/NABEL</td>
+<td style="text-align: left;"><a href="https://github.com/awelZH/airquality.data">Meteorologische Messungen (Tageswerte)</a></td>
+<td style="text-align: left;">Ostluft sowie Bundesamt für Umwelt (BAFU) und Empa (NABEL)</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">0.1.3</td>
-<td style="text-align: left;">öffentlich</td>
+<td style="text-align: left;">öffentlich; GPL-3 (R-Paket airquality.data)</td>
 </tr>
 </tbody>
 </table>

@@ -199,8 +199,17 @@ year condensed to ranges and the version, derived from targets that exist anyway
 the data read (`emis_emikat_raw`, `emis_rsd_vehicles`, `outcomes_population`, `outcomes_mortality`, `mon_aq_raw`,
 `mon_ndep_raw`), the cell sizes of the maps (`read_pollutant_maps()` returns `grids`; no `gsd` in the STAC
 metadata) and of `expo_pop_cells`/`expo_eco_ndep`, the `modified` of opendata.swiss and the version of
-`airquality.data`. Logged to `data/log/sources_inventory.csv` by a target that reruns only when the inventory
-changed, with a message naming the changed keys; shown with the register on "Allgemeines" (`sources_table()`).
+`airquality.data`. Logged to `data/log/sources_inventory.csv` only when the inventory differs from the last logged
+run, with a message naming the keys added, changed or removed (also a rerun of the target for another reason, e.g.
+a changed function, appends nothing); shown with the register on "Allgemeines" (`sources_table()`).
 First inventory: NO2 200 m 1990–2019, 20 m 2020–2025; PM10, O3 200 m → 100 m from 2020; PM2.5 100 m from 2015;
 STATPOP 1990, 2000, 2010–2025 at 100 m; critical loads 1 km 1990–2020 (6 model years); emissions 1990–2025 plus
 the projections 2030, 2040, 2050; RSD 2002–2021, 2023, 2025.
+**Content** (2026-10-23): titles, descriptions, units and temporal resolution in German (shown on the website),
+providers without urls (the Statistisches Amt is now the Amt für Statistik und Daten), landing pages to opendata.swiss
+or the files on GitHub. Licenses from the metadata of the sources: the three opendata.swiss packages and the
+geolion municipality boundaries (opendata.swiss package `gemeindegrenzen3`) `terms_open`; the geo.admin collections
+of BFS and the critical loads link `terms_by`, the four BAFU map collections only say `proprietary` without link,
+recorded as the general geo.admin terms (free use, attribution required); `airquality.data` and this repository GPL-3.
+The rows 25 (death rate) and 26 (cohort life tables of the BFS) are removed, no code read them (user decision); the
+type `reference` stays for documentation-only sources, none at the moment. Removed ids are not reused.

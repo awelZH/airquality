@@ -412,7 +412,18 @@ test_that("plot_map_validation() flags a derived map as in-sample", {
   data <- make_validation() |> dplyr::mutate(parameter = "O3_peakseason_mean_d1_max_mean_h8gl", pollutant = "O3")
   fit <- fit_map_validation(data)
 
-  plot <- plot_map_validation(data, fit, "O3_peakseason_mean_d1_max_mean_h8gl", in_sample = TRUE)
+  plot <- plot_map_validation(data, fit, "O3_peakseason_mean_d1_max_mean_h8gl", in_sample = "in-sample: Karte aus NO2 abgeleitet")
 
-  expect_match(plot$labels$caption, "^in-sample")
+  expect_match(plot$labels$caption, "^in-sample: Karte aus NO2 abgeleitet; Daten")
+  expect_match(plot_map_validation(data, fit, "O3_peakseason_mean_d1_max_mean_h8gl")$labels$caption, "^Daten")
+})
+
+test_that("plot_map_validation_years() notes the derivation in the derived years only", {
+  data <- make_validation()
+  fit <- fit_map_validation(data, by = c("parameter", "traffic", "year"), band = TRUE)
+
+  plots <- plot_map_validation_years(data, fit, "NO2", in_sample = "in-sample: abgeleitet", in_sample_years = 2019)
+
+  expect_match(plots[["2019"]]$labels$caption, "^in-sample")
+  expect_no_match(plots[["2020"]]$labels$caption, "in-sample")
 })

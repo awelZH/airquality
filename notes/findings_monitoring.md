@@ -101,3 +101,14 @@ exceedance of the critical loads for nitrogen (no verification).
 * **Cost**: `mon_maps_raster` 189 s (97 rasters streamed), the whole sub-analysis 3.6 min on the first
   run; store 7.5 MB (maps) + 3.7 MB (O3 maps). Rerun only when an asset changes or a site is added
   (`mon_maps_sites` depends on `mon_aq_data`).
+* **From 1990, derived PM2.5 verified, a plot for every year** (user 2026-10-23): `plot_years <- 1990:year_last`
+  (also the time series, the threshold comparison from "1990–1992" and the nitrogen maps); maps NO2 36,
+  O3_max_98p_m1 36, O3 peak season 36 (the O3 model covers 1990 since `expo_o3_nmin_sites` 4, exposition
+  decision 12), PM10 28, PM2.5 11 + 15 derived. The derived PM2.5 maps 2000–2014 are now verified as well
+  (`add_pm25_sites()`: PM10 value at the site × ratio of the year), noted "in-sample 2000–2014" in the
+  caption and, per year, in the derived years only (`plot_map_validation(in_sample = <note>)`,
+  `plot_map_validation_years(in_sample_years = )`). They add 1–2 pairs a year (2000–2002, 2008–2014; none
+  2003–2007), all at background sites: PM2.5 Hintergrund over all years 0.53, 0.962, n 67 (was 1.44, 0.855,
+  53), verkehrsbelastet unchanged. Per year a plot needs `mon_maps_min_pairs_plot` = 1 pair, a line and band
+  still `mon_maps_min_pairs` = 5 per panel: plots NO2 36, O3 98p 36, O3 peak season 36, PM10 28, PM2.5 21
+  (was 8, from 2018: 2015–2017 had 2, 2 and 4 pairs).

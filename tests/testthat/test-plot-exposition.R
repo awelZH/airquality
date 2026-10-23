@@ -326,3 +326,27 @@ test_that("the plot of all years shows the thresholds without a legend title", {
   expect_contains(legend_texts(plot), c("krit. Eintragsrate", "Jahr")) # the year legend keeps its title
   expect_false("Referenz" %in% legend_texts(plot))
 })
+
+test_that("exposition_xaxis() runs from 0 to the largest value of all years, in the steps of the breaks", {
+  axis <- exposition_xaxis(seq(0, 55, 5), values = c(5, 35, 72.5), barwidth = 1)
+
+  expect_equal(axis$xlims, c(0, 75))
+  expect_equal(axis$xbreaks, seq(0, 75, 5))
+  # a range within the breaks keeps them; the axis never shrinks below 0 or starts elsewhere
+  expect_equal(exposition_xaxis(seq(0, 55, 5), values = c(2, 12))$xlims, c(0, 15))
+})
+
+test_that("the population distributions of all years share an x axis from 0 to the largest value", {
+  data <- tibble::tibble(
+    year = rep(c(1990, 2020), each = 3), pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2",
+    concentration = c(5, 35, 72.5, 5, 15, 35), population = 10, population_cum_rel = rep(c(1, 2, 3) / 3, 2)
+  )
+  axes <- list(NO2 = list(barwidth = 1, xbreaks = seq(0, 55, 5)))
+
+  hist <- plot_exposition_histograms(data, "NO2", make_threshold_values(), axes = axes)
+  cumul <- plot_exposition_cumulative(data, "NO2", make_threshold_values(), axes = axes)
+
+  for (plot in list(hist[["2020"]], cumul$alle, cumul[["2020"]])) {
+    expect_equal(plot$scales$get_scales("x")$limits, c(0, 75))
+  }
+})

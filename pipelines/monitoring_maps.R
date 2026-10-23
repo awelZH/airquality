@@ -22,18 +22,20 @@ pipeline_monitoring_maps <- tar_plan(
   # O3 peak season derived from NO2 with the model of the exposition (decision 6); its verification is in-sample
   mon_maps_o3 = derive_o3_peakseason_map(mon_maps_raster$maps, expo_pop_coefs_o3),
   # PM2.5 before the first PM2.5 map (2015) from the PM10 maps and the PM2.5:PM10 ratio of the exposition
-  # (decision 6); shown as maps only, the verification uses the BAFU maps
+  # (decision 6); verified like the BAFU maps, in-sample (the ratio comes from monitoring data)
   mon_maps_pm25 = derive_pm25_map(mon_maps_raster$maps, expo_pop_ratios_pm, years = plot_years),
 
   # measured and map values of the same site and year, and the robust regression per parameter
   mon_maps_validation =
     mon_maps_raster$sites |>
     add_o3_peakseason_sites(expo_pop_coefs_o3) |>
+    add_pm25_sites(expo_pop_ratios_pm) |>
     map_validation_data(mon_aq_data, parameters = mon_maps_parameters),
   mon_maps_fit = fit_map_validation(mon_maps_validation),
 
-  # the same per year, for the years with at least mon_maps_min_pairs pairs, with the prediction band
-  mon_maps_validation_years = keep_years_with_pairs(mon_maps_validation, min_n = mon_maps_min_pairs),
+  # the same per year, with the prediction band: a plot for every year with mon_maps_min_pairs_plot pairs, a fit
+  # for the panels with mon_maps_min_pairs pairs
+  mon_maps_validation_years = keep_years_with_pairs(mon_maps_validation, min_n = mon_maps_min_pairs_plot),
   mon_maps_fit_years = fit_map_validation(mon_maps_validation_years, by = c("parameter", "traffic", "year"),
                                           min_n = mon_maps_min_pairs, band = TRUE)
 )

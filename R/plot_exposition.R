@@ -365,13 +365,31 @@ ggplot_exposition_cumulative_years <- function(data, x, y, xbreaks, threshold, x
 }
 
 
+#' x axis of the population exposition distributions: from 0 to the largest value of all years
+#'
+#' All years of a parameter share the axis, so the census years with their higher values fit as well.
+#'
+#' @param xbreaks Breaks of the parameter (`plot_axes_exposition`); only their step is used.
+#' @param values Concentrations of all years.
+#' @param barwidth Width of the bars around the values (0 for lines).
+#'
+#' @return List with `xlims` (0 and the largest value rounded up to the step) and `xbreaks`.
+#'
+#' @keywords internal
+exposition_xaxis <- function(xbreaks, values, barwidth = 0) {
+  step <- diff(xbreaks)[[1]]
+  xmax <- step * ceiling((max(values, na.rm = TRUE) + barwidth / 2) / step)
+  list(xlims = c(0, xmax), xbreaks = seq(0, xmax, step))
+}
+
+
 #' Plot the population exposition histograms of one parameter, one plot per year
 #'
 #' @param data `data_exposition_distribution_pollutants.csv`.
 #' @param parameter Parameter, e.g. "NO2".
 #' @param threshold_values Threshold values with line styles.
 #' @param axes Bar width and x breaks per parameter (`plot_axes_exposition` of `report/plots/_plot_setup.R`); the
-#'   range of the breaks is the x range.
+#'   step of the breaks is kept, the x range runs from 0 to the largest value of all years ([exposition_xaxis()]).
 #' @param sub Area in the subtitle.
 #' @param theme ggplot2 theme.
 #'
@@ -382,6 +400,7 @@ plot_exposition_histograms <- function(data, parameter, threshold_values, axes, 
 
   data <- dplyr::filter(data, parameter == !!parameter)
   pars <- parameter_setting(axes, parameter)
+  xaxis <- exposition_xaxis(pars$xbreaks, data$concentration, pars$barwidth)
 
   purrr::map(rlang::set_names(unique(data$year)), function(year) {
 
@@ -391,7 +410,7 @@ plot_exposition_histograms <- function(data, parameter, threshold_values, axes, 
 
     ggplot_exposition_histogram(
       data = data_plot, x = "concentration", y = "population", barwidth = pars$barwidth,
-      xlims = range(pars$xbreaks), xbreaks = pars$xbreaks, threshold = extract_threshold(threshold_values, pollutant, metric),
+      xlims = xaxis$xlims, xbreaks = xaxis$xbreaks, threshold = extract_threshold(threshold_values, pollutant, metric),
       xlabel = ggplot2::xlab(openair::quickText(paste0(pollutant, " ", metric, " (µg/m3)"))),
       titlelab = ggplot2::ggtitle(
         label = openair::quickText(paste0("Bevölkerungsexposition ", airquality.methods::longpollutant(pollutant))),
@@ -416,6 +435,7 @@ plot_exposition_cumulative <- function(data, parameter, threshold_values, axes, 
 
   data <- dplyr::filter(data, parameter == !!parameter)
   pars <- parameter_setting(axes, parameter)
+  xaxis <- exposition_xaxis(pars$xbreaks, data$concentration)
   pollutant <- unique(data$pollutant)
   metric <- unique(data$metric)
   threshold <- extract_threshold(threshold_values, pollutant, metric)
@@ -423,7 +443,7 @@ plot_exposition_cumulative <- function(data, parameter, threshold_values, axes, 
   title <- openair::quickText(paste0("Bevölkerungsexposition ", airquality.methods::longpollutant(parameter)))
 
   plot_all <- ggplot_exposition_cumulative_years(
-    data, x = "concentration", y = "population_cum_rel", xbreaks = pars$xbreaks, threshold = threshold, xlabel = xlabel,
+    data, x = "concentration", y = "population_cum_rel", xbreaks = xaxis$xbreaks, threshold = threshold, xlabel = xlabel,
     title = title, subtitle = paste0("relativer Anteil (kumuliert), Wohnbevölkerung ", sub),
     caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS", theme = theme
   )
@@ -431,7 +451,7 @@ plot_exposition_cumulative <- function(data, parameter, threshold_values, axes, 
   plots_years <- purrr::map(rlang::set_names(unique(data$year)), function(year) {
     ggplot_exposition_cumulative(
       data = dplyr::filter(data, year == !!year), x = "concentration", y = "population_cum_rel", linewidth = 1,
-      xlims = range(pars$xbreaks), xbreaks = pars$xbreaks, threshold = threshold,
+      xlims = xaxis$xlims, xbreaks = xaxis$xbreaks, threshold = threshold,
       background = data, xlabel = xlabel,
       titlelab = ggplot2::ggtitle(
         label = title,

@@ -296,3 +296,9 @@ faceted figure replaced by five.
   stickstoffbelastete Ökosysteme". The collapsed table has its own section "Tabelle
   luftschadstoffbelastete Bevölkerung" at the end of the page. `caption_width` set to 0.55, so the
   common caption "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS" stays on one line.
+
+**x axis of the population exposition distributions** (user 2026-10-23): histograms and cumulative
+distributions of a parameter run from 0 to the largest value of all years (`exposition_xaxis()`), in the step of
+the breaks of `plot_axes_exposition` (their range is no longer used; Ndep keeps its fixed axis from −5). The
+census years 1990/2000 exceeded the fixed ranges (NO2 up to 73.5 µg/m3, axis was 0–55; PM10 26.8, PM2.5 19.8,
+O3 98p 189). Now NO2 0–75, so the recent years fill about the left third.

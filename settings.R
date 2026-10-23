@@ -44,8 +44,9 @@ mon_maps_parameters <- c("NO2", "O3_max_98p_m1", "PM10", "PM2.5", "O3_peakseason
 # cell size of the maps in metres; the values at the sites come from the native raster cells (20 or 200 m)
 mon_maps_cellsize <- 100
 
-# verification per year: only years (and per site class only panels) with at least this many pairs of measured
-# and map values get a plot (and a regression line with prediction interval)
+# verification per year: every year with at least mon_maps_min_pairs_plot pairs of measured and map values gets a
+# plot, a panel (site class) with at least mon_maps_min_pairs pairs also a regression line with prediction interval
+mon_maps_min_pairs_plot <- 1
 mon_maps_min_pairs <- 5
 
 # => trends
@@ -131,8 +132,8 @@ outcomes_erf_shape <- "log_linear"
 
 
 # => plots
-# years to consider for plotting in airquality monitoring data
-plot_years <- 1995:year_last
+# years to consider for plotting in airquality monitoring data and of the pollutant maps (NO2 and O3 maps from 1990)
+plot_years <- 1990:year_last
 
 # number of latest years for plotting relative threshold comparison
 plot_n_years <- 3

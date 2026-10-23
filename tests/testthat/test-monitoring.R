@@ -364,3 +364,18 @@ test_that("derive_pm25_map() derives PM2.5 from the PM10 maps of the given years
   expect_equal(result$year, 2014)
   expect_equal(sort(unique(stats::na.omit(as.vector(result$stars[[1]][["concentration"]])))), c(3, 8) * 0.5)
 })
+
+test_that("add_pm25_sites() derives PM2.5 at the sites from PM10 in the years without a PM2.5 map", {
+  sites_map <- tibble::tibble(
+    site = c("A", "B", "A", "A", "A"), x = 1, y = 1, year = c(2014, 2014, 2015, 2015, 1999),
+    parameter = c("PM10", "PM10", "PM10", "PM2.5", "PM10"), concentration_map = c(20, 30, 20, 12, 25)
+  )
+  ratios <- tibble::tibble(year = c(2014, 2015), ratio = c(0.7, 0.65))
+
+  result <- add_pm25_sites(sites_map, ratios)
+
+  pm25 <- dplyr::arrange(dplyr::filter(result, parameter == "PM2.5"), year, site)
+  expect_equal(pm25$year, c(2014, 2014, 2015))
+  expect_equal(pm25$concentration_map, c(14, 21, 12)) # 2015 from the map; 1999 has no ratio
+  expect_named(result, names(sites_map))
+})

@@ -103,17 +103,28 @@ plots$monitoring$map$Ndep <-
   plot_ndep_exceedance_maps(targets::tar_read(expo_eco_ndep, store = path_store), years = plot_years, boundary = maps_boundary,
                             crs = crs, theme = theme_map)
 
+# the verification of the derived maps is in-sample: their coefficients come from the same monitoring data
+years_pm25_derived <- sort(unique(maps$year[maps$parameter == "PM2.5" & maps$derived %in% TRUE]))
+notes_in_sample <- c(
+  O3_peakseason_mean_d1_max_mean_h8gl = "in-sample: Karte aus NO2 mit denselben Messwerten abgeleitet, keine unabhängige Verifikation",
+  PM2.5 = paste0("in-sample ", paste(range(years_pm25_derived), collapse = "–"),
+                 ": Karte aus PM10 mit dem PM2.5:PM10-Verhältnis der Messwerte abgeleitet, keine unabhängige Verifikation")
+)
+note_in_sample <- \(parameter) if (parameter %in% names(notes_in_sample)) notes_in_sample[[parameter]]
+
 plots$monitoring$map_validation <-
   purrr::map(rlang::set_names(mon_maps_parameters), \(parameter) {
-    plot_map_validation(maps_validation, maps_fit, parameter, in_sample = parameter == "O3_peakseason_mean_d1_max_mean_h8gl",
+    plot_map_validation(maps_validation, maps_fit, parameter, in_sample = note_in_sample(parameter),
                         pointsize = pointsize, theme = theme_scatter)
   })
 
-# per year (years with enough pairs), with the prediction band of the yearly fits
+# per year (every year with a pair), with the prediction band of the yearly fits where a panel has enough pairs;
+# for PM2.5 only the derived years are in-sample
 plots$monitoring$map_validation_year <-
   purrr::map(rlang::set_names(mon_maps_parameters), \(parameter) {
-    plot_map_validation_years(maps_validation_years, maps_fit_years, parameter,
-                              in_sample = parameter == "O3_peakseason_mean_d1_max_mean_h8gl", pointsize = pointsize, theme = theme_scatter)
+    plot_map_validation_years(maps_validation_years, maps_fit_years, parameter, in_sample = note_in_sample(parameter),
+                              in_sample_years = if (parameter == "PM2.5") years_pm25_derived,
+                              pointsize = pointsize, theme = theme_scatter)
   })
 
 

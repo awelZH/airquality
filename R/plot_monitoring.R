@@ -590,8 +590,8 @@ print_timeseries_map <- function(catalog, parameter, level = 6) {
 #' @param data Data as returned by [map_validation_data()].
 #' @param fit Fits as returned by [fit_map_validation()].
 #' @param parameter Parameter to plot.
-#' @param in_sample Is the map derived from the same monitoring data (O3 peak season)? Noted at the
-#'   start of the caption.
+#' @param in_sample Note for a map derived from the same monitoring data (O3 peak season, PM2.5 before
+#'   2015), put at the start of the caption; `NULL` for an independent map.
 #' @param limits Range of both axes; `NULL` for the range of the data.
 #' @param colour_years Colour the points by year, with a colour scale? `FALSE` draws them in one colour
 #'   (plots of a single year).
@@ -604,7 +604,7 @@ print_timeseries_map <- function(catalog, parameter, level = 6) {
 #' @return A ggplot object.
 #'
 #' @keywords internal
-plot_map_validation <- function(data, fit, parameter, in_sample = FALSE, limits = NULL, colour_years = TRUE, legend_band = FALSE,
+plot_map_validation <- function(data, fit, parameter, in_sample = NULL, limits = NULL, colour_years = TRUE, legend_band = FALSE,
                                 pointsize = 2, theme = ggplot2::theme_minimal(),
                                 caption = "Daten: BAFU, Ostluft & NABEL (BAFU & Empa)") {
 
@@ -619,7 +619,7 @@ plot_map_validation <- function(data, fit, parameter, in_sample = FALSE, limits 
   metric <- airquality.methods::longmetric(parameter)
   limits <- limits %||% range(data$concentration, data$concentration_map)
   lines <- c("1:1-Linie" = "dashed", "robuste Regression" = "solid")
-  if (in_sample) caption <- paste0("in-sample: Karte aus NO2 mit denselben Messwerten abgeleitet, keine unabhängige Verifikation; ", caption)
+  if (!is.null(in_sample)) caption <- paste0(in_sample, "; ", caption)
 
   # a layer without data drops its legend key; an empty placeholder row (in the first panel, removed when
   # drawing) keeps the legend the same in years without a fit
@@ -689,17 +689,19 @@ plot_map_validation <- function(data, fit, parameter, in_sample = FALSE, limits 
 #'   ([keep_years_with_pairs()]).
 #' @param fit Yearly fits as returned by [fit_map_validation()] with `by = c("parameter", "traffic", "year")`
 #'   and `band = TRUE`; a panel without fit shows its points only.
+#' @param in_sample_years Years whose map is derived (`in_sample` noted); `NULL` for all years.
 #' @param ... Further arguments passed to [plot_map_validation()].
 #'
 #' @return Named list of ggplot objects, one per year.
 #'
 #' @keywords internal
-plot_map_validation_years <- function(data, fit, parameter, ...) {
+plot_map_validation_years <- function(data, fit, parameter, in_sample = NULL, in_sample_years = NULL, ...) {
   data <- dplyr::filter(data, parameter == !!parameter)
   limits <- range(data$concentration, data$concentration_map)
 
   purrr::map(rlang::set_names(sort(unique(data$year))), \(year) {
+    note <- if (is.null(in_sample_years) || year %in% in_sample_years) in_sample
     plot_map_validation(dplyr::filter(data, year == !!year), dplyr::filter(fit, year == !!year), parameter,
-                        limits = limits, colour_years = FALSE, legend_band = TRUE, ...)
+                        in_sample = note, limits = limits, colour_years = FALSE, legend_band = TRUE, ...)
   })
 }

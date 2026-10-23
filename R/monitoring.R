@@ -309,6 +309,28 @@ add_o3_peakseason_sites <- function(sites_map, coefs) {
   dplyr::bind_rows(sites_map, o3)
 }
 
+#' Derive PM2.5 at the sites from the PM10 map values, in the years without a PM2.5 map
+#'
+#' The site counterpart of [derive_pm25_map()]: PM10 value at the site times the PM2.5:PM10 ratio of the
+#' year. The ratio comes from monitoring data, partly of the same sites, so the verification of these years
+#' is in-sample.
+#'
+#' @param sites_map Output of [extract_at_sites()] for several parameters and years.
+#' @param ratios Output of [fit_pm_ratio()]; years without a ratio get no value.
+#'
+#' @return `sites_map` with the derived `PM2.5` rows added.
+#'
+#' @keywords internal
+add_pm25_sites <- function(sites_map, ratios) {
+  pm25 <- sites_map |>
+    dplyr::filter(parameter == "PM10", !year %in% sites_map$year[sites_map$parameter == "PM2.5"]) |>
+    dplyr::inner_join(ratios, by = dplyr::join_by(year), relationship = "many-to-one") |>
+    dplyr::mutate(parameter = "PM2.5", concentration_map = concentration_map * ratio) |>
+    dplyr::select(dplyr::all_of(names(sites_map)))
+
+  dplyr::bind_rows(sites_map, pm25)
+}
+
 #' Pair the measured yearly values with the map values at the same site
 #'
 #' @param sites_map Map values at the sites ([extract_at_sites()], [add_o3_peakseason_sites()]).

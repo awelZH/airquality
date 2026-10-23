@@ -90,6 +90,8 @@ column order and format must not change (the directory may change; external path
   BAFU maps of the canton per year (slider; PM2.5 before 2015 and the O3 peak season derived) and map vs.
   measured values with `MASS::rlm` on the page "Luftqualität", plus the map of the nitrogen critical load
   exceedance (`expo_eco_ndep`); no output file, the report reads the store; replaces `wip/_validate_rasterdata.R`.
+  Since 2026-10-23 from 1990 (`plot_years`), the derived PM2.5 maps verified too (in-sample), a yearly plot for
+  every year with a pair.
 * **Exposition from 1990** (2026-10-23, decision 12; `notes/findings_exposition.md`): the censuses 1990 and
   2000 as population rasters (`airquality.methods` 0.11.0), `expo_years <- c(1990, 2000, 2010:year_last)`;
   new rows 1990/2000 in the three population exposition files and 2000 in the health outcomes (premature

@@ -181,6 +181,8 @@ test_that("read_pollutant_maps() reads the available years and skips a year that
   expect_equal(result$maps$year, 2020)
   expect_equal(result$sites$year, 2020)
   expect_equal(result$sites$concentration_map, 1)
+  # the native cell size of every map read, for the inventory of the sources
+  expect_equal(result$grids, tibble::tibble(endpoint = "ch.bafu.luftreinhaltung-stickstoffdioxid", year = 2020L, res = 20))
 })
 
 test_that("extract_at_sites() takes the value of the native cell of each site", {

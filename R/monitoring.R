@@ -162,8 +162,9 @@ aggregate_ndep <- function(data, additional_groups = NULL) {
 #' @param read,get_assets Readers of the rasters and of the assets of a collection (replaced in the
 #'   tests).
 #'
-#' @return List with `maps` (output of [aggregate_map()], one row per parameter and year) and `sites`
-#'   (output of [extract_at_sites()]).
+#' @return List with `maps` (output of [aggregate_map()], one row per parameter and year), `sites`
+#'   (output of [extract_at_sites()]) and `grids` (`endpoint` = collection, `year`, `res` = native cell size
+#'   in metres, for the inventory of the sources, [sources_inventory()]).
 #'
 #' @keywords internal
 read_pollutant_maps <- function(collections, years, boundary, sites, cellsize = 100,
@@ -177,7 +178,9 @@ read_pollutant_maps <- function(collections, years, boundary, sites, cellsize = 
       tryCatch(
         {
           raster <- read(collection, years = year, bbox = boundary)
-          list(map = aggregate_map(raster, grid, boundary), sites = extract_at_sites(raster, sites))
+          list(map = aggregate_map(raster, grid, boundary), sites = extract_at_sites(raster, sites),
+               grid = tibble::tibble(endpoint = collection, year = raster$year,
+                                     res = abs(stars::st_dimensions(raster$stars[[1]])[[1]]$delta)))
         },
         error = function(err) {
           cli::cli_warn("Skipping the map of {.val {collection}} {year}: it cannot be read.", parent = err)
@@ -191,7 +194,8 @@ read_pollutant_maps <- function(collections, years, boundary, sites, cellsize = 
 
   list(
     maps = purrr::list_rbind(purrr::map(maps, "map")),
-    sites = purrr::list_rbind(purrr::map(maps, "sites"))
+    sites = purrr::list_rbind(purrr::map(maps, "sites")),
+    grids = purrr::list_rbind(purrr::map(maps, "grid"))
   )
 }
 

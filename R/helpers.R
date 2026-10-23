@@ -16,6 +16,20 @@ prepare_ressources <- function(ressources) {
 }
 
 
+#' Read and check the register of the data sources
+#'
+#' @param path Path of `data/meta/ressources.csv` (UTF-8; [airquality.methods::read_local_csv()] reads latin1
+#'   by default).
+#'
+#' @return The register ([prepare_ressources()]).
+#'
+#' @keywords internal
+read_ressources <- function(path = "data/meta/ressources.csv") {
+  airquality.methods::read_local_csv(path, locale = readr::locale(encoding = "UTF-8"), show_col_types = FALSE) |>
+    prepare_ressources()
+}
+
+
 #' Endpoint of a data source of the register, by its key
 #'
 #' @param ressources The register ([prepare_ressources()]).

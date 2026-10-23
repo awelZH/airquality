@@ -2,7 +2,7 @@
 
 pipeline_setup <- tar_plan(
   tar_target(setup_ressources_file, "data/meta/ressources.csv", format = "file"),
-  setup_ressources = prepare_ressources(airquality.methods::read_local_csv(setup_ressources_file, show_col_types = FALSE)),
+  setup_ressources = read_ressources(setup_ressources_file),
 
   # current municipal boundaries from geolion, used for all years, without the Kloster Fahr (decision 4)
   tar_target(

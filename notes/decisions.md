@@ -194,3 +194,13 @@ stable facts are written by hand: years, resolution per year and version change 
 are derived by the pipeline (step 1b), never written back into the input. Rejected: a YAML register (more
 expressive, but not a table on GitHub); later possibly a Frictionless Data Package for the 14 output files.
 Migration 2026-10-23 byte-identical on frozen inputs (12 outputs, 720 figures); content completion follows.
+**Inventory** (`R/sources.R`, target `report_sources_inventory`): per key the years available, the cell size per
+year condensed to ranges and the version, derived from targets that exist anyway – the geo.admin asset states,
+the data read (`emis_emikat_raw`, `emis_rsd_vehicles`, `outcomes_population`, `outcomes_mortality`, `mon_aq_raw`,
+`mon_ndep_raw`), the cell sizes of the maps (`read_pollutant_maps()` returns `grids`; no `gsd` in the STAC
+metadata) and of `expo_pop_cells`/`expo_eco_ndep`, the `modified` of opendata.swiss and the version of
+`airquality.data`. Logged to `data/log/sources_inventory.csv` by a target that reruns only when the inventory
+changed, with a message naming the changed keys; shown with the register on "Allgemeines" (`sources_table()`).
+First inventory: NO2 200 m 1990–2019, 20 m 2020–2025; PM10, O3 200 m → 100 m from 2020; PM2.5 100 m from 2015;
+STATPOP 1990, 2000, 2010–2025 at 100 m; critical loads 1 km 1990–2020 (6 model years); emissions 1990–2025 plus
+the projections 2030, 2040, 2050; RSD 2002–2021, 2023, 2025.

@@ -17,7 +17,7 @@ for (file in list.files("R", pattern = "[.]R$", full.names = TRUE)) source(file,
 source("settings.R", encoding = "UTF-8")
 
 # ressource table for input datasets (LRV & WHO threshold values)
-ressources <- prepare_ressources(airquality.methods::read_local_csv("data/meta/ressources.csv", show_col_types = FALSE))
+ressources <- read_ressources("data/meta/ressources.csv")
 
 
 # list of output data sources for plotting

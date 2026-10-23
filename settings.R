@@ -108,8 +108,9 @@ expo_correct_noloc <- TRUE
 # ratios from 2000 on)
 expo_years_pm25_from_pm10 <- intersect(expo_years, 2000:2014)
 
-# minimum number of monitoring sites per year for fitting the O3 peak-season model
-expo_o3_nmin_sites <- 7
+# minimum number of monitoring sites per year for fitting the O3 peak-season model (4: the census year 1990 has
+# 4 sites measuring NO2 and the O3 peak season, 1991 has 5; user decision 2026-10-23, was 7)
+expo_o3_nmin_sites <- 4
 
 # => health outcomes
 # share of the median year a year's deaths need to reach to count as complete; the mortality data of the

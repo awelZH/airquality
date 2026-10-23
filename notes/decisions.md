@@ -168,8 +168,13 @@ with 0 inhabitants emptied), so nothing in `R/` reads them separately (methods d
 `expo_years <- c(1990, 2000, 2010:year_last)`, not `1990:year_last`: there are no population rasters in
 between, and `align_to_reference()` only computes years with one, so the longer form would read about 47
 pollutant rasters for nothing. No interpolation of the population for 1991–1999 and 2001–2009 (a new method,
-not wanted for now). O3 peak season 1990 stays `NA` (coefficients from 1992 on, no extrapolation;
-`derive_o3_peakseason()` reports years before the first fit as a message, later gaps still warn). PM2.5 2000
+not wanted for now). O3 peak season 1990: first `NA` (coefficients from 1992 on, no extrapolation;
+`derive_o3_peakseason()` reports years before the first fit as a message, later gaps still warn); the same
+day the user lowered `expo_o3_nmin_sites` from 7 to 4, so 1990 (4 sites) and 1991 (5) get their own offset
+(114, 117; 1992–1994: 107–110) in the common model. Considered and not taken: offsets of 1990/1991 at the
+fixed slope of the years with ≥ 7 sites (same offsets, nothing else changes). The common slope moves from
+−0.6621 to −0.6642, the O3 peak season of every year by at most 0.1 % (2010 canton −0.003 µg/m3; also the
+health outcomes of O3). PM2.5 2000
 derived from PM10 (`expo_years_pm25_from_pm10 <- intersect(expo_years, 2000:2014)`, ratios from 2000 on).
 Health outcomes 2000 included (mortality from 1996); premature deaths only, because the population by age
 (life tables) starts in 2010. Prototype, numbers and checks: `notes/findings_exposition.md`.

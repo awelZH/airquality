@@ -127,8 +127,8 @@ appending to own outputs, no work lists derived from earlier results.
     catalog with `get_plot()` and `print_tabset()`); only analysis-specific code stays in `R/`.
 11. Plots per year are shown with a year slider (`print_year_slider()`, `report/year-slider.html`), not tabsets.
 12. The exposition starts in 1990: the censuses 1990 and 2000 (read by `read_statpop_ha()` onto the STATPOP grid,
-    no collector pixels) and STATPOP from 2010; no population interpolation in between; O3 peak season 1990
-    `NA` (user decisions 2026-10-23).
+    no collector pixels) and STATPOP from 2010; no population interpolation in between; the O3 peak-season
+    model needs 4 sites per year (`expo_o3_nmin_sites`, was 7), so it covers 1990 (user decisions 2026-10-23).
 
 ## Read before working on …
 

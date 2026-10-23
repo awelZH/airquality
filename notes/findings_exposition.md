@@ -44,7 +44,7 @@ Population-weighted canton means (µg/m3):
 |---|---|---|---|---|
 | NO2 | 37.3 | 27.8 | 25.0 | 24.3 |
 | O3 98p | 182.4 | 153.1 | 170.5 | 170.5 |
-| O3 peak season | – | 88.5 | 87.0 | 94.0 |
+| O3 peak season (model from 4 sites) | 89.0 | 88.5 | 87.0 | 94.0 |
 | PM10 | – | 22.3 | 19.7 | 15.7 |
 | PM2.5 (2000, 2010 from PM10) | – | 16.5 | 14.8 | 10.4 |
 
@@ -60,3 +60,9 @@ Open: whether `P9BTOT`/`P00BTOT` count the population by the same definition as 
 the economic residence, STATPOP the permanent resident population). Not verified; the BFS census 2000
 geodata documentation (dam-api.bfs.admin.ch asset 14607398) is the place to check. A difference would be a
 break between 2000 and 2010 that cannot be corrected, only documented.
+
+O3 peak season with `expo_o3_nmin_sites` 4 instead of 7 (user decision 2026-10-23): offsets 1990 114.4
+(4 sites, sd of the residuals 9.5), 1991 116.6 (5 sites, 11.1); slope −0.6642 (was −0.6621); the offsets
+1992–2025 move by at most 0.08. Outputs against the commit before: only the O3 peak-season rows change
+(canton +1 row 1990, municipalities +160, distribution classes shifted, outcomes O3), at most 0.1 % relative
+(canton mean 2010 87.001 → 86.998 µg/m3). Canton 1990: 89.0 µg/m3.

@@ -217,6 +217,9 @@ fit_rlm_per_year <- function(data, response, covariate = NULL) {
 
 #' Derive the O3 peak-season concentration from NO2 cell by cell
 #'
+#' Years without coefficients get `NA`, without extrapolation. Years before the first fitted year (the
+#' census year 1990: too few monitoring sites) are expected and only reported; a gap later on warns.
+#'
 #' @param cells Cell table with `year` and `no2`.
 #' @param coefs Output of [fit_o3_peakseason_model()].
 #'
@@ -225,9 +228,14 @@ fit_rlm_per_year <- function(data, response, covariate = NULL) {
 #' @keywords internal
 derive_o3_peakseason <- function(cells, coefs) {
   missing <- setdiff(unique(cells$year[!is.na(cells$no2)]), coefs$year)
-  if (length(missing) > 0) {
+  before_fit <- missing[missing < min(coefs$year)]
+  gaps <- setdiff(missing, before_fit)
+  if (length(before_fit) > 0) {
+    cli::cli_inform("No O3 peak-season coefficients before {min(coefs$year)}: NA for {.val {before_fit}}.")
+  }
+  if (length(gaps) > 0) {
     cli::cli_warn(c(
-      "!" = "No O3 peak-season coefficients for {.val {missing}}.",
+      "!" = "No O3 peak-season coefficients for {.val {gaps}}.",
       "i" = "The O3 peak-season concentration is set to NA for these years."
     ))
   }

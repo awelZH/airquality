@@ -159,3 +159,17 @@ JavaScript all years stay visible. Order: "alle" (all years in one plot) first, 
 ascending; the slider starts at "alle" where it exists, else at the newest year. Rejected: Observable JS
 (images built in the browser, no lightbox), plotly animation (`quickText()` formulas lost, maps as JSON
 of several MB each). The "absolut/relativ" tabs of the outcomes stay tabs (`print_tabset()`).
+
+**12. Exposition from 1990: the censuses 1990 and 2000 as population rasters** (user decisions 2026-10-23).
+`ch.bfs.statistik-bevoelkerung_haushalte` also holds the federal censuses 1990 and 2000 (LV03 csv only,
+own column names, no collector pixels). `airquality.methods` 0.11.0 reads them with `read_statpop_ha()` onto
+the STATPOP grid (LV03 shifted by the false origins of LV95, the BFS convention for the hectare grid; cells
+with 0 inhabitants emptied), so nothing in `R/` reads them separately (methods decision 18). Decided:
+`expo_years <- c(1990, 2000, 2010:year_last)`, not `1990:year_last`: there are no population rasters in
+between, and `align_to_reference()` only computes years with one, so the longer form would read about 47
+pollutant rasters for nothing. No interpolation of the population for 1991–1999 and 2001–2009 (a new method,
+not wanted for now). O3 peak season 1990 stays `NA` (coefficients from 1992 on, no extrapolation;
+`derive_o3_peakseason()` reports years before the first fit as a message, later gaps still warn). PM2.5 2000
+derived from PM10 (`expo_years_pm25_from_pm10 <- intersect(expo_years, 2000:2014)`, ratios from 2000 on).
+Health outcomes 2000 included (mortality from 1996); premature deaths only, because the population by age
+(life tables) starts in 2010. Prototype, numbers and checks: `notes/findings_exposition.md`.

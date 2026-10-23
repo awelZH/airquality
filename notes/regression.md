@@ -19,6 +19,12 @@ keyed by `rlang::hash()` of the arguments, `refresh = TRUE` downloads again). Th
 `tests/regression/results/pipeline/<label>/{output,log}/` (environment variables `AIRQUALITY_OUTPUT_DIR`,
 `AIRQUALITY_LOG_DIR` of `settings.R`) and the store to `.../_targets`, so `data/` and `_targets/` are never
 touched; a second run with the same label reuses its store (only the `tar_cue("always")` targets run).
+**A reused store does not see changed settings** (found 2026-10-23): with `callr_function = NULL` targets
+tracks the globals of the calling environment (that of `run_pipeline()`), while `_targets.R` sources
+`settings.R` into the global environment, so no setting is a dependency in a regression store (its meta lists
+`label`, `refresh`, `ns`, … instead). A run after a changed setting skips the targets that use it and silently
+yields the old results. Use a new label (fresh store) whenever `settings.R` changed. The main store
+(`tar_make()` in a callr process, global environment) tracks the settings correctly.
 Inputs and results are gitignored. `airquality.data` datasets need no frozen downloads, but both runs must
 use the same installed version of that package. The rasters of data.geo.admin.ch are not frozen (cached
 downloads or streamed GeoTIFFs), so run reference and candidate shortly after each other. The hash of the

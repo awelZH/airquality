@@ -71,6 +71,15 @@ test_that("derive_o3_peakseason() warns and yields NA for years without coeffici
   expect_equal(result$o3_peakseason_mean_d1_max_mean_h8gl, c(92, NA))
 })
 
+test_that("derive_o3_peakseason() only informs for years before the first model year", {
+  # the census year 1990 lies before the monitoring data allow a fit (decision 2026-10-23: NA, no extrapolation)
+  cells <- tibble::tibble(year = c(1990, 2019), no2 = c(10, 10))
+  coefs <- tibble::tibble(year = 2019, offset = 100, slope = -0.8)
+
+  expect_no_warning(expect_message(result <- derive_o3_peakseason(cells, coefs), "1990"))
+  expect_equal(result$o3_peakseason_mean_d1_max_mean_h8gl, c(NA, 92))
+})
+
 
 # ---- PM2.5 from PM10 ----------------------------------------------------------
 
@@ -101,6 +110,24 @@ test_that("derive_pm25_from_pm10() fills only missing PM2.5 in the target years"
   result <- derive_pm25_from_pm10(cells, ratios, years = 2010:2014)
 
   expect_equal(result$pm2_5, c(15, 12, NA))
+})
+
+test_that("derive_pm25_from_pm10() derives the census year 2000 and leaves 1990 without PM10 alone", {
+  cells <- tibble::tibble(year = c(1990, 2000, 2010), pm10 = c(NA, 30, 20), pm2_5 = NA_real_)
+  ratios <- tibble::tibble(year = c(2000, 2010), ratio = c(0.8, 0.75))
+
+  expect_no_warning(result <- derive_pm25_from_pm10(cells, ratios, years = c(2000, 2010:2014)))
+  expect_equal(result$pm2_5, c(NA, 24, 15))
+})
+
+test_that("the PM2.5 derivation years have PM10 rasters and a ratio", {
+  # PM10 rasters from 1998, PM2.5 rasters from 2015, PM2.5:PM10 ratios from 2000 (fit_pm_ratio(min_year = 2000))
+  settings <- new.env()
+  sys.source(testthat::test_path("..", "..", "settings.R"), envir = settings)
+
+  expect_true(all(settings$expo_years_pm25_from_pm10 %in% settings$expo_years))
+  expect_true(all(settings$expo_years_pm25_from_pm10 >= 2000 & settings$expo_years_pm25_from_pm10 < 2015))
+  expect_true(2000 %in% settings$expo_years_pm25_from_pm10)
 })
 
 

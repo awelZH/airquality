@@ -69,7 +69,7 @@ column order and format must not change (the directory may change; external path
 * `tests/testthat/test-output-schema.R` checks names and column order against
   `tests/regression/baseline/` (outputs as of commit `c0cb59c`).
 
-## Status (2026-09-24)
+## Status (2026-10-23)
 
 * **Step 1 done**: exposition reworked.
 * **Step 2, phase 2a done** except the trends: emissions, monitoring, outcomes reworked; plots/report
@@ -90,8 +90,13 @@ column order and format must not change (the directory may change; external path
   BAFU maps of the canton per year (slider; PM2.5 before 2015 and the O3 peak season derived) and map vs.
   measured values with `MASS::rlm` on the page "Luftqualität", plus the map of the nitrogen critical load
   exceedance (`expo_eco_ndep`); no output file, the report reads the store; replaces `wip/_validate_rasterdata.R`.
+* **Exposition from 1990** (2026-10-23, decision 12; `notes/findings_exposition.md`): the censuses 1990 and
+  2000 as population rasters (`airquality.methods` 0.11.0), `expo_years <- c(1990, 2000, 2010:year_last)`;
+  new rows 1990/2000 in the three population exposition files and 2000 in the health outcomes (premature
+  deaths only); rows from 2010 byte-identical on frozen inputs.
 * All content changes so far are in `data/output/`: emissions, monitoring and ndep since commit
-  `fc1e744`, health outcomes since `b9fe256` (last digits since the pipeline run of 2026-09-24).
+  `fc1e744`, health outcomes since `b9fe256` (last digits since the pipeline run of 2026-09-24), the
+  exposition years 1990/2000 since 2026-10-23.
 
 ## Decisions (summary; details, reasons and numbers in `notes/decisions.md`)
 
@@ -121,6 +126,9 @@ appending to own outputs, no work lists derived from earlier results.
     redistribution, grouped legend, `check_names()`; since 0.5.0 the nitrogen deposition classes and the plot
     catalog with `get_plot()` and `print_tabset()`); only analysis-specific code stays in `R/`.
 11. Plots per year are shown with a year slider (`print_year_slider()`, `report/year-slider.html`), not tabsets.
+12. The exposition starts in 1990: the censuses 1990 and 2000 (read by `read_statpop_ha()` onto the STATPOP grid,
+    no collector pixels) and STATPOP from 2010; no population interpolation in between; O3 peak season 1990
+    `NA` (user decisions 2026-10-23).
 
 ## Read before working on …
 

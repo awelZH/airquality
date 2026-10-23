@@ -97,14 +97,16 @@ trend_nmin_sites <- function(parameter) {
 }
 
 # => exposition
-# years to analyse: STATPOP is available from 2010 on
-expo_years <- 2010:year_last
+# years to analyse: the population rasters exist for the federal censuses 1990 and 2000 and for STATPOP from 2010
+# on (one hectare grid, airquality.methods::read_statpop_ha()); there are none in between
+expo_years <- c(1990, 2000, 2010:year_last)
 
 # subtract STATPOP collector pixels (inhabitants that cannot be located) and spread them over their municipality?
 expo_correct_noloc <- TRUE
 
-# years in which PM2.5 is derived from PM10 (no PM2.5 raster data before 2015)
-expo_years_pm25_from_pm10 <- min(expo_years):2014
+# years in which PM2.5 is derived from PM10 (no PM2.5 rasters before 2015, no PM10 rasters before 1998, PM2.5:PM10
+# ratios from 2000 on)
+expo_years_pm25_from_pm10 <- intersect(expo_years, 2000:2014)
 
 # minimum number of monitoring sites per year for fitting the O3 peak-season model
 expo_o3_nmin_sites <- 7

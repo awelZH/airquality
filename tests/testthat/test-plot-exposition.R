@@ -62,30 +62,6 @@ test_that("population_over_thresholds() sets small negative remainders to 0", {
   expect_true(all(result$population >= 0))
 })
 
-test_that("the doughnut plot of the population over thresholds uses the last years for the shares", {
-  data <- dplyr::bind_rows(
-    population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values()),
-    population_over_thresholds(dplyr::mutate(make_distribution(), year = 2019), dplyr::mutate(make_weighted_means(), year = 2019),
-                               make_threshold_values())
-  )
-  colours <- c("über LRV-Grenzwert" = "red3", "über WHO-Richtwert" = "gray30", "unter Grenz-/Richtwert" = "gray60")
-
-  share <- plot_population_over_thresholds_share(data, n_years = 1, colours = colours)
-
-  expect_equal(sum(share$data$population), sum(data$population[data$year == 2020]))
-  expect_equal(share$labels$subtitle, "Anteil Personen im Kanton Zürich in den Jahren 2020 bis 2020")
-})
-
-test_that("the doughnut plot works with a theme whose caption is a ggtext textbox", {
-  data <- population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values())
-  colours <- c("über LRV-Grenzwert" = "red3", "über WHO-Richtwert" = "gray30", "unter Grenz-/Richtwert" = "gray60")
-  theme <- ggplot2::theme_minimal() + ggplot2::theme(plot.caption = ggtext::element_textbox_simple())
-
-  expect_no_error(withr::with_pdf(NULL, ggplot2::ggplotGrob(
-    plot_population_over_thresholds_share(data, n_years = 1, colours = colours, theme = theme)
-  )))
-})
-
 test_that("plot_population_over_thresholds() gives one plot per parameter, without panels, named in the title", {
   data <- dplyr::bind_rows(
     population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values()),

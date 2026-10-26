@@ -65,7 +65,7 @@ environment, i.e. no function reads a global any more.
   `test-plot-exposition.R`, helpers in `helper-plot.R`; 75 expectations.
 
 Findings, not changed (content, for the user to decide):
-* The doughnut plot `rel_various` is built but commented out in `Bevölkerungsbelastung.qmd` (since 2026-09-24 not on the page at all).
+* The doughnut plot `rel_various` is built but commented out in `Bevölkerungsbelastung.qmd` (since 2026-09-24 not on the page at all, removed 2026-10-26).
 * The commented snippet "für Umweltbericht" in `_plot_exposition.R` that used the intermediate `d`
   was dropped; the other two snippets now use `data_population_over_thresh`.
 
@@ -263,7 +263,7 @@ inhabitants ("über/unter krit. Eintragsrate"); the data have only the years 199
 2020 (about 784 ecosystems, at most 4 below the critical load), hence narrow bars. Both population and
 ecosystem plots share `ggplot_over_thresholds()`. The collapsed table of the inhabitants moved to the end
 of the page. The commented "für Umweltbericht" snippets (the faceted plot filtered to one pollutant) were
-dropped, the per-pollutant plots replace them. The doughnut `population_over_thresh_share` is still built
+dropped, the per-pollutant plots replace them. The doughnut `population_over_thresh_share` was still built (removed 2026-10-26)
 but no page refers to it any more. Regression: the other 265 exposition figures byte-identical, the one
 faceted figure replaced by five.
 
@@ -287,7 +287,7 @@ faceted figure replaced by five.
   panel width, `_plot_setup.R`): they break between words, no hyphenation (no R package does that inside
   grid). Markdown: a manual line break is `<br>` (was `\n`, in the ndep sites caption). A textbox does not
   merge with an `element_text()` caption, so plots overriding the caption on top of `theme_ts` replace it
-  with `%+replace%` (doughnut); the maps use `theme_map` and keep `element_text()`. ggtext 0.2.0 with
+  with `%+replace%` (was the doughnut); the maps use `theme_map` and keep `element_text()`. ggtext 0.2.0 with
   gridtext, litedown, markdown recorded in `renv.lock` and in DESCRIPTION.
 * Subsections per pollutant (user decision 2026-09-24), printed by `print_exposition_parameter()` as
   level-4 headings, also inside the O3 tabs (the tabsets stay intact): "Belastungsverteilung"
@@ -326,3 +326,11 @@ O3 98p 189). Now NO2 0–75, so the recent years fill about the left third.
   of the critical loads; consecutive years look as before. Bubble and ticks are placed in pixels from the width of
   the slider, again whenever it changes (`ResizeObserver`): a slider in a hidden tab has no width, its ticks sat at
   the left end until it was moved.
+
+**Clean-up round (user decisions 2026-10-26).** Removed the doughnut `population_over_thresh_share` (function
+`plot_population_over_thresholds_share()`, its catalog row and 2 tests; no page showed it), the commented eBC section
+of `Bevölkerungsbelastung.qmd` and its axis entry in `plot_axes_exposition` (the eBC time series on "Luftqualität" and
+the eBC trends stay), the stale "../scripts" in the setup comment of the pages. The validation tests fit `rlm()` on
+`make_validation_pairs()` (6 scattered pairs per traffic influence and year) instead of 2–3 or doubled pairs: no more
+"failed to converge"/"NaNs produced" warnings. Figures: 719 of 720 byte-identical, the doughnut gone (the NO2 bands
+differ from the reference `key_widths` by the earlier commit with the years in every panel).

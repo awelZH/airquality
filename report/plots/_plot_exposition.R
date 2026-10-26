@@ -16,8 +16,8 @@ data_expo_weighmean_municip <- airquality.methods::read_local_csv(ressources_plo
 parameters_exposition <- rlang::set_names(plot_parameters_exposition)
 
 
-# inhabitants over thresholds: time series per parameter (each O3 metric against its own threshold),
-# and share in the last plot_n_years; sensitive ecosystems over the critical load of nitrogen
+# inhabitants over thresholds: time series per parameter (each O3 metric against its own threshold);
+# sensitive ecosystems over the critical load of nitrogen
 colours_population_over_thresh <- c("über LRV-Grenzwert" = col_lrv, "über WHO-Richtwert" = col_who, "unter Grenz-/Richtwert" = ggplot2::alpha("gray60", 0.3))
 colours_ecosystems_over_cln <- c("über krit. Eintragsrate" = col_lrv, "unter krit. Eintragsrate" = ggplot2::alpha("gray60", 0.3))
 data_population_over_thresh <- population_over_thresholds(data_expo_distr_pollutants, data_expo_weighmean_canton, immission_threshold_values)
@@ -28,9 +28,6 @@ plots$exposition$population_over_thresh <-
                                   colours = colours_population_over_thresh, theme = theme_ts)
 plots$exposition$population_over_thresh$Ndep <-
   plot_ecosystems_over_critical_load(ecosystems_over_critical_load(data_expo_distr_ndep), colours = colours_ecosystems_over_cln, theme = theme_ts)
-
-plots$exposition$population_over_thresh_share <-
-  plot_population_over_thresholds_share(data_population_over_thresh, n_years = plot_n_years, colours = colours_population_over_thresh, theme = theme_ts)
 
 # --- für ZUP ---
 # data_population_over_thresh |>
@@ -71,7 +68,6 @@ plots$exposition$population_weighted_mean <- plot_weighted_mean_timeseries(data_
 plots_exposition <-
   dplyr::bind_rows(
     airquality.methods::plot_catalog(plots$exposition$population_over_thresh, "population_over_thresh", names_to = "parameter"),
-    airquality.methods::plot_catalog(plots$exposition$population_over_thresh_share, "population_over_thresh_share"),
     airquality.methods::plot_catalog(plots$exposition$distribution_histogram, "distribution_histogram", names_to = c("parameter", "year")),
     airquality.methods::plot_catalog(plots$exposition$distribution_cumulative, "distribution_cumulative", names_to = c("parameter", "year")),
     airquality.methods::plot_catalog(plots$exposition$population_weighted_mean, "population_weighted_mean", names_to = "parameter"),

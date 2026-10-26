@@ -128,52 +128,6 @@ plot_population_over_thresholds <- function(data, parameters, colours, theme = g
 }
 
 
-#' Plot the share of the inhabitants over thresholds in the last years as doughnuts, one per pollutant
-#'
-#' @inheritParams plot_population_over_thresholds
-#' @param n_years Number of the last years summed up.
-#'
-#' @return A ggplot object.
-#'
-#' @keywords internal
-plot_population_over_thresholds_share <- function(data, n_years, colours, theme = ggplot2::theme_minimal()) {
-
-  year_max <- max(data$year)
-
-  data |>
-    dplyr::filter(year %in% utils::tail(sort(unique(year)), n_years)) |>
-    dplyr::summarise(population = sum(population), .by = c(pollutant, reference)) |>
-    dplyr::arrange(pollutant, reference) |> # drawing order of the slices
-    dplyr::mutate(population_relative = population / sum(population), .by = pollutant) |>
-    ggplot2::ggplot(ggplot2::aes(x = 1, y = population_relative, fill = reference)) +
-    ggplot2::geom_bar(stat = "identity", width = 0.5) +
-    ggplot2::scale_x_continuous(limits = c(0.25,1.25), expand = c(0,0)) +
-    ggplot2::scale_y_continuous(limits = c(0,1), labels = scales::percent_format(), expand = c(0,0)) +
-    ggplot2::scale_fill_manual(values = colours) +
-    ggplot2::coord_polar(theta = "y") +
-    ggplot2::facet_wrap(pollutant~., nrow = 1) +
-    # the caption is replaced, not merged: a ggtext textbox in the theme does not merge with element_text()
-    ggplot2::`%+replace%`(theme, ggplot2::theme(plot.caption = ggplot2::element_text(hjust = 0.5, color = "gray40", size = ggplot2::rel(0.66)))) +
-    ggplot2::theme(
-      legend.position = "bottom",
-      legend.title = ggplot2::element_blank(),
-      panel.grid.major = ggplot2::element_blank(),
-      panel.grid.minor = ggplot2::element_blank(),
-      axis.text = ggplot2::element_blank(),
-      axis.title = ggplot2::element_blank(),
-      axis.line.x = ggplot2::element_blank(),
-      axis.ticks = ggplot2::element_blank(),
-      plot.title = ggplot2::element_text(size = ggplot2::rel(1), hjust = 0.5),
-      plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8), hjust = 0.5)
-    ) +
-    ggplot2::ggtitle(
-      label = "Luftschadstoffbelastete Wohnbevölkerung",
-      subtitle = paste0("Anteil Personen im Kanton Zürich in den Jahren ", year_max - n_years + 1, " bis ", year_max)
-    ) +
-    ggplot2::labs(caption = "Referenzwerte nach heutigem Stand, Datengrundlage: BAFU & BFS")
-}
-
-
 # ---- page section per parameter --------------------------------------------------------------
 
 #' Print the plots of one parameter on the exposition page

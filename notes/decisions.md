@@ -208,8 +208,10 @@ the projections 2030, 2040, 2050; RSD 2002–2021, 2023, 2025.
 **Content** (2026-10-23): titles, descriptions, units and temporal resolution in German (shown on the website),
 providers without urls (the Statistisches Amt is now the Amt für Statistik und Daten), landing pages to opendata.swiss
 or the files on GitHub. Licenses from the metadata of the sources: the three opendata.swiss packages and the
-geolion municipality boundaries (opendata.swiss package `gemeindegrenzen3`) `terms_open`; the geo.admin collections
-of BFS and the critical loads link `terms_by`, the four BAFU map collections only say `proprietary` without link,
-recorded as the general geo.admin terms (free use, attribution required); `airquality.data` and this repository GPL-3.
+geolion municipality boundaries (opendata.swiss package `gemeindegrenzen3`) `terms_open`. For the geo.admin
+collections the geocat records count (linked as `describedby` in the STAC metadata; the STAC `license` only says
+`proprietary`): the five BAFU collections (maps of NO2, PM10, PM2.5, O3, critical load exceedance) `terms_open`
+(user 2026-10-26; the STAC link of the critical loads says `terms_by`), STATPOP of the BFS `terms_by`.
+`airquality.data` and this repository GPL-3.
 The rows 25 (death rate) and 26 (cohort life tables of the BFS) are removed, no code read them (user decision); the
 type `reference` stays for documentation-only sources, none at the moment. Removed ids are not reused.

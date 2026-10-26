@@ -153,10 +153,9 @@ add_threshold_lines <- function(plot, threshold, direction = c("vertical", "hori
 
   plot +
     line +
-    # the keys take a single line width given for all thresholds, as the fixed parameter did before; with one
-    # width per threshold they keep the default (thinner than the lines, kept so the figures stay the same)
+    # the keys as wide as their lines (a width mapped with I() does not reach the keys)
     threshold_legend(threshold$labels, threshold$color, threshold$linetype, legend_position, legend_title,
-                     linewidths = if (length(threshold$linesize) == 1) threshold$linesize)
+                     linewidths = threshold$linesize)
 }
 
 

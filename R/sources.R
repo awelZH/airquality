@@ -26,7 +26,8 @@ compact_years <- function(years) {
 #' @param year Years.
 #' @param res Cell size in metres of each year.
 #'
-#' @return A string like "200 m 1990–2019, 20 m 2020–2025" (sizes of whole kilometres in km), `NA` without years.
+#' @return A string like "200 m 1990–2019, 20 m 2020–2025" (sizes of whole kilometres in km), only the size if it
+#'   is the same in all years (the years are in their own column of the website), `NA` without years.
 #'
 #' @keywords internal
 resolution_ranges <- function(year, res) {
@@ -36,6 +37,9 @@ resolution_ranges <- function(year, res) {
   data <- dplyr::arrange(tibble::tibble(year = year, res = res), .data$year)
   run <- cumsum(c(1, diff(data$res) != 0))
   label <- \(res) if (res %% 1000 == 0) paste(res / 1000, "km") else paste(format(res, trim = TRUE), "m")
+  if (max(run) == 1) {
+    return(label(data$res[1]))
+  }
 
   purrr::map_chr(split(data, run), \(group) paste(label(group$res[1]), compact_years(group$year))) |>
     paste(collapse = ", ")

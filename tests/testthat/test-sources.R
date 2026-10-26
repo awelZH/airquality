@@ -10,7 +10,8 @@ test_that("compact_years() writes runs of consecutive years as ranges", {
 
 test_that("resolution_ranges() condenses the cell size per year to ranges", {
   expect_equal(resolution_ranges(c(2021, 1990:2020), c(20, rep(200, 30), 20)), "200 m 1990–2019, 20 m 2020–2021")
-  expect_equal(resolution_ranges(c(1990, 2000), c(1000, 1000)), "1 km 1990, 2000")
+  expect_equal(resolution_ranges(c(1990, 2000), c(1000, 1000)), "1 km")
+  expect_equal(resolution_ranges(c(2015, 2016), c(100, 100)), "100 m")
   expect_equal(resolution_ranges(numeric(), numeric()), NA_character_)
 })
 

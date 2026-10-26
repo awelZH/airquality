@@ -136,18 +136,27 @@ add_threshold_lines <- function(plot, threshold, direction = c("vertical", "hori
   direction <- rlang::arg_match(direction)
   if (is.na(sum(threshold$value))) return(plot)
 
-  lines <- tibble::tibble(label = factor(threshold$labels, levels = threshold$labels), value = threshold$value)
+  # colour and width as columns taken as they are (I()): a faceted plot repeats the data of the layer in every
+  # panel, fixed vectors of colours would not be repeated; I() needs no scale, and the layer stays out of the
+  # colour legend of the data
+  lines <- tibble::tibble(label = factor(threshold$labels, levels = threshold$labels), value = threshold$value,
+                          colour = threshold$color, linewidth = threshold$linesize)
   line <- if (direction == "vertical") {
-    ggplot2::geom_vline(data = lines, mapping = ggplot2::aes(xintercept = value, linetype = label),
-                        color = threshold$color, linewidth = threshold$linesize)
+    ggplot2::geom_vline(data = lines, mapping = ggplot2::aes(xintercept = value, linetype = label,
+                                                             color = I(colour), linewidth = I(linewidth)),
+                        show.legend = c(colour = FALSE))
   } else {
-    ggplot2::geom_hline(data = lines, mapping = ggplot2::aes(yintercept = value, linetype = label),
-                        color = threshold$color, linewidth = threshold$linesize)
+    ggplot2::geom_hline(data = lines, mapping = ggplot2::aes(yintercept = value, linetype = label,
+                                                             color = I(colour), linewidth = I(linewidth)),
+                        show.legend = c(colour = FALSE))
   }
 
   plot +
     line +
-    threshold_legend(threshold$labels, threshold$color, threshold$linetype, legend_position, legend_title)
+    # the keys take a single line width given for all thresholds, as the fixed parameter did before; with one
+    # width per threshold they keep the default (thinner than the lines, kept so the figures stay the same)
+    threshold_legend(threshold$labels, threshold$color, threshold$linetype, legend_position, legend_title,
+                     linewidths = if (length(threshold$linesize) == 1) threshold$linesize)
 }
 
 
@@ -159,17 +168,18 @@ add_threshold_lines <- function(plot, threshold, direction = c("vertical", "hori
 #' @param labels,colours,linetypes Label, colour and line type per threshold.
 #' @param position Position of this legend; the other legends of the plot keep theirs.
 #' @param title Title of this legend; `NULL` for none, which also moves the legend closer to the axis.
+#' @param linewidths Line width per threshold for the keys, `NULL` to keep the width of the layer.
 #'
 #' @return A list of ggplot2 scales and guides, to be added to a plot.
 #'
 #' @keywords internal
-threshold_legend <- function(labels, colours, linetypes, position = "bottom", title = "Referenz") {
+threshold_legend <- function(labels, colours, linetypes, position = "bottom", title = "Referenz", linewidths = NULL) {
   list(
     ggplot2::scale_linetype_manual(name = title, values = rlang::set_names(linetypes, labels)),
     # the title comes with this guide, also in plots whose theme hides the legend titles
     ggplot2::guides(linetype = ggplot2::guide_legend(
       position = position,
-      override.aes = list(color = colours),
+      override.aes = c(list(color = colours), if (!is.null(linewidths)) list(linewidth = linewidths)),
       theme = ggplot2::theme(legend.title = if (is.null(title)) ggplot2::element_blank() else ggplot2::element_text())
     )),
     if (is.null(title)) threshold_legend_spacing()

@@ -212,6 +212,24 @@ test_that("the threshold legend of a time series carries no title", {
   expect_false("Referenz" %in% legend_texts(plot)) # the labels speak for themselves
 })
 
+test_that("add_threshold_lines() works in faceted plots, with one legend key per threshold", {
+  data <- tibble::tibble(x = 1:4, y = 1:4, panel = c("a", "a", "b", "b"))
+  threshold <- list(value = c(30, 10), labels = c("LRV Grenzwert", "WHO Richtwert"), color = c("red3", "gray30"),
+                    linetype = c(1, 1), linesize = 1)
+
+  plot <- ggplot2::ggplot(data, ggplot2::aes(x, y)) |>
+    add_threshold_lines(threshold, "horizontal", legend_title = NULL) +
+    ggplot2::geom_point() +
+    ggplot2::facet_wrap(~panel)
+  layers <- layer_data_all(plot)
+
+  # every line in every panel, in its own colour
+  expect_equal(layers[[1]]$yintercept, c(30, 10, 30, 10))
+  expect_equal(as.character(layers[[1]]$colour), c("red3", "gray30", "red3", "gray30"))
+  expect_equal(sum(legend_texts(plot) %in% c("LRV Grenzwert", "WHO Richtwert")), 2)
+})
+
+
 test_that("the nitrogen plots name the critical load in the legend and in the caption", {
   data <- prepare_plot_ndep(make_ndep()) |>
     dplyr::mutate(estimated_class = "<5 kg-N", component = factor("aus NH3-Quellen"))

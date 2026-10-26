@@ -31,10 +31,24 @@ print_year_slider(plots, "threshold_comparison")
 
 ### Stickstoffdioxid
 
+::: {.panel-tabset}
+
+#### Variante 1
+
 ```{r}
 #| label: ts-no2
 airquality.methods::get_plot(plots, "timeseries_siteclass", "NO2")
 ```
+
+#### Variante 2
+
+```{r}
+#| label: ts-no2-bands
+#| fig.asp: 0.75
+airquality.methods::get_plot(plots, "timeseries_siteclass_bands", "NO2")
+```
+
+:::
 
 #### Belastungskarte
 

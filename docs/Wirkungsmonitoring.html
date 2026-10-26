@@ -542,8 +542,11 @@ ul.task-list li input[type="checkbox"] {
 </main> <!-- /main -->
 <!-- Year slider for the plots per year (R/plot.R: print_year_slider()), included after the body of every page.
      Each .year-slider holds one .year-panel per year; the script puts a range input below them, with the
-     first year on the left, the last on the right and the chosen year above the slider thumb, and shows
-     only the chosen panel. Without JavaScript all panels stay visible. -->
+     first year on the left, the last on the right and the chosen year below the slider thumb, and shows
+     only the chosen panel. The slider is linear in time: it runs in steps of one year and snaps to the
+     nearest year with a panel, which a small tick marks (1990, 2000, 2010–2025 leave gaps of ten years).
+     A label of several years ("2023–2025") is placed at its last year. Without JavaScript all panels stay
+     visible. -->
 <script>
 document.querySelectorAll(".year-slider").forEach(function (slider) {
   var panels = Array.prototype.slice.call(slider.querySelectorAll(":scope > .year-panel"));
@@ -551,6 +554,10 @@ document.querySelectorAll(".year-slider").forEach(function (slider) {
   var years = panels.map(function (panel) { return panel.dataset.year; });
   var start = years.indexOf(slider.dataset.start);
   if (start < 0) start = years.length - 1;
+  // position of each panel on the time axis: its (last) year
+  var positions = years.map(function (year) { return Number(year.match(/[0-9]{4}$/)[0]); });
+  var first_position = positions[0];
+  var range = positions[positions.length - 1] - first_position;
 
   var control = document.createElement("div");
   control.className = "year-slider-control";
@@ -565,30 +572,65 @@ document.querySelectorAll(".year-slider").forEach(function (slider) {
   track.className = "year-slider-track";
   var input = document.createElement("input");
   input.type = "range";
-  input.min = 0;
-  input.max = panels.length - 1;
+  input.min = first_position;
+  input.max = positions[positions.length - 1];
   input.step = 1;
-  input.value = start;
+  input.value = positions[start];
   input.setAttribute("aria-label", "Jahr");
   var bubble = document.createElement("output");
   bubble.className = "year-slider-bubble";
+  var ticks = document.createElement("div");
+  ticks.className = "year-slider-ticks";
+  var tick_marks = positions.map(function () {
+    var tick = document.createElement("span");
+    tick.className = "year-slider-tick";
+    ticks.appendChild(tick);
+    return tick;
+  });
 
-  function show(index) {
-    panels.forEach(function (panel, i) { panel.hidden = i !== index; });
-    bubble.textContent = years[index];
-    input.setAttribute("aria-valuetext", years[index]);
-    // the thumb travels between its own half widths, so the bubble follows it the same way
-    var thumb = 16;
-    var span = input.offsetWidth - thumb;
-    var share = panels.length > 1 ? index / (panels.length - 1) : 0;
-    bubble.style.left = (thumb / 2 + share * span) + "px";
+  // the panel nearest to a position on the slider
+  function nearest(position) {
+    var best = 0;
+    positions.forEach(function (p, i) {
+      if (Math.abs(p - position) < Math.abs(positions[best] - position)) best = i;
+    });
+    return best;
   }
 
-  input.addEventListener("input", function () { show(Number(input.value)); });
-  window.addEventListener("resize", function () { show(Number(input.value)); });
+  // the thumb travels between its own half widths, so bubble and ticks follow it the same way
+  function offset(position) {
+    var thumb = 16;
+    var share = range > 0 ? (position - first_position) / range : 0;
+    return (thumb / 2 + share * (input.offsetWidth - thumb)) + "px";
+  }
+
+  var current = start;
+  function show(index) {
+    current = index;
+    panels.forEach(function (panel, i) { panel.hidden = i !== index; });
+    input.value = positions[index];
+    bubble.textContent = years[index];
+    input.setAttribute("aria-valuetext", years[index]);
+    bubble.style.left = offset(positions[index]);
+    ticks.style.top = (input.offsetTop + input.offsetHeight) + "px";
+    tick_marks.forEach(function (tick, i) { tick.style.left = offset(positions[i]); });
+  }
+
+  input.addEventListener("input", function () { show(nearest(Number(input.value))); });
+  // arrow keys step from panel to panel; a step of one year would snap back inside a gap
+  input.addEventListener("keydown", function (event) {
+    var step = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1 }[event.key];
+    if (!step) return;
+    event.preventDefault();
+    show(Math.min(Math.max(current + step, 0), panels.length - 1));
+  });
+  // place bubble and ticks again whenever the slider changes its width: also when a hidden tab with the slider
+  // is shown (a hidden slider has no width, so everything sat at its left end)
+  new ResizeObserver(function () { show(current); }).observe(input);
 
   track.appendChild(bubble);
   track.appendChild(input);
+  track.appendChild(ticks);
   control.appendChild(first);
   control.appendChild(track);
   control.appendChild(last);

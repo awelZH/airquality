@@ -32,6 +32,21 @@
   color: #555;
   white-space: nowrap;
 }
+.year-slider-ticks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  pointer-events: none;
+}
+.year-slider-tick {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 4px;
+  background: #b5b5b5;
+  transform: translateX(-50%);
+}
 .year-slider-end {
   color: #777;
   padding-top: 0.15em;

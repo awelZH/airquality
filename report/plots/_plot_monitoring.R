@@ -22,6 +22,13 @@ plots$monitoring$timeseries_siteclass <-
   plot_monitoring_timeseries(data_monitoring_aq, plot_parameters_timeseries, axes = plot_axes_timeseries, threshold_values = immission_threshold_values,
                                   colour_scale = scale_color_siteclass, pointsize = pointsize, theme = theme_ts)
 
+# NO2 (many sites): the spread per site class as bands and the long series of single sites as lines
+plots$monitoring$timeseries_siteclass_bands$NO2 <-
+  plot_monitoring_timeseries_bands(data_monitoring_aq, "NO2", axes = plot_axes_timeseries, threshold_values = immission_threshold_values,
+                                   colour_scale = scale_color_siteclass_lines, fill_scale = scale_fill_siteclass,
+                                   min_sites = plot_timeseries_min_sites, min_years = plot_timeseries_min_years,
+                                   pointsize = pointsize, theme = theme_ts + ggplot2::theme(plot.caption = caption_textbox(caption_width_wide)))
+
 # eBC: its own title, the values are yearly means of samples
 plots$monitoring$timeseries_siteclass$eBC <-
   plots$monitoring$timeseries_siteclass$eBC +
@@ -134,6 +141,7 @@ plots_monitoring <-
   dplyr::bind_rows(
     airquality.methods::plot_catalog(plots$monitoring$threshold_comparison, "threshold_comparison", names_to = "year"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_siteclass, "timeseries_siteclass", names_to = "parameter"),
+    airquality.methods::plot_catalog(plots$monitoring$timeseries_siteclass_bands, "timeseries_siteclass_bands", names_to = "parameter"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_bachtel$Ndep, "timeseries_ndep_bachtel"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_all$Ndep, "timeseries_ndep_all"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_exceedance$Ndep, "timeseries_ndep_exceedance"),

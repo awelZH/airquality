@@ -63,6 +63,7 @@ plot_emissions_sectors_last <- list(NH3 = "Land- und Forstw.")
 # plotting size parameters
 basesize <- 12 # ggplot theme base_size
 caption_width <- 0.475 # width of the caption of theme_ts before it breaks, as a share of the plot width
+caption_width_wide <- 2/3 # the same for plots with a long caption (NO2 bands)
 pointsize <- 2 # size of point markers
 linewidth <- 1 # width of lines
 jitter_seed <- 1 # seed of jittered points, so figures stay the same between renders
@@ -77,6 +78,10 @@ plot_axes_timeseries <- list(
   O3_max_98p_m1 = list(ylim = c(0,210), ybreaks = seq(0,210,30)),
   O3_peakseason_mean_d1_max_mean_h8gl = list(ylim = c(0,130), ybreaks = seq(0,120,20))
 )
+# monitoring time series as bands per site class (NO2, tab "Variante 2"): a band from this many sites of a site class
+# and year (fewer: points), a line per site with this many consecutive years
+plot_timeseries_min_sites <- 4
+plot_timeseries_min_years <- 10
 bar_scale <- 0.9 # share of the class width covered by a bar
 plot_axes_exposition <- list(
   NO2 = list(barwidth = 1 * bar_scale, xbreaks = seq(0,55,5)),
@@ -135,7 +140,16 @@ scale_color_siteclass <-
     "empf. Ökosystem" = "gray20"
   ))
 
-cols_ecosys <- setNames(c("steelblue", colorspace::sequential_hcl(n = 3, palette = "ag_GrnYl"), "gray80", "gray10"), c("Hochmoor", "Flachmoor", "Trockenrasen", "Wald", "kein empf. Ökosys.", "Median aller Standorte"))
+# lines and points on the bands of their site class: the light yellow of the rural class darkened
+scale_color_siteclass_lines <-
+  ggplot2::scale_color_manual(name = "Standortklasse", na.value = "gray60", values = c(
+    "ländlich - Hintergrund" = colorspace::darken(scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[4], 0.35),
+    "klein-/vorstädtisch - Hintergrund" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[3],
+    "städtisch - Hintergrund" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[2],
+    "städtisch - verkehrsbelastet" = scales::viridis_pal(option = "D", begin = 0.2, end = 0.97)(4)[1]
+  ))
+
+cols_ecosys <-setNames(c("steelblue", colorspace::sequential_hcl(n = 3, palette = "ag_GrnYl"), "gray80", "gray10"), c("Hochmoor", "Flachmoor", "Trockenrasen", "Wald", "kein empf. Ökosys.", "Median aller Standorte"))
 scale_color_ecosys <- ggplot2::scale_color_manual(name = "Ökosystem", values = cols_ecosys)
 scale_fill_ecosys <- ggplot2::scale_fill_manual(name = "Ökosystem", values = cols_ecosys, guide = "none")
 
@@ -143,16 +157,21 @@ shapes_estimated <- setNames(c(21,23,25), c("<5 kg-N", "5-12 kg-N", ">12 kg-N"))
 scale_shape_estimated <- ggplot2::scale_shape_manual(name = "geschätzt", values = shapes_estimated)
 
 # ggplot2 custom themes
+# the caption breaks between words after the given share of the plot width (Markdown: <br> for a line break)
+caption_textbox <- function(width) {
+  ggtext::element_textbox_simple(
+    width = ggplot2::unit(width, "npc"), hjust = 0, halign = 0, color = "gray40", size = ggplot2::rel(0.66),
+    lineheight = 1.1, margin = ggplot2::margin(t = 5.5)
+  )
+}
+
 theme_ts <-
   ggplot2::theme_minimal(base_size = basesize, base_family = "Arial") +
   ggplot2::theme(
     plot.title = ggplot2::element_text(size = ggplot2::rel(1)),
     plot.subtitle = ggplot2::element_text(size = ggplot2::rel(0.8)),
-    # the caption breaks between words after about half the width of the plot (Markdown: <br> for a line break)
-    plot.caption = ggtext::element_textbox_simple(
-      width = ggplot2::unit(caption_width, "npc"), hjust = 0, halign = 0, color = "gray40", size = ggplot2::rel(0.66),
-      lineheight = 1.1, margin = ggplot2::margin(t = 5.5)
-    ),
+    # the caption breaks between words after about half the width of the plot
+    plot.caption = caption_textbox(caption_width),
     plot.background = ggplot2::element_blank(),
     panel.grid.major.x = ggplot2::element_blank(),
     panel.grid.minor.x = ggplot2::element_blank(),

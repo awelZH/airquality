@@ -302,3 +302,27 @@ distributions of a parameter run from 0 to the largest value of all years (`expo
 the breaks of `plot_axes_exposition` (their range is no longer used; Ndep keeps its fixed axis from −5). The
 census years 1990/2000 exceeded the fixed ranges (NO2 up to 73.5 µg/m3, axis was 0–55; PM10 26.8, PM2.5 19.8,
 O3 98p 189). Now NO2 0–75, so the recent years fill about the left third.
+
+**NO2 time series as bands, linear year slider (user decisions 2026-10-26).**
+* NO2 has up to 34 sites per year; the point plot gets crowded. The section "Stickstoffdioxid" of `Luftqualität.qmd`
+  is a tabset: "Variante 1" the point plot as before, "Variante 2" `plot_monitoring_timeseries_bands()` (NO2 only,
+  user decision): one panel per site class (axis line and years in every panel,
+  `facet_wrap(axes = "all_x")`; the caption breaks after 2/3 of the width, `caption_width_wide`), bands of all sites (min–max, light) and of the middle
+  half (25–75 %, dark) from `plot_timeseries_min_sites` (4) sites per class and year, otherwise the values as
+  points; the series of single sites with at least `plot_timeseries_min_years` (10) consecutive years as thin
+  lines without legend (`site_series()`); no median line, no number of sites, no other classes in grey (user
+  decisions on the sandbox variants). A band never bridges a gap (`timeseries_bands()`, column `run`). Lines and
+  points use `scale_color_siteclass_lines` (the yellow of the rural class darkened, it disappears on its band).
+  Medians and bands mix trend and changes of the site set (e.g. traffic sites 2003); the site lines show the trend.
+* `add_threshold_lines()` maps colour and width with `I()` instead of fixed vectors, so the lines work in faceted
+  plots; `show.legend = c(colour = FALSE)` keeps the layer out of the colour legend of the site classes (a mapped
+  colour, also `I()`, would join it). Found on the way: the legend keys took the line width only when one width
+  was given for all thresholds (a fixed vector parameter is not used for keys), so with LRV and WHO the keys are
+  thinner than the lines; this change alone left the 720 figures byte-identical. Then, as a content change of its
+  own (user decision 2026-10-26), the keys always take the widths of their lines (`threshold_legend(linewidths = )`).
+* The year slider (`report/year-slider.html`) is linear in time: steps of one year, snapping to the nearest year
+  with a panel, a light tick per panel below the track; the arrow keys step from panel to panel (a step of one
+  year would snap back inside a gap). Affects the census years 1990/2000 of the exposition and the six model years
+  of the critical loads; consecutive years look as before. Bubble and ticks are placed in pixels from the width of
+  the slider, again whenever it changes (`ResizeObserver`): a slider in a hidden tab has no width, its ticks sat at
+  the left end until it was moved.

@@ -228,6 +228,119 @@ plot_monitoring_timeseries <- function(data, parameters, axes, threshold_values,
 }
 
 
+#' Spread of the monitoring values per site class and year
+#'
+#' @param data Air quality data of one parameter (`siteclass`, `year`, `concentration`).
+#' @param min_sites Fewest sites of a site class and year for a band.
+#'
+#' @return Tibble with `siteclass`, `year`, the number of sites `n`, `min`, `q25`, `q75`, `max`, whether the year
+#'   gets a band (`band`) and `run`, a number per site class that changes after a gap or where the band starts or
+#'   ends, so a band never bridges missing years.
+#'
+#' @keywords internal
+timeseries_bands <- function(data, min_sites = 4) {
+  data |>
+    dplyr::filter(!is.na(concentration)) |>
+    dplyr::summarise(
+      n = dplyr::n(),
+      min = min(concentration),
+      q25 = stats::quantile(concentration, 0.25, names = FALSE),
+      q75 = stats::quantile(concentration, 0.75, names = FALSE),
+      max = max(concentration),
+      .by = c(siteclass, year)
+    ) |>
+    dplyr::arrange(siteclass, year) |>
+    dplyr::mutate(
+      band = n >= min_sites,
+      run = cumsum(c(TRUE, diff(year) != 1 | diff(band) != 0)),
+      .by = siteclass
+    )
+}
+
+
+#' Long series of single monitoring sites without gaps
+#'
+#' @param data Air quality data of one parameter (`site`, `siteclass`, `year`, `concentration`).
+#' @param min_years Fewest consecutive years of a series.
+#'
+#' @return The rows of `data` in runs of at least `min_years` consecutive years of a site (a missing value ends
+#'   a run), with the number of the run per site (`run`).
+#'
+#' @keywords internal
+site_series <- function(data, min_years = 10) {
+  data |>
+    dplyr::filter(!is.na(concentration)) |>
+    dplyr::arrange(site, siteclass, year) |>
+    dplyr::mutate(run = cumsum(c(TRUE, diff(year) != 1)), .by = c(site, siteclass)) |>
+    dplyr::filter(dplyr::n() >= min_years, .by = c(site, siteclass, run))
+}
+
+
+#' Plot the yearly monitoring values of one parameter as bands per site class
+#'
+#' An alternative to [plot_monitoring_timeseries()] for a parameter with many sites: one panel per site class,
+#' the range of all sites (light) and of the middle half (dark) as bands, the long series of single sites as
+#' thin lines. Years with fewer than `min_sites` sites show their values as points instead of a band.
+#'
+#' @inheritParams plot_monitoring_timeseries
+#' @param parameter Parameter to plot.
+#' @param fill_scale Fill scale of the site classes (bands).
+#' @param min_sites Fewest sites of a site class and year for a band ([timeseries_bands()]).
+#' @param min_years Fewest consecutive years of a site drawn as line ([site_series()]).
+#' @param linewidth Width of the lines of the sites.
+#'
+#' @return A ggplot object.
+#'
+#' @keywords internal
+plot_monitoring_timeseries_bands <- function(data, parameter, axes, threshold_values, colour_scale = NULL, fill_scale = NULL,
+                                             min_sites = 4, min_years = 10, linewidth = 0.4, pointsize = 2,
+                                             theme = ggplot2::theme_minimal(),
+                                             caption = "Referenzwerte nach heutigem Stand, Daten: Ostluft & NABEL (BAFU & Empa)") {
+
+  data_plot <- dplyr::filter(data, parameter == !!parameter)
+  pollutant <- unique(data_plot$pollutant)
+  unit <- unique(data_plot$unit)
+  metric <- unique(data_plot$metric)
+  axis <- parameter_setting(axes, parameter)
+
+  bands <- timeseries_bands(data_plot, min_sites = min_sites)
+  points <- dplyr::semi_join(dplyr::filter(data_plot, !is.na(concentration)), dplyr::filter(bands, !band),
+                             by = dplyr::join_by(siteclass, year))
+  bands <- dplyr::filter(bands, band)
+  series <- site_series(data_plot, min_years = min_years)
+
+  # the threshold lines first, so the values are drawn over them (as in plot_monitoring_timeseries())
+  ggplot2::ggplot(mapping = ggplot2::aes(x = year)) |>
+    add_threshold_lines(timeseries_threshold(parameter, threshold_values), "horizontal", legend_title = NULL) +
+    ggplot2::geom_ribbon(data = bands, mapping = ggplot2::aes(ymin = min, ymax = max, fill = siteclass, group = interaction(siteclass, run)),
+                         alpha = 0.25) +
+    ggplot2::geom_ribbon(data = bands, mapping = ggplot2::aes(ymin = q25, ymax = q75, fill = siteclass, group = interaction(siteclass, run)),
+                         alpha = 0.5) +
+    ggplot2::geom_line(data = series, mapping = ggplot2::aes(y = concentration, color = siteclass, group = interaction(site, run)),
+                       linewidth = linewidth) +
+    ggplot2::geom_point(data = points, mapping = ggplot2::aes(y = concentration, color = siteclass), size = pointsize) +
+    # the axis line and the years in every panel
+    ggplot2::facet_wrap(ggplot2::vars(siteclass), ncol = 2, axes = "all_x") +
+    ggplot2::scale_x_continuous(expand = c(0.01,0.01)) +
+    ggplot2::scale_y_continuous(limits = axis$ylim, breaks = axis$ybreaks, expand = c(0.01,0.01)) +
+    ggplot2::ggtitle(
+      label = openair::quickText(paste0("Luftqualitätsmesswerte ", airquality.methods::longpollutant(pollutant))),
+      subtitle = openair::quickText(paste0(pollutant, ", ", metric," (", unit, ")"))
+    ) +
+    ggplot2::labs(caption = paste0(
+      "Bänder: alle Messorte (hell) und mittlere Hälfte der Messorte (dunkel), ab ", min_sites, " Messorten, sonst Punkte; ",
+      "Linien: Messorte mit mindestens ", min_years, " Jahren ohne Unterbruch. ", caption
+    )) +
+    theme +
+    colour_scale +
+    fill_scale +
+    # the panels name the site classes
+    ggplot2::guides(color = "none", fill = "none") +
+    ggplot2::theme(strip.text = ggplot2::element_text(hjust = 0)) +
+    threshold_legend_spacing() # the complete theme above dropped it
+}
+
+
 #' Plot monitoring values relative to their thresholds
 #'
 #' Every category of the panel is drawn, also without values in these years, and the panels reach at

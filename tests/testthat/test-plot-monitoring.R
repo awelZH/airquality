@@ -230,6 +230,78 @@ test_that("add_threshold_lines() works in faceted plots, with one legend key per
 })
 
 
+# ---- time series with bands --------------------------------------------------------------
+
+make_series <- function(site, years, concentration, siteclass = "städtisch - Hintergrund") {
+  tibble::tibble(
+    year = years, site = site, pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2", unit = "µg/m3",
+    concentration = concentration, siteclass = factor(siteclass, levels = siteclasses)
+  )
+}
+
+test_that("timeseries_bands() gives the spread per site class and year, a band only from min_sites sites", {
+  data <- dplyr::bind_rows(
+    make_series("A", 2020:2022, c(10, 10, 10)), make_series("B", 2020:2022, c(20, 20, 20)),
+    make_series("C", 2020:2021, c(30, 30)), make_series("D", c(2020, 2021), c(40, NA)),
+    make_series("E", 2020, 5, "ländlich - Hintergrund")
+  )
+
+  bands <- timeseries_bands(data, min_sites = 3)
+  urban <- dplyr::filter(bands, siteclass == "städtisch - Hintergrund")
+
+  expect_equal(urban$n, c(4, 3, 2)) # missing values are no sites
+  expect_equal(urban$min, c(10, 10, 10))
+  expect_equal(urban$max, c(40, 30, 20))
+  expect_equal(urban$q25, c(17.5, 15, 12.5))
+  expect_equal(urban$band, c(TRUE, TRUE, FALSE))
+  expect_false(dplyr::filter(bands, siteclass == "ländlich - Hintergrund")$band)
+})
+
+test_that("timeseries_bands() starts a new band after a gap, so a band never bridges missing years", {
+  data <- dplyr::bind_rows(make_series("A", c(2010, 2011, 2015), 1), make_series("B", c(2010, 2011, 2015), 2))
+
+  bands <- timeseries_bands(data, min_sites = 2)
+
+  expect_equal(bands$run[bands$year == 2010], bands$run[bands$year == 2011])
+  expect_false(bands$run[bands$year == 2015] == bands$run[bands$year == 2011])
+})
+
+test_that("site_series() keeps the runs of consecutive years of a site from min_years on", {
+  data <- dplyr::bind_rows(
+    make_series("A", c(2000:2004, 2006:2007), 1), # 5 years, then a gap, then 2
+    make_series("B", 2000:2001, 2),
+    make_series("C", c(2000, 2001, 2002), c(3, NA, 3)) # a missing value breaks the run
+  )
+
+  series <- site_series(data, min_years = 3)
+
+  expect_equal(series$site, rep("A", 5))
+  expect_equal(series$year, 2000:2004)
+  expect_equal(nrow(site_series(data, min_years = 2)), 5 + 2 + 2)
+})
+
+test_that("plot_monitoring_timeseries_bands() draws one panel per site class with bands, site lines and points", {
+  data <- dplyr::bind_rows(
+    purrr::map(c("A", "B", "C"), \(site) make_series(site, 2010:2021, seq(20, 31) + match(site, LETTERS))),
+    make_series("E", 2015:2016, c(5, 6), "ländlich - Hintergrund")
+  )
+
+  plot <- plot_monitoring_timeseries_bands(data, "NO2", axes = list(NO2 = list(ylim = c(0, 70), ybreaks = seq(0, 70, 10))),
+                                           threshold_values = make_threshold_values(),
+                                           colour_scale = ggplot2::scale_color_discrete(), fill_scale = ggplot2::scale_fill_discrete(),
+                                           min_sites = 3, min_years = 10)
+  geoms <- unname(purrr::map_chr(plot$layers, \(layer) class(layer$geom)[1]))
+  layers <- layer_data_all(plot)
+
+  expect_equal(geoms, c("GeomHline", "GeomRibbon", "GeomRibbon", "GeomLine", "GeomPoint"))
+  expect_equal(nrow(layers[[2]]), 12) # the band of the urban class, from 3 sites
+  expect_equal(dplyr::n_distinct(layers[[4]]$group), 3) # one line per site with 10 years and more
+  expect_equal(layers[[5]]$y, c(5, 6)) # too few sites for a band
+  expect_equal(nrow(withr::with_pdf(NULL, ggplot2::ggplot_build(plot))$layout$layout), 2) # one panel per site class
+  expect_equal(unname(legend_texts(plot)), c("LRV Grenzwert", "WHO Richtwert")) # no legend of the site classes
+  expect_match(plot$labels$caption, "Referenzwerte nach heutigem Stand")
+})
+
 test_that("the nitrogen plots name the critical load in the legend and in the caption", {
   data <- prepare_plot_ndep(make_ndep()) |>
     dplyr::mutate(estimated_class = "<5 kg-N", component = factor("aus NH3-Quellen"))

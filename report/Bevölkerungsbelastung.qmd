@@ -8,7 +8,7 @@ Hier werden Auswertungen von jahresbezogenen, flächendeckenden Rasterdaten zur 
 
 
 ```{r}
-# plots are built from the output data by the scripts in ../scripts (usable in the console as well)
+# plots are built from the output data by the scripts in report/plots (usable in the console as well)
 withr::with_dir("..", {
   source("report/plots/_plot_setup.R", encoding = "UTF-8")
   source("report/plots/_plot_exposition.R", encoding = "UTF-8")
@@ -40,15 +40,6 @@ print_exposition_parameter(plots, "PM2.5")
 #| output: asis
 print_exposition_parameter(plots, "PM10")
 ```
-
-<!-- ### Russ im Feinstaub -->
-
-<!-- (needs "eBC" in plot_parameters_exposition, settings.R) -->
-<!-- ```{r} -->
-<!-- #| label: slider-ebc-distribution-histogram -->
-<!-- #| output: asis -->
-<!-- print_year_slider(plots, "distribution_histogram", "eBC") -->
-<!-- ``` -->
 
 ### Ozon
 

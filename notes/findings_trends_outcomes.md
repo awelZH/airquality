@@ -88,8 +88,8 @@ ratio per death explained.
 **Clean-up** (step 6): removed the dead outcome code `prepare_preliminary_deaths()`, `calc_outcome()`,
 `calculate_all_outcomes()`, `get_base_scenario_year()`, `prepare_life_expectancy_data()`,
 `read_bfs_life_expectancy_data()`, `get_bfs_asset_url()` (files `prepare_helpers.R`, `read.R`,
-`read_helpers.R` deleted) and `pxR` from DESCRIPTION and `_setup.R` (still in `renv.lock`; a
-`renv::snapshot()` would drop it). `prepare.R` and `aggregate.R` now hold trend code only.
+`read_helpers.R` deleted) and `pxR` from DESCRIPTION and `_setup.R` (since dropped from `renv.lock` by a
+`renv::snapshot()`). `prepare.R` and `aggregate.R` now hold trend code only.
 
 **Page follow-ups** (user decisions 2026-09-24): the minimum-concentration threshold scenario stays out
 (E5 b confirmed after quantifying it: O3 never, PM2.5 only 2014/2023/2024 slightly, NO2 strongly affected,

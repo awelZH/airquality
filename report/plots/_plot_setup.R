@@ -89,7 +89,6 @@ plot_axes_exposition <- list(
   O3_peakseason_mean_d1_max_mean_h8gl = list(barwidth = 2 * bar_scale, xbreaks = seq(0,120,10)),
   PM10 = list(barwidth = 0.5 * bar_scale, xbreaks = seq(0,24,2)),
   PM2.5 = list(barwidth = 0.5 * bar_scale, xbreaks = seq(0,18.5,1)),
-  eBC = list(barwidth = 0.05 * bar_scale, xbreaks = seq(0,2.2,0.2)),
   Ndep = list(barwidth = 1 * bar_scale, xbreaks = seq(-5,45,5))
 )
 

@@ -6,7 +6,9 @@
 # logs go to tests/regression/results/pipeline/<label>/{output,log}/ (environment variables of settings.R)
 # and the targets store to .../_targets, so data/output/, data/log/ and _targets/ are never touched. The report
 # is not built.
-# tar_make() runs in this session (callr_function = NULL), so the mocked readers apply.
+# tar_make() runs in this session (callr_function = NULL), so the mocked readers apply, and in the global environment
+# (envir = globalenv()): _targets.R sources settings.R there, so the settings are dependencies of the targets as in
+# the main store (with the environment of run_pipeline() they were not, and a reused store missed changed settings).
 #
 # compare with the outputs of the old scripts, e.g.
 #   source("tests/regression/compare_outputs.R")
@@ -48,6 +50,7 @@ run_pipeline <- function(label, refresh = FALSE) {
       names = !tidyselect::starts_with("report_"),
       store = file.path(result_dir, "_targets"),
       callr_function = NULL,
+      envir = globalenv(),
       reporter = "balanced"
     ),
     !!!purrr::map(rlang::set_names(network_readers), \(name) frozen(ns[[name]], name, input_dir, refresh)),

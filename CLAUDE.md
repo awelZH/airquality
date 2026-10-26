@@ -160,6 +160,3 @@ Pattern for new or remaining sub-analyses: `R/outcomes.R` + `pipelines/outcomes.
   `data_airquality_monitoring_y1.csv` (not changed; the map extraction swaps them for the lookup).
 * Censuses 1990/2000: not verified whether `P9BTOT`/`P00BTOT` count the population by the definition of STATPOP
   `BBTOT` (a break 2000 → 2010 could only be documented); `notes/findings_exposition.md`.
-* `tests/regression/run_pipeline.R`: a reused store does not see changed settings (targets tracks the globals of
-  `run_pipeline()`, `_targets.R` sources `settings.R` into the global environment); use a new label after a
-  settings change until fixed (`notes/regression.md`).

@@ -384,6 +384,20 @@ make_validation <- function() {
   )
 }
 
+# enough pairs for a yearly fit: 6 sites per traffic influence and year, scattered around the 1:1 line (rlm() needs
+# a non-zero residual scale)
+make_validation_pairs <- function(years = c(2019, 2020)) {
+  tidyr::expand_grid(year = years, traffic = c("verkehrsbelastet", "Hintergrund"), i = 1:6) |>
+    dplyr::mutate(
+      site = paste0(substr(traffic, 1, 1), i),
+      siteclass = dplyr::if_else(traffic == "verkehrsbelastet", "städtisch - verkehrsbelastet", "ländlich - Hintergrund"),
+      pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2",
+      concentration = 10 * i,
+      concentration_map = concentration + c(1, -1, 2, -2, 1.5, -1.5)[i]
+    ) |>
+    dplyr::select(-i)
+}
+
 test_that("plot_map_validation() draws one panel per traffic influence with its own robust line", {
   data <- make_validation()
   fit <- fit_map_validation(data)
@@ -416,8 +430,8 @@ test_that("plot_map_validation() draws one panel per traffic influence with its 
 })
 
 test_that("plot_map_validation() draws the prediction band of yearly fits with a legend entry", {
-  data <- make_validation() |> dplyr::filter(year == 2019)
-  fit <- fit_map_validation(dplyr::bind_rows(data, data), min_n = 5, band = TRUE)
+  data <- make_validation_pairs(2019)
+  fit <- fit_map_validation(data, min_n = 5, band = TRUE)
 
   plot <- plot_map_validation(data, fit, "NO2")
 
@@ -441,7 +455,7 @@ test_that("plot_map_validation() draws a year without any fit as points only", {
 test_that("the legend of the yearly plots is the same with and without a fit", {
   data <- make_validation()
   fit <- fit_map_validation(data, by = c("parameter", "traffic", "year"), min_n = 5, band = TRUE) # no fit at all
-  fit_2019 <- fit_map_validation(dplyr::bind_rows(data, data), by = c("parameter", "traffic", "year"), min_n = 5, band = TRUE)
+  fit_2019 <- fit_map_validation(make_validation_pairs(2019), by = c("parameter", "traffic", "year"), min_n = 5, band = TRUE)
 
   without <- plot_map_validation_years(data, fit, "NO2")[["2019"]]
   with <- plot_map_validation_years(data, fit_2019, "NO2")[["2019"]]
@@ -452,8 +466,8 @@ test_that("the legend of the yearly plots is the same with and without a fit", {
 })
 
 test_that("plot_map_validation_years() gives one plot per year on the same axes, without a colour scale of the years", {
-  data <- make_validation()
-  fit <- fit_map_validation(data, by = c("parameter", "traffic", "year"), min_n = 2, band = TRUE)
+  data <- make_validation_pairs()
+  fit <- fit_map_validation(data, by = c("parameter", "traffic", "year"), min_n = 5, band = TRUE)
 
   plots <- plot_map_validation_years(data, fit, "NO2")
 
@@ -509,7 +523,7 @@ test_that("plot_map_validation() flags a derived map as in-sample", {
 })
 
 test_that("plot_map_validation_years() notes the derivation in the derived years only", {
-  data <- make_validation()
+  data <- make_validation_pairs()
   fit <- fit_map_validation(data, by = c("parameter", "traffic", "year"), band = TRUE)
 
   plots <- plot_map_validation_years(data, fit, "NO2", in_sample = "in-sample: abgeleitet", in_sample_years = 2019)

@@ -204,7 +204,8 @@ run, with a message naming the keys added, changed or removed (also a rerun of t
 a changed function, appends nothing); shown with the register on "Allgemeines" (`sources_table()`).
 First inventory: NO2 200 m 1990–2019, 20 m 2020–2025; PM10, O3 200 m → 100 m from 2020; PM2.5 100 m from 2015;
 STATPOP 1990, 2000, 2010–2025 at 100 m; critical loads 1 km 1990–2020 (6 model years); emissions 1990–2025 plus
-the projections 2030, 2040, 2050; RSD 2002–2021, 2023, 2025.
+the projections 2030, 2040, 2050; RSD 2002–2021, 2023, 2025. A source with one cell size over all its years shows
+only the size ("100 m"; user 2026-10-26), the years are in their own column; several sizes keep their years.
 **Content** (2026-10-23): titles, descriptions, units and temporal resolution in German (shown on the website),
 providers without urls (the Statistisches Amt is now the Amt für Statistik und Daten), landing pages to opendata.swiss
 or the files on GitHub. Licenses from the metadata of the sources: the three opendata.swiss packages and the

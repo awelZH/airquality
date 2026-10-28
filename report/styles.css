@@ -1,5 +1,10 @@
 /* css styles */
 
+/* title block labels (Autor, Herausgeber, Stand) in normal case, Quarto sets uppercase */
+.quarto-title-meta-heading {
+  text-transform: none;
+}
+
 /* year slider of the plots per year (year-slider.html, R/plot.R: print_year_slider()) */
 .year-panel > p {
   margin-bottom: 0.25rem;  /* the slider belongs to the plot above it, not to the next section */

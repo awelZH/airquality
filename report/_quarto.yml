@@ -34,7 +34,13 @@ website:
         text: Gesundheitsfolgen
     right: 
       - href: about.qmd
-        text: About
+        text: Impressum
+
+lang: de-CH
+language:
+  title-block-author-single: "Autor"
+  title-block-affiliation-single: "Herausgeber"
+  title-block-published: "Stand"
 
 format:
   html:

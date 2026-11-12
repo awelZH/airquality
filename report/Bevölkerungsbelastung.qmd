@@ -84,12 +84,15 @@ airquality.methods::get_plot(plots, "population_over_thresh", "Ndep")
 ### Tabelle luftschadstoffbelastete Bevölkerung
 
 ::: {.callout-note collapse="true"}
-### Tabelle: Anzahl Einwohner/innen pro Schadstoff und Jahr
+### Tabelle: Anzahl Einwohner/innen pro Schadstoff und 3-Jahreszeitraum (Mittelwert)
 
 ```{r}
 table_population_over_thresh |>
-  kableExtra::kbl() |>
+  kableExtra::kbl(col.names = c("Zeitraum", "Schadstoff", rep(c("Anzahl", "%"), 3)), align = c("l", "l", rep("r", 6))) |>
   kableExtra::kable_paper(full_width = FALSE) |>
+  kableExtra::add_header_above(c(" " = 2, "< Grenz-/Richtwert" = 2, "> WHO-Richtwert" = 2, "> LRV-Grenzwert" = 2)) |>
   kableExtra::scroll_box(height = "200px")
 ```
+
+Mittelwerte über gleitende 3-Jahreszeiträume; Anteile in % der mittleren Wohnbevölkerung des Zeitraums. Zeiträume mit nur einer Jahreszahl sind Einzeljahre (Volkszählungen): für die Nachbarjahre gibt es keine Bevölkerungsdaten.
 :::

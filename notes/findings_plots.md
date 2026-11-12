@@ -334,3 +334,17 @@ the eBC trends stay), the stale "../scripts" in the setup comment of the pages. 
 `make_validation_pairs()` (6 scattered pairs per traffic influence and year) instead of 2–3 or doubled pairs: no more
 "failed to converge"/"NaNs produced" warnings. Figures: 719 of 720 byte-identical, the doughnut gone (the NO2 bands
 differ from the reference `key_widths` by the earlier commit with the years in every panel).
+
+**Table of the population over thresholds as 3-year means (user decisions 2026-11-12).** `Bevölkerungsbelastung.qmd`,
+"Tabelle luftschadstoffbelastete Bevölkerung": instead of one row per year, one row per moving window of
+`plot_n_years` (3) years, as the threshold comparison of the monitoring (`Zeitraum` "2023–2025", newest first), with
+the mean counts of the years (rounded to whole inhabitants) and per count a column `… (%)`: its share of the mean
+total population of the window (ratio of the means, one decimal; differs from the mean of the yearly shares only by
+the population growth within the window). A2: one share per existing column (`< Grenz-/Richtwert`, `> WHO-Richtwert`,
+`> LRV-Grenzwert`), so a row sums to 100 % over "<" and "> WHO". B1: a window counts only if all its years have data
+(`year_periods()`, per pollutant); years in no complete window stay single-year rows (the censuses 1990/2000, PM from
+2000), explained in a note below the table (a kableExtra footnote landed in the narrow first column). The page shows
+the columns as "Anzahl" / "%" under grouped headers per reference (`add_header_above()`), so the table fits without
+horizontal scrolling; the tibble keeps its unique column names. `year_windows()` would give "1998–2000" over the gap, so the table does not use it.
+The plots are unchanged; page check 7 of 7 OK, same 11 warnings as before. Real data: 15 rows for PM10/PM2.5, 16 for
+NO2 and the O3 metrics; small counts show "0.0 %" (e.g. 7 inhabitants over the PM10 limit in the windows 2020–2022 to 2022–2024).

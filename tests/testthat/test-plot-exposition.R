@@ -208,33 +208,107 @@ test_that("plot_weighted_mean_maps() gives one map per year with the canton mean
   expect_match(as.character(maps[["2020"]]$labels$subtitle), "gesamt = 17.1", fixed = TRUE)
 })
 
-test_that("table_population_over_thresholds() gives one row per pollutant and year, cumulated over WHO", {
-  data <- tibble::tibble(
-    year = rep(c(2019, 2020), each = 3), pollutant = "Stickstoffdioxid",
-    reference = factor(rep(c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert"), 2),
+test_that("year_periods() gives the complete moving windows, labelled by their range", {
+  periods <- year_periods(2018:2021, width = 3)
+
+  expect_named(periods, c("year", "period", "end"))
+  expect_equal(unique(periods$period), c("2018–2020", "2019–2021"))
+  expect_equal(periods$year[periods$period == "2019–2021"], 2019:2021)
+})
+
+test_that("year_periods() keeps the years outside any complete window as single years", {
+  periods <- year_periods(c(1990, 2000, 2010, 2011, 2012, 2013), width = 3)
+
+  expect_equal(unique(periods$period), c("1990", "2000", "2010–2012", "2011–2013"))
+  expect_equal(periods$year[periods$period == "2000"], 2000)
+  # no window over a gap, e.g. 1998–2000 or 2000–2002
+  expect_false(any(c("1998–2000", "2000–2002", "2008–2010") %in% periods$period))
+})
+
+test_that("year_periods() of width 1 gives the single years", {
+  periods <- year_periods(c(2019, 2020), width = 1)
+
+  expect_equal(periods$period, c("2019", "2020"))
+})
+
+make_table_data <- function(years, below, who, lrv) {
+  tibble::tibble(
+    year = rep(years, each = 3), pollutant = "Stickstoffdioxid",
+    reference = factor(rep(c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert"), length(years)),
                        levels = c("unter Grenz-/Richtwert", "über WHO-Richtwert", "über LRV-Grenzwert")),
-    population = c(1000, 200000, 30, 2000, 100000, 0)
+    population = as.vector(rbind(below, who, lrv))
   )
+}
 
-  result <- table_population_over_thresholds(data)
+test_that("table_population_over_thresholds() gives the means per moving window, newest first, cumulated over WHO", {
+  data <- make_table_data(2018:2021, below = c(1000, 2000, 3000, 4000), who = c(200000, 100000, 60000, 50000),
+                          lrv = c(30, 0, 30, 0))
 
-  expect_named(result, c("Jahr", "Schadstoff", "< Grenz-/Richtwert", "> WHO-Richtwert", "> LRV-Grenzwert"))
-  expect_equal(result$Jahr, c(2020, 2019))
-  expect_equal(trimws(result$`> WHO-Richtwert`), c("100'000", "200'030"))
-  expect_equal(trimws(result$`< Grenz-/Richtwert`), c("2'000", "1'000"))
+  result <- table_population_over_thresholds(data, width = 3)
+
+  expect_named(result, c("Zeitraum", "Schadstoff", "< Grenz-/Richtwert", "< Grenz-/Richtwert (%)",
+                         "> WHO-Richtwert", "> WHO-Richtwert (%)", "> LRV-Grenzwert", "> LRV-Grenzwert (%)"))
+  expect_equal(result$Zeitraum, c("2019–2021", "2018–2020"))
+  # 2018–2020: mean of 200'030, 100'000, 60'030
+  expect_equal(trimws(result$`> WHO-Richtwert`), c("70'010", "120'020"))
+  expect_equal(trimws(result$`< Grenz-/Richtwert`), c("3'000", "2'000"))
+  expect_equal(trimws(result$`> LRV-Grenzwert`), c("10", "20"))
+})
+
+test_that("table_population_over_thresholds() gives the percentages of the mean total population", {
+  # totals 100, 300, 200 -> mean 200; below 10, 30, 20 -> mean 20 = 10 %; over LRV 0, 0, 3 -> mean 1 = 0.5 %
+  data <- make_table_data(2018:2020, below = c(10, 30, 20), who = c(90, 270, 177), lrv = c(0, 0, 3))
+
+  result <- table_population_over_thresholds(data, width = 3)
+
+  expect_equal(result$`< Grenz-/Richtwert (%)`, "10.0 %")
+  expect_equal(result$`> WHO-Richtwert (%)`, "90.0 %")
+  expect_equal(result$`> LRV-Grenzwert (%)`, "0.5 %")
+})
+
+test_that("table_population_over_thresholds() rounds the mean counts to whole inhabitants", {
+  data <- make_table_data(2018:2020, below = c(1, 1, 2), who = c(10, 10, 10), lrv = c(0, 0, 0))
+
+  result <- table_population_over_thresholds(data, width = 3)
+
+  expect_equal(trimws(result$`< Grenz-/Richtwert`), "1")
+})
+
+test_that("table_population_over_thresholds() shows the years outside any complete window as single years", {
+  data <- make_table_data(c(2000, 2010, 2011, 2012), below = c(5, 1, 2, 3), who = c(10, 10, 10, 10), lrv = c(0, 0, 0, 0))
+
+  result <- table_population_over_thresholds(data, width = 3)
+
+  expect_equal(result$Zeitraum, c("2010–2012", "2000"))
+  expect_equal(trimws(result$`< Grenz-/Richtwert`), c("2", "5"))
+})
+
+test_that("table_population_over_thresholds() takes the windows per pollutant, never over a missing year", {
+  no2 <- make_table_data(2010:2012, below = c(1, 2, 3), who = c(10, 10, 10), lrv = c(0, 0, 0))
+  pm10 <- make_table_data(c(2010, 2012), below = c(7, 9), who = c(10, 10), lrv = c(0, 0)) |>
+    dplyr::mutate(pollutant = "Feinstaub PM10")
+
+  result <- table_population_over_thresholds(dplyr::bind_rows(no2, pm10), width = 3)
+
+  pm <- dplyr::filter(result, Schadstoff == "Feinstaub PM10")
+  expect_equal(pm$Zeitraum, c("2012", "2010"))
+  expect_equal(trimws(pm$`< Grenz-/Richtwert`), c("9", "7"))
 })
 
 test_that("table_population_over_thresholds() gives one row per O3 metric, with a dash where it has no threshold", {
   data <- population_over_thresholds(make_distribution(), make_weighted_means(), make_threshold_values())
 
-  result <- table_population_over_thresholds(data)
+  result <- table_population_over_thresholds(data, width = 3)
 
   o3 <- airquality.methods::longpollutant("O3")
   peak <- dplyr::filter(result, Schadstoff == paste0(o3, " (typische Spitzenbelastung)"))
   season <- dplyr::filter(result, Schadstoff == paste0(o3, " (mittlere Sommertagbelastung)"))
   expect_equal(nrow(result), 3)
+  expect_equal(peak$Zeitraum, "2020")
   expect_equal(trimws(c(peak$`> LRV-Grenzwert`, peak$`> WHO-Richtwert`, peak$`< Grenz-/Richtwert`)), c("20", "–", "300"))
+  expect_equal(peak$`> WHO-Richtwert (%)`, "–")
   expect_equal(trimws(c(season$`> LRV-Grenzwert`, season$`> WHO-Richtwert`, season$`< Grenz-/Richtwert`)), c("–", "70", "250"))
+  expect_equal(c(season$`> LRV-Grenzwert (%)`, season$`> WHO-Richtwert (%)`), c("–", "21.9 %"))
 })
 
 test_that("the cumulative plot of all years has a two-column legend", {

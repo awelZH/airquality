@@ -567,34 +567,82 @@ plot_weighted_mean_maps <- function(data, data_canton, parameter, crs, theme = g
 }
 
 
-#' Table of the inhabitants over thresholds per pollutant and year
+#' Periods of complete moving windows of years, single years where no complete window fits
 #'
-#' The counts are formatted with thousands separators; "> WHO-Richtwert" counts all inhabitants over the
-#' WHO guideline, including those over the LRV limit; "–" where the parameter has no such threshold.
+#' A window counts only if all its years are available, so no window spans a gap (e.g. the censuses 1990
+#' and 2000 before STATPOP from 2010). Years in no complete window form a period of their own.
 #'
-#' @param data Data as returned by [population_over_thresholds()].
+#' @param years Years available.
+#' @param width Number of years per window.
 #'
-#' @return Tibble with `Jahr`, `Schadstoff`, `< Grenz-/Richtwert`, `> WHO-Richtwert`, `> LRV-Grenzwert`
-#'   (character), newest year first.
+#' @return Tibble with one row per year and period: `year`, `period` ("2023–2025", or "2000" for a single
+#'   year) and `end` (last year of the period); ordered by `end`, then `year`. A year belongs to up to
+#'   `width` windows.
 #'
 #' @keywords internal
-table_population_over_thresholds <- function(data) {
-  big <- function(x) ifelse(is.na(x), "–", format(x, scientific = FALSE, big.mark = "'"))
+year_periods <- function(years, width) {
+  years <- sort(unique(years))
+  ends <- years[purrr::map_lgl(years, \(end) all(seq(end - width + 1, end) %in% years))]
+
+  windows <- purrr::map(ends, \(end) {
+    start <- end - width + 1
+    tibble::tibble(year = seq(start, end), period = if (width == 1) as.character(end) else paste0(start, "–", end), end = end)
+  }) |>
+    purrr::list_rbind()
+  single <- setdiff(years, windows$year)
+
+  windows |>
+    dplyr::bind_rows(tibble::tibble(year = single, period = as.character(single), end = single)) |>
+    dplyr::arrange(end, year)
+}
+
+
+#' Table of the inhabitants over thresholds per pollutant and moving window of years
+#'
+#' Per pollutant and period of [year_periods()] the mean number of inhabitants of the years, rounded to
+#' whole inhabitants and formatted with thousands separators, and its share of the mean total population of
+#' the period (one decimal). "> WHO-Richtwert" counts all inhabitants over the WHO guideline, including
+#' those over the LRV limit; "–" where the parameter has no such threshold.
+#'
+#' @param data Data as returned by [population_over_thresholds()].
+#' @param width Number of years per moving window; years outside any complete window are single periods.
+#'
+#' @return Tibble with `Zeitraum`, `Schadstoff` and per reference (`< Grenz-/Richtwert`, `> WHO-Richtwert`,
+#'   `> LRV-Grenzwert`) the count and its share (`… (%)`), all character; newest period first.
+#'
+#' @keywords internal
+table_population_over_thresholds <- function(data, width) {
+  big <- function(x) ifelse(is.na(x), "–", format(round(x), scientific = FALSE, big.mark = "'", trim = TRUE))
+  percent <- function(x, total) ifelse(is.na(x), "–", paste(formatC(100 * x / total, format = "f", digits = 1), "%"))
+
+  # per pollutant, so no window averages over a year the pollutant has no data for
+  periods <-
+    data |>
+    dplyr::distinct(pollutant, year) |>
+    dplyr::reframe(year_periods(year, width), .by = pollutant)
 
   data |>
     dplyr::select(year, pollutant, reference, population) |>
     tidyr::pivot_wider(names_from = reference, values_from = population, names_sort = TRUE, names_expand = TRUE) |>
-    dplyr::arrange(pollutant, dplyr::desc(year)) |>
     dplyr::mutate(
-      `über WHO-Richtwert` = big(dplyr::coalesce(`über LRV-Grenzwert`, 0) + `über WHO-Richtwert`),
-      `über LRV-Grenzwert` = big(`über LRV-Grenzwert`),
-      `unter Grenz-/Richtwert` = big(`unter Grenz-/Richtwert`)
+      total = dplyr::coalesce(`unter Grenz-/Richtwert`, 0) + dplyr::coalesce(`über WHO-Richtwert`, 0) +
+        dplyr::coalesce(`über LRV-Grenzwert`, 0),
+      `über WHO-Richtwert` = dplyr::coalesce(`über LRV-Grenzwert`, 0) + `über WHO-Richtwert`
     ) |>
-    dplyr::rename(
-      Jahr = year,
+    dplyr::inner_join(periods, by = dplyr::join_by(pollutant, year), relationship = "many-to-many") |>
+    dplyr::summarise(
+      dplyr::across(c(`unter Grenz-/Richtwert`, `über WHO-Richtwert`, `über LRV-Grenzwert`, total), mean),
+      .by = c(pollutant, period, end)
+    ) |>
+    dplyr::arrange(pollutant, dplyr::desc(end)) |>
+    dplyr::transmute(
+      Zeitraum = period,
       Schadstoff = pollutant,
-      "< Grenz-/Richtwert" = `unter Grenz-/Richtwert`,
-      "> LRV-Grenzwert" = `über LRV-Grenzwert`,
-      "> WHO-Richtwert" = `über WHO-Richtwert`
+      "< Grenz-/Richtwert" = big(`unter Grenz-/Richtwert`),
+      "< Grenz-/Richtwert (%)" = percent(`unter Grenz-/Richtwert`, total),
+      "> WHO-Richtwert" = big(`über WHO-Richtwert`),
+      "> WHO-Richtwert (%)" = percent(`über WHO-Richtwert`, total),
+      "> LRV-Grenzwert" = big(`über LRV-Grenzwert`),
+      "> LRV-Grenzwert (%)" = percent(`über LRV-Grenzwert`, total)
     )
 }

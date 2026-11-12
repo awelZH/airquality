@@ -135,7 +135,7 @@ outcomes_erf_shape <- "log_linear"
 # years to consider for plotting in airquality monitoring data and of the pollutant maps (NO2 and O3 maps from 1990)
 plot_years <- 1990:year_last
 
-# number of latest years for plotting relative threshold comparison
+# number of years per moving window: relative threshold comparison of the monitoring, table of the population over thresholds
 plot_n_years <- 3
 
 # parameters to include for timeseries plotting

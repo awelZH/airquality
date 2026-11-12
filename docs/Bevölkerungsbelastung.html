@@ -1418,7 +1418,7 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hinweis</span>Tabelle: Anzahl Einwohner/innen pro Schadstoff und Jahr
+<span class="screen-reader-only">Hinweis</span>Tabelle: Anzahl Einwohner/innen pro Schadstoff und 3-Jahreszeitraum (Mittelwert)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1428,637 +1428,827 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
 <table class="lightable-paper caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Jahr</th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: left; empty-cells: hide; position: sticky; top: 0; background-color: #FFFFFF;"></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; position: sticky; top: 0; background-color: #FFFFFF;"><div style="border-bottom: 1px solid #00000020; padding-bottom: 5px; ">
+&lt; Grenz-/Richtwert
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; position: sticky; top: 0; background-color: #FFFFFF;"><div style="border-bottom: 1px solid #00000020; padding-bottom: 5px; ">
+&gt; WHO-Richtwert
+</div></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; padding-bottom: 0; padding-left: 3px; padding-right: 3px; position: sticky; top: 0; background-color: #FFFFFF;"><div style="border-bottom: 1px solid #00000020; padding-bottom: 5px; ">
+&gt; LRV-Grenzwert
+</div></th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Zeitraum</th>
 <th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Schadstoff</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">&lt; Grenz-/Richtwert</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">&gt; WHO-Richtwert</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">&gt; LRV-Grenzwert</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Anzahl</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">%</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Anzahl</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">%</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Anzahl</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">%</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">2025</td>
+<td style="text-align: left;">2023–2025</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'631'712</td>
-<td style="text-align: left;">5'334</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">1'620'905</td>
+<td style="text-align: right;">99.8 %</td>
+<td style="text-align: right;">2'710</td>
+<td style="text-align: right;">0.2 %</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2024</td>
+<td style="text-align: left;">2022–2024</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'624'063</td>
-<td style="text-align: left;">94</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">1'579'446</td>
+<td style="text-align: right;">98.3 %</td>
+<td style="text-align: right;">26'546</td>
+<td style="text-align: right;">1.7 %</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2023</td>
+<td style="text-align: left;">2021–2023</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'606'939</td>
-<td style="text-align: left;">2'703</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">1'558'847</td>
+<td style="text-align: right;">98.2 %</td>
+<td style="text-align: right;">28'723</td>
+<td style="text-align: right;">1.8 %</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2022</td>
+<td style="text-align: left;">2020–2022</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'507'336</td>
-<td style="text-align: left;">76'841</td>
-<td style="text-align: left;">21</td>
+<td style="text-align: right;">1'540'972</td>
+<td style="text-align: right;">98.1 %</td>
+<td style="text-align: right;">29'264</td>
+<td style="text-align: right;">1.9 %</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2021</td>
+<td style="text-align: left;">2019–2021</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'562'265</td>
-<td style="text-align: left;">6'626</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">1'551'605</td>
+<td style="text-align: right;">99.7 %</td>
+<td style="text-align: right;">5'049</td>
+<td style="text-align: right;">0.3 %</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2020</td>
+<td style="text-align: left;">2018–2020</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'553'314</td>
-<td style="text-align: left;">4'326</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">1'313'555</td>
+<td style="text-align: right;">85.2 %</td>
+<td style="text-align: right;">228'505</td>
+<td style="text-align: right;">14.8 %</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2019</td>
+<td style="text-align: left;">2017–2019</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'539'237</td>
-<td style="text-align: left;">4'196</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">1'236'696</td>
+<td style="text-align: right;">81.1 %</td>
+<td style="text-align: right;">288'969</td>
+<td style="text-align: right;">18.9 %</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2018</td>
+<td style="text-align: left;">2016–2018</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">848'115</td>
-<td style="text-align: left;">676'993</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">1'164'542</td>
+<td style="text-align: right;">77.2 %</td>
+<td style="text-align: right;">344'017</td>
+<td style="text-align: right;">22.8 %</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2017</td>
+<td style="text-align: left;">2015–2017</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'322'735</td>
-<td style="text-align: left;">185'719</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">969'079</td>
+<td style="text-align: right;">65.0 %</td>
+<td style="text-align: right;">521'318</td>
+<td style="text-align: right;">35.0 %</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2016</td>
+<td style="text-align: left;">2014–2016</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'322'775</td>
-<td style="text-align: left;">169'339</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">836'419</td>
+<td style="text-align: right;">56.9 %</td>
+<td style="text-align: right;">634'638</td>
+<td style="text-align: right;">43.1 %</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2015</td>
+<td style="text-align: left;">2013–2015</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">261'726</td>
-<td style="text-align: left;">1'208'897</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">401'712</td>
+<td style="text-align: right;">27.7 %</td>
+<td style="text-align: right;">1'048'529</td>
+<td style="text-align: right;">72.3 %</td>
+<td style="text-align: right;">14'474</td>
+<td style="text-align: right;">1.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2014</td>
+<td style="text-align: left;">2012–2014</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">924'756</td>
-<td style="text-align: left;">525'677</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">331'923</td>
+<td style="text-align: right;">23.2 %</td>
+<td style="text-align: right;">1'098'993</td>
+<td style="text-align: right;">76.8 %</td>
+<td style="text-align: right;">14'731</td>
+<td style="text-align: right;">1.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2013</td>
+<td style="text-align: left;">2011–2013</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">18'653</td>
-<td style="text-align: left;">1'411'012</td>
-<td style="text-align: left;">43'423</td>
+<td style="text-align: right;">25'581</td>
+<td style="text-align: right;">1.8 %</td>
+<td style="text-align: right;">1'387'382</td>
+<td style="text-align: right;">98.2 %</td>
+<td style="text-align: right;">220'427</td>
+<td style="text-align: right;">15.6 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2012</td>
+<td style="text-align: left;">2010–2012</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">52'359</td>
-<td style="text-align: left;">1'360'289</td>
-<td style="text-align: left;">771</td>
+<td style="text-align: right;">21'415</td>
+<td style="text-align: right;">1.5 %</td>
+<td style="text-align: right;">1'374'066</td>
+<td style="text-align: right;">98.5 %</td>
+<td style="text-align: right;">408'041</td>
+<td style="text-align: right;">29.2 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2011</td>
+<td style="text-align: left;">2000</td>
 <td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">5'730</td>
-<td style="text-align: left;">1'390'845</td>
-<td style="text-align: left;">617'086</td>
+<td style="text-align: right;">1'820</td>
+<td style="text-align: right;">0.1 %</td>
+<td style="text-align: right;">1'250'428</td>
+<td style="text-align: right;">99.9 %</td>
+<td style="text-align: right;">1'204'135</td>
+<td style="text-align: right;">96.2 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2010</td>
-<td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">6'155</td>
-<td style="text-align: left;">1'371'064</td>
-<td style="text-align: left;">606'267</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2000</td>
-<td style="text-align: left;">Feinstaub PM10</td>
-<td style="text-align: left;">1'820</td>
-<td style="text-align: left;">1'250'428</td>
-<td style="text-align: left;">1'204'135</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2025</td>
+<td style="text-align: left;">2023–2025</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'637'046</td>
-<td style="text-align: left;">3'945</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'623'596</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">1'338</td>
+<td style="text-align: right;">0.1 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2024</td>
+<td style="text-align: left;">2022–2024</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">52</td>
-<td style="text-align: left;">1'624'105</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'605'973</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">28'146</td>
+<td style="text-align: right;">1.8 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2023</td>
+<td style="text-align: left;">2021–2023</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">1'609'638</td>
-<td style="text-align: left;">68</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'587'568</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">31'070</td>
+<td style="text-align: right;">2.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2022</td>
+<td style="text-align: left;">2020–2022</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'584'176</td>
-<td style="text-align: left;">84'371</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'570'235</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">33'086</td>
+<td style="text-align: right;">2.1 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2021</td>
+<td style="text-align: left;">2019–2021</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'568'890</td>
-<td style="text-align: left;">8'770</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'556'638</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">55'490</td>
+<td style="text-align: right;">3.6 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2020</td>
+<td style="text-align: left;">2018–2020</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'557'640</td>
-<td style="text-align: left;">6'117</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'542'027</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">501'441</td>
+<td style="text-align: right;">32.5 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2019</td>
+<td style="text-align: left;">2017–2019</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'543'384</td>
-<td style="text-align: left;">151'584</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'525'617</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">616'738</td>
+<td style="text-align: right;">40.4 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2018</td>
+<td style="text-align: left;">2016–2018</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'525'058</td>
-<td style="text-align: left;">1'346'622</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'508'512</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">697'848</td>
+<td style="text-align: right;">46.3 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2017</td>
+<td style="text-align: left;">2015–2017</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'508'410</td>
-<td style="text-align: left;">352'007</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'490'352</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">613'019</td>
+<td style="text-align: right;">41.1 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2016</td>
+<td style="text-align: left;">2014–2016</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'492'069</td>
-<td style="text-align: left;">394'914</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'471'017</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">602'133</td>
+<td style="text-align: right;">40.9 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2015</td>
+<td style="text-align: left;">2013–2015</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'470'576</td>
-<td style="text-align: left;">1'092'136</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'450'216</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">946'059</td>
+<td style="text-align: right;">65.2 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2014</td>
+<td style="text-align: left;">2012–2014</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">27</td>
-<td style="text-align: left;">1'450'406</td>
-<td style="text-align: left;">319'348</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'430'906</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">1'047'686</td>
+<td style="text-align: right;">73.2 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2013</td>
+<td style="text-align: left;">2011–2013</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'429'665</td>
-<td style="text-align: left;">1'426'694</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'412'962</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">1'406'307</td>
+<td style="text-align: right;">99.5 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2012</td>
+<td style="text-align: left;">2010–2012</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'412'648</td>
-<td style="text-align: left;">1'397'017</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'395'480</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">1'389'305</td>
+<td style="text-align: right;">99.6 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2011</td>
+<td style="text-align: left;">2000</td>
 <td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">1'396'573</td>
-<td style="text-align: left;">1'395'210</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'252'248</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">1'251'575</td>
+<td style="text-align: right;">99.9 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2010</td>
-<td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'377'218</td>
-<td style="text-align: left;">1'375'688</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2000</td>
-<td style="text-align: left;">Feinstaub PM2.5</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'252'248</td>
-<td style="text-align: left;">1'251'575</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2025</td>
+<td style="text-align: left;">2023–2025</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'637'046</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'623'615</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2024</td>
+<td style="text-align: left;">2022–2024</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'624'156</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'605'991</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2023</td>
+<td style="text-align: left;">2021–2023</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'609'642</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'587'569</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2022</td>
+<td style="text-align: left;">2020–2022</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'584'176</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'570'234</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2021</td>
+<td style="text-align: left;">2019–2021</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'568'890</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'556'653</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2020</td>
+<td style="text-align: left;">2018–2020</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">1'557'637</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'542'060</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2019</td>
+<td style="text-align: left;">2017–2019</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'543'433</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'525'665</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2018</td>
+<td style="text-align: left;">2016–2018</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'525'109</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'508'559</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2017</td>
+<td style="text-align: left;">2015–2017</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'508'453</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'490'397</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2016</td>
+<td style="text-align: left;">2014–2016</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'492'114</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'471'057</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2015</td>
+<td style="text-align: left;">2013–2015</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'470'623</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'450'241</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2014</td>
+<td style="text-align: left;">2012–2014</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'450'434</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'430'916</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2013</td>
+<td style="text-align: left;">2011–2013</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'429'665</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'412'963</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2012</td>
+<td style="text-align: left;">2010–2012</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'412'648</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'395'480</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2011</td>
+<td style="text-align: left;">2000</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'396'575</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'252'248</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2010</td>
+<td style="text-align: left;">1990</td>
 <td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1'377'218</td>
-<td style="text-align: left;">–</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'182'729</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2000</td>
-<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'252'248</td>
-<td style="text-align: left;">–</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1990</td>
-<td style="text-align: left;">Ozon (mittlere Sommertagbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1'182'729</td>
-<td style="text-align: left;">–</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2025</td>
+<td style="text-align: left;">2023–2025</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'637'140</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'623'699</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2024</td>
+<td style="text-align: left;">2022–2024</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'624'239</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'606'064</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2023</td>
+<td style="text-align: left;">2021–2023</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'609'718</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'587'634</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2022</td>
+<td style="text-align: left;">2020–2022</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'584'236</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'570'273</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2021</td>
+<td style="text-align: left;">2019–2021</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'568'947</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'556'660</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2020</td>
+<td style="text-align: left;">2018–2020</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'557'637</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'542'034</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2019</td>
+<td style="text-align: left;">2017–2019</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'543'396</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'525'628</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2018</td>
+<td style="text-align: left;">2016–2018</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'525'070</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'508'522</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2017</td>
+<td style="text-align: left;">2015–2017</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'508'419</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'490'361</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2016</td>
+<td style="text-align: left;">2014–2016</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'492'077</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'471'020</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2015</td>
+<td style="text-align: left;">2013–2015</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'470'586</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'450'205</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2014</td>
+<td style="text-align: left;">2012–2014</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'450'398</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'430'879</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2013</td>
+<td style="text-align: left;">2011–2013</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'429'632</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'412'925</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2012</td>
+<td style="text-align: left;">2010–2012</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'412'608</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'395'435</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2011</td>
+<td style="text-align: left;">2000</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'396'534</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'252'199</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2010</td>
+<td style="text-align: left;">1990</td>
 <td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'377'164</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">1'182'683</td>
+<td style="text-align: right;">100.0 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2000</td>
-<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'252'199</td>
+<td style="text-align: left;">2023–2025</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: right;">163'140</td>
+<td style="text-align: right;">10.0 %</td>
+<td style="text-align: right;">1'460'475</td>
+<td style="text-align: right;">90.0 %</td>
+<td style="text-align: right;">326</td>
+<td style="text-align: right;">0.0 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1990</td>
-<td style="text-align: left;">Ozon (typische Spitzenbelastung)</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">–</td>
-<td style="text-align: left;">1'182'683</td>
+<td style="text-align: left;">2022–2024</td>
+<td style="text-align: left;">Stickstoffdioxid</td>
+<td style="text-align: right;">126'357</td>
+<td style="text-align: right;">7.9 %</td>
+<td style="text-align: right;">1'479'635</td>
+<td style="text-align: right;">92.1 %</td>
+<td style="text-align: right;">840</td>
+<td style="text-align: right;">0.1 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2025</td>
+<td style="text-align: left;">2021–2023</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">157'835</td>
-<td style="text-align: left;">1'479'211</td>
-<td style="text-align: left;">405</td>
+<td style="text-align: right;">72'581</td>
+<td style="text-align: right;">4.6 %</td>
+<td style="text-align: right;">1'514'989</td>
+<td style="text-align: right;">95.4 %</td>
+<td style="text-align: right;">1'568</td>
+<td style="text-align: right;">0.1 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2024</td>
+<td style="text-align: left;">2020–2022</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">186'669</td>
-<td style="text-align: left;">1'437'488</td>
-<td style="text-align: left;">203</td>
+<td style="text-align: right;">31'596</td>
+<td style="text-align: right;">2.0 %</td>
+<td style="text-align: right;">1'538'640</td>
+<td style="text-align: right;">98.0 %</td>
+<td style="text-align: right;">2'254</td>
+<td style="text-align: right;">0.1 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2023</td>
+<td style="text-align: left;">2019–2021</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">144'915</td>
-<td style="text-align: left;">1'464'727</td>
-<td style="text-align: left;">370</td>
+<td style="text-align: right;">18'865</td>
+<td style="text-align: right;">1.2 %</td>
+<td style="text-align: right;">1'537'789</td>
+<td style="text-align: right;">98.8 %</td>
+<td style="text-align: right;">3'632</td>
+<td style="text-align: right;">0.2 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2022</td>
+<td style="text-align: left;">2018–2020</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">47'486</td>
-<td style="text-align: left;">1'536'691</td>
-<td style="text-align: left;">1'948</td>
+<td style="text-align: right;">12'059</td>
+<td style="text-align: right;">0.8 %</td>
+<td style="text-align: right;">1'530'002</td>
+<td style="text-align: right;">99.2 %</td>
+<td style="text-align: right;">8'324</td>
+<td style="text-align: right;">0.5 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2021</td>
+<td style="text-align: left;">2017–2019</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">25'343</td>
-<td style="text-align: left;">1'543'548</td>
-<td style="text-align: left;">2'386</td>
+<td style="text-align: right;">6'088</td>
+<td style="text-align: right;">0.4 %</td>
+<td style="text-align: right;">1'519'577</td>
+<td style="text-align: right;">99.6 %</td>
+<td style="text-align: right;">33'535</td>
+<td style="text-align: right;">2.2 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2020</td>
+<td style="text-align: left;">2016–2018</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">21'958</td>
-<td style="text-align: left;">1'535'682</td>
-<td style="text-align: left;">2'429</td>
+<td style="text-align: right;">4'631</td>
+<td style="text-align: right;">0.3 %</td>
+<td style="text-align: right;">1'503'927</td>
+<td style="text-align: right;">99.7 %</td>
+<td style="text-align: right;">70'148</td>
+<td style="text-align: right;">4.6 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2019</td>
+<td style="text-align: left;">2015–2017</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">9'295</td>
-<td style="text-align: left;">1'534'138</td>
-<td style="text-align: left;">6'080</td>
+<td style="text-align: right;">3'861</td>
+<td style="text-align: right;">0.3 %</td>
+<td style="text-align: right;">1'486'536</td>
+<td style="text-align: right;">99.7 %</td>
+<td style="text-align: right;">156'232</td>
+<td style="text-align: right;">10.5 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2018</td>
+<td style="text-align: left;">2014–2016</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">4'923</td>
-<td style="text-align: left;">1'520'185</td>
-<td style="text-align: left;">16'462</td>
+<td style="text-align: right;">3'941</td>
+<td style="text-align: right;">0.3 %</td>
+<td style="text-align: right;">1'467'115</td>
+<td style="text-align: right;">99.7 %</td>
+<td style="text-align: right;">173'415</td>
+<td style="text-align: right;">11.8 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2017</td>
+<td style="text-align: left;">2013–2015</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">4'046</td>
-<td style="text-align: left;">1'504'408</td>
-<td style="text-align: left;">78'062</td>
+<td style="text-align: right;">2'943</td>
+<td style="text-align: right;">0.2 %</td>
+<td style="text-align: right;">1'447'297</td>
+<td style="text-align: right;">99.8 %</td>
+<td style="text-align: right;">213'472</td>
+<td style="text-align: right;">14.7 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2016</td>
+<td style="text-align: left;">2012–2014</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">4'925</td>
-<td style="text-align: left;">1'487'189</td>
-<td style="text-align: left;">115'919</td>
+<td style="text-align: right;">2'917</td>
+<td style="text-align: right;">0.2 %</td>
+<td style="text-align: right;">1'427'998</td>
+<td style="text-align: right;">99.8 %</td>
+<td style="text-align: right;">181'090</td>
+<td style="text-align: right;">12.7 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2015</td>
+<td style="text-align: left;">2011–2013</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">2'613</td>
-<td style="text-align: left;">1'468'010</td>
-<td style="text-align: left;">274'716</td>
+<td style="text-align: right;">2'227</td>
+<td style="text-align: right;">0.2 %</td>
+<td style="text-align: right;">1'410'736</td>
+<td style="text-align: right;">99.8 %</td>
+<td style="text-align: right;">208'531</td>
+<td style="text-align: right;">14.8 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2014</td>
+<td style="text-align: left;">2010–2012</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">4'286</td>
-<td style="text-align: left;">1'446'147</td>
-<td style="text-align: left;">129'609</td>
+<td style="text-align: right;">1'990</td>
+<td style="text-align: right;">0.1 %</td>
+<td style="text-align: right;">1'393'490</td>
+<td style="text-align: right;">99.9 %</td>
+<td style="text-align: right;">232'718</td>
+<td style="text-align: right;">16.7 %</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2013</td>
+<td style="text-align: left;">2000</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">1'931</td>
-<td style="text-align: left;">1'427'734</td>
-<td style="text-align: left;">236'091</td>
+<td style="text-align: right;">1'119</td>
+<td style="text-align: right;">0.1 %</td>
+<td style="text-align: right;">1'251'129</td>
+<td style="text-align: right;">99.9 %</td>
+<td style="text-align: right;">446'874</td>
+<td style="text-align: right;">35.7 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2012</td>
+<td style="text-align: left;">1990</td>
 <td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">2'535</td>
-<td style="text-align: left;">1'410'113</td>
-<td style="text-align: left;">177'570</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2011</td>
-<td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">2'214</td>
-<td style="text-align: left;">1'394'361</td>
-<td style="text-align: left;">211'933</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2010</td>
-<td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">1'222</td>
-<td style="text-align: left;">1'375'997</td>
-<td style="text-align: left;">308'652</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2000</td>
-<td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">1'119</td>
-<td style="text-align: left;">1'251'129</td>
-<td style="text-align: left;">446'874</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1990</td>
-<td style="text-align: left;">Stickstoffdioxid</td>
-<td style="text-align: left;">468</td>
-<td style="text-align: left;">1'182'261</td>
-<td style="text-align: left;">946'527</td>
+<td style="text-align: right;">468</td>
+<td style="text-align: right;">0.0 %</td>
+<td style="text-align: right;">1'182'261</td>
+<td style="text-align: right;">100.0 %</td>
+<td style="text-align: right;">946'527</td>
+<td style="text-align: right;">80.0 %</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
+<p>Mittelwerte über gleitende 3-Jahreszeiträume; Anteile in % der mittleren Wohnbevölkerung des Zeitraums. Zeiträume mit nur einer Jahreszahl sind Einzeljahre (Volkszählungen): für die Nachbarjahre gibt es keine Bevölkerungsdaten.</p>
 </div>
 </div>
 </div>

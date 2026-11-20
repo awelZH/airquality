@@ -346,24 +346,71 @@ plot_monitoring_timeseries_bands <- function(data, parameter, axes, threshold_va
 #' Every category of the panel is drawn, also without values in these years, and the panels reach at
 #' least up to `limits`, so the plots of the single windows stay comparable.
 #'
+#' `type = "points"` draws every value as a jittered point. `type = "range"` draws per site class the
+#' median as a point and the range (minimum to maximum) as a line, the point sized by the number of values
+#' ([threshold_comparison_summary()]); every site class keeps its offset in every category.
+#'
 #' @param data Data as returned by [threshold_comparison_data()], filtered to the years shown.
 #' @param threshold_styles Line styles of the thresholds (`col`, `lty`, `lsz`).
 #' @param years Years shown (subtitle).
 #' @param limits Maximum per panel, as returned by [threshold_comparison_limits()].
 #' @param categories Categories per panel (`reference`, `x`), as returned by [threshold_comparison_categories()].
 #' @param colour_scale Colour scale of the site classes.
-#' @param pointsize Size of the points.
+#' @param pointsize Size of the points (`type = "points"`).
 #' @param jitter_seed Seed of the jittered points, so the figure stays the same between runs.
 #' @param theme ggplot2 theme.
+#' @param type `"points"` (every value) or `"range"` (median and range per site class).
+#' @param siteclasses Site classes of the air quality values, in the order of their offsets from bottom to
+#'   top (`type = "range"`).
+#' @param size_range Range of the point sizes (`type = "range"`); the default 3.28 is the size 25 values
+#'   had on the first scale (range 1 to 5 over 1 to 75 values).
+#' @param size_breaks,size_labels Breaks of the size legend and their labels (`type = "range"`). The scale
+#'   is fixed from 1 to the last break in all windows; larger counts get the size of the last break.
+#' @param dodge_width Width over which the site classes of a category are spread (`type = "range"`).
 #'
 #' @return A ggplot object.
 #'
 #' @keywords internal
 plot_threshold_comparison <- function(data, threshold_styles, years, limits, categories, colour_scale = NULL, pointsize = 2, jitter_seed = 1,
-                                      theme = ggplot2::theme_minimal()) {
+                                      theme = ggplot2::theme_minimal(), type = c("points", "range"), siteclasses = NULL,
+                                      size_range = c(1, 3.28), size_breaks = c(1, 5, 10, 15, 20),
+                                      size_labels = c("1", "5", "10", "15", ">20"), dodge_width = 0.6) {
+
+  type <- rlang::arg_match(type)
 
   # an invisible point per panel at its maximum, so all windows of the time series share the same scale
   limits <- dplyr::left_join(limits, dplyr::slice(categories, 1, .by = reference), by = dplyr::join_by(reference))
+
+  subtitle <- paste0("Jahre ", min(years), " bis ", max(years))
+  if (type == "points") {
+    values <- ggplot2::geom_point(shape = 21, size = pointsize, position = ggplot2::position_jitter(width = 0.2, height = 0, seed = jitter_seed))
+    size_scale <- NULL
+    size_legend <- NULL
+  } else {
+    if (is.null(siteclasses)) {
+      cli::cli_abort("{.code type = \"range\"} needs {.arg siteclasses}.", class = "airquality_plot_error")
+    }
+    data <- threshold_comparison_summary(data, siteclasses)
+    # the same dodge for line and point; the empty slots of missing site classes take their place, too
+    dodge <- ggplot2::position_dodge(width = dodge_width)
+    values <- list(
+      ggplot2::geom_linerange(ggplot2::aes(y = median, ymin = min, ymax = max, group = slot), position = dodge, na.rm = TRUE, show.legend = FALSE),
+      # filled white, so the line does not run through the point
+      # counts beyond the last break get its size
+      ggplot2::geom_point(ggplot2::aes(y = median, size = pmin(n, max(size_breaks)), group = slot), shape = 21, fill = "white",
+                          position = dodge, na.rm = TRUE)
+    )
+    # fixed in all windows, so the sizes stay comparable
+    size_scale <- ggplot2::scale_size(name = "Anzahl Werte", range = size_range, limits = range(size_breaks), breaks = size_breaks,
+                                      labels = size_labels)
+    subtitle <- paste0(subtitle, " – Median und Wertebereich")
+    # the size legend below the site classes, next to them it does not fit the width
+    size_legend <- list(
+      ggplot2::guides(color = ggplot2::guide_legend(nrow = 3, order = 1), size = ggplot2::guide_legend(order = 2)),
+      ggplot2::theme(legend.box = "vertical", legend.box.just = "left", legend.box.spacing = ggplot2::unit(6, "pt"),
+                     legend.spacing.y = ggplot2::unit(2, "pt"))
+    )
+  }
 
   data |>
     ggplot2::ggplot(ggplot2::aes(x = x, y = value, color = siteclass)) +
@@ -372,14 +419,15 @@ plot_threshold_comparison <- function(data, threshold_styles, years, limits, cat
     # The categories come before the points, so the axis keeps their order also in years without values.
     ggplot2::geom_blank(data = categories, mapping = ggplot2::aes(x = x), inherit.aes = FALSE) +
     ggplot2::geom_blank(data = limits, mapping = ggplot2::aes(x = x, y = value), inherit.aes = FALSE) +
-    ggplot2::geom_point(shape = 21, size = pointsize, position = ggplot2::position_jitter(width = 0.2, height = 0, seed = jitter_seed)) +
+    values +
     ggplot2::facet_wrap(reference~., scales = "free_y", ncol = 1, axes = "all_x") +
     ggplot2::scale_y_continuous(breaks = seq(0,10,1), limits = c(0,NA), labels = scales::percent_format(), expand = c(0.01,0.01)) +
+    size_scale +
     ggplot2::coord_flip() +
     ggplot2::guides(color = ggplot2::guide_legend(nrow = 3)) +
     ggplot2::ggtitle(
       label = openair::quickText("Luftqualitätsmesswerte Referenzwertvergleich"),
-      subtitle = paste0("Jahre ", min(years), " bis ", max(years))
+      subtitle = subtitle
     ) +
     ggplot2::labs(caption = "Referenzwerte nach heutigem Stand, Daten: Ostluft & NABEL (BAFU & Empa)") +
     theme +
@@ -390,7 +438,8 @@ plot_threshold_comparison <- function(data, threshold_styles, years, limits, cat
       panel.grid.major.x = ggplot2::element_line(),
       strip.text = ggplot2::element_text(hjust = 0)
     ) +
-    colour_scale
+    colour_scale +
+    size_legend
 }
 
 
@@ -565,6 +614,35 @@ threshold_comparison_categories <- function(data) {
     dplyr::distinct(reference, x) |>
     dplyr::arrange(reference, x) # the order of the axis
 }
+
+
+#' Median, range and number of values per site class of the threshold comparison
+#'
+#' Every category with air quality values gets a row for each of `siteclasses`, the missing ones without
+#' values, so a dodge gives every site class the same offset in every category. Other classes (the
+#' sensitive ecosystems of the nitrogen deposition) keep their own rows only.
+#'
+#' @param data Data as returned by [threshold_comparison_data()], filtered to the years shown.
+#' @param siteclasses Site classes of the air quality values, in the order of their offsets.
+#'
+#' @return Tibble with `reference`, `x`, `siteclass`, `median`, `min`, `max`, `n` and `slot` (factor of
+#'   the site classes, `siteclasses` first, the group of the dodge).
+#'
+#' @keywords internal
+threshold_comparison_summary <- function(data, siteclasses) {
+  summary <-
+    data |>
+    dplyr::summarise(median = stats::median(value), min = min(value), max = max(value), n = dplyr::n(),
+                     .by = c(reference, x, siteclass))
+  airquality <- dplyr::filter(summary, siteclass %in% siteclasses)
+  other <- dplyr::filter(summary, !siteclass %in% siteclasses)
+
+  airquality |>
+    tidyr::complete(tidyr::nesting(reference, x), siteclass = siteclasses) |>
+    dplyr::bind_rows(other) |>
+    dplyr::mutate(slot = factor(siteclass, levels = c(siteclasses, sort(unique(other$siteclass)))))
+}
+
 
 
 # ---- pollutant maps and model verification -------------------------------------------------

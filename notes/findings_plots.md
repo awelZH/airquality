@@ -348,3 +348,22 @@ the columns as "Anzahl" / "%" under grouped headers per reference (`add_header_a
 horizontal scrolling; the tibble keeps its unique column names. `year_windows()` would give "1998–2000" over the gap, so the table does not use it.
 The plots are unchanged; page check 7 of 7 OK, same 11 warnings as before. Real data: 15 rows for PM10/PM2.5, 16 for
 NO2 and the O3 metrics; small counts show "0.0 %" (e.g. 7 inhabitants over the PM10 limit in the windows 2020–2022 to 2022–2024).
+
+**Threshold comparison as median and range (user decisions 2026-11-20).** `Luftqualität.qmd`, "Übersicht": a tabset
+"Variante 1" (the jittered points, unchanged) / "Variante 2" (catalog `threshold_comparison_range`, same 34 windows of
+`plot_n_years` with a slider). `plot_threshold_comparison(type = "range")` draws per site class and category the median
+of the values of the window as a point and minimum–maximum as a line; a value is a site-year (pooled over the 3 years),
+real data 1–75 values per site class and category (median 8; 2023–2025: NO2 städtisch-verkehrsbelastet 59, PM2.5
+klein-/vorstädtisch 1). Decisions: (1) median and min–max of the site-years, the point size the count ("Anzahl Werte");
+(2) fixed slots instead of a plain `position_dodge()`, which packs only the classes present: of the 269 category-window
+pairs only 119 have all 4 classes (59 one, 25 two, 66 three), so a class would move between categories and windows.
+`threshold_comparison_summary()` completes every category with air quality values to all `siteclass_levels` (empty
+slots, `na.rm = TRUE`), `slot` is the dodge group (width 0.6; from bottom "verkehrsbelastet" to top "ländlich");
+the nitrogen deposition keeps its single class, centred; (3) a fixed size scale in all windows, breaks 1/5/10/15/">20",
+limits 1–20, every count from 20 on drawn as 20 (`pmin()` in the mapping; `scale_size()` of ggplot2 4.0 takes no
+`oob`), sizes 1 to 3.28: the largest point is as large as 25 values were on the first draft (range 1–5 over the
+largest count 75, area scale: 1 + 4·√(24/74) = 3.28; user decision after seeing it). Real data 2023–2025: 5 of 31
+classes have more than 20 values (NO2 urban background 50 and traffic 59 in both panels, nitrogen deposition 32),
+so the large counts are no longer told apart; (4) `shape = 21` as variant 1 but filled white, so the line does not run through the point;
+(5) subtitle "Jahre … bis … – Median und Wertebereich". The size legend sits below the site classes
+(`legend.box = "vertical"`), next to them it was cut off at the right. Figures: 375 of 375 byte-identical, 34 new.

@@ -184,6 +184,68 @@ test_that("plot_threshold_comparison() keeps the categories of each panel and th
   expect_match(plot$labels$caption, "^Referenzwerte nach heutigem Stand") # the thresholds are the current ones
 })
 
+test_that("threshold_comparison_summary() gives median, range and count per site class, with a slot for every class", {
+  lrv <- "relativ zu Immissionsgrenzwerten bzw. kritischen Eintragsraten:"
+  data <- tibble::tibble(
+    reference = lrv,
+    x = factor(c("NO2 Jahresmittel", "NO2 Jahresmittel", "NO2 Jahresmittel", "NO2 Jahresmittel", "Stickstoffeintrag")),
+    siteclass = c("städtisch - Hintergrund", "städtisch - Hintergrund", "städtisch - Hintergrund", "ländlich - Hintergrund", "empf. Ökosystem"),
+    value = c(0.2, 0.9, 0.4, 0.3, 2)
+  )
+
+  result <- threshold_comparison_summary(data, siteclasses)
+
+  urban <- dplyr::filter(result, siteclass == "städtisch - Hintergrund")
+  expect_equal(c(urban$median, urban$min, urban$max, urban$n), c(0.4, 0.2, 0.9, 3))
+  # every air quality class gets its slot in the NO2 category, the missing ones without values
+  no2 <- dplyr::filter(result, x == "NO2 Jahresmittel")
+  expect_setequal(no2$siteclass, siteclasses)
+  expect_equal(sum(is.na(no2$median)), 2)
+  # the nitrogen deposition keeps its own class only
+  expect_equal(dplyr::filter(result, x == "Stickstoffeintrag")$siteclass, "empf. Ökosystem")
+  # the slots follow the order of the site classes
+  expect_equal(levels(result$slot), c(siteclasses, "empf. Ökosystem"))
+})
+
+test_that("plot_threshold_comparison(type = 'range') draws median and range, a site class always at the same offset", {
+  levels <- c("PM10 Jahresmittel", "NO2 Jahresmittel")
+  data <- tibble::tibble(
+    reference = "A:", x = factor(c("NO2 Jahresmittel", "NO2 Jahresmittel", "NO2 Jahresmittel", "PM10 Jahresmittel"), levels = levels),
+    siteclass = c("städtisch - Hintergrund", "städtisch - Hintergrund", "ländlich - Hintergrund", "städtisch - Hintergrund"),
+    value = c(0.2, 0.6, 0.3, 0.5)
+  )
+
+  plot <- plot_threshold_comparison(data, threshold_styles = tibble::tibble(col = "red3", lty = 1, lsz = 1), years = 2020,
+                                    limits = tibble::tibble(reference = "A:", value = 2), categories = threshold_comparison_categories(data),
+                                    type = "range", siteclasses = siteclasses)
+  layers <- layer_data_all(plot)
+  ranges <- purrr::detect(layers, \(layer) "ymin" %in% names(layer))
+  points <- purrr::detect(layers, \(layer) "shape" %in% names(layer))
+
+  expect_setequal(stats::na.omit(points$y), c(0.4, 0.3, 0.5))
+  expect_setequal(stats::na.omit(ranges$ymax), c(0.6, 0.3, 0.5))
+  # "städtisch - Hintergrund" sits at the same offset in NO2 (two classes) and PM10 (one class)
+  urban <- dplyr::filter(points, y %in% c(0.4, 0.5))
+  expect_equal(urban$x - round(urban$x), rep(urban$x[1] - round(urban$x[1]), 2))
+  expect_true("Anzahl Werte" %in% legend_texts(plot))
+  expect_match(plot$labels$subtitle, "Median und Wertebereich")
+})
+
+test_that("plot_threshold_comparison(type = 'range') puts all counts from the top break on into one size class", {
+  data <- tibble::tibble(
+    reference = "A:", x = factor(rep(c("NO2 Jahresmittel", "PM10 Jahresmittel"), c(20, 40))),
+    siteclass = "städtisch - Hintergrund", value = 0.5
+  )
+
+  plot <- plot_threshold_comparison(data, threshold_styles = tibble::tibble(col = "red3", lty = 1, lsz = 1), years = 2020,
+                                    limits = tibble::tibble(reference = "A:", value = 2), categories = threshold_comparison_categories(data),
+                                    type = "range", siteclasses = siteclasses, size_range = c(1, 3))
+  points <- purrr::detect(layer_data_all(plot), \(layer) "shape" %in% names(layer))
+
+  expect_equal(stats::na.omit(points$size), c(3, 3), ignore_attr = TRUE) # 20 and 40 values: the largest size
+  expect_true(all(c("1", "5", "10", "15", ">20") %in% legend_texts(plot)))
+})
+
 test_that("the thresholds of a time series are named in the legend, not written into the panel", {
   data <- tibble::tibble(
     year = 2020:2021, site = "A", pollutant = "NO2", metric = "Jahresmittel", parameter = "NO2", unit = "µg/m3",

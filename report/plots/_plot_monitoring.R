@@ -55,6 +55,18 @@ plots$monitoring$threshold_comparison <-
                                 jitter_seed = jitter_seed, theme = theme_ts)
   })
 
+# the same as median and range per site class, the point sized by the number of values (a fixed scale,
+# more than 20 values in one class)
+plots$monitoring$threshold_comparison_range <-
+  purrr::map(year_windows(data_monitoring_aq$year, width = plot_n_years), \(years) {
+    comparison_all |>
+      dplyr::filter(year %in% years) |>
+      plot_threshold_comparison(threshold_styles = dplyr::distinct(immission_threshold_values, source, col, lty, lsz), years = years,
+                                limits = comparison_limits, categories = comparison_categories,
+                                colour_scale = scale_color_siteclass, theme = theme_ts,
+                                type = "range", siteclasses = siteclass_levels)
+  })
+
 
 # nitrogen deposition: long time series at Bachtel (since 2001), all sites since 2019 (absolute and relative
 # to the critical load)
@@ -140,6 +152,7 @@ plots$monitoring$map_validation_year <-
 plots_monitoring <-
   dplyr::bind_rows(
     airquality.methods::plot_catalog(plots$monitoring$threshold_comparison, "threshold_comparison", names_to = "year"),
+    airquality.methods::plot_catalog(plots$monitoring$threshold_comparison_range, "threshold_comparison_range", names_to = "year"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_siteclass, "timeseries_siteclass", names_to = "parameter"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_siteclass_bands, "timeseries_siteclass_bands", names_to = "parameter"),
     airquality.methods::plot_catalog(plots$monitoring$timeseries_ndep_bachtel$Ndep, "timeseries_ndep_bachtel"),

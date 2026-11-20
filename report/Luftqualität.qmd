@@ -20,6 +20,10 @@ plots <- plots_monitoring
 
 ### Übersicht
 
+::: {.panel-tabset}
+
+#### Variante 1
+
 :::{.column-body-outset}
 ```{r}
 #| label: slider-grenzwertvergleich
@@ -27,6 +31,19 @@ plots <- plots_monitoring
 #| output: asis
 print_year_slider(plots, "threshold_comparison")
 ```
+:::
+
+#### Variante 2
+
+:::{.column-body-outset}
+```{r}
+#| label: slider-grenzwertvergleich-range
+#| fig.asp: 0.6
+#| output: asis
+print_year_slider(plots, "threshold_comparison_range")
+```
+:::
+
 :::
 
 ### Stickstoffdioxid
